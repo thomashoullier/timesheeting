@@ -10,3 +10,4 @@ ADDED: <2024-01-20 Sat>
 We want to be able to publish signed revisions of it.
 + OK Add a document reference to it.
 + Add an applicable documents table to it.
++ Add list of acronyms
