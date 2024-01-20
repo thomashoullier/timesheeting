@@ -1,0 +1,48 @@
+%% Document-wide settings.
+\documentclass[letterpaper]{article}
+\title{timesheeting specification document}
+\author{Thomas HOULLIER}
+
+\usepackage[colorlinks=true, allcolors=blue,
+            hyperfootnotes=false,
+            pdfauthor={Thomas HOULLIER},
+            pdftitle={timesheeting specification document}]
+            {hyperref} % Links for ref/cite.
+
+\input{preamble}
+
+% Document
+\begin{document}
+\frenchspacing
+\date{PRJ1-SPE1-v0.0 -- \today}
+\maketitle
+\thispagestyle{FirstPage}
+
+\begin{abstract}
+  This is the specification document for the timesheeting project.
+  It describes the requirements for a time management software for
+  personal timesheets.
+\end{abstract}
+
+\begin{versionhistory}
+\vhEntry{0.0}{\today}{TH}{creation}
+\end{versionhistory}
+\setcounter{table}{0} % Reset the table counter.
+
+\tableofcontents
+\printglossary[type=\acronymtype,style=index]
+\pagestyle{plain}
+\input{sections/examples}
+
+\appendix
+\cleardoublepage
+
+%% \include{appendices}
+
+\apptocmd{\thebibliography}{\raggedright}{}{}
+\begingroup
+\setstretch{0.6}
+\setlength\bibitemsep{0pt}
+\printbibliography
+\endgroup
+\end{document}
