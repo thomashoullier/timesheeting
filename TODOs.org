@@ -1,0 +1,11 @@
+:PROPERTIES:
+:CATEGORY: timesheeting
+:END:
+#+title: TODO
+
+* Specification
+** TODO Make the specification into a latex document
+ADDED: <2024-01-20 Sat>
+
+We want to be able to publish signed revisions of it.
+Add a document reference to it.
