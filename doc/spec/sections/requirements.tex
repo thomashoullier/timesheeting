@@ -11,7 +11,14 @@ from the active items set.
 The software shall allow the user to edit the properties of
 active hierarchy items.
 
-Note the changes do not backpropagate to the past entries.
+\paragraph{R-UHI-040 -- Restoring deleted hierarchy items}
+The software shall allow the restoration of previously deleted
+hierarchy items. The corresponding identification must be the same as before
+deletion.
+
+\paragraph{R-UHI-050 -- Project removal effect}
+The removal of a project from the active set of projects shall cause
+the corresponding tasks to be removed.
 
 \subsection{UEI -- User entries interaction}
 \paragraph{R-UEI-010 -- Adding entries}
@@ -131,8 +138,8 @@ Projects shall be identified by a unique code.
 \paragraph{R-LDC-060 -- Project metadata}
 Projects shall be associated unambiguously to their,
 \begin{compactitem}
-  \item Full name
-  \item External reference number
+  \item full name,
+  \item external reference number.
 \end{compactitem}
 
 \paragraph{R-LDC-070 -- Task identification}
@@ -149,7 +156,8 @@ Tasks shall be associated unambiguously to their,
 \paragraph{R-TIM-010 -- Time standard}
 The software shall use UTC time internally as its datation format.
 
-Rationale: maintain chronology of events.
+Rationale: we need to maintain the chronology of events in an interoperable
+fashion.
 
 \paragraph{R-TIM-020 -- Time reference}
 The software datation shall use the system clock as its time reference.
@@ -163,15 +171,19 @@ on with a resolution of one second.
 
 \subsection{SAV -- Save management}
 \paragraph{R-SAV-010 -- Save}
-The software shall provide a mechanism for saving the timesheet data to
-the system's persistent memory storage.
+The software shall provide a mechanism for saving the timesheet data
+and hierarchy items to the system's persistent memory storage.
 
 \paragraph{R-SAV-020 -- Transparent save}
 The saving mechanism shall be transparent to the user.
 
-\paragraph{R-SAV-030 -- Save resolution}
+\paragraph{R-SAV-030 -- Timesheet save resolution}
 The saving mechanism shall save timesheet data anytime an entry is
 created, modified or deleted.
+
+\paragraph{R-SAV-031 -- Hierarchy items save resolution}
+The saving mechanism shall save the hierarchy items data anytime
+a hierarchy item is created, modified, deleted or restored.
 
 \paragraph{R-SAV-040 -- Save status}
 The system shall report visually to the user the save status, ie
@@ -200,7 +212,8 @@ backup. Logs are not included in the data state.
 The backup archive shall consist in a single file.
 
 \paragraph{R-BAK-050 -- Backup timestamp}
-The backup archive shall be timestamped with the date the backup was made.
+The backup archive shall be timestamped with the date at which the backup was
+made.
 
 \paragraph{R-BAK-060 -- Backup naming}
 The backup mechanism shall allow the user to choose a custom name for the
@@ -241,7 +254,7 @@ The software interface and saved data shall remain local to the system.
 
 \paragraph{R-ACC-050 -- Offline operation}
 The software shall allow offline (no internet connection) operation for all of
-its features.
+its features. This excludes the build system.
 
 \subsection{ENV -- Environment}
 \paragraph{R-ENV-010 -- Target hardware}
@@ -311,9 +324,9 @@ a format compliant with AD1.
 \subsection{LOG -- Logging}
 \paragraph{R-LOG-010 -- User data interaction logging}
 The software shall log all user interactions which modify the timesheet
-data.
+data or the hierarchy items data.
 
-\paragraph{R-LOG-020 -- Log file format}
+\paragraph{R-LOG-020 -- Log file location}
 The software logs shall be saved on the system's persistent memory.
 
 \paragraph{R-LOG-030 -- Log depth}
@@ -325,6 +338,14 @@ The software log entries older than 1 month shall be deleted.
 
 \paragraph{R-LOG-050 -- Log cleanup schedule}
 The software log cleanup shall apply at every software start.
+
+\paragraph{R-LOG-060 -- Log readability}
+The software log shall be stored in plain text format readable
+by the \emph{less} program.
+
+\paragraph{R-LOG-070 -- Log accessibility}
+The software log shall be readable by the user even in case the software
+fails to start entirely.
 
 \subsection{QUA -- Quality}
 \paragraph{R-QUA-010 -- Version report}
@@ -361,7 +382,7 @@ The software documentation shall include a user manual (eg. troff man page).
 The software documentation shall include a cheatsheet of the keyboard commands.
 
 \paragraph{R-DOC-040 -- Keyboard cheatsheet conciseness}
-The keyboard cheatsheet shall be at most 2 pages long.
+The keyboard cheatsheet shall be at most two pages long.
 
 \paragraph{R-DOC-050 -- Software build instructions}
 The software documentation shall include the instructions for building
@@ -394,12 +415,19 @@ The release notes shall be updated and released at least for every minor
 version of the software.
 
 \paragraph{R-REL-050 -- Documentation release}
-The full up to date software documentation shall be released along with
+The full up-to-date software documentation shall be released along with
 every major software version release.
 
 \paragraph{R-REL-060 -- Build dependencies}
 The software build dependencies shall be automatically downloaded or included by
 the build system.
+
+\subsection{DEP -- Deployment}
+\paragraph{R-DEP-010 -- Installation script}
+The software shall provide an installation script.
+
+\paragraph{R-DEP-020 -- Uninstallation script}
+The software shall provide an uninstallation script.
 
 \subsection{LIC -- Licensing}
 \paragraph{R-LIC-010 -- Source code license}

@@ -11,10 +11,16 @@ We want to be able to publish signed revisions of it.
 + OK Add a document reference to it.
 + OK Add an applicable documents table to it.
 + OK Number requirements
-+ Add list of acronyms
 + Add rationale for some requirements.
++ Complete the definition list.
+  + UI screen
++ Add list of acronyms
 
 * Documentation
 ** TODO Add a documentation tree
 We need to synthesize the list of documentation available. Perhaps do it
 directly in the project readme.
+
+** TODO Add a project timeline
+Add to the README a project timeline with the dates of release of the
+documents and software.
