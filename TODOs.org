@@ -4,7 +4,8 @@
 #+title: TODO
 
 * Specification
-** TODO Make the specification into a latex document
+** DONE Make the specification into a latex document
+CLOSED: [2024-01-21 Sun 22:12]
 ADDED: <2024-01-20 Sat>
 
 We want to be able to publish signed revisions of it.
@@ -15,7 +16,14 @@ We want to be able to publish signed revisions of it.
 + OK Complete the definition list.
   + OK UI screen
   + OK save profile?
-+ Add list of acronyms
++ OK Add list of acronyms
+
+** Specification items to add in v2
+We list the specification items which should be added later.
++ Which day of the week is the first day?
++ First day of the week user configuration?
++ On which day does the daily entries screen open by default?
++ On which week does the weekly report open by default?
 
 * Documentation
 ** TODO Add a documentation tree

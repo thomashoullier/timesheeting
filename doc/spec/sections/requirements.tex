@@ -39,8 +39,8 @@ The software shall allow the user to remove entries.
 The software shall allow the user to edit past entries properties.
 
 \subsection{UGL -- User graphical layout}
-\paragraph{R-UGL-010 -- UI screens breakdown}
-The software shall present to the user the following UI screens:
+\paragraph{R-UGL-010 -- \gls{UI} screens breakdown}
+The software shall present to the user the following \gls{UI} screens:
 
 \begin{compactitem}
 \item (interaction) Daily entries
@@ -52,25 +52,25 @@ The software shall present to the user the following UI screens:
 
 \subsection{DES -- Daily entries screen}
 \paragraph{R-DES-010 -- Daily entries}
-The daily entries UI screen shall implement the user interface for adding,
+The daily entries \gls{UI} screen shall implement the user interface for adding,
 editing and removing entries.
 
 \paragraph{R-DES-020 -- Day selection}
-The daily entries UI screen shall allow the user to select the day for which
-entries must be interacted with.
+The daily entries \gls{UI} screen shall allow the user to select the day for
+which entries must be interacted with.
 
 \paragraph{R-DES-025 -- Day selection format}
 The day selection for the daily entries screen shall be made through a calendar
-GUI.
+\gls{GUI}.
 
 \paragraph{R-DES-030 -- Display entries of the day}
-The daily entries UI screen shall display the list of entries for the currently
-selected day.
+The daily entries \gls{UI} screen shall display the list of entries for the
+currently selected day.
 
 \paragraph{R-DES-040 -- Running daily total}
-The daily entries UI screen shall display the running duration of time worked
-on the selected day. This includes any currently running stopwatch for the
-current day.
+The daily entries \gls{UI} screen shall display the running duration of time
+worked on the selected day. This includes any currently running stopwatch for
+the current day.
 
 Rationale: The user must be able to assess the total time worked on the current
 day at a glance.
@@ -78,14 +78,14 @@ day at a glance.
 \subsection{STP -- Stopwatch}
 \paragraph{R-STP-010 -- Stopwatch in use}
 The software shall display to the user an indicator when the stopwatch is
-running. This indicator must be visible independently of the UI screen
+running. This indicator must be visible independently of the \gls{UI} screen
 the user is in.
 
 Rationale: We want to avoid a situation where the user forgets to set his
 stopwatch.
 
 \paragraph{R-STP-020 -- Running stopwatch time}
-The daily entries UI screen shall display the current running duration
+The daily entries \gls{UI} screen shall display the current running duration
 of the stopwatch.
 
 \paragraph{R-STP-030 -- Stopwatch only on current day}
@@ -118,11 +118,11 @@ would be caused by accepting anything in the entry fields.
 
 \subsection{HIS -- Hierarchy items screen}
 \paragraph{R-HIS-010 -- Hierarchy items}
-The hierarchy items UI screen shall implement the user interactions with
+The hierarchy items \gls{UI} screen shall implement the user interactions with
 hierarchy items.
 
 \paragraph{R-HIS-020 -- Hierarchy items display}
-The hierarchy items UI screen shall display the list of active tasks
+The hierarchy items \gls{UI} screen shall display the list of active tasks
 grouped per project.
 
 \subsection{GUI -- Graphical user interface}
@@ -170,7 +170,7 @@ Tasks shall be associated unambiguously to their,
 
 \subsection{TIM -- Time management}
 \paragraph{R-TIM-010 -- Time standard}
-The software shall use UTC time internally as its datation format.
+The software shall use \gls{UTC} time internally as its datation format.
 
 Rationale: we need to maintain the chronology of events in an interoperable
 fashion.
@@ -279,7 +279,7 @@ its features. This excludes the build system.
 \paragraph{R-ENV-010 -- Target hardware}
 The software shall run on a low-end desktop computer or laptop.
 The representative system to consider is a desktop computer with
-an Athlon 3000G CPU and a entry-level SSD.
+an Athlon 3000G \gls{CPU} and a entry-level \gls{SSD}.
 
 \paragraph{R-ENV-020 -- Target OS}
 The software shall run on GNU/Linux.
@@ -307,17 +307,17 @@ either,
 
 \subsection{RPT -- Report: Project totals}
 \paragraph{R-RPT-010 -- Project totals}
-The project totals UI screen shall display the total durations of time
+The project totals \gls{UI} screen shall display the total durations of time
 worked on projects within a user-specified time period.
 
 \paragraph{R-RPT-020 -- Project totals time period}
-The project totals UI shall allow the user to select the time period
+The project totals \gls{UI} shall allow the user to select the time period
 of interest via the selection of a beginning day and an end day. The
 beginning and end days are included in the time period.
 
 \subsection{RWT -- Report: Weekly totals}
 \paragraph{R-RWT-010 -- Weekly report}
-The weekly report UI screen shall display the task-wise daily total
+The weekly report \gls{UI} screen shall display the task-wise daily total
 durations of time worked, grouped per project.
 
 \paragraph{R-RWT-020 -- Weekly report daily totals}
@@ -333,11 +333,11 @@ The weekly report shall be generated even in the case of the current, unfinished
 week.
 
 \paragraph{R-RWT-050 -- Weekly report week selection}
-The weekly report UI shall allow the user to select the week the report is
+The weekly report \gls{UI} shall allow the user to select the week the report is
 generated for.
 
 \paragraph{R-RWT-070 -- Weekly report timesheet export}
-The weekly report UI shall allow the user to export the timesheet data in
+The weekly report \gls{UI} shall allow the user to export the timesheet data in
 a format compliant with AD1.
 
 \subsection{LOG -- Logging}
@@ -368,7 +368,7 @@ fails to start entirely.
 
 \subsection{QUA -- Quality}
 \paragraph{R-QUA-010 -- Version report}
-The software shall display its version number to the user upon GUI query.
+The software shall display its version number to the user upon \gls{GUI} query.
 
 \paragraph{R-QUA-020 -- Save data validation}
 The software shall provide a mechanism for testing the soundness of the
