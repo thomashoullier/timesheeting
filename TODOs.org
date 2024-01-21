@@ -12,9 +12,9 @@ We want to be able to publish signed revisions of it.
 + OK Add an applicable documents table to it.
 + OK Number requirements
 + OK Add rationale for some requirements.
-+ Complete the definition list.
-  + UI screen
-  + save profile?
++ OK Complete the definition list.
+  + OK UI screen
+  + OK save profile?
 + Add list of acronyms
 
 * Documentation
