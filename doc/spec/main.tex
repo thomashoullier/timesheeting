@@ -1,7 +1,8 @@
 %% Document-wide settings.
 \documentclass[letterpaper]{article}
 \title{timesheeting specification document}
-\author{Thomas HOULLIER}
+\author{Thomas HOULLIER \href{mailto:pro@houllier.net}
+         {\texttt{\textlangle pro@houllier.net\textrangle}}}
 
 \usepackage[colorlinks=true, allcolors=blue,
             hyperfootnotes=false,
@@ -34,7 +35,15 @@
 \begin{tabularx}{\textwidth}{| c | X | c | c | X |} \hline
   Index & Title & Reference & Revision & Author \\ \hline
   AD1   & External timesheet format & PRJ1-IRS1 & v1.0 & Thomas HOULLIER \\
-\hline \end{tabularx} \par }
+  \hline \end{tabularx} \par }
+
+\section*{Document distribution}
+The present document is distributed under the \emph{Creative Commons Attribution
+4.0 International} license (\url{https://creativecommons.org/licenses/by/4.0/})
+by its author Thomas HOULLIER.
+
+Every document release is signed with the author's GPG key.
+
 \tableofcontents
 \printglossary[type=\acronymtype,style=index]
 \pagestyle{plain}
@@ -43,7 +52,6 @@
 \input{sections/requirements}
 
 \appendix
-\cleardoublepage
 
 %% \include{appendices}
 

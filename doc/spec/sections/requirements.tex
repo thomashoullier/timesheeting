@@ -1,126 +1,411 @@
 \section{Requirements}
 \subsection{UHI -- User hierarchy interaction}
 \paragraph{R-UHI-010 -- Adding hierarchy items}
+The software shall allow the user to add hierarchy items.
 
-\paragraph{Removing hierarchy items}
+\paragraph{R-UHI-020 -- Removing hierarchy items}
+The software shall allow the user to remove hierarchy items
+from the active items set.
 
-\paragraph{Editing hierarchy items}
+\paragraph{R-UHI-030 -- Editing hierarchy items}
+The software shall allow the user to edit the properties of
+active hierarchy items.
+
+Note the changes do not backpropagate to the past entries.
 
 \subsection{UEI -- User entries interaction}
-\paragraph{Adding entries}
-\paragraph{Adding entries through stopwatch}
-\paragraph{Adding entries manually}
-\paragraph{Removing entries}
-\paragraph{Editing entries}
+\paragraph{R-UEI-010 -- Adding entries}
+The software shall allow the user to add new entries.
+
+\paragraph{R-UEI-020 -- Adding entries through stopwatch}
+The software shall allow the user to use a stopwatch interface to
+add new entries. The entry is saved to memory when the stopwatch stops.
+
+\paragraph{R-UEI-030 -- Adding entries manually}
+The software shall allow the user to add new entries by manually filling
+the properties.
+
+\paragraph{R-UEI-040 -- Removing entries}
+The software shall allow the user to remove entries.
+
+\paragraph{R-UEI-050 -- Editing entries}
+The software shall allow the user to edit past entries properties.
 
 \subsection{UGL -- User graphical layout}
-\paragraph{UI screens breakdown}
+\paragraph{R-UGL-010 -- UI screens breakdown}
 The software shall present to the user the following UI screens:
 
-\begin{itemize}
-\item Daily entries
-\item Hierarchy items
-\item Project totals
-\item Weekly report
+\begin{compactitem}
+\item (interaction) Daily entries
+\item (interaction) Hierarchy items
+\item (report) Project totals
+\item (report) Weekly report
 \item Export tool
-\end{itemize}
+\end{compactitem}
 
-\paragraph{Daily entries}
+\subsection{DES -- Daily entries screen}
+\paragraph{R-DES-010 -- Daily entries}
+The daily entries UI screen shall implement the user interface for adding,
+editing and removing entries.
 
-\paragraph{Running daily total}
+\paragraph{R-DES-020 -- Day selection}
+The daily entries UI screen shall allow the user to select the day for which
+entries must be interacted with.
 
-\paragraph{Clock in use}
+\paragraph{R-DES-030 -- Display entries of the day}
+The daily entries UI screen shall display the list of entries for the currently
+selected day.
 
-\paragraph{Running clock time}
+\paragraph{R-DES-040 -- Running daily total}
+The daily entries UI screen shall display the running duration of time worked
+on the selected day. This includes any currently running stopwatch for the
+current day.
 
-\paragraph{Hierarchy items}
+\subsection{STP -- Stopwatch}
+\paragraph{R-STP-010 -- Stopwatch in use}
+The software shall display to the user an indicator when the stopwatch is
+running. This indicator must be visible independently of the UI screen
+the user is in.
+
+\paragraph{R-STP-020 -- Running stopwatch time}
+The daily entries UI screen shall display the current running duration
+of the stopwatch.
+
+\paragraph{R-STP-030 -- Stopwatch only on current day}
+The stopwatch interface shall only add new entries to the current day
+the system is in. Ie the stopwatch cannot add entries in the past or in
+the future.
+
+\subsection{ENI -- Entry interaction}
+\paragraph{R-ENI-010 -- Entry metadata prefill}
+The entry metadata creation and edition interface shall be pre-filled with
+the metadata from the last added or edited entry.
+
+\paragraph{R-ENI-020 -- Entry metadata suggestion}
+The entry metadata creation and edition interface shall be fillable through
+a short list of suggestions from the latest 5 added or edited entries.
+
+\paragraph{R-ENI-030 -- Entry metadata hierarchy search}
+The entry metadata fields relevant to hierarchy items shall be fillable
+through a fuzzy search over the corresponding set of active hierarchy items.
+
+\paragraph{R-ENI-040 -- Entry metadata hierarchy coherence}
+The entry metadata interface shall forbid the creation or edition of
+hierarchy items metadata outside of the set of active hierarchy items.
+
+\subsection{HIS -- Hierarchy items screen}
+\paragraph{R-HIS-010 -- Hierarchy items}
+The hierarchy items UI screen shall implement the user interactions with
+hierarchy items.
+
+\paragraph{R-HIS-020 -- Hierarchy items display}
+The hierarchy items UI screen shall display the list of active tasks
+grouped per project.
 
 \subsection{GUI -- Graphical user interface}
-\paragraph{Entry metadata prefill}
-
-\paragraph{Entry metadata suggestion}
-
-\paragraph{Entry metadata hierarchy search}
-
-\paragraph{Entry metadata hierarchy coherence}
+\paragraph{R-GUI-010 -- Keyboard usage}
+The software shall allow full user interaction through a keyboard interface.
 
 \subsection{LDC -- Logged data content}
-\paragraph{Entry dates}
+\paragraph{R-LDC-010 -- Entry identification}
+The entries shall be identified with a unique code.
 
-\paragraph{Entry metadata}
+\paragraph{R-LDC-020 -- Entry metadata}
+The entries shall be associated with the following metadata unambiguously,
+\begin{compactitem}
+\item a task,
+\item a start date,
+\item a stop date,
+\item a location.
+\end{compactitem}
 
-\paragraph{Company identification}
+\paragraph{R-LDC-030 -- Company identification}
+The company shall be identified by a shorthand for its name.
 
-\paragraph{Company metadata}
+\paragraph{R-LDC-040 -- Company metadata}
+The company shall be associated to its full name.
 
-\paragraph{Project identification}
+\paragraph{R-LDC-050 -- Project identification}
+Projects shall be identified by a unique code.
 
-\paragraph{Project metadata}
+\paragraph{R-LDC-060 -- Project metadata}
+Projects shall be associated unambiguously to their,
+\begin{compactitem}
+  \item Full name
+  \item External reference number
+\end{compactitem}
 
-\paragraph{Task identification}
+\paragraph{R-LDC-070 -- Task identification}
+Tasks shall be identified by a unique code.
 
-\paragraph{Task metadata}
+\paragraph{R-LDC-080 -- Task metadata}
+Tasks shall be associated unambiguously to their,
+\begin{compactitem}
+  \item full name,
+  \item project.
+\end{compactitem}
 
 \subsection{TIM -- Time management}
+\paragraph{R-TIM-010 -- Time standard}
+The software shall use UTC time internally as its datation format.
 
-\paragraph{Time resolution}
+Rationale: maintain chronology of events.
 
-\paragraph{Time reference}
-TODO: UTC as logged time reference, to maintain chronology.
+\paragraph{R-TIM-020 -- Time reference}
+The software datation shall use the system clock as its time reference.
 
-\subsection{DTM -- Data management}
-\paragraph{Save}
-\paragraph{Transparent save}
-\paragraph{Backup}
+\paragraph{R-TIM-030 -- Time zones}
+The software shall display dates using a user-configurable timezone.
 
-\paragraph{Backup restore}
+\paragraph{R-TIM-040 -- Time resolution}
+The dates and durations in the software shall be saved and operated
+on with a resolution of one second.
 
-\paragraph{Backup completeness}
+\subsection{SAV -- Save management}
+\paragraph{R-SAV-010 -- Save}
+The software shall provide a mechanism for saving the timesheet data to
+the system's persistent memory storage.
+
+\paragraph{R-SAV-020 -- Transparent save}
+The saving mechanism shall be transparent to the user.
+
+\paragraph{R-SAV-030 -- Save resolution}
+The saving mechanism shall save timesheet data anytime an entry is
+created, modified or deleted.
+
+\paragraph{R-SAV-040 -- Save status}
+The system shall report visually to the user the save status, ie
+the following states,
+\begin{compactitem}
+  \item save in sync with the system's persistent storage,
+  \item save in progress,
+  \item save failed.
+\end{compactitem}
+
+\paragraph{R-SAV-050 -- Switch saved state}
+The software shall allow the user to switch between different save profiles.
+
+\subsection{BAK -- Backup}
+\paragraph{R-BAK-010 -- Backup}
+The software shall provide a backup mechanism to the user.
+
+\paragraph{R-BAK-020 -- Backup restore}
+The software shall allow a backup restore mechanism to the user.
+
+\paragraph{R-BAK-030 -- Backup completeness}
 The whole data state of the software shall be saved and restored using the
 backup. Logs are not included in the data state.
 
-\paragraph{Backup conciseness}
+\paragraph{R-BAK-040 -- Backup conciseness}
 The backup archive shall consist in a single file.
 
-\paragraph{Backup timestamp}
+\paragraph{R-BAK-050 -- Backup timestamp}
+The backup archive shall be timestamped with the date the backup was made.
 
-\paragraph{Backup user naming}
+\paragraph{R-BAK-060 -- Backup naming}
+The backup mechanism shall allow the user to choose a custom name for the
+archive.
+
+\paragraph{R-BAK-070 -- Backup location}
+The backup mechanism shall allow the user to choose the location of the
+archive on the system's directory tree.
 
 \subsection{DEX -- Data export}
-\paragraph{Timesheet export}
+\paragraph{R-DEX-010 -- Timesheet export}
+The software shall allow the user to export timesheet data in an interoperable
+format compliant with [AD1].
 
-\paragraph{Export naming}
+\paragraph{R-DEX-020 -- Export naming}
+The timesheet export process shall allow the user to name the export file.
+
+\paragraph{R-DEX-030 -- Export location}
+The timesheet export process shall allow the user to select the location
+of the export file on the system's directory tree.
 
 \subsection{ACC -- Accessibility}
-\paragraph{Single user}
-\paragraph{Synchronization across systems}
-\paragraph{Company segregation}
-\paragraph{Data confidentiality}
+\paragraph{R-ACC-010 -- Single user}
+The software shall allow operation by a single user on a single system.
+
+\paragraph{R-ACC-020 -- Synchronization across systems}
+The software shall document a process for the user to keep timesheet data
+saves in sync across systems. Note we assume the reliance upon external
+data exchange mechanisms outside of the software's technical scope.
+
+\paragraph{R-ACC-030 -- Company segregation}
+The software shall keep the timesheet data segragated by company.
+In effect, this means a given saved dataset is uniquely associated with a
+company.
+
+\paragraph{R-ACC-040 -- Data confidentiality}
+The software interface and saved data shall remain local to the system.
+
+\paragraph{R-ACC-050 -- Offline operation}
+The software shall allow offline (no internet connection) operation for all of
+its features.
 
 \subsection{ENV -- Environment}
-\paragraph{Target hardware}
-\paragraph{Target OS}
-\paragraph{Target graphical environment}
+\paragraph{R-ENV-010 -- Target hardware}
+The software shall run on a low-end desktop computer or laptop.
+The representative system to consider is a desktop computer with
+an Athlon 3000G CPU and a entry-level SSD.
+
+\paragraph{R-ENV-020 -- Target OS}
+The software shall run on GNU/Linux.
+
+\paragraph{R-ENV-030 -- Target OS version}
+The software shall run on the current version of Gentoo Linux.
+
+\paragraph{R-ENV-040 -- Target graphical environment}
+The software shall run on the Wayland compositor Hyprland \cite{hyprland}.
 
 \subsection{PER -- Performance}
-\paragraph{Memory footprint}
+\paragraph{R-PER-010 -- Memory footprint}
+The peak memory footprint of the software shall be less than 100 MB.
+The amount of memory to consider is the \emph{resident set size}.
 
 \subsection{URE -- User reports}
-\paragraph{Durations display format}
+\paragraph{R-URE-010 -- Durations display format}
+In the reports, the durations shall be displayed with a selectable format,
+either,
+\begin{compactitem}
+  \item minutes,
+  \item or hours,
+  \item or days.
+\end{compactitem}
 
 \subsection{RPT -- Report: Project totals}
-\paragraph{Project totals}
+\paragraph{R-RPT-010 -- Project totals}
+The project totals UI screen shall display the total durations of time
+worked on projects within a user-specified time period.
+
+\paragraph{R-RPT-020 -- Project totals time period}
+The project totals UI shall allow the user to select the time period
+of interest via the selection of a beginning day and an end day. The
+beginning and end days are included in the time period.
 
 \subsection{RWT -- Report: Weekly totals}
-\paragraph{Weekly report}
-\paragraph{Weekly report daily totals}
-\paragraph{Weekly report weekly totals}
-\paragraph{Weekly report weekly totals}
-\paragraph{Weekly totals timesheet export}
+\paragraph{R-RWT-010 -- Weekly report}
+The weekly report UI screen shall display the task-wise daily total
+durations of time worked, grouped per project.
+
+\paragraph{R-RWT-020 -- Weekly report daily totals}
+The weekly report shall display the total duration worked per day, including
+all tasks in the sum.
+
+\paragraph{R-RWT-030 -- Weekly report weekly totals}
+The weekly report shall display the total weekly work duration, including
+all tasks in the sum.
+
+\paragraph{R-RWT-040 -- Weekly report running week}
+The weekly report shall be generated even in the case of the current, unfinished
+week.
+
+\paragraph{R-RWT-050 -- Weekly report week selection}
+The weekly report UI shall allow the user to select the week the report is
+generated for.
+
+\paragraph{R-RWT-070 -- Weekly report timesheet export}
+The weekly report UI shall allow the user to export the timesheet data in
+a format compliant with AD1.
 
 \subsection{LOG -- Logging}
-TODO: log user actions in a separate log file.
+\paragraph{R-LOG-010 -- User data interaction logging}
+The software shall log all user interactions which modify the timesheet
+data.
+
+\paragraph{R-LOG-020 -- Log file format}
+The software logs shall be saved on the system's persistent memory.
+
+\paragraph{R-LOG-030 -- Log depth}
+The software logs shall have a depth of at least one week. Ie the
+log is kept in persistent memory for at least one week.
+
+\paragraph{R-LOG-040 -- Log cleanup}
+The software log entries older than 1 month shall be deleted.
+
+\paragraph{R-LOG-050 -- Log cleanup schedule}
+The software log cleanup shall apply at every software start.
 
 \subsection{QUA -- Quality}
-\paragraph{Version report}
-\paragraph{Saved data validation}
+\paragraph{R-QUA-010 -- Version report}
+The software shall display its version number to the user upon GUI query.
+
+\paragraph{R-QUA-020 -- Saved data validation}
+The software shall provide a mechanism for testing the soundness of the
+saved data upon loading it.
+
+\paragraph{R-QUA-030 -- Release signature}
+Every released product, either software or documentation shall be signed
+with the supplier's GPG key.
+
+\paragraph{R-QUA-040 -- Single repository}
+For the whole project lifecycle, the software and associated documentation shall
+be stored in a single version-controlled repository.
+
+\subsection{TES -- Testing}
+\paragraph{R-TES-010 -- Automated build test}
+The software build system shall include an automated build test, reporting
+whether the build is successful in the target environment.
+The target environment for building is the same as the target environment for
+the software.
+
+\subsection{DOC -- Documentation}
+\paragraph{R-DOC-010 -- Development documentation}
+The software documentation shall include a developer design document (eg.
+Doxygen).
+
+\paragraph{R-DOC-020 -- User manual}
+The software documentation shall include a user manual (eg. troff man page).
+
+\paragraph{R-DOC-030 -- Keyboard cheatsheet}
+The software documentation shall include a cheatsheet of the keyboard commands.
+
+\paragraph{R-DOC-040 -- Keyboard cheatsheet conciseness}
+The keyboard cheatsheet shall be at most 2 pages long.
+
+\paragraph{R-DOC-050 -- Software build instructions}
+The software documentation shall include the instructions for building
+the software from source.
+
+\paragraph{R-DOC-060 -- Documentation build instructions}
+The software documentation shall include the instructions for building
+the documentation artifacts.
+
+\paragraph{R-DOC-070 -- Matrix of conformity}
+A conformity matrix with respect to the present specification document shall
+be produced and released along with every major software release.
+
+\paragraph{R-DOC-080 -- Architecture and design document}
+The software documentation shall include a document describing the architecture
+and design choices.
+
+\subsection{REL -- Release}
+\paragraph{R-REL-010 -- Software version format}
+The software version shall include a major version and a minor version.
+
+\paragraph{R-REL-020 -- Release notes}
+The software documentation shall include release notes.
+
+\paragraph{R-REL-030 -- Release notes granularity}
+The release notes shall apply to individual minor software versions.
+
+\paragraph{R-REL-040 -- Release notes publication}
+The release notes shall be updated and released at least for every minor
+version of the software.
+
+\paragraph{R-REL-050 -- Documentation release}
+The full up to date software documentation shall be released along with
+every major software version release.
+
+\paragraph{R-REL-060 -- Build dependencies}
+The software build dependencies shall be automatically downloaded or included by
+the build system.
+
+\subsection{LIC -- Licensing}
+\paragraph{R-LIC-010 -- Source code license}
+The software license for the source code shall be a permissive open-source
+license.
+
+\paragraph{R-LIC-020 -- Documentation license}
+The software documentation shall be licensed under license at most as
+restrictive as the CC-BY license.
