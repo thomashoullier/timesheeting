@@ -11,9 +11,10 @@ We want to be able to publish signed revisions of it.
 + OK Add a document reference to it.
 + OK Add an applicable documents table to it.
 + OK Number requirements
-+ Add rationale for some requirements.
++ OK Add rationale for some requirements.
 + Complete the definition list.
   + UI screen
+  + save profile?
 + Add list of acronyms
 
 * Documentation

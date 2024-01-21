@@ -59,6 +59,10 @@ editing and removing entries.
 The daily entries UI screen shall allow the user to select the day for which
 entries must be interacted with.
 
+\paragraph{R-DES-025 -- Day selection format}
+The day selection for the daily entries screen shall be made through a calendar
+GUI.
+
 \paragraph{R-DES-030 -- Display entries of the day}
 The daily entries UI screen shall display the list of entries for the currently
 selected day.
@@ -68,11 +72,17 @@ The daily entries UI screen shall display the running duration of time worked
 on the selected day. This includes any currently running stopwatch for the
 current day.
 
+Rationale: The user must be able to assess the total time worked on the current
+day at a glance.
+
 \subsection{STP -- Stopwatch}
 \paragraph{R-STP-010 -- Stopwatch in use}
 The software shall display to the user an indicator when the stopwatch is
 running. This indicator must be visible independently of the UI screen
 the user is in.
+
+Rationale: We want to avoid a situation where the user forgets to set his
+stopwatch.
 
 \paragraph{R-STP-020 -- Running stopwatch time}
 The daily entries UI screen shall display the current running duration
@@ -82,6 +92,9 @@ of the stopwatch.
 The stopwatch interface shall only add new entries to the current day
 the system is in. Ie the stopwatch cannot add entries in the past or in
 the future.
+
+Rationale: We want to avoid hard to detect erroneous inputs due to interfacing
+with the stopwatch.
 
 \subsection{ENI -- Entry interaction}
 \paragraph{R-ENI-010 -- Entry metadata prefill}
@@ -99,6 +112,9 @@ through a fuzzy search over the corresponding set of active hierarchy items.
 \paragraph{R-ENI-040 -- Entry metadata hierarchy coherence}
 The entry metadata interface shall forbid the creation or edition of
 hierarchy items metadata outside of the set of active hierarchy items.
+
+Rationale: We want to avoid the proliferation of different hierarchy items which
+would be caused by accepting anything in the entry fields.
 
 \subsection{HIS -- Hierarchy items screen}
 \paragraph{R-HIS-010 -- Hierarchy items}
@@ -194,8 +210,11 @@ the following states,
   \item save failed.
 \end{compactitem}
 
-\paragraph{R-SAV-050 -- Switch saved state}
+\paragraph{R-SAV-050 -- Switch saved profile}
 The software shall allow the user to switch between different save profiles.
+
+\paragraph{R-SAV-060 -- Starting saved profile}
+The software shall start by default with the latest loaded save profile.
 
 \subsection{BAK -- Backup}
 \paragraph{R-BAK-010 -- Backup}
@@ -240,17 +259,17 @@ of the export file on the system's directory tree.
 The software shall allow operation by a single user on a single system.
 
 \paragraph{R-ACC-020 -- Synchronization across systems}
-The software shall document a process for the user to keep timesheet data
-saves in sync across systems. Note we assume the reliance upon external
-data exchange mechanisms outside of the software's technical scope.
+The software shall document a process for the user to keep save profiles data in
+sync across systems. Note we assume the reliance upon external data exchange
+mechanisms outside of the software's technical scope.
 
 \paragraph{R-ACC-030 -- Company segregation}
-The software shall keep the timesheet data segragated by company.
-In effect, this means a given saved dataset is uniquely associated with a
+The software shall keep the save profiles data segragated by company.
+In effect, this means a given save profile is uniquely associated with a
 company.
 
 \paragraph{R-ACC-040 -- Data confidentiality}
-The software interface and saved data shall remain local to the system.
+The software interface and save profile data shall remain local to the system.
 
 \paragraph{R-ACC-050 -- Offline operation}
 The software shall allow offline (no internet connection) operation for all of
@@ -351,9 +370,9 @@ fails to start entirely.
 \paragraph{R-QUA-010 -- Version report}
 The software shall display its version number to the user upon GUI query.
 
-\paragraph{R-QUA-020 -- Saved data validation}
+\paragraph{R-QUA-020 -- Save data validation}
 The software shall provide a mechanism for testing the soundness of the
-saved data upon loading it.
+save data upon loading it.
 
 \paragraph{R-QUA-030 -- Release signature}
 Every released product, either software or documentation shall be signed
