@@ -1,4 +1,6 @@
 \section{Requirements}
+We list the project requirements.
+
 \subsection{UHI -- User hierarchy interaction}
 \paragraph{R-UHI-010 -- Adding hierarchy items}
 The software shall allow the user to add hierarchy items.
@@ -30,7 +32,7 @@ add new entries. The entry is saved to memory when the stopwatch stops.
 
 \paragraph{R-UEI-030 -- Adding entries manually}
 The software shall allow the user to add new entries by manually filling
-the properties.
+its properties.
 
 \paragraph{R-UEI-040 -- Removing entries}
 The software shall allow the user to remove entries.
@@ -93,8 +95,8 @@ The stopwatch interface shall only add new entries to the current day
 the system is in. Ie the stopwatch cannot add entries in the past or in
 the future.
 
-Rationale: We want to avoid hard to detect erroneous inputs due to interfacing
-with the stopwatch.
+Rationale: We want to avoid hard to detect erroneous inputs due to
+accidentally incorrect manipulation of the stopwatch.
 
 \subsection{ENI -- Entry interaction}
 \paragraph{R-ENI-010 -- Entry metadata prefill}
@@ -179,7 +181,7 @@ fashion.
 The software datation shall use the system clock as its time reference.
 
 \paragraph{R-TIM-030 -- Time zones}
-The software shall display dates using a user-configurable timezone.
+The software shall display dates using a user-configurable time zone.
 
 \paragraph{R-TIM-040 -- Time resolution}
 The dates and durations in the software shall be saved and operated
@@ -191,7 +193,8 @@ The software shall provide a mechanism for saving the timesheet data
 and hierarchy items to the system's persistent memory storage.
 
 \paragraph{R-SAV-020 -- Transparent save}
-The saving mechanism shall be transparent to the user.
+The saving mechanism shall be transparent to the user, ie there should
+not be a need for the user to press a button to perform the save operation.
 
 \paragraph{R-SAV-030 -- Timesheet save resolution}
 The saving mechanism shall save timesheet data anytime an entry is
@@ -210,11 +213,12 @@ the following states,
   \item save failed.
 \end{compactitem}
 
-\paragraph{R-SAV-050 -- Switch saved profile}
+\paragraph{R-SAV-050 -- Switch save profile}
 The software shall allow the user to switch between different save profiles.
 
-\paragraph{R-SAV-060 -- Starting saved profile}
-The software shall start by default with the latest loaded save profile.
+\paragraph{R-SAV-060 -- Starting save profile}
+The software shall start by default with the latest loaded save profile
+selected.
 
 \subsection{BAK -- Backup}
 \paragraph{R-BAK-010 -- Backup}
@@ -228,7 +232,7 @@ The whole data state of the software shall be saved and restored using the
 backup. Logs are not included in the data state.
 
 \paragraph{R-BAK-040 -- Backup conciseness}
-The backup archive shall consist in a single file.
+The backup archive shall consist of a single file.
 
 \paragraph{R-BAK-050 -- Backup timestamp}
 The backup archive shall be timestamped with the date at which the backup was
@@ -254,17 +258,25 @@ The timesheet export process shall allow the user to name the export file.
 The timesheet export process shall allow the user to select the location
 of the export file on the system's directory tree.
 
+\paragraph{R-DEX-040 -- Export tool screen}
+The export tool UI screen shall implement the user interface for the data
+export operation.
+
+\paragraph{R-DEX-050 -- Export time period}
+The export tool shall allow the user to select the time period to consider
+for the timesheet export.
+
 \subsection{ACC -- Accessibility}
 \paragraph{R-ACC-010 -- Single user}
 The software shall allow operation by a single user on a single system.
 
 \paragraph{R-ACC-020 -- Synchronization across systems}
-The software shall document a process for the user to keep save profiles data in
-sync across systems. Note we assume the reliance upon external data exchange
-mechanisms outside of the software's technical scope.
+The software documentation shall explain a process for the user to keep save
+profiles data in sync across systems. Note we assume the reliance upon external
+data exchange mechanisms outside of the software's technical scope.
 
 \paragraph{R-ACC-030 -- Company segregation}
-The software shall keep the save profiles data segragated by company.
+The software shall keep the save profiles data segregated by company.
 In effect, this means a given save profile is uniquely associated with a
 company.
 
@@ -391,7 +403,7 @@ the software.
 
 \subsection{DOC -- Documentation}
 \paragraph{R-DOC-010 -- Development documentation}
-The software documentation shall include a developer design document (eg.
+The software documentation shall include a developer code documentation (eg.
 Doxygen).
 
 \paragraph{R-DOC-020 -- User manual}

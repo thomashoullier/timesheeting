@@ -18,12 +18,21 @@ We want to be able to publish signed revisions of it.
   + OK save profile?
 + OK Add list of acronyms
 
+** TODO Publication of PRJ1-SPE1-v1.0
++ OK Sign the pdf with gpg.
++ Tag the relevant commit.
++ Publish as a release on github.
++ Publish on personal website.
+
 ** Specification items to add in v2
 We list the specification items which should be added later.
 + Which day of the week is the first day?
 + First day of the week user configuration?
 + On which day does the daily entries screen open by default?
 + On which week does the weekly report open by default?
++ Default values of entry metadata when left unspecified.
++ What should happen when the software detects that the save data
+  is corrupted using the mechanism specified by R-QUA-020?
 
 * Documentation
 ** TODO Add a documentation tree
