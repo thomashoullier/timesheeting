@@ -4,11 +4,11 @@
 The project is just starting.
 
 ## Project timeline
-*22Jan2024*: PRJ1-SPE1-v1.0 released.
-*20Jan2024*: Project launch.
+* *22Jan2024*: `PRJ1-SPE1-v1.0` released.
+* *20Jan2024*: Project launch.
 
 ## Documentation summary
-* PRJ1-SPE1-v1.0 timesheeting specification document
+* `PRJ1-SPE1-v1.0` timesheeting specification document
 
 ## Build instructions
 ### Software

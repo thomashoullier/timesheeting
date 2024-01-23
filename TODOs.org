@@ -18,11 +18,12 @@ We want to be able to publish signed revisions of it.
   + OK save profile?
 + OK Add list of acronyms
 
-** TODO Publication of PRJ1-SPE1-v1.0
+** DONE Publication of PRJ1-SPE1-v1.0
+CLOSED: [2024-01-23 Tue 20:22]
 + OK Sign the pdf with gpg.
 + OK Tag the relevant commit.
 + OK Publish as a release on github.
-+ Publish on personal website.
++ OK Publish on personal website.
 
 ** Specification items to add in v2
 We list the specification items which should be added later.
