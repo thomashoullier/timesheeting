@@ -20,8 +20,8 @@ We want to be able to publish signed revisions of it.
 
 ** TODO Publication of PRJ1-SPE1-v1.0
 + OK Sign the pdf with gpg.
-+ Tag the relevant commit.
-+ Publish as a release on github.
++ OK Tag the relevant commit.
++ OK Publish as a release on github.
 + Publish on personal website.
 
 ** Specification items to add in v2
@@ -33,12 +33,14 @@ We list the specification items which should be added later.
 + Default values of entry metadata when left unspecified.
 + What should happen when the software detects that the save data
   is corrupted using the mechanism specified by R-QUA-020?
++ Template list of tasks for new projects.
 
 * Documentation
 ** TODO Add a documentation tree
 We need to synthesize the list of documentation available. Perhaps do it
 directly in the project readme.
 
-** TODO Add a project timeline
+** DONE Add a project timeline
+CLOSED: [2024-01-23 Tue 19:59]
 Add to the README a project timeline with the dates of release of the
 documents and software.

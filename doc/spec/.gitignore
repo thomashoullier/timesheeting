@@ -21,6 +21,7 @@
 *.hst
 *.ver
 *.lot
+*.sig
 
 svg-inkscape
 auto/
