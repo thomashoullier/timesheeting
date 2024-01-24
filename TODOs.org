@@ -36,10 +36,36 @@ We list the specification items which should be added later.
   is corrupted using the mechanism specified by R-QUA-020?
 + Template list of tasks for new projects.
 
-* Documentation
+* System architecture document
+
+** TODO Drafting PRJ1-SAD1-v1.0
+ADDED: [2024-01-24 Wed]
++ Decompose the system into subsystems.
++ Describe also the build process, interaction with the software distributor,
+  and dependencies.
++ Don't propose solutions/libraries for implementing the subsystems yet,
+  this is the role of the design document.
++ Must include a matrix dispatching the requirements to subsystems.
++ See 'embedded database' for the database subsystem.
++ Provide justification for the architecture choice, in particular why
+  a web app is not made.
+
+* Subsystem requirements document
+** PRJ1-SRS1
+Details the requirements applicable to subsystems, as described in the SAD.
+
+* System Design document
+** PRJ1-SDD1
+Proposes the implementations of the subsystems, along with a
+justification/tradeoff.
++ Propose very abstract drawings for the UI screens.
+
+* Repository documentation
 ** TODO Add a documentation tree
 We need to synthesize the list of documentation available. Perhaps do it
 directly in the project readme.
++ We can do a graphviz of all documentation and software. We can show every version
+  and the "Applicable documents" links between them.
 
 ** DONE Add a project timeline
 CLOSED: [2024-01-23 Tue 19:59]
