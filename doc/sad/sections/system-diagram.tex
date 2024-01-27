@@ -6,7 +6,6 @@ subsystems), and the auxiliary susbsystems (offline subsystems).
 The stakeholders are,
 \begin{compactitem}
 \item The user,
-\item the user's system,
 \item the developer.
 \end{compactitem}
 
@@ -17,13 +16,18 @@ The software comprises the following online subsystems,
 \item GUI
 \item Core logic
 \item Settings manager
-\item Backup manager
 \item Exporter
 \item DB backend
 \item Logger
 \end{compactitem}
 
-FIG
+\cref{fig:arch-diagram} illustrates the interaction between these
+subsystems.
+
+\begin{figure}
+  \includesvg[width=\textwidth]{images/architecture-diagram.svg}
+  \caption{\label{fig:arch-diagram} System architecture diagram.}
+\end{figure}
 
 \subsection{Offline subsystems}
 We outline the high-level build process.
@@ -36,7 +40,8 @@ The software comprises the following offline subsystems,
 \item Testing
 \item Documentation generator
 \item Documentation distributor
+\item Signature system
 \item Bug report
 \end{compactitem}
 
-FIG
+FIG of the interactions.

@@ -61,6 +61,8 @@ Details the requirements applicable to subsystems, as described in the SAD.
 Proposes the implementations of the subsystems, along with a
 justification/tradeoff.
 + Propose very abstract drawings for the UI screens.
++ Detail every possible user interaction and how it propagates through
+  subsystems. This defines some of the required interfaces between subsystems.
 
 * Repository documentation
 ** TODO Add a documentation tree
