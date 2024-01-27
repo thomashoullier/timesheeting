@@ -35,6 +35,8 @@ We list the specification items which should be added later.
 + What should happen when the software detects that the save data
   is corrupted using the mechanism specified by R-QUA-020?
 + Template list of tasks for new projects.
++ Maintenance, bug reporting and persistent reports, non-regression.
++ Language of the interface: English.
 
 * System architecture document
 
