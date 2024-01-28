@@ -1,7 +1,8 @@
 \section{System architecture diagram}
 The proposed system is decomposed into the following subsystems. We distinguish
 between the subsystems active while the user interacts with the software (online
-subsystems), and the auxiliary susbsystems (offline subsystems).
+subsystems), and the auxiliary susbsystems (offline subsystems). We outline
+the function of each subsystem and provide a diagram for illustration.
 
 The stakeholders are,
 \begin{compactitem}
@@ -13,16 +14,42 @@ The stakeholders are,
 We decompose the software into subsystems.
 The software comprises the following online subsystems,
 \begin{compactitem}
-\item GUI
-\item Core logic
-\item Settings manager
-\item Exporter
-\item DB backend
-\item Logger
+\item The \textbf{\gls{GUI}} displays the \gls{UI} screens to the user. It
+  allows the user to input information into the software and interact.
+\item The \textbf{Core logic} handles the manipulation of timesheet data for
+  presentation to the user. It decouples the GUI subsystem from the rest
+  of the application.
+\item The \textbf{Settings manager} loads the user configuration file, and
+  propgates the settings to the application.
+\item The \textbf{Exporter} is in charge of generating the export file
+  for timesheet data.
+\item The \textbf{\gls{DB} backend} interacts with the \gls{DB}. It decouples
+  the database operation from the rest of the application.
+\item The \textbf{Backup manager} creates and restores backup files for the
+  current application state.
+\item The \textbf{Logger} records the application logs.
 \end{compactitem}
 
 \cref{fig:arch-diagram} illustrates the interaction between these
 subsystems.
+
+
+The data files involves in the operation of the software are,
+\begin{compactitem}
+\item The \textbf{User configuration file} allows the user to configure the
+  application. This is a text file the user edits.
+\item The \textbf{User state file} records some of the application states
+  for ergonomy and interaction. It does not contain any critical data such
+  as timesheet data.
+\item The \textbf{Logs} record application events for debugging purposes.
+\item The \textbf{Database} allows the application to store and retrieve
+  critical data. It is persistent.
+\item The \textbf{Export file} is a user-readable file generated on-demand
+  from the timesheet data.
+\item The \textbf{Backup} is an archive recording the critical application
+  data, for saving the data elsewhere, or transfering between systems.
+  It allows restoring the database.
+\end{compactitem}
 
 \begin{figure}
   \includesvg[width=\textwidth]{images/architecture-diagram.svg}

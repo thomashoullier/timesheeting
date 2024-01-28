@@ -63,6 +63,12 @@ justification/tradeoff.
 + Propose very abstract drawings for the UI screens.
 + Detail every possible user interaction and how it propagates through
   subsystems. This defines some of the required interfaces between subsystems.
++ Detail the database schema
+
+* Test plan
+Details every tests used to check the software.
++ Include manual GUI tests.
++ Include unit tests of the core logic.
 
 * Repository documentation
 ** TODO Add a documentation tree
