@@ -60,14 +60,44 @@ We outline the high-level build process.
 
 The software comprises the following offline subsystems,
 \begin{compactitem}
-\item Versioning system
-\item Distribution system
-\item Build system
-\item Testing
-\item Documentation generator
-\item Documentation distributor
-\item Signature system
-\item Bug report
+\item The \textbf{Versioning} system tracks the state of both the software
+  source and documentation source.
+\item The \textbf{Software distribution} system manages the release of
+  software source to the user.
+\item The \textbf{Build} system generates a binary from the software source.
+\item The \textbf{Automated testing} comprises the tests that are run
+  automatically for every software release. It is part of the \gls{CI} pipeline.
+\item The \textbf{Manual testing} comprises the tests performed by the
+  \textbf{Tester}, manually, for every software release. It is part of the
+  tester pipeline.
+\item The \textbf{Documentation generator} generates the documentation
+  releases from the documentation source.
+\item The \textbf{Documentation distribution} manages the release of
+  documentation reports.
+\item The \textbf{Signature system} authenticates the released source and
+  released documentation as coming from the author.
+\item The \textbf{Issue tracking} allows the \emph{user} to file bug reports.
 \end{compactitem}
 
-FIG of the interactions.
+\cref{fig:offline-diagram} illustrates the interaction between these subsystems.
+
+\begin{figure}
+  \includesvg[width=\textwidth]{images/offline-diagram.svg}
+  \caption{\label{fig:offline-diagram} Offline subsystems diagram.}
+\end{figure}
+
+
+There are three build pipelines in parallel,
+\begin{compactitem}
+\item The \textbf{User} pipeline: the \emph{user} receives the \emph{released
+    source}, and uses the \emph{build} system to generate a binary. The
+    \emph{user} then uses the binary.
+  \item The \textbf{\gls{CI}} pipeline: The software source for every version
+    are automatically sent to a \gls{CI} system, where the source are built into
+    a binary. Assuming the build was successful, automated tests are then run
+    on the binary. The results are reported publicly in the software
+    distribution system.
+  \item The \textbf{Tester} pipeline: The software source is built by the tester
+    using the build system. The binary is then tested against a set of manual
+    cases.
+\end{compactitem}

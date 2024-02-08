@@ -37,6 +37,9 @@ We list the specification items which should be added later.
 + Template list of tasks for new projects.
 + Maintenance, bug reporting and persistent reports, non-regression.
 + Language of the interface: English.
++ Indicate to the user at runtime where to report bugs.
++ Specify the format in which the software is released.
+  As source, plus appimage?
 
 * System architecture document
 
@@ -69,6 +72,7 @@ justification/tradeoff.
 Details every tests used to check the software.
 + Include manual GUI tests.
 + Include unit tests of the core logic.
++ Indicate which tests condition the acceptance of a version.
 
 * Repository documentation
 ** TODO Add a documentation tree
