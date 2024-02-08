@@ -5,15 +5,15 @@ subsystems), and the auxiliary susbsystems (offline subsystems). We outline
 the function of each subsystem and provide a diagram for illustration.
 
 The stakeholders are,
-\begin{compactitem}
-\item The user,
+\begin{itemize}
+\item the user,
 \item the developer.
-\end{compactitem}
+\end{itemize}
 
 \subsection{Online subsystems}
 We decompose the software into subsystems.
 The software comprises the following online subsystems,
-\begin{compactitem}
+\begin{itemize}
 \item The \textbf{\gls{GUI}} displays the \gls{UI} screens to the user. It
   allows the user to input information into the software and interact.
 \item The \textbf{Core logic} handles the manipulation of timesheet data for
@@ -28,13 +28,13 @@ The software comprises the following online subsystems,
 \item The \textbf{Backup manager} creates and restores backup files for the
   current application state.
 \item The \textbf{Logger} records the application logs.
-\end{compactitem}
+\end{itemize}
 
 \cref{fig:arch-diagram} illustrates the interaction between these
 subsystems.
 
 The data files involves in the operation of the software are,
-\begin{compactitem}
+\begin{itemize}
 \item The \textbf{User configuration file} allows the user to configure the
   application. This is a text file the user edits.
 \item The \textbf{User state file} records some of the application states
@@ -48,7 +48,7 @@ The data files involves in the operation of the software are,
 \item The \textbf{Backup} is an archive recording the critical application
   data, for saving the data elsewhere, or transfering between systems.
   It allows restoring the database.
-\end{compactitem}
+\end{itemize}
 
 \begin{figure}
   \includesvg[width=\textwidth]{images/architecture-diagram.svg}
@@ -59,7 +59,7 @@ The data files involves in the operation of the software are,
 We outline the high-level build process.
 
 The software comprises the following offline subsystems,
-\begin{compactitem}
+\begin{itemize}
 \item The \textbf{Versioning} system tracks the state of both the software
   source and documentation source.
 \item The \textbf{Software distribution} system manages the release of
@@ -77,7 +77,7 @@ The software comprises the following offline subsystems,
 \item The \textbf{Signature system} authenticates the released source and
   released documentation as coming from the author.
 \item The \textbf{Issue tracking} allows the \emph{user} to file bug reports.
-\end{compactitem}
+\end{itemize}
 
 \cref{fig:offline-diagram} illustrates the interaction between these subsystems.
 
@@ -88,7 +88,7 @@ The software comprises the following offline subsystems,
 
 
 There are three build pipelines in parallel,
-\begin{compactitem}
+\begin{itemize}
 \item The \textbf{User} pipeline: the \emph{user} receives the \emph{released
     source}, and uses the \emph{build} system to generate a binary. The
     \emph{user} then uses the binary.
@@ -100,4 +100,4 @@ There are three build pipelines in parallel,
   \item The \textbf{Tester} pipeline: The software source is built by the tester
     using the build system. The binary is then tested against a set of manual
     cases.
-\end{compactitem}
+\end{itemize}
