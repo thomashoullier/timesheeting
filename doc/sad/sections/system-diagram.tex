@@ -4,23 +4,16 @@ between the subsystems active while the user interacts with the software (online
 subsystems), and the auxiliary susbsystems (offline subsystems). We outline
 the function of each subsystem and provide a diagram for illustration.
 
-The stakeholders are,
-\begin{itemize}
-\item the user,
-\item the developer.
-\end{itemize}
-
 \subsection{Online subsystems}
-We decompose the software into subsystems.
 The software comprises the following online subsystems,
 \begin{itemize}
 \item The \textbf{\gls{GUI}} displays the \gls{UI} screens to the user. It
   allows the user to input information into the software and interact.
 \item The \textbf{Core logic} handles the manipulation of timesheet data for
-  presentation to the user. It decouples the GUI subsystem from the rest
+  presentation to the user. It decouples the \gls{GUI} subsystem from the rest
   of the application.
 \item The \textbf{Settings manager} loads the user configuration file, and
-  propgates the settings to the application.
+  propagates the settings to the application.
 \item The \textbf{Exporter} is in charge of generating the export file
   for timesheet data.
 \item The \textbf{\gls{DB} backend} interacts with the \gls{DB}. It decouples
@@ -33,7 +26,7 @@ The software comprises the following online subsystems,
 \cref{fig:arch-diagram} illustrates the interaction between these
 subsystems.
 
-The data files involves in the operation of the software are,
+The data files involved in the operation of the software are,
 \begin{itemize}
 \item The \textbf{User configuration file} allows the user to configure the
   application. This is a text file the user edits.
@@ -56,8 +49,6 @@ The data files involves in the operation of the software are,
 \end{figure}
 
 \subsection{Offline subsystems}
-We outline the high-level build process.
-
 The software comprises the following offline subsystems,
 \begin{itemize}
 \item The \textbf{Versioning} system tracks the state of both the software
