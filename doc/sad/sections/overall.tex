@@ -1,4 +1,13 @@
-\section{Overall architecture}
-We propose the following architecture for the timesheeting system.
-
+\section{Overall architecture} \label{sec:overall}
 The proposed timesheeting software is a desktop GUI linux application.
+The software embeds a database for saving timesheet data. It is
+configured through a user dotfile. It includes a utility to make
+a backup of the database. It also includes timesheet data export
+capabilities to an interoperable format. A state file is used
+for ergonomy. A logging system is proposed.
+
+The software is distributed through source releases. The associated
+documentation is distributed via a documentation distribution channel.
+The software and documentation releases are signed. We propose
+testing pipelines. The user can file bug reports to an issue
+tracking system.
