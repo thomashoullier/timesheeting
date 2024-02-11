@@ -4,11 +4,13 @@
 The project is just starting.
 
 ## Project timeline
+* *10Feb2024*: `PRJ1-SAD1-v1.0` released.
 * *22Jan2024*: `PRJ1-SPE1-v1.0` released.
 * *20Jan2024*: Project launch.
 
 ## Documentation summary
 * `PRJ1-SPE1-v1.0` timesheeting specification document
+* `PRJ1-SAD1-v1.0` timesheeting system architecture document
 
 ## Build instructions
 ### Software
@@ -27,6 +29,16 @@ latexmk -pdf spec.tex
 ```
 
 The result is `spec.pdf`.
+
+#### PRJ1-SAD1 timesheeting system architecture document
+The PDF is build with,
+
+```{shell}
+cd ./doc/sad/
+latexmk -pdf sad.tex
+```
+
+The result is `sad.pdf`.
 
 ## License
 The software is distributed under the MIT license.
