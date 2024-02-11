@@ -14,6 +14,16 @@ The project is just starting.
 
 ## Build instructions
 ### Software
+#### Example main
+Change to the `build` directory, run cmake and then build the target.
+
+```{shell}
+cd build/
+cmake ..
+make timesheeting_main
+```
+
+The result is the executable `build/timesheeting_main`.
 
 ### Documentation
 #### PRJ1-SPE1 timesheeting specification document
@@ -31,7 +41,7 @@ latexmk -pdf spec.tex
 The result is `spec.pdf`.
 
 #### PRJ1-SAD1 timesheeting system architecture document
-The PDF is build with,
+The PDF is built with,
 
 ```{shell}
 cd ./doc/sad/
