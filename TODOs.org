@@ -65,6 +65,7 @@ Details the requirements applicable to subsystems, as described in the SAD.
 Proposes the implementations of the subsystems, along with a
 justification/tradeoff.
 + List the libraries used to implement every subsystem.
++ List the license of all the tools being used.
 + Propose very abstract drawings for the UI screens.
 + Detail every possible user interaction and how it propagates through
   subsystems. This defines some of the required interfaces between subsystems.
@@ -87,3 +88,8 @@ directly in the project readme.
 CLOSED: [2024-01-23 Tue 19:59]
 Add to the README a project timeline with the dates of release of the
 documents and software.
+
+* Software
+** GTK
+We use GTK4 with gtkmm, the C++ bindings.
+See the documentation: https://developer-old.gnome.org/gtkmm-tutorial/stable/index-info.html.en
