@@ -3,8 +3,10 @@ cmake_minimum_required(VERSION 3.20)
 project(timesheeting)
 set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For development with CLANGD
+
 set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
-set(GLOB_RECURSE TIMESHEETING_SRC "${TIMESHEETING_DIR}/src/*.cpp")
+file(GLOB_RECURSE TIMESHEETING_SRC "${TIMESHEETING_DIR}/src/*.cpp")
 
 # Dependencies
 find_package(PkgConfig)
