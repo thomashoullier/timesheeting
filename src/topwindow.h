@@ -13,6 +13,9 @@ protected:
   // Child widgets:
   Gtk::Box m_VBox;
   MenuBar menubar;
+
+  // Notebook widget
+  Gtk::Notebook m_Notebook;
 };
 
 #endif // TOPWINDOW_H
