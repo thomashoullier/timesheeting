@@ -1,5 +1,4 @@
 #include "about.h"
-#include "globals.h"
 
 About::About() {
   this->set_program_name(TIMESHEETING_TITLE);

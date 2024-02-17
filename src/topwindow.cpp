@@ -5,6 +5,6 @@ TopWindow::TopWindow() : m_VBox(Gtk::Orientation::VERTICAL)
   set_title(TIMESHEETING_TITLE);
   set_default_size(400, 150);
 
-  set_child(m_VBox);
+  this->set_child(m_VBox);
   m_VBox.append(*(menubar.widget));
 }

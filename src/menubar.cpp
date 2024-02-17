@@ -14,7 +14,7 @@ MenuBar::MenuBar() {
       "      <attribute name='label'>_About</attribute>"
       "      <section>"
       "        <item>"
-      "          <attribute name='label' translatable='yes'>_About</attribute>"
+      "          <attribute name='label'>_About</attribute>"
       "          <attribute name='action'>menu.about</attribute>"
       "        </item>"
       "      </section>"
