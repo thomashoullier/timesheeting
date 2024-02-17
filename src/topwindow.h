@@ -1,14 +1,13 @@
-#ifndef EXAMPLEWINDOW_H
-#define EXAMPLEWINDOW_H
+#ifndef TOPWINDOW_H
+#define TOPWINDOW_H
 
 #include <gtkmm.h>
 #include "globals.h"
 #include "about.h"
 
-class ExampleWindow : public Gtk::Window {
+class TopWindow : public Gtk::Window {
 public:
-  ExampleWindow();
-  virtual ~ExampleWindow();
+  TopWindow();
 
 protected:
   // Signal handlers:
@@ -18,7 +17,7 @@ protected:
   Gtk::Box m_VBox;
   Gtk::Box m_ButtonBox;
   Gtk::Button m_Button;
-  About m_Dialog;
+  About about_dialog;
 };
 
-#endif // EXAMPLEWINDOW_H
+#endif // TOPWINDOW_H
