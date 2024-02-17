@@ -1,6 +1,6 @@
 #include <iostream>
-#include "version.h"
 
+#include "globals.h"
 #include <gtkmm/application.h>
 #include "examplewindow.h"
 

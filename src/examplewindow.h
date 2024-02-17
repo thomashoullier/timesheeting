@@ -2,6 +2,8 @@
 #define EXAMPLEWINDOW_H
 
 #include <gtkmm.h>
+#include "globals.h"
+#include "about.h"
 
 class ExampleWindow : public Gtk::Window {
 public:
@@ -14,10 +16,9 @@ protected:
 
   // Child widgets:
   Gtk::Box m_VBox;
-  Gtk::Label m_Label;
   Gtk::Box m_ButtonBox;
   Gtk::Button m_Button;
-  Gtk::AboutDialog m_Dialog;
+  About m_Dialog;
 };
 
 #endif // EXAMPLEWINDOW_H
