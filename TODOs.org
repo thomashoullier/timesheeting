@@ -97,7 +97,8 @@ We use GTK4 with gtkmm, the C++ bindings.
 See the documentation: https://developer-old.gnome.org/gtkmm-tutorial/stable/index-info.html.en
 API: https://gnome.pages.gitlab.gnome.org/gtkmm/index.html
 
-** TODO Draft the GUI
+** DONE Draft the GUI
+CLOSED: [2024-02-18 Sun 17:44]
 Reach a point where every main UI screen is present. Individual dialogs will be
 implemented later.
 + Main UI with tabs and toolbar.
@@ -111,6 +112,14 @@ implemented later.
 + Status:
   + Stopwatch in use
   + Save done/in progress/failed
+
+** TODO Dealing with stopwatch state
+How do we deal with the stopwatch object?
+It needs to live in a given tab, but its state is also displayed in the status
+bar. How do we share a view-only object from the tab to the status bar?
++ Maybe create the stopwatch object in main, and pass a shared_pointer
+  throughout the object tree towards the "Daily entries" tab and a const
+  shared_pointer to the status bar?
 
 ** Fixes
 + The About dialog starts with some text highlighted by default.
