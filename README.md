@@ -11,6 +11,7 @@ The project is just starting.
 ## Documentation summary
 * `PRJ1-SPE1-v1.0` timesheeting specification document
 * `PRJ1-SAD1-v1.0` timesheeting system architecture document
+* ![Release notes](doc/RELEASE_NOTES.md)
 
 ## Build instructions
 ### Software
