@@ -4,6 +4,7 @@
 #include "globals.h"
 #include "menubar.h"
 #include "tabs.h"
+#include "status.h"
 
 #include "gtkmm/box.h"
 #include "gtkmm/window.h"
@@ -19,6 +20,7 @@ protected:
 
   MenuBar menubar;
   Tabs tabs;
+  Status status;
 };
 
 #endif // TOPWINDOW_H

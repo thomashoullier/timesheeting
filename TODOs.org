@@ -67,6 +67,8 @@ justification/tradeoff.
 + List the libraries used to implement every subsystem.
 + List the license of all the tools being used.
 + Propose very abstract drawings for the UI screens.
++ Draw a diagram of the GUI elements hierarchy
+  (application->topwindow->tabs->etc.).
 + Detail every possible user interaction and how it propagates through
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema
@@ -109,3 +111,9 @@ implemented later.
 + Status:
   + Stopwatch in use
   + Save done/in progress/failed
+
+** Fixes
++ The About dialog starts with some text highlighted by default.
+  Make it start with normal text.
++ Implement an organized source tree: src/gui/, and make the tree reflect
+  the GUI class hierarchy.
