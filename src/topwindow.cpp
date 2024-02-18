@@ -7,7 +7,6 @@ TopWindow::TopWindow() : m_VBox(Gtk::Orientation::VERTICAL)
 
   // Populate widgets
   this->set_child(m_VBox);
-  m_VBox.append(*(menubar.widget));
-
+  m_VBox.append(menubar);
   m_VBox.append(tabs);
 }

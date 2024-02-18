@@ -38,8 +38,8 @@ MenuBar::MenuBar() {
   m_refBuilder->add_from_string(ui_info);
 
   auto gmenu = m_refBuilder->get_object<Gio::Menu>("menubar");
-  widget = Gtk::make_managed<Gtk::PopoverMenuBar>(gmenu);
-  widget->insert_action_group("menu", m_refActionGroup);
+  this->set_menu_model(gmenu);
+  this->insert_action_group("menu", m_refActionGroup);
 }
 
 void MenuBar::about_on_button_clicked() {

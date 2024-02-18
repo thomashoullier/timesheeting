@@ -2,12 +2,12 @@
 #define MENUBAR_H
 
 #include "about.h"
-#include <gtkmm.h>
+#include "gtkmm/popovermenubar.h"
 
-class MenuBar {
+class MenuBar : public Gtk::PopoverMenuBar {
 public:
   MenuBar();
-  Gtk::PopoverMenuBar *widget;
+
 private:
   About about_dialog;
 
