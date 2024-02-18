@@ -1,0 +1,70 @@
+%% Document-wide settings.
+\documentclass[letterpaper]{article}
+\title{timesheeting system design document}
+\author{Thomas HOULLIER \href{mailto:pro@houllier.net}
+         {\texttt{\textlangle pro@houllier.net\textrangle}}}
+
+\usepackage[colorlinks=true, allcolors=blue,
+            hyperfootnotes=false,
+            pdfauthor={Thomas HOULLIER},
+            pdftitle={timesheeting system design document}]
+            {hyperref} % Links for ref/cite.
+
+\input{preamble}
+
+% Document
+\begin{document}
+\frenchspacing
+\date{PRJ1-SDD1-v0.0 -- XXX}
+\maketitle
+\thispagestyle{FirstPage}
+
+\begin{abstract}
+  XXX
+\end{abstract}
+
+\begin{versionhistory}
+  \vhEntry{1.0}{XXX}{TH}{Creation}
+\end{versionhistory}
+\setcounter{table}{0} % Reset the table counter.
+
+\section*{Applicable documents}
+{ \centering
+  \begin{tabularx}{\textwidth}{| c | X | c | c | X |} \hline
+    Index & Title & Reference & Revision & Author \\ \hline
+    AD1 & timesheeting system architecture document & PRJ1-SAD1 & v1.0 & Thomas
+    HOULLIER \\ \hline
+  \end{tabularx} \par }
+
+\section*{Document distribution}
+The present document is distributed under the \emph{Creative Commons Attribution
+  4.0 International} license (\url{https://creativecommons.org/licenses/by/4.0/})
+by its author Thomas HOULLIER.
+
+Every document release is signed with the author's GPG key. A signature file
+is provided along with the released document.
+
+TODO:This document makes use of content from \url{https://svgfind.com}, under
+CC licensing.
+
+\tableofcontents
+\printglossary[type=\acronymtype,style=index]
+\pagestyle{plain}
+\input{sections/introduction}
+\input{sections/implementation.tex}
+\input{sections/hierarchy.tex}
+\input{sections/ui_design.tex}
+\input{sections/interaction.tex}
+\input{sections/db.tex}
+
+\appendix
+
+%% \include{appendices}
+
+\apptocmd{\thebibliography}{\raggedright}{}{}
+\begingroup
+\setstretch{0.6}
+\setlength\bibitemsep{0pt}
+\printbibliography
+\endgroup
+\end{document}

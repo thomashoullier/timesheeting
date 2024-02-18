@@ -65,10 +65,10 @@ Details the requirements applicable to subsystems, as described in the SAD.
 Proposes the implementations of the subsystems, along with a
 justification/tradeoff.
 + List the libraries used to implement every subsystem.
-+ List the license of all the tools being used.
-+ Propose very abstract drawings for the UI screens.
-+ Draw a diagram of the GUI elements hierarchy
+  + List the license of all the tools being used.
++ Draw a diagram of the software class hierarchy
   (application->topwindow->tabs->etc.).
++ Propose very abstract drawings for the UI screens.
 + Detail every possible user interaction and how it propagates through
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema
