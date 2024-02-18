@@ -1,10 +1,13 @@
 #ifndef TOPWINDOW_H
 #define TOPWINDOW_H
 
-#include <gtkmm.h>
 #include "globals.h"
 #include "menubar.h"
 #include "tabs.h"
+
+#include "gtkmm/box.h"
+#include "gtkmm/window.h"
+#include "gtkmm/enums.h"
 
 class TopWindow : public Gtk::Window {
 public:

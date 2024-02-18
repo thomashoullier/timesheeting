@@ -2,6 +2,10 @@
 #define MENUBAR_H
 
 #include "about.h"
+
+#include "giomm/menu.h"
+#include "giomm/simpleactiongroup.h"
+#include "gtkmm/builder.h"
 #include "gtkmm/popovermenubar.h"
 
 class MenuBar : public Gtk::PopoverMenuBar {
