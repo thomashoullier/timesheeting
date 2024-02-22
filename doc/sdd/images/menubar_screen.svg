@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="199.99559mm"
+   height="20.158262mm"
+   viewBox="0 0 199.99559 20.158262"
+   version="1.1"
+   id="svg7091"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="menubar_screen.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7093"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.3786088"
+     inkscape:cx="175.10235"
+     inkscape:cy="31.741243"
+     inkscape:window-width="1900"
+     inkscape:window-height="1030"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs7088" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(9.9007385,-46.219385)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.705556;stroke-dasharray:none"
+       id="rect7212"
+       width="159.29166"
+       height="13.341797"
+       x="30.450415"
+       y="46.572163"
+       ry="1.7869295" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="1.9078429"
+       y="66.315636"
+       id="text8376"><tspan
+         sodipodi:role="line"
+         id="tspan8374"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="1.9078431"
+         y="66.315636">MenuBar</tspan></text>
+    <g
+       id="g9171">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.352778;stroke-dasharray:none"
+         id="rect8303"
+         width="18.517071"
+         height="10.675034"
+         x="32.653843"
+         y="47.905544"
+         ry="1.7869295" />
+      <text
+         xml:space="preserve"
+         style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+         x="41.930981"
+         y="55.41502"
+         id="text8376-7"><tspan
+           sodipodi:role="line"
+           id="tspan8374-0"
+           style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+           x="41.930981"
+           y="55.41502">File</tspan></text>
+    </g>
+    <g
+       id="g9176">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.352778;stroke-dasharray:none"
+         id="rect8303-2"
+         width="18.517071"
+         height="10.675034"
+         x="55.44561"
+         y="47.905544"
+         ry="1.7869295" />
+      <text
+         xml:space="preserve"
+         style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+         x="64.691742"
+         y="55.41502"
+         id="text8376-7-9"><tspan
+           sodipodi:role="line"
+           id="tspan8374-0-3"
+           style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+           x="64.691742"
+           y="55.41502">About</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none;stroke-opacity:1"
+       d="m 30.450415,55.346596 -15.18722,8.768347"
+       id="path9904" />
+  </g>
+</svg>
