@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="182.75305mm"
+   height="84.527176mm"
+   viewBox="0 0 182.75306 84.527175"
+   version="1.1"
+   id="svg201"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="about.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview203"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.1893044"
+     inkscape:cx="306.48167"
+     inkscape:cy="138.31615"
+     inkscape:window-width="1900"
+     inkscape:window-height="1030"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs198" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(1.6107558,-24.147262)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.705556;stroke-dasharray:none"
+       id="rect7212"
+       width="99.811615"
+       height="81.587646"
+       x="30.449234"
+       y="24.50004"
+       ry="1.7869295" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="6.2647324"
+       y="108.61243"
+       id="text8376-3"><tspan
+         sodipodi:role="line"
+         id="tspan8374-6"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="6.2647324"
+         y="108.61243">About</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none;stroke-opacity:1"
+       d="m 30.449234,98.74975 -15.18722,8.76835"
+       id="path9904" />
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="80.384499"
+       y="51.049843"
+       id="text8376"><tspan
+         sodipodi:role="line"
+         id="tspan8374"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="80.384499"
+         y="51.049843">timesheeting</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="80.384499"
+       y="67.3666"
+       id="text8376-7"><tspan
+         sodipodi:role="line"
+         id="tspan8374-5"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="80.384499"
+         y="67.3666">Version: 0.0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="80.384499"
+       y="82.591957"
+       id="text8376-7-3"><tspan
+         sodipodi:role="line"
+         id="tspan8374-5-5"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="80.384499"
+         y="82.591957">Project link</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="153.00137"
+       y="51.049843"
+       id="text8376-3-6"><tspan
+         sodipodi:role="line"
+         id="tspan8374-6-2"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="153.00137"
+         y="51.049843">Project title</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="159.63663"
+       y="67.3666"
+       id="text8376-3-6-9"><tspan
+         sodipodi:role="line"
+         id="tspan8374-6-2-1"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="159.63663"
+         y="67.3666">Software version</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;font-family:serif;-inkscape-font-specification:serif;text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none"
+       x="157.76233"
+       y="82.591957"
+       id="text8376-3-6-9-2"><tspan
+         sodipodi:role="line"
+         id="tspan8374-6-2-1-7"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352778"
+         x="157.76233"
+         y="82.591957">Project website</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none;stroke-opacity:1"
+       d="m 136.48729,49.532104 -37.798876,4e-6"
+       id="path9904-0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none;stroke-opacity:1"
+       d="m 136.48729,65.303158 -37.798875,4e-6"
+       id="path9904-0-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.352777;stroke-dasharray:none;stroke-opacity:1"
+       d="m 136.48729,81.064917 -37.79887,4e-6"
+       id="path9904-0-3"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

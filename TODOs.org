@@ -40,6 +40,7 @@ We list the specification items which should be added later.
 + Indicate to the user at runtime where to report bugs.
 + Specify the format in which the software is released.
   As source, plus appimage?
++ Description or comment associated to hierarchy items.
 
 * System architecture document
 
