@@ -4,7 +4,7 @@
 #include <gtkmm/application.h>
 #include "glibmm/refptr.h"
 #include "globals.h"
-#include "topwindow.h"
+#include "gui/topwindow.h"
 
 class Application {
 public:

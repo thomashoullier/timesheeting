@@ -2,7 +2,7 @@
 #define ABOUT_H
 
 #include <gtkmm/aboutdialog.h>
-#include "globals.h"
+#include "../../../globals.h"
 
 class About : public Gtk::AboutDialog {
 public:

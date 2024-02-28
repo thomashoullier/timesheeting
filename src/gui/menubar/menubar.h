@@ -1,7 +1,7 @@
 #ifndef MENUBAR_H
 #define MENUBAR_H
 
-#include "about.h"
+#include "about/about.h"
 
 #include "giomm/menu.h"
 #include "giomm/simpleactiongroup.h"

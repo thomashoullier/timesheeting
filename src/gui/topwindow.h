@@ -1,10 +1,10 @@
 #ifndef TOPWINDOW_H
 #define TOPWINDOW_H
 
-#include "globals.h"
-#include "menubar.h"
-#include "tabs.h"
-#include "status.h"
+#include "../globals.h"
+#include "menubar/menubar.h"
+#include "tabs/tabs.h"
+#include "status/status.h"
 
 #include "gtkmm/box.h"
 #include "gtkmm/window.h"
