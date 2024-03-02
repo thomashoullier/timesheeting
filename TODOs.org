@@ -41,6 +41,7 @@ We list the specification items which should be added later.
 + Specify the format in which the software is released.
   As source, plus appimage?
 + Description or comment associated to hierarchy items.
++ Where should the stopwatch be displayed?
 
 * System architecture document
 
@@ -113,6 +114,19 @@ implemented later.
 + Status:
   + Stopwatch in use
   + Save done/in progress/failed
+
+** TODO Draft the Daily entries screen
+ADDED: [2024-02-28 Wed]
+Implement the gtk objects for presenting the daily entries.
+It is roughly a VBox containing:
++ Day:
+  + Current selected day display,
+  + Select next/prev
+  + Click on selected day to open calendar dialog and switch.
++ The total time for the day
++ The scrollable list of entries with, on each line,
+  + Project name, Task name, start time, duration
++ The entry addition interface below, with a stopwatch.
 
 ** TODO Dealing with stopwatch state
 How do we deal with the stopwatch object?
