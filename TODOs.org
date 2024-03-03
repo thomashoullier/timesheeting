@@ -128,6 +128,18 @@ It is roughly a VBox containing:
   + Project name, Task name, start time, duration
 + The entry addition interface below, with a stopwatch.
 
+*** Table of entries
+See this:
+https://stackoverflow.com/questions/77035908/gtkmm-4-10-scrolled-window-set-adjustments-horizontal-vertical-not-aut
+There is an example from the gtkmm team here:
+https://github.com/GNOME/gtkmm/blob/master/demos/gtk-demo/example_listview_columnview.cc
+
+We should use ColumnView instead of TreeView since
+TreeView is deprecated.
+See
+https://stackoverflow.com/questions/76711050/how-to-create-a-treeview-like-ui-using-columnview-in-gtk4
+https://stackoverflow.com/questions/73145916/how-do-i-use-gtk4s-columnview-to-replace-treeview-in-python
+
 ** TODO Dealing with stopwatch state
 How do we deal with the stopwatch object?
 It needs to live in a given tab, but its state is also displayed in the status
