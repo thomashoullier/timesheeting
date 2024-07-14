@@ -10,7 +10,7 @@ int main() {
   cbreak();
   noecho();
 
-  Column project_column ({"0", "1", "2"});
+  Column project_column ({"0", "1", "2", "3", "4"});
 
   /* Input loop */
   char ch;

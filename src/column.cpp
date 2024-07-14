@@ -1,6 +1,5 @@
 #include "column.h"
 #include <form.h>
-#include <iostream>
 
 Column::Column(std::vector<std::string> fields_str) {
   // Construct the fields vector
@@ -9,12 +8,12 @@ Column::Column(std::vector<std::string> fields_str) {
   const auto width {26};
 
   for (std::size_t i = 0 ; i < fields_str.size() ; ++i) {
-    fields[i] = new_field(height, width-3, i, leftcol, 0, 0);
-    set_field_buffer(fields[i], 0, fields_str.at(i).c_str());
+    fields.push_back(new_field(height,width-3, i, leftcol, 0, 0));
+    set_field_buffer(fields.back(), 0, fields_str.at(i).c_str());
   }
-  fields[3] = NULL;
+  fields.push_back(NULL);
   /* Create the form */
-  form = new_form(fields);
+  form = new_form(fields.data());
   /* Create window */
   int rows, cols;
   scale_form(form, &rows, &cols);
@@ -31,9 +30,9 @@ Column::Column(std::vector<std::string> fields_str) {
 Column::~Column() {
   unpost_form(form);
   free_form(form);
-  free_field(fields[0]);
-  free_field(fields[1]);
-  free_field(fields[2]);
+  for(auto f : fields) {
+    free_field(f);
+  }
 }
 
 void Column::next_field () {

@@ -14,8 +14,8 @@ public:
   // void refresh();
 
 private:
-  //int width; // Total width of the window.
   int pos;       // Column position on the screen: 0, 1 or 2.
   FORM *form;
-  FIELD *fields[4];
+  //FIELD *fields[4];
+  std::vector<FIELD*> fields;
 };
