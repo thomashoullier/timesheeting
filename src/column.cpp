@@ -1,7 +1,8 @@
 #include "column.h"
 #include <form.h>
 
-Column::Column(std::vector<std::string> fields_str) {
+Column::Column(std::vector<std::string> fields_str, ColPos _pos) {
+  pos = _pos;
   // Construct the fields vector
   const auto height {1};
   const auto leftcol {1};
@@ -17,7 +18,7 @@ Column::Column(std::vector<std::string> fields_str) {
   /* Create window */
   int rows, cols;
   scale_form(form, &rows, &cols);
-  win = newwin(rows+2, width, 1, 1);
+  win = newwin(rows+2, width, 1, 1 + pos*width);
   set_form_win(form, win);
   set_form_sub(form, derwin(win, rows, width-2, 1, 1));
   box(win, 0, 0);
