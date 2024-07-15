@@ -9,18 +9,16 @@ Column::Column(std::vector<std::string> fields_str, ColPos _pos) {
   const auto width {26};
 
   for (std::size_t i = 0 ; i < fields_str.size() ; ++i) {
-    fields.push_back(new_field(height,width-3, i, leftcol, 0, 0));
+    fields.push_back(new_field(height, width - 3, i, leftcol, 0, 0));
     set_field_buffer(fields.back(), 0, fields_str.at(i).c_str());
   }
   fields.push_back(NULL);
   /* Create the form */
   form = new_form(fields.data());
   /* Create window */
-  int rows, cols;
-  scale_form(form, &rows, &cols);
-  win = newwin(rows+2, width, 1, 1 + pos*width);
+  win = newwin(PAGE_LINES+1, width, 1, 1 + pos*width);
   set_form_win(form, win);
-  set_form_sub(form, derwin(win, rows, width-2, 1, 1));
+  set_form_sub(form, derwin(win, PAGE_LINES, width-2, 1, 1));
   box(win, 0, 0);
   /* Refresh form */
   post_form(form);

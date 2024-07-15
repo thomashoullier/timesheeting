@@ -18,5 +18,6 @@ private:
   ColPos pos;       // Column position on the screen: 0, 1 or 2.
   FORM *form;
   //FIELD *fields[4];
+  static constexpr std::size_t PAGE_LINES {35}; // Number of lines in page.
   std::vector<FIELD*> fields;
 };

@@ -10,7 +10,8 @@ int main() {
   cbreak();
   noecho();
 
-  Column project_column ({"0", "1", "2", "3", "4"}, Column::right);
+  Column project_column({"p0", "p1", "p2", "p3", "p4"}, Column::left);
+  Column task_column({"t0", "t1", "t2", "t3"}, Column::middle);
 
   /* Input loop */
   char ch;
