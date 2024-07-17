@@ -1,6 +1,6 @@
 #include "column.h"
 
-Column::Column(std::vector<std::string> fields_str, ColPos _pos) {
+Column::Column(const std::vector<std::string> &fields_str, ColPos _pos) {
   pos = _pos;
   init_form(fields_str);
 }
@@ -11,12 +11,12 @@ void Column::next_field() { form_driver(form, REQ_NEXT_FIELD); }
 
 void Column::prev_field() { form_driver(form, REQ_PREV_FIELD); }
 
-void Column::recreate_form(std::vector<std::string> fields_str) {
+void Column::recreate_form(const std::vector<std::string> &fields_str) {
   destroy_form();
   init_form(fields_str);
 }
 
-void Column::init_fields(std::vector<std::string> fields_str) {
+void Column::init_fields(const std::vector<std::string> &fields_str) {
   const auto height{1};
   const auto leftcol{1};
 
@@ -42,7 +42,7 @@ void Column::refresh() {
   wrefresh(win);
 }
 
-void Column::init_form(std::vector<std::string> fields_str) {
+void Column::init_form(const std::vector<std::string> &fields_str) {
   init_fields(fields_str);
   init_form_window(pos);
   refresh();
