@@ -2,15 +2,8 @@
 
 Column::Column(std::vector<std::string> fields_str, ColPos pos) {
   init_fields(fields_str);
-  /* Create window */
-  win = newwin(PAGE_LINES + 1, width, 1, 1 + pos * width);
-  set_form_win(form, win);
-  set_form_sub(form, derwin(win, PAGE_LINES, width - 2, 1, 1));
-  box(win, 0, 0);
-  /* Refresh form */
-  post_form(form);
-  set_current_field(form, fields[0]);
-  wrefresh(win);
+  init_form_window(pos);
+  refresh();
 }
 
 Column::~Column() {
@@ -30,7 +23,7 @@ void Column::init_fields(std::vector<std::string> fields_str) {
   const auto leftcol{1};
 
   for (std::size_t i = 0; i < fields_str.size(); ++i) {
-    fields.push_back(new_field(height, width - 3, i, leftcol, 0, 0));
+    fields.push_back(new_field(height, WIDTH - 3, i, leftcol, 0, 0));
     set_field_buffer(fields.back(), 0, fields_str.at(i).c_str());
   }
   fields.push_back(NULL);
@@ -38,4 +31,15 @@ void Column::init_fields(std::vector<std::string> fields_str) {
   form = new_form(fields.data());
 }
 
-// void Column::refresh() {}
+void Column::init_form_window(ColPos pos) {
+  win = newwin(PAGE_LINES + 1, WIDTH, 1, 1 + pos * WIDTH);
+  set_form_win(form, win);
+  set_form_sub(form, derwin(win, PAGE_LINES, WIDTH - 2, 1, 1));
+  box(win, 0, 0);
+}
+
+void Column::refresh() {
+  post_form(form);
+  set_current_field(form, fields.at(0));
+  wrefresh(win);
+}

@@ -12,13 +12,14 @@ public:
 
   void next_field();
   void prev_field();
-  // void refresh();
+  void refresh();
 
 private:
   FORM *form;
-  static constexpr int width {26}; // Colum window width.
+  static constexpr int WIDTH {26}; // Colum window width.
   static constexpr std::size_t PAGE_LINES {35}; // Number of lines in page.
   std::vector<FIELD*> fields;
 
   void init_fields (std::vector<std::string> fields_str);
+  void init_form_window (ColPos pos);
 };
