@@ -10,8 +10,11 @@ int main() {
   cbreak();
   noecho();
 
+  // TODO: create a master/slave two-column table for browsing
+  //       using the master column which loads a slave column on the right.
   Column project_column({"p0", "p1", "p2", "p3", "p4"}, Column::left);
   Column task_column({"t0", "t1", "t2", "t3"}, Column::middle);
+  //task_column = Column({"z0", "z1", "z2", "z3"}, Column::middle);
 
   /* Input loop */
   char ch;
