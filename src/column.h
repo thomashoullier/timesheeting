@@ -22,4 +22,5 @@ private:
 
   void init_fields (std::vector<std::string> fields_str);
   void init_form_window (ColPos pos);
+  void destroy_form();
 };

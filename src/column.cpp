@@ -7,11 +7,7 @@ Column::Column(std::vector<std::string> fields_str, ColPos pos) {
 }
 
 Column::~Column() {
-  unpost_form(form);
-  free_form(form);
-  for (auto f : fields) {
-    free_field(f);
-  }
+  destroy_form();
 }
 
 void Column::next_field() { form_driver(form, REQ_NEXT_FIELD); }
@@ -42,4 +38,13 @@ void Column::refresh() {
   post_form(form);
   set_current_field(form, fields.at(0));
   wrefresh(win);
+}
+
+void Column::destroy_form() {
+  unpost_form(form);
+  free_form(form);
+  for (auto f : fields) {
+    free_field(f);
+  }
+  fields.clear();
 }
