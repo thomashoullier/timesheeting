@@ -1,18 +1,20 @@
 #include "column.h"
 
-Column::Column(std::vector<std::string> fields_str, ColPos pos) {
-  init_fields(fields_str);
-  init_form_window(pos);
-  refresh();
+Column::Column(std::vector<std::string> fields_str, ColPos _pos) {
+  pos = _pos;
+  init_form(fields_str);
 }
 
-Column::~Column() {
-  destroy_form();
-}
+Column::~Column() { destroy_form(); }
 
 void Column::next_field() { form_driver(form, REQ_NEXT_FIELD); }
 
 void Column::prev_field() { form_driver(form, REQ_PREV_FIELD); }
+
+void Column::recreate_form(std::vector<std::string> fields_str) {
+  destroy_form();
+  init_form(fields_str);
+}
 
 void Column::init_fields(std::vector<std::string> fields_str) {
   const auto height{1};
@@ -23,7 +25,7 @@ void Column::init_fields(std::vector<std::string> fields_str) {
     set_field_buffer(fields.back(), 0, fields_str.at(i).c_str());
   }
   fields.push_back(NULL);
-  /* Create the form */
+  /* Create the form with a pointer into fields. */
   form = new_form(fields.data());
 }
 
@@ -38,6 +40,12 @@ void Column::refresh() {
   post_form(form);
   set_current_field(form, fields.at(0));
   wrefresh(win);
+}
+
+void Column::init_form(std::vector<std::string> fields_str) {
+  init_fields(fields_str);
+  init_form_window(pos);
+  refresh();
 }
 
 void Column::destroy_form() {
