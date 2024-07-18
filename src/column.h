@@ -1,3 +1,6 @@
+#ifndef COLUMN_H
+#define COLUMN_H
+
 #include <form.h>
 #include <vector>
 #include <string>
@@ -27,3 +30,5 @@ private:
   void init_form(const std::vector<std::string> &fields_str);
   void destroy_form();
 };
+
+#endif // COLUMN_H
