@@ -13,8 +13,8 @@ public:
 
 private:
   DB_Interface db;
-  Column project_col;
-  Column task_col;
+  Column<Project> project_col;
+  Column<Task> task_col;
 };
 
 #endif // PROJECT_TASK_TABLE_H
