@@ -16,6 +16,7 @@ public:
   void next_field();
   void prev_field();
   void recreate_form(const std::vector<std::string> &fields_str);
+  char input_loop ();
   void refresh();
 
 private:

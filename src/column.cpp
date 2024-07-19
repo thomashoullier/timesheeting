@@ -16,6 +16,24 @@ void Column::recreate_form(const std::vector<std::string> &fields_str) {
   init_form(fields_str);
 }
 
+char Column::input_loop() {
+  // Ask the current window for inputs, and pass to upper lever if
+  // it cannot be treated here.
+  while (true) {
+    auto ch = wgetch(win);
+    switch(ch) {
+    case 'n':
+      this->next_field();
+      break;
+    case 'e':
+      this->prev_field();
+      break;
+    default:
+      return ch;
+    }
+  }
+}
+
 void Column::init_fields(const std::vector<std::string> &fields_str) {
   const auto height{1};
   const auto leftcol{1};
@@ -37,14 +55,14 @@ void Column::init_form_window(ColPos pos) {
 }
 
 void Column::refresh() {
-  post_form(form);
-  set_current_field(form, fields.at(0));
   wrefresh(win);
 }
 
 void Column::init_form(const std::vector<std::string> &fields_str) {
   init_fields(fields_str);
   init_form_window(pos);
+  post_form(form);
+  set_current_field(form, fields.at(0));
   refresh();
 }
 

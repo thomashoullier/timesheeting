@@ -13,5 +13,19 @@ ProjectTaskTable::ProjectTaskTable()
 }
 
 char ProjectTaskTable::input_loop () {
-  return wgetch(project_col.win);
+  Column *cur_col {&project_col};
+  while (true) {
+    cur_col->refresh();
+    auto ch = cur_col->input_loop();
+    switch (ch) {
+    case 'h':
+      cur_col = &project_col;
+      break;
+    case 'i':
+      cur_col = &task_col;
+      break;
+    default:
+      return ch;
+    }
+  }
 }
