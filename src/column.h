@@ -9,37 +9,26 @@
 enum ColPos { left = 0, middle = 1, right = 2 };
 
 class ColumnBase {
-  // TODO: * Add all methods here, make some virtual which are
-  //       specialized by the template below.
-  //       * Try to move the implementation of the base class methods
-  //       back to .cpp
-  //       * private member of base class should be protected instead
-  //         and template class should inherit in private mode.
-public:
+protected:
   WINDOW *win;
   FORM *form;
+  // field ids in 1-1 correspondance with curses fields indexing
+  std::vector<Id> field_ids;
 
+public:
   void next_field() { form_driver(form, REQ_NEXT_FIELD); }
 
   void prev_field() { form_driver(form, REQ_PREV_FIELD); }
 
-  char input_loop() {
-    // Ask the current window for inputs, and pass to upper lever if
-    // it cannot be treated here.
-    while (true) {
-      auto ch = wgetch(win);
-      switch (ch) {
-      case 'n':
-        this->next_field();
-        break;
-      case 'e':
-        this->prev_field();
-        break;
-      default:
-        return ch;
-      }
-    }
+  int get_field_index () { return field_index(current_field(form)); }
+
+  // Get the Id for the currently selected field.
+  Id get_field_id () {
+    auto field_index = get_field_index();
+    return field_ids.at(field_index);
   }
+
+  char get_input () { return wgetch(win); }
 
   void refresh() { wrefresh(win); }
 };
@@ -90,7 +79,10 @@ private:
 
     for (std::size_t i = 0; i < field_items.size(); ++i) {
       fields.push_back(new_field(height, WIDTH - 3, i, leftcol, 0, 0));
+      // Name
       set_field_buffer(fields.back(), 0, field_items.at(i).name.c_str());
+      // Id
+      field_ids.push_back(field_items.at(i).id);
     }
     fields.push_back(NULL);
     /* Create the form with a pointer into fields. */

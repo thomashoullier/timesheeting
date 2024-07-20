@@ -1,8 +1,9 @@
 #include "db_interface.h"
+#include <string>
 
 std::vector<Project> DB_Interface::query_projects() {
   Project p1 = {1, "JWST", "X"};
-  Project p2 = {2, "Ariane 6", "X"};
+  Project p2 = {23, "Ariane 6", "X"};
   Project p3 = {3, "Tondeuse", "X"};
   Project p4 = {4, "SPICA", "X"};
   Project p5 = {5, "Roman", "X"};
@@ -10,7 +11,8 @@ std::vector<Project> DB_Interface::query_projects() {
 }
 
 std::vector<Task> DB_Interface::query_tasks(Id project_id) {
-  Task t1 = {1, "Kick-off meeting"};
+  std::string id = std::to_string(project_id);
+  Task t1 = {1, "Kick-off meeting " + id};
   Task t2 = {2, "Writing specification"};
   Task t3 = {3, "Progress meeting"};
   return {t1, t2, t3};
