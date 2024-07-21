@@ -6,6 +6,7 @@
 #include <form.h>
 #include <type_traits>
 #include <vector>
+#include <algorithm>
 
 enum ColPos { left = 0, middle = 1, right = 2 };
 
@@ -40,7 +41,6 @@ public:
   std::string input_new_item () {
     constexpr int INPUT_ROW = PAGE_LINES - 2;
     std::string input_buffer {};
-    echo();
     wmove(win, INPUT_ROW, 0);
     bool user_wants_to_input = true;
     while (user_wants_to_input) { // Item input loop.
@@ -53,16 +53,41 @@ public:
         input_buffer.clear();
         user_wants_to_input = false;
         break;
+      case 127: // Erase last character
+        if (!input_buffer.empty()) {
+          input_buffer.pop_back();
+          // Remove character from screen
+          int y, x;
+          getyx(win, y, x);
+          wmove(win, y, x - 1);
+          wdelch(win);
+        }
+        break;
       default: // Gets added to item.
         input_buffer.push_back(ch);
+        waddch(win, ch);
         break;
       }
     }
-    noecho();
     // Cleanup the input row.
     wmove(win, INPUT_ROW, 0);
     wclrtoeol(win);
     return input_buffer;
+  }
+
+  // Sanitize user input
+  std::string sanitize_input (std::string input) {
+    auto s = input;
+    // left trim
+    s.erase(s.begin(),
+               std::find_if(s.begin(), s.end(),
+                            [](unsigned char ch) {
+                              return !std::isspace(ch);}));
+    // right trim
+    s.erase(std::find_if(s.rbegin(), s.rend(),
+                         [](unsigned char ch) {
+                           return !std::isspace(ch);}).base(), s.end());
+    return s;
   }
 
   void refresh() {
