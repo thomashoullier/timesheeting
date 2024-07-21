@@ -75,6 +75,51 @@ public:
     return input_buffer;
   }
 
+  // Edit the current item, return the new item string.
+  // Return empty string if user cancels.
+  std::string edit_current_item() {
+    std::string input_buffer {};
+    // Move cursor to beginning of line.
+    int y, x;
+    getyx(win, y, x);
+    wmove(win, y, x - 1);
+    int INPUT_ROW {y};
+    wmove(win, INPUT_ROW, 0);
+    // Clear the display line.
+    wclrtoeol(win);
+    bool user_wants_to_input = true;
+    while (user_wants_to_input) { // Item input loop.
+      auto ch = wgetch(win);
+      switch (ch) {
+      case '\n': // User validates the input.
+        user_wants_to_input = false;
+        break;
+      case 27: // User wants to cancel.
+        input_buffer.clear();
+        user_wants_to_input = false;
+        break;
+      case 127: // Erase last character
+        if (!input_buffer.empty()) {
+          input_buffer.pop_back();
+          // Remove character from screen
+          int y, x;
+          getyx(win, y, x);
+          wmove(win, y, x - 1);
+          wdelch(win);
+        }
+        break;
+      default: // Gets added to item.
+        input_buffer.push_back(ch);
+        waddch(win, ch);
+        break;
+      }
+    }
+    // Cleanup the input row.
+    wmove(win, INPUT_ROW, 0);
+    wclrtoeol(win);
+    return input_buffer;
+  }
+
   // Sanitize user input
   std::string sanitize_input (std::string input) {
     auto s = input;

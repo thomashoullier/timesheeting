@@ -47,6 +47,20 @@ char ProjectTaskTable::input_loop() {
         auto project_items = db->query_projects();
         project_col.recreate_form(project_items);
     } break;
+    case 'r': // Edit project name.
+    {
+      auto id = project_col.get_field_id();
+      auto new_project_name = project_col.edit_current_item();
+      auto sanitized_project_name =
+        project_col.sanitize_input(new_project_name);
+      if (!sanitized_project_name.empty()) {
+        db->edit_project_name(id, sanitized_project_name);
+      }
+      // Update the project column.
+      auto project_items = db->query_projects();
+      project_col.recreate_form(project_items);
+    } break;
+    // TODO: * Remove project.
     default:
       return ch;
     }

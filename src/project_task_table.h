@@ -4,7 +4,6 @@
 #include "column.h"
 #include "db_interface.h"
 #include <memory>
-#include <iostream> // TODO temp
 
 /** @brief Table for defining projects and tasks. */
 class ProjectTaskTable {

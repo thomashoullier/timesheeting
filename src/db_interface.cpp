@@ -52,11 +52,25 @@ void DB_Interface::create_projects_table() {
 }
 
 void DB_Interface::add_project(std::string project_name) {
-  std::string add_project_st =
-    "INSERT INTO projects (name)"
-    "VALUES ('" + project_name + "');";
+  std::string add_project_st = "INSERT INTO projects (name)"
+                               "VALUES ('" +
+                               project_name + "');";
   auto rc = sqlite3_exec(db, add_project_st.c_str(), NULL, NULL, NULL);
   if (rc != SQLITE_OK) {
     throw std::runtime_error("Error adding project row.");
+  }
+}
+
+void DB_Interface::edit_project_name(Id project_id,
+                                     std::string new_project_name) {
+  std::string alter_project_name =
+    "UPDATE projects "
+    "SET name = '" + new_project_name + "' " +
+    "WHERE id = " + std::to_string(project_id) + ";";
+  std::cerr << alter_project_name << std::endl;
+  auto rc =
+      sqlite3_exec(db, alter_project_name.c_str(), NULL, NULL, NULL);
+  if (rc != SQLITE_OK) {
+    throw std::runtime_error("Error renaming project.");
   }
 }
