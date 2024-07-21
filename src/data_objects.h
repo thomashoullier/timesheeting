@@ -13,12 +13,7 @@ struct GenericItem {
   std::string name; // Display name.
 };
 
-struct Project : GenericItem {
-  std::string number; // Project number.
-};
-
-struct Task : GenericItem {
-};
-
+struct Project : GenericItem {};
+struct Task : GenericItem {};
 
 #endif // DATA_OBJECTS_H

@@ -10,11 +10,11 @@ DB_Interface::DB_Interface (std::string db_file) {
 DB_Interface::~DB_Interface() { sqlite3_close(db); }
 
 std::vector<Project> DB_Interface::query_projects() {
-  Project p1 = {1, "JWST", "X"};
-  Project p2 = {23, "Ariane 6", "X"};
-  Project p3 = {3, "Tondeuse", "X"};
-  Project p4 = {4, "SPICA", "X"};
-  Project p5 = {5, "Roman", "X"};
+  Project p1 = {1, "JWST"};
+  Project p2 = {23, "Ariane 6"};
+  Project p3 = {3, "Tondeuse"};
+  Project p4 = {4, "SPICA"};
+  Project p5 = {5, "Roman"};
   return {p1, p2, p3, p4, p5};
 }
 
@@ -30,7 +30,6 @@ void DB_Interface::create_projects_table() {
   std::string create_projects_table_st =
     "CREATE TABLE projects ("
     "id INTEGER PRIMARY KEY,"
-    "number TEXT NOT NULL,"
     "name TEXT NOT NULL"
     ");";
   auto rc = sqlite3_exec(db, create_projects_table_st.c_str(),
@@ -42,8 +41,8 @@ void DB_Interface::create_projects_table() {
 
 void DB_Interface::add_project(std::string project_name) {
   std::string add_project_st =
-    "INSERT INTO projects (number, name)"
-    "VALUES ('PRJXXX','" + project_name + "');";
+    "INSERT INTO projects (name)"
+    "VALUES ('" + project_name + "');";
   auto rc = sqlite3_exec(db, add_project_st.c_str(), NULL, NULL, NULL);
   if (rc != SQLITE_OK) {
     throw std::runtime_error("Error adding project row.");
