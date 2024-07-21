@@ -1,4 +1,5 @@
 #include "db_interface.h"
+#include <iostream> // TODO: temp
 
 DB_Interface::DB_Interface (std::string db_file) {
   auto rc = sqlite3_open(db_file.c_str(), &db);
@@ -10,12 +11,23 @@ DB_Interface::DB_Interface (std::string db_file) {
 DB_Interface::~DB_Interface() { sqlite3_close(db); }
 
 std::vector<Project> DB_Interface::query_projects() {
-  Project p1 = {1, "JWST"};
-  Project p2 = {23, "Ariane 6"};
-  Project p3 = {3, "Tondeuse"};
-  Project p4 = {4, "SPICA"};
-  Project p5 = {5, "Roman"};
-  return {p1, p2, p3, p4, p5};
+  std::string select_projects = "SELECT id, name FROM projects;";
+  sqlite3_stmt *stmt;
+  auto rc = sqlite3_prepare_v2(db, select_projects.c_str(), -1, &stmt, NULL);
+  if (rc != SQLITE_OK) {
+    throw std::runtime_error("Could not prepare SQL statement.");
+  }
+  // Get and parse each of the results in the rows.
+  std::vector<Project> projects {};
+  while (sqlite3_step(stmt) == SQLITE_ROW) {
+    Project proj {};
+    proj.id = sqlite3_column_int64(stmt, 0);
+    auto name = sqlite3_column_text(stmt, 1);
+    proj.name = reinterpret_cast<const char*>(name);
+    projects.push_back(proj);
+  }
+  sqlite3_finalize(stmt);
+  return projects;
 }
 
 std::vector<Task> DB_Interface::query_tasks(Id project_id) {

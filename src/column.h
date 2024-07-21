@@ -128,6 +128,7 @@ private:
       free_field(f);
     }
     fields.clear();
+    field_ids.clear();
   }
 
   void init_fields(const std::vector<T> &field_items) {
