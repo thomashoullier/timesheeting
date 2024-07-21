@@ -44,7 +44,6 @@ We list the specification items which should be added later.
 + Where should the stopwatch be displayed?
 
 * System architecture document
-
 ** DONE Drafting PRJ1-SAD1-v1.0
 CLOSED: [2024-02-11 Sun 10:50]
 ADDED: [2024-01-24 Wed]
@@ -94,11 +93,6 @@ Add to the README a project timeline with the dates of release of the
 documents and software.
 
 * Software
-** GTK
-We use GTK4 with gtkmm, the C++ bindings.
-See the documentation: https://developer-old.gnome.org/gtkmm-tutorial/stable/index-info.html.en
-API: https://gnome.pages.gitlab.gnome.org/gtkmm/index.html
-
 ** DONE Draft the GUI
 CLOSED: [2024-02-18 Sun 17:44]
 Reach a point where every main UI screen is present. Individual dialogs will be
@@ -115,7 +109,8 @@ implemented later.
   + Stopwatch in use
   + Save done/in progress/failed
 
-** TODO Draft the Daily entries screen
+** DEAD Draft the Daily entries screen
+CLOSED: [2024-07-21 Sun 18:51]
 ADDED: [2024-02-28 Wed]
 Implement the gtk objects for presenting the daily entries.
 It is roughly a VBox containing:
@@ -140,7 +135,8 @@ See
 https://stackoverflow.com/questions/76711050/how-to-create-a-treeview-like-ui-using-columnview-in-gtk4
 https://stackoverflow.com/questions/73145916/how-do-i-use-gtk4s-columnview-to-replace-treeview-in-python
 
-** TODO Dealing with stopwatch state
+** DEAD Dealing with stopwatch state
+CLOSED: [2024-07-21 Sun 18:51]
 How do we deal with the stopwatch object?
 It needs to live in a given tab, but its state is also displayed in the status
 bar. How do we share a view-only object from the tab to the status bar?
@@ -149,7 +145,11 @@ bar. How do we share a view-only object from the tab to the status bar?
   shared_pointer to the status bar?
 
 ** Fixes
-+ The About dialog starts with some text highlighted by default.
-  Make it start with normal text.
+*** TODO Source tree organization.
++ Organize the source tree into:
+  + GUI
+  + Logger
+  + DB
+  + Configuration manager
 + Implement an organized source tree: src/gui/, and make the tree reflect
   the GUI class hierarchy.
