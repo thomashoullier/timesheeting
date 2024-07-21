@@ -36,6 +36,16 @@ char ProjectTaskTable::input_loop() {
     case 'i':
       cur_col = &task_col;
       break;
+    case 'a': // Add project.
+      {
+        auto project_name = project_col.input_new_item();
+        // Sanitize the project_name
+        // TODO: add only if not empty.
+        db->add_project(project_name);
+        // Update the project column.
+        auto project_items = db->query_projects();
+        project_col.recreate_form(project_items);
+    } break;
     default:
       return ch;
     }

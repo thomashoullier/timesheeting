@@ -2,6 +2,7 @@
 #define COLUMN_H
 
 #include "data_objects.h"
+#include <curses.h>
 #include <form.h>
 #include <type_traits>
 #include <vector>
@@ -10,10 +11,14 @@ enum ColPos { left = 0, middle = 1, right = 2 };
 
 class ColumnBase {
 protected:
+  ColPos pos;                     // Position of the column on the screen.
+  static constexpr int WIDTH{26}; // Colum window width.
+  static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
   WINDOW *win;
   FORM *form;
   // field ids in 1-1 correspondance with curses fields indexing
   std::vector<Id> field_ids;
+  std::vector<FIELD *> fields;
 
 public:
   void next_field() { form_driver(form, REQ_NEXT_FIELD); }
@@ -30,7 +35,39 @@ public:
 
   char get_input () { return wgetch(win); }
 
-  void refresh() { wrefresh(win); }
+  // Ask the user to add a new field item and return it.
+  // Returns an empty string if the user quits.
+  std::string input_new_item () {
+    constexpr int INPUT_ROW = PAGE_LINES - 2;
+    std::string input_buffer {};
+    echo();
+    wmove(win, INPUT_ROW, 0);
+    bool user_wants_to_input = true;
+    while (user_wants_to_input) { // Item input loop.
+      auto ch = wgetch(win);
+      switch (ch) {
+      case '\n': // User validates the input.
+        user_wants_to_input = false;
+        break;
+      case 27: // User wants to cancel.
+        input_buffer.clear();
+        user_wants_to_input = false;
+        break;
+      default: // Gets added to item.
+        input_buffer.push_back(ch);
+        break;
+      }
+    }
+    noecho();
+    // Cleanup the input row.
+    wmove(win, INPUT_ROW, 0);
+    wclrtoeol(win);
+    return input_buffer;
+  }
+
+  void refresh() {
+    wrefresh(win);
+  }
 };
 
 template <typename T>
@@ -46,17 +83,12 @@ public:
 
   ~Column() { destroy_form(); }
 
-  void recreate_form(const std::vector<T> &field_items) {
+  void recreate_form (const std::vector<T> &field_items) {
     destroy_form();
     init_form(field_items);
   }
 
 private:
-  ColPos pos; // Position of the column on the screen.
-  static constexpr int WIDTH{26};              // Colum window width.
-  static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
-  std::vector<FIELD *> fields;
-
   void init_form_window(ColPos pos) {
     win = newwin(PAGE_LINES + 1, WIDTH, 1, 1 + pos * WIDTH);
     set_form_win(form, win);
