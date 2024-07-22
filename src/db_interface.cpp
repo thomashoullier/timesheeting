@@ -1,5 +1,5 @@
 #include "db_interface.h"
-#include <iostream> // TODO: temp
+#include <string>
 
 DB_Interface::DB_Interface (std::string db_file) {
   auto rc = sqlite3_open(db_file.c_str(), &db);
@@ -18,12 +18,12 @@ std::vector<Project> DB_Interface::query_projects() {
     throw std::runtime_error("Could not prepare SQL statement.");
   }
   // Get and parse each of the results in the rows.
-  std::vector<Project> projects {};
+  std::vector<Project> projects{};
   while (sqlite3_step(stmt) == SQLITE_ROW) {
-    Project proj {};
+    Project proj{};
     proj.id = sqlite3_column_int64(stmt, 0);
     auto name = sqlite3_column_text(stmt, 1);
-    proj.name = reinterpret_cast<const char*>(name);
+    proj.name = reinterpret_cast<const char *>(name);
     projects.push_back(proj);
   }
   sqlite3_finalize(stmt);
@@ -31,11 +31,25 @@ std::vector<Project> DB_Interface::query_projects() {
 }
 
 std::vector<Task> DB_Interface::query_tasks(Id project_id) {
-  std::string id = std::to_string(project_id);
-  Task t1 = {1, "Kick-off meeting " + id};
-  Task t2 = {2, "Writing specification"};
-  Task t3 = {3, "Progress meeting"};
-  return {t1, t2, t3};
+  std::string select_tasks =
+    "SELECT id, name "
+    "FROM tasks "
+    "WHERE project_id = " + std::to_string(project_id) + ";";
+  sqlite3_stmt *stmt;
+  auto rc = sqlite3_prepare_v2(db, select_tasks.c_str(), -1, &stmt, NULL);
+  if (rc != SQLITE_OK) {
+    throw std::runtime_error("Could not prepare SQL statement.");
+  }
+  std::vector<Task> tasks{};
+  while (sqlite3_step(stmt) == SQLITE_ROW) {
+    Task task{};
+    task.id = sqlite3_column_int64(stmt, 0);
+    auto name = sqlite3_column_text(stmt, 1);
+    task.name = reinterpret_cast<const char *>(name);
+    tasks.push_back(task);
+  }
+  sqlite3_finalize(stmt);
+  return tasks;
 }
 
 void DB_Interface::create_projects_table() {
@@ -51,6 +65,21 @@ void DB_Interface::create_projects_table() {
   }
 }
 
+void DB_Interface::create_tasks_table() {
+  std::string create_tasks_table_st =
+      "CREATE TABLE tasks ("
+      "id INTEGER PRIMARY KEY, "
+      "name TEXT NOT NULL, "
+      "project_id INTEGER, "
+      "FOREIGN KEY (project_id) REFERENCES projects (id)"
+      ");";
+  auto rc =
+      sqlite3_exec(db, create_tasks_table_st.c_str(), NULL, NULL, NULL);
+  if (rc != SQLITE_OK) {
+    throw std::runtime_error("Error creating tasks table.");
+  }
+}
+
 void DB_Interface::add_project(std::string project_name) {
   std::string add_project_st = "INSERT INTO projects (name)"
                                "VALUES ('" +
@@ -61,15 +90,27 @@ void DB_Interface::add_project(std::string project_name) {
   }
 }
 
+void DB_Interface::add_task(Id project_id, std::string task_name) {
+  std::string add_task_st = "INSERT INTO tasks (project_id, name) "
+                            "VALUES ('" +
+                            std::to_string(project_id) +
+                            "', "
+                            "'" +
+                            task_name + "');";
+  auto rc = sqlite3_exec(db, add_task_st.c_str(), NULL, NULL, NULL);
+  if (rc != SQLITE_OK) {
+    throw std::runtime_error("Error adding task row.");
+  }
+}
+
 void DB_Interface::edit_project_name(Id project_id,
                                      std::string new_project_name) {
-  std::string alter_project_name =
-    "UPDATE projects "
-    "SET name = '" + new_project_name + "' " +
-    "WHERE id = " + std::to_string(project_id) + ";";
-  std::cerr << alter_project_name << std::endl;
-  auto rc =
-      sqlite3_exec(db, alter_project_name.c_str(), NULL, NULL, NULL);
+  std::string alter_project_name = "UPDATE projects "
+                                   "SET name = '" +
+                                   new_project_name + "' " +
+                                   "WHERE id = " + std::to_string(project_id) +
+                                   ";";
+  auto rc = sqlite3_exec(db, alter_project_name.c_str(), NULL, NULL, NULL);
   if (rc != SQLITE_OK) {
     throw std::runtime_error("Error renaming project.");
   }

@@ -19,7 +19,9 @@ public:
   std::vector<Task> query_tasks (Id project_id);
 
   void create_projects_table();
+  void create_tasks_table();
   void add_project(std::string project_name);
+  void add_task(Id project_id, std::string task_name);
   void edit_project_name(Id project_id, std::string new_project_name);
 
 private:
