@@ -8,7 +8,18 @@
 /** @brief Table for defining projects and tasks. */
 class ProjectTaskTable {
 public:
-  ProjectTaskTable(std::shared_ptr<DB_Interface> _db);
+  template <typename T,
+            typename = std::enable_if_t<
+              std::is_base_of<DB_Interface, T>::value>>
+  explicit ProjectTaskTable(std::shared_ptr<T> _db)
+    : db(std::static_pointer_cast<DB_Interface>(_db)),
+      project_col({}, ColPos::left),
+      task_col({}, ColPos::middle) {
+    auto project_items = db->query_projects();
+    project_col.recreate_form(project_items);
+    auto task_items = db->query_tasks(0);
+    task_col.recreate_form(task_items);
+  }
   /** Query an user input, treat it or return it. */
   char input_loop ();
 

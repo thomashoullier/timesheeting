@@ -1,16 +1,15 @@
-#include "db_interface.h"
-#include <string>
+#include "db_sqlite.h"
 
-DB_Interface::DB_Interface (std::string db_file) {
+DB_SQLite::DB_SQLite (std::string db_file) {
   auto rc = sqlite3_open(db_file.c_str(), &db);
   if (rc != SQLITE_OK) {
     throw std::runtime_error("Cannot open database file.");
   }
 }
 
-DB_Interface::~DB_Interface() { sqlite3_close(db); }
+DB_SQLite::~DB_SQLite() { sqlite3_close(db); }
 
-std::vector<Project> DB_Interface::query_projects() {
+std::vector<Project> DB_SQLite::query_projects() {
   std::string select_projects = "SELECT id, name FROM projects;";
   sqlite3_stmt *stmt;
   auto rc = sqlite3_prepare_v2(db, select_projects.c_str(), -1, &stmt, NULL);
@@ -30,7 +29,7 @@ std::vector<Project> DB_Interface::query_projects() {
   return projects;
 }
 
-std::vector<Task> DB_Interface::query_tasks(Id project_id) {
+std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
   std::string select_tasks =
     "SELECT id, name "
     "FROM tasks "
@@ -52,7 +51,7 @@ std::vector<Task> DB_Interface::query_tasks(Id project_id) {
   return tasks;
 }
 
-void DB_Interface::create_projects_table() {
+void DB_SQLite::create_projects_table() {
   std::string create_projects_table_st =
     "CREATE TABLE projects ("
     "id INTEGER PRIMARY KEY,"
@@ -65,7 +64,7 @@ void DB_Interface::create_projects_table() {
   }
 }
 
-void DB_Interface::create_tasks_table() {
+void DB_SQLite::create_tasks_table() {
   std::string create_tasks_table_st =
       "CREATE TABLE tasks ("
       "id INTEGER PRIMARY KEY, "
@@ -80,7 +79,7 @@ void DB_Interface::create_tasks_table() {
   }
 }
 
-void DB_Interface::add_project(std::string project_name) {
+void DB_SQLite::add_project(std::string project_name) {
   std::string add_project_st = "INSERT INTO projects (name)"
                                "VALUES ('" +
                                project_name + "');";
@@ -90,7 +89,7 @@ void DB_Interface::add_project(std::string project_name) {
   }
 }
 
-void DB_Interface::add_task(Id project_id, std::string task_name) {
+void DB_SQLite::add_task(Id project_id, std::string task_name) {
   std::string add_task_st = "INSERT INTO tasks (project_id, name) "
                             "VALUES ('" +
                             std::to_string(project_id) +
@@ -103,7 +102,7 @@ void DB_Interface::add_task(Id project_id, std::string task_name) {
   }
 }
 
-void DB_Interface::edit_project_name(Id project_id,
+void DB_SQLite::edit_project_name(Id project_id,
                                      std::string new_project_name) {
   std::string alter_project_name = "UPDATE projects "
                                    "SET name = '" +

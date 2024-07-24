@@ -3,29 +3,20 @@
 
 #include <string>
 #include <vector>
-#include <stdexcept>
-#include "sqlite3.h"
 #include "data_objects.h"
 
-// TODO: * Add a backend class for generic sql operation wrapping.
-//       * Transform this class into the timesheeting-specific operations
-//       we need.
 class DB_Interface {
 public:
-  DB_Interface (std::string db_file);
-  ~DB_Interface ();
+  virtual std::vector<Project> query_projects() = 0;
+  virtual std::vector<Task> query_tasks (Id project_id) = 0;
 
-  std::vector<Project> query_projects();
-  std::vector<Task> query_tasks (Id project_id);
-
-  void create_projects_table();
-  void create_tasks_table();
-  void add_project(std::string project_name);
-  void add_task(Id project_id, std::string task_name);
-  void edit_project_name(Id project_id, std::string new_project_name);
-
-private:
-  sqlite3 *db;
+  // TODO: Remove the calls to these methods in our program.
+  // void create_projects_table(); // TODO: this is not part of the interface.
+  // void create_tasks_table();    // TODO: this is not part of the interface.
+  virtual void add_project(std::string project_name) = 0;
+  virtual void add_task(Id project_id, std::string task_name) = 0;
+  virtual void edit_project_name(Id project_id,
+                                 std::string new_project_name) = 0;
 };
 
 #endif // DB_INTERFACE_H

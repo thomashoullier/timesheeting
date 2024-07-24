@@ -1,4 +1,4 @@
-#include "db_interface.h"
+#include "db_sqlite.h"
 #include "logger.h"
 #include "project_task_table.h"
 #include <form.h>
@@ -13,7 +13,8 @@ int main() {
   log.log("Hello world.");
 
   /* SQLite */
-  auto db = std::make_shared<DB_Interface>("timesheeting.db");
+  auto db = std::make_shared<DB_SQLite>("timesheeting.db");
+  // TODO: not part of the DB interface.
   db->create_projects_table();
   db->create_tasks_table();
   db->add_project("JWST");
