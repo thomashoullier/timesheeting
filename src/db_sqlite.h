@@ -2,13 +2,13 @@
 #define DB_SQLITE_H
 
 #include "db_interface.h"
-#include "sqlite3.h"
-#include <stdexcept>
+#include "db_sqlite_handle.h"
+#include <algorithm>
+#include <iterator>
 
 class DB_SQLite : public DB_Interface {
 public:
-  DB_SQLite (std::string db_file);
-  ~DB_SQLite ();
+  DB_SQLite (const std::filesystem::path &db_file);
 
   std::vector<Project> query_projects() override;
   std::vector<Task> query_tasks (Id project_id) override;
@@ -18,10 +18,22 @@ public:
   void edit_project_name(Id project_id, std::string new_project_name) override;
 
 private:
-  sqlite3 *db;
+  DB_SQLite_Handle sqlite_db;
 
   void create_projects_table();
   void create_tasks_table();
+
+  /** Convert a NameRows object to a GenericItem. */
+  template <typename T,
+            typename = std::enable_if_t<std::is_base_of<GenericItem, T>::value>>
+  std::vector<T> convert_namerows (const NameRows &rows) {
+    std::vector<T> items;
+    items.reserve(rows.size());
+    std::transform(rows.begin(), rows.end(),
+                   std::back_inserter(items),
+                   [](const auto &pair) {return T{pair.first, pair.second}; });
+    return items;
+  }
 };
 
 #endif // DB_SQLITE_H
