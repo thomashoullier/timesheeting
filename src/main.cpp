@@ -14,9 +14,6 @@ int main() {
 
   /* SQLite */
   auto db = std::make_shared<DB_SQLite>("timesheeting.db");
-  // TODO: not part of the DB interface.
-  db->create_projects_table();
-  db->create_tasks_table();
   db->add_project("JWST");
   auto project_id = db->query_projects().at(0).id;
   db->add_task(project_id, "Kick-off");

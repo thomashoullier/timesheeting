@@ -5,6 +5,8 @@ DB_SQLite::DB_SQLite (std::string db_file) {
   if (rc != SQLITE_OK) {
     throw std::runtime_error("Cannot open database file.");
   }
+  this->create_projects_table();
+  this->create_tasks_table();
 }
 
 DB_SQLite::~DB_SQLite() { sqlite3_close(db); }
@@ -53,7 +55,7 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
 
 void DB_SQLite::create_projects_table() {
   std::string create_projects_table_st =
-    "CREATE TABLE projects ("
+    "CREATE TABLE  IF NOT EXISTS projects ("
     "id INTEGER PRIMARY KEY,"
     "name TEXT NOT NULL"
     ");";
@@ -66,7 +68,7 @@ void DB_SQLite::create_projects_table() {
 
 void DB_SQLite::create_tasks_table() {
   std::string create_tasks_table_st =
-      "CREATE TABLE tasks ("
+      "CREATE TABLE IF NOT EXISTS tasks ("
       "id INTEGER PRIMARY KEY, "
       "name TEXT NOT NULL, "
       "project_id INTEGER, "
