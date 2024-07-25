@@ -1,7 +1,7 @@
 #ifndef DB_SQLITE_H
 #define DB_SQLITE_H
 
-#include "db_interface.h"
+#include "../db_interface.h"
 #include "db_sqlite_handle.h"
 #include <algorithm>
 #include <iterator>

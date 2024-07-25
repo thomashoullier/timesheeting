@@ -1,4 +1,4 @@
-#include "db_sqlite.h"
+#include "db/db_sqlite.h"
 #include "logger.h"
 #include "project_task_table.h"
 #include <form.h>
@@ -16,7 +16,7 @@ int main() {
   /* SQLite */
   auto db = std::make_shared<DB_SQLite>("timesheeting.db");
   db->add_project("JWST");
-  auto project_id = db->query_projects().at(0).id;
+  auto project_id = db->query_projects().back().id;
   db->add_task(project_id, "Kick-off");
   db->add_task(project_id, "Validation campaign");
   db->add_task(project_id, "Closure meeting");
