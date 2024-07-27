@@ -1,46 +1,46 @@
-#ifndef COLUMN_H
-#define COLUMN_H
+#ifndef COLUMN_NCURSES_H
+#define COLUMN_NCURSES_H
 
-#include "data_objects.h"
+#include "column_interface.h"
 #include <curses.h>
 #include <form.h>
-#include <type_traits>
-#include <vector>
-#include <algorithm>
 
-enum ColPos { left = 0, middle = 1, right = 2 };
-
-class ColumnBase {
-protected:
-  ColPos pos;                     // Position of the column on the screen.
-  static constexpr int WIDTH{26}; // Colum window width.
-  static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
-  WINDOW *win;
-  FORM *form;
-  // field ids in 1-1 correspondance with curses fields indexing
-  std::vector<Id> field_ids;
-  std::vector<FIELD *> fields;
-
+template <typename T>
+class ColumnNcurses : public ColumnInterface<T> {
 public:
-  void next_field() { form_driver(form, REQ_NEXT_FIELD); }
+  ColumnNcurses (const std::vector<T> &items, ColPos _pos) {
+    this->pos = _pos;
+    init_form(items);
+  }
 
-  void prev_field() { form_driver(form, REQ_PREV_FIELD); }
+  ~ColumnNcurses () {
+    destroy_form();
+  }
 
-  int get_field_index () { return field_index(current_field(form)); }
+  void refresh () override {
+    wrefresh(win);
+  }
 
-  // Get the Id for the currently selected field.
-  Id get_field_id () {
+  void set_items(const std::vector<T> &items) override {
+    destroy_form();
+    init_form(items);
+  }
+
+  Id get_current_id() override {
     auto field_index = get_field_index();
     return field_ids.at(field_index);
   }
 
-  char get_input () { return wgetch(win); }
+  void select_next_item() override { form_driver(form, REQ_NEXT_FIELD); }
 
-  // Ask the user to add a new field item and return it.
-  // Returns an empty string if the user quits.
-  std::string input_new_item () {
+  void select_prev_item() override { form_driver(form, REQ_PREV_FIELD); }
+
+  char query_input() override { return wgetch(win); }
+
+  std::string query_new_item_name() override {
+    // TODO: extract/factorize into a row-input manager
     constexpr int INPUT_ROW = PAGE_LINES - 2;
-    std::string input_buffer {};
+    std::string input_buffer{};
     wmove(win, INPUT_ROW, 0);
     bool user_wants_to_input = true;
     while (user_wants_to_input) { // Item input loop.
@@ -75,9 +75,8 @@ public:
     return input_buffer;
   }
 
-  // Edit the current item, return the new item string.
-  // Return empty string if user cancels.
-  std::string edit_current_item() {
+  std::string query_current_item_rename() override {
+    // TODO: Factorize
     std::string input_buffer {};
     // Move cursor to beginning of line.
     int y, x;
@@ -120,47 +119,22 @@ public:
     return input_buffer;
   }
 
-  // Sanitize user input
-  std::string sanitize_input (std::string input) {
-    auto s = input;
-    // left trim
-    s.erase(s.begin(),
-               std::find_if(s.begin(), s.end(),
-                            [](unsigned char ch) {
-                              return !std::isspace(ch);}));
-    // right trim
-    s.erase(std::find_if(s.rbegin(), s.rend(),
-                         [](unsigned char ch) {
-                           return !std::isspace(ch);}).base(), s.end());
-    return s;
-  }
-
-  void refresh() {
-    wrefresh(win);
-  }
-};
-
-template <typename T>
-class Column : public ColumnBase {
-  static_assert(std::is_base_of<GenericItem, T>::value,
-                "Not derived from GenericItem.");
-
-public:
-  Column(const std::vector<T> &field_items, ColPos _pos) {
-    pos = _pos;
-    init_form(field_items);
-  }
-
-  ~Column() { destroy_form(); }
-
-  void recreate_form (const std::vector<T> &field_items) {
-    destroy_form();
-    init_form(field_items);
-  }
-
 private:
-  void init_form_window(ColPos pos) {
-    win = newwin(PAGE_LINES + 1, WIDTH, 1, 1 + pos * WIDTH);
+  static constexpr int WIDTH{26};              // Column window width
+  static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
+  WINDOW *win;
+  FORM *form;
+  // field ids in 1-1 correspondance with curses fields indexing
+  std::vector<Id> field_ids;
+  std::vector<FIELD *> fields;
+
+  /** Get the vector index of the currently selected field. */
+  int get_field_index() {
+    return field_index(current_field(form));
+  }
+
+  void init_form_window() {
+    win = newwin(PAGE_LINES + 1, WIDTH, 1, 1 + this->pos * WIDTH);
     set_form_win(form, win);
     set_form_sub(form, derwin(win, PAGE_LINES, WIDTH - 2, 1, 1));
     box(win, 0, 0);
@@ -194,11 +168,11 @@ private:
 
   void init_form(const std::vector<T> &field_items) {
     init_fields(field_items);
-    init_form_window(pos);
+    init_form_window();
     post_form(form);
     set_current_field(form, fields.at(0));
     refresh();
   }
 };
 
-#endif // COLUMN_H
+#endif // COLUMN_NCURSES_H

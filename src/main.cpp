@@ -1,6 +1,7 @@
 #include "db/db_sqlite.h"
 #include "logger.h"
 #include "project_task_table.h"
+#include "column_ncurses.h"
 #include <form.h>
 #include <iostream>
 #include <memory>
@@ -27,7 +28,8 @@ int main() {
   cbreak();
   noecho();
 
-  ProjectTaskTable projects_table (db);
+  ProjectTaskTable<DB_SQLite, ColumnNcurses<Project>, ColumnNcurses<Task>>
+    projects_table(db);
   projects_table.input_loop();
 
   endwin();
