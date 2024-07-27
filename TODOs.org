@@ -153,3 +153,7 @@ bar. How do we share a view-only object from the tab to the status bar?
   + Configuration manager
 + Implement an organized source tree: src/gui/, and make the tree reflect
   the GUI class hierarchy.
+
+*** TODO Manage more projects and tasks than one page
+ADDED: [2024-07-27 Sat]
+Currently the window goes blank if we add too many projects.

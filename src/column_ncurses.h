@@ -43,7 +43,7 @@ public:
   }
 
   std::string query_current_item_rename() override {
-    auto y = get_current_row();
+    auto y = getcury(win);
     return query_row_input(y);
   }
 
@@ -120,13 +120,17 @@ private:
         user_wants_to_input = false;
         break;
       case 127: // Erase last character
-        // TODO: Bug when erasing on a second line.
         if (!input_buffer.empty()) {
           input_buffer.pop_back();
           // Remove character from screen
           int y, x;
           getyx(win, y, x);
-          wmove(win, y, x - 1);
+          auto xmax = getmaxx(win);
+          if (x == 0) { // jump to the end of the previous line.
+            wmove(win, y-1, xmax-1);
+          } else {
+            wmove(win, y, x - 1);
+          }
           wdelch(win);
         }
         break;
@@ -141,15 +145,6 @@ private:
     wclrtoeol(win);
     return input_buffer;
   }
-
-  /** Get the current row position in the window. */
-  int get_current_row () {
-    int y;
-    [[maybe_unused]] int x;
-    getyx(win, y, x);
-    return y;
-  }
-
 };
 
 #endif // COLUMN_NCURSES_H
