@@ -38,85 +38,13 @@ public:
   char query_input() override { return wgetch(win); }
 
   std::string query_new_item_name() override {
-    // TODO: extract/factorize into a row-input manager
     constexpr int INPUT_ROW = PAGE_LINES - 2;
-    std::string input_buffer{};
-    wmove(win, INPUT_ROW, 0);
-    bool user_wants_to_input = true;
-    while (user_wants_to_input) { // Item input loop.
-      auto ch = wgetch(win);
-      switch (ch) {
-      case '\n': // User validates the input.
-        user_wants_to_input = false;
-        break;
-      case 27: // User wants to cancel.
-        input_buffer.clear();
-        user_wants_to_input = false;
-        break;
-      case 127: // Erase last character
-        if (!input_buffer.empty()) {
-          input_buffer.pop_back();
-          // Remove character from screen
-          int y, x;
-          getyx(win, y, x);
-          wmove(win, y, x - 1);
-          wdelch(win);
-        }
-        break;
-      default: // Gets added to item.
-        input_buffer.push_back(ch);
-        waddch(win, ch);
-        break;
-      }
-    }
-    // Cleanup the input row.
-    wmove(win, INPUT_ROW, 0);
-    wclrtoeol(win);
-    return input_buffer;
+    return query_row_input(INPUT_ROW);
   }
 
   std::string query_current_item_rename() override {
-    // TODO: Factorize
-    std::string input_buffer {};
-    // Move cursor to beginning of line.
-    int y, x;
-    getyx(win, y, x);
-    wmove(win, y, x - 1);
-    int INPUT_ROW {y};
-    wmove(win, INPUT_ROW, 0);
-    // Clear the display line.
-    wclrtoeol(win);
-    bool user_wants_to_input = true;
-    while (user_wants_to_input) { // Item input loop.
-      auto ch = wgetch(win);
-      switch (ch) {
-      case '\n': // User validates the input.
-        user_wants_to_input = false;
-        break;
-      case 27: // User wants to cancel.
-        input_buffer.clear();
-        user_wants_to_input = false;
-        break;
-      case 127: // Erase last character
-        if (!input_buffer.empty()) {
-          input_buffer.pop_back();
-          // Remove character from screen
-          int y, x;
-          getyx(win, y, x);
-          wmove(win, y, x - 1);
-          wdelch(win);
-        }
-        break;
-      default: // Gets added to item.
-        input_buffer.push_back(ch);
-        waddch(win, ch);
-        break;
-      }
-    }
-    // Cleanup the input row.
-    wmove(win, INPUT_ROW, 0);
-    wclrtoeol(win);
-    return input_buffer;
+    auto y = get_current_row();
+    return query_row_input(y);
   }
 
 private:
@@ -173,6 +101,55 @@ private:
     set_current_field(form, fields.at(0));
     refresh();
   }
+
+  std::string query_row_input (int input_row) {
+    std::string input_buffer {};
+    // Move cursor to beginning of line.
+    wmove(win, input_row, 0);
+    // Clear the display line.
+    wclrtoeol(win);
+    bool user_wants_to_input = true;
+    while (user_wants_to_input) { // Item input loop.
+      auto ch = wgetch(win);
+      switch (ch) {
+      case '\n': // User validates the input.
+        user_wants_to_input = false;
+        break;
+      case 27: // User wants to cancel.
+        input_buffer.clear();
+        user_wants_to_input = false;
+        break;
+      case 127: // Erase last character
+        // TODO: Bug when erasing on a second line.
+        if (!input_buffer.empty()) {
+          input_buffer.pop_back();
+          // Remove character from screen
+          int y, x;
+          getyx(win, y, x);
+          wmove(win, y, x - 1);
+          wdelch(win);
+        }
+        break;
+      default: // Gets added to item.
+        input_buffer.push_back(ch);
+        waddch(win, ch);
+        break;
+      }
+    }
+    // Cleanup the input row.
+    wmove(win, input_row, 0);
+    wclrtoeol(win);
+    return input_buffer;
+  }
+
+  /** Get the current row position in the window. */
+  int get_current_row () {
+    int y;
+    [[maybe_unused]] int x;
+    getyx(win, y, x);
+    return y;
+  }
+
 };
 
 #endif // COLUMN_NCURSES_H
