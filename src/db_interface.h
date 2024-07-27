@@ -7,6 +7,7 @@
 
 class DB_Interface {
 public:
+  virtual ~DB_Interface() = default;
   virtual std::vector<Project> query_projects() = 0;
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
 

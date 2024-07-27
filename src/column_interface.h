@@ -11,6 +11,7 @@ enum ColPos { left = 0, middle = 1, right = 2 };
     depend on the item type. */
 class ColumnInterfaceBase {
 public:
+  virtual ~ColumnInterfaceBase () = default;
   /** Get the Id for the currently selected item. */
   virtual Id get_current_id() = 0;
   /** Select the next item. */
@@ -37,6 +38,7 @@ template <typename T,
           typename = std::enable_if_t<std::is_base_of<GenericItem, T>::value>>
 class ColumnInterface : public ColumnInterfaceBase {
 public:
+  virtual ~ColumnInterface () = default;
   // TODO: no virtual constructor, how do we constrain the constructor?
   // /** Create a column at the given position. */
   // ColumnInterface(const std::vector<T> &items, ColPos pos) = 0;
