@@ -154,6 +154,23 @@ bar. How do we share a view-only object from the tab to the status bar?
 + Implement an organized source tree: src/gui/, and make the tree reflect
   the GUI class hierarchy.
 
-*** TODO Manage more projects and tasks than one page
+*** DONE Manage more projects and tasks than one page
+CLOSED: [2024-07-28 Sun 10:35]
 ADDED: [2024-07-27 Sat]
 Currently the window goes blank if we add too many projects.
+OK, we implemented this using menu, and ~set_menu_format~.
+** Features
+*** Rename tasks
+*** Add tasks
+*** Add a status bar
+The status bar should display the name of the current project or task
+with more characters.
+It will be used to ask for confirmation for deletions, and display
+error messages.
+*** Make project and task names UNIQUE
+Do not do anything to the DB in case it is rejected.
+Display an error message in the status bar.
+*** Delete tasks
+Ask confirmation in the status bar.
+*** Delete projects
+Also delete all tasks.

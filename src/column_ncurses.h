@@ -10,11 +10,11 @@ class ColumnNcurses : public ColumnInterface<T> {
 public:
   ColumnNcurses (const std::vector<T> &items, ColPos _pos) {
     this->pos = _pos;
-    init_form(items);
+    init_menu(items);
   }
 
   ~ColumnNcurses () {
-    destroy_form();
+    destroy_menu();
   }
 
   void refresh () override {
@@ -22,18 +22,18 @@ public:
   }
 
   void set_items(const std::vector<T> &items) override {
-    destroy_form();
-    init_form(items);
+    destroy_menu();
+    init_menu(items);
   }
 
   Id get_current_id() override {
-    auto field_index = get_field_index();
-    return held_items.at(field_index).id;
+    auto menu_index = get_menu_index();
+    return held_items.at(menu_index).id;
   }
 
-  void select_next_item() override { menu_driver(form, REQ_NEXT_ITEM); }
+  void select_next_item() override { menu_driver(menu, REQ_NEXT_ITEM); }
 
-  void select_prev_item() override { menu_driver(form, REQ_PREV_ITEM); }
+  void select_prev_item() override { menu_driver(menu, REQ_PREV_ITEM); }
 
   char query_input() override { return wgetch(win); }
 
@@ -51,50 +51,49 @@ private:
   static constexpr int WIDTH{26};              // Column window width
   static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
   WINDOW *win;
-  MENU *form;
+  MENU *menu;
   std::vector<T> held_items; // A copy of the held items.
-  std::vector<ITEM *> fields;
+  std::vector<ITEM *> menu_items;
 
-  /** Get the vector index of the currently selected field. */
-  int get_field_index() {
-    return item_index(current_item(form));
+  /** Get the vector index of the currently selected menu item. */
+  int get_menu_index() {
+    return item_index(current_item(menu));
   }
 
-  void init_form_window() {
+  void init_menu_window() {
     win = newwin(PAGE_LINES + 1, WIDTH, 1, 1 + this->pos * WIDTH);
-    set_menu_win(form, win);
-    set_menu_sub(form, derwin(win, PAGE_LINES, WIDTH - 2, 1, 1));
-    set_menu_format(form, PAGE_LINES - 1, 1);
+    set_menu_win(menu, win);
+    set_menu_sub(menu, derwin(win, PAGE_LINES, WIDTH - 2, 1, 1));
+    set_menu_format(menu, PAGE_LINES - 1, 1);
     box(win, 0, 0);
   }
 
-  void destroy_form() {
-    unpost_menu(form);
-    free_menu(form);
+  void destroy_menu() {
+    unpost_menu(menu);
+    free_menu(menu);
     delwin(win);
-    for (auto &f : fields) {
-      free_item(f);
+    for (auto &it : menu_items) {
+      free_item(it);
     }
-    fields.clear();
+    menu_items.clear();
     held_items.clear();
   }
 
-  void init_fields(const std::vector<T> &field_items) {
-    held_items.resize(field_items.size());
-    for (std::size_t i = 0; i < field_items.size(); ++i) {
-      held_items.at(i) = field_items.at(i); // Copy into internal structure.
-      fields.push_back(new_item(held_items.at(i).name.c_str(), NULL));
+  void init_items(const std::vector<T> &items) {
+    held_items.resize(items.size());
+    for (std::size_t i = 0; i < items.size(); ++i) {
+      held_items.at(i) = items.at(i); // Copy into internal structure.
+      menu_items.push_back(new_item(held_items.at(i).name.c_str(), NULL));
     }
-    fields.push_back(NULL);
-    /* Create the form with a pointer into fields. */
-    form = new_menu(fields.data());
+    menu_items.push_back(NULL);
+    menu = new_menu(menu_items.data());
   }
 
-  void init_form(const std::vector<T> &field_items) {
-    init_fields(field_items);
-    init_form_window();
-    post_menu(form);
-    set_current_item(form, fields.at(0));
+  void init_menu(const std::vector<T> &items) {
+    init_items(items);
+    init_menu_window();
+    post_menu(menu);
+    set_current_item(menu, menu_items.at(0));
     refresh();
   }
 
