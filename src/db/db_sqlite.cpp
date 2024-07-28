@@ -65,7 +65,17 @@ void DB_SQLite::edit_project_name(Id project_id,
   std::string alter_project_name_st =
     "UPDATE projects "
     "SET name = '" +
-    new_project_name + "' " +
+    new_project_name + "' "
     "WHERE id = " + std::to_string(project_id) + ";";
   sqlite_db.exec_statement(alter_project_name_st);
+}
+
+void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
+  std::string alter_task_name_st =
+    "UPDATE tasks "
+    "SET name = '" +
+    new_task_name +
+    "' "
+    "WHERE id = " + std::to_string(task_id) + ";";
+  sqlite_db.exec_statement(alter_task_name_st);
 }

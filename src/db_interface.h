@@ -15,6 +15,8 @@ public:
   virtual void add_task(Id project_id, std::string task_name) = 0;
   virtual void edit_project_name(Id project_id,
                                  std::string new_project_name) = 0;
+  virtual void edit_task_name(Id task_id,
+                              std::string new_task_name) = 0;
 };
 
 #endif // DB_INTERFACE_H

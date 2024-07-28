@@ -160,17 +160,21 @@ ADDED: [2024-07-27 Sat]
 Currently the window goes blank if we add too many projects.
 OK, we implemented this using menu, and ~set_menu_format~.
 ** Features
-*** Rename tasks
-*** Add tasks
-*** Add a status bar
+*** DONE Rename tasks
+CLOSED: [2024-07-28 Sun 15:52]
+- <2024-07-28 Sun> Added the db interface for renaming tasks. Made renaming
+  mostly generic in project_task_table.
+
+*** TODO Add tasks
+*** TODO Add a status bar
 The status bar should display the name of the current project or task
 with more characters.
 It will be used to ask for confirmation for deletions, and display
 error messages.
-*** Make project and task names UNIQUE
+*** TODO Make project and task names UNIQUE
 Do not do anything to the DB in case it is rejected.
 Display an error message in the status bar.
-*** Delete tasks
+*** TODO Delete tasks
 Ask confirmation in the status bar.
-*** Delete projects
+*** TODO Delete projects
 Also delete all tasks.

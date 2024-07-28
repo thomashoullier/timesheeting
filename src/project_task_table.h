@@ -29,11 +29,15 @@ public:
       switch (ch) {
       case 'n':
         cur_col->select_next_item();
-        update_task_col(cur_col);
+        if (cur_col == project_col.get()) {
+          update_task_col();
+        }
         break;
       case 'e':
         cur_col->select_prev_item();
-        update_task_col(cur_col);
+        if (cur_col == project_col.get()) {
+          update_task_col();
+        }
         break;
       case 'h':
         cur_col = project_col.get();
@@ -42,34 +46,36 @@ public:
         cur_col = task_col.get();
         break;
       case 'a': // Add project.
-      {
-        auto project_name = project_col->query_new_item_name();
-        auto sanitized_project_name = sanitize_input(project_name);
-        if (!sanitized_project_name.empty()) {
-          db->add_project(sanitized_project_name);
-        }
-        // Update the project column.
-        auto project_items = db->query_projects();
-        project_col->set_items(project_items);
-    } break;
-    case 'r': // Edit project name.
-    {
-      auto id = project_col->get_current_id();
-      auto new_project_name = project_col->query_current_item_rename();
-      auto sanitized_project_name =
-        sanitize_input(new_project_name);
-      if (!sanitized_project_name.empty()) {
-        db->edit_project_name(id, sanitized_project_name);
+        {
+          auto project_name = project_col->query_new_item_name();
+          auto sanitized_project_name = sanitize_input(project_name);
+          if (!sanitized_project_name.empty()) {
+            db->add_project(sanitized_project_name);
+          }
+          // Update the project column.
+          update_project_col();
+        } break;
+      case 'r': // Rename current item.
+        {
+          auto id = cur_col->get_current_id();
+          auto new_item_name = cur_col->query_current_item_rename();
+          auto sanitized_item_name = sanitize_input(new_item_name);
+          if (!sanitized_item_name.empty()) {
+            if (cur_col == project_col.get()) {
+              db->edit_project_name(id, sanitized_item_name);
+              update_project_col();
+            } else if (cur_col == task_col.get()) {
+              db->edit_task_name(id, sanitized_item_name);
+              // Update task column
+              update_task_col();
+            }
+          }
+        } break;
+        // TODO: * Remove project.
+      default:
+        return ch;
       }
-      // Update the project column.
-      auto project_items = db->query_projects();
-      project_col->set_items(project_items);
-    } break;
-    // TODO: * Remove project.
-    default:
-      return ch;
     }
-  }
   }
 
 private:
@@ -77,13 +83,17 @@ private:
   std::unique_ptr<ColumnInterface<Project>> project_col;
   std::unique_ptr<ColumnInterface<Task>> task_col;
 
-  // Update the task column if we are on the project column.
-  void update_task_col(ColumnInterfaceBase *cur_col) {
-    if (cur_col == project_col.get()) {
-      Id cur_project = project_col->get_current_id();
-      auto task_items = db->query_tasks(cur_project);
-      task_col->set_items(task_items);
-    }
+  // Update the task column
+  void update_task_col() {
+    Id cur_project = project_col->get_current_id();
+    auto task_items = db->query_tasks(cur_project);
+    task_col->set_items(task_items);
+  }
+
+  /** Update the project column with data from the DB. */
+  void update_project_col() {
+    auto project_items = db->query_projects();
+    project_col->set_items(project_items);
   }
 
   /** Sanitize the queried user input strings. */
