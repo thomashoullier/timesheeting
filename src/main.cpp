@@ -2,6 +2,7 @@
 #include "logger.h"
 #include "project_task_table.h"
 #include "column_ncurses.h"
+#include "status_bar_ncurses.h"
 #include <iostream>
 #include <memory>
 #include <string>
@@ -20,12 +21,13 @@ int main() {
   db->add_task(project_id, "Kick-off");
   db->add_task(project_id, "Validation campaign");
   db->add_task(project_id, "Closure meeting");
-  auto tasks = db->query_tasks(project_id);
-  log.log(tasks.at(1).name);
   /* ncurses init */
   initscr();
   cbreak();
   noecho();
+  /* Status bar */
+  StatusBarNCurses status_bar;
+  status_bar.print("Hello");
 
   ProjectTaskTable<DB_SQLite, ColumnNcurses<Project>, ColumnNcurses<Task>>
     projects_table(db);

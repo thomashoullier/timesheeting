@@ -2,7 +2,7 @@
 #define COLUMN_NCURSES_H
 
 #include "column_interface.h"
-#include <curses.h>
+#include <ncurses.h>
 #include <menu.h>
 
 template <typename T>
