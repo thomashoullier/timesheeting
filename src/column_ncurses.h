@@ -2,7 +2,6 @@
 #define COLUMN_NCURSES_H
 
 #include "column_interface.h"
-#include <cstring>
 #include <curses.h>
 #include <menu.h>
 
@@ -29,7 +28,7 @@ public:
 
   Id get_current_id() override {
     auto field_index = get_field_index();
-    return field_ids.at(field_index);
+    return held_items.at(field_index).id;
   }
 
   void select_next_item() override { menu_driver(form, REQ_NEXT_ITEM); }
@@ -53,10 +52,7 @@ private:
   static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
   WINDOW *win;
   MENU *form;
-  // field ids in 1-1 correspondance with curses fields indexing
-  // TODO: just copy the full items in a single vector here.
-  std::vector<Id> field_ids;
-  std::vector<char*> field_names;
+  std::vector<T> held_items; // A copy of the held items.
   std::vector<ITEM *> fields;
 
   /** Get the vector index of the currently selected field. */
@@ -79,20 +75,15 @@ private:
     for (auto &f : fields) {
       free_item(f);
     }
-    for (auto &n: field_names) {
-      delete[] n;
-    }
     fields.clear();
-    field_ids.clear();
-    field_names.clear();
+    held_items.clear();
   }
 
   void init_fields(const std::vector<T> &field_items) {
+    held_items.resize(field_items.size());
     for (std::size_t i = 0; i < field_items.size(); ++i) {
-      field_ids.push_back(field_items.at(i).id);
-      field_names.push_back(new char[field_items.at(i).name.size()+1]);
-      strcpy(field_names.at(i), field_items.at(i).name.c_str());
-      fields.push_back(new_item(field_names.at(i), NULL));
+      held_items.at(i) = field_items.at(i); // Copy into internal structure.
+      fields.push_back(new_item(held_items.at(i).name.c_str(), NULL));
     }
     fields.push_back(NULL);
     /* Create the form with a pointer into fields. */
