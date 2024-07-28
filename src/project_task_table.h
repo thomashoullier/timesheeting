@@ -45,15 +45,20 @@ public:
       case 'i':
         cur_col = task_col.get();
         break;
-      case 'a': // Add project.
+      case 'a': // Add an item.
         {
-          auto project_name = project_col->query_new_item_name();
-          auto sanitized_project_name = sanitize_input(project_name);
-          if (!sanitized_project_name.empty()) {
-            db->add_project(sanitized_project_name);
+          auto new_item_name = cur_col->query_new_item_name();
+          auto sanitized_item_name = sanitize_input(new_item_name);
+          if (!sanitized_item_name.empty()) {
+            if (cur_col == project_col.get()) {
+              db->add_project(sanitized_item_name);
+              update_project_col();
+            } else if (cur_col == task_col.get()) {
+              auto project_id = project_col->get_current_id();
+              db->add_task(project_id, sanitized_item_name);
+              update_task_col();
+            }
           }
-          // Update the project column.
-          update_project_col();
         } break;
       case 'r': // Rename current item.
         {

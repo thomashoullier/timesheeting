@@ -165,7 +165,10 @@ CLOSED: [2024-07-28 Sun 15:52]
 - <2024-07-28 Sun> Added the db interface for renaming tasks. Made renaming
   mostly generic in project_task_table.
 
-*** TODO Add tasks
+*** DONE Add tasks
+CLOSED: [2024-07-28 Sun 16:17]
+- [2024-07-28 Sun] Implemented the adding of tasks in project_task_table.
+
 *** TODO Add a status bar
 The status bar should display the name of the current project or task
 with more characters.
