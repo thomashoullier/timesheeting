@@ -2,8 +2,9 @@
 #define COLUMN_NCURSES_H
 
 #include "column_interface.h"
+#include <cstring>
 #include <curses.h>
-#include <form.h>
+#include <menu.h>
 
 template <typename T>
 class ColumnNcurses : public ColumnInterface<T> {
@@ -31,9 +32,9 @@ public:
     return field_ids.at(field_index);
   }
 
-  void select_next_item() override { form_driver(form, REQ_NEXT_FIELD); }
+  void select_next_item() override { menu_driver(form, REQ_NEXT_ITEM); }
 
-  void select_prev_item() override { form_driver(form, REQ_PREV_FIELD); }
+  void select_prev_item() override { menu_driver(form, REQ_PREV_ITEM); }
 
   char query_input() override { return wgetch(win); }
 
@@ -51,54 +52,58 @@ private:
   static constexpr int WIDTH{26};              // Column window width
   static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
   WINDOW *win;
-  FORM *form;
+  MENU *form;
   // field ids in 1-1 correspondance with curses fields indexing
+  // TODO: just copy the full items in a single vector here.
   std::vector<Id> field_ids;
-  std::vector<FIELD *> fields;
+  std::vector<char*> field_names;
+  std::vector<ITEM *> fields;
 
   /** Get the vector index of the currently selected field. */
   int get_field_index() {
-    return field_index(current_field(form));
+    return item_index(current_item(form));
   }
 
   void init_form_window() {
     win = newwin(PAGE_LINES + 1, WIDTH, 1, 1 + this->pos * WIDTH);
-    set_form_win(form, win);
-    set_form_sub(form, derwin(win, PAGE_LINES, WIDTH - 2, 1, 1));
+    set_menu_win(form, win);
+    set_menu_sub(form, derwin(win, PAGE_LINES, WIDTH - 2, 1, 1));
+    set_menu_format(form, PAGE_LINES - 1, 1);
     box(win, 0, 0);
   }
 
   void destroy_form() {
-    unpost_form(form);
-    free_form(form);
-    for (auto f : fields) {
-      free_field(f);
+    unpost_menu(form);
+    free_menu(form);
+    delwin(win);
+    for (auto &f : fields) {
+      free_item(f);
+    }
+    for (auto &n: field_names) {
+      delete[] n;
     }
     fields.clear();
     field_ids.clear();
+    field_names.clear();
   }
 
   void init_fields(const std::vector<T> &field_items) {
-    const auto height{1};
-    const auto leftcol{1};
-
     for (std::size_t i = 0; i < field_items.size(); ++i) {
-      fields.push_back(new_field(height, WIDTH - 3, i, leftcol, 0, 0));
-      // Name
-      set_field_buffer(fields.back(), 0, field_items.at(i).name.c_str());
-      // Id
       field_ids.push_back(field_items.at(i).id);
+      field_names.push_back(new char[field_items.at(i).name.size()+1]);
+      strcpy(field_names.at(i), field_items.at(i).name.c_str());
+      fields.push_back(new_item(field_names.at(i), NULL));
     }
     fields.push_back(NULL);
     /* Create the form with a pointer into fields. */
-    form = new_form(fields.data());
+    form = new_menu(fields.data());
   }
 
   void init_form(const std::vector<T> &field_items) {
     init_fields(field_items);
     init_form_window();
-    post_form(form);
-    set_current_field(form, fields.at(0));
+    post_menu(form);
+    set_current_item(form, fields.at(0));
     refresh();
   }
 
