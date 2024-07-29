@@ -14,7 +14,8 @@ StatusBarNCurses::~StatusBarNCurses() {
   delwin(win);
 }
 void StatusBarNCurses::print(const std::string &msg) {
-  wclear(win);
+  wmove(win, 0, 0);
+  wclrtoeol(win);
   wprintw(win, msg.c_str());
   wrefresh(win);
 }

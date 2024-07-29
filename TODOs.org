@@ -169,15 +169,19 @@ CLOSED: [2024-07-28 Sun 15:52]
 CLOSED: [2024-07-28 Sun 16:17]
 - [2024-07-28 Sun] Implemented the adding of tasks in project_task_table.
 
-*** TODO Add a status bar
+*** DONE Add a status bar
+CLOSED: [2024-07-29 Mon 22:34]
 The status bar should display the name of the current project or task
 with more characters.
 It will be used to ask for confirmation for deletions, and display
 error messages.
+
 *** TODO Make project and task names UNIQUE
 Do not do anything to the DB in case it is rejected.
 Display an error message in the status bar.
+
 *** TODO Delete tasks
 Ask confirmation in the status bar.
+
 *** TODO Delete projects
 Also delete all tasks.

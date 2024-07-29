@@ -14,6 +14,8 @@ public:
   virtual ~ColumnInterfaceBase () = default;
   /** Get the Id for the currently selected item. */
   virtual Id get_current_id() = 0;
+  /** Get the name for the currently selected item. */
+  virtual std::string get_current_name() = 0;
   /** Select the next item. */
   virtual void select_next_item() = 0;
   /** Select the previous item. */

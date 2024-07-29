@@ -3,19 +3,24 @@
 
 #include "column_interface.h"
 #include "db_interface.h"
+#include "status_bar_interface.h"
 #include <memory>
 #include <algorithm>
 
 /** @brief Table for defining projects and tasks. */
-template <typename T_DB, typename T_PROJ, typename T_TASK,
+template <typename T_DB, typename T_ST,
+          typename T_PROJ, typename T_TASK,
           typename = std::enable_if_t<
             std::is_base_of<DB_Interface, T_DB>::value &&
+            std::is_base_of<StatusBarInterface, T_ST>::value &&
             std::is_base_of<ColumnInterface<Project>, T_PROJ>::value &&
             std::is_base_of<ColumnInterface<Task>, T_TASK>::value>>
 class ProjectTaskTable {
 public:
-  explicit ProjectTaskTable(std::shared_ptr<T_DB> _db)
+  explicit ProjectTaskTable(std::shared_ptr<T_DB> _db,
+                            std::shared_ptr<T_ST> _status)
     : db(std::static_pointer_cast<DB_Interface>(_db)),
+      status(std::static_pointer_cast<StatusBarInterface>(_status)),
       project_col (std::make_unique<T_PROJ>(db->query_projects(), ColPos::left)),
       task_col (std::make_unique<T_TASK>(
         db->query_tasks(project_col->get_current_id()), ColPos::middle)) {}
@@ -25,6 +30,7 @@ public:
     ColumnInterfaceBase *cur_col {project_col.get()};
     while (true) {
       cur_col->refresh();
+      status->print(cur_col->get_current_name());
       auto ch = cur_col->query_input();
       switch (ch) {
       case 'n':
@@ -85,6 +91,7 @@ public:
 
 private:
   std::shared_ptr<DB_Interface> db;
+  std::shared_ptr<StatusBarInterface> status;
   std::unique_ptr<ColumnInterface<Project>> project_col;
   std::unique_ptr<ColumnInterface<Task>> task_col;
 

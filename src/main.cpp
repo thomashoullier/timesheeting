@@ -26,11 +26,11 @@ int main() {
   cbreak();
   noecho();
   /* Status bar */
-  StatusBarNCurses status_bar;
-  status_bar.print("Hello");
+  auto status_bar = std::make_shared<StatusBarNCurses>();
 
-  ProjectTaskTable<DB_SQLite, ColumnNcurses<Project>, ColumnNcurses<Task>>
-    projects_table(db);
+  ProjectTaskTable<DB_SQLite, StatusBarNCurses,
+                   ColumnNcurses<Project>, ColumnNcurses<Task>>
+    projects_table(db, status_bar);
   projects_table.input_loop();
 
   endwin();

@@ -2,24 +2,19 @@
 #define COLUMN_NCURSES_H
 
 #include "column_interface.h"
-#include <ncurses.h>
 #include <menu.h>
+#include <ncurses.h>
 
-template <typename T>
-class ColumnNcurses : public ColumnInterface<T> {
+template <typename T> class ColumnNcurses : public ColumnInterface<T> {
 public:
-  ColumnNcurses (const std::vector<T> &items, ColPos _pos) {
+  ColumnNcurses(const std::vector<T> &items, ColPos _pos) {
     this->pos = _pos;
     init_menu(items);
   }
 
-  ~ColumnNcurses () {
-    destroy_menu();
-  }
+  ~ColumnNcurses() { destroy_menu(); }
 
-  void refresh () override {
-    wrefresh(win);
-  }
+  void refresh() override { wrefresh(win); }
 
   void set_items(const std::vector<T> &items) override {
     destroy_menu();
@@ -29,6 +24,11 @@ public:
   Id get_current_id() override {
     auto menu_index = get_menu_index();
     return held_items.at(menu_index).id;
+  }
+
+  std::string get_current_name() override {
+    auto menu_index = get_menu_index();
+    return held_items.at(menu_index).name;
   }
 
   void select_next_item() override { menu_driver(menu, REQ_NEXT_ITEM); }
