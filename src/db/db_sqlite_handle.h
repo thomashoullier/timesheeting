@@ -2,6 +2,7 @@
 #ifndef DB_SQLITE_HANDLE_H
 #define DB_SQLITE_HANDLE_H
 
+#include <exception>
 #include <filesystem>
 #include <stdexcept>
 #include <string>
@@ -31,6 +32,18 @@ private :
   /** Check a SQLite return code and raise exception with message in
       case of reported errors. */
   void check_rc (int rc, const std::string &msg);
+};
+
+/** Exception thrown when encountering the SQLITE_CONSTRAINT error code.*/
+class SQLiteConstraintExcept : public std::exception {
+private:
+  std::string msg; // Message with the exception.
+
+public:
+  SQLiteConstraintExcept (const char* _msg) : msg(_msg) {}
+  const char* what() const throw() {
+    return msg.c_str();
+  }
 };
 
 #endif // DB_SQLITE_HANDLE_H

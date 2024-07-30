@@ -178,7 +178,16 @@ error messages.
 
 *** TODO Make project and task names UNIQUE
 Do not do anything to the DB in case it is rejected.
+A conflict can happen when:
++ Adding a new project or task.
++ Renaming existing project or task.
 Display an error message in the status bar.
+
+*** TODO Fix: Handle the case where we have zero projects when starting
+ADDED: [2024-07-30 Tue]
+If we start with an empty DB, the interface just crashes.
+This is probably related to the status bar display of the current
+item in the input loop for ~project_task_table~.
 
 *** TODO Delete tasks
 Ask confirmation in the status bar.

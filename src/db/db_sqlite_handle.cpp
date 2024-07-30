@@ -8,9 +8,16 @@ DB_SQLite_Handle::DB_SQLite_Handle(const std::filesystem::path &db_file) {
 DB_SQLite_Handle::~DB_SQLite_Handle() { sqlite3_close(db); }
 
 void DB_SQLite_Handle::check_rc(int rc, const std::string &msg) {
-  if (rc != SQLITE_OK) {
+  switch (rc) {
+  case SQLITE_OK:
+    return;
+  case SQLITE_CONSTRAINT:
+    throw SQLiteConstraintExcept(msg.c_str());
+      break;
+  default:
     throw std::runtime_error(msg + "\n" +
                              "SQLite error code: " + std::to_string(rc));
+    break;
   }
 }
 

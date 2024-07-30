@@ -1,6 +1,7 @@
 #ifndef DB_INTERFACE_H
 #define DB_INTERFACE_H
 
+#include <exception>
 #include <string>
 #include <vector>
 #include "data_objects.h"
@@ -17,6 +18,18 @@ public:
                                  std::string new_project_name) = 0;
   virtual void edit_task_name(Id task_id,
                               std::string new_task_name) = 0;
+};
+
+/** Exception thrown when the DB encounters a logic error. */
+class DBLogicExcept : public std::exception {
+private:
+  std::string msg;
+
+public:
+  DBLogicExcept (const char* _msg) : msg(_msg) {}
+  const char* what() const throw() {
+    return msg.c_str();
+  }
 };
 
 #endif // DB_INTERFACE_H

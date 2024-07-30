@@ -51,37 +51,24 @@ public:
       case 'i':
         cur_col = task_col.get();
         break;
-      case 'a': // Add an item.
-        {
-          auto new_item_name = cur_col->query_new_item_name();
-          auto sanitized_item_name = sanitize_input(new_item_name);
-          if (!sanitized_item_name.empty()) {
-            if (cur_col == project_col.get()) {
-              db->add_project(sanitized_item_name);
-              update_project_col();
-            } else if (cur_col == task_col.get()) {
-              auto project_id = project_col->get_current_id();
-              db->add_task(project_id, sanitized_item_name);
-              update_task_col();
-            }
-          }
-        } break;
-      case 'r': // Rename current item.
-        {
-          auto id = cur_col->get_current_id();
-          auto new_item_name = cur_col->query_current_item_rename();
-          auto sanitized_item_name = sanitize_input(new_item_name);
-          if (!sanitized_item_name.empty()) {
-            if (cur_col == project_col.get()) {
-              db->edit_project_name(id, sanitized_item_name);
-              update_project_col();
-            } else if (cur_col == task_col.get()) {
-              db->edit_task_name(id, sanitized_item_name);
-              // Update task column
-              update_task_col();
-            }
-          }
-        } break;
+      case 'a':
+        try {
+          add_item(cur_col);
+        }
+        catch (DBLogicExcept &e) {
+          // TODO: make this continue by pressing any key to actually
+          //       display the message.
+          status->print("DB logic error! Nothing was done to the DB.");
+        }
+        break;
+      case 'r':
+        try {
+          rename_item(cur_col);
+        }
+        catch (DBLogicExcept &e) {
+          status->print("DB logic error! Nothing was done to the DB.");
+        }
+        break;
         // TODO: * Remove project.
       default:
         return ch;
@@ -121,6 +108,37 @@ private:
                          [](unsigned char ch) {
                            return !std::isspace(ch);}).base(), s.end());
     return s;
+  }
+
+  void add_item (ColumnInterfaceBase *cur_col) {
+    auto new_item_name = cur_col->query_new_item_name();
+    auto sanitized_item_name = sanitize_input(new_item_name);
+    if (!sanitized_item_name.empty()) {
+      if (cur_col == project_col.get()) {
+        db->add_project(sanitized_item_name);
+        update_project_col();
+      } else if (cur_col == task_col.get()) {
+        auto project_id = project_col->get_current_id();
+        db->add_task(project_id, sanitized_item_name);
+        update_task_col();
+      }
+    }
+  }
+
+  void rename_item (ColumnInterfaceBase *cur_col) {
+    auto id = cur_col->get_current_id();
+    auto new_item_name = cur_col->query_current_item_rename();
+    auto sanitized_item_name = sanitize_input(new_item_name);
+    if (!sanitized_item_name.empty()) {
+      if (cur_col == project_col.get()) {
+        db->edit_project_name(id, sanitized_item_name);
+        update_project_col();
+      } else if (cur_col == task_col.get()) {
+        db->edit_task_name(id, sanitized_item_name);
+        // Update task column
+        update_task_col();
+      }
+    }
   }
 };
 

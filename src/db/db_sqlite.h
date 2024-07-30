@@ -23,6 +23,7 @@ private:
 
   void create_projects_table();
   void create_tasks_table();
+  void try_exec_statement(const std::string &statement);
 
   /** Convert a NameRows object to a GenericItem. */
   template <typename T,
