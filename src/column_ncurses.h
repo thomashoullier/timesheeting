@@ -28,7 +28,10 @@ public:
 
   std::string get_current_name() override {
     auto menu_index = get_menu_index();
-    return held_items.at(menu_index).name;
+    if (menu_index >= 0)
+      return held_items.at(menu_index).name;
+    else
+      return "";
   }
 
   void select_next_item() override { menu_driver(menu, REQ_NEXT_ITEM); }

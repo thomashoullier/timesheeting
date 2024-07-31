@@ -197,6 +197,10 @@ ADDED: [2024-07-30 Tue]
 If we start with an empty DB, the interface just crashes.
 This is probably related to the status bar display of the current
 item in the input loop for ~project_task_table~.
++ Handled the empty task case by displaying an empty string.
++ The program still crashes when started with an empty DB.
+  Maybe we can initialize the DB if it is empty?
+  But if the user deletes the last project this would likely crash.
 
 *** TODO Delete tasks
 Ask confirmation in the status bar.
