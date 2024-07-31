@@ -2,6 +2,7 @@
 #define PROJECT_TASK_TABLE_H
 
 #include "column_interface.h"
+#include "data_objects.h"
 #include "db_interface.h"
 #include "status_bar_interface.h"
 #include <memory>
@@ -19,11 +20,15 @@ class ProjectTaskTable {
 public:
   explicit ProjectTaskTable(std::shared_ptr<T_DB> _db,
                             std::shared_ptr<T_ST> _status)
-    : db(std::static_pointer_cast<DB_Interface>(_db)),
-      status(std::static_pointer_cast<StatusBarInterface>(_status)),
-      project_col (std::make_unique<T_PROJ>(db->query_projects(), ColPos::left)),
-      task_col (std::make_unique<T_TASK>(
-        db->query_tasks(project_col->get_current_id()), ColPos::middle)) {}
+      : db(std::static_pointer_cast<DB_Interface>(_db)),
+        status(std::static_pointer_cast<StatusBarInterface>(_status)),
+        project_col(
+            std::make_unique<T_PROJ>(std::vector<Project>(), ColPos::left)),
+        task_col(std::make_unique<T_TASK>(std::vector<Task>(),
+                                          ColPos::middle)) {
+    update_project_col();
+    update_task_col();
+  }
 
   /** Query an user input, treat it or return it. */
   char input_loop() {
@@ -84,9 +89,13 @@ private:
 
   // Update the task column
   void update_task_col() {
-    Id cur_project = project_col->get_current_id();
-    auto task_items = db->query_tasks(cur_project);
-    task_col->set_items(task_items);
+    try {
+      Id cur_project = project_col->get_current_id();
+      auto task_items = db->query_tasks(cur_project);
+      task_col->set_items(task_items);
+    } catch (ColumnEmpty &e) {
+      return;
+    }
   }
 
   /** Update the project column with data from the DB. */

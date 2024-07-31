@@ -2,6 +2,7 @@
 #define COLUMN_INTERFACE_H
 
 #include "data_objects.h"
+#include <exception>
 #include <vector>
 
 /** Column position on the screen. */
@@ -48,6 +49,19 @@ public:
   /** Set or refresh the current list of items held by the column. */
   virtual void set_items(const std::vector<T> &items) = 0;
 
+};
+
+/** Exception when encountering an empty column when it is required to
+    contain items for good operation. */
+class ColumnEmpty : public std::exception {
+private:
+  std::string msg;
+
+public:
+  ColumnEmpty (const char* _msg) : msg(_msg) {}
+  const char* what() const throw() {
+    return msg.c_str();
+  }
 };
 
 #endif // COLUMN_INTERFACE_H

@@ -12,15 +12,10 @@ int main() {
 
   /* Logger */
   Logger log("timesheeting.log");
-  log.log("Hello world.");
+  log.log("timesheeting startup.");
 
   /* SQLite */
   auto db = std::make_shared<DB_SQLite>("timesheeting.db");
-  db->add_project("JWST");
-  auto project_id = db->query_projects().back().id;
-  db->add_task(project_id, "Kick-off");
-  db->add_task(project_id, "Validation campaign");
-  db->add_task(project_id, "Closure meeting");
   /* ncurses init */
   initscr();
   cbreak();

@@ -22,6 +22,9 @@ public:
   }
 
   Id get_current_id() override {
+    if (held_items.empty()) {
+      throw ColumnEmpty("The column is empty!");
+    }
     auto menu_index = get_menu_index();
     return held_items.at(menu_index).id;
   }
