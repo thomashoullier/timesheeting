@@ -20,6 +20,12 @@ void StatusBarNCurses::print(const std::string &msg) {
   wrefresh(win);
 }
 
+
+void StatusBarNCurses::print_wait(const std::string &msg) {
+  print(msg);
+  wgetch(win);
+}
+
 bool StatusBarNCurses::query_confirmation(const std::string &msg) {
   print(msg);
   auto ch = wgetch(win);

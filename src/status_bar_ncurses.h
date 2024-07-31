@@ -9,6 +9,7 @@ public:
   StatusBarNCurses ();
   ~StatusBarNCurses ();
   void print (const std::string &msg) override;
+  void print_wait(const std::string &msg) override;
   bool query_confirmation (const std::string &msg) override;
 private:
   WINDOW *win;

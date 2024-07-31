@@ -176,12 +176,21 @@ with more characters.
 It will be used to ask for confirmation for deletions, and display
 error messages.
 
-*** TODO Make project and task names UNIQUE
+*** DONE Make project and task names UNIQUE
+CLOSED: [2024-07-30 Tue 21:53]
 Do not do anything to the DB in case it is rejected.
 A conflict can happen when:
 + Adding a new project or task.
 + Renaming existing project or task.
-Display an error message in the status bar.
+
+*** DONE Status bar: message with continue on press any key.
+CLOSED: [2024-07-31 Wed 19:50]
+ADDED: [2024-07-30 Tue]
+Add a status bar interface: error message with a continue on key
+press, to let the user see the message before the program continues.
+
+Display an error message in the status bar when the user tries
+to violate uniqueness.
 
 *** TODO Fix: Handle the case where we have zero projects when starting
 ADDED: [2024-07-30 Tue]

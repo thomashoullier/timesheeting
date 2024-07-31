@@ -58,7 +58,7 @@ public:
         catch (DBLogicExcept &e) {
           // TODO: make this continue by pressing any key to actually
           //       display the message.
-          status->print("DB logic error! Nothing was done to the DB.");
+          status->print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
       case 'r':
@@ -66,7 +66,7 @@ public:
           rename_item(cur_col);
         }
         catch (DBLogicExcept &e) {
-          status->print("DB logic error! Nothing was done to the DB.");
+          status->print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
         // TODO: * Remove project.
