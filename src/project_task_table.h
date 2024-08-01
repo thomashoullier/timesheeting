@@ -171,7 +171,9 @@ private:
         db->delete_task(id);
         update_task_col();
       } else if (cur_col == project_col.get()) {
-        // TODO: remove a project.
+        db->delete_project(id);
+        update_project_col();
+        update_task_col();
       }
     } catch (ColumnEmpty &e) {
       return;

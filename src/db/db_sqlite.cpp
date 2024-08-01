@@ -41,7 +41,8 @@ void DB_SQLite::create_tasks_table() {
       "name TEXT NOT NULL, "
       "project_id INTEGER, "
       "UNIQUE(name, project_id), "
-      "FOREIGN KEY (project_id) REFERENCES projects (id)"
+      "FOREIGN KEY (project_id) REFERENCES projects (id) "
+      "ON DELETE CASCADE"
       ");";
   sqlite_db.exec_statement(create_tasks_table_st);
 }
@@ -88,6 +89,13 @@ void DB_SQLite::delete_task(Id task_id) {
     "DELETE FROM tasks "
     "WHERE id = " + std::to_string(task_id) + ";";
   try_exec_statement(delete_task_st);
+}
+
+void DB_SQLite::delete_project(Id project_id) {
+  std::string delete_project_st =
+    "DELETE FROM projects "
+    "WHERE id = " + std::to_string(project_id) + ";";
+  try_exec_statement(delete_project_st);
 }
 
 void DB_SQLite::try_exec_statement(const std::string &statement) {

@@ -17,7 +17,8 @@ public:
   void add_task(Id project_id, std::string task_name) override;
   void edit_project_name(Id project_id, std::string new_project_name) override;
   void edit_task_name(Id task_id, std::string new_task_name) override;
-  void delete_task (Id task_id) override;
+  void delete_task(Id task_id) override;
+  void delete_project(Id project_id) override;
 
 private:
   DB_SQLite_Handle sqlite_db;

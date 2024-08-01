@@ -3,6 +3,7 @@
 DB_SQLite_Handle::DB_SQLite_Handle(const std::filesystem::path &db_file) {
   auto rc = sqlite3_open(db_file.c_str(), &db);
   check_rc(rc, "Error when opening the database file: " + std::string(db_file));
+  exec_statement("PRAGMA foreign_keys = ON;");
 }
 
 DB_SQLite_Handle::~DB_SQLite_Handle() { sqlite3_close(db); }

@@ -19,6 +19,8 @@ public:
   virtual void edit_task_name(Id task_id,
                               std::string new_task_name) = 0;
   virtual void delete_task (Id task_id) = 0;
+  /** Delete a project and all associated tasks. */
+  virtual void delete_project (Id project_id) = 0;
 };
 
 /** Exception thrown when the DB encounters a logic error. */

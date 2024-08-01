@@ -217,8 +217,14 @@ They must be unique per project.
 CLOSED: [2024-08-01 Thu 20:36]
 Ask confirmation in the status bar.
 
-*** TODO Delete projects
+*** DONE Delete projects
+CLOSED: [2024-08-01 Thu 21:06]
 Also delete all tasks.
+
+*** TODO Deal with trying to add a task when no project exists.
+ADDED: [2024-08-01 Thu]
+If we start with a completely empty table and we try to add
+a task, the program currently crashes.
 
 *** TODO Feature/Ergonomy: Highlight the currently selected column
 ADDED: [2024-07-31 Wed]
