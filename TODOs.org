@@ -159,6 +159,7 @@ CLOSED: [2024-07-28 Sun 10:35]
 ADDED: [2024-07-27 Sat]
 Currently the window goes blank if we add too many projects.
 OK, we implemented this using menu, and ~set_menu_format~.
+
 ** Features
 *** DONE Rename tasks
 CLOSED: [2024-07-28 Sun 15:52]
@@ -212,7 +213,8 @@ They must be unique per project.
 + Modify the DB table to enforce this rule.
 + OK, we modified the table, renaming and adding work as expected.
 
-*** TODO Delete tasks
+*** DONE Delete tasks
+CLOSED: [2024-08-01 Thu 20:36]
 Ask confirmation in the status bar.
 
 *** TODO Delete projects
@@ -222,3 +224,14 @@ Also delete all tasks.
 ADDED: [2024-07-31 Wed]
 It is hard to know in which column we are on the project screen.
 It is impossible when the columns are empty.
+
+*** TODO Initiate the doxygen documentation
+ADDED: [2024-08-01 Thu]
+The goal is to write the documentation for all the important source
+files (esp. interfaces). We need to be able to generate the
+doxygen html pages locally.
+
+*** TODO Deploy the doxygen pages to a github site.
+ADDED: [2024-08-01 Thu]
+Deploy the doxygen pages using a github action.
+See our past projects where we have done this.

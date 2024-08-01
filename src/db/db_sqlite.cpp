@@ -1,5 +1,6 @@
 #include "db_sqlite.h"
 #include "db_sqlite_handle.h"
+#include <string>
 
 DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   : sqlite_db (db_file) {
@@ -82,11 +83,17 @@ void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
   try_exec_statement(alter_task_name_st);
 }
 
+void DB_SQLite::delete_task(Id task_id) {
+  std::string delete_task_st =
+    "DELETE FROM tasks "
+    "WHERE id = " + std::to_string(task_id) + ";";
+  try_exec_statement(delete_task_st);
+}
+
 void DB_SQLite::try_exec_statement(const std::string &statement) {
   try {
     sqlite_db.exec_statement(statement);
-  }
-  catch (SQLiteConstraintExcept &e) {
+  } catch (SQLiteConstraintExcept &e) {
     std::string msg = "DB logic error!\n";
     msg += e.what();
     throw DBLogicExcept(msg.c_str());

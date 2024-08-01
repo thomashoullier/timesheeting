@@ -61,8 +61,6 @@ public:
           add_item(cur_col);
         }
         catch (DBLogicExcept &e) {
-          // TODO: make this continue by pressing any key to actually
-          //       display the message.
           status->print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
@@ -74,7 +72,14 @@ public:
           status->print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
-        // TODO: * Remove project.
+      case 'x':
+        try {
+          remove_item(cur_col);
+        }
+        catch (DBLogicExcept &e) {
+          status->print_wait("DB logic error! Nothing was done to the DB.");
+        }
+        break;
       default:
         return ch;
       }
@@ -135,18 +140,41 @@ private:
   }
 
   void rename_item (ColumnInterfaceBase *cur_col) {
-    auto id = cur_col->get_current_id();
-    auto new_item_name = cur_col->query_current_item_rename();
-    auto sanitized_item_name = sanitize_input(new_item_name);
-    if (!sanitized_item_name.empty()) {
-      if (cur_col == project_col.get()) {
-        db->edit_project_name(id, sanitized_item_name);
-        update_project_col();
-      } else if (cur_col == task_col.get()) {
-        db->edit_task_name(id, sanitized_item_name);
-        // Update task column
-        update_task_col();
+    try {
+      auto id = cur_col->get_current_id();
+      auto new_item_name = cur_col->query_current_item_rename();
+      auto sanitized_item_name = sanitize_input(new_item_name);
+      if (!sanitized_item_name.empty()) {
+        if (cur_col == project_col.get()) {
+          db->edit_project_name(id, sanitized_item_name);
+          update_project_col();
+        } else if (cur_col == task_col.get()) {
+          db->edit_task_name(id, sanitized_item_name);
+          // Update task column
+          update_task_col();
+        }
       }
+    } catch (ColumnEmpty &e) {
+      return;
+    }
+  }
+
+  /** Remove the currently selected item. */
+  void remove_item (ColumnInterfaceBase *cur_col) {
+    try {
+      auto id = cur_col->get_current_id();
+      bool user_conf = status->query_confirmation("Remove item? (Y/N)");
+      if (!user_conf) {
+        return;
+      }
+      if (cur_col == task_col.get()) {
+        db->delete_task(id);
+        update_task_col();
+      } else if (cur_col == project_col.get()) {
+        // TODO: remove a project.
+      }
+    } catch (ColumnEmpty &e) {
+      return;
     }
   }
 };

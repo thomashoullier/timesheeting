@@ -18,6 +18,7 @@ public:
                                  std::string new_project_name) = 0;
   virtual void edit_task_name(Id task_id,
                               std::string new_task_name) = 0;
+  virtual void delete_task (Id task_id) = 0;
 };
 
 /** Exception thrown when the DB encounters a logic error. */
