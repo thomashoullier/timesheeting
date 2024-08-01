@@ -204,6 +204,14 @@ item in the input loop for ~project_task_table~.
   But if the user deletes the last project this would likely crash.
   + Ok we can now display completely empty project/tasks tables.
 
+*** DONE Fix: the tasks must be unique per project only
+CLOSED: [2024-08-01 Thu 13:02]
+ADDED: [2024-08-01 Thu]
+The tasks are currently set to be globally unique. This is wrong.
+They must be unique per project.
++ Modify the DB table to enforce this rule.
++ OK, we modified the table, renaming and adding work as expected.
+
 *** TODO Delete tasks
 Ask confirmation in the status bar.
 

@@ -37,8 +37,9 @@ void DB_SQLite::create_tasks_table() {
   std::string create_tasks_table_st =
       "CREATE TABLE IF NOT EXISTS tasks ("
       "id INTEGER PRIMARY KEY, "
-      "name TEXT NOT NULL UNIQUE, "
+      "name TEXT NOT NULL, "
       "project_id INTEGER, "
+      "UNIQUE(name, project_id), "
       "FOREIGN KEY (project_id) REFERENCES projects (id)"
       ");";
   sqlite_db.exec_statement(create_tasks_table_st);
