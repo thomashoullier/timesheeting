@@ -224,7 +224,8 @@ ADDED: [2024-07-31 Wed]
 It is hard to know in which column we are on the project screen.
 It is impossible when the columns are empty.
 
-*** TODO Put the Logger behind an interface class
+*** DONE Put the Logger behind an interface class
+CLOSED: [2024-08-02 Fri 20:23]
 ADDED: [2024-08-02 Fri]
 Currently the logger is added without defining its interface first.
 Add the interface class.

@@ -1,5 +1,5 @@
 #include "db/db_sqlite.h"
-#include "logger.h"
+#include "logger/logger_file.h"
 #include "project_task_table.h"
 #include "column/column_ncurses.h"
 #include "status_bar/status_bar_ncurses.h"
@@ -11,7 +11,7 @@ int main() {
   std::cout << "timesheeting" << std::endl;
 
   /* Logger */
-  Logger log("timesheeting.log");
+  LoggerFile log("timesheeting.log");
   log.log("timesheeting startup.");
 
   /* SQLite */
