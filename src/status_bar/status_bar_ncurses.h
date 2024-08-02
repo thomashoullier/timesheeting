@@ -1,7 +1,7 @@
 #ifndef STATUS_BAR_NCURSES_H
 #define STATUS_BAR_NCURSES_H
 
-#include "status_bar_interface.h"
+#include "../status_bar_interface.h"
 #include <ncurses.h>
 
 class StatusBarNCurses : public StatusBarInterface {

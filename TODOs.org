@@ -145,15 +145,6 @@ bar. How do we share a view-only object from the tab to the status bar?
   shared_pointer to the status bar?
 
 ** Fixes
-*** TODO Source tree organization.
-+ Organize the source tree into:
-  + GUI
-  + Logger
-  + DB
-  + Configuration manager
-+ Implement an organized source tree: src/gui/, and make the tree reflect
-  the GUI class hierarchy.
-
 *** DONE Manage more projects and tasks than one page
 CLOSED: [2024-07-28 Sun 10:35]
 ADDED: [2024-07-27 Sat]
@@ -232,6 +223,16 @@ a task, the program currently crashes.
 ADDED: [2024-07-31 Wed]
 It is hard to know in which column we are on the project screen.
 It is impossible when the columns are empty.
+
+*** TODO Put the Logger behind an interface class
+ADDED: [2024-08-02 Fri]
+Currently the logger is added without defining its interface first.
+Add the interface class.
+
+*** TODO Use logger globally
+ADDED: [2024-08-02 Fri]
+Find a way to initialize the logger and use it globally without
+passing a handle around to every other object in the program.
 
 *** TODO Initiate the doxygen documentation
 ADDED: [2024-08-01 Thu]

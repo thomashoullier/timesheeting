@@ -1,7 +1,7 @@
 #ifndef COLUMN_NCURSES_H
 #define COLUMN_NCURSES_H
 
-#include "column_interface.h"
+#include "../column_interface.h"
 #include <menu.h>
 #include <ncurses.h>
 
