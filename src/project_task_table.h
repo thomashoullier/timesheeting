@@ -132,9 +132,13 @@ private:
         db->add_project(sanitized_item_name);
         update_project_col();
       } else if (cur_col == task_col.get()) {
+        try {
         auto project_id = project_col->get_current_id();
         db->add_task(project_id, sanitized_item_name);
         update_task_col();
+        } catch (ColumnEmpty &e) {
+          return;
+        }
       }
     }
   }

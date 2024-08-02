@@ -221,10 +221,12 @@ Ask confirmation in the status bar.
 CLOSED: [2024-08-01 Thu 21:06]
 Also delete all tasks.
 
-*** TODO Deal with trying to add a task when no project exists.
+*** DONE Fix: Deal with trying to add a task when no project exists.
+CLOSED: [2024-08-02 Fri 19:34]
 ADDED: [2024-08-01 Thu]
 If we start with a completely empty table and we try to add
 a task, the program currently crashes.
++ [2024-08-02 Fri] OK, caught the ColumnEmpty exception, we do nothing.
 
 *** TODO Feature/Ergonomy: Highlight the currently selected column
 ADDED: [2024-07-31 Wed]
@@ -241,3 +243,8 @@ doxygen html pages locally.
 ADDED: [2024-08-01 Thu]
 Deploy the doxygen pages using a github action.
 See our past projects where we have done this.
+
+*** TODO Create the DB table for entries.
+ADDED: [2024-08-01 Thu]
+Create a DB table for the entries,
+it should contain: id, taskid, start date, stop date, location.
