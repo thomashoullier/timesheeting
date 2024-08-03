@@ -10,6 +10,8 @@ class LoggerInterface {
 public:
   virtual ~LoggerInterface () = default;
 
+  /** @brief Grab the single instance for the logger. */
+  static LoggerInterface& get();
   /** @brief Log a message. */
   virtual void log (const std::string &msg) = 0;
 };
