@@ -242,7 +242,8 @@ The goal is to write the documentation for all the important source
 files (esp. interfaces). We need to be able to generate the
 doxygen html pages locally.
 
-*** TODO Deploy the doxygen pages to a github site.
+*** DONE Deploy the doxygen pages to a github site.
+CLOSED: [2024-08-03 Sat 17:56]
 ADDED: [2024-08-01 Thu]
 Deploy the doxygen pages using a github action.
 See our past projects where we have done this.

@@ -12,6 +12,7 @@ The project is just starting.
 * `PRJ1-SPE1-v1.0` timesheeting specification document
 * `PRJ1-SAD1-v1.0` timesheeting system architecture document
 * ![Release notes](doc/RELEASE_NOTES.md)
+* [Doxygen](https://thomashoullier.github.io/timesheeting/index.html)
 
 ## Build instructions
 ### Software
@@ -50,6 +51,17 @@ latexmk -pdf sad.tex
 ```
 
 The result is `sad.pdf`.
+
+#### Doxygen pages
+Build the doxygen pages, while at the project's root,
+
+```{shell}
+doxygen Doxyfile
+```
+
+The documentation is produced as html pages to the folder
+`docs/html`. These pages are also deployed to github using
+a github action.
 
 ## License
 The software is distributed under the MIT license.
