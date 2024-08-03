@@ -1,13 +1,16 @@
+/** @file
+ * @brief Logger virtual interface definition. */
 #ifndef LOGGER_INTERFACE_H
 #define LOGGER_INTERFACE_H
 
 #include <string>
 
+/** @brief Virtual interface class for loggers. */
 class LoggerInterface {
 public:
   virtual ~LoggerInterface () = default;
 
-  /** Log a message. */
+  /** @brief Log a message. */
   virtual void log (const std::string &msg) = 0;
 };
 

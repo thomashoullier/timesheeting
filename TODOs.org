@@ -235,7 +235,8 @@ ADDED: [2024-08-02 Fri]
 Find a way to initialize the logger and use it globally without
 passing a handle around to every other object in the program.
 
-*** TODO Initiate the doxygen documentation
+*** DONE Initiate the doxygen documentation
+CLOSED: [2024-08-03 Sat 17:39]
 ADDED: [2024-08-01 Thu]
 The goal is to write the documentation for all the important source
 files (esp. interfaces). We need to be able to generate the

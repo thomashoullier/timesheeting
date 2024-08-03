@@ -1,3 +1,5 @@
+/** @file
+ * @brief Column interface implementation using ncurses. */
 #ifndef COLUMN_NCURSES_H
 #define COLUMN_NCURSES_H
 
@@ -5,13 +7,16 @@
 #include <menu.h>
 #include <ncurses.h>
 
+/** @brief Column implementation in ncurses. */
 template <typename T> class ColumnNcurses : public ColumnInterface<T> {
 public:
+  /** @brief Column constructor. */
   ColumnNcurses(const std::vector<T> &items, ColPos _pos) {
     this->pos = _pos;
     init_menu(items);
   }
 
+  /** @brief Column destructor. */
   ~ColumnNcurses() { destroy_menu(); }
 
   void refresh() override { wrefresh(win); }
@@ -54,18 +59,25 @@ public:
   }
 
 private:
-  static constexpr int WIDTH{26};              // Column window width
-  static constexpr std::size_t PAGE_LINES{35}; // Number of lines in page.
+  /** @brief Column window width on the screen. */
+  static constexpr int WIDTH{26};
+  /** @brief Number of lines on a column page. */
+  static constexpr std::size_t PAGE_LINES{35};
+  /** @brief Column's ncurses window. */
   WINDOW *win;
+  /** @brief Column's ncurses menu. */
   MENU *menu;
-  std::vector<T> held_items; // A copy of the held items.
+  /** @brief List of items held by the column. */
+  std::vector<T> held_items;
+  /** @brief List of ncurses items in the menu. */
   std::vector<ITEM *> menu_items;
 
-  /** Get the vector index of the currently selected menu item. */
+  /** @brief Get the vector index of the currently selected menu item. */
   int get_menu_index() {
     return item_index(current_item(menu));
   }
 
+  /** @brief Setup the ncurses menu window. */
   void init_menu_window() {
     win = newwin(PAGE_LINES + 1, WIDTH, 1, 1 + this->pos * WIDTH);
     set_menu_win(menu, win);
@@ -74,6 +86,7 @@ private:
     box(win, 0, 0);
   }
 
+  /** @brief Destructor for the ncurses objects and reset of all members. */
   void destroy_menu() {
     unpost_menu(menu);
     free_menu(menu);
@@ -85,6 +98,8 @@ private:
     held_items.clear();
   }
 
+  /** @brief Copy set of items into the internal items vector,
+   * and put the items in the ncurses menu. */
   void init_items(const std::vector<T> &items) {
     held_items.resize(items.size());
     for (std::size_t i = 0; i < items.size(); ++i) {
@@ -95,6 +110,7 @@ private:
     menu = new_menu(menu_items.data());
   }
 
+  /** @brief Initialize the ncurses menu. */
   void init_menu(const std::vector<T> &items) {
     init_items(items);
     init_menu_window();
@@ -103,6 +119,7 @@ private:
     refresh();
   }
 
+  /** @brief Input loop for getting a string from the user. */
   std::string query_row_input (int input_row) {
     std::string input_buffer {};
     // Move cursor to beginning of line.

@@ -1,3 +1,5 @@
+/** @file
+ * @brief Projects and tasks screen UI. */
 #ifndef PROJECT_TASK_TABLE_H
 #define PROJECT_TASK_TABLE_H
 
@@ -8,7 +10,7 @@
 #include <memory>
 #include <algorithm>
 
-/** @brief Table for defining projects and tasks. */
+/** @brief Table for defining projects and tasks using two columns. */
 template <typename T_DB, typename T_ST,
           typename T_PROJ, typename T_TASK,
           typename = std::enable_if_t<
@@ -18,6 +20,7 @@ template <typename T_DB, typename T_ST,
             std::is_base_of<ColumnInterface<Task>, T_TASK>::value>>
 class ProjectTaskTable {
 public:
+  /** @brief Table constructor. */
   explicit ProjectTaskTable(std::shared_ptr<T_DB> _db,
                             std::shared_ptr<T_ST> _status)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
@@ -30,7 +33,7 @@ public:
     update_task_col();
   }
 
-  /** Query an user input, treat it or return it. */
+  /** @brief Query an user input, treat it or return it. */
   char input_loop() {
     ColumnInterfaceBase *cur_col {project_col.get()};
     while (true) {
@@ -87,12 +90,16 @@ public:
   }
 
 private:
+  /** @brief Interface to the DB. */
   std::shared_ptr<DB_Interface> db;
+  /** @brief Interface to the status bar. */
   std::shared_ptr<StatusBarInterface> status;
+  /** @brief Column for projects. */
   std::unique_ptr<ColumnInterface<Project>> project_col;
+  /** @brief Column for tasks. */
   std::unique_ptr<ColumnInterface<Task>> task_col;
 
-  // Update the task column
+  /** @brief Update the tasks column. */
   void update_task_col() {
     try {
       Id cur_project = project_col->get_current_id();
@@ -103,13 +110,13 @@ private:
     }
   }
 
-  /** Update the project column with data from the DB. */
+  /** @brief Update the project column. */
   void update_project_col() {
     auto project_items = db->query_projects();
     project_col->set_items(project_items);
   }
 
-  /** Sanitize the queried user input strings. */
+  /** @brief Sanitize the queried user input strings. */
   std::string sanitize_input(std::string input) {
     auto s = input;
     // left trim
@@ -124,6 +131,7 @@ private:
     return s;
   }
 
+  /** @brief Add an item (project or task). */
   void add_item (ColumnInterfaceBase *cur_col) {
     auto new_item_name = cur_col->query_new_item_name();
     auto sanitized_item_name = sanitize_input(new_item_name);
@@ -143,6 +151,7 @@ private:
     }
   }
 
+  /** @brief Rename an item. */
   void rename_item (ColumnInterfaceBase *cur_col) {
     try {
       auto id = cur_col->get_current_id();
@@ -163,7 +172,7 @@ private:
     }
   }
 
-  /** Remove the currently selected item. */
+  /** @brief Remove the currently selected item. */
   void remove_item (ColumnInterfaceBase *cur_col) {
     try {
       auto id = cur_col->get_current_id();
