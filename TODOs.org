@@ -252,3 +252,13 @@ See our past projects where we have done this.
 ADDED: [2024-08-01 Thu]
 Create a DB table for the entries,
 it should contain: id, taskid, start date, stop date, location.
+
+*** TODO Create panels for entries and projects screens
+ADDED: [2024-08-15 Thu]
++ See:https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/panels.html
+Example 15.
++ Putting screens inside of ncurses windows breaks our current abstractions.
+  One way to circumvent this is to have a ncurses top-level UI, which
+  redraws everytime we switch between screens.
+  We could have the individual screen have methods to refresh and clear
+  themselves.
