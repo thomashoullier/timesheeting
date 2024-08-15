@@ -25,7 +25,8 @@ int main() {
   auto status_bar = std::make_shared<StatusBarNCurses>();
 
   ProjectTaskTable<DB_SQLite, StatusBarNCurses,
-                   ColumnNcurses<Project>, ColumnNcurses<Task>>
+                   ColumnNcurses<Project>, ColumnNcurses<Task>,
+                   LoggerFile>
     projects_table(db, status_bar);
   projects_table.input_loop();
 

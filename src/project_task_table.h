@@ -6,6 +6,7 @@
 #include "column_interface.h"
 #include "data_objects.h"
 #include "db_interface.h"
+#include "logger_interface.h"
 #include "status_bar_interface.h"
 #include <memory>
 #include <algorithm>
@@ -13,11 +14,13 @@
 /** @brief Table for defining projects and tasks using two columns. */
 template <typename T_DB, typename T_ST,
           typename T_PROJ, typename T_TASK,
+          typename T_LOG,
           typename = std::enable_if_t<
             std::is_base_of<DB_Interface, T_DB>::value &&
             std::is_base_of<StatusBarInterface, T_ST>::value &&
             std::is_base_of<ColumnInterface<Project>, T_PROJ>::value &&
-            std::is_base_of<ColumnInterface<Task>, T_TASK>::value>>
+            std::is_base_of<ColumnInterface<Task>, T_TASK>::value &&
+            std::is_base_of<LoggerInterface, T_LOG>::value>>
 class ProjectTaskTable {
 public:
   /** @brief Table constructor. */
@@ -28,7 +31,8 @@ public:
         project_col(
             std::make_unique<T_PROJ>(std::vector<Project>(), ColPos::left)),
         task_col(std::make_unique<T_TASK>(std::vector<Task>(),
-                                          ColPos::middle)) {
+                                          ColPos::middle)),
+        logger(&T_LOG::get()) {
     update_project_col();
     update_task_col();
   }
@@ -98,6 +102,8 @@ private:
   std::unique_ptr<ColumnInterface<Project>> project_col;
   /** @brief Column for tasks. */
   std::unique_ptr<ColumnInterface<Task>> task_col;
+  /** @brief Pointer to the logger singleton. */
+  LoggerInterface *logger;
 
   /** @brief Update the tasks column. */
   void update_task_col() {
@@ -138,11 +144,13 @@ private:
     if (!sanitized_item_name.empty()) {
       if (cur_col == project_col.get()) {
         db->add_project(sanitized_item_name);
+        logger->log("Added project: " + sanitized_item_name);
         update_project_col();
       } else if (cur_col == task_col.get()) {
         try {
         auto project_id = project_col->get_current_id();
         db->add_task(project_id, sanitized_item_name);
+        logger->log("Added task: " + sanitized_item_name);
         update_task_col();
         } catch (ColumnEmpty &e) {
           return;
@@ -163,7 +171,6 @@ private:
           update_project_col();
         } else if (cur_col == task_col.get()) {
           db->edit_task_name(id, sanitized_item_name);
-          // Update task column
           update_task_col();
         }
       }
