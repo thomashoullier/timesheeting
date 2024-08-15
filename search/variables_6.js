@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['page_5flines_177',['PAGE_LINES',['../classColumnNcurses.html#a0eeeb4eb0b836627b3211c78b2061282',1,'ColumnNcurses']]],
-  ['pos_178',['pos',['../classColumnInterfaceBase.html#a90bf99f14b31ed280774754893d697e0',1,'ColumnInterfaceBase']]],
-  ['project_5fcol_179',['project_col',['../classProjectTaskTable.html#a429d577588680c4bacfcbbca4e435b40',1,'ProjectTaskTable']]]
+  ['menu_197',['menu',['../classColumnNcurses.html#aad0bd7c49e937fc32bcda7767959acf3',1,'ColumnNcurses']]],
+  ['menu_5fitems_198',['menu_items',['../classColumnNcurses.html#a31a6ddfc2f282bda55a19dc2b573ad29',1,'ColumnNcurses']]],
+  ['msg_199',['msg',['../classColumnEmpty.html#ab966d6c78429dbfdf57833f50653738c',1,'ColumnEmpty']]]
 ];

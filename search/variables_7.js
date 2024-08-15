@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sqlite_5fdb_180',['sqlite_db',['../classDB__SQLite.html#a8517c381d3af75a79f86b4970437f3ee',1,'DB_SQLite']]],
-  ['status_181',['status',['../classProjectTaskTable.html#abe5938dc27cca40f5abc7a649a66bc0d',1,'ProjectTaskTable']]]
+  ['name_200',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem']]],
+  ['ncurses_5fhandle_201',['ncurses_handle',['../classUI.html#a150f54f597b90035cb05e7a44222bbe0',1,'UI']]]
 ];

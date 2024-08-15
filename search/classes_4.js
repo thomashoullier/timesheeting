@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['project_103',['Project',['../structProject.html',1,'']]],
-  ['projecttasktable_104',['ProjectTaskTable',['../classProjectTaskTable.html',1,'']]]
+  ['loggerfile_114',['LoggerFile',['../classLoggerFile.html',1,'']]],
+  ['loggerinterface_115',['LoggerInterface',['../classLoggerInterface.html',1,'']]]
 ];

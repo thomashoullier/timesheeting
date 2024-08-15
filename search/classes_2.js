@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['genericitem_100',['GenericItem',['../structGenericItem.html',1,'']]]
+  ['entriestable_112',['EntriesTable',['../classEntriesTable.html',1,'']]]
 ];

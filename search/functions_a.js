@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['sanitize_5finput_161',['sanitize_input',['../classProjectTaskTable.html#ad45fc4a71bfc9c4c8964765f89305d02',1,'ProjectTaskTable']]],
-  ['select_5fnext_5fitem_162',['select_next_item',['../classColumnNcurses.html#a57b98eacc51fe8808ef6a4dd20029ebc',1,'ColumnNcurses::select_next_item()'],['../classColumnInterfaceBase.html#a5e6636fa7568fb42851510d16db9749b',1,'ColumnInterfaceBase::select_next_item()']]],
-  ['select_5fprev_5fitem_163',['select_prev_item',['../classColumnNcurses.html#a37d9d7e0a37449857740c825481b3d93',1,'ColumnNcurses::select_prev_item()'],['../classColumnInterfaceBase.html#ad405fd5fc1615a3d82b39ce8870cac3a',1,'ColumnInterfaceBase::select_prev_item()']]],
-  ['set_5fitems_164',['set_items',['../classColumnNcurses.html#a5d408241359a6a5b55195831f7ec45cc',1,'ColumnNcurses::set_items()'],['../classColumnInterface.html#af133c17f1fceeb155ef191f7bf04b94a',1,'ColumnInterface::set_items()']]]
+  ['refresh_177',['refresh',['../classColumnNcurses.html#a232f454d72d40e0e9204acafa154f22a',1,'ColumnNcurses::refresh()'],['../classColumnInterfaceBase.html#a5e2a579d5c8e1d610c4e99ae792d07c0',1,'ColumnInterfaceBase::refresh()']]],
+  ['remove_5fitem_178',['remove_item',['../classProjectTaskTable.html#a1d9c57fbb63bd2125d6ad4c9a589520e',1,'ProjectTaskTable']]],
+  ['rename_5fitem_179',['rename_item',['../classProjectTaskTable.html#a9395a8481174a758e04afc60ada426d5',1,'ProjectTaskTable']]]
 ];

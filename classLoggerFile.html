@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classLoggerFile-members.html">List of all members</a>  </div>
@@ -71,7 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Logger implementation with a log file.  
+<p>Logger implementation with a log file. This is a singleton.  
  <a href="classLoggerFile.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="logger__file_8h_source.html">logger_file.h</a>&gt;</code></p>
@@ -87,17 +88,29 @@ Inheritance diagram for LoggerFile:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7037e94f77b90fdf8b3d7f3ce21c345d"><td class="memItemLeft" align="right" valign="top"><a id="a7037e94f77b90fdf8b3d7f3ce21c345d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a7037e94f77b90fdf8b3d7f3ce21c345d">LoggerFile</a> (const std::filesystem::path &amp;log_file_path)</td></tr>
-<tr class="memdesc:a7037e94f77b90fdf8b3d7f3ce21c345d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logger constructor using a file. <br /></td></tr>
-<tr class="separator:a7037e94f77b90fdf8b3d7f3ce21c345d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4d060e5d3746f0573c3df262cb93047"><td class="memItemLeft" align="right" valign="top"><a id="ae4d060e5d3746f0573c3df262cb93047"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#ae4d060e5d3746f0573c3df262cb93047">log</a> (const std::string &amp;message) override</td></tr>
 <tr class="memdesc:ae4d060e5d3746f0573c3df262cb93047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message. <br /></td></tr>
 <tr class="separator:ae4d060e5d3746f0573c3df262cb93047"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1e607b06bfbaa4035fb19b9f58213f72"><td class="memItemLeft" align="right" valign="top"><a id="a1e607b06bfbaa4035fb19b9f58213f72"></a>
+static <a class="el" href="classLoggerFile.html">LoggerFile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a1e607b06bfbaa4035fb19b9f58213f72">get</a> ()</td></tr>
+<tr class="memdesc:a1e607b06bfbaa4035fb19b9f58213f72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grab the log file singleton. <br /></td></tr>
+<tr class="separator:a1e607b06bfbaa4035fb19b9f58213f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_classLoggerInterface"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classLoggerInterface')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classLoggerInterface.html">LoggerInterface</a></td></tr>
+<tr class="memitem:abb12933dbbae4249df3b682105242ff2 inherit pub_static_methods_classLoggerInterface"><td class="memItemLeft" align="right" valign="top"><a id="abb12933dbbae4249df3b682105242ff2"></a>
+static <a class="el" href="classLoggerInterface.html">LoggerInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerInterface.html#abb12933dbbae4249df3b682105242ff2">get</a> ()</td></tr>
+<tr class="memdesc:abb12933dbbae4249df3b682105242ff2 inherit pub_static_methods_classLoggerInterface"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grab the single instance for the logger. <br /></td></tr>
+<tr class="separator:abb12933dbbae4249df3b682105242ff2 inherit pub_static_methods_classLoggerInterface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a7037e94f77b90fdf8b3d7f3ce21c345d"><td class="memItemLeft" align="right" valign="top"><a id="a7037e94f77b90fdf8b3d7f3ce21c345d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a7037e94f77b90fdf8b3d7f3ce21c345d">LoggerFile</a> (const std::filesystem::path &amp;log_file_path)</td></tr>
+<tr class="memdesc:a7037e94f77b90fdf8b3d7f3ce21c345d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logger constructor using a file. <br /></td></tr>
+<tr class="separator:a7037e94f77b90fdf8b3d7f3ce21c345d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0052bb08ef61f4360e1136c1076ea946"><td class="memItemLeft" align="right" valign="top"><a id="a0052bb08ef61f4360e1136c1076ea946"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a0052bb08ef61f4360e1136c1076ea946">get_timestamp</a> ()</td></tr>
 <tr class="memdesc:a0052bb08ef61f4360e1136c1076ea946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current date as a timestamp. <br /></td></tr>
@@ -111,7 +124,7 @@ std::unique_ptr&lt; std::ofstream &gt;&#160;</td><td class="memItemRight" valign
 <tr class="separator:a76ba0529b72555db9ea17fbfea38fac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Logger implementation with a log file. </p>
+<div class="textblock"><p>Logger implementation with a log file. This is a singleton. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/logger/<a class="el" href="logger__file_8h_source.html">logger_file.h</a></li>
 <li>src/logger/logger_file.cpp</li>

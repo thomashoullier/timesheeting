@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_176',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem']]]
+  ['logger_196',['logger',['../classProjectTaskTable.html#af17e2b51f72aee8424fb429662e23038',1,'ProjectTaskTable::logger()'],['../classUI.html#a7b7c4a1f2c20f0537f5fceca65d40180',1,'UI::logger()']]]
 ];

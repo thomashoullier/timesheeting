@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['update_5fproject_5fcol_166',['update_project_col',['../classProjectTaskTable.html#aa4896be596997d32983afbf62bc46394',1,'ProjectTaskTable']]],
-  ['update_5ftask_5fcol_167',['update_task_col',['../classProjectTaskTable.html#a7a6060052085c111842170e992805e0b',1,'ProjectTaskTable']]]
+  ['try_5fexec_5fstatement_184',['try_exec_statement',['../classDB__SQLite.html#abc4336c4ecb50aadfd039459de83b69a',1,'DB_SQLite']]]
 ];

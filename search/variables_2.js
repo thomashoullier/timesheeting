@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['held_5fitems_171',['held_items',['../classColumnNcurses.html#af249a540b52004d60376fc59a1c66c84',1,'ColumnNcurses']]]
+  ['file_193',['file',['../classLoggerFile.html#a76ba0529b72555db9ea17fbfea38fac7',1,'LoggerFile']]]
 ];

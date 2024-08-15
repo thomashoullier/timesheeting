@@ -79,11 +79,13 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classLoggerInterface.html">LoggerInterface</a> () = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d">   14</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d">log</a> (<span class="keyword">const</span> std::string &amp;msg) = 0;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LOGGER_INTERFACE_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classLoggerInterface.html#abb12933dbbae4249df3b682105242ff2">   14</a></span>&#160;  <span class="keyword">static</span> <a class="code" href="classLoggerInterface.html">LoggerInterface</a>&amp; <a class="code" href="classLoggerInterface.html#abb12933dbbae4249df3b682105242ff2">get</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d">   16</a></span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d">log</a> (<span class="keyword">const</span> std::string &amp;msg) = 0;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LOGGER_INTERFACE_H</span></div>
 <div class="ttc" id="aclassLoggerInterface_html"><div class="ttname"><a href="classLoggerInterface.html">LoggerInterface</a></div><div class="ttdoc">Virtual interface class for loggers.</div><div class="ttdef"><b>Definition:</b> logger_interface.h:9</div></div>
+<div class="ttc" id="aclassLoggerInterface_html_abb12933dbbae4249df3b682105242ff2"><div class="ttname"><a href="classLoggerInterface.html#abb12933dbbae4249df3b682105242ff2">LoggerInterface::get</a></div><div class="ttdeci">static LoggerInterface &amp; get()</div><div class="ttdoc">Grab the single instance for the logger.</div></div>
 <div class="ttc" id="aclassLoggerInterface_html_abf46d6d922fed8607768c1bafc3ca62d"><div class="ttname"><a href="classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d">LoggerInterface::log</a></div><div class="ttdeci">virtual void log(const std::string &amp;msg)=0</div><div class="ttdoc">Log a message.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

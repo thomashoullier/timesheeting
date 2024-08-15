@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classLoggerInterface-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">LoggerInterface Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -79,7 +80,7 @@ Inheritance diagram for LoggerInterface:</div>
  <div class="center">
   <img src="classLoggerInterface.png" usemap="#LoggerInterface_map" alt=""/>
   <map id="LoggerInterface_map" name="LoggerInterface_map">
-<area href="classLoggerFile.html" title="Logger implementation with a log file." alt="LoggerFile" shape="rect" coords="0,56,102,80"/>
+<area href="classLoggerFile.html" title="Logger implementation with a log file. This is a singleton." alt="LoggerFile" shape="rect" coords="0,56,102,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -89,6 +90,13 @@ Public Member Functions</h2></td></tr>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d">log</a> (const std::string &amp;msg)=0</td></tr>
 <tr class="memdesc:abf46d6d922fed8607768c1bafc3ca62d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message. <br /></td></tr>
 <tr class="separator:abf46d6d922fed8607768c1bafc3ca62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:abb12933dbbae4249df3b682105242ff2"><td class="memItemLeft" align="right" valign="top"><a id="abb12933dbbae4249df3b682105242ff2"></a>
+static <a class="el" href="classLoggerInterface.html">LoggerInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerInterface.html#abb12933dbbae4249df3b682105242ff2">get</a> ()</td></tr>
+<tr class="memdesc:abb12933dbbae4249df3b682105242ff2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grab the single instance for the logger. <br /></td></tr>
+<tr class="separator:abb12933dbbae4249df3b682105242ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Virtual interface class for loggers. </p>

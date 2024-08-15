@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['file_170',['file',['../classLoggerFile.html#a76ba0529b72555db9ea17fbfea38fac7',1,'LoggerFile']]]
+  ['entries_5ftable_192',['entries_table',['../classUI.html#ae17bbb2406eadac7beb22319abd3a68b',1,'UI']]]
 ];
