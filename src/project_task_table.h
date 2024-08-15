@@ -8,6 +8,7 @@
 #include "db_interface.h"
 #include "logger_interface.h"
 #include "status_bar_interface.h"
+#include "ui_screen.h"
 #include <memory>
 #include <algorithm>
 
@@ -21,7 +22,7 @@ template <typename T_DB, typename T_ST,
             std::is_base_of<ColumnInterface<Project>, T_PROJ>::value &&
             std::is_base_of<ColumnInterface<Task>, T_TASK>::value &&
             std::is_base_of<LoggerInterface, T_LOG>::value>>
-class ProjectTaskTable {
+class ProjectTaskTable : public UIScreen {
 public:
   /** @brief Table constructor. */
   explicit ProjectTaskTable(std::shared_ptr<T_DB> _db,
@@ -34,18 +35,18 @@ public:
                                           ColPos::middle)),
         logger(&T_LOG::get()) {}
 
-  void refresh () {
+  void refresh () override {
     update_project_col();
     update_task_col();
   };
 
-  void clear () {
+  void clear () override {
     project_col->clear();
     task_col->clear();
   };
 
   /** @brief Query an user input, treat it or return it. */
-  char input_loop() {
+  char input_loop() override {
     ColumnInterfaceBase *cur_col {project_col.get()};
     while (true) {
       cur_col->refresh();
