@@ -21,6 +21,8 @@ public:
 
   void refresh() override { wrefresh(win); }
 
+  void clear () override { werase(win); }
+
   void set_items(const std::vector<T> &items) override {
     destroy_menu();
     init_menu(items);
@@ -116,7 +118,7 @@ private:
     init_menu_window();
     post_menu(menu);
     set_current_item(menu, menu_items.at(0));
-    refresh();
+    refresh(); // TODO: shouldn't it be a window refresh?
   }
 
   /** @brief Input loop for getting a string from the user. */

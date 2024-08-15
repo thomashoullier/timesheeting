@@ -32,6 +32,8 @@ public:
   virtual std::string query_current_item_rename () = 0;
   /** @brief Refresh the display. */
   virtual void refresh () = 0;
+  /** @brief Clear the display. */
+  virtual void clear () = 0;
 
 protected:
   /** @brief Definition of the intended column position. */

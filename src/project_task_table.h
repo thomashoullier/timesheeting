@@ -32,10 +32,17 @@ public:
             std::make_unique<T_PROJ>(std::vector<Project>(), ColPos::left)),
         task_col(std::make_unique<T_TASK>(std::vector<Task>(),
                                           ColPos::middle)),
-        logger(&T_LOG::get()) {
+        logger(&T_LOG::get()) {}
+
+  void refresh () {
     update_project_col();
     update_task_col();
-  }
+  };
+
+  void clear () {
+    project_col->clear();
+    task_col->clear();
+  };
 
   /** @brief Query an user input, treat it or return it. */
   char input_loop() {
