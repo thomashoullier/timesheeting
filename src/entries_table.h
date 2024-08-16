@@ -2,80 +2,45 @@
 #define ENTRIES_TABLE_H
 
 #include "ui_screen.h"
-#include <cstddef>
-#include <ncurses.h>
-#include <menu.h>
-#include <vector>
+#include "register_ncurses.h"
 
-// TODO: make a generic interface to a register-like thing and a
-//       ncurses implementation of it. And make this class into
-//       a template.
-// TODO: Factorize the menu from here with the one in columns.
-//       Maybe factorize with column altogether.
 /** @brief Class for holding the table of entries for a given day. */
 class EntriesTable : public UIScreen {
 public:
-  EntriesTable () {
-    init_menu();
-  };
-
-  ~EntriesTable () {
-    destroy_menu();
-  };
+  EntriesTable () : reg() {};
 
   char input_loop() override {
-    return wgetch(win);
+    while (true) {
+      auto ch = reg.query_input();
+      switch (ch) {
+      case 'n':
+        reg.select_down_item();
+        break;
+      case 'e':
+        reg.select_up_item();
+        break;
+      case 'i':
+        reg.select_right_item();
+        break;
+      case 'h':
+        reg.select_left_item();
+        break;
+      default:
+        return ch;
+      }
+    }
   };
 
   void refresh () override {
-    post_menu(menu);
-    wrefresh(win);
+    reg.refresh();
   };
 
   void clear() override {
-    wclear(win);
-    unpost_menu(menu);
+    reg.clear();
   };
 
 private:
-  static constexpr std::size_t PAGE_LINES{35};
-  static constexpr int WIDTH{80};
-  WINDOW *win;
-  MENU *menu;
-  std::vector<ITEM *> menu_items;
-
-  void init_menu() {
-    init_items();
-    init_menu_window();
-    set_current_item(menu, menu_items.at(0));
-  };
-
-  void init_items() {
-    menu_items.push_back(new_item("Project1", NULL));
-    menu_items.push_back(new_item("Task1", NULL));
-    menu_items.push_back(new_item("Start1", NULL));
-    menu_items.push_back(new_item("Stop1", NULL));
-    menu_items.push_back(NULL);
-    menu = new_menu(menu_items.data());
-  };
-
-  void init_menu_window() {
-    win = newwin(PAGE_LINES + 1, WIDTH, 1, 1);
-    set_menu_win(menu, win);
-    set_menu_sub(menu, derwin(win, PAGE_LINES, WIDTH - 2, 1, 1));
-    set_menu_format(menu, PAGE_LINES - 1, 4);
-    box(win, 0, 0);
-  };
-
-  void destroy_menu() {
-    unpost_menu(menu);
-    free_menu(menu);
-    delwin(win);
-    for (auto &it : menu_items) {
-      free_item(it);
-    }
-    menu_items.clear();
-  };
+  RegisterNcurses reg;
 };
 
 #endif // ENTRIES_TABLE_H

@@ -5,6 +5,8 @@
 
 #include <string>
 #include <cstdint>
+#include <chrono>
+#include <format>
 
 /** @brief Unique id for data items (typically a SQLite rowid). */
 typedef uint64_t Id;
@@ -21,5 +23,32 @@ struct GenericItem {
 struct Project : GenericItem {};
 /** @brief Specialization of GenericItem into a Task item. */
 struct Task : GenericItem {};
+
+/** @brief Date type. */
+class Date {
+private:
+  std::chrono::time_point<std::chrono::system_clock> tp;
+
+  std::string to_string() {
+    return std::format("{:%d%b%Y %H:%M:%S}",
+                       std::chrono::floor<std::chrono::seconds>(tp));
+  };
+
+public:
+  /** Date as a displayable string. */
+  std::string str;
+  Date() : tp(std::chrono::system_clock::now()),
+           str(to_string())
+  {};
+};
+
+/** @brief Timesheet entry object. */
+struct Entry {
+  Id id;
+  std::string project_name;
+  std::string task_name;
+  Date start;
+  Date stop;
+};
 
 #endif // DATA_OBJECTS_H
