@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classEntriesTable-members.html">List of all members</a>  </div>
@@ -75,24 +76,57 @@ $(function() {
  <a href="classEntriesTable.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="entries__table_8h_source.html">entries_table.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for EntriesTable:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classEntriesTable.png" usemap="#EntriesTable_map" alt=""/>
+  <map id="EntriesTable_map" name="EntriesTable_map">
+<area href="classUIScreen.html" title="Interface for a UI screen." alt="UIScreen" shape="rect" coords="0,0,82,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5525ff7eabdc81bed40b65bea81adeb8"><td class="memItemLeft" align="right" valign="top"><a id="a5525ff7eabdc81bed40b65bea81adeb8"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>input_loop</b> ()</td></tr>
-<tr class="separator:a5525ff7eabdc81bed40b65bea81adeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af658f2d69eb96edba4ee88dee8ebc82f"><td class="memItemLeft" align="right" valign="top"><a id="af658f2d69eb96edba4ee88dee8ebc82f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> ()</td></tr>
-<tr class="separator:af658f2d69eb96edba4ee88dee8ebc82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5effd4ef907bb3ce11cc524b7dee7b99"><td class="memItemLeft" align="right" valign="top"><a id="a5effd4ef907bb3ce11cc524b7dee7b99"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
-<tr class="separator:a5effd4ef907bb3ce11cc524b7dee7b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d1a24bd0c9e23cefd3a5f1d02bfe660"><td class="memItemLeft" align="right" valign="top"><a id="a7d1a24bd0c9e23cefd3a5f1d02bfe660"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a7d1a24bd0c9e23cefd3a5f1d02bfe660">input_loop</a> () override</td></tr>
+<tr class="memdesc:a7d1a24bd0c9e23cefd3a5f1d02bfe660"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUI.html" title="Ncurses UI for timesheeting.">UI</a> input loop for the screen. <br /></td></tr>
+<tr class="separator:a7d1a24bd0c9e23cefd3a5f1d02bfe660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3a52bb1c690bddc53b691c83be8921e"><td class="memItemLeft" align="right" valign="top"><a id="aa3a52bb1c690bddc53b691c83be8921e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#aa3a52bb1c690bddc53b691c83be8921e">refresh</a> () override</td></tr>
+<tr class="memdesc:aa3a52bb1c690bddc53b691c83be8921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the screen information and display it. <br /></td></tr>
+<tr class="separator:aa3a52bb1c690bddc53b691c83be8921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43651a9a62597e142b39fe2aaed1a6bf"><td class="memItemLeft" align="right" valign="top"><a id="a43651a9a62597e142b39fe2aaed1a6bf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a43651a9a62597e142b39fe2aaed1a6bf">clear</a> () override</td></tr>
+<tr class="memdesc:a43651a9a62597e142b39fe2aaed1a6bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the screen from the display. <br /></td></tr>
+<tr class="separator:a43651a9a62597e142b39fe2aaed1a6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a7b05c551712ae6dfd0957b5e187c18bd"><td class="memItemLeft" align="right" valign="top"><a id="a7b05c551712ae6dfd0957b5e187c18bd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu</b> ()</td></tr>
+<tr class="separator:a7b05c551712ae6dfd0957b5e187c18bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31484113eed3754b024ae77a14732acd"><td class="memItemLeft" align="right" valign="top"><a id="a31484113eed3754b024ae77a14732acd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_items</b> ()</td></tr>
+<tr class="separator:a31484113eed3754b024ae77a14732acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64135a92091156f70742ae584b1d57b1"><td class="memItemLeft" align="right" valign="top"><a id="a64135a92091156f70742ae584b1d57b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu_window</b> ()</td></tr>
+<tr class="separator:a64135a92091156f70742ae584b1d57b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab46b27f96489ad5c97726f913737edb4"><td class="memItemLeft" align="right" valign="top"><a id="ab46b27f96489ad5c97726f913737edb4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy_menu</b> ()</td></tr>
+<tr class="separator:ab46b27f96489ad5c97726f913737edb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae3ca593645a17a145b6fb2ab264679cc"><td class="memItemLeft" align="right" valign="top"><a id="ae3ca593645a17a145b6fb2ab264679cc"></a>
 WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
 <tr class="separator:ae3ca593645a17a145b6fb2ab264679cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40dcacde34d784d6e9385eba92420f37"><td class="memItemLeft" align="right" valign="top"><a id="a40dcacde34d784d6e9385eba92420f37"></a>
+MENU *&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b></td></tr>
+<tr class="separator:a40dcacde34d784d6e9385eba92420f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81b3b907f133a7e6f6531e5aee898a04"><td class="memItemLeft" align="right" valign="top"><a id="a81b3b907f133a7e6f6531e5aee898a04"></a>
+std::vector&lt; ITEM * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>menu_items</b></td></tr>
+<tr class="separator:a81b3b907f133a7e6f6531e5aee898a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>

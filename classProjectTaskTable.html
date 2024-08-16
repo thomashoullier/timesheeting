@@ -75,6 +75,15 @@ $(function() {
  <a href="classProjectTaskTable.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="project__task__table_8h_source.html">project_task_table.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classProjectTaskTable.png" usemap="#ProjectTaskTable_3C_20T_5FDB_2C_20T_5FST_2C_20T_5FPROJ_2C_20T_5FTASK_2C_20T_5FLOG_2C_20typename_20_3E_map" alt=""/>
+  <map id="ProjectTaskTable_3C_20T_5FDB_2C_20T_5FST_2C_20T_5FPROJ_2C_20T_5FTASK_2C_20T_5FLOG_2C_20typename_20_3E_map" name="ProjectTaskTable_3C_20T_5FDB_2C_20T_5FST_2C_20T_5FPROJ_2C_20T_5FTASK_2C_20T_5FLOG_2C_20typename_20_3E_map">
+<area href="classUIScreen.html" title="Interface for a UI screen." alt="UIScreen" shape="rect" coords="0,0,425,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -82,16 +91,18 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a56db61ebd5072d6b24a609247dd2ef79">ProjectTaskTable</a> (std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; T_ST &gt; _status)</td></tr>
 <tr class="memdesc:a56db61ebd5072d6b24a609247dd2ef79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table constructor. <br /></td></tr>
 <tr class="separator:a56db61ebd5072d6b24a609247dd2ef79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae17f02b7c648076832f8601878809306"><td class="memItemLeft" align="right" valign="top"><a id="ae17f02b7c648076832f8601878809306"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> ()</td></tr>
-<tr class="separator:ae17f02b7c648076832f8601878809306"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade87e17290e8a590f030cd6e2c972b6e"><td class="memItemLeft" align="right" valign="top"><a id="ade87e17290e8a590f030cd6e2c972b6e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
-<tr class="separator:ade87e17290e8a590f030cd6e2c972b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec657a036d8ce96c595800bb538df8e7"><td class="memItemLeft" align="right" valign="top"><a id="aec657a036d8ce96c595800bb538df8e7"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#aec657a036d8ce96c595800bb538df8e7">input_loop</a> ()</td></tr>
-<tr class="memdesc:aec657a036d8ce96c595800bb538df8e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query an user input, treat it or return it. <br /></td></tr>
-<tr class="separator:aec657a036d8ce96c595800bb538df8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518ac9934b4a59356b68d2f9c3bd15a8"><td class="memItemLeft" align="right" valign="top"><a id="a518ac9934b4a59356b68d2f9c3bd15a8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a518ac9934b4a59356b68d2f9c3bd15a8">refresh</a> () override</td></tr>
+<tr class="memdesc:a518ac9934b4a59356b68d2f9c3bd15a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the screen information and display it. <br /></td></tr>
+<tr class="separator:a518ac9934b4a59356b68d2f9c3bd15a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac64681e95c98c8a90171bd6208a63c47"><td class="memItemLeft" align="right" valign="top"><a id="ac64681e95c98c8a90171bd6208a63c47"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#ac64681e95c98c8a90171bd6208a63c47">clear</a> () override</td></tr>
+<tr class="memdesc:ac64681e95c98c8a90171bd6208a63c47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the screen from the display. <br /></td></tr>
+<tr class="separator:ac64681e95c98c8a90171bd6208a63c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78113b3b9ce79dfa2fa69adeee4aa95"><td class="memItemLeft" align="right" valign="top"><a id="ab78113b3b9ce79dfa2fa69adeee4aa95"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#ab78113b3b9ce79dfa2fa69adeee4aa95">input_loop</a> () override</td></tr>
+<tr class="memdesc:ab78113b3b9ce79dfa2fa69adeee4aa95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query an user input, treat it or return it. <br /></td></tr>
+<tr class="separator:ab78113b3b9ce79dfa2fa69adeee4aa95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
