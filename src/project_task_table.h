@@ -33,11 +33,15 @@ public:
             std::make_unique<T_PROJ>(std::vector<Project>(), ColPos::left)),
         task_col(std::make_unique<T_TASK>(std::vector<Task>(),
                                           ColPos::middle)),
-        logger(&T_LOG::get()) {}
-
-  void refresh () override {
+        logger(&T_LOG::get()) {
+    // TODO: initialize directly on actual db data.
     update_project_col();
     update_task_col();
+  }
+
+  void refresh () override {
+    project_col->refresh();
+    task_col->refresh();
   };
 
   void clear () override {
@@ -49,7 +53,6 @@ public:
   char input_loop() override {
     ColumnInterfaceBase *cur_col {project_col.get()};
     while (true) {
-      cur_col->refresh();
       status->print(cur_col->get_current_name());
       auto ch = cur_col->query_input();
       switch (ch) {

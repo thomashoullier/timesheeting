@@ -19,9 +19,16 @@ public:
   /** @brief Column destructor. */
   ~ColumnNcurses() { destroy_menu(); }
 
-  void refresh() override { wrefresh(win); }
+  void refresh() override {
+    post_menu(menu);
+    wrefresh(win);
+  }
 
-  void clear () override { werase(win); }
+  void clear () override {
+    wclear(win);
+    unpost_menu(menu);
+    wrefresh(win);
+  }
 
   void set_items(const std::vector<T> &items) override {
     destroy_menu();
@@ -116,9 +123,8 @@ private:
   void init_menu(const std::vector<T> &items) {
     init_items(items);
     init_menu_window();
-    post_menu(menu);
     set_current_item(menu, menu_items.at(0));
-    refresh(); // TODO: shouldn't it be a window refresh?
+    refresh();
   }
 
   /** @brief Input loop for getting a string from the user. */
