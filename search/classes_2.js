@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['entriestable_113',['EntriesTable',['../classEntriesTable.html',1,'']]]
+  ['entriestable_118',['EntriesTable',['../classEntriesTable.html',1,'']]],
+  ['entry_119',['Entry',['../structEntry.html',1,'']]]
 ];
