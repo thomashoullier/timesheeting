@@ -27,7 +27,6 @@ public:
   void clear () override {
     wclear(win);
     unpost_menu(menu);
-    wrefresh(win);
   }
 
   void set_items(const std::vector<T> &items) override {
@@ -124,7 +123,6 @@ private:
     init_items(items);
     init_menu_window();
     set_current_item(menu, menu_items.at(0));
-    refresh();
   }
 
   /** @brief Input loop for getting a string from the user. */

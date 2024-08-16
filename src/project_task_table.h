@@ -122,6 +122,7 @@ private:
       Id cur_project = project_col->get_current_id();
       auto task_items = db->query_tasks(cur_project);
       task_col->set_items(task_items);
+      task_col->refresh();
     } catch (ColumnEmpty &e) {
       return;
     }
@@ -131,6 +132,7 @@ private:
   void update_project_col() {
     auto project_items = db->query_projects();
     project_col->set_items(project_items);
+    project_col->refresh();
   }
 
   /** @brief Sanitize the queried user input strings. */

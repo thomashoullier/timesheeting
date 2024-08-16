@@ -13,8 +13,6 @@ UI::~UI() {}
 
 char UI::input_loop() {
   UIScreen *cur_screen {&projects_table};
-  projects_table.clear();
-  entries_table.clear();
   while (true) {
     cur_screen->refresh();
     auto ch = cur_screen->input_loop();

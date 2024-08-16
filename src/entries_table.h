@@ -35,7 +35,6 @@ public:
   void clear() override {
     wclear(win);
     unpost_menu(menu);
-    wrefresh(win);
   };
 
 private:
@@ -49,7 +48,6 @@ private:
     init_items();
     init_menu_window();
     set_current_item(menu, menu_items.at(0));
-    refresh();
   };
 
   void init_items() {
