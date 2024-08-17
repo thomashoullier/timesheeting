@@ -26,6 +26,16 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
   return tasks;
 }
 
+std::vector<Entry> DB_SQLite::query_entries() {
+  // TODO: query from the actual database.
+  Date tp;
+  std::vector<Entry> vec;
+  vec.push_back(Entry{10, "Project A", "Task A", tp, tp});
+  vec.push_back(Entry{11, "Project B", "Task B", tp, tp});
+  vec.push_back(Entry{12, "Project C", "Task C", tp, tp});
+  return vec;
+}
+
 void DB_SQLite::create_projects_table() {
   std::string create_projects_table_st =
     "CREATE TABLE  IF NOT EXISTS projects ("

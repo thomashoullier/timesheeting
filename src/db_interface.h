@@ -17,6 +17,9 @@ public:
   /** @brief Return the set of tasks for a given project. */
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
 
+  // TODO: query a single day at a time
+  virtual std::vector<Entry> query_entries () = 0;
+
   /** @brief Add a project to the DB with the provided name. */
   virtual void add_project(std::string project_name) = 0;
   /** @brief Add a task to a given project with the provided task name. */

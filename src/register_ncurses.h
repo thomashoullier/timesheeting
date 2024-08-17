@@ -16,7 +16,9 @@
  A register is a menu with row item made of several columns. */
 class RegisterNcurses {
 public:
-  RegisterNcurses() { init_menu(); };
+  RegisterNcurses(const std::vector<Entry> &items) {
+    init_menu(items);
+  };
 
   ~RegisterNcurses() { destroy_menu(); };
 
@@ -74,19 +76,16 @@ private:
   std::vector<Entry> held_items;
   std::vector<ITEM *> menu_items;
 
-  void init_menu() {
-    init_items();
+  void init_menu(const std::vector<Entry> &items) {
+    init_items(items);
     init_menu_window();
     set_current_item(menu, menu_items.at(0));
   };
 
-  void init_items() {
-    Date tp;
-    held_items.push_back(Entry{10, "Project1", "Task1", tp, tp});
-    held_items.push_back(Entry{10, "Project2", "Task2", tp, tp});
-    held_items.push_back(Entry{10, "Project3", "Task3", tp, tp});
-    for (std::size_t i = 0; i < 3; ++i) {
-      // TODO: copy argument items into held items
+  void init_items(const std::vector<Entry> &items) {
+    held_items.resize(items.size());
+    for (std::size_t i = 0; i < items.size(); ++i) {
+      held_items.at(i) = items.at(i);
       // TODO: crop the strings to some specific maximum length,
       //       otherwise it goes out of the screen.
       menu_items.push_back(

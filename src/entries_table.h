@@ -18,7 +18,7 @@ public:
                          std::shared_ptr<T_ST> _status) :
     db(std::static_pointer_cast<DB_Interface>(_db)),
     status(std::static_pointer_cast<StatusBarInterface>(_status)),
-    reg()
+    reg(db->query_entries())
   {};
 
   char input_loop() override {
