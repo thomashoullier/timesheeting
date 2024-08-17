@@ -5,7 +5,8 @@ UI::UI()
     db(std::make_shared<DB_SQLite>("timesheeting.db")),
     status_bar(std::make_shared<StatusBarNCurses>()),
     projects_table(db, status_bar),
-    logger(&LoggerFile::get()) {
+    logger(&LoggerFile::get()),
+    entries_table(status_bar) {
   logger->log("timesheeting UI initialized.");
 }
 

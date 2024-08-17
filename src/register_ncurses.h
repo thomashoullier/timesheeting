@@ -4,7 +4,10 @@
 #include <cstddef>
 #include <ncurses.h>
 #include <menu.h>
+#include <stdexcept>
+#include <string>
 #include <vector>
+#include <exception>
 #include "data_objects.h"
 
 // TODO: Factorize with column. Manage any number of columns.
@@ -28,6 +31,33 @@ public:
     wrefresh(win);
   };
 
+  std::string get_current_cell_string () {
+    auto cell_index = get_cell_index();
+    if (cell_index >= 0) {
+      auto it_index = cell_index / ncols; // integer division.
+      auto field_index = cell_index % ncols;
+      auto *it = &held_items.at(it_index);
+      switch(field_index) {
+      case 0:
+        return it->project_name;
+        break;
+      case 1:
+        return it->task_name;
+        break;
+      case 2:
+        return it->start.str;
+        break;
+      case 3:
+        return it->stop.str;
+        break;
+      default:
+        throw std::logic_error("Unknown index for an Entry field.");
+      }
+    } else {
+      return "";
+    }
+  }
+
   void select_down_item() {menu_driver(menu, REQ_DOWN_ITEM); };
   void select_up_item() {menu_driver(menu, REQ_UP_ITEM); };
   void select_right_item() {menu_driver(menu, REQ_RIGHT_ITEM); };
@@ -38,6 +68,7 @@ public:
 private:
   static constexpr std::size_t PAGE_LINES{35};
   static constexpr int WIDTH{80};
+  static constexpr int ncols {4};
   WINDOW *win;
   MENU *menu;
   std::vector<Entry> held_items;
@@ -70,11 +101,16 @@ private:
     menu_opts_off(menu, O_SHOWDESC);
   };
 
+  int get_cell_index() {
+    auto cell_index = item_index(current_item(menu));
+    return cell_index;
+  }
+
   void init_menu_window() {
     win = newwin(PAGE_LINES + 1, WIDTH, 1, 1);
     set_menu_win(menu, win);
     set_menu_sub(menu, derwin(win, PAGE_LINES, WIDTH - 1, 1, 1));
-    set_menu_format(menu, PAGE_LINES - 1, 4);
+    set_menu_format(menu, PAGE_LINES - 1, ncols);
     //box(win, 0, 0);
   };
 

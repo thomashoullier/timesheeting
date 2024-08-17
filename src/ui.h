@@ -33,7 +33,7 @@ private:
   /** @brief Logger interface. */
   LoggerInterface *logger;
   /** @brief Screen for the table of entries. */
-  EntriesTable entries_table;
+  EntriesTable<StatusBarNCurses> entries_table;
 };
 
 #endif // UI_H

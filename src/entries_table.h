@@ -1,16 +1,25 @@
 #ifndef ENTRIES_TABLE_H
 #define ENTRIES_TABLE_H
 
+#include <memory>
+#include "status_bar_interface.h"
 #include "ui_screen.h"
 #include "register_ncurses.h"
 
 /** @brief Class for holding the table of entries for a given day. */
+template <typename T_ST,
+          typename = std::enable_if_t<
+            std::is_base_of<StatusBarInterface, T_ST>::value>>
 class EntriesTable : public UIScreen {
 public:
-  EntriesTable () : reg() {};
+  explicit EntriesTable (std::shared_ptr<T_ST> _status) :
+    status(std::static_pointer_cast<StatusBarInterface>(_status)),
+    reg()
+  {};
 
   char input_loop() override {
     while (true) {
+      status->print(reg.get_current_cell_string());
       auto ch = reg.query_input();
       switch (ch) {
       case 'n':
@@ -40,6 +49,7 @@ public:
   };
 
 private:
+  std::shared_ptr<StatusBarInterface> status;
   RegisterNcurses reg;
 };
 
