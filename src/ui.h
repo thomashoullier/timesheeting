@@ -33,7 +33,7 @@ private:
   /** @brief Logger interface. */
   LoggerInterface *logger;
   /** @brief Screen for the table of entries. */
-  EntriesTable<StatusBarNCurses> entries_table;
+  EntriesTable<DB_SQLite, StatusBarNCurses> entries_table;
 };
 
 #endif // UI_H

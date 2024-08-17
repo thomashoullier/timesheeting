@@ -18,6 +18,7 @@ public:
   std::vector<Task> query_tasks (Id project_id) override;
   void add_project(std::string project_name) override;
   void add_task(Id project_id, std::string task_name) override;
+  void add_entry(Id task_id, const Date &start, const Date &stop) override;
   void edit_project_name(Id project_id, std::string new_project_name) override;
   void edit_task_name(Id task_id, std::string new_task_name) override;
   void delete_task(Id task_id) override;
@@ -31,6 +32,8 @@ private:
   void create_projects_table();
   /** @brief Create the SQL table for tasks. */
   void create_tasks_table();
+  /** @brief Create the SQL table for entries. */
+  void create_entries_table();
   /** @brief Execute a SQL statement with exception catching. */
   void try_exec_statement(const std::string &statement);
 

@@ -38,8 +38,12 @@ public:
   /** Date as a displayable string. */
   std::string str;
   Date() : tp(std::chrono::system_clock::now()),
-           str(to_string())
-  {};
+           str(to_string()) {};
+  /** @brief Get the date as a UNIX timestamp (UTC) in seconds. */
+  uint64_t to_unix_timestamp () const {
+    return std::chrono::duration_cast
+      <std::chrono::seconds>(tp.time_since_epoch()).count();
+  };
 };
 
 /** @brief Timesheet entry object. */

@@ -6,7 +6,7 @@ UI::UI()
     status_bar(std::make_shared<StatusBarNCurses>()),
     projects_table(db, status_bar),
     logger(&LoggerFile::get()),
-    entries_table(status_bar) {
+    entries_table(db, status_bar) {
   logger->log("timesheeting UI initialized.");
 }
 

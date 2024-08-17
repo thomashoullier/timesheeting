@@ -2,17 +2,21 @@
 #define ENTRIES_TABLE_H
 
 #include <memory>
+#include "db_interface.h"
 #include "status_bar_interface.h"
 #include "ui_screen.h"
 #include "register_ncurses.h"
 
 /** @brief Class for holding the table of entries for a given day. */
-template <typename T_ST,
+template <typename T_DB, typename T_ST,
           typename = std::enable_if_t<
+            std::is_base_of<DB_Interface, T_DB>::value &&
             std::is_base_of<StatusBarInterface, T_ST>::value>>
 class EntriesTable : public UIScreen {
 public:
-  explicit EntriesTable (std::shared_ptr<T_ST> _status) :
+  explicit EntriesTable (std::shared_ptr<T_DB> _db,
+                         std::shared_ptr<T_ST> _status) :
+    db(std::static_pointer_cast<DB_Interface>(_db)),
     status(std::static_pointer_cast<StatusBarInterface>(_status)),
     reg()
   {};
@@ -34,6 +38,9 @@ public:
       case 'h':
         reg.select_left_item();
         break;
+      case 'a': // TODO: put this on the stopwatch instead.
+        db->add_entry(1, Date(), Date());
+        break;
       default:
         return ch;
       }
@@ -49,6 +56,7 @@ public:
   };
 
 private:
+  std::shared_ptr<DB_Interface> db;
   std::shared_ptr<StatusBarInterface> status;
   RegisterNcurses reg;
 };

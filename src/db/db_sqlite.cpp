@@ -6,6 +6,7 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   : sqlite_db (db_file) {
   this->create_projects_table();
   this->create_tasks_table();
+  this->create_entries_table();
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -47,6 +48,18 @@ void DB_SQLite::create_tasks_table() {
   sqlite_db.exec_statement(create_tasks_table_st);
 }
 
+void DB_SQLite::create_entries_table() {
+  std::string create_entries_table_st =
+    "CREATE TABLE IF NOT EXISTS entries ("
+    "id INTEGER PRIMARY KEY, "
+    "task_id INTEGER, "
+    "start INTEGER, "
+    "stop INTEGER, "
+    "FOREIGN KEY (task_id) REFERENCES tasks (id) "
+    ");";
+  sqlite_db.exec_statement(create_entries_table_st);
+}
+
 void DB_SQLite::add_project(std::string project_name) {
   std::string add_project_st = "INSERT INTO projects (name)"
                                "VALUES ('" +
@@ -62,6 +75,16 @@ void DB_SQLite::add_task(Id project_id, std::string task_name) {
                             "'" +
                             task_name + "');";
   try_exec_statement(add_task_st);
+}
+
+void DB_SQLite::add_entry(Id task_id, const Date &start, const Date &stop) {
+  std::string add_entry_st = "INSERT INTO entries (task_id, start, stop) "
+    "VALUES ('" +
+    std::to_string(task_id) + "', "
+    "'" + std::to_string(start.to_unix_timestamp()) + "', "
+    "'" + std::to_string(stop.to_unix_timestamp()) + "'"
+    ");";
+  try_exec_statement(add_entry_st);
 }
 
 void DB_SQLite::edit_project_name(Id project_id, std::string new_project_name) {

@@ -21,6 +21,8 @@ public:
   virtual void add_project(std::string project_name) = 0;
   /** @brief Add a task to a given project with the provided task name. */
   virtual void add_task(Id project_id, std::string task_name) = 0;
+  /** @brief Add an entry for a given task with a start and stop dates. */
+  virtual void add_entry(Id task_id, const Date &start, const Date &stop) = 0;
   /** @brief Edit a project's name. */
   virtual void edit_project_name(Id project_id,
                                  std::string new_project_name) = 0;
