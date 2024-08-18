@@ -44,8 +44,19 @@ public:
     str = to_string();
   };
   /** @brief Construct the date from a UNIX timestamp in seconds. */
-  Date(uint64_t unix_seconds) : tp (std::chrono::seconds{unix_seconds}),
-                                str (to_string()){};
+  Date(uint64_t unix_seconds)
+      : tp(std::chrono::seconds{unix_seconds}), str(to_string()) {};
+  /** @brief Construct the date from a string in a fixed format:
+      '%d%b%Y %H:%M:%S'.
+      This is the same format as the display string format.*/
+  Date(const std::string &date_str) {
+    // TODO: std::chrono::parse is not implemented in gcc 13.3,
+    //       we must use the third party equivalent.
+    // date_str >> std::chrono::parse("{:%d%b%Y %H:%M:%S}", tp);
+    auto tp_now = std::chrono::system_clock::now();
+    tp = std::chrono::floor<std::chrono::seconds>(tp_now);
+    str = to_string();
+  }
   /** @brief Get the date as a UNIX timestamp (UTC) in seconds. */
   uint64_t to_unix_timestamp () const {
     return tp.time_since_epoch().count();

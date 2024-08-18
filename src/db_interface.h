@@ -32,6 +32,9 @@ public:
   /** @brief Edit a task's name. */
   virtual void edit_task_name(Id task_id,
                               std::string new_task_name) = 0;
+  /** @brief Edit an entry's start date. */
+  virtual void edit_entry_start(Id entry_id,
+                                const Date &new_start_date) = 0;
   /** @brief Delete the task with provided Id. */
   virtual void delete_task (Id task_id) = 0;
   /** @brief Delete the project with provided Id and all associated tasks. */

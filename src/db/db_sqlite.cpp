@@ -124,13 +124,21 @@ void DB_SQLite::edit_project_name(Id project_id, std::string new_project_name) {
 }
 
 void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
-  std::string alter_task_name_st =
-    "UPDATE tasks "
-    "SET name = '" +
-    new_task_name +
-    "' "
-    "WHERE id = " + std::to_string(task_id) + ";";
+  std::string alter_task_name_st = "UPDATE tasks "
+                                   "SET name = '" +
+                                   new_task_name +
+                                   "' "
+                                   "WHERE id = " +
+                                   std::to_string(task_id) + ";";
   try_exec_statement(alter_task_name_st);
+}
+
+void DB_SQLite::edit_entry_start(Id entry_id, const Date &new_start_date) {
+  std::string alter_entry_start_st = "UPDATE entries "
+    "SET start = "
+    "'" + std::to_string(new_start_date.to_unix_timestamp()) + "' "
+    "WHERE id = " + std::to_string(entry_id) + ";";
+  try_exec_statement(alter_entry_start_st);
 }
 
 void DB_SQLite::delete_task(Id task_id) {

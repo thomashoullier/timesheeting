@@ -66,6 +66,10 @@ public:
   void select_left_item() {menu_driver(menu, REQ_LEFT_ITEM); };
 
   char query_input() { return wgetch(win); }
+  std::string query_current_item_rename() {
+    auto y = getcury(win);
+    return query_row_input(y);
+  };
 
 private:
   static constexpr std::size_t PAGE_LINES{35};
@@ -122,6 +126,50 @@ private:
     }
     menu_items.clear();
     held_items.clear();
+  };
+
+  std::string query_row_input (int input_row) {
+    std::string input_buffer {};
+    // Move cursor to beginning of line.
+    wmove(win, input_row, 0);
+    // Clear the display line.
+    wclrtoeol(win);
+    bool user_wants_to_input = true;
+    while (user_wants_to_input) { // Item input loop.
+      auto ch = wgetch(win);
+      switch (ch) {
+      case '\n': // User validates the input.
+        user_wants_to_input = false;
+        break;
+      case 27: // User wants to cancel.
+        input_buffer.clear();
+        user_wants_to_input = false;
+        break;
+      case 127: // Erase last character
+        if (!input_buffer.empty()) {
+          input_buffer.pop_back();
+          // Remove character from screen
+          int y, x;
+          getyx(win, y, x);
+          auto xmax = getmaxx(win);
+          if (x == 0) { // jump to the end of the previous line.
+            wmove(win, y-1, xmax-1);
+          } else {
+            wmove(win, y, x - 1);
+          }
+          wdelch(win);
+        }
+        break;
+      default: // Gets added to item.
+        input_buffer.push_back(ch);
+        waddch(win, ch);
+        break;
+      }
+    }
+    // Cleanup the input row.
+    wmove(win, input_row, 0);
+    wclrtoeol(win);
+    return input_buffer;
   };
 };
 
