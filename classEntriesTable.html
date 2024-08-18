@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: EntriesTable Class Reference</title>
+<title>timesheeting: EntriesTable&lt; T_DB, T_ST, typename &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classEntriesTable-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">EntriesTable Class Reference</div>  </div>
+<div class="title">EntriesTable&lt; T_DB, T_ST, typename &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -75,38 +75,50 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="entries__table_8h_source.html">entries_table.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for EntriesTable:</div>
+Inheritance diagram for EntriesTable&lt; T_DB, T_ST, typename &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classEntriesTable.png" usemap="#EntriesTable_map" alt=""/>
-  <map id="EntriesTable_map" name="EntriesTable_map">
-<area href="classUIScreen.html" title="Interface for a UI screen." alt="UIScreen" shape="rect" coords="0,0,82,24"/>
+  <img src="classEntriesTable.png" usemap="#EntriesTable_3C_20T_5FDB_2C_20T_5FST_2C_20typename_20_3E_map" alt=""/>
+  <map id="EntriesTable_3C_20T_5FDB_2C_20T_5FST_2C_20typename_20_3E_map" name="EntriesTable_3C_20T_5FDB_2C_20T_5FST_2C_20typename_20_3E_map">
+<area href="classUIScreen.html" title="Interface for a UI screen." alt="UIScreen" shape="rect" coords="0,0,238,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7d1a24bd0c9e23cefd3a5f1d02bfe660"><td class="memItemLeft" align="right" valign="top"><a id="a7d1a24bd0c9e23cefd3a5f1d02bfe660"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a7d1a24bd0c9e23cefd3a5f1d02bfe660">input_loop</a> () override</td></tr>
-<tr class="memdesc:a7d1a24bd0c9e23cefd3a5f1d02bfe660"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUI.html" title="Ncurses UI for timesheeting.">UI</a> input loop for the screen. <br /></td></tr>
-<tr class="separator:a7d1a24bd0c9e23cefd3a5f1d02bfe660"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3a52bb1c690bddc53b691c83be8921e"><td class="memItemLeft" align="right" valign="top"><a id="aa3a52bb1c690bddc53b691c83be8921e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#aa3a52bb1c690bddc53b691c83be8921e">refresh</a> () override</td></tr>
-<tr class="memdesc:aa3a52bb1c690bddc53b691c83be8921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the screen information and display it. <br /></td></tr>
-<tr class="separator:aa3a52bb1c690bddc53b691c83be8921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43651a9a62597e142b39fe2aaed1a6bf"><td class="memItemLeft" align="right" valign="top"><a id="a43651a9a62597e142b39fe2aaed1a6bf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a43651a9a62597e142b39fe2aaed1a6bf">clear</a> () override</td></tr>
-<tr class="memdesc:a43651a9a62597e142b39fe2aaed1a6bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the screen from the display. <br /></td></tr>
-<tr class="separator:a43651a9a62597e142b39fe2aaed1a6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a54e4e1f00ceb838d70bb4f104452dc"><td class="memItemLeft" align="right" valign="top"><a id="a0a54e4e1f00ceb838d70bb4f104452dc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>EntriesTable</b> (std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; T_ST &gt; _status)</td></tr>
+<tr class="separator:a0a54e4e1f00ceb838d70bb4f104452dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab73445c51ef4b0d386aae9f393b5ddb9"><td class="memItemLeft" align="right" valign="top"><a id="ab73445c51ef4b0d386aae9f393b5ddb9"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#ab73445c51ef4b0d386aae9f393b5ddb9">input_loop</a> () override</td></tr>
+<tr class="memdesc:ab73445c51ef4b0d386aae9f393b5ddb9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUI.html" title="Ncurses UI for timesheeting.">UI</a> input loop for the screen. <br /></td></tr>
+<tr class="separator:ab73445c51ef4b0d386aae9f393b5ddb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e6e2e0d6726139bd025a47478514078"><td class="memItemLeft" align="right" valign="top"><a id="a7e6e2e0d6726139bd025a47478514078"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a7e6e2e0d6726139bd025a47478514078">refresh</a> () override</td></tr>
+<tr class="memdesc:a7e6e2e0d6726139bd025a47478514078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the screen information and display it. <br /></td></tr>
+<tr class="separator:a7e6e2e0d6726139bd025a47478514078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addfa1f22525bebfa2380c10795cd8e64"><td class="memItemLeft" align="right" valign="top"><a id="addfa1f22525bebfa2380c10795cd8e64"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#addfa1f22525bebfa2380c10795cd8e64">clear</a> () override</td></tr>
+<tr class="memdesc:addfa1f22525bebfa2380c10795cd8e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the screen from the display. <br /></td></tr>
+<tr class="separator:addfa1f22525bebfa2380c10795cd8e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a92a703039818f6756031bc9cb2b7713e"><td class="memItemLeft" align="right" valign="top"><a id="a92a703039818f6756031bc9cb2b7713e"></a>
+<tr class="memitem:a8c60eb474e46285e5923dd339048a80b"><td class="memItemLeft" align="right" valign="top"><a id="a8c60eb474e46285e5923dd339048a80b"></a>
+std::shared_ptr&lt; <a class="el" href="classDB__Interface.html">DB_Interface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>db</b></td></tr>
+<tr class="separator:a8c60eb474e46285e5923dd339048a80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5248e2678620b189ff73b04f41e5e7e"><td class="memItemLeft" align="right" valign="top"><a id="ab5248e2678620b189ff73b04f41e5e7e"></a>
+std::shared_ptr&lt; <a class="el" href="classStatusBarInterface.html">StatusBarInterface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>status</b></td></tr>
+<tr class="separator:ab5248e2678620b189ff73b04f41e5e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee20bd28543a979294bb5afb2752fcb"><td class="memItemLeft" align="right" valign="top"><a id="acee20bd28543a979294bb5afb2752fcb"></a>
 <a class="el" href="classRegisterNcurses.html">RegisterNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><b>reg</b></td></tr>
-<tr class="separator:a92a703039818f6756031bc9cb2b7713e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:acee20bd28543a979294bb5afb2752fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class for holding the table of entries for a given day. </p>
+<div class="textblock"><h3>template&lt;typename T_DB, typename T_ST, typename = std::enable_if_t&lt;            std::is_base_of&lt;DB_Interface, T_DB&gt;::value &amp;&amp;            std::is_base_of&lt;StatusBarInterface, T_ST&gt;::value&gt;&gt;<br />
+class EntriesTable&lt; T_DB, T_ST, typename &gt;</h3>
+
+<p>Class for holding the table of entries for a given day. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="entries__table_8h_source.html">entries_table.h</a></li>
 </ul>

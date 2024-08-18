@@ -79,12 +79,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a20b26f8095883cb642da0a4888b22ab8"><td class="memItemLeft" align="right" valign="top"><a id="a20b26f8095883cb642da0a4888b22ab8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterNcurses</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
+<tr class="separator:a20b26f8095883cb642da0a4888b22ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01b5b2959c3fb0d7b4ed85544f047170"><td class="memItemLeft" align="right" valign="top"><a id="a01b5b2959c3fb0d7b4ed85544f047170"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> ()</td></tr>
 <tr class="separator:a01b5b2959c3fb0d7b4ed85544f047170"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9976ad42c147f1d6885bbdb5e029b7dd"><td class="memItemLeft" align="right" valign="top"><a id="a9976ad42c147f1d6885bbdb5e029b7dd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
 <tr class="separator:a9976ad42c147f1d6885bbdb5e029b7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabf46d18915a0e61658677ceb1283b96"><td class="memItemLeft" align="right" valign="top"><a id="aabf46d18915a0e61658677ceb1283b96"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_cell_string</b> ()</td></tr>
+<tr class="separator:aabf46d18915a0e61658677ceb1283b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98afbb21f7d5d4bf6515f10412bf9e7d"><td class="memItemLeft" align="right" valign="top"><a id="a98afbb21f7d5d4bf6515f10412bf9e7d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>select_down_item</b> ()</td></tr>
 <tr class="separator:a98afbb21f7d5d4bf6515f10412bf9e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,12 +109,15 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>query_input</b> ()</t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a604a17c1264b02a0c0378299fe9a2931"><td class="memItemLeft" align="right" valign="top"><a id="a604a17c1264b02a0c0378299fe9a2931"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu</b> ()</td></tr>
-<tr class="separator:a604a17c1264b02a0c0378299fe9a2931"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6071aa7560ef5530a7b226c31d141963"><td class="memItemLeft" align="right" valign="top"><a id="a6071aa7560ef5530a7b226c31d141963"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_items</b> ()</td></tr>
-<tr class="separator:a6071aa7560ef5530a7b226c31d141963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11bca07f5e722268eaff0db4335cf803"><td class="memItemLeft" align="right" valign="top"><a id="a11bca07f5e722268eaff0db4335cf803"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
+<tr class="separator:a11bca07f5e722268eaff0db4335cf803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc79cbac9a678448e222dd76e63dcbe2"><td class="memItemLeft" align="right" valign="top"><a id="afc79cbac9a678448e222dd76e63dcbe2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_items</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
+<tr class="separator:afc79cbac9a678448e222dd76e63dcbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a290c2914d660723e2a42950dbda64180"><td class="memItemLeft" align="right" valign="top"><a id="a290c2914d660723e2a42950dbda64180"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>get_cell_index</b> ()</td></tr>
+<tr class="separator:a290c2914d660723e2a42950dbda64180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8beac72e02c02295c00f8760d4d4c622"><td class="memItemLeft" align="right" valign="top"><a id="a8beac72e02c02295c00f8760d4d4c622"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu_window</b> ()</td></tr>
 <tr class="separator:a8beac72e02c02295c00f8760d4d4c622"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +148,9 @@ static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memitem:a1324e29711232bf19b747d015b0e6f87"><td class="memItemLeft" align="right" valign="top"><a id="a1324e29711232bf19b747d015b0e6f87"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>WIDTH</b> {80}</td></tr>
 <tr class="separator:a1324e29711232bf19b747d015b0e6f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d49eb65a136634a9627c00a17f1087a"><td class="memItemLeft" align="right" valign="top"><a id="a4d49eb65a136634a9627c00a17f1087a"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>ncols</b> {4}</td></tr>
+<tr class="separator:a4d49eb65a136634a9627c00a17f1087a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structEntry.html" title="Timesheet entry object.">Entry</a> register implementation in ncurses. </p>

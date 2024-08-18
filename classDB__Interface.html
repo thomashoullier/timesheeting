@@ -93,6 +93,9 @@ virtual std::vector&lt; <a class="el" href="structProject.html">Project</a> &gt;
 virtual std::vector&lt; <a class="el" href="structTask.html">Task</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a37bf545ad6816b24016953510cc2201c">query_tasks</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id)=0</td></tr>
 <tr class="memdesc:a37bf545ad6816b24016953510cc2201c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of tasks for a given project. <br /></td></tr>
 <tr class="separator:a37bf545ad6816b24016953510cc2201c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18c3213802ab47ebf9ad6c9035f90b47"><td class="memItemLeft" align="right" valign="top"><a id="a18c3213802ab47ebf9ad6c9035f90b47"></a>
+virtual std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>query_entries</b> ()=0</td></tr>
+<tr class="separator:a18c3213802ab47ebf9ad6c9035f90b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3cf1dd9241c33fd54f0d3494912687"><td class="memItemLeft" align="right" valign="top"><a id="a0a3cf1dd9241c33fd54f0d3494912687"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a0a3cf1dd9241c33fd54f0d3494912687">add_project</a> (std::string project_name)=0</td></tr>
 <tr class="memdesc:a0a3cf1dd9241c33fd54f0d3494912687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a project to the DB with the provided name. <br /></td></tr>
@@ -101,6 +104,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a09c34840df3a472d94852218cd7e997a">add_task</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id, std::string task_name)=0</td></tr>
 <tr class="memdesc:a09c34840df3a472d94852218cd7e997a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to a given project with the provided task name. <br /></td></tr>
 <tr class="separator:a09c34840df3a472d94852218cd7e997a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5697e22bacbfc40f18c4e3c026b64e08"><td class="memItemLeft" align="right" valign="top"><a id="a5697e22bacbfc40f18c4e3c026b64e08"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a5697e22bacbfc40f18c4e3c026b64e08">add_entry</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> task_id, const <a class="el" href="classDate.html">Date</a> &amp;start, const <a class="el" href="classDate.html">Date</a> &amp;stop)=0</td></tr>
+<tr class="memdesc:a5697e22bacbfc40f18c4e3c026b64e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an entry for a given task with a start and stop dates. <br /></td></tr>
+<tr class="separator:a5697e22bacbfc40f18c4e3c026b64e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a094da0726e151ab16ea81ab9a8ff5cf2"><td class="memItemLeft" align="right" valign="top"><a id="a094da0726e151ab16ea81ab9a8ff5cf2"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a094da0726e151ab16ea81ab9a8ff5cf2">edit_project_name</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id, std::string new_project_name)=0</td></tr>
 <tr class="memdesc:a094da0726e151ab16ea81ab9a8ff5cf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit a project's name. <br /></td></tr>

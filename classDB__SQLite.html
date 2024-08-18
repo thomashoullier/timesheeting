@@ -99,6 +99,9 @@ std::vector&lt; <a class="el" href="structProject.html">Project</a> &gt;&#160;</
 std::vector&lt; <a class="el" href="structTask.html">Task</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a3961e6425f15ced5d9e7daf0de640cd3">query_tasks</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id) override</td></tr>
 <tr class="memdesc:a3961e6425f15ced5d9e7daf0de640cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of tasks for a given project. <br /></td></tr>
 <tr class="separator:a3961e6425f15ced5d9e7daf0de640cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada2594dfbecef28445f6cb7b6da13895"><td class="memItemLeft" align="right" valign="top"><a id="ada2594dfbecef28445f6cb7b6da13895"></a>
+std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>query_entries</b> () override</td></tr>
+<tr class="separator:ada2594dfbecef28445f6cb7b6da13895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a218175f023f0a0a276cd5dac44fd207c"><td class="memItemLeft" align="right" valign="top"><a id="a218175f023f0a0a276cd5dac44fd207c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a218175f023f0a0a276cd5dac44fd207c">add_project</a> (std::string project_name) override</td></tr>
 <tr class="memdesc:a218175f023f0a0a276cd5dac44fd207c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a project to the DB with the provided name. <br /></td></tr>
@@ -107,6 +110,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#abbf74fea942a9b4fbc58a21c757df276">add_task</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id, std::string task_name) override</td></tr>
 <tr class="memdesc:abbf74fea942a9b4fbc58a21c757df276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to a given project with the provided task name. <br /></td></tr>
 <tr class="separator:abbf74fea942a9b4fbc58a21c757df276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8094f97503b0db19e08041912318e8ca"><td class="memItemLeft" align="right" valign="top"><a id="a8094f97503b0db19e08041912318e8ca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a8094f97503b0db19e08041912318e8ca">add_entry</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> task_id, const <a class="el" href="classDate.html">Date</a> &amp;start, const <a class="el" href="classDate.html">Date</a> &amp;stop) override</td></tr>
+<tr class="memdesc:a8094f97503b0db19e08041912318e8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an entry for a given task with a start and stop dates. <br /></td></tr>
+<tr class="separator:a8094f97503b0db19e08041912318e8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac96fe62fabaed27d0fe3547ebbc77104"><td class="memItemLeft" align="right" valign="top"><a id="ac96fe62fabaed27d0fe3547ebbc77104"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ac96fe62fabaed27d0fe3547ebbc77104">edit_project_name</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id, std::string new_project_name) override</td></tr>
 <tr class="memdesc:ac96fe62fabaed27d0fe3547ebbc77104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit a project's name. <br /></td></tr>
@@ -134,6 +141,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a3116dedb5003b1fd6d0c3a8f5af4db90">create_tasks_table</a> ()</td></tr>
 <tr class="memdesc:a3116dedb5003b1fd6d0c3a8f5af4db90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the SQL table for tasks. <br /></td></tr>
 <tr class="separator:a3116dedb5003b1fd6d0c3a8f5af4db90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a130c13f83de9dc6e6e071df84e6fd93b"><td class="memItemLeft" align="right" valign="top"><a id="a130c13f83de9dc6e6e071df84e6fd93b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a130c13f83de9dc6e6e071df84e6fd93b">create_entries_table</a> ()</td></tr>
+<tr class="memdesc:a130c13f83de9dc6e6e071df84e6fd93b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the SQL table for entries. <br /></td></tr>
+<tr class="separator:a130c13f83de9dc6e6e071df84e6fd93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc4336c4ecb50aadfd039459de83b69a"><td class="memItemLeft" align="right" valign="top"><a id="abc4336c4ecb50aadfd039459de83b69a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#abc4336c4ecb50aadfd039459de83b69a">try_exec_statement</a> (const std::string &amp;statement)</td></tr>
 <tr class="memdesc:abc4336c4ecb50aadfd039459de83b69a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a SQL statement with exception catching. <br /></td></tr>
