@@ -27,12 +27,28 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
 }
 
 std::vector<Entry> DB_SQLite::query_entries() {
-  // TODO: query from the actual database.
-  Date tp;
+  std::string select_entries =
+    "SELECT e.id, p.name, t.name, e.start, e.stop "
+    "FROM entries e "
+    "INNER JOIN tasks t ON e.task_id = t.id "
+    "INNER JOIN projects p ON t.project_id = p.id;";
+  // TODO: put in the db_sqlite_handle somehow.
+  auto stmt = sqlite_db.prepare_statement(select_entries);
   std::vector<Entry> vec;
-  vec.push_back(Entry{10, "Project A", "Task A", tp, tp});
-  vec.push_back(Entry{11, "Project B", "Task B", tp, tp});
-  vec.push_back(Entry{12, "Project C", "Task C", tp, tp});
+  while (sqlite3_step(stmt) == SQLITE_ROW) {
+    RowId id = sqlite3_column_int64(stmt, 0);
+    std::string project_name = reinterpret_cast<const char*>
+      (sqlite3_column_text(stmt, 1));
+    std::string task_name = reinterpret_cast<const char*>
+      (sqlite3_column_text(stmt, 2));
+    uint64_t start_unix = sqlite3_column_int64(stmt, 3);
+    uint64_t stop_unix = sqlite3_column_int64(stmt, 4);
+    Date start_date(start_unix);
+    Date stop_date(stop_unix);
+    Entry e{id, project_name, task_name, start_date, stop_date};
+    vec.push_back(e);
+  }
+  sqlite3_finalize(stmt);
   return vec;
 }
 

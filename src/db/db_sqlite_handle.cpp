@@ -22,15 +22,20 @@ void DB_SQLite_Handle::check_rc(int rc, const std::string &msg) {
   }
 }
 
+sqlite3_stmt *DB_SQLite_Handle::prepare_statement(const std::string &statement) {
+  sqlite3_stmt *stmt;
+  auto rc = sqlite3_prepare_v2(db, statement.c_str(), -1, &stmt, NULL);
+  check_rc(rc, "Could not prepare SQL statement: " + statement);
+  return stmt;
+}
+
 void DB_SQLite_Handle::exec_statement(const std::string &statement) {
   auto rc = sqlite3_exec(db, statement.c_str(), NULL, NULL, NULL);
   check_rc(rc, "Error when executing statement: " + statement);
 }
 
 NameRows DB_SQLite_Handle::query_row_of_names(const std::string &statement) {
-  sqlite3_stmt *stmt;
-  auto rc = sqlite3_prepare_v2(db, statement.c_str(), -1, &stmt, NULL);
-  check_rc(rc, "Could not prepare SQL statement: " + statement);
+  auto stmt = prepare_statement(statement);
   NameRows rows {};
   while (sqlite3_step(stmt) == SQLITE_ROW) {
     RowId id = sqlite3_column_int64(stmt, 0);

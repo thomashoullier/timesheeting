@@ -27,7 +27,7 @@ struct Task : GenericItem {};
 /** @brief Date type. */
 class Date {
 private:
-  std::chrono::time_point<std::chrono::system_clock> tp;
+  std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp;
 
   std::string to_string() {
     return std::format("{:%d%b%Y %H:%M:%S}",
@@ -35,14 +35,20 @@ private:
   };
 
 public:
-  /** Date as a displayable string. */
+  /** @brief Date as a displayable string. */
   std::string str;
-  Date() : tp(std::chrono::system_clock::now()),
-           str(to_string()) {};
+  /** @brief Construct the date with the now() timepoint. */
+  Date() {
+    auto tp_now = std::chrono::system_clock::now();
+    tp = std::chrono::floor<std::chrono::seconds>(tp_now);
+    str = to_string();
+  };
+  /** @brief Construct the date from a UNIX timestamp in seconds. */
+  Date(uint64_t unix_seconds) : tp (std::chrono::seconds{unix_seconds}),
+                                str (to_string()){};
   /** @brief Get the date as a UNIX timestamp (UTC) in seconds. */
   uint64_t to_unix_timestamp () const {
-    return std::chrono::duration_cast
-      <std::chrono::seconds>(tp.time_since_epoch()).count();
+    return tp.time_since_epoch().count();
   };
 };
 

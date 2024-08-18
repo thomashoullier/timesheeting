@@ -23,6 +23,8 @@ public:
   DB_SQLite_Handle (const std::filesystem::path &db_file);
   ~DB_SQLite_Handle ();
 
+  /** @brief Prepare a SQL statement. */
+  sqlite3_stmt* prepare_statement (const std::string &statement);
   /** @brief Execute a SQL statement in the DB. */
   void exec_statement (const std::string &statement);
   /** @brief Return the result of a statement querying a list of rows with
