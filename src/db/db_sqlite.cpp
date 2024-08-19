@@ -81,7 +81,8 @@ void DB_SQLite::create_entries_table() {
     "task_id INTEGER, "
     "start INTEGER, "
     "stop INTEGER, "
-    "FOREIGN KEY (task_id) REFERENCES tasks (id) "
+    "FOREIGN KEY (task_id) REFERENCES tasks (id), "
+    "CHECK (start <= stop) "
     ");";
   sqlite_db.exec_statement(create_entries_table_st);
 }
