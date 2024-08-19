@@ -81,8 +81,7 @@ public:
 
   char query_input() { return wgetch(win); }
   std::string query_current_item_rename() {
-    auto y = getcury(win);
-    return query_row_input(y);
+    return query_row_input();
   };
 
 private:
@@ -148,10 +147,8 @@ private:
     held_items.clear();
   };
 
-  std::string query_row_input (int input_row) {
+  std::string query_row_input () {
     std::string input_buffer {};
-    // Move cursor to beginning of line.
-    wmove(win, input_row, 0);
     // Clear the display line.
     wclrtoeol(win);
     bool user_wants_to_input = true;
@@ -186,9 +183,6 @@ private:
         break;
       }
     }
-    // Cleanup the input row.
-    wmove(win, input_row, 0);
-    wclrtoeol(win);
     return input_buffer;
   };
 };
