@@ -88,6 +88,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> ()</td></
 <tr class="memitem:a9976ad42c147f1d6885bbdb5e029b7dd"><td class="memItemLeft" align="right" valign="top"><a id="a9976ad42c147f1d6885bbdb5e029b7dd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
 <tr class="separator:a9976ad42c147f1d6885bbdb5e029b7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d04eb21a2b375b7169d7cc4ff16a8e"><td class="memItemLeft" align="right" valign="top"><a id="ae7d04eb21a2b375b7169d7cc4ff16a8e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_items</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
+<tr class="separator:ae7d04eb21a2b375b7169d7cc4ff16a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ddd8915e66719efeec1db6d23b06d82"><td class="memItemLeft" align="right" valign="top"><a id="a6ddd8915e66719efeec1db6d23b06d82"></a>
+<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_id</b> ()</td></tr>
+<tr class="separator:a6ddd8915e66719efeec1db6d23b06d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fba87a75b5ea5146be4c6be30dc73e0"><td class="memItemLeft" align="right" valign="top"><a id="a6fba87a75b5ea5146be4c6be30dc73e0"></a>
+EntryField&#160;</td><td class="memItemRight" valign="bottom"><b>get_field_type</b> ()</td></tr>
+<tr class="separator:a6fba87a75b5ea5146be4c6be30dc73e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabf46d18915a0e61658677ceb1283b96"><td class="memItemLeft" align="right" valign="top"><a id="aabf46d18915a0e61658677ceb1283b96"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_cell_string</b> ()</td></tr>
 <tr class="separator:aabf46d18915a0e61658677ceb1283b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,6 +115,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>select_left_item</b> 
 <tr class="memitem:a73b0a2a34138387a0370cd251bda4aa5"><td class="memItemLeft" align="right" valign="top"><a id="a73b0a2a34138387a0370cd251bda4aa5"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>query_input</b> ()</td></tr>
 <tr class="separator:a73b0a2a34138387a0370cd251bda4aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1be0fbdb82a9559ad733956ca04ae004"><td class="memItemLeft" align="right" valign="top"><a id="a1be0fbdb82a9559ad733956ca04ae004"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>query_current_item_rename</b> ()</td></tr>
+<tr class="separator:a1be0fbdb82a9559ad733956ca04ae004"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -118,12 +130,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>init_items</b> (const
 <tr class="memitem:a290c2914d660723e2a42950dbda64180"><td class="memItemLeft" align="right" valign="top"><a id="a290c2914d660723e2a42950dbda64180"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_cell_index</b> ()</td></tr>
 <tr class="separator:a290c2914d660723e2a42950dbda64180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa42c0165141f8648a5f7c36d5c3c07dd"><td class="memItemLeft" align="right" valign="top"><a id="aa42c0165141f8648a5f7c36d5c3c07dd"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>get_item_index</b> ()</td></tr>
+<tr class="separator:aa42c0165141f8648a5f7c36d5c3c07dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8beac72e02c02295c00f8760d4d4c622"><td class="memItemLeft" align="right" valign="top"><a id="a8beac72e02c02295c00f8760d4d4c622"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu_window</b> ()</td></tr>
 <tr class="separator:a8beac72e02c02295c00f8760d4d4c622"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a537238a05e772ccbe3bf158359c0512c"><td class="memItemLeft" align="right" valign="top"><a id="a537238a05e772ccbe3bf158359c0512c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy_menu</b> ()</td></tr>
 <tr class="separator:a537238a05e772ccbe3bf158359c0512c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95cc7920239cf13f2b78221fb39b5bd6"><td class="memItemLeft" align="right" valign="top"><a id="a95cc7920239cf13f2b78221fb39b5bd6"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>query_row_input</b> ()</td></tr>
+<tr class="separator:a95cc7920239cf13f2b78221fb39b5bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>

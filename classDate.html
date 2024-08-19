@@ -75,7 +75,7 @@ $(function() {
 <p><a class="el" href="classDate.html" title="Date type.">Date</a> type.  
  <a href="classDate.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="data__objects_8h_source.html">data_objects.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="date_8h_source.html">date.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -87,6 +87,10 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#abe724716ef2aae8ddd0cc4ca7c2808df">Date</a> (uint64_t unix_seconds)</td></tr>
 <tr class="memdesc:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a UNIX timestamp in seconds. <br /></td></tr>
 <tr class="separator:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4f884c9e251fd1102db04f23cf006a"><td class="memItemLeft" align="right" valign="top"><a id="aec4f884c9e251fd1102db04f23cf006a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#aec4f884c9e251fd1102db04f23cf006a">Date</a> (const std::string &amp;date_str)</td></tr>
+<tr class="memdesc:aec4f884c9e251fd1102db04f23cf006a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a string in a fixed format: 'dbY H:M:S'. This is the same format as the display string format. <br /></td></tr>
+<tr class="separator:aec4f884c9e251fd1102db04f23cf006a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b121b6e9762e1b77ab6c9fa16265124"><td class="memItemLeft" align="right" valign="top"><a id="a3b121b6e9762e1b77ab6c9fa16265124"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a3b121b6e9762e1b77ab6c9fa16265124">to_unix_timestamp</a> () const</td></tr>
 <tr class="memdesc:a3b121b6e9762e1b77ab6c9fa16265124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the date as a UNIX timestamp (UTC) in seconds. <br /></td></tr>
@@ -102,19 +106,22 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="memItemLeft" align="right" valign="top"><a id="ad8b79adf6dcf3be04e3b5977903d4c1b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> ()</td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b">to_string</a> ()</td></tr>
+<tr class="memdesc:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string. <br /></td></tr>
 <tr class="separator:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a137e31f8095d613175de66c6abc092b8"><td class="memItemLeft" align="right" valign="top"><a id="a137e31f8095d613175de66c6abc092b8"></a>
-std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tp</b></td></tr>
+std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a137e31f8095d613175de66c6abc092b8">tp</a></td></tr>
+<tr class="memdesc:a137e31f8095d613175de66c6abc092b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal time point representation. <br /></td></tr>
 <tr class="separator:a137e31f8095d613175de66c6abc092b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classDate.html" title="Date type.">Date</a> type. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="data__objects_8h_source.html">data_objects.h</a></li>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/<a class="el" href="date_8h_source.html">date.h</a></li>
+<li>src/date.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
