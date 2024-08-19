@@ -35,6 +35,9 @@ public:
   /** @brief Edit an entry's start date. */
   virtual void edit_entry_start(Id entry_id,
                                 const Date &new_start_date) = 0;
+  /** @brief Edit an entry's stop date. */
+  virtual void edit_entry_stop(Id entry_id,
+                               const Date &new_stop_date) = 0;
   /** @brief Delete the task with provided Id. */
   virtual void delete_task (Id task_id) = 0;
   /** @brief Delete the project with provided Id and all associated tasks. */

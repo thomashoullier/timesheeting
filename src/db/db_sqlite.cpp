@@ -139,6 +139,21 @@ void DB_SQLite::edit_entry_start(Id entry_id, const Date &new_start_date) {
     "'" + std::to_string(new_start_date.to_unix_timestamp()) + "' "
     "WHERE id = " + std::to_string(entry_id) + ";";
   try_exec_statement(alter_entry_start_st);
+  // TODO: ensure the DB consistency by also editing the stop date
+  //       to equal the start date if start>stop.
+  //       Be sure to use a single transaction for any changes!
+}
+
+void DB_SQLite::edit_entry_stop(Id entry_id, const Date &new_stop_date) {
+  std::string alter_entry_stop_st =
+      "UPDATE entries "
+      "SET stop = "
+      "'" +
+      std::to_string(new_stop_date.to_unix_timestamp()) +
+      "' "
+      "WHERE id = " +
+      std::to_string(entry_id) + ";";
+  try_exec_statement(alter_entry_stop_st);
 }
 
 void DB_SQLite::delete_task(Id task_id) {

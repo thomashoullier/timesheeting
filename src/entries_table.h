@@ -2,6 +2,7 @@
 #define ENTRIES_TABLE_H
 
 #include <memory>
+#include <stdexcept>
 #include "date.h"
 #include "db_interface.h"
 #include "status_bar_interface.h"
@@ -83,14 +84,23 @@ private:
 
   void rename_item() {
     //TODO: manage the case where the register is empty.
-    //TODO: manage the type of field to rename: project, task, start, stop
     auto id = reg.get_current_id();
-    auto new_start_str = reg.query_current_item_rename();
-    auto sanitized_start_str = sanitize_input(new_start_str);
-    Date new_start_date(sanitized_start_str);
-    // TODO: prevent the edit if the start date is now after the stop date.
-    //       do this check in the DB and raise a DBLogicExcept ?
-    db->edit_entry_start(id, new_start_date);
+    auto new_str = reg.query_current_item_rename();
+    auto sanitized_str = sanitize_input(new_str);
+    auto field_type = reg.get_field_type();
+    switch (field_type) {
+    case EntryField::start: {
+      Date new_start_date(sanitized_str);
+      db->edit_entry_start(id, new_start_date);
+    } break;
+    case EntryField::stop: {
+      Date new_stop_date(sanitized_str);
+      db->edit_entry_stop(id, new_stop_date);
+    } break;
+    default:
+      throw std::logic_error(
+          "Don't know what to do for renaming this unknown field type");
+    }
   };
 
   std::string sanitize_input(std::string input) {

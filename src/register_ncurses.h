@@ -10,6 +10,9 @@
 #include <exception>
 #include "data_objects.h"
 
+/** @brief Entry field type (as displayed in the menu). */
+enum EntryField { project_name = 0, task_name = 1, start = 2, stop = 3 };
+
 // TODO: Factorize with column. Manage any number of columns.
 /** @brief Entry register implementation in ncurses.
 
@@ -47,23 +50,28 @@ public:
     return held_items.at(item_index).id;
   }
 
+  EntryField get_field_type () {
+    int field_index = get_cell_index() % ncols;
+    return EntryField(field_index);
+  }
+
   std::string get_current_cell_string () {
     auto cell_index = get_cell_index();
     if (cell_index >= 0) {
       auto it_index = get_item_index();
-      auto field_index = cell_index % ncols;
+      auto field_type = get_field_type();
       auto *it = &held_items.at(it_index);
-      switch(field_index) {
-      case 0:
+      switch(field_type) {
+      case EntryField::project_name:
         return it->project_name;
         break;
-      case 1:
+      case EntryField::task_name:
         return it->task_name;
         break;
-      case 2:
+      case EntryField::start:
         return it->start.str;
         break;
-      case 3:
+      case EntryField::stop:
         return it->stop.str;
         break;
       default:
