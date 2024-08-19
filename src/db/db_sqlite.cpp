@@ -66,7 +66,7 @@ void DB_SQLite::create_tasks_table() {
       "CREATE TABLE IF NOT EXISTS tasks ("
       "id INTEGER PRIMARY KEY, "
       "name TEXT NOT NULL, "
-      "project_id INTEGER, "
+      "project_id INTEGER NOT NULL, "
       "UNIQUE(name, project_id), "
       "FOREIGN KEY (project_id) REFERENCES projects (id) "
       "ON DELETE CASCADE"
@@ -78,9 +78,9 @@ void DB_SQLite::create_entries_table() {
   std::string create_entries_table_st =
     "CREATE TABLE IF NOT EXISTS entries ("
     "id INTEGER PRIMARY KEY, "
-    "task_id INTEGER, "
-    "start INTEGER, "
-    "stop INTEGER, "
+    "task_id INTEGER NOT NULL, "
+    "start INTEGER NOT NULL, "
+    "stop INTEGER NOT NULL, "
     "FOREIGN KEY (task_id) REFERENCES tasks (id), "
     "CHECK (start <= stop) "
     ");";
@@ -134,15 +134,30 @@ void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
   try_exec_statement(alter_task_name_st);
 }
 
+void DB_SQLite::edit_entry_task(Id entry_id, const std::string &new_task_name) {
+  std::string alter_entry_task_st =
+    "UPDATE entries "
+    "SET task_id = ("
+    "SELECT id from tasks "
+    "WHERE name = '" + new_task_name + "' "
+    "AND project_id = ("
+    "SELECT projects.id FROM entries "
+    "INNER JOIN tasks ON entries.task_id = tasks.id "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "WHERE entries.id = " + std::to_string(entry_id) +
+    ")"
+    ") "
+    "WHERE entries.id = " + std::to_string(entry_id) + ";";
+
+  try_exec_statement(alter_entry_task_st);
+}
+
 void DB_SQLite::edit_entry_start(Id entry_id, const Date &new_start_date) {
   std::string alter_entry_start_st = "UPDATE entries "
     "SET start = "
     "'" + std::to_string(new_start_date.to_unix_timestamp()) + "' "
     "WHERE id = " + std::to_string(entry_id) + ";";
   try_exec_statement(alter_entry_start_st);
-  // TODO: ensure the DB consistency by also editing the stop date
-  //       to equal the start date if start>stop.
-  //       Be sure to use a single transaction for any changes!
 }
 
 void DB_SQLite::edit_entry_stop(Id entry_id, const Date &new_stop_date) {

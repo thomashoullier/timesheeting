@@ -89,6 +89,9 @@ private:
     auto sanitized_str = sanitize_input(new_str);
     auto field_type = reg.get_field_type();
     switch (field_type) {
+    case EntryField::task_name: {
+      db->edit_entry_task(id, sanitized_str);
+    } break;
     case EntryField::start: {
       Date new_start_date(sanitized_str);
       db->edit_entry_start(id, new_start_date);
