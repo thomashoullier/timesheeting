@@ -2,6 +2,7 @@
 #define ENTRIES_TABLE_H
 
 #include <memory>
+#include "date.h"
 #include "db_interface.h"
 #include "status_bar_interface.h"
 #include "ui_screen.h"
@@ -47,6 +48,12 @@ public:
           update_register();
         } catch (DBLogicExcept &e) {
           status->print_wait("DB logic error! Nothing was done to the DB.");
+          this->clear();
+          this->refresh();
+        } catch (DateParsingFailure &e) {
+          status->print_wait("Failed to parse the date. Do nothing.");
+          this->clear();
+          this->refresh();
         }
         break;
       default:
@@ -80,12 +87,7 @@ private:
     auto id = reg.get_current_id();
     auto new_start_str = reg.query_current_item_rename();
     auto sanitized_start_str = sanitize_input(new_start_str);
-
-    // Convert to a Date object (and check the format of the string in
-    // the date class)
     Date new_start_date(sanitized_start_str);
-
-    // DB call
     // TODO: prevent the edit if the start date is now after the stop date.
     //       do this check in the DB and raise a DBLogicExcept ?
     db->edit_entry_start(id, new_start_date);
