@@ -44,7 +44,7 @@ public:
       case 'r':
         try {
           rename_item();
-          // TODO: update the table.
+          update_register();
         } catch (DBLogicExcept &e) {
           status->print_wait("DB logic error! Nothing was done to the DB.");
         }
@@ -68,9 +68,16 @@ private:
   std::shared_ptr<StatusBarInterface> status;
   RegisterNcurses reg;
 
+  void update_register() {
+    auto entry_items = db->query_entries();
+    reg.set_items(entry_items);
+    reg.refresh();
+  };
+
   void rename_item() {
     //TODO: manage the case where the register is empty.
     //TODO: manage the type of field to rename: project, task, start, stop
+    auto id = reg.get_current_id();
     auto new_start_str = reg.query_current_item_rename();
     auto sanitized_start_str = sanitize_input(new_start_str);
 
@@ -79,10 +86,9 @@ private:
     Date new_start_date(sanitized_start_str);
 
     // DB call
-    // TODO: entry id.
     // TODO: prevent the edit if the start date is now after the stop date.
     //       do this check in the DB and raise a DBLogicExcept ?
-    db->edit_entry_start(1, new_start_date);
+    db->edit_entry_start(id, new_start_date);
   };
 
   std::string sanitize_input(std::string input) {

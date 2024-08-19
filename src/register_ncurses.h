@@ -33,10 +33,24 @@ public:
     wrefresh(win);
   };
 
+  void set_items(const std::vector<Entry> &items) {
+    destroy_menu();
+    init_menu(items);
+  };
+
+  Id get_current_id() {
+    if (held_items.empty()) {
+      // TODO: throw a column empty exception.
+      return 1;
+    }
+    auto item_index = get_item_index();
+    return held_items.at(item_index).id;
+  }
+
   std::string get_current_cell_string () {
     auto cell_index = get_cell_index();
     if (cell_index >= 0) {
-      auto it_index = cell_index / ncols; // integer division.
+      auto it_index = get_item_index();
       auto field_index = cell_index % ncols;
       auto *it = &held_items.at(it_index);
       switch(field_index) {
@@ -107,6 +121,12 @@ private:
   int get_cell_index() {
     auto cell_index = item_index(current_item(menu));
     return cell_index;
+  }
+
+  int get_item_index () {
+    auto cell_index = get_cell_index();
+    int item_index = cell_index / ncols; // integer division
+    return item_index;
   }
 
   void init_menu_window() {
