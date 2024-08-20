@@ -31,7 +31,8 @@ std::vector<Entry> DB_SQLite::query_entries() {
     "SELECT e.id, p.name, t.name, e.start, e.stop "
     "FROM entries e "
     "INNER JOIN tasks t ON e.task_id = t.id "
-    "INNER JOIN projects p ON t.project_id = p.id;";
+    "INNER JOIN projects p ON t.project_id = p.id "
+    "ORDER BY e.start ASC;";
   // TODO: put in the db_sqlite_handle somehow.
   auto stmt = sqlite_db.prepare_statement(select_entries);
   std::vector<Entry> vec;

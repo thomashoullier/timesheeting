@@ -18,6 +18,7 @@ public:
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
 
   // TODO: query a single day at a time
+  /** @brief Return the set of entries ordered by ascending start date. */
   virtual std::vector<Entry> query_entries () = 0;
 
   /** @brief Add a project to the DB with the provided name. */
