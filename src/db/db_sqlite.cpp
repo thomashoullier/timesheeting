@@ -199,6 +199,13 @@ void DB_SQLite::delete_project(Id project_id) {
   try_exec_statement(delete_project_st);
 }
 
+void DB_SQLite::delete_entry(Id entry_id) {
+  std::string delete_entry_st =
+    "DELETE FROM entries "
+    "WHERE id = " + std::to_string(entry_id) + ";";
+  try_exec_statement(delete_entry_st);
+}
+
 void DB_SQLite::try_exec_statement(const std::string &statement) {
   try {
     sqlite_db.exec_statement(statement);

@@ -48,6 +48,8 @@ public:
   virtual void delete_task (Id task_id) = 0;
   /** @brief Delete the project with provided Id and all associated tasks. */
   virtual void delete_project (Id project_id) = 0;
+  /** @brief Delete a timesheet entry. */
+  virtual void delete_entry (Id entry_id) = 0;
 };
 
 /** @brief Exception thrown when the DB encounters a logic error. */

@@ -29,6 +29,7 @@ public:
   void edit_entry_stop(Id entry_id, const Date &new_stop_date) override;
   void delete_task(Id task_id) override;
   void delete_project(Id project_id) override;
+  void delete_entry(Id entry_id) override;
 
 private:
   /** @brief Handle to the DB. */

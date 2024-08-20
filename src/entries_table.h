@@ -42,6 +42,10 @@ public:
         break;
       case 'a': // TODO: put this on the stopwatch instead.
         db->add_entry(1, Date(), Date());
+        update_register();
+        break;
+      case 'x':
+        remove_item();
         break;
       case 'r':
         try {
@@ -108,6 +112,16 @@ private:
       throw std::logic_error(
           "Don't know what to do for renaming this unknown field type");
     }
+  };
+
+  void remove_item() {
+    bool user_conf = status->query_confirmation("Remove entry? (Y/N)");
+    if (!user_conf) {
+      return;
+    }
+    auto id = reg.get_current_id();
+    db->delete_entry(id);
+    update_register();
   };
 
   std::string sanitize_input(std::string input) {
