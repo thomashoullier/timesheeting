@@ -1,11 +1,12 @@
 #include "date.h"
+#include <chrono>
 #include <iomanip>
 #include <sstream>
 #include <format>
 
 std::string Date::to_string () {
-  return std::format("{:%d%b%Y %H:%M:%S}",
-                     std::chrono::floor<std::chrono::seconds>(tp));
+  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
+  return std::format("{:%d%b%Y %H:%M:%S}", local_time);
 }
 
 Date::Date() {
@@ -28,6 +29,7 @@ Date::Date(const std::string &date_str) {
     throw DateParsingFailure("Failed to parse the inputted date string.");
     return;
   }
+  tm.tm_isdst = true; // TODO: this is a hack, works only for our current timezone.
   auto tp_parsed = std::chrono::system_clock::from_time_t(std::mktime(&tm));
   tp = std::chrono::floor<std::chrono::seconds>(tp_parsed);
   str = to_string();

@@ -13,7 +13,11 @@ private:
   /** @brief Internal time point representation. */
   std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp;
 
-  /** @brief Convert the internal timepoint to a displayable date string. */
+  /** @brief Convert the internal timepoint to a displayable date string
+      in the system's timezone.
+
+      Note the system's timezone is defined by `/etc/localtime` here,
+      not the TZ environment variable. */
   std::string to_string();
 
 public:
