@@ -137,7 +137,7 @@ private:
   }
 
   void init_menu_window() {
-    win = newwin(PAGE_LINES + 1, WIDTH, 3, 1);
+    win = newwin(PAGE_LINES + 1, WIDTH, 2, 1);
     set_menu_win(menu, win);
     set_menu_sub(menu, derwin(win, PAGE_LINES, WIDTH - 1, 1, 1));
     set_menu_format(menu, PAGE_LINES - 1, ncols);

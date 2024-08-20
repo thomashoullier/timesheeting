@@ -8,6 +8,7 @@
 #include "date_selector_ncurses.h"
 #include "db_interface.h"
 #include "status_bar_interface.h"
+#include "stopwatch_ncurses.h"
 #include "ui_screen.h"
 #include "register_ncurses.h"
 
@@ -23,7 +24,9 @@ public:
     db(std::static_pointer_cast<DB_Interface>(_db)),
     status(std::static_pointer_cast<StatusBarInterface>(_status)),
     date_selector(std::make_unique<DateSelectorNcurses>()),
-    reg(db->query_entries(date_selector->current_range())) {
+    reg(db->query_entries(date_selector->current_range())),
+    stopwatch()
+  {
     date_selector->print();
   };
 
@@ -84,11 +87,13 @@ public:
   void refresh () override {
     reg.refresh();
     date_selector->refresh();
+    stopwatch.refresh();
   };
 
   void clear() override {
     reg.clear();
     date_selector->clear();
+    stopwatch.clear();
   };
 
 private:
@@ -96,6 +101,7 @@ private:
   std::shared_ptr<StatusBarInterface> status;
   std::unique_ptr<DateSelectorInterface> date_selector;
   RegisterNcurses reg;
+  StopwatchNcurses stopwatch;
 
   void update_register() {
     auto entry_items = db->query_entries(date_selector->current_range());
