@@ -83,6 +83,10 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a4e59ed4ba66eec61c27460c5d09fa1bd">Date</a> ()</td></tr>
 <tr class="memdesc:a4e59ed4ba66eec61c27460c5d09fa1bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date with the now() timepoint. <br /></td></tr>
 <tr class="separator:a4e59ed4ba66eec61c27460c5d09fa1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c51d6a2611298fb28c477857947961b"><td class="memItemLeft" align="right" valign="top"><a id="a8c51d6a2611298fb28c477857947961b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a8c51d6a2611298fb28c477857947961b">Date</a> (DatePoint date_point)</td></tr>
+<tr class="memdesc:a8c51d6a2611298fb28c477857947961b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date at the given date point. <br /></td></tr>
+<tr class="separator:a8c51d6a2611298fb28c477857947961b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="memItemLeft" align="right" valign="top"><a id="abe724716ef2aae8ddd0cc4ca7c2808df"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#abe724716ef2aae8ddd0cc4ca7c2808df">Date</a> (uint64_t unix_seconds)</td></tr>
 <tr class="memdesc:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a UNIX timestamp in seconds. <br /></td></tr>
@@ -95,6 +99,18 @@ Public Member Functions</h2></td></tr>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a3b121b6e9762e1b77ab6c9fa16265124">to_unix_timestamp</a> () const</td></tr>
 <tr class="memdesc:a3b121b6e9762e1b77ab6c9fa16265124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the date as a UNIX timestamp (UTC) in seconds. <br /></td></tr>
 <tr class="separator:a3b121b6e9762e1b77ab6c9fa16265124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcea004178848cbc31ab4530d28078b6"><td class="memItemLeft" align="right" valign="top"><a id="afcea004178848cbc31ab4530d28078b6"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#afcea004178848cbc31ab4530d28078b6">get_day_string</a> () const</td></tr>
+<tr class="memdesc:afcea004178848cbc31ab4530d28078b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a displayable string for the date at a day resolution. <br /></td></tr>
+<tr class="separator:afcea004178848cbc31ab4530d28078b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf7bba5074063a566b7ec859e14cc12"><td class="memItemLeft" align="right" valign="top"><a id="aecf7bba5074063a566b7ec859e14cc12"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#aecf7bba5074063a566b7ec859e14cc12">add_one_day</a> ()</td></tr>
+<tr class="memdesc:aecf7bba5074063a566b7ec859e14cc12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment the date by one day. <br /></td></tr>
+<tr class="separator:aecf7bba5074063a566b7ec859e14cc12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0313cfcbf563e60a3889e2c1cd6ba076"><td class="memItemLeft" align="right" valign="top"><a id="a0313cfcbf563e60a3889e2c1cd6ba076"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a0313cfcbf563e60a3889e2c1cd6ba076">subtract_one_day</a> ()</td></tr>
+<tr class="memdesc:a0313cfcbf563e60a3889e2c1cd6ba076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrement the date by one day. <br /></td></tr>
+<tr class="separator:a0313cfcbf563e60a3889e2c1cd6ba076"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -105,21 +121,49 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="memItemLeft" align="right" valign="top"><a id="ad8b79adf6dcf3be04e3b5977903d4c1b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b">to_string</a> ()</td></tr>
-<tr class="memdesc:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string. <br /></td></tr>
+<tr class="memitem:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b">to_string</a> ()</td></tr>
+<tr class="memdesc:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string in the system's timezone.  <a href="classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b">More...</a><br /></td></tr>
 <tr class="separator:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a137e31f8095d613175de66c6abc092b8"><td class="memItemLeft" align="right" valign="top"><a id="a137e31f8095d613175de66c6abc092b8"></a>
 std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a137e31f8095d613175de66c6abc092b8">tp</a></td></tr>
-<tr class="memdesc:a137e31f8095d613175de66c6abc092b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal time point representation. <br /></td></tr>
+<tr class="memdesc:a137e31f8095d613175de66c6abc092b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal time point representation, seconds UTC. <br /></td></tr>
 <tr class="separator:a137e31f8095d613175de66c6abc092b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classDate.html" title="Date type.">Date</a> type. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad8b79adf6dcf3be04e3b5977903d4c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b79adf6dcf3be04e3b5977903d4c1b">&#9670;&nbsp;</a></span>to_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Date::to_string </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert the internal timepoint to a displayable date string in the system's timezone. </p>
+<p>Note the system's timezone is defined by <code>/etc/localtime</code> here, not the TZ environment variable. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="date_8h_source.html">date.h</a></li>
 <li>src/date.cpp</li>
 </ul>
