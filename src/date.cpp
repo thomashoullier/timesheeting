@@ -24,7 +24,7 @@ Date::Date(DatePoint date_point) {
       {std::chrono::current_zone(),
        std::chrono::floor<std::chrono::days>(current.get_local_time())};
     tp = midnight.get_sys_time();
-    to_string();
+    str = to_string();
   } break;
   case DatePoint::DayEnd: {
     std::chrono::zoned_time current{std::chrono::current_zone(),
@@ -33,7 +33,7 @@ Date::Date(DatePoint date_point) {
       {std::chrono::current_zone(),
        std::chrono::ceil<std::chrono::days>(current.get_local_time())};
     tp = midnight.get_sys_time();
-    to_string();
+    str = to_string();
   } break;
   default:
     throw std::logic_error("Unknown date_point.");
@@ -67,4 +67,14 @@ uint64_t Date::to_unix_timestamp() const {
 std::string Date::get_day_string () const {
   std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
   return std::format("{:%d%b%Y}", local_time);
+}
+
+void Date::add_one_day() {
+  tp += std::chrono::days(1);
+  str = to_string();
+}
+
+void Date::subtract_one_day() {
+  tp -= std::chrono::days(1);
+  str = to_string();
 }

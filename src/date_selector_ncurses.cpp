@@ -31,9 +31,15 @@ DateRange DateSelectorNcurses::current_range() const {
   return range;
 }
 
-void DateSelectorNcurses::select_next_day() {}
+void DateSelectorNcurses::select_next_day() {
+  range.start.add_one_day();
+  range.stop.add_one_day();
+}
 
-void DateSelectorNcurses::select_previous_day() {}
+void DateSelectorNcurses::select_previous_day() {
+  range.start.subtract_one_day();
+  range.stop.subtract_one_day();
+}
 
 WINDOW *DateSelectorNcurses::init_window() {
   auto max_x = getmaxx(stdscr);

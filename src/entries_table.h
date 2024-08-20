@@ -65,6 +65,16 @@ public:
           this->refresh();
         }
         break;
+      case '.':
+        date_selector->select_next_day();
+        update_register();
+        date_selector->refresh();
+        break;
+      case ',':
+        date_selector->select_previous_day();
+        update_register();
+        date_selector->refresh();
+        break;
       default:
         return ch;
       }

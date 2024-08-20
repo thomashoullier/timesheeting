@@ -42,6 +42,10 @@ public:
   uint64_t to_unix_timestamp () const;
   /** @brief Get a displayable string for the date at a day resolution. */
   std::string get_day_string () const;
+  /** @brief Increment the date by one day. */
+  void add_one_day ();
+  /** @brief Decrement the date by one day. */
+  void subtract_one_day ();
 };
 
 class DateParsingFailure : public std::exception {
