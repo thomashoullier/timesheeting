@@ -4,6 +4,8 @@
 #include <memory>
 #include <stdexcept>
 #include "date.h"
+#include "date_selector_interface.h"
+#include "date_selector_ncurses.h"
 #include "db_interface.h"
 #include "status_bar_interface.h"
 #include "ui_screen.h"
@@ -20,8 +22,10 @@ public:
                          std::shared_ptr<T_ST> _status) :
     db(std::static_pointer_cast<DB_Interface>(_db)),
     status(std::static_pointer_cast<StatusBarInterface>(_status)),
-    reg(db->query_entries())
-  {};
+    date_selector(std::make_unique<DateSelectorNcurses>()),
+    reg(db->query_entries()) {
+    date_selector->print();
+  };
 
   char input_loop() override {
     while (true) {
@@ -41,7 +45,7 @@ public:
         reg.select_left_item();
         break;
       case 'a': // TODO: put this on the stopwatch instead.
-        db->add_entry(1, Date(), Date());
+        db->add_entry(1, Date(DatePoint::DayBegin), Date(DatePoint::DayEnd));
         update_register();
         break;
       case 'x':
@@ -69,15 +73,18 @@ public:
 
   void refresh () override {
     reg.refresh();
+    date_selector->refresh();
   };
 
   void clear() override {
     reg.clear();
+    date_selector->clear();
   };
 
 private:
   std::shared_ptr<DB_Interface> db;
   std::shared_ptr<StatusBarInterface> status;
+  std::unique_ptr<DateSelectorInterface> date_selector;
   RegisterNcurses reg;
 
   void update_register() {

@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <sstream>
 #include <format>
+#include <stdexcept>
 
 std::string Date::to_string () {
   std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
@@ -13,6 +14,30 @@ Date::Date() {
   auto tp_now = std::chrono::system_clock::now();
   tp = std::chrono::floor<std::chrono::seconds>(tp_now);
   str = to_string();
+}
+Date::Date(DatePoint date_point) {
+  switch(date_point) {
+  case DatePoint::DayBegin: {
+    std::chrono::zoned_time current{std::chrono::current_zone(),
+                                    std::chrono::system_clock::now()};
+    std::chrono::zoned_time midnight
+      {std::chrono::current_zone(),
+       std::chrono::floor<std::chrono::days>(current.get_local_time())};
+    tp = midnight.get_sys_time();
+    to_string();
+  } break;
+  case DatePoint::DayEnd: {
+    std::chrono::zoned_time current{std::chrono::current_zone(),
+                                    std::chrono::system_clock::now()};
+    std::chrono::zoned_time midnight
+      {std::chrono::current_zone(),
+       std::chrono::ceil<std::chrono::days>(current.get_local_time())};
+    tp = midnight.get_sys_time();
+    to_string();
+  } break;
+  default:
+    throw std::logic_error("Unknown date_point.");
+  }
 }
 
 Date::Date(uint64_t unix_seconds)

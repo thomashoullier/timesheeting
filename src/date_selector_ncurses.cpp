@@ -1,0 +1,40 @@
+#include "date_selector_ncurses.h"
+#include "date.h"
+#include <ncurses.h>
+
+DateSelectorNcurses::DateSelectorNcurses()
+    : range(Date(DatePoint::DayBegin), DatePoint::DayEnd),
+      win(init_window()) {};
+
+DateSelectorNcurses::~DateSelectorNcurses() {
+  delwin(win);
+}
+
+void DateSelectorNcurses::print() const {
+  wmove(win, 0, 0);
+  wclrtoeol(win);
+  wprintw(win, "Current day");
+  wrefresh(win);
+}
+
+void DateSelectorNcurses::refresh() const {
+  this->print();
+}
+
+void DateSelectorNcurses::clear() const {
+  wclear(win);
+  wrefresh(win);
+}
+
+DateRange DateSelectorNcurses::current_range() const {
+  return range;
+}
+
+void DateSelectorNcurses::select_next_day() {}
+
+void DateSelectorNcurses::select_previous_day() {}
+
+WINDOW *DateSelectorNcurses::init_window() {
+  auto max_x = getmaxx(stdscr);
+  return newwin(1, max_x, 1, 0);
+}

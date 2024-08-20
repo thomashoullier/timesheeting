@@ -27,6 +27,7 @@ public:
   void clear () override {
     wclear(win);
     unpost_menu(menu);
+    wrefresh(win);
   }
 
   void set_items(const std::vector<T> &items) override {

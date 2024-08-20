@@ -7,10 +7,13 @@
 #include <exception>
 #include <string>
 
+/** @brief Utility to designate date points. */
+enum class DatePoint { DayBegin, DayEnd };
+
 /** @brief Date type. */
 class Date {
 private:
-  /** @brief Internal time point representation. */
+  /** @brief Internal time point representation, seconds UTC */
   std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp;
 
   /** @brief Convert the internal timepoint to a displayable date string
@@ -26,6 +29,8 @@ public:
 
   /** @brief Construct the date with the now() timepoint. */
   Date();
+  /** @brief Construct the date at the given date point. */
+  Date(DatePoint date_point);
   /** @brief Construct the date from a UNIX timestamp in seconds. */
   Date(uint64_t unix_seconds);
   /** @brief Construct the date from a string in a fixed format:
