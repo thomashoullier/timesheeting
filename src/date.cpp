@@ -63,3 +63,8 @@ Date::Date(const std::string &date_str) {
 uint64_t Date::to_unix_timestamp() const {
   return tp.time_since_epoch().count();
 }
+
+std::string Date::get_day_string () const {
+  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
+  return std::format("{:%d%b%Y}", local_time);
+}

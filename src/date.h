@@ -40,6 +40,8 @@ public:
 
   /** @brief Get the date as a UNIX timestamp (UTC) in seconds. */
   uint64_t to_unix_timestamp () const;
+  /** @brief Get a displayable string for the date at a day resolution. */
+  std::string get_day_string () const;
 };
 
 class DateParsingFailure : public std::exception {

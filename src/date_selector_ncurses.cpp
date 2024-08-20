@@ -13,7 +13,8 @@ DateSelectorNcurses::~DateSelectorNcurses() {
 void DateSelectorNcurses::print() const {
   wmove(win, 0, 0);
   wclrtoeol(win);
-  wprintw(win, "Current day");
+  auto day_str = range.start.get_day_string();
+  wprintw(win, day_str.c_str());
   wrefresh(win);
 }
 
