@@ -10,7 +10,7 @@
 /** @brief Ncurses implementation of a stopwatch for generating new entries. */
 class StopwatchNcurses {
 public:
-  StopwatchNcurses ();
+  StopwatchNcurses (const std::string &str);
   ~StopwatchNcurses();
 
   /** @brief Refresh the display. */
@@ -25,13 +25,14 @@ public:
 private:
   static constexpr int WIDTH {80};
   static constexpr int ncols {4};
+  std::string tmp_str; // TEMP
   WINDOW *win;
   MENU *menu;
   std::vector<ITEM *> menu_items;
   std::vector<Entry> held_items;
 
-  void init_menu();
-  void init_items();
+  void init_menu(const std::string &str);
+  void init_items(const std::string &str);
   void init_menu_window();
   void destroy_menu();
 };

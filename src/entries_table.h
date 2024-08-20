@@ -19,14 +19,13 @@ template <typename T_DB, typename T_ST,
             std::is_base_of<StatusBarInterface, T_ST>::value>>
 class EntriesTable : public UIScreen {
 public:
-  explicit EntriesTable (std::shared_ptr<T_DB> _db,
-                         std::shared_ptr<T_ST> _status) :
-    db(std::static_pointer_cast<DB_Interface>(_db)),
-    status(std::static_pointer_cast<StatusBarInterface>(_status)),
-    date_selector(std::make_unique<DateSelectorNcurses>()),
-    reg(db->query_entries(date_selector->current_range())),
-    stopwatch()
-  {
+  explicit EntriesTable(std::shared_ptr<T_DB> _db,
+                        std::shared_ptr<T_ST> _status)
+      : db(std::static_pointer_cast<DB_Interface>(_db)),
+        status(std::static_pointer_cast<StatusBarInterface>(_status)),
+        date_selector(std::make_unique<DateSelectorNcurses>()),
+        reg(db->query_entries(date_selector->current_range()), 2),
+        stopwatch("Hello") {
     date_selector->print();
   };
 
@@ -91,9 +90,9 @@ public:
   };
 
   void clear() override {
-    reg.clear();
-    date_selector->clear();
     stopwatch.clear();
+    date_selector->clear();
+    reg.clear();
   };
 
 private:

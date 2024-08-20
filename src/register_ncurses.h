@@ -19,7 +19,8 @@ enum EntryField { project_name = 0, task_name = 1, start = 2, stop = 3 };
  A register is a menu with row item made of several columns. */
 class RegisterNcurses {
 public:
-  RegisterNcurses(const std::vector<Entry> &items) {
+  RegisterNcurses(const std::vector<Entry> &items, int _display_line) :
+    display_line(_display_line) {
     init_menu(items);
   };
 
@@ -93,6 +94,7 @@ public:
   };
 
 private:
+  int display_line;
   static constexpr std::size_t PAGE_LINES{35};
   static constexpr int WIDTH{80};
   static constexpr int ncols {4};
@@ -137,7 +139,7 @@ private:
   }
 
   void init_menu_window() {
-    win = newwin(PAGE_LINES + 1, WIDTH, 2, 1);
+    win = newwin(PAGE_LINES + 1, WIDTH, display_line, 1);
     set_menu_win(menu, win);
     set_menu_sub(menu, derwin(win, PAGE_LINES, WIDTH - 1, 1, 1));
     set_menu_format(menu, PAGE_LINES - 1, ncols);

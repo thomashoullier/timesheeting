@@ -2,8 +2,8 @@
 #include <ncurses.h>
 #include <menu.h>
 
-StopwatchNcurses::StopwatchNcurses() {
-  init_menu();
+StopwatchNcurses::StopwatchNcurses(const std::string &str) {
+  init_menu(str);
 }
 
 StopwatchNcurses::~StopwatchNcurses() { destroy_menu(); }
@@ -25,23 +25,18 @@ void StopwatchNcurses::select_previous_item() {
   menu_driver(menu, REQ_PREV_ITEM);
 }
 
-void StopwatchNcurses::init_menu() {
-  init_items();
+void StopwatchNcurses::init_menu(const std::string &str) {
+  init_items(str);
   init_menu_window();
   set_current_item(menu, menu_items.at(0));
 }
 
-void StopwatchNcurses::init_items() {
-  held_items.push_back(Entry{1, "project1", "task", Date(), Date()});
-  held_items.push_back(Entry{1, "project2", "task", Date(), Date()});
-  held_items.push_back(Entry{1, "project3", "task", Date(), Date()});
-  held_items.push_back(Entry{1, "project4", "task", Date(), Date()});
-  menu_items.resize(4);
-
-  menu_items.push_back(new_item(held_items.at(0).project_name.c_str(), NULL));
-  menu_items.push_back(new_item(held_items.at(1).project_name.c_str(), NULL));
-  menu_items.push_back(new_item(held_items.at(2).project_name.c_str(), NULL));
-  menu_items.push_back(new_item(held_items.at(3).project_name.c_str(), NULL));
+void StopwatchNcurses::init_items(const std::string &str) {
+  tmp_str = str;
+  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
+  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
+  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
+  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
 
   menu_items.push_back(NULL);
   menu = new_menu(menu_items.data());
@@ -52,7 +47,7 @@ void StopwatchNcurses::init_menu_window() {
   auto max_y = getmaxy(stdscr);
   win = newwin(3, WIDTH, max_y - 10, 1);
   set_menu_win(menu, win);
-  set_menu_sub(menu, derwin(win, 2, WIDTH-2, 1, 1));
+  set_menu_sub(menu, derwin(win, 2, WIDTH - 2, 1, 1));
   set_menu_format(menu, 1, 4);
 }
 
