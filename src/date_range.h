@@ -5,14 +5,14 @@
 
 /** @brief Class for representing a range of Dates. */
 class DateRange {
-private:
+public:
+  /** @brief Start of the date range. */
   Date start;
+  /** @brief End of the date range. */
   Date stop;
 
-public:
   /** @brief Initialize the date range. */
   DateRange(const Date &_start, const Date &_stop):
     start(_start), stop(_stop) {};
 };
-
 #endif // DATE_RANGE_H

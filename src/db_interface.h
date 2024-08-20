@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "data_objects.h"
+#include "date_range.h"
 
 /** @brief Virtual interface class for database. */
 class DB_Interface {
@@ -16,10 +17,9 @@ public:
   virtual std::vector<Project> query_projects() = 0;
   /** @brief Return the set of tasks for a given project. */
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
-
-  // TODO: query a single day at a time
-  /** @brief Return the set of entries ordered by ascending start date. */
-  virtual std::vector<Entry> query_entries () = 0;
+  /** @brief Return the set of entries ordered by ascending start date
+      and included in the provided DateRange. */
+  virtual std::vector<Entry> query_entries (const DateRange &date_range) = 0;
 
   /** @brief Add a project to the DB with the provided name. */
   virtual void add_project(std::string project_name) = 0;

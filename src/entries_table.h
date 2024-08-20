@@ -23,7 +23,7 @@ public:
     db(std::static_pointer_cast<DB_Interface>(_db)),
     status(std::static_pointer_cast<StatusBarInterface>(_status)),
     date_selector(std::make_unique<DateSelectorNcurses>()),
-    reg(db->query_entries()) {
+    reg(db->query_entries(date_selector->current_range())) {
     date_selector->print();
   };
 
@@ -88,7 +88,7 @@ private:
   RegisterNcurses reg;
 
   void update_register() {
-    auto entry_items = db->query_entries();
+    auto entry_items = db->query_entries(date_selector->current_range());
     reg.set_items(entry_items);
     reg.refresh();
   };

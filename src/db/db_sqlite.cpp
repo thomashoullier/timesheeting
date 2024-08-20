@@ -26,12 +26,16 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
   return tasks;
 }
 
-std::vector<Entry> DB_SQLite::query_entries() {
+std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
+  auto start_stamp = date_range.start.to_unix_timestamp();
+  auto stop_stamp = date_range.stop.to_unix_timestamp();
   std::string select_entries =
     "SELECT e.id, p.name, t.name, e.start, e.stop "
     "FROM entries e "
     "INNER JOIN tasks t ON e.task_id = t.id "
     "INNER JOIN projects p ON t.project_id = p.id "
+    "WHERE e.start >= " + std::to_string(start_stamp) + " "
+    "AND e.stop <= " + std::to_string(stop_stamp) + " "
     "ORDER BY e.start ASC;";
   // TODO: put in the db_sqlite_handle somehow.
   auto stmt = sqlite_db.prepare_statement(select_entries);
