@@ -32,6 +32,9 @@ public:
   /** @brief Edit a task's name. */
   virtual void edit_task_name(Id task_id,
                               std::string new_task_name) = 0;
+  /** @brief Edit an entry's project. */
+  virtual void edit_entry_project(Id entry_id,
+                                  const std::string &new_project_name) = 0;
   /** @brief Edit an entry's task. */
   virtual void edit_entry_task(Id entry_id,
                                const std::string &new_task_name) = 0;

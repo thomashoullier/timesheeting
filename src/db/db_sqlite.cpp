@@ -134,11 +134,25 @@ void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
   try_exec_statement(alter_task_name_st);
 }
 
+void DB_SQLite::edit_entry_project(Id entry_id,
+                                   const std::string &new_project_name) {
+  std::string alter_entry_project_st =
+    "UPDATE entries "
+    "SET task_id = ("
+    "SELECT tasks.id FROM tasks "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "WHERE projects.name = '" + new_project_name + "'"
+    ") "
+    "WHERE entries.id = " + std::to_string(entry_id) + " "
+    "LIMIT 1;";
+  try_exec_statement(alter_entry_project_st);
+}
+
 void DB_SQLite::edit_entry_task(Id entry_id, const std::string &new_task_name) {
   std::string alter_entry_task_st =
     "UPDATE entries "
     "SET task_id = ("
-    "SELECT id from tasks "
+    "SELECT id FROM tasks "
     "WHERE name = '" + new_task_name + "' "
     "AND project_id = ("
     "SELECT projects.id FROM entries "
@@ -148,7 +162,6 @@ void DB_SQLite::edit_entry_task(Id entry_id, const std::string &new_task_name) {
     ")"
     ") "
     "WHERE entries.id = " + std::to_string(entry_id) + ";";
-
   try_exec_statement(alter_entry_task_st);
 }
 

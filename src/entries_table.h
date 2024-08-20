@@ -89,6 +89,10 @@ private:
     auto sanitized_str = sanitize_input(new_str);
     auto field_type = reg.get_field_type();
     switch (field_type) {
+    case EntryField::project_name: {
+      db->edit_entry_project(id, sanitized_str);
+      break;
+    }
     case EntryField::task_name: {
       db->edit_entry_task(id, sanitized_str);
     } break;
