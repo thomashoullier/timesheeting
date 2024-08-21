@@ -41,6 +41,8 @@ private:
   void create_tasks_table();
   /** @brief Create the SQL table for entries. */
   void create_entries_table();
+  /** @brief Create the SQL table for entrystaging. */
+  void create_entrystaging_table();
   /** @brief Execute a SQL statement with exception catching. */
   void try_exec_statement(const std::string &statement);
 

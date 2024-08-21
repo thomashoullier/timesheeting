@@ -39,9 +39,12 @@ void StopwatchNcurses::init_menu() {
 }
 
 void StopwatchNcurses::init_items() {
-  menu_string.at(0) = entry_staging.project_name.value_or("");
-  menu_string.at(1) = entry_staging.task_name.value_or("");
-  menu_string.at(2) = entry_staging.start.str;
+  menu_string.at(0) = entry_staging.project_name.value_or(" ");
+  menu_string.at(1) = entry_staging.task_name.value_or(" ");
+  if (entry_staging.start.has_value())
+    menu_string.at(2) = entry_staging.start.value().str;
+  else
+    menu_string.at(2) = " ";
   if (entry_staging.stop.has_value())
     menu_string.at(3) = entry_staging.stop.value().str;
   else

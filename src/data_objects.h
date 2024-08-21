@@ -38,7 +38,7 @@ struct Entry {
 struct EntryStaging {
   std::optional<std::string> project_name;
   std::optional<std::string> task_name;
-  Date start;
+  std::optional<Date> start;
   std::optional<Date> stop;
 };
 

@@ -7,6 +7,7 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_projects_table();
   this->create_tasks_table();
   this->create_entries_table();
+  this->create_entrystaging_table();
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -92,8 +93,28 @@ void DB_SQLite::create_entries_table() {
   sqlite_db.exec_statement(create_entries_table_st);
 }
 
+void DB_SQLite::create_entrystaging_table() {
+  std::string create_entrystaging_table_st =
+    "CREATE TABLE IF NOT EXISTS entrystaging ("
+    "id INTEGER PRIMARY KEY CHECK (id = 1), "
+    "task_id INTEGER, "
+    "start INTEGER, "
+    "stop INTEGER, "
+    "FOREIGN KEY (task_id) REFERENCES tasks (id) "
+    ");" ;
+  sqlite_db.exec_statement(create_entrystaging_table_st);
+
+  // Insert a first row if it does not already exist.
+  std::string insert_row_st =
+    "INSERT INTO entrystaging (task_id, start, stop) "
+    "SELECT NULL, NULL, NULL "
+    "WHERE NOT EXISTS (SELECT * FROM entrystaging)"
+    ";";
+  try_exec_statement(insert_row_st);
+}
+
 void DB_SQLite::add_project(std::string project_name) {
-  std::string add_project_st = "INSERT INTO projects (name)"
+  std::string add_project_st = "INSERT INTO projects (name) "
                                "VALUES ('" +
                                project_name + "');";
   try_exec_statement(add_project_st);
