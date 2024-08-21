@@ -21,6 +21,8 @@ public:
   void select_next_item();
   /** @brief Select the previous item. */
   void select_previous_item();
+  /** @brief Get an input. */
+  char query_input();
 
 private:
   static constexpr int WIDTH {80};

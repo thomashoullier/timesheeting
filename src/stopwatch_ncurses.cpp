@@ -28,6 +28,10 @@ void StopwatchNcurses::select_previous_item() {
   menu_driver(menu, REQ_PREV_ITEM);
 }
 
+char StopwatchNcurses::query_input() {
+  return wgetch(win);
+}
+
 void StopwatchNcurses::init_menu() {
   init_items();
   init_menu_window();
@@ -41,7 +45,7 @@ void StopwatchNcurses::init_items() {
   if (entry_staging.stop.has_value())
     menu_string.at(3) = entry_staging.stop.value().str;
   else
-    menu_string.at(3) = "";
+    menu_string.at(3) = " ";
 
   menu_items.at(0) = new_item(menu_string.at(0).c_str(), NULL);
   menu_items.at(1) = new_item(menu_string.at(1).c_str(), NULL);

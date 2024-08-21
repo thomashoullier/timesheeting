@@ -77,6 +77,25 @@ public:
         update_register();
         date_selector->refresh();
         break;
+      case '\t':
+        stopwatch_input_loop();
+        break;
+      default:
+        return ch;
+      }
+    }
+  };
+
+  char stopwatch_input_loop () {
+    while(true) {
+      auto ch = stopwatch.query_input();
+      switch(ch) {
+      case 'h':
+        stopwatch.select_previous_item();
+        break;
+      case 'i':
+        stopwatch.select_next_item();
+        break;
       default:
         return ch;
       }
