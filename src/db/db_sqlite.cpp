@@ -1,5 +1,7 @@
 #include "db_sqlite.h"
 #include "db_sqlite_handle.h"
+#include <iostream>
+#include <optional>
 #include <string>
 
 DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
@@ -56,6 +58,51 @@ std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
   }
   sqlite3_finalize(stmt);
   return vec;
+}
+
+EntryStaging DB_SQLite::query_entrystaging() {
+  std::string select_entrystaging_st =
+    "SELECT p.name, t.name, start, stop "
+    "FROM entrystaging "
+    "LEFT JOIN tasks t ON entrystaging.task_id = t.id "
+    "LEFT JOIN projects p ON t.project_id = p.id "
+    ";";
+  auto stmt = sqlite_db.prepare_statement(select_entrystaging_st);
+  if (!(sqlite3_step(stmt) == SQLITE_ROW))
+    throw DBLogicExcept("query_entrystaging: could not read SQLITE_ROW");
+
+  std::optional<std::string> project_name;
+  auto project_name_ret = reinterpret_cast<const char*>
+    (sqlite3_column_text(stmt, 0));
+  if (project_name_ret == NULL)
+    project_name = std::nullopt;
+  else
+    project_name = project_name_ret;
+
+  std::optional<std::string> task_name;
+  auto task_name_ret = reinterpret_cast<const char*>
+    (sqlite3_column_text(stmt, 1));
+  if (task_name_ret == NULL)
+    task_name = std::nullopt;
+  else
+    task_name = task_name_ret;
+
+  std::optional<Date> start_date;
+  uint64_t start_unix = sqlite3_column_int64(stmt, 2);
+  if (start_unix == 0)
+    start_date = std::nullopt;
+  else
+    start_date = Date(start_unix);
+
+  std::optional<Date> stop_date;
+  uint64_t stop_unix = sqlite3_column_int64(stmt, 3);
+  if (stop_unix == 0)
+    stop_date = std::nullopt;
+  else
+    stop_date = Date(stop_unix);
+  sqlite3_finalize(stmt);
+
+  return EntryStaging{project_name, task_name, start_date, stop_date};
 }
 
 void DB_SQLite::create_projects_table() {

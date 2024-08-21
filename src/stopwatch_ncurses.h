@@ -10,7 +10,7 @@
 /** @brief Ncurses implementation of a stopwatch for generating new entries. */
 class StopwatchNcurses {
 public:
-  StopwatchNcurses ();
+  StopwatchNcurses (const EntryStaging &_entry_staging);
   ~StopwatchNcurses();
 
   /** @brief Refresh the display. */

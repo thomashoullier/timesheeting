@@ -4,8 +4,8 @@
 #include <menu.h>
 #include <optional>
 
-StopwatchNcurses::StopwatchNcurses()
-  : entry_staging(EntryStaging{"Project", "Task", Date(), std::nullopt}) {
+StopwatchNcurses::StopwatchNcurses(const EntryStaging &_entry_staging)
+  : entry_staging(_entry_staging) {
   init_menu();
 }
 

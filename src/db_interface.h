@@ -20,6 +20,8 @@ public:
   /** @brief Return the set of entries ordered by ascending start date
       and included in the provided DateRange. */
   virtual std::vector<Entry> query_entries (const DateRange &date_range) = 0;
+  /** @brief Get the displayable state of the Entry in staging. */
+  virtual EntryStaging query_entrystaging () = 0;
 
   /** @brief Add a project to the DB with the provided name. */
   virtual void add_project(std::string project_name) = 0;

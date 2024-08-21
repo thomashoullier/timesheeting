@@ -17,6 +17,7 @@ public:
   std::vector<Project> query_projects() override;
   std::vector<Task> query_tasks (Id project_id) override;
   std::vector<Entry> query_entries(const DateRange &date_range) override;
+  EntryStaging query_entrystaging () override;
   void add_project(std::string project_name) override;
   void add_task(Id project_id, std::string task_name) override;
   void add_entry(Id task_id, const Date &start, const Date &stop) override;
