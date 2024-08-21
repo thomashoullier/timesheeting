@@ -10,7 +10,7 @@
 /** @brief Ncurses implementation of a stopwatch for generating new entries. */
 class StopwatchNcurses {
 public:
-  StopwatchNcurses (const EntryStaging &_entry_staging);
+  StopwatchNcurses(const EntryStaging &_entry_staging);
   ~StopwatchNcurses();
 
   /** @brief Refresh the display. */
@@ -23,10 +23,16 @@ public:
   void select_previous_item();
   /** @brief Get an input. */
   char query_input();
+  /** @brief Query a new string for renaming the current item. */
+  std::string query_current_item_rename();
+  /** @brief Get the field type for the currently selected field. */
+  EntryField get_field_type();
+  /** @brief Set the current entrystaging item. */
+  void set_items(const EntryStaging &item);
 
 private:
-  static constexpr int WIDTH {80};
-  static constexpr int ncols {4};
+  static constexpr int WIDTH{80};
+  static constexpr int ncols{4};
   WINDOW *win;
   MENU *menu;
   std::array<ITEM *, ncols + 1> menu_items;

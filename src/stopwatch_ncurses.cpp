@@ -1,11 +1,11 @@
 #include "stopwatch_ncurses.h"
 #include "data_objects.h"
-#include <ncurses.h>
 #include <menu.h>
+#include <ncurses.h>
 #include <optional>
 
 StopwatchNcurses::StopwatchNcurses(const EntryStaging &_entry_staging)
-  : entry_staging(_entry_staging) {
+    : entry_staging(_entry_staging) {
   init_menu();
 }
 
@@ -28,8 +28,56 @@ void StopwatchNcurses::select_previous_item() {
   menu_driver(menu, REQ_PREV_ITEM);
 }
 
-char StopwatchNcurses::query_input() {
-  return wgetch(win);
+char StopwatchNcurses::query_input() { return wgetch(win); }
+
+std::string StopwatchNcurses::query_current_item_rename() {
+  std::string input_buffer{};
+  // Clear the display line.
+  wclrtoeol(win);
+  bool user_wants_to_input = true;
+  while (user_wants_to_input) { // Item input loop.
+    auto ch = wgetch(win);
+    switch (ch) {
+    case '\n': // User validates the input.
+      user_wants_to_input = false;
+      break;
+    case 27: // User wants to cancel.
+      input_buffer.clear();
+      user_wants_to_input = false;
+      break;
+    case 127: // Erase last character
+      if (!input_buffer.empty()) {
+        input_buffer.pop_back();
+        // Remove character from screen
+        int y, x;
+        getyx(win, y, x);
+        auto xmax = getmaxx(win);
+        if (x == 0) { // jump to the end of the previous line.
+          wmove(win, y - 1, xmax - 1);
+        } else {
+          wmove(win, y, x - 1);
+        }
+        wdelch(win);
+      }
+      break;
+    default: // Gets added to item.
+      input_buffer.push_back(ch);
+      waddch(win, ch);
+      break;
+    }
+  }
+  return input_buffer;
+}
+
+EntryField StopwatchNcurses::get_field_type() {
+  auto cell_index = item_index(current_item(menu));
+  return EntryField(cell_index);
+}
+
+void StopwatchNcurses::set_items(const EntryStaging &item) {
+  destroy_menu();
+  entry_staging = item;
+  init_menu();
 }
 
 void StopwatchNcurses::init_menu() {

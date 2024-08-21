@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <stdexcept>
+#include "data_objects.h"
 #include "date.h"
 #include "date_selector_interface.h"
 #include "date_selector_ncurses.h"
@@ -96,6 +97,10 @@ public:
       case 'i':
         stopwatch.select_next_item();
         break;
+      case 'r':
+        stopwatch_rename_item();
+        update_stopwatch();
+        break;
       default:
         return ch;
       }
@@ -127,6 +132,12 @@ private:
     reg.refresh();
   };
 
+  void update_stopwatch() {
+    EntryStaging entry_staging = db->query_entrystaging();
+    stopwatch.set_items(entry_staging);
+    stopwatch.refresh();
+  };
+
   void rename_item() {
     //TODO: manage the case where the register is empty.
     auto id = reg.get_current_id();
@@ -152,6 +163,25 @@ private:
     default:
       throw std::logic_error(
           "Don't know what to do for renaming this unknown field type");
+    }
+  };
+
+  void stopwatch_rename_item() {
+    auto new_str = stopwatch.query_current_item_rename();
+    auto sanitized_str = sanitize_input(new_str);
+    auto field_type = stopwatch.get_field_type();
+    switch (field_type) {
+    case EntryField::project_name:
+      break;
+    case EntryField::task_name:
+      break;
+    case EntryField::start:
+      break;
+    case EntryField::stop:
+      break;
+    default:
+      throw std::logic_error("Don't know what to do for renaming this unknown "
+                             "field type");
     }
   };
 

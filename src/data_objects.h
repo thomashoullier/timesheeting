@@ -42,4 +42,7 @@ struct EntryStaging {
   std::optional<Date> stop;
 };
 
+/** @brief Entry field type (as displayed in the menu). */
+enum EntryField { project_name = 0, task_name = 1, start = 2, stop = 3 };
+
 #endif // DATA_OBJECTS_H

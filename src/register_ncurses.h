@@ -10,9 +10,6 @@
 #include <exception>
 #include "data_objects.h"
 
-/** @brief Entry field type (as displayed in the menu). */
-enum EntryField { project_name = 0, task_name = 1, start = 2, stop = 3 };
-
 // TODO: Factorize with column. Manage any number of columns.
 /** @brief Entry register implementation in ncurses.
 
