@@ -96,6 +96,7 @@ $(function() {
 , <a class="el" href="classDateSelectorNcurses.html#a98230c89b34c7ccff902f9311cafb162">DateSelectorNcurses</a>
 , <a class="el" href="classEntriesTable.html#addfa1f22525bebfa2380c10795cd8e64">EntriesTable&lt; T_DB, T_ST, typename &gt;</a>
 , <a class="el" href="classProjectTaskTable.html#ac64681e95c98c8a90171bd6208a63c47">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+, <a class="el" href="classStopwatchNcurses.html#afe4c5491d029f1d079ce48309ac7afc7">StopwatchNcurses</a>
 , <a class="el" href="classUIScreen.html#ae4fe893ced13c4a73acdda798463298b">UIScreen</a>
 </li>
 <li>ColumnNcurses()
@@ -106,6 +107,9 @@ $(function() {
 </li>
 <li>create_entries_table()
 : <a class="el" href="classDB__SQLite.html#a130c13f83de9dc6e6e071df84e6fd93b">DB_SQLite</a>
+</li>
+<li>create_entrystaging_table()
+: <a class="el" href="classDB__SQLite.html#a8e5bdd16c96fd8f1c88a633700ca3c2c">DB_SQLite</a>
 </li>
 <li>create_projects_table()
 : <a class="el" href="classDB__SQLite.html#a5152b53ae8dd9d5edc54ccc9b9220d28">DB_SQLite</a>
@@ -215,6 +219,9 @@ $(function() {
 </li>
 <li>get_day_string()
 : <a class="el" href="classDate.html#afcea004178848cbc31ab4530d28078b6">Date</a>
+</li>
+<li>get_field_type()
+: <a class="el" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">StopwatchNcurses</a>
 </li>
 <li>get_menu_index()
 : <a class="el" href="classColumnNcurses.html#abce035e3c4095c221c912d8b9ac90acc">ColumnNcurses&lt; T &gt;</a>
@@ -336,14 +343,20 @@ $(function() {
 <li>query_current_item_rename()
 : <a class="el" href="classColumnInterfaceBase.html#a5323952c039508835f7f392364adcfc6">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a9986ebdbe5e7408796f1fa86db172d67">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classStopwatchNcurses.html#af9639929b78ec3a9ee66260ccb5334f6">StopwatchNcurses</a>
 </li>
 <li>query_entries()
 : <a class="el" href="classDB__Interface.html#ad064d107d83b4b4ec655fd2c3f6e9628">DB_Interface</a>
 , <a class="el" href="classDB__SQLite.html#ad582b03e8629ba2725a7d43d006403cb">DB_SQLite</a>
 </li>
+<li>query_entrystaging()
+: <a class="el" href="classDB__Interface.html#a00f2f249ea07bea725e86e8c1655d2a7">DB_Interface</a>
+, <a class="el" href="classDB__SQLite.html#a76c5576807ee9d3f47ee25d85a1033a0">DB_SQLite</a>
+</li>
 <li>query_input()
 : <a class="el" href="classColumnInterfaceBase.html#a4fcba3b90cd5986451e83098ea0b34b2">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a3670660db0c1b400d359122532512bfb">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classStopwatchNcurses.html#a391fe76b4be5fd1597979fb18cb24add">StopwatchNcurses</a>
 </li>
 <li>query_new_item_name()
 : <a class="el" href="classColumnInterfaceBase.html#abb5bd6027fad4aecd66dcd390cd5bc21">ColumnInterfaceBase</a>
@@ -374,6 +387,7 @@ $(function() {
 , <a class="el" href="classDateSelectorNcurses.html#a86212d6e113f001d4c1d4bf489836137">DateSelectorNcurses</a>
 , <a class="el" href="classEntriesTable.html#a7e6e2e0d6726139bd025a47478514078">EntriesTable&lt; T_DB, T_ST, typename &gt;</a>
 , <a class="el" href="classProjectTaskTable.html#a518ac9934b4a59356b68d2f9c3bd15a8">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+, <a class="el" href="classStopwatchNcurses.html#a45edfa87497cc113c1f9c89ecc6e1cbd">StopwatchNcurses</a>
 , <a class="el" href="classUIScreen.html#a7bc65c511e8891db87c8f00fb62d1578">UIScreen</a>
 </li>
 <li>remove_item()
@@ -396,6 +410,7 @@ $(function() {
 <li>select_next_item()
 : <a class="el" href="classColumnInterfaceBase.html#a5e6636fa7568fb42851510d16db9749b">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a57b98eacc51fe8808ef6a4dd20029ebc">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classStopwatchNcurses.html#abfb37aedfba311e032da234abcaec056">StopwatchNcurses</a>
 </li>
 <li>select_prev_item()
 : <a class="el" href="classColumnInterfaceBase.html#ad405fd5fc1615a3d82b39ce8870cac3a">ColumnInterfaceBase</a>
@@ -405,9 +420,13 @@ $(function() {
 : <a class="el" href="classDateSelectorInterface.html#a2712d2222ae928c94734ad5407a8d8fb">DateSelectorInterface</a>
 , <a class="el" href="classDateSelectorNcurses.html#a58587264b4b441ac76991d6ecb949638">DateSelectorNcurses</a>
 </li>
+<li>select_previous_item()
+: <a class="el" href="classStopwatchNcurses.html#a8d2dbcaadbe3323da4f06de2daa94e86">StopwatchNcurses</a>
+</li>
 <li>set_items()
 : <a class="el" href="classColumnInterface.html#af133c17f1fceeb155ef191f7bf04b94a">ColumnInterface&lt; T, typename &gt;</a>
 , <a class="el" href="classColumnNcurses.html#a5d408241359a6a5b55195831f7ec45cc">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62">StopwatchNcurses</a>
 </li>
 <li>sqlite_db
 : <a class="el" href="classDB__SQLite.html#a8517c381d3af75a79f86b4970437f3ee">DB_SQLite</a>

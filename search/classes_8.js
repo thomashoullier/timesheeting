@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['sqliteconstraintexcept_158',['SQLiteConstraintExcept',['../classSQLiteConstraintExcept.html',1,'']]],
-  ['statusbarinterface_159',['StatusBarInterface',['../classStatusBarInterface.html',1,'']]],
-  ['statusbarncurses_160',['StatusBarNCurses',['../classStatusBarNCurses.html',1,'']]]
+  ['sqliteconstraintexcept_166',['SQLiteConstraintExcept',['../classSQLiteConstraintExcept.html',1,'']]],
+  ['statusbarinterface_167',['StatusBarInterface',['../classStatusBarInterface.html',1,'']]],
+  ['statusbarncurses_168',['StatusBarNCurses',['../classStatusBarNCurses.html',1,'']]],
+  ['stopwatchncurses_169',['StopwatchNcurses',['../classStopwatchNcurses.html',1,'']]]
 ];

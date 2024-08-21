@@ -73,38 +73,50 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef DATA_OBJECTS_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define DATA_OBJECTS_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;date.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">   11</a></span>&#160;<span class="keyword">typedef</span> uint64_t <a class="code" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structGenericItem.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structGenericItem.html">GenericItem</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structGenericItem.html#a2f417d0fabe992fd739be1422b97b205">   16</a></span>&#160;  <a class="code" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> <a class="code" href="structGenericItem.html#a2f417d0fabe992fd739be1422b97b205">id</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">   18</a></span>&#160;  std::string <a class="code" href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">name</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structProject.html">   22</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structProject.html">Project</a> : <a class="code" href="structGenericItem.html">GenericItem</a> {};</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structTask.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structTask.html">Task</a> : <a class="code" href="structGenericItem.html">GenericItem</a> {};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;date.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">   12</a></span>&#160;<span class="keyword">typedef</span> uint64_t <a class="code" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structGenericItem.html">   15</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structGenericItem.html">GenericItem</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structGenericItem.html#a2f417d0fabe992fd739be1422b97b205">   17</a></span>&#160;  <a class="code" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> <a class="code" href="structGenericItem.html#a2f417d0fabe992fd739be1422b97b205">id</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">   19</a></span>&#160;  std::string <a class="code" href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">name</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structProject.html">   23</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structProject.html">Project</a> : <a class="code" href="structGenericItem.html">GenericItem</a> {};</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structTask.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structTask.html">Task</a> : <a class="code" href="structGenericItem.html">GenericItem</a> {};</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structEntry.html">   28</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> id;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  std::string project_name;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  std::string task_name;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classDate.html">Date</a> start;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classDate.html">Date</a> stop;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DATA_OBJECTS_H</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structEntry.html">   29</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <a class="code" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> id;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  std::string project_name;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::string task_name;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classDate.html">Date</a> start;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classDate.html">Date</a> stop;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structEntryStaging.html">   38</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structEntryStaging.html">EntryStaging</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  std::optional&lt;std::string&gt; project_name;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  std::optional&lt;std::string&gt; task_name;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  std::optional&lt;Date&gt; start;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::optional&lt;Date&gt; stop;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">   46</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a> { project_name = 0, task_name = 1, start = 2, stop = 3 };</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DATA_OBJECTS_H</span></div>
 <div class="ttc" id="aclassDate_html"><div class="ttname"><a href="classDate.html">Date</a></div><div class="ttdoc">Date type.</div><div class="ttdef"><b>Definition:</b> date.h:14</div></div>
-<div class="ttc" id="adata__objects_8h_html_aeb7ff9cbc21124882bcf962e7dabb6bc"><div class="ttname"><a href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a></div><div class="ttdeci">uint64_t Id</div><div class="ttdoc">Unique id for data items (typically a SQLite rowid).</div><div class="ttdef"><b>Definition:</b> data_objects.h:11</div></div>
-<div class="ttc" id="astructEntry_html"><div class="ttname"><a href="structEntry.html">Entry</a></div><div class="ttdoc">Timesheet entry object.</div><div class="ttdef"><b>Definition:</b> data_objects.h:28</div></div>
-<div class="ttc" id="astructGenericItem_html"><div class="ttname"><a href="structGenericItem.html">GenericItem</a></div><div class="ttdoc">A generic item has an Id and a display name.</div><div class="ttdef"><b>Definition:</b> data_objects.h:14</div></div>
-<div class="ttc" id="astructGenericItem_html_a2f417d0fabe992fd739be1422b97b205"><div class="ttname"><a href="structGenericItem.html#a2f417d0fabe992fd739be1422b97b205">GenericItem::id</a></div><div class="ttdeci">Id id</div><div class="ttdoc">Globally unique Id.</div><div class="ttdef"><b>Definition:</b> data_objects.h:16</div></div>
-<div class="ttc" id="astructGenericItem_html_a686d0b214d38028e725e8f5571bb3acf"><div class="ttname"><a href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">GenericItem::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">Name of the item.</div><div class="ttdef"><b>Definition:</b> data_objects.h:18</div></div>
-<div class="ttc" id="astructProject_html"><div class="ttname"><a href="structProject.html">Project</a></div><div class="ttdoc">Specialization of GenericItem into a Project item.</div><div class="ttdef"><b>Definition:</b> data_objects.h:22</div></div>
-<div class="ttc" id="astructTask_html"><div class="ttname"><a href="structTask.html">Task</a></div><div class="ttdoc">Specialization of GenericItem into a Task item.</div><div class="ttdef"><b>Definition:</b> data_objects.h:24</div></div>
+<div class="ttc" id="adata__objects_8h_html_a0578a3ec2e36bcf0d94ec723ed6149b5"><div class="ttname"><a href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a></div><div class="ttdeci">EntryField</div><div class="ttdoc">Entry field type (as displayed in the menu).</div><div class="ttdef"><b>Definition:</b> data_objects.h:46</div></div>
+<div class="ttc" id="adata__objects_8h_html_aeb7ff9cbc21124882bcf962e7dabb6bc"><div class="ttname"><a href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a></div><div class="ttdeci">uint64_t Id</div><div class="ttdoc">Unique id for data items (typically a SQLite rowid).</div><div class="ttdef"><b>Definition:</b> data_objects.h:12</div></div>
+<div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:38</div></div>
+<div class="ttc" id="astructEntry_html"><div class="ttname"><a href="structEntry.html">Entry</a></div><div class="ttdoc">Timesheet entry object.</div><div class="ttdef"><b>Definition:</b> data_objects.h:29</div></div>
+<div class="ttc" id="astructGenericItem_html"><div class="ttname"><a href="structGenericItem.html">GenericItem</a></div><div class="ttdoc">A generic item has an Id and a display name.</div><div class="ttdef"><b>Definition:</b> data_objects.h:15</div></div>
+<div class="ttc" id="astructGenericItem_html_a2f417d0fabe992fd739be1422b97b205"><div class="ttname"><a href="structGenericItem.html#a2f417d0fabe992fd739be1422b97b205">GenericItem::id</a></div><div class="ttdeci">Id id</div><div class="ttdoc">Globally unique Id.</div><div class="ttdef"><b>Definition:</b> data_objects.h:17</div></div>
+<div class="ttc" id="astructGenericItem_html_a686d0b214d38028e725e8f5571bb3acf"><div class="ttname"><a href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">GenericItem::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">Name of the item.</div><div class="ttdef"><b>Definition:</b> data_objects.h:19</div></div>
+<div class="ttc" id="astructProject_html"><div class="ttname"><a href="structProject.html">Project</a></div><div class="ttdoc">Specialization of GenericItem into a Project item.</div><div class="ttdef"><b>Definition:</b> data_objects.h:23</div></div>
+<div class="ttc" id="astructTask_html"><div class="ttname"><a href="structTask.html">Task</a></div><div class="ttdoc">Specialization of GenericItem into a Task item.</div><div class="ttdef"><b>Definition:</b> data_objects.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

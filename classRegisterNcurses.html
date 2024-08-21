@@ -79,9 +79,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a20b26f8095883cb642da0a4888b22ab8"><td class="memItemLeft" align="right" valign="top"><a id="a20b26f8095883cb642da0a4888b22ab8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterNcurses</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
-<tr class="separator:a20b26f8095883cb642da0a4888b22ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0df5bc580c81607789cb51b48a35cc6e"><td class="memItemLeft" align="right" valign="top"><a id="a0df5bc580c81607789cb51b48a35cc6e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterNcurses</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items, int _display_line)</td></tr>
+<tr class="separator:a0df5bc580c81607789cb51b48a35cc6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01b5b2959c3fb0d7b4ed85544f047170"><td class="memItemLeft" align="right" valign="top"><a id="a01b5b2959c3fb0d7b4ed85544f047170"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> ()</td></tr>
 <tr class="separator:a01b5b2959c3fb0d7b4ed85544f047170"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -95,7 +95,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_items</b> (const 
 <a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_id</b> ()</td></tr>
 <tr class="separator:a6ddd8915e66719efeec1db6d23b06d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fba87a75b5ea5146be4c6be30dc73e0"><td class="memItemLeft" align="right" valign="top"><a id="a6fba87a75b5ea5146be4c6be30dc73e0"></a>
-EntryField&#160;</td><td class="memItemRight" valign="bottom"><b>get_field_type</b> ()</td></tr>
+<a class="el" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_field_type</b> ()</td></tr>
 <tr class="separator:a6fba87a75b5ea5146be4c6be30dc73e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabf46d18915a0e61658677ceb1283b96"><td class="memItemLeft" align="right" valign="top"><a id="aabf46d18915a0e61658677ceb1283b96"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_cell_string</b> ()</td></tr>
@@ -145,6 +145,9 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>query_row_inpu
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a4771e2d8b418a54c2d2527b81a4cd467"><td class="memItemLeft" align="right" valign="top"><a id="a4771e2d8b418a54c2d2527b81a4cd467"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>display_line</b></td></tr>
+<tr class="separator:a4771e2d8b418a54c2d2527b81a4cd467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a153ac6854461fba4e0d7700df431bd37"><td class="memItemLeft" align="right" valign="top"><a id="a153ac6854461fba4e0d7700df431bd37"></a>
 WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
 <tr class="separator:a153ac6854461fba4e0d7700df431bd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
