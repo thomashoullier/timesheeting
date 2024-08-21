@@ -2,15 +2,15 @@
 #define STOPWATCH_NCURSES_H
 
 #include "data_objects.h"
+#include <array>
 #include <ncurses.h>
 #include <menu.h>
-#include <vector>
 #include <string>
 
 /** @brief Ncurses implementation of a stopwatch for generating new entries. */
 class StopwatchNcurses {
 public:
-  StopwatchNcurses (const std::string &str);
+  StopwatchNcurses ();
   ~StopwatchNcurses();
 
   /** @brief Refresh the display. */
@@ -25,14 +25,14 @@ public:
 private:
   static constexpr int WIDTH {80};
   static constexpr int ncols {4};
-  std::string tmp_str; // TEMP
   WINDOW *win;
   MENU *menu;
-  std::vector<ITEM *> menu_items;
-  std::vector<Entry> held_items;
+  std::array<ITEM *, ncols + 1> menu_items;
+  std::array<std::string, ncols> menu_string;
+  EntryStaging entry_staging;
 
-  void init_menu(const std::string &str);
-  void init_items(const std::string &str);
+  void init_menu();
+  void init_items();
   void init_menu_window();
   void destroy_menu();
 };

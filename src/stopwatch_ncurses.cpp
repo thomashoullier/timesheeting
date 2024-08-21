@@ -1,9 +1,12 @@
 #include "stopwatch_ncurses.h"
+#include "data_objects.h"
 #include <ncurses.h>
 #include <menu.h>
+#include <optional>
 
-StopwatchNcurses::StopwatchNcurses(const std::string &str) {
-  init_menu(str);
+StopwatchNcurses::StopwatchNcurses()
+  : entry_staging(EntryStaging{"Project", "Task", Date(), std::nullopt}) {
+  init_menu();
 }
 
 StopwatchNcurses::~StopwatchNcurses() { destroy_menu(); }
@@ -25,29 +28,36 @@ void StopwatchNcurses::select_previous_item() {
   menu_driver(menu, REQ_PREV_ITEM);
 }
 
-void StopwatchNcurses::init_menu(const std::string &str) {
-  init_items(str);
+void StopwatchNcurses::init_menu() {
+  init_items();
   init_menu_window();
   set_current_item(menu, menu_items.at(0));
 }
 
-void StopwatchNcurses::init_items(const std::string &str) {
-  tmp_str = str;
-  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
-  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
-  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
-  menu_items.push_back(new_item(tmp_str.c_str(), NULL));
+void StopwatchNcurses::init_items() {
+  menu_string.at(0) = entry_staging.project_name.value_or("");
+  menu_string.at(1) = entry_staging.task_name.value_or("");
+  menu_string.at(2) = entry_staging.start.str;
+  if (entry_staging.stop.has_value())
+    menu_string.at(3) = entry_staging.stop.value().str;
+  else
+    menu_string.at(3) = "";
 
-  menu_items.push_back(NULL);
+  menu_items.at(0) = new_item(menu_string.at(0).c_str(), NULL);
+  menu_items.at(1) = new_item(menu_string.at(1).c_str(), NULL);
+  menu_items.at(2) = new_item(menu_string.at(2).c_str(), NULL);
+  menu_items.at(3) = new_item(menu_string.at(3).c_str(), NULL);
+
+  menu_items.at(4) = NULL;
   menu = new_menu(menu_items.data());
   menu_opts_off(menu, O_SHOWDESC);
 }
 
 void StopwatchNcurses::init_menu_window() {
   auto max_y = getmaxy(stdscr);
-  win = newwin(3, WIDTH, max_y - 10, 1);
+  win = newwin(1, WIDTH, max_y - 3, 1);
   set_menu_win(menu, win);
-  set_menu_sub(menu, derwin(win, 2, WIDTH - 2, 1, 1));
+  set_menu_sub(menu, derwin(win, 1, WIDTH - 2, 0, 1));
   set_menu_format(menu, 1, 4);
 }
 
@@ -58,6 +68,4 @@ void StopwatchNcurses::destroy_menu() {
   for (auto &it : menu_items) {
     free_item(it);
   }
-  menu_items.clear();
-  held_items.clear();
 }

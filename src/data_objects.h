@@ -3,6 +3,7 @@
 #ifndef DATA_OBJECTS_H
 #define DATA_OBJECTS_H
 
+#include <optional>
 #include <string>
 #include <cstdint>
 #include "date.h"
@@ -31,6 +32,14 @@ struct Entry {
   std::string task_name;
   Date start;
   Date stop;
+};
+
+/** @brief Entry as it is being staged. */
+struct EntryStaging {
+  std::optional<std::string> project_name;
+  std::optional<std::string> task_name;
+  Date start;
+  std::optional<Date> stop;
 };
 
 #endif // DATA_OBJECTS_H

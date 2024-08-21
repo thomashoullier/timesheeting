@@ -25,7 +25,7 @@ public:
         status(std::static_pointer_cast<StatusBarInterface>(_status)),
         date_selector(std::make_unique<DateSelectorNcurses>()),
         reg(db->query_entries(date_selector->current_range()), 2),
-        stopwatch("Hello") {
+        stopwatch() {
     date_selector->print();
   };
 
