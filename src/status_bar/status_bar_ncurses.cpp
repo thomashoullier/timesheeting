@@ -1,7 +1,8 @@
 #include "status_bar_ncurses.h"
 #include <curses.h>
 
-StatusBarNCurses::StatusBarNCurses() : BarNCurses(WindowPosition::bottom) {}
+StatusBarNCurses::StatusBarNCurses()
+    : BarNCurses(WindowPosition::bottom) {}
 
 void StatusBarNCurses::print(const std::string &msg) { BarNCurses::print(msg); }
 

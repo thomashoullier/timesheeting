@@ -4,12 +4,14 @@
 #include <ncurses.h>
 
 /** @brief Selector for the position of the window. */
-enum class WindowPosition {top, bottom};
+enum class WindowPosition { top, upper, bottom };
+/** @brief Selector for the format of the window. */
+enum class WindowFormat { line, block };
 
 /** @brief Base class for NCurses elements in a window. */
 class WinNCurses {
 public:
-  WinNCurses(WindowPosition winpos);
+  WinNCurses(WindowPosition winpos, WindowFormat winformat);
   ~WinNCurses();
 
   /** @brief Get a character inputted in the current window. */
@@ -24,7 +26,7 @@ protected:
 
 private:
   /** @brief Get a new ncurses window. */
-  WINDOW* init_window(WindowPosition winpos);
+  WINDOW* init_window(WindowPosition winpos, WindowFormat winformat);
 };
 
 #endif // WIN_NCURSES_H
