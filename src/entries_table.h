@@ -187,10 +187,14 @@ private:
     case EntryField::task_name:
       db->edit_entrystaging_task_name(sanitized_str);
       break;
-    case EntryField::start:
-      break;
-    case EntryField::stop:
-      break;
+    case EntryField::start: {
+      Date new_start_date(sanitized_str);
+      db->edit_entrystaging_start(new_start_date);
+    } break;
+    case EntryField::stop: {
+      Date new_stop_date(sanitized_str);
+      db->edit_entrystaging_stop(new_stop_date);
+    } break;
     default:
       throw std::logic_error("Don't know what to do for renaming this unknown "
                              "field type");

@@ -31,6 +31,8 @@ public:
   void edit_entrystaging_project_name
       (const std::string &new_project_name) override;
   void edit_entrystaging_task_name(const std::string &new_task_name) override;
+  void edit_entrystaging_start(const Date &new_start) override;
+  void edit_entrystaging_stop(const Date &new_stop) override;
   void delete_task(Id task_id) override;
   void delete_project(Id project_id) override;
   void delete_entry(Id entry_id) override;

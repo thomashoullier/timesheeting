@@ -112,7 +112,7 @@ void StopwatchNcurses::init_menu_window() {
   auto max_y = getmaxy(stdscr);
   win = newwin(1, WIDTH, max_y - 3, 1);
   set_menu_win(menu, win);
-  set_menu_sub(menu, derwin(win, 1, WIDTH - 2, 0, 1));
+  set_menu_sub(menu, derwin(win, 1, WIDTH - 1, 0, 1));
   set_menu_format(menu, 1, 4);
 }
 

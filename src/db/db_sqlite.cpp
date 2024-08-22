@@ -285,6 +285,21 @@ void DB_SQLite::edit_entrystaging_task_name(const std::string &new_task_name) {
   try_exec_statement(alter_entrystaging_task_st);
 }
 
+void DB_SQLite::edit_entrystaging_start(const Date &new_start) {
+  std::string alter_entrystaging_start_st =
+      "UPDATE entrystaging "
+      "SET start = "
+      "'" + std::to_string(new_start.to_unix_timestamp()) + "';";
+  try_exec_statement(alter_entrystaging_start_st);
+}
+void DB_SQLite::edit_entrystaging_stop(const Date &new_stop) {
+  std::string alter_entrystaging_stop_st =
+      "UPDATE entrystaging "
+      "SET stop = "
+      "'" + std::to_string(new_stop.to_unix_timestamp()) + "';";
+  try_exec_statement(alter_entrystaging_stop_st);
+}
+
 void DB_SQLite::delete_task(Id task_id) {
   std::string delete_task_st =
     "DELETE FROM tasks "
