@@ -87,10 +87,10 @@ public:
     }
   };
 
-  char stopwatch_input_loop () {
-    while(true) {
+  char stopwatch_input_loop() {
+    while (true) {
       auto ch = stopwatch.query_input();
-      switch(ch) {
+      switch (ch) {
       case 'h':
         stopwatch.select_previous_item();
         break;
@@ -98,13 +98,23 @@ public:
         stopwatch.select_next_item();
         break;
       case 'r':
-        stopwatch_rename_item();
-        update_stopwatch();
+        try {
+          stopwatch_rename_item();
+          update_stopwatch();
+        } catch (DBLogicExcept &e) {
+          status->print_wait("DB logic error! Nothing was done to the DB.");
+          this->clear();
+          this->refresh();
+        } catch (DateParsingFailure &e) {
+          status->print_wait("Failed to parse the date. Do nothing.");
+          this->clear();
+          this->refresh();
+        }
         break;
       default:
         return ch;
       }
-    }
+  }
   };
 
   void refresh () override {
@@ -172,8 +182,10 @@ private:
     auto field_type = stopwatch.get_field_type();
     switch (field_type) {
     case EntryField::project_name:
+      db->edit_entrystaging_project_name(sanitized_str);
       break;
     case EntryField::task_name:
+      db->edit_entrystaging_task_name(sanitized_str);
       break;
     case EntryField::start:
       break;

@@ -47,6 +47,12 @@ public:
   /** @brief Edit an entry's stop date. */
   virtual void edit_entry_stop(Id entry_id,
                                const Date &new_stop_date) = 0;
+  /** @brief Edit the entrystaging's project name. */
+  virtual void edit_entrystaging_project_name
+      (const std::string &new_project_name) = 0;
+  /** @brief Edit the entrystaging's task name. */
+  virtual void edit_entrystaging_task_name
+      (const std::string &new_task_name) = 0;
   /** @brief Delete the task with provided Id. */
   virtual void delete_task (Id task_id) = 0;
   /** @brief Delete the project with provided Id and all associated tasks. */

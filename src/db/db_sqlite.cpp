@@ -258,6 +258,33 @@ void DB_SQLite::edit_entry_stop(Id entry_id, const Date &new_stop_date) {
   try_exec_statement(alter_entry_stop_st);
 }
 
+void DB_SQLite::edit_entrystaging_project_name
+    (const std::string &new_project_name) {
+  std::string alter_entrystaging_project_st =
+    "UPDATE entrystaging "
+    "SET task_id = ("
+    "SELECT tasks.id FROM tasks "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "WHERE projects.name = '" + new_project_name + "'"
+    ") "
+    "LIMIT 1;";
+  try_exec_statement(alter_entrystaging_project_st);
+}
+
+void DB_SQLite::edit_entrystaging_task_name(const std::string &new_task_name) {
+  std::string alter_entrystaging_task_st =
+    "UPDATE entrystaging "
+    "SET task_id = ("
+    "SELECT id FROM tasks "
+    "WHERE name = '" + new_task_name + "' "
+    "AND project_id = ("
+    "SELECT projects.id FROM entrystaging "
+    "INNER JOIN tasks ON entrystaging.task_id = tasks.id "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "));";
+  try_exec_statement(alter_entrystaging_task_st);
+}
+
 void DB_SQLite::delete_task(Id task_id) {
   std::string delete_task_st =
     "DELETE FROM tasks "
