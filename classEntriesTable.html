@@ -120,6 +120,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rename_item</b> ()</t
 <tr class="memitem:ab5d54b13444ce4ab6806b5dff5866f38"><td class="memItemLeft" align="right" valign="top"><a id="ab5d54b13444ce4ab6806b5dff5866f38"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>stopwatch_rename_item</b> ()</td></tr>
 <tr class="separator:ab5d54b13444ce4ab6806b5dff5866f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dc7cc195848b6db5766faf2adab163c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a7dc7cc195848b6db5766faf2adab163c">stopwatch_set_current_now</a> ()</td></tr>
+<tr class="separator:a7dc7cc195848b6db5766faf2adab163c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3cbaced96c9e8c24cc9084360f060c0"><td class="memItemLeft" align="right" valign="top"><a id="ad3cbaced96c9e8c24cc9084360f060c0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>remove_item</b> ()</td></tr>
 <tr class="separator:ad3cbaced96c9e8c24cc9084360f060c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,7 +152,36 @@ std::unique_ptr&lt; <a class="el" href="classDateSelectorInterface.html">DateSel
 class EntriesTable&lt; T_DB, T_ST, typename &gt;</h3>
 
 <p>Class for holding the table of entries for a given day. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7dc7cc195848b6db5766faf2adab163c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dc7cc195848b6db5766faf2adab163c">&#9670;&nbsp;</a></span>stopwatch_set_current_now()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_DB , typename T_ST , typename  = std::enable_if_t&lt;            std::is_base_of&lt;DB_Interface, T_DB&gt;::value &amp;&amp;            std::is_base_of&lt;StatusBarInterface, T_ST&gt;::value&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classEntriesTable.html">EntriesTable</a>&lt; T_DB, T_ST, typename &gt;::stopwatch_set_current_now </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the current item, if it is a date, to now(). </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="entries__table_8h_source.html">entries_table.h</a></li>
 </ul>
 </div><!-- contents -->
