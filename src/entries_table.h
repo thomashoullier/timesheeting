@@ -111,6 +111,10 @@ public:
           this->refresh();
         }
         break;
+      case ' ':
+        stopwatch_set_current_now();
+        update_stopwatch();
+        break;
       default:
         return ch;
       }
@@ -198,6 +202,23 @@ private:
     default:
       throw std::logic_error("Don't know what to do for renaming this unknown "
                              "field type");
+    }
+  };
+
+  /** Set the current item, if it is a date, to now(). */
+  void stopwatch_set_current_now () {
+    auto field_type = stopwatch.get_field_type();
+    switch(field_type) {
+    case EntryField::start: {
+      Date now_start;
+      db->edit_entrystaging_start(now_start);
+    } break;
+    case EntryField::stop: {
+      Date now_stop;
+      db->edit_entrystaging_stop(now_stop);
+    } break;
+    default:
+      return;
     }
   };
 
