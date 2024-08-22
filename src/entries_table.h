@@ -25,13 +25,13 @@ public:
       : db(std::static_pointer_cast<DB_Interface>(_db)),
         status(std::static_pointer_cast<StatusBarInterface>(_status)),
         date_selector(std::make_unique<DateSelectorNcurses>()),
-        reg(db->query_entries(date_selector->current_range()), 2),
+        reg(db->query_entries(date_selector->current_range())),
         stopwatch(db->query_entrystaging()) {};
 
   char input_loop() override {
     while (true) {
       status->print(reg.get_current_cell_string());
-      auto ch = reg.query_input();
+      auto ch = reg.get_input();
       switch (ch) {
       case 'n':
         reg.select_down_item();

@@ -24,6 +24,9 @@ public:
 protected:
   WINDOW *win;
 
+  /** @brief Destroy the ncurses window. */
+  void destroy_window();
+
 private:
   /** @brief Get a new ncurses window. */
   WINDOW* init_window(WindowPosition winpos, WindowFormat winformat);

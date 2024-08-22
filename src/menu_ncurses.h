@@ -31,6 +31,12 @@ public:
   /** @brief Replace the currently held items. */
   void set_items(const std::vector<std::string> &items);
 
+protected:
+  /** @brief Get the current row index. */
+  int get_row_index() const;
+  /** @brief Get the current column index. */
+  int get_col_index() const;
+
 private:
   /** @brief Number of columms in the menu. */
   int ncols;

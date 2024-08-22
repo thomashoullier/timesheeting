@@ -70,6 +70,16 @@ void MenuNCurses::set_items(const std::vector<std::string> &items) {
   init_menu(items);
 }
 
+int MenuNCurses::get_row_index() const {
+  auto cell_index = item_index(current_item(menu));
+  return cell_index / ncols; // integer division
+}
+
+int MenuNCurses::get_col_index() const {
+  auto cell_index = item_index(current_item(menu));
+  return cell_index % ncols;
+}
+
 void MenuNCurses::init_menu(const std::vector<std::string> &items) {
   init_items(items);
   init_menu_window();
@@ -83,9 +93,9 @@ void MenuNCurses::init_items(const std::vector<std::string> &items) {
     display_strings.at(i) = items.at(i); // Copy
     // TODO: crop the strings to some specific maximum length,
     //       otherwise it goes out of the screen.
-    menu_items.push_back(new_item(display_strings.at(i).c_str(), NULL));
+    menu_items.at(i)= new_item(display_strings.at(i).c_str(), NULL);
   }
-  menu_items.push_back(NULL);
+  menu_items.back() = NULL;
   menu = new_menu(menu_items.data());
 }
 
@@ -100,6 +110,7 @@ void MenuNCurses::init_menu_window() {
 void MenuNCurses::destroy_menu() {
   unpost_menu(menu);
   free_menu(menu);
+  destroy_window();
   for (auto &it : menu_items) {
     free_item(it);
   }

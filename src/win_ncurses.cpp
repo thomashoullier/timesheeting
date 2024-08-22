@@ -1,10 +1,11 @@
 #include "win_ncurses.h"
+#include <curses.h>
 #include <stdexcept>
 
 WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)
   : win(init_window(winpos, winformat)) {}
 
-WinNCurses::~WinNCurses() { delwin(win); }
+WinNCurses::~WinNCurses() { destroy_window(); }
 
 char WinNCurses::get_input() { return wgetch(win); }
 
@@ -14,6 +15,8 @@ void WinNCurses::clear() const {
   werase(win);
   this->refresh();
 }
+
+void WinNCurses::destroy_window() { delwin(win); }
 
 WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
   auto max_y = getmaxy(stdscr);
