@@ -12,7 +12,11 @@ public:
   Date stop;
 
   /** @brief Initialize the date range. */
-  DateRange(const Date &_start, const Date &_stop):
-    start(_start), stop(_stop) {};
+  DateRange(const Date &_start, const Date &_stop);
+
+  /** @brief Shift the date range by adding one day. */
+  void add_one_day();
+  /** @brief Shift the date range by subtracting one day. */
+  void subtract_one_day();
 };
 #endif // DATE_RANGE_H

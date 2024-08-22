@@ -10,6 +10,8 @@
 class StatusBarNCurses : public StatusBarInterface,
                          public BarNCurses {
 public:
+  StatusBarNCurses();
+
   void print (const std::string &msg) override;
   void print_wait(const std::string &msg) override;
   bool query_confirmation (const std::string &msg) override;

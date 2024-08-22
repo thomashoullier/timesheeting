@@ -7,8 +7,6 @@
 class DateSelectorInterface {
 public:
   virtual ~DateSelectorInterface() = default;
-  /** @brief Print the currently selected date range. */
-  virtual void print () const = 0;
   /** @brief Refresh the display. */
   virtual void refresh() const = 0;
   /** @brief Clear the display. */

@@ -26,9 +26,7 @@ public:
         status(std::static_pointer_cast<StatusBarInterface>(_status)),
         date_selector(std::make_unique<DateSelectorNcurses>()),
         reg(db->query_entries(date_selector->current_range()), 2),
-        stopwatch(db->query_entrystaging()) {
-    date_selector->print();
-  };
+        stopwatch(db->query_entrystaging()) {};
 
   char input_loop() override {
     while (true) {

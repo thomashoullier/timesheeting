@@ -1,17 +1,31 @@
 #include "win_ncurses.h"
+#include <stdexcept>
 
-WinNCurses::WinNCurses() : win(init_window()) {}
+WinNCurses::WinNCurses(WindowPosition winpos) : win(init_window(winpos)) {}
 
 WinNCurses::~WinNCurses() { delwin(win); }
 
 char WinNCurses::get_input() { return wgetch(win); }
 
-void WinNCurses::refresh() { wrefresh(win); }
+void WinNCurses::refresh() const { wrefresh(win); }
 
-void WinNCurses::clear() { werase(win); }
+void WinNCurses::clear() const {
+  werase(win);
+  this->refresh();
+}
 
-WINDOW* WinNCurses::init_window() {
-  int max_y, max_x;
+WINDOW* WinNCurses::init_window(WindowPosition winpos) {
+  int max_y, max_x, y;
   getmaxyx(stdscr, max_y, max_x);
-  return newwin(1, max_x, max_y - 1, 0);
+  switch (winpos) {
+  case WindowPosition::top:
+    y = 1;
+    break;
+  case WindowPosition::bottom:
+    y = max_y - 1;
+    break;
+  default:
+    throw std::logic_error("WinNCurses: unknown WindowPosition.");
+  }
+  return newwin(1, max_x, y, 0);
 }

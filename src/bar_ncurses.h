@@ -7,7 +7,7 @@
 /** @brief A bar is a window with a single line, which can print strings. */
 class BarNCurses : public WinNCurses {
 public:
-  void print (const std::string &msg);
+  void print (const std::string &msg) const;
 };
 
 #endif // BAR_NCURSES_H

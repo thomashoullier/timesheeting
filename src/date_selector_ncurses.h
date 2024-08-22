@@ -1,22 +1,18 @@
 #ifndef DATE_SELECTOR_NCURSES_H
 #define DATE_SELECTOR_NCURSES_H
 
+#include "bar_ncurses.h"
 #include "date_selector_interface.h"
 #include <ncurses.h>
 
-class DateSelectorNcurses : public DateSelectorInterface {
+class DateSelectorNcurses : public DateSelectorInterface,
+                            public BarNCurses {
 private:
   DateRange range;
-  /** @brief Handle to the date selector window. */
-  WINDOW *win;
-  /** @brief Setup the ncurses window for the date selector. */
-  WINDOW* init_window();
 
 public:
   /** @brief Initialize the date range to the current day in local time. */
   DateSelectorNcurses ();
-  ~DateSelectorNcurses ();
-  void print () const override;
   void refresh () const override;
   void clear () const override;
   DateRange current_range () const override;
