@@ -63,6 +63,8 @@ public:
   virtual void delete_project (Id project_id) = 0;
   /** @brief Delete a timesheet entry. */
   virtual void delete_entry (Id entry_id) = 0;
+  /** @brief Commit the entrystaging to the entries table. */
+  virtual void commit_entrystaging () = 0;
 };
 
 /** @brief Exception thrown when the DB encounters a logic error. */

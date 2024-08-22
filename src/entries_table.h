@@ -115,6 +115,19 @@ public:
         stopwatch_set_current_now();
         update_stopwatch();
         break;
+      case '\n':
+        try {
+          db->commit_entrystaging();
+          Date now_start;
+          db->edit_entrystaging_start(now_start);
+          update_register();
+          update_stopwatch();
+        } catch (DBLogicExcept &e) {
+          status->print_wait("DB logic error! Nothing was done to the DB.");
+          this->clear();
+          this->refresh();
+        }
+        break;
       default:
         return ch;
       }

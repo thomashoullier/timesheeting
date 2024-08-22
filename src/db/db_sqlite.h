@@ -36,6 +36,7 @@ public:
   void delete_task(Id task_id) override;
   void delete_project(Id project_id) override;
   void delete_entry(Id entry_id) override;
+  void commit_entrystaging() override;
 
 private:
   /** @brief Handle to the DB. */

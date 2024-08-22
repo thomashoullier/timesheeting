@@ -321,6 +321,14 @@ void DB_SQLite::delete_entry(Id entry_id) {
   try_exec_statement(delete_entry_st);
 }
 
+void DB_SQLite::commit_entrystaging(){
+  std::string commit_entrystaging_st =
+    "INSERT INTO entries (task_id, start, stop) "
+    "SELECT task_id, start, stop "
+    "FROM entrystaging;";
+  try_exec_statement(commit_entrystaging_st);
+}
+
 void DB_SQLite::try_exec_statement(const std::string &statement) {
   try {
     sqlite_db.exec_statement(statement);
