@@ -17,11 +17,11 @@ template <typename T_DB, typename T_LOG,
           typename = std::enable_if_t<
             std::is_base_of<DB_Interface, T_DB>::value &&
             std::is_base_of<LoggerInterface, T_LOG>::value>>
-class ProjectTaskTable : public UIComponent {
+class ProjectTaskScreen : public UIComponent {
 public:
   /** @brief Table constructor. */
-  explicit ProjectTaskTable(std::shared_ptr<T_DB> _db,
-                            std::shared_ptr<StatusBarNCurses> _status)
+  explicit ProjectTaskScreen(std::shared_ptr<T_DB> _db,
+                             std::shared_ptr<StatusBarNCurses> _status)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
         status(_status),
         project_col(

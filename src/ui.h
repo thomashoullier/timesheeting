@@ -4,7 +4,7 @@
 #include "ui_screens/entries_screen.h"
 #include "logger_interface.h"
 #include "ncurses/ncurses_handle.h"
-#include "ui_screens/project_task_table.h"
+#include "ui_screens/project_task_screen.h"
 #include "db/db_sqlite.h"
 #include "ui_screens/status_bar/status_bar_ncurses.h"
 #include "logger/logger_file.h"
@@ -27,7 +27,7 @@ private:
   std::shared_ptr<DB_SQLite> db;
   /** @brief Handle to a status bar for ncurses. */
   std::shared_ptr<StatusBarNCurses> status_bar;
-  ProjectTaskTable<DB_SQLite, LoggerFile> projects_table;
+  ProjectTaskScreen<DB_SQLite, LoggerFile> projects_screen;
   /** @brief Logger interface. */
   LoggerInterface *logger;
   /** @brief Screen for the table of entries. */
