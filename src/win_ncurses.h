@@ -4,9 +4,9 @@
 #include <ncurses.h>
 
 /** @brief Selector for the position of the window. */
-enum class WindowPosition { top, upper, lower, bottom };
+enum class WindowPosition { top, upper, lower, bottom, left, middle };
 /** @brief Selector for the format of the window. */
-enum class WindowFormat { line, block };
+enum class WindowFormat { line, block, column };
 
 /** @brief Base class for NCurses elements in a window. */
 class WinNCurses {

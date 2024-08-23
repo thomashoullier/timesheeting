@@ -1,0 +1,63 @@
+#ifndef COLUMN_H
+#define COLUMN_H
+
+#include "column_base.h"
+#include "data_objects.h"
+#include "menu_ncurses.h"
+#include "win_ncurses.h"
+#include <type_traits>
+
+template <typename T,
+          typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>
+class Column : public ColumnBase, public MenuNCurses {
+public:
+  Column(const std::vector<T> &items, WindowPosition winpos)
+      : MenuNCurses(items_to_string(items), winpos, WindowFormat::column, 1),
+        held_items(items) {};
+
+  void set_items(const std::vector<T> &items) {
+    held_items = items;
+    MenuNCurses::set_items(items_to_string(items));
+  };
+
+  Id get_current_id() override {
+    if (held_items.empty()) {
+      throw(MenuEmpty("get_current_id(): no items in the register!"));
+    }
+    auto item_index = get_row_index();
+    return held_items.at(item_index).id;
+  };
+
+  std::string get_current_item_string() override {
+    return MenuNCurses::get_current_item_string();
+  };
+
+  void select_down_item() override { MenuNCurses::select_down_item(); };
+  void select_up_item() override { MenuNCurses::select_up_item(); };
+
+  char get_input() override { return MenuNCurses::get_input(); };
+
+  std::string query_current_item_rename() override {
+    return MenuNCurses::query_current_item_rename();
+  };
+
+  std::string query_new_item_name() override {
+    // TODO
+    return "NEW ITEM";
+  };
+
+private:
+  /** @brief Storage of currently held items. */
+  std::vector<T> held_items;
+
+  /** @brief Get display strings from the set of items. */
+  std::vector<std::string> items_to_string(const std::vector<T> &items) {
+    std::vector<std::string> display_strings;
+    for (const auto &it : items) {
+      display_strings.push_back(it.name);
+    }
+    return display_strings;
+  };
+};
+
+#endif // COLUMN_H

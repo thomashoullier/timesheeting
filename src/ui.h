@@ -1,7 +1,7 @@
 #ifndef UI_H
 #define UI_H
 
-#include "column/column_ncurses.h"
+#include "column.h"
 #include "entries_table.h"
 #include "logger_interface.h"
 #include "ncurses_handle.h"
@@ -28,8 +28,7 @@ private:
   std::shared_ptr<DB_SQLite> db;
   /** @brief Handle to a status bar for ncurses. */
   std::shared_ptr<StatusBarNCurses> status_bar;
-  ProjectTaskTable<DB_SQLite, ColumnNcurses<Project>,
-                   ColumnNcurses<Task>, LoggerFile> projects_table;
+  ProjectTaskTable<DB_SQLite, LoggerFile> projects_table;
   /** @brief Logger interface. */
   LoggerInterface *logger;
   /** @brief Screen for the table of entries. */
