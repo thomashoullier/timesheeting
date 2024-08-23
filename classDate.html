@@ -70,39 +70,39 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classDate.html" title="Date type.">Date</a> type.  
+<p><a class="el" href="classDate.html" title="Date object.">Date</a> object.  
  <a href="classDate.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="date_8h_source.html">date.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adbb87be3df3f30ed207161733321be78"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#adbb87be3df3f30ed207161733321be78">to_string</a> () const</td></tr>
-<tr class="memdesc:adbb87be3df3f30ed207161733321be78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string in the system's timezone.  <a href="classDate.html#adbb87be3df3f30ed207161733321be78">More...</a><br /></td></tr>
-<tr class="separator:adbb87be3df3f30ed207161733321be78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e59ed4ba66eec61c27460c5d09fa1bd"><td class="memItemLeft" align="right" valign="top"><a id="a4e59ed4ba66eec61c27460c5d09fa1bd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a4e59ed4ba66eec61c27460c5d09fa1bd">Date</a> ()</td></tr>
 <tr class="memdesc:a4e59ed4ba66eec61c27460c5d09fa1bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date with the now() timepoint. <br /></td></tr>
 <tr class="separator:a4e59ed4ba66eec61c27460c5d09fa1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c51d6a2611298fb28c477857947961b"><td class="memItemLeft" align="right" valign="top"><a id="a8c51d6a2611298fb28c477857947961b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a8c51d6a2611298fb28c477857947961b">Date</a> (DatePoint date_point)</td></tr>
-<tr class="memdesc:a8c51d6a2611298fb28c477857947961b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date at the given date point. <br /></td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a8c51d6a2611298fb28c477857947961b">Date</a> (<a class="el" href="date_8h.html#a93703dd85c09249c1287ba6351d7bbea">DatePoint</a> date_point)</td></tr>
+<tr class="memdesc:a8c51d6a2611298fb28c477857947961b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date at the given date point shorthand. <br /></td></tr>
 <tr class="separator:a8c51d6a2611298fb28c477857947961b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="memItemLeft" align="right" valign="top"><a id="abe724716ef2aae8ddd0cc4ca7c2808df"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#abe724716ef2aae8ddd0cc4ca7c2808df">Date</a> (uint64_t unix_seconds)</td></tr>
-<tr class="memdesc:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a UNIX timestamp in seconds. <br /></td></tr>
+<tr class="memdesc:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a UNIX timestamp (UTC) in seconds. <br /></td></tr>
 <tr class="separator:abe724716ef2aae8ddd0cc4ca7c2808df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec4f884c9e251fd1102db04f23cf006a"><td class="memItemLeft" align="right" valign="top"><a id="aec4f884c9e251fd1102db04f23cf006a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#aec4f884c9e251fd1102db04f23cf006a">Date</a> (const std::string &amp;date_str)</td></tr>
-<tr class="memdesc:aec4f884c9e251fd1102db04f23cf006a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a string in a fixed format: 'dbY H:M:S'. This is the same format as the display string format. <br /></td></tr>
+<tr class="memdesc:aec4f884c9e251fd1102db04f23cf006a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a string in a fixed format: "%d%b%Y %H:%M:%S". This is the same format as the display string format. <br /></td></tr>
 <tr class="separator:aec4f884c9e251fd1102db04f23cf006a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbb87be3df3f30ed207161733321be78"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#adbb87be3df3f30ed207161733321be78">to_string</a> () const</td></tr>
+<tr class="memdesc:adbb87be3df3f30ed207161733321be78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string in the system's timezone.  <a href="classDate.html#adbb87be3df3f30ed207161733321be78">More...</a><br /></td></tr>
+<tr class="separator:adbb87be3df3f30ed207161733321be78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b121b6e9762e1b77ab6c9fa16265124"><td class="memItemLeft" align="right" valign="top"><a id="a3b121b6e9762e1b77ab6c9fa16265124"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a3b121b6e9762e1b77ab6c9fa16265124">to_unix_timestamp</a> () const</td></tr>
 <tr class="memdesc:a3b121b6e9762e1b77ab6c9fa16265124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the date as a UNIX timestamp (UTC) in seconds. <br /></td></tr>
 <tr class="separator:a3b121b6e9762e1b77ab6c9fa16265124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcea004178848cbc31ab4530d28078b6"><td class="memItemLeft" align="right" valign="top"><a id="afcea004178848cbc31ab4530d28078b6"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#afcea004178848cbc31ab4530d28078b6">get_day_string</a> () const</td></tr>
-<tr class="memdesc:afcea004178848cbc31ab4530d28078b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a displayable string for the date at a day resolution. <br /></td></tr>
+<tr class="memdesc:afcea004178848cbc31ab4530d28078b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a displayable string for the date at a day resolution in the system's timezone. <br /></td></tr>
 <tr class="separator:afcea004178848cbc31ab4530d28078b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf7bba5074063a566b7ec859e14cc12"><td class="memItemLeft" align="right" valign="top"><a id="aecf7bba5074063a566b7ec859e14cc12"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#aecf7bba5074063a566b7ec859e14cc12">add_one_day</a> ()</td></tr>
@@ -121,7 +121,8 @@ std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt;
 <tr class="separator:a137e31f8095d613175de66c6abc092b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classDate.html" title="Date type.">Date</a> type. </p>
+<div class="textblock"><p><a class="el" href="classDate.html" title="Date object.">Date</a> object. </p>
+<p>The time is internally represented in UTC, and inputted/displayed in the current system's timezone. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="adbb87be3df3f30ed207161733321be78"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adbb87be3df3f30ed207161733321be78">&#9670;&nbsp;</a></span>to_string()</h2>

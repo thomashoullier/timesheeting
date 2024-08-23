@@ -69,21 +69,26 @@ $(function() {
 <div class="title">bar_ncurses.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef BAR_NCURSES_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define BAR_NCURSES_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;win_ncurses.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classBarNCurses.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBarNCurses.html">BarNCurses</a> : <span class="keyword">public</span> <a class="code" href="classWinNCurses.html">WinNCurses</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="classBarNCurses.html">BarNCurses</a>(WindowPosition winpos);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">void</span> print (<span class="keyword">const</span> std::string &amp;msg) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// BAR_NCURSES_H</span></div>
-<div class="ttc" id="aclassBarNCurses_html"><div class="ttname"><a href="classBarNCurses.html">BarNCurses</a></div><div class="ttdoc">A bar is a window with a single line, which can print strings.</div><div class="ttdef"><b>Definition:</b> bar_ncurses.h:8</div></div>
-<div class="ttc" id="aclassWinNCurses_html"><div class="ttname"><a href="classWinNCurses.html">WinNCurses</a></div><div class="ttdoc">Base class for NCurses elements in a window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.h:12</div></div>
+<a href="bar__ncurses_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef BAR_NCURSES_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define BAR_NCURSES_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="win__ncurses_8h.html">win_ncurses.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classBarNCurses.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBarNCurses.html">BarNCurses</a> : <span class="keyword">public</span> <a class="code" href="classWinNCurses.html">WinNCurses</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classBarNCurses.html#a4cb8382980077a1b4ebbfe3a690d498c">BarNCurses</a>(<a class="code" href="win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e">WindowPosition</a> winpos);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBarNCurses.html#a72626d85cc95886a1a9270e1633543d3">print</a> (<span class="keyword">const</span> std::string &amp;msg) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// BAR_NCURSES_H</span></div>
+<div class="ttc" id="aclassBarNCurses_html"><div class="ttname"><a href="classBarNCurses.html">BarNCurses</a></div><div class="ttdoc">A bar is a ncurses window with a single line, which can print strings.</div><div class="ttdef"><b>Definition:</b> bar_ncurses.h:11</div></div>
+<div class="ttc" id="aclassBarNCurses_html_a4cb8382980077a1b4ebbfe3a690d498c"><div class="ttname"><a href="classBarNCurses.html#a4cb8382980077a1b4ebbfe3a690d498c">BarNCurses::BarNCurses</a></div><div class="ttdeci">BarNCurses(WindowPosition winpos)</div><div class="ttdoc">Construct a bar at the given position.</div><div class="ttdef"><b>Definition:</b> bar_ncurses.cpp:4</div></div>
+<div class="ttc" id="aclassBarNCurses_html_a72626d85cc95886a1a9270e1633543d3"><div class="ttname"><a href="classBarNCurses.html#a72626d85cc95886a1a9270e1633543d3">BarNCurses::print</a></div><div class="ttdeci">void print(const std::string &amp;msg) const</div><div class="ttdoc">Print a string in the bar.</div><div class="ttdef"><b>Definition:</b> bar_ncurses.cpp:7</div></div>
+<div class="ttc" id="aclassWinNCurses_html"><div class="ttname"><a href="classWinNCurses.html">WinNCurses</a></div><div class="ttdoc">Base class for NCurses elements in a window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.h:14</div></div>
+<div class="ttc" id="awin__ncurses_8h_html"><div class="ttname"><a href="win__ncurses_8h.html">win_ncurses.h</a></div><div class="ttdoc">WinNCurses definition.</div></div>
+<div class="ttc" id="awin__ncurses_8h_html_af22193e1ca848d70fb7d8cc2154c0f0e"><div class="ttname"><a href="win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e">WindowPosition</a></div><div class="ttdeci">WindowPosition</div><div class="ttdoc">Selector for the position of the window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.h:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

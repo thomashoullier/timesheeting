@@ -76,7 +76,7 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="data__objects_8h.html">data_objects/data_objects.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;data_objects/date_range.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="date__range_8h.html">data_objects/date_range.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classDB__Interface.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDB__Interface.html">DB_Interface</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
@@ -115,17 +115,20 @@ $(function() {
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classDBLogicExcept.html">   70</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> : <span class="keyword">public</span> std::exception {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  std::string msg;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* _msg) : msg(_msg) {}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> <span class="keywordflow">throw</span>() {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> msg.c_str();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DB_INTERFACE_H</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classDBLogicExcept.html#aac48c0130f642f062751880bc4a99718">   73</a></span>&#160;  std::string <a class="code" href="classDBLogicExcept.html#aac48c0130f642f062751880bc4a99718">msg</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classDBLogicExcept.html#a408b5cc6d4133a88c672e3ebb1555170">   77</a></span>&#160;  <a class="code" href="classDBLogicExcept.html#a408b5cc6d4133a88c672e3ebb1555170">DBLogicExcept</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* _msg) : <a class="code" href="classDBLogicExcept.html#aac48c0130f642f062751880bc4a99718">msg</a>(_msg) {}</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classDBLogicExcept.html#a993643babdcdb9470795e0834833d934">   79</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classDBLogicExcept.html#a993643babdcdb9470795e0834833d934">what</a>() <span class="keyword">const</span> throw() {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classDBLogicExcept.html#aac48c0130f642f062751880bc4a99718">msg</a>.c_str();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DB_INTERFACE_H</span></div>
 <div class="ttc" id="aclassDBLogicExcept_html"><div class="ttname"><a href="classDBLogicExcept.html">DBLogicExcept</a></div><div class="ttdoc">Exception thrown when the DB encounters a logic error.</div><div class="ttdef"><b>Definition:</b> db_interface.h:70</div></div>
+<div class="ttc" id="aclassDBLogicExcept_html_a408b5cc6d4133a88c672e3ebb1555170"><div class="ttname"><a href="classDBLogicExcept.html#a408b5cc6d4133a88c672e3ebb1555170">DBLogicExcept::DBLogicExcept</a></div><div class="ttdeci">DBLogicExcept(const char *_msg)</div><div class="ttdoc">Exception constructor.</div><div class="ttdef"><b>Definition:</b> db_interface.h:77</div></div>
+<div class="ttc" id="aclassDBLogicExcept_html_a993643babdcdb9470795e0834833d934"><div class="ttname"><a href="classDBLogicExcept.html#a993643babdcdb9470795e0834833d934">DBLogicExcept::what</a></div><div class="ttdeci">const char * what() const</div><div class="ttdoc">Mandatory std::exception method.</div><div class="ttdef"><b>Definition:</b> db_interface.h:79</div></div>
+<div class="ttc" id="aclassDBLogicExcept_html_aac48c0130f642f062751880bc4a99718"><div class="ttname"><a href="classDBLogicExcept.html#aac48c0130f642f062751880bc4a99718">DBLogicExcept::msg</a></div><div class="ttdeci">std::string msg</div><div class="ttdoc">Exception message.</div><div class="ttdef"><b>Definition:</b> db_interface.h:73</div></div>
 <div class="ttc" id="aclassDB__Interface_html"><div class="ttname"><a href="classDB__Interface.html">DB_Interface</a></div><div class="ttdoc">Virtual interface class for database.</div><div class="ttdef"><b>Definition:</b> db_interface.h:12</div></div>
 <div class="ttc" id="aclassDB__Interface_html_a00f2f249ea07bea725e86e8c1655d2a7"><div class="ttname"><a href="classDB__Interface.html#a00f2f249ea07bea725e86e8c1655d2a7">DB_Interface::query_entrystaging</a></div><div class="ttdeci">virtual EntryStaging query_entrystaging()=0</div><div class="ttdoc">Get the displayable state of the Entry in staging.</div></div>
 <div class="ttc" id="aclassDB__Interface_html_a053ea806978fe219c054a82539c15792"><div class="ttname"><a href="classDB__Interface.html#a053ea806978fe219c054a82539c15792">DB_Interface::edit_entry_start</a></div><div class="ttdeci">virtual void edit_entry_start(Id entry_id, const Date &amp;new_start_date)=0</div><div class="ttdoc">Edit an entry's start date.</div></div>
@@ -148,11 +151,12 @@ $(function() {
 <div class="ttc" id="aclassDB__Interface_html_aed6c39d8c254b4e51dd1f1120c0db50c"><div class="ttname"><a href="classDB__Interface.html#aed6c39d8c254b4e51dd1f1120c0db50c">DB_Interface::edit_entrystaging_task_name</a></div><div class="ttdeci">virtual void edit_entrystaging_task_name(const std::string &amp;new_task_name)=0</div><div class="ttdoc">Edit the entrystaging's task name.</div></div>
 <div class="ttc" id="aclassDB__Interface_html_aee190cc4c41b50ddf5dbba9cfe28539f"><div class="ttname"><a href="classDB__Interface.html#aee190cc4c41b50ddf5dbba9cfe28539f">DB_Interface::edit_entrystaging_stop</a></div><div class="ttdeci">virtual void edit_entrystaging_stop(const Date &amp;new_stop)=0</div><div class="ttdoc">Edit the entrystaging's stop date.</div></div>
 <div class="ttc" id="aclassDB__Interface_html_af2d36cb88b846c82fe57a02c3a00e0a7"><div class="ttname"><a href="classDB__Interface.html#af2d36cb88b846c82fe57a02c3a00e0a7">DB_Interface::edit_task_name</a></div><div class="ttdeci">virtual void edit_task_name(Id task_id, std::string new_task_name)=0</div><div class="ttdoc">Edit a task's name.</div></div>
-<div class="ttc" id="aclassDateRange_html"><div class="ttname"><a href="classDateRange.html">DateRange</a></div><div class="ttdoc">Class for representing a range of Dates.</div><div class="ttdef"><b>Definition:</b> date_range.h:7</div></div>
-<div class="ttc" id="aclassDate_html"><div class="ttname"><a href="classDate.html">Date</a></div><div class="ttdoc">Date type.</div><div class="ttdef"><b>Definition:</b> date.h:14</div></div>
+<div class="ttc" id="aclassDateRange_html"><div class="ttname"><a href="classDateRange.html">DateRange</a></div><div class="ttdoc">Class for representing a range between a start and stop dates .</div><div class="ttdef"><b>Definition:</b> date_range.h:9</div></div>
+<div class="ttc" id="aclassDate_html"><div class="ttname"><a href="classDate.html">Date</a></div><div class="ttdoc">Date object.</div><div class="ttdef"><b>Definition:</b> date.h:19</div></div>
 <div class="ttc" id="adata__objects_8h_html"><div class="ttname"><a href="data__objects_8h.html">data_objects.h</a></div><div class="ttdoc">Shared definition of data objects in the program.</div></div>
 <div class="ttc" id="adata__objects_8h_html_aeb7ff9cbc21124882bcf962e7dabb6bc"><div class="ttname"><a href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a></div><div class="ttdeci">uint64_t Id</div><div class="ttdoc">Unique id for data items (typically a SQLite rowid).</div><div class="ttdef"><b>Definition:</b> data_objects.h:12</div></div>
-<div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:48</div></div>
+<div class="ttc" id="adate__range_8h_html"><div class="ttname"><a href="date__range_8h.html">date_range.h</a></div><div class="ttdoc">Date range definition.</div></div>
+<div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:58</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

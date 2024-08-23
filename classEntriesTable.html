@@ -81,104 +81,69 @@ Inheritance diagram for EntriesTable&lt; T_DB, typename &gt;:</div>
  <div class="center">
   <img src="classEntriesTable.png" usemap="#EntriesTable_3C_20T_5FDB_2C_20typename_20_3E_map" alt=""/>
   <map id="EntriesTable_3C_20T_5FDB_2C_20typename_20_3E_map" name="EntriesTable_3C_20T_5FDB_2C_20typename_20_3E_map">
-<area href="classUIScreen.html" title="Interface for a UI screen." alt="UIScreen" shape="rect" coords="0,0,200,24"/>
+<area href="classUIComponent.html" title="Interface class for a UI component." alt="UIComponent" shape="rect" coords="0,0,200,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a10b8294e4654df06bfc31a721e184907"><td class="memItemLeft" align="right" valign="top"><a id="a10b8294e4654df06bfc31a721e184907"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EntriesTable</b> (std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt; _status)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a10b8294e4654df06bfc31a721e184907">EntriesTable</a> (std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt; _status)</td></tr>
+<tr class="memdesc:a10b8294e4654df06bfc31a721e184907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
 <tr class="separator:a10b8294e4654df06bfc31a721e184907"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84d69e16c2fcc93895da015944fb66b3"><td class="memItemLeft" align="right" valign="top"><a id="a84d69e16c2fcc93895da015944fb66b3"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a84d69e16c2fcc93895da015944fb66b3">input_loop</a> () override</td></tr>
-<tr class="memdesc:a84d69e16c2fcc93895da015944fb66b3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUI.html" title="Ncurses UI for timesheeting.">UI</a> input loop for the screen. <br /></td></tr>
+<tr class="memdesc:a84d69e16c2fcc93895da015944fb66b3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a> input loop for the component. <br /></td></tr>
 <tr class="separator:a84d69e16c2fcc93895da015944fb66b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09589b4b5c5ff298d8c71f4d9a2967bd"><td class="memItemLeft" align="right" valign="top"><a id="a09589b4b5c5ff298d8c71f4d9a2967bd"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>stopwatch_input_loop</b> ()</td></tr>
-<tr class="separator:a09589b4b5c5ff298d8c71f4d9a2967bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8e027c414e70fac000529375901159b"><td class="memItemLeft" align="right" valign="top"><a id="aa8e027c414e70fac000529375901159b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a> () override</td></tr>
-<tr class="memdesc:aa8e027c414e70fac000529375901159b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the screen information and display it. <br /></td></tr>
+<tr class="memdesc:aa8e027c414e70fac000529375901159b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the component's display. <br /></td></tr>
 <tr class="separator:aa8e027c414e70fac000529375901159b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08150c45e39601738a6de856f4e5d4aa"><td class="memItemLeft" align="right" valign="top"><a id="a08150c45e39601738a6de856f4e5d4aa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a> () override</td></tr>
-<tr class="memdesc:a08150c45e39601738a6de856f4e5d4aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the screen from the display. <br /></td></tr>
+<tr class="memdesc:a08150c45e39601738a6de856f4e5d4aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the component from the display. <br /></td></tr>
 <tr class="separator:a08150c45e39601738a6de856f4e5d4aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4834923bd85becf6463a496bcfd05505"><td class="memItemLeft" align="right" valign="top"><a id="a4834923bd85becf6463a496bcfd05505"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a4834923bd85becf6463a496bcfd05505">update</a> () override</td></tr>
+<tr class="memdesc:a4834923bd85becf6463a496bcfd05505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the state of the component to reflect the latest program state. <br /></td></tr>
+<tr class="separator:a4834923bd85becf6463a496bcfd05505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a6e27784873dfaaea2e8a1c6dcb18ad9b"><td class="memItemLeft" align="right" valign="top"><a id="a6e27784873dfaaea2e8a1c6dcb18ad9b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update_register</b> ()</td></tr>
-<tr class="separator:a6e27784873dfaaea2e8a1c6dcb18ad9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11c71f7025d8b8a0164a232c1782bed9"><td class="memItemLeft" align="right" valign="top"><a id="a11c71f7025d8b8a0164a232c1782bed9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update_stopwatch</b> ()</td></tr>
-<tr class="separator:a11c71f7025d8b8a0164a232c1782bed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7dbcb51bf8c75734063cfd76bee36a2"><td class="memItemLeft" align="right" valign="top"><a id="ab7dbcb51bf8c75734063cfd76bee36a2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rename_item</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#ab7dbcb51bf8c75734063cfd76bee36a2">rename_item</a> ()</td></tr>
+<tr class="memdesc:ab7dbcb51bf8c75734063cfd76bee36a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an entry in the register. <br /></td></tr>
 <tr class="separator:ab7dbcb51bf8c75734063cfd76bee36a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46b32c8cedd5c156d8d525b8d8a35fcc"><td class="memItemLeft" align="right" valign="top"><a id="a46b32c8cedd5c156d8d525b8d8a35fcc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stopwatch_rename_item</b> ()</td></tr>
-<tr class="separator:a46b32c8cedd5c156d8d525b8d8a35fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02be039c3313d4922a4ad5ca8b15d114"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">stopwatch_set_current_now</a> ()</td></tr>
-<tr class="separator:a02be039c3313d4922a4ad5ca8b15d114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae559cd95df17d615935cab179bafbc75"><td class="memItemLeft" align="right" valign="top"><a id="ae559cd95df17d615935cab179bafbc75"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>remove_item</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#ae559cd95df17d615935cab179bafbc75">remove_item</a> ()</td></tr>
+<tr class="memdesc:ae559cd95df17d615935cab179bafbc75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an entry in the register. <br /></td></tr>
 <tr class="separator:ae559cd95df17d615935cab179bafbc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a2c12b59544db75253d5cf621859f258a"><td class="memItemLeft" align="right" valign="top"><a id="a2c12b59544db75253d5cf621859f258a"></a>
-std::shared_ptr&lt; <a class="el" href="classDB__Interface.html">DB_Interface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>db</b></td></tr>
+std::shared_ptr&lt; <a class="el" href="classDB__Interface.html">DB_Interface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a2c12b59544db75253d5cf621859f258a">db</a></td></tr>
+<tr class="memdesc:a2c12b59544db75253d5cf621859f258a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the DB. <br /></td></tr>
 <tr class="separator:a2c12b59544db75253d5cf621859f258a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abec50efd04505d5003a18ef77eb66f56"><td class="memItemLeft" align="right" valign="top"><a id="abec50efd04505d5003a18ef77eb66f56"></a>
-std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>status</b></td></tr>
+std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#abec50efd04505d5003a18ef77eb66f56">status</a></td></tr>
+<tr class="memdesc:abec50efd04505d5003a18ef77eb66f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the status bar. <br /></td></tr>
 <tr class="separator:abec50efd04505d5003a18ef77eb66f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54935630b2bb97daa2f1246d594fea9a"><td class="memItemLeft" align="right" valign="top"><a id="a54935630b2bb97daa2f1246d594fea9a"></a>
-<a class="el" href="classDateSelectorNcurses.html">DateSelectorNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><b>date_selector</b></td></tr>
+<a class="el" href="classDateSelectorNcurses.html">DateSelectorNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a54935630b2bb97daa2f1246d594fea9a">date_selector</a></td></tr>
+<tr class="memdesc:a54935630b2bb97daa2f1246d594fea9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the date range selector. <br /></td></tr>
 <tr class="separator:a54935630b2bb97daa2f1246d594fea9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95a7c9ca2f792be41e4e02f7c7a13f7b"><td class="memItemLeft" align="right" valign="top"><a id="a95a7c9ca2f792be41e4e02f7c7a13f7b"></a>
-<a class="el" href="classRegisterNcurses.html">RegisterNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><b>reg</b></td></tr>
+<a class="el" href="classRegisterNcurses.html">RegisterNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntriesTable.html#a95a7c9ca2f792be41e4e02f7c7a13f7b">reg</a></td></tr>
+<tr class="memdesc:a95a7c9ca2f792be41e4e02f7c7a13f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the register of entries. <br /></td></tr>
 <tr class="separator:a95a7c9ca2f792be41e4e02f7c7a13f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafbb1ba416e92d384db5ea8df73d0695"><td class="memItemLeft" align="right" valign="top"><a id="aafbb1ba416e92d384db5ea8df73d0695"></a>
-<a class="el" href="classStopwatchNcurses.html">StopwatchNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><b>stopwatch</b></td></tr>
-<tr class="separator:aafbb1ba416e92d384db5ea8df73d0695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T_DB, typename = std::enable_if_t&lt;            std::is_base_of&lt;DB_Interface, T_DB&gt;::value&gt;&gt;<br />
 class EntriesTable&lt; T_DB, typename &gt;</h3>
 
 <p>Class for holding the table of entries for a given day. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a02be039c3313d4922a4ad5ca8b15d114"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02be039c3313d4922a4ad5ca8b15d114">&#9670;&nbsp;</a></span>stopwatch_set_current_now()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T_DB , typename  = std::enable_if_t&lt;            std::is_base_of&lt;DB_Interface, T_DB&gt;::value&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classEntriesTable.html">EntriesTable</a>&lt; T_DB, typename &gt;::stopwatch_set_current_now </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Set the current item, if it is a date, to now(). </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/ui_screens/<a class="el" href="entries__table_8h_source.html">entries_table.h</a></li>
 </ul>
 </div><!-- contents -->

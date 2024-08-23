@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ncurseshandle_240',['NcursesHandle',['../classNcursesHandle.html#ab431d63cb9979a004d6316ee380a0faa',1,'NcursesHandle']]]
+  ['log_295',['log',['../classLoggerFile.html#ae4d060e5d3746f0573c3df262cb93047',1,'LoggerFile::log()'],['../classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d',1,'LoggerInterface::log()']]],
+  ['loggerfile_296',['LoggerFile',['../classLoggerFile.html#a7037e94f77b90fdf8b3d7f3ce21c345d',1,'LoggerFile']]]
 ];

@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Ncurses implementation of a stopwatch for generating new entries.  
+<p>Ncurses implementation of a stopwatch for staging new entries.  
  <a href="classStopwatchNcurses.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="stopwatch__ncurses_8h_source.html">stopwatch_ncurses.h</a>&gt;</code></p>
@@ -88,7 +88,8 @@ Inheritance diagram for StopwatchNcurses:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0bb01f8a48997d5718ad680b811da11a"><td class="memItemLeft" align="right" valign="top"><a id="a0bb01f8a48997d5718ad680b811da11a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StopwatchNcurses</b> (const <a class="el" href="structEntryStaging.html">EntryStaging</a> &amp;_entry_staging)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchNcurses.html#a0bb01f8a48997d5718ad680b811da11a">StopwatchNcurses</a> (const <a class="el" href="structEntryStaging.html">EntryStaging</a> &amp;_entry_staging)</td></tr>
+<tr class="memdesc:a0bb01f8a48997d5718ad680b811da11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
 <tr class="separator:a0bb01f8a48997d5718ad680b811da11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fcb0018dafe72aa317eb1c933f84a52"><td class="memItemLeft" align="right" valign="top"><a id="a0fcb0018dafe72aa317eb1c933f84a52"></a>
 <a class="el" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">get_field_type</a> ()</td></tr>
@@ -100,7 +101,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a55c6f08bc3a4119f90f0c6da09f61c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMenuNCurses"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMenuNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMenuNCurses.html">MenuNCurses</a></td></tr>
 <tr class="memitem:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a88efc97898781d7e61061e6a2fc7fb27"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuNCurses</b> (const std::vector&lt; std::string &gt; &amp;items, WindowPosition winpos, WindowFormat winformat, int _ncols)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a88efc97898781d7e61061e6a2fc7fb27">MenuNCurses</a> (const std::vector&lt; std::string &gt; &amp;items, <a class="el" href="win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e">WindowPosition</a> winpos, <a class="el" href="win__ncurses_8h.html#afe927fc5254fdeb9dc891e4d476ba791">WindowFormat</a> winformat, int _ncols)</td></tr>
+<tr class="memdesc:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the menu holding the provided display strings, at the given position, with the given format and number of columns. <br /></td></tr>
 <tr class="separator:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2a8a48c342f0ea116f3581cd0986260 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a> ()</td></tr>
 <tr class="memdesc:aa2a8a48c342f0ea116f3581cd0986260 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query a new string for the currently selected item.  <a href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">More...</a><br /></td></tr>
@@ -142,11 +144,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="separator:a5b72a171d66d7698e47eb7b35e99256a inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classWinNCurses"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classWinNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classWinNCurses.html">WinNCurses</a></td></tr>
 <tr class="memitem:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a76c8f22cb4038348e0d14e2864e8c779"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>WinNCurses</b> (WindowPosition winpos, WindowFormat winformat)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#a76c8f22cb4038348e0d14e2864e8c779">WinNCurses</a> (<a class="el" href="win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e">WindowPosition</a> winpos, <a class="el" href="win__ncurses_8h.html#afe927fc5254fdeb9dc891e4d476ba791">WindowFormat</a> winformat)</td></tr>
+<tr class="memdesc:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the window with given position and format. <br /></td></tr>
 <tr class="separator:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a60fd7b2ac41ade3f9b9c918455ca9b6f"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">get_input</a> ()</td></tr>
-<tr class="memdesc:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character inputted in the current window. <br /></td></tr>
+<tr class="memdesc:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character inputted by the user in the current window. <br /></td></tr>
 <tr class="separator:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4fcaa14d61cf4ce1e660887cd3f2905 inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="ae4fcaa14d61cf4ce1e660887cd3f2905"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905">refresh</a> () const</td></tr>
@@ -185,12 +188,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a69418e712e9fc1d9b96667f0f217dcbd inherit pro_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the ncurses window. <br /></td></tr>
 <tr class="separator:a69418e712e9fc1d9b96667f0f217dcbd inherit pro_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classWinNCurses"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classWinNCurses')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classWinNCurses.html">WinNCurses</a></td></tr>
-<tr class="memitem:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="ae9cded2eec27231f7109938120c48baf"></a>
-WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
+<tr class="memitem:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memItemLeft" align="right" valign="top">WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#ae9cded2eec27231f7109938120c48baf">win</a></td></tr>
 <tr class="separator:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ncurses implementation of a stopwatch for generating new entries. </p>
+<div class="textblock"><p>Ncurses implementation of a stopwatch for staging new entries. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/ui_screens/stopwatch/<a class="el" href="stopwatch__ncurses_8h_source.html">stopwatch_ncurses.h</a></li>
 <li>src/ui_screens/stopwatch/stopwatch_ncurses.cpp</li>

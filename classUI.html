@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Ncurses <a class="el" href="classUI.html" title="Ncurses UI for timesheeting.">UI</a> for timesheeting.  
+<p>Ncurses top-level <a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a> for timesheeting.  
  <a href="classUI.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ui_8h_source.html">ui.h</a>&gt;</code></p>
@@ -79,7 +79,7 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a675985a56b5e87ebdc8e5884b9f2ee09"><td class="memItemLeft" align="right" valign="top"><a id="a675985a56b5e87ebdc8e5884b9f2ee09"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a675985a56b5e87ebdc8e5884b9f2ee09">UI</a> ()</td></tr>
-<tr class="memdesc:a675985a56b5e87ebdc8e5884b9f2ee09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the timesheeting top-level <a class="el" href="classUI.html" title="Ncurses UI for timesheeting.">UI</a>. <br /></td></tr>
+<tr class="memdesc:a675985a56b5e87ebdc8e5884b9f2ee09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the timesheeting top-level <a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a>. <br /></td></tr>
 <tr class="separator:a675985a56b5e87ebdc8e5884b9f2ee09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b23d0c64c7cbb3d143d90ec532a7ccd"><td class="memItemLeft" align="right" valign="top"><a id="a1b23d0c64c7cbb3d143d90ec532a7ccd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a1b23d0c64c7cbb3d143d90ec532a7ccd">~UI</a> ()</td></tr>
@@ -92,6 +92,10 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a7b7c4a1f2c20f0537f5fceca65d40180"><td class="memItemLeft" align="right" valign="top"><a id="a7b7c4a1f2c20f0537f5fceca65d40180"></a>
+<a class="el" href="classLoggerInterface.html">LoggerInterface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a7b7c4a1f2c20f0537f5fceca65d40180">logger</a></td></tr>
+<tr class="memdesc:a7b7c4a1f2c20f0537f5fceca65d40180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logger interface. <br /></td></tr>
+<tr class="separator:a7b7c4a1f2c20f0537f5fceca65d40180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a150f54f597b90035cb05e7a44222bbe0"><td class="memItemLeft" align="right" valign="top"><a id="a150f54f597b90035cb05e7a44222bbe0"></a>
 <a class="el" href="classNcursesHandle.html">NcursesHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a150f54f597b90035cb05e7a44222bbe0">ncurses_handle</a></td></tr>
 <tr class="memdesc:a150f54f597b90035cb05e7a44222bbe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the top ncurses management. <br /></td></tr>
@@ -104,20 +108,17 @@ std::shared_ptr&lt; <a class="el" href="classDB__SQLite.html">DB_SQLite</a> &gt;
 std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#ad235fbe355fe3e61a5232664051947f3">status_bar</a></td></tr>
 <tr class="memdesc:ad235fbe355fe3e61a5232664051947f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to a status bar for ncurses. <br /></td></tr>
 <tr class="separator:ad235fbe355fe3e61a5232664051947f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affbd27c0b8e34e9adf8f46d1e20d461a"><td class="memItemLeft" align="right" valign="top"><a id="affbd27c0b8e34e9adf8f46d1e20d461a"></a>
-<a class="el" href="classProjectTaskTable.html">ProjectTaskTable</a>&lt; <a class="el" href="classDB__SQLite.html">DB_SQLite</a>, <a class="el" href="classLoggerFile.html">LoggerFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>projects_table</b></td></tr>
-<tr class="separator:affbd27c0b8e34e9adf8f46d1e20d461a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b7c4a1f2c20f0537f5fceca65d40180"><td class="memItemLeft" align="right" valign="top"><a id="a7b7c4a1f2c20f0537f5fceca65d40180"></a>
-<a class="el" href="classLoggerInterface.html">LoggerInterface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a7b7c4a1f2c20f0537f5fceca65d40180">logger</a></td></tr>
-<tr class="memdesc:a7b7c4a1f2c20f0537f5fceca65d40180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logger interface. <br /></td></tr>
-<tr class="separator:a7b7c4a1f2c20f0537f5fceca65d40180"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66a209de2cb49f78b002fc1574675045"><td class="memItemLeft" align="right" valign="top"><a id="a66a209de2cb49f78b002fc1574675045"></a>
-<a class="el" href="classEntriesTable.html">EntriesTable</a>&lt; <a class="el" href="classDB__SQLite.html">DB_SQLite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a66a209de2cb49f78b002fc1574675045">entries_table</a></td></tr>
-<tr class="memdesc:a66a209de2cb49f78b002fc1574675045"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen for the table of entries. <br /></td></tr>
-<tr class="separator:a66a209de2cb49f78b002fc1574675045"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572ab51302445fca02e565ef52d5b978"><td class="memItemLeft" align="right" valign="top"><a id="a572ab51302445fca02e565ef52d5b978"></a>
+<a class="el" href="classProjectTaskScreen.html">ProjectTaskScreen</a>&lt; <a class="el" href="classDB__SQLite.html">DB_SQLite</a>, <a class="el" href="classLoggerFile.html">LoggerFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a572ab51302445fca02e565ef52d5b978">projects_screen</a></td></tr>
+<tr class="memdesc:a572ab51302445fca02e565ef52d5b978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen for the project/task definition. <br /></td></tr>
+<tr class="separator:a572ab51302445fca02e565ef52d5b978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5304310dfab658b08199eba5c0012ea5"><td class="memItemLeft" align="right" valign="top"><a id="a5304310dfab658b08199eba5c0012ea5"></a>
+<a class="el" href="classEntriesScreen.html">EntriesScreen</a>&lt; <a class="el" href="classDB__SQLite.html">DB_SQLite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUI.html#a5304310dfab658b08199eba5c0012ea5">entries_screen</a></td></tr>
+<tr class="memdesc:a5304310dfab658b08199eba5c0012ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen for the table of entries. <br /></td></tr>
+<tr class="separator:a5304310dfab658b08199eba5c0012ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ncurses <a class="el" href="classUI.html" title="Ncurses UI for timesheeting.">UI</a> for timesheeting. </p>
+<div class="textblock"><p>Ncurses top-level <a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a> for timesheeting. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="ui_8h_source.html">ui.h</a></li>
 <li>src/ui.cpp</li>

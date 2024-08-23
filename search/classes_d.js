@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['winncurses_177',['WinNCurses',['../classWinNCurses.html',1,'']]]
+  ['winncurses_212',['WinNCurses',['../classWinNCurses.html',1,'']]]
 ];

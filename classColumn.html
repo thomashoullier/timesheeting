@@ -70,13 +70,18 @@ $(function() {
 <div class="title">Column&lt; T, typename &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classColumn.html" title="Column menu class. Can hold any GenericItem.">Column</a> menu class. Can hold any <a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a>.  
+ <a href="classColumn.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="column_8h_source.html">column.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Column&lt; T, typename &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classColumn.png" usemap="#Column_3C_20T_2C_20typename_20_3E_map" alt=""/>
   <map id="Column_3C_20T_2C_20typename_20_3E_map" name="Column_3C_20T_2C_20typename_20_3E_map">
-<area href="classColumnBase.html" title="Class for manipulating a column regardless of its type." alt="ColumnBase" shape="rect" coords="0,56,148,80"/>
+<area href="classColumnBase.html" title="Class interface for manipulating a column regardless of its type." alt="ColumnBase" shape="rect" coords="0,56,148,80"/>
 <area href="classMenuNCurses.html" title="A ncurses window holding a generic menu." alt="MenuNCurses" shape="rect" coords="158,56,306,80"/>
 <area href="classWinNCurses.html" title="Base class for NCurses elements in a window." alt="WinNCurses" shape="rect" coords="158,0,306,24"/>
   </map>
@@ -85,10 +90,12 @@ Inheritance diagram for Column&lt; T, typename &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a23d75ced283d814320d6987a4c5d3d17"><td class="memItemLeft" align="right" valign="top"><a id="a23d75ced283d814320d6987a4c5d3d17"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Column</b> (const std::vector&lt; T &gt; &amp;items, WindowPosition winpos)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColumn.html#a23d75ced283d814320d6987a4c5d3d17">Column</a> (const std::vector&lt; T &gt; &amp;items, <a class="el" href="win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e">WindowPosition</a> winpos)</td></tr>
+<tr class="memdesc:a23d75ced283d814320d6987a4c5d3d17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the column with given items and position. <br /></td></tr>
 <tr class="separator:a23d75ced283d814320d6987a4c5d3d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8996e21a0aa9b10117e2fd2bc66f64f1"><td class="memItemLeft" align="right" valign="top"><a id="a8996e21a0aa9b10117e2fd2bc66f64f1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_items</b> (const std::vector&lt; T &gt; &amp;items)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColumn.html#a8996e21a0aa9b10117e2fd2bc66f64f1">set_items</a> (const std::vector&lt; T &gt; &amp;items)</td></tr>
+<tr class="memdesc:a8996e21a0aa9b10117e2fd2bc66f64f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the column items. <br /></td></tr>
 <tr class="separator:a8996e21a0aa9b10117e2fd2bc66f64f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add475f0ac171cfce98e5ef733947a544"><td class="memItemLeft" align="right" valign="top"><a id="add475f0ac171cfce98e5ef733947a544"></a>
 <a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColumn.html#add475f0ac171cfce98e5ef733947a544">get_current_id</a> () override</td></tr>
@@ -120,7 +127,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="separator:a585c8913b72aba6b93eb8f02db13ea63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMenuNCurses"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMenuNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMenuNCurses.html">MenuNCurses</a></td></tr>
 <tr class="memitem:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a88efc97898781d7e61061e6a2fc7fb27"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuNCurses</b> (const std::vector&lt; std::string &gt; &amp;items, WindowPosition winpos, WindowFormat winformat, int _ncols)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a88efc97898781d7e61061e6a2fc7fb27">MenuNCurses</a> (const std::vector&lt; std::string &gt; &amp;items, <a class="el" href="win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e">WindowPosition</a> winpos, <a class="el" href="win__ncurses_8h.html#afe927fc5254fdeb9dc891e4d476ba791">WindowFormat</a> winformat, int _ncols)</td></tr>
+<tr class="memdesc:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the menu holding the provided display strings, at the given position, with the given format and number of columns. <br /></td></tr>
 <tr class="separator:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2a8a48c342f0ea116f3581cd0986260 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a> ()</td></tr>
 <tr class="memdesc:aa2a8a48c342f0ea116f3581cd0986260 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query a new string for the currently selected item.  <a href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">More...</a><br /></td></tr>
@@ -162,11 +170,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="separator:a5b72a171d66d7698e47eb7b35e99256a inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classWinNCurses"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classWinNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classWinNCurses.html">WinNCurses</a></td></tr>
 <tr class="memitem:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a76c8f22cb4038348e0d14e2864e8c779"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>WinNCurses</b> (WindowPosition winpos, WindowFormat winformat)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#a76c8f22cb4038348e0d14e2864e8c779">WinNCurses</a> (<a class="el" href="win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e">WindowPosition</a> winpos, <a class="el" href="win__ncurses_8h.html#afe927fc5254fdeb9dc891e4d476ba791">WindowFormat</a> winformat)</td></tr>
+<tr class="memdesc:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the window with given position and format. <br /></td></tr>
 <tr class="separator:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a60fd7b2ac41ade3f9b9c918455ca9b6f"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">get_input</a> ()</td></tr>
-<tr class="memdesc:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character inputted in the current window. <br /></td></tr>
+<tr class="memdesc:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character inputted by the user in the current window. <br /></td></tr>
 <tr class="separator:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4fcaa14d61cf4ce1e660887cd3f2905 inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="ae4fcaa14d61cf4ce1e660887cd3f2905"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905">refresh</a> () const</td></tr>
@@ -188,7 +197,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9f5c3ef92edf21885c339f322f81d7e2"><td class="memItemLeft" align="right" valign="top"><a id="a9f5c3ef92edf21885c339f322f81d7e2"></a>
 std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColumn.html#a9f5c3ef92edf21885c339f322f81d7e2">held_items</a></td></tr>
-<tr class="memdesc:a9f5c3ef92edf21885c339f322f81d7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage of currently held items. <br /></td></tr>
+<tr class="memdesc:a9f5c3ef92edf21885c339f322f81d7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for the currently held items. <br /></td></tr>
 <tr class="separator:a9f5c3ef92edf21885c339f322f81d7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -212,11 +221,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a69418e712e9fc1d9b96667f0f217dcbd inherit pro_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the ncurses window. <br /></td></tr>
 <tr class="separator:a69418e712e9fc1d9b96667f0f217dcbd inherit pro_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classWinNCurses"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classWinNCurses')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classWinNCurses.html">WinNCurses</a></td></tr>
-<tr class="memitem:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="ae9cded2eec27231f7109938120c48baf"></a>
-WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
+<tr class="memitem:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memItemLeft" align="right" valign="top">WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#ae9cded2eec27231f7109938120c48baf">win</a></td></tr>
 <tr class="separator:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T, typename = std::enable_if_t&lt;std::is_base_of_v&lt;GenericItem, T&gt;&gt;&gt;<br />
+class Column&lt; T, typename &gt;</h3>
+
+<p><a class="el" href="classColumn.html" title="Column menu class. Can hold any GenericItem.">Column</a> menu class. Can hold any <a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a>. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/ui_screens/column/<a class="el" href="column_8h_source.html">column.h</a></li>
 </ul>
 </div><!-- contents -->

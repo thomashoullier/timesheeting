@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['init_5fitems_232',['init_items',['../classMenuNCurses.html#ae1abe588dce420e939fddba2576b9517',1,'MenuNCurses']]],
-  ['init_5fmenu_233',['init_menu',['../classMenuNCurses.html#adc76320667cecfa5326e507929fa63c6',1,'MenuNCurses']]],
-  ['init_5fmenu_5fwindow_234',['init_menu_window',['../classMenuNCurses.html#a0383c1d93932c383a1342b3538840504',1,'MenuNCurses']]],
-  ['init_5fwindow_235',['init_window',['../classWinNCurses.html#af884a5c4ee771fc70089e1028c250084',1,'WinNCurses']]],
-  ['input_5floop_236',['input_loop',['../classUI.html#ad931317a0913fc867b6ef3368700b84e',1,'UI::input_loop()'],['../classEntriesTable.html#a84d69e16c2fcc93895da015944fb66b3',1,'EntriesTable::input_loop()'],['../classProjectTaskTable.html#ae582f263a1c3262804de1e37124354db',1,'ProjectTaskTable::input_loop()'],['../classUIScreen.html#a017e3abd61e5d8b814a39c7029f25258',1,'UIScreen::input_loop()']]],
-  ['items_5fto_5fstring_237',['items_to_string',['../classColumn.html#a2317c4f8774129247fa9fc9986a74266',1,'Column::items_to_string()'],['../classRegisterNcurses.html#a5fc45bcb0914b1bd1420712cb62addbc',1,'RegisterNcurses::items_to_string()']]]
+  ['get_278',['get',['../classLoggerInterface.html#abb12933dbbae4249df3b682105242ff2',1,'LoggerInterface::get()'],['../classLoggerFile.html#a1e607b06bfbaa4035fb19b9f58213f72',1,'LoggerFile::get()']]],
+  ['get_5fcol_5findex_279',['get_col_index',['../classMenuNCurses.html#a09d0ddb1f23caa74a9392edd00584325',1,'MenuNCurses']]],
+  ['get_5fcurrent_5fid_280',['get_current_id',['../classColumn.html#add475f0ac171cfce98e5ef733947a544',1,'Column::get_current_id()'],['../classColumnBase.html#a2d203e16e50398ea9e4f03da8fdd2b77',1,'ColumnBase::get_current_id()'],['../classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82',1,'RegisterNcurses::get_current_id()']]],
+  ['get_5fcurrent_5fitem_5fstring_281',['get_current_item_string',['../classMenuNCurses.html#a5b72a171d66d7698e47eb7b35e99256a',1,'MenuNCurses::get_current_item_string()'],['../classColumn.html#a2c2267361a220100830c795108521c34',1,'Column::get_current_item_string()'],['../classColumnBase.html#adbb666e2ea9dbc7a29d70cc67b7b2e1c',1,'ColumnBase::get_current_item_string()']]],
+  ['get_5fday_5fstring_282',['get_day_string',['../classDate.html#afcea004178848cbc31ab4530d28078b6',1,'Date']]],
+  ['get_5ffield_5ftype_283',['get_field_type',['../classRegisterNcurses.html#a6fba87a75b5ea5146be4c6be30dc73e0',1,'RegisterNcurses::get_field_type()'],['../classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52',1,'StopwatchNcurses::get_field_type()']]],
+  ['get_5finput_284',['get_input',['../classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f',1,'WinNCurses::get_input()'],['../classColumn.html#a0ff5ccb9e88d71bdc9088e9a5470d8ba',1,'Column::get_input()'],['../classColumnBase.html#afb30d92f707a893fae3f716f8fb96bb0',1,'ColumnBase::get_input()']]],
+  ['get_5fitem_5findex_285',['get_item_index',['../classMenuNCurses.html#a4eaad83da7e55422e90bde89bd083d86',1,'MenuNCurses']]],
+  ['get_5frow_5findex_286',['get_row_index',['../classMenuNCurses.html#a765def0bc3ad2b8f595a7d422e6b96da',1,'MenuNCurses']]],
+  ['get_5ftimestamp_287',['get_timestamp',['../classLoggerFile.html#a0052bb08ef61f4360e1136c1076ea946',1,'LoggerFile']]],
+  ['get_5fuser_5fstring_288',['get_user_string',['../classMenuNCurses.html#a10ff90346055de354a8c7399b1266fe6',1,'MenuNCurses']]]
 ];

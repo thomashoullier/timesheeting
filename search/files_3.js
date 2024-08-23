@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['status_5fbar_5fncurses_2eh_185',['status_bar_ncurses.h',['../status__bar__ncurses_8h.html',1,'']]]
+  ['entries_5fscreen_2eh_223',['entries_screen.h',['../entries__screen_8h.html',1,'']]],
+  ['entries_5ftable_2eh_224',['entries_table.h',['../entries__table_8h.html',1,'']]]
 ];

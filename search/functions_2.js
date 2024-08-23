@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['date_200',['Date',['../classDate.html#a4e59ed4ba66eec61c27460c5d09fa1bd',1,'Date::Date()'],['../classDate.html#a8c51d6a2611298fb28c477857947961b',1,'Date::Date(DatePoint date_point)'],['../classDate.html#abe724716ef2aae8ddd0cc4ca7c2808df',1,'Date::Date(uint64_t unix_seconds)'],['../classDate.html#aec4f884c9e251fd1102db04f23cf006a',1,'Date::Date(const std::string &amp;date_str)']]],
-  ['daterange_201',['DateRange',['../classDateRange.html#a176506c71fcf5bcb517bd891999fbf66',1,'DateRange']]],
-  ['dateselectorncurses_202',['DateSelectorNcurses',['../classDateSelectorNcurses.html#a8b2042d199106457adb1c8882ce83ea5',1,'DateSelectorNcurses']]],
-  ['db_5fsqlite_203',['DB_SQLite',['../classDB__SQLite.html#a793904210d1abe1a90cce2b10467a9ad',1,'DB_SQLite']]],
-  ['db_5fsqlite_5fhandle_204',['DB_SQLite_Handle',['../classDB__SQLite__Handle.html#a461d5bdf0044a229afe20917fed84624',1,'DB_SQLite_Handle']]],
-  ['delete_5fentry_205',['delete_entry',['../classDB__SQLite.html#a2e18589883f913d228565b1e1c007f74',1,'DB_SQLite::delete_entry()'],['../classDB__Interface.html#aa46f2df605975cda654f57c855a7b45f',1,'DB_Interface::delete_entry()']]],
-  ['delete_5fproject_206',['delete_project',['../classDB__SQLite.html#ae65a8a77dc9dca18a4910bafb7cb11e5',1,'DB_SQLite::delete_project()'],['../classDB__Interface.html#ae93de26f0051c09af9bd40f8aa3ea175',1,'DB_Interface::delete_project()']]],
-  ['delete_5ftask_207',['delete_task',['../classDB__SQLite.html#a1fe6213661936337a64edee874648a41',1,'DB_SQLite::delete_task()'],['../classDB__Interface.html#ad0b20c048f951ea2c2149857d4c784da',1,'DB_Interface::delete_task()']]],
-  ['destroy_5fmenu_208',['destroy_menu',['../classMenuNCurses.html#ae6e6738afd609b70727c7b8315464022',1,'MenuNCurses']]],
-  ['destroy_5fwindow_209',['destroy_window',['../classWinNCurses.html#a69418e712e9fc1d9b96667f0f217dcbd',1,'WinNCurses']]]
+  ['check_5frc_243',['check_rc',['../classDB__SQLite__Handle.html#a1f6a40d26d583fb2233af442d7e07c0b',1,'DB_SQLite_Handle']]],
+  ['clear_244',['clear',['../classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e',1,'MenuNCurses::clear()'],['../classWinNCurses.html#aee7f2d0cb1c46e862d7ebec3626af158',1,'WinNCurses::clear()'],['../classDateSelectorNcurses.html#ae741e0e6dd22c2b3dcbd68598a5d9a18',1,'DateSelectorNcurses::clear()'],['../classEntriesScreen.html#ab76125f204e99f687b081a44e64501f9',1,'EntriesScreen::clear()'],['../classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa',1,'EntriesTable::clear()'],['../classProjectTaskScreen.html#ab7d616002e75f6ee7e576c5fdbd7571e',1,'ProjectTaskScreen::clear()'],['../classStopwatchUI.html#a75a6e511ece529f2528480c5dbd68627',1,'StopwatchUI::clear()'],['../classUIComponent.html#a8b5c765afd2578ea594fc0eba72cf6aa',1,'UIComponent::clear()']]],
+  ['column_245',['Column',['../classColumn.html#a23d75ced283d814320d6987a4c5d3d17',1,'Column']]],
+  ['commit_5fentrystaging_246',['commit_entrystaging',['../classDB__SQLite.html#a1c60c9c344773ccfb5847021f68fcef9',1,'DB_SQLite::commit_entrystaging()'],['../classDB__Interface.html#a5b9f3bf8d6ee6c7d1e89d24ffb24b60a',1,'DB_Interface::commit_entrystaging()']]],
+  ['convert_5fnamerows_247',['convert_namerows',['../classDB__SQLite.html#ae4c1c201ecee9078c2d2ca81b4908742',1,'DB_SQLite']]],
+  ['create_5fentries_5ftable_248',['create_entries_table',['../classDB__SQLite.html#a130c13f83de9dc6e6e071df84e6fd93b',1,'DB_SQLite']]],
+  ['create_5fentrystaging_5ftable_249',['create_entrystaging_table',['../classDB__SQLite.html#a8e5bdd16c96fd8f1c88a633700ca3c2c',1,'DB_SQLite']]],
+  ['create_5fprojects_5ftable_250',['create_projects_table',['../classDB__SQLite.html#a5152b53ae8dd9d5edc54ccc9b9220d28',1,'DB_SQLite']]],
+  ['create_5ftasks_5ftable_251',['create_tasks_table',['../classDB__SQLite.html#a3116dedb5003b1fd6d0c3a8f5af4db90',1,'DB_SQLite']]],
+  ['current_5frange_252',['current_range',['../classDateSelectorNcurses.html#aca9dfc00274bc9a7bc380afe9a9f2fdb',1,'DateSelectorNcurses']]]
 ];

@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['sanitize_5finput_256',['sanitize_input',['../classMenuNCurses.html#a7b3bc49297fe521f1dcead848e07abb1',1,'MenuNCurses']]],
-  ['select_5fdown_5fitem_257',['select_down_item',['../classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4',1,'MenuNCurses::select_down_item()'],['../classColumn.html#a456fbac1d2c4d11978064b310de56548',1,'Column::select_down_item()'],['../classColumnBase.html#aa260495a6f89544c42b333f1bcf56b43',1,'ColumnBase::select_down_item()']]],
-  ['select_5fleft_5fitem_258',['select_left_item',['../classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088',1,'MenuNCurses']]],
-  ['select_5fnext_5fday_259',['select_next_day',['../classDateSelectorNcurses.html#a9fca8fbb92052daf8dc1dabeb40bb47d',1,'DateSelectorNcurses']]],
-  ['select_5fprevious_5fday_260',['select_previous_day',['../classDateSelectorNcurses.html#a28844e80a74884a2ae387dd505fbb144',1,'DateSelectorNcurses']]],
-  ['select_5fright_5fitem_261',['select_right_item',['../classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570',1,'MenuNCurses']]],
-  ['select_5fup_5fitem_262',['select_up_item',['../classMenuNCurses.html#a9d4c05bf7bcbc7cb1d7423c2932e00cc',1,'MenuNCurses::select_up_item()'],['../classColumn.html#a8c19304cc22334656a67ec5d82777f5b',1,'Column::select_up_item()'],['../classColumnBase.html#a22002229272d3c05c2df626baae6fb5d',1,'ColumnBase::select_up_item()']]],
-  ['set_5fitems_263',['set_items',['../classMenuNCurses.html#a991811fc9e16cd2ffda7d4096381cb23',1,'MenuNCurses::set_items()'],['../classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62',1,'StopwatchNcurses::set_items()']]],
-  ['stopwatch_5fset_5fcurrent_5fnow_264',['stopwatch_set_current_now',['../classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114',1,'EntriesTable']]],
-  ['subtract_5fone_5fday_265',['subtract_one_day',['../classDate.html#a0313cfcbf563e60a3889e2c1cd6ba076',1,'Date::subtract_one_day()'],['../classDateRange.html#a3539db676dc063a58241bd1f5fb25053',1,'DateRange::subtract_one_day()']]]
+  ['query_5fconfirmation_304',['query_confirmation',['../classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d',1,'StatusBarNCurses']]],
+  ['query_5fcurrent_5fitem_5frename_305',['query_current_item_rename',['../classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260',1,'MenuNCurses::query_current_item_rename()'],['../classColumn.html#af60f6de8ca078464d165ec2bc4d465dc',1,'Column::query_current_item_rename()'],['../classColumnBase.html#a91da4068101cefa0ab07a469861d5576',1,'ColumnBase::query_current_item_rename()']]],
+  ['query_5fentries_306',['query_entries',['../classDB__SQLite.html#ad582b03e8629ba2725a7d43d006403cb',1,'DB_SQLite::query_entries()'],['../classDB__Interface.html#ad064d107d83b4b4ec655fd2c3f6e9628',1,'DB_Interface::query_entries()']]],
+  ['query_5fentrystaging_307',['query_entrystaging',['../classDB__SQLite.html#a76c5576807ee9d3f47ee25d85a1033a0',1,'DB_SQLite::query_entrystaging()'],['../classDB__Interface.html#a00f2f249ea07bea725e86e8c1655d2a7',1,'DB_Interface::query_entrystaging()']]],
+  ['query_5fnew_5fitem_5fname_308',['query_new_item_name',['../classMenuNCurses.html#ab44a46bd54154aeaa309fde4cbb4bf83',1,'MenuNCurses::query_new_item_name()'],['../classColumn.html#a585c8913b72aba6b93eb8f02db13ea63',1,'Column::query_new_item_name()'],['../classColumnBase.html#afe39ec91dc68ae98a41a2d7dab132745',1,'ColumnBase::query_new_item_name()']]],
+  ['query_5fprojects_309',['query_projects',['../classDB__SQLite.html#a9b43b6195eb39044c0fe49cb72877fd0',1,'DB_SQLite::query_projects()'],['../classDB__Interface.html#a3f67c92dcc2dcccc4c4c744683adbf95',1,'DB_Interface::query_projects()']]],
+  ['query_5frow_5fof_5fnames_310',['query_row_of_names',['../classDB__SQLite__Handle.html#a2daed0019eb8378c1e47464aee19d25a',1,'DB_SQLite_Handle']]],
+  ['query_5ftasks_311',['query_tasks',['../classDB__SQLite.html#a3961e6425f15ced5d9e7daf0de640cd3',1,'DB_SQLite::query_tasks()'],['../classDB__Interface.html#a37bf545ad6816b24016953510cc2201c',1,'DB_Interface::query_tasks()']]]
 ];
