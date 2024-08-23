@@ -11,7 +11,6 @@
 #include "ui_screen.h"
 #include "../ncurses/win_ncurses.h"
 #include <memory>
-#include <algorithm>
 
 /** @brief Table for defining projects and tasks using two columns. */
 template <typename T_DB, typename T_LOG,
@@ -132,35 +131,19 @@ private:
     project_col->refresh();
   }
 
-  /** @brief Sanitize the queried user input strings. */
-  std::string sanitize_input(std::string input) {
-    auto s = input;
-    // left trim
-    s.erase(s.begin(),
-            std::find_if(s.begin(), s.end(),
-                         [](unsigned char ch) {
-                           return !std::isspace(ch);}));
-    // right trim
-    s.erase(std::find_if(s.rbegin(), s.rend(),
-                         [](unsigned char ch) {
-                           return !std::isspace(ch);}).base(), s.end());
-    return s;
-  }
-
   /** @brief Add an item (project or task). */
   void add_item (ColumnBase *cur_col) {
     auto new_item_name = cur_col->query_new_item_name();
-    auto sanitized_item_name = sanitize_input(new_item_name);
-    if (!sanitized_item_name.empty()) {
+    if (!new_item_name.empty()) {
       if (cur_col == project_col.get()) {
-        db->add_project(sanitized_item_name);
-        logger->log("Added project: " + sanitized_item_name);
+        db->add_project(new_item_name);
+        logger->log("Added project: " + new_item_name);
         update_project_col();
       } else if (cur_col == task_col.get()) {
         try {
         auto project_id = project_col->get_current_id();
-        db->add_task(project_id, sanitized_item_name);
-        logger->log("Added task: " + sanitized_item_name);
+        db->add_task(project_id, new_item_name);
+        logger->log("Added task: " + new_item_name);
         update_task_col();
         } catch (MenuEmpty &e) {
           return;
@@ -174,13 +157,12 @@ private:
     try {
       auto id = cur_col->get_current_id();
       auto new_item_name = cur_col->query_current_item_rename();
-      auto sanitized_item_name = sanitize_input(new_item_name);
-      if (!sanitized_item_name.empty()) {
+      if (!new_item_name.empty()) {
         if (cur_col == project_col.get()) {
-          db->edit_project_name(id, sanitized_item_name);
+          db->edit_project_name(id, new_item_name);
           update_project_col();
         } else if (cur_col == task_col.get()) {
-          db->edit_task_name(id, sanitized_item_name);
+          db->edit_task_name(id, new_item_name);
           update_task_col();
         }
       }

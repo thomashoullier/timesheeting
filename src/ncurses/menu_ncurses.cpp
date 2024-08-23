@@ -1,6 +1,7 @@
 #include "menu_ncurses.h"
 #include "win_ncurses.h"
 #include <menu.h>
+#include <algorithm>
 
 MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
                          WindowPosition winpos, WindowFormat winformat,
@@ -133,5 +134,19 @@ std::string MenuNCurses::get_user_string (int display_line) {
       break;
     }
   }
-  return input_buffer;
+  return sanitize_input(input_buffer);
+}
+
+std::string MenuNCurses::sanitize_input(const std::string &input) const {
+    auto s = input;
+    // left trim
+    s.erase(s.begin(),
+            std::find_if(s.begin(), s.end(),
+                         [](unsigned char ch) {
+                           return !std::isspace(ch);}));
+    // right trim
+    s.erase(std::find_if(s.rbegin(), s.rend(),
+                         [](unsigned char ch) {
+                           return !std::isspace(ch);}).base(), s.end());
+    return s;
 }

@@ -161,22 +161,21 @@ private:
     //TODO: manage the case where the register is empty.
     auto id = reg.get_current_id();
     auto new_str = reg.query_current_item_rename();
-    auto sanitized_str = sanitize_input(new_str);
     auto field_type = reg.get_field_type();
     switch (field_type) {
     case EntryField::project_name: {
-      db->edit_entry_project(id, sanitized_str);
+      db->edit_entry_project(id, new_str);
       break;
     }
     case EntryField::task_name: {
-      db->edit_entry_task(id, sanitized_str);
+      db->edit_entry_task(id, new_str);
     } break;
     case EntryField::start: {
-      Date new_start_date(sanitized_str);
+      Date new_start_date(new_str);
       db->edit_entry_start(id, new_start_date);
     } break;
     case EntryField::stop: {
-      Date new_stop_date(sanitized_str);
+      Date new_stop_date(new_str);
       db->edit_entry_stop(id, new_stop_date);
     } break;
     default:
@@ -187,21 +186,20 @@ private:
 
   void stopwatch_rename_item() {
     auto new_str = stopwatch.query_current_item_rename();
-    auto sanitized_str = sanitize_input(new_str);
     auto field_type = stopwatch.get_field_type();
     switch (field_type) {
     case EntryField::project_name:
-      db->edit_entrystaging_project_name(sanitized_str);
+      db->edit_entrystaging_project_name(new_str);
       break;
     case EntryField::task_name:
-      db->edit_entrystaging_task_name(sanitized_str);
+      db->edit_entrystaging_task_name(new_str);
       break;
     case EntryField::start: {
-      Date new_start_date(sanitized_str);
+      Date new_start_date(new_str);
       db->edit_entrystaging_start(new_start_date);
     } break;
     case EntryField::stop: {
-      Date new_stop_date(sanitized_str);
+      Date new_stop_date(new_str);
       db->edit_entrystaging_stop(new_stop_date);
     } break;
     default:
@@ -235,20 +233,6 @@ private:
     auto id = reg.get_current_id();
     db->delete_entry(id);
     update_register();
-  };
-
-  std::string sanitize_input(std::string input) {
-    auto s = input;
-    // left trim
-    s.erase(s.begin(),
-            std::find_if(s.begin(), s.end(),
-                         [](unsigned char ch) {
-                           return !std::isspace(ch);}));
-    // right trim
-    s.erase(std::find_if(s.rbegin(), s.rend(),
-                         [](unsigned char ch) {
-                           return !std::isspace(ch);}).base(), s.end());
-    return s;
   };
 };
 
