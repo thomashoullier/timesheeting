@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: StatusBarInterface Class Reference</title>
+<title>timesheeting: MenuEmpty Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,45 +63,44 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classStatusBarInterface-members.html">List of all members</a>  </div>
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classMenuEmpty-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">StatusBarInterface Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">MenuEmpty Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Virtual interface class for status bar.  
- <a href="classStatusBarInterface.html#details">More...</a></p>
+<p>Exception when encountering an empty menu.  
+ <a href="classMenuEmpty.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="status__bar__interface_8h_source.html">status_bar_interface.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="menu__ncurses_8h_source.html">menu_ncurses.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for StatusBarInterface:</div>
+Inheritance diagram for MenuEmpty:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classStatusBarInterface.png" usemap="#StatusBarInterface_map" alt=""/>
-  <map id="StatusBarInterface_map" name="StatusBarInterface_map">
-<area href="classStatusBarNCurses.html" title="Status bar implementation using ncurses." alt="StatusBarNCurses" shape="rect" coords="0,56,116,80"/>
-  </map>
-</div></div>
+  <img src="classMenuEmpty.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ade190c7c02971317759145fdadfc5fee"><td class="memItemLeft" align="right" valign="top"><a id="ade190c7c02971317759145fdadfc5fee"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusBarInterface.html#ade190c7c02971317759145fdadfc5fee">print</a> (const std::string &amp;msg)=0</td></tr>
-<tr class="memdesc:ade190c7c02971317759145fdadfc5fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the message in the status bar. <br /></td></tr>
-<tr class="separator:ade190c7c02971317759145fdadfc5fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49b866ebc0df62a6a2292b50c1f111b9"><td class="memItemLeft" align="right" valign="top"><a id="a49b866ebc0df62a6a2292b50c1f111b9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusBarInterface.html#a49b866ebc0df62a6a2292b50c1f111b9">print_wait</a> (const std::string &amp;msg)=0</td></tr>
-<tr class="memdesc:a49b866ebc0df62a6a2292b50c1f111b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the message in the status bar, and then pause until user input. <br /></td></tr>
-<tr class="separator:a49b866ebc0df62a6a2292b50c1f111b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a943e764debe514e782f673c4a4e6b9e2"><td class="memItemLeft" align="right" valign="top"><a id="a943e764debe514e782f673c4a4e6b9e2"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatusBarInterface.html#a943e764debe514e782f673c4a4e6b9e2">query_confirmation</a> (const std::string &amp;msg)=0</td></tr>
-<tr class="memdesc:a943e764debe514e782f673c4a4e6b9e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ask for confirmation. <br /></td></tr>
-<tr class="separator:a943e764debe514e782f673c4a4e6b9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a0cb5a75c9066d7701cf2436944565f"><td class="memItemLeft" align="right" valign="top"><a id="a1a0cb5a75c9066d7701cf2436944565f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MenuEmpty</b> (const char *_msg)</td></tr>
+<tr class="separator:a1a0cb5a75c9066d7701cf2436944565f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab624abf085df08a7b04a257acd9d14db"><td class="memItemLeft" align="right" valign="top"><a id="ab624abf085df08a7b04a257acd9d14db"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>what</b> () const  throw ()</td></tr>
+<tr class="separator:ab624abf085df08a7b04a257acd9d14db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:abbc58cd3081eba6f646f39591d97b691"><td class="memItemLeft" align="right" valign="top"><a id="abbc58cd3081eba6f646f39591d97b691"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuEmpty.html#abbc58cd3081eba6f646f39591d97b691">msg</a></td></tr>
+<tr class="memdesc:abbc58cd3081eba6f646f39591d97b691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception message. <br /></td></tr>
+<tr class="separator:abbc58cd3081eba6f646f39591d97b691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Virtual interface class for status bar. </p>
+<div class="textblock"><p>Exception when encountering an empty menu. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="status__bar__interface_8h_source.html">status_bar_interface.h</a></li>
+<li>src/<a class="el" href="menu__ncurses_8h_source.html">menu_ncurses.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -69,10 +69,11 @@ $(function() {
 , <a class="el" href="classDB__SQLite.html#a8094f97503b0db19e08041912318e8ca">DB_SQLite</a>
 </li>
 <li>add_item()
-: <a class="el" href="classProjectTaskTable.html#a6884bded837b20dc0a93d9a1dc641707">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a7e7d83b591b70bc978fab815d680bc1b">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 <li>add_one_day()
 : <a class="el" href="classDate.html#aecf7bba5074063a566b7ec859e14cc12">Date</a>
+, <a class="el" href="classDateRange.html#a8c527bbcdab4def00cc138c8a1bc3dd5">DateRange</a>
 </li>
 <li>add_project()
 : <a class="el" href="classDB__Interface.html#a0a3cf1dd9241c33fd54f0d3494912687">DB_Interface</a>
@@ -92,12 +93,12 @@ $(function() {
 <li>clear()
 : <a class="el" href="classColumnInterfaceBase.html#a67d2ee2ae4fee6728af30f38ad447c01">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a014a31f451ea527b898b7014ad792b26">ColumnNcurses&lt; T &gt;</a>
-, <a class="el" href="classDateSelectorInterface.html#a78896710e7fb176eebbaf108e4d7dce9">DateSelectorInterface</a>
-, <a class="el" href="classDateSelectorNcurses.html#a98230c89b34c7ccff902f9311cafb162">DateSelectorNcurses</a>
-, <a class="el" href="classEntriesTable.html#addfa1f22525bebfa2380c10795cd8e64">EntriesTable&lt; T_DB, T_ST, typename &gt;</a>
-, <a class="el" href="classProjectTaskTable.html#ac64681e95c98c8a90171bd6208a63c47">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
-, <a class="el" href="classStopwatchNcurses.html#afe4c5491d029f1d079ce48309ac7afc7">StopwatchNcurses</a>
+, <a class="el" href="classDateSelectorNcurses.html#ae741e0e6dd22c2b3dcbd68598a5d9a18">DateSelectorNcurses</a>
+, <a class="el" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">EntriesTable&lt; T_DB, typename &gt;</a>
+, <a class="el" href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">MenuNCurses</a>
+, <a class="el" href="classProjectTaskTable.html#a9b0cf1a84f281b443d52abb4d5b85dd7">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 , <a class="el" href="classUIScreen.html#ae4fe893ced13c4a73acdda798463298b">UIScreen</a>
+, <a class="el" href="classWinNCurses.html#aee7f2d0cb1c46e862d7ebec3626af158">WinNCurses</a>
 </li>
 <li>ColumnNcurses()
 : <a class="el" href="classColumnNcurses.html#a89bb585a81da33efd82e29f1e3de0d64">ColumnNcurses&lt; T &gt;</a>
@@ -122,8 +123,7 @@ $(function() {
 : <a class="el" href="classDB__SQLite.html#a3116dedb5003b1fd6d0c3a8f5af4db90">DB_SQLite</a>
 </li>
 <li>current_range()
-: <a class="el" href="classDateSelectorInterface.html#a669be8734be441c602845c1a0d39fbf8">DateSelectorInterface</a>
-, <a class="el" href="classDateSelectorNcurses.html#ab0d9e67518e68c4e10a57a2f49b58a69">DateSelectorNcurses</a>
+: <a class="el" href="classDateSelectorNcurses.html#aca9dfc00274bc9a7bc380afe9a9f2fdb">DateSelectorNcurses</a>
 </li>
 </ul>
 
@@ -140,7 +140,7 @@ $(function() {
 </li>
 <li>db
 : <a class="el" href="classDB__SQLite__Handle.html#ad40ef15e32a03860ad474de6bf3a6e54">DB_SQLite_Handle</a>
-, <a class="el" href="classProjectTaskTable.html#a9957297b0eb52721a81a79a44b57807b">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+, <a class="el" href="classProjectTaskTable.html#a6f0df314e6679ec8db97e5112487ea8c">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 , <a class="el" href="classUI.html#a743cb4274ee68164753c184c37eb57ed">UI</a>
 </li>
 <li>DB_SQLite()
@@ -163,6 +163,13 @@ $(function() {
 </li>
 <li>destroy_menu()
 : <a class="el" href="classColumnNcurses.html#a757be073791f9c03fa3fad102995d991">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classMenuNCurses.html#ae6e6738afd609b70727c7b8315464022">MenuNCurses</a>
+</li>
+<li>destroy_window()
+: <a class="el" href="classWinNCurses.html#a69418e712e9fc1d9b96667f0f217dcbd">WinNCurses</a>
+</li>
+<li>display_strings
+: <a class="el" href="classMenuNCurses.html#ad891ca93fa1eb8817828f6006d374654">MenuNCurses</a>
 </li>
 </ul>
 
@@ -209,7 +216,10 @@ $(function() {
 , <a class="el" href="classDB__SQLite.html#ad60b55b115d3205bc86ff43382c7e232">DB_SQLite</a>
 </li>
 <li>entries_table
-: <a class="el" href="classUI.html#a8dae96c5a557abcf5d36e45ff6a85468">UI</a>
+: <a class="el" href="classUI.html#a66a209de2cb49f78b002fc1574675045">UI</a>
+</li>
+<li>entry_staging
+: <a class="el" href="classStopwatchNcurses.html#a0ac946441600c6e7535b328d55973a16">StopwatchNcurses</a>
 </li>
 <li>exec_statement()
 : <a class="el" href="classDB__SQLite__Handle.html#a5bab8f6fc987589eddcf0a3ce8c5f839">DB_SQLite_Handle</a>
@@ -229,9 +239,16 @@ $(function() {
 : <a class="el" href="classLoggerFile.html#a1e607b06bfbaa4035fb19b9f58213f72">LoggerFile</a>
 , <a class="el" href="classLoggerInterface.html#abb12933dbbae4249df3b682105242ff2">LoggerInterface</a>
 </li>
+<li>get_col_index()
+: <a class="el" href="classMenuNCurses.html#a09d0ddb1f23caa74a9392edd00584325">MenuNCurses</a>
+</li>
 <li>get_current_id()
 : <a class="el" href="classColumnInterfaceBase.html#ae2c5a1b15d1fc1c38af59e2e05ec1274">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#ac8cca6f5724010c12d15b0ebff27c670">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82">RegisterNcurses</a>
+</li>
+<li>get_current_item_string()
+: <a class="el" href="classMenuNCurses.html#a5b72a171d66d7698e47eb7b35e99256a">MenuNCurses</a>
 </li>
 <li>get_current_name()
 : <a class="el" href="classColumnInterfaceBase.html#a4cccabe920a1dab5945d4534dfbffab3">ColumnInterfaceBase</a>
@@ -241,10 +258,20 @@ $(function() {
 : <a class="el" href="classDate.html#afcea004178848cbc31ab4530d28078b6">Date</a>
 </li>
 <li>get_field_type()
-: <a class="el" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">StopwatchNcurses</a>
+: <a class="el" href="classRegisterNcurses.html#a6fba87a75b5ea5146be4c6be30dc73e0">RegisterNcurses</a>
+, <a class="el" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">StopwatchNcurses</a>
+</li>
+<li>get_input()
+: <a class="el" href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">WinNCurses</a>
+</li>
+<li>get_item_index()
+: <a class="el" href="classMenuNCurses.html#a4eaad83da7e55422e90bde89bd083d86">MenuNCurses</a>
 </li>
 <li>get_menu_index()
 : <a class="el" href="classColumnNcurses.html#abce035e3c4095c221c912d8b9ac90acc">ColumnNcurses&lt; T &gt;</a>
+</li>
+<li>get_row_index()
+: <a class="el" href="classMenuNCurses.html#a765def0bc3ad2b8f595a7d422e6b96da">MenuNCurses</a>
 </li>
 <li>get_timestamp()
 : <a class="el" href="classLoggerFile.html#a0052bb08ef61f4360e1136c1076ea946">LoggerFile</a>
@@ -255,6 +282,7 @@ $(function() {
 <h3><a id="index_h"></a>- h -</h3><ul>
 <li>held_items
 : <a class="el" href="classColumnNcurses.html#af249a540b52004d60376fc59a1c66c84">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classRegisterNcurses.html#a38d950c3a8f45263f218c1c392ceafc8">RegisterNcurses</a>
 </li>
 </ul>
 
@@ -265,22 +293,27 @@ $(function() {
 </li>
 <li>init_items()
 : <a class="el" href="classColumnNcurses.html#ac541f864d2a2c722f639dbcb0c5a7e35">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classMenuNCurses.html#ae1abe588dce420e939fddba2576b9517">MenuNCurses</a>
 </li>
 <li>init_menu()
 : <a class="el" href="classColumnNcurses.html#a5e3930afd702bc524caccd3b50baf79a">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classMenuNCurses.html#adc76320667cecfa5326e507929fa63c6">MenuNCurses</a>
 </li>
 <li>init_menu_window()
 : <a class="el" href="classColumnNcurses.html#a9fcbc32e3c2ba5833a6e990a0d963804">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classMenuNCurses.html#a0383c1d93932c383a1342b3538840504">MenuNCurses</a>
 </li>
 <li>init_window()
-: <a class="el" href="classDateSelectorNcurses.html#a0df7446bdb3aee80c07d5a57018fd3fb">DateSelectorNcurses</a>
-, <a class="el" href="classStatusBarNCurses.html#a2fd9199db12d4dd3ec2c575ed46db1bc">StatusBarNCurses</a>
+: <a class="el" href="classWinNCurses.html#af884a5c4ee771fc70089e1028c250084">WinNCurses</a>
 </li>
 <li>input_loop()
-: <a class="el" href="classEntriesTable.html#ab73445c51ef4b0d386aae9f393b5ddb9">EntriesTable&lt; T_DB, T_ST, typename &gt;</a>
-, <a class="el" href="classProjectTaskTable.html#ab78113b3b9ce79dfa2fa69adeee4aa95">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classEntriesTable.html#a84d69e16c2fcc93895da015944fb66b3">EntriesTable&lt; T_DB, typename &gt;</a>
+, <a class="el" href="classProjectTaskTable.html#a9ad100e2224c9d979b5acea3ee4e92b9">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 , <a class="el" href="classUI.html#ad931317a0913fc867b6ef3368700b84e">UI</a>
 , <a class="el" href="classUIScreen.html#a017e3abd61e5d8b814a39c7029f25258">UIScreen</a>
+</li>
+<li>items_to_string()
+: <a class="el" href="classRegisterNcurses.html#a5fc45bcb0914b1bd1420712cb62addbc">RegisterNcurses</a>
 </li>
 </ul>
 
@@ -291,7 +324,7 @@ $(function() {
 , <a class="el" href="classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d">LoggerInterface</a>
 </li>
 <li>logger
-: <a class="el" href="classProjectTaskTable.html#af17e2b51f72aee8424fb429662e23038">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#ad25910b8f1d332bebc5f53356d5fa5f3">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 , <a class="el" href="classUI.html#a7b7c4a1f2c20f0537f5fceca65d40180">UI</a>
 </li>
 <li>LoggerFile()
@@ -303,12 +336,15 @@ $(function() {
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>menu
 : <a class="el" href="classColumnNcurses.html#aad0bd7c49e937fc32bcda7767959acf3">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classMenuNCurses.html#ac95742d2f238fccb36f6ad575d6938cd">MenuNCurses</a>
 </li>
 <li>menu_items
 : <a class="el" href="classColumnNcurses.html#a31a6ddfc2f282bda55a19dc2b573ad29">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classMenuNCurses.html#ad102d4b21f4caacfbccb4310e66bd054">MenuNCurses</a>
 </li>
 <li>msg
 : <a class="el" href="classColumnEmpty.html#ab966d6c78429dbfdf57833f50653738c">ColumnEmpty</a>
+, <a class="el" href="classMenuEmpty.html#abbc58cd3081eba6f646f39591d97b691">MenuEmpty</a>
 </li>
 </ul>
 
@@ -316,6 +352,9 @@ $(function() {
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>name
 : <a class="el" href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">GenericItem</a>
+</li>
+<li>ncols
+: <a class="el" href="classMenuNCurses.html#ad0b4330548624edaf828deea39de9c7c">MenuNCurses</a>
 </li>
 <li>ncurses_handle
 : <a class="el" href="classUI.html#a150f54f597b90035cb05e7a44222bbe0">UI</a>
@@ -337,33 +376,28 @@ $(function() {
 : <a class="el" href="classDB__SQLite__Handle.html#a94e62978c620d6a13c5f96de535eda94">DB_SQLite_Handle</a>
 </li>
 <li>print()
-: <a class="el" href="classDateSelectorInterface.html#a0fd68fd0740c7d047e75147e51a5f968">DateSelectorInterface</a>
-, <a class="el" href="classDateSelectorNcurses.html#aab6513dd3a899dc3db94c0645e4493ee">DateSelectorNcurses</a>
-, <a class="el" href="classStatusBarInterface.html#ade190c7c02971317759145fdadfc5fee">StatusBarInterface</a>
-, <a class="el" href="classStatusBarNCurses.html#a35968a847ddbb4a3209bd0097e510a02">StatusBarNCurses</a>
+: <a class="el" href="classStatusBarNCurses.html#a923297a6713a78610d55df0006a3bbf4">StatusBarNCurses</a>
 </li>
 <li>print_wait()
-: <a class="el" href="classStatusBarInterface.html#a49b866ebc0df62a6a2292b50c1f111b9">StatusBarInterface</a>
-, <a class="el" href="classStatusBarNCurses.html#a178f01c822892031d4e299bd0ccf392d">StatusBarNCurses</a>
+: <a class="el" href="classStatusBarNCurses.html#aa1bb31e0eeba417c9fa84945e55ef7f7">StatusBarNCurses</a>
 </li>
 <li>project_col
-: <a class="el" href="classProjectTaskTable.html#aae3fdf06d916ce4fdf7cd049889e2fa2">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a50fda56d45ff7e8a73273d087954a554">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 <li>ProjectTaskTable()
-: <a class="el" href="classProjectTaskTable.html#a56db61ebd5072d6b24a609247dd2ef79">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a5536cb4de54b1de98d14725e147c8206">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_q"></a>- q -</h3><ul>
 <li>query_confirmation()
-: <a class="el" href="classStatusBarInterface.html#a943e764debe514e782f673c4a4e6b9e2">StatusBarInterface</a>
-, <a class="el" href="classStatusBarNCurses.html#a560d8d737f8012e0da30d2f936ee4575">StatusBarNCurses</a>
+: <a class="el" href="classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d">StatusBarNCurses</a>
 </li>
 <li>query_current_item_rename()
 : <a class="el" href="classColumnInterfaceBase.html#a5323952c039508835f7f392364adcfc6">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a9986ebdbe5e7408796f1fa86db172d67">ColumnNcurses&lt; T &gt;</a>
-, <a class="el" href="classStopwatchNcurses.html#af9639929b78ec3a9ee66260ccb5334f6">StopwatchNcurses</a>
+, <a class="el" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">MenuNCurses</a>
 </li>
 <li>query_entries()
 : <a class="el" href="classDB__Interface.html#ad064d107d83b4b4ec655fd2c3f6e9628">DB_Interface</a>
@@ -376,7 +410,6 @@ $(function() {
 <li>query_input()
 : <a class="el" href="classColumnInterfaceBase.html#a4fcba3b90cd5986451e83098ea0b34b2">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a3670660db0c1b400d359122532512bfb">ColumnNcurses&lt; T &gt;</a>
-, <a class="el" href="classStopwatchNcurses.html#a391fe76b4be5fd1597979fb18cb24add">StopwatchNcurses</a>
 </li>
 <li>query_new_item_name()
 : <a class="el" href="classColumnInterfaceBase.html#abb5bd6027fad4aecd66dcd390cd5bc21">ColumnInterfaceBase</a>
@@ -403,49 +436,56 @@ $(function() {
 <li>refresh()
 : <a class="el" href="classColumnInterfaceBase.html#a5e2a579d5c8e1d610c4e99ae792d07c0">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a232f454d72d40e0e9204acafa154f22a">ColumnNcurses&lt; T &gt;</a>
-, <a class="el" href="classDateSelectorInterface.html#a394a23f60d4923c45794d18c8803bb51">DateSelectorInterface</a>
-, <a class="el" href="classDateSelectorNcurses.html#a86212d6e113f001d4c1d4bf489836137">DateSelectorNcurses</a>
-, <a class="el" href="classEntriesTable.html#a7e6e2e0d6726139bd025a47478514078">EntriesTable&lt; T_DB, T_ST, typename &gt;</a>
-, <a class="el" href="classProjectTaskTable.html#a518ac9934b4a59356b68d2f9c3bd15a8">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
-, <a class="el" href="classStopwatchNcurses.html#a45edfa87497cc113c1f9c89ecc6e1cbd">StopwatchNcurses</a>
+, <a class="el" href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">DateSelectorNcurses</a>
+, <a class="el" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">EntriesTable&lt; T_DB, typename &gt;</a>
+, <a class="el" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">MenuNCurses</a>
+, <a class="el" href="classProjectTaskTable.html#acd345b335590713bdfe537c2578aaafe">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 , <a class="el" href="classUIScreen.html#a7bc65c511e8891db87c8f00fb62d1578">UIScreen</a>
+, <a class="el" href="classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905">WinNCurses</a>
 </li>
 <li>remove_item()
-: <a class="el" href="classProjectTaskTable.html#a1d9c57fbb63bd2125d6ad4c9a589520e">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a925a6620afaeb8478f21ff03b7e528af">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 <li>rename_item()
-: <a class="el" href="classProjectTaskTable.html#a9395a8481174a758e04afc60ada426d5">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a8f3bec92a40c89faf75f2b8a77c28ddc">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>sanitize_input()
-: <a class="el" href="classProjectTaskTable.html#a3db376a7b54a8066d887087b9c65af45">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#aeb97a689d9ad20668de9eec07646ca1c">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+</li>
+<li>select_down_item()
+: <a class="el" href="classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4">MenuNCurses</a>
+</li>
+<li>select_left_item()
+: <a class="el" href="classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088">MenuNCurses</a>
 </li>
 <li>select_next_day()
-: <a class="el" href="classDateSelectorInterface.html#acb3848870b6c3388cde65011cd8a981f">DateSelectorInterface</a>
-, <a class="el" href="classDateSelectorNcurses.html#a60cfadf9c99f2c701ebdfea490d0848d">DateSelectorNcurses</a>
+: <a class="el" href="classDateSelectorNcurses.html#a9fca8fbb92052daf8dc1dabeb40bb47d">DateSelectorNcurses</a>
 </li>
 <li>select_next_item()
 : <a class="el" href="classColumnInterfaceBase.html#a5e6636fa7568fb42851510d16db9749b">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a57b98eacc51fe8808ef6a4dd20029ebc">ColumnNcurses&lt; T &gt;</a>
-, <a class="el" href="classStopwatchNcurses.html#abfb37aedfba311e032da234abcaec056">StopwatchNcurses</a>
 </li>
 <li>select_prev_item()
 : <a class="el" href="classColumnInterfaceBase.html#ad405fd5fc1615a3d82b39ce8870cac3a">ColumnInterfaceBase</a>
 , <a class="el" href="classColumnNcurses.html#a37d9d7e0a37449857740c825481b3d93">ColumnNcurses&lt; T &gt;</a>
 </li>
 <li>select_previous_day()
-: <a class="el" href="classDateSelectorInterface.html#a2712d2222ae928c94734ad5407a8d8fb">DateSelectorInterface</a>
-, <a class="el" href="classDateSelectorNcurses.html#a58587264b4b441ac76991d6ecb949638">DateSelectorNcurses</a>
+: <a class="el" href="classDateSelectorNcurses.html#a28844e80a74884a2ae387dd505fbb144">DateSelectorNcurses</a>
 </li>
-<li>select_previous_item()
-: <a class="el" href="classStopwatchNcurses.html#a8d2dbcaadbe3323da4f06de2daa94e86">StopwatchNcurses</a>
+<li>select_right_item()
+: <a class="el" href="classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570">MenuNCurses</a>
+</li>
+<li>select_up_item()
+: <a class="el" href="classMenuNCurses.html#a9d4c05bf7bcbc7cb1d7423c2932e00cc">MenuNCurses</a>
 </li>
 <li>set_items()
 : <a class="el" href="classColumnInterface.html#af133c17f1fceeb155ef191f7bf04b94a">ColumnInterface&lt; T, typename &gt;</a>
 , <a class="el" href="classColumnNcurses.html#a5d408241359a6a5b55195831f7ec45cc">ColumnNcurses&lt; T &gt;</a>
+, <a class="el" href="classMenuNCurses.html#a991811fc9e16cd2ffda7d4096381cb23">MenuNCurses</a>
 , <a class="el" href="classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62">StopwatchNcurses</a>
 </li>
 <li>sqlite_db
@@ -455,7 +495,7 @@ $(function() {
 : <a class="el" href="classDateRange.html#acb94337dfa6e37837ca274eac3f6bef4">DateRange</a>
 </li>
 <li>status
-: <a class="el" href="classProjectTaskTable.html#aaf1cc3b90f6ab35c87811b4a0d3ea444">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a860729a8db39b1d42a55f2437db2dd4e">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 <li>status_bar
 : <a class="el" href="classUI.html#ad235fbe355fe3e61a5232664051947f3">UI</a>
@@ -464,23 +504,28 @@ $(function() {
 : <a class="el" href="classDateRange.html#afee2897b874594a2f6bccb38f6b21cc4">DateRange</a>
 </li>
 <li>stopwatch_set_current_now()
-: <a class="el" href="classEntriesTable.html#a7dc7cc195848b6db5766faf2adab163c">EntriesTable&lt; T_DB, T_ST, typename &gt;</a>
+: <a class="el" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">EntriesTable&lt; T_DB, typename &gt;</a>
 </li>
 <li>str
 : <a class="el" href="classDate.html#a0687c219b572fba46cb878b617c2f0dc">Date</a>
 </li>
 <li>subtract_one_day()
 : <a class="el" href="classDate.html#a0313cfcbf563e60a3889e2c1cd6ba076">Date</a>
+, <a class="el" href="classDateRange.html#a3539db676dc063a58241bd1f5fb25053">DateRange</a>
 </li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>task_col
-: <a class="el" href="classProjectTaskTable.html#a811bec85270ca59682209780e686e86f">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a5b4a14226bbab9f980746cc020c43de5">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 <li>to_string()
 : <a class="el" href="classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b">Date</a>
+</li>
+<li>to_strings()
+: <a class="el" href="structEntry.html#add02c0a022eb2ba66e6cea1a0130320e">Entry</a>
+, <a class="el" href="structEntryStaging.html#a1be08406cdbc55da22bf8be2a6268a78">EntryStaging</a>
 </li>
 <li>to_unix_timestamp()
 : <a class="el" href="classDate.html#a3b121b6e9762e1b77ab6c9fa16265124">Date</a>
@@ -499,10 +544,10 @@ $(function() {
 : <a class="el" href="classUI.html#a675985a56b5e87ebdc8e5884b9f2ee09">UI</a>
 </li>
 <li>update_project_col()
-: <a class="el" href="classProjectTaskTable.html#a3364d9c3a19f1b32912c8feea1dd13c8">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#ad40fcc8ef95a70c1e7ffcfc3a7248731">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 <li>update_task_col()
-: <a class="el" href="classProjectTaskTable.html#a14b3b6bfea8d5475ac670738386434df">ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
+: <a class="el" href="classProjectTaskTable.html#a19704a36473b2d5b5c4134b1c6a45982">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</a>
 </li>
 </ul>
 
@@ -513,8 +558,6 @@ $(function() {
 </li>
 <li>win
 : <a class="el" href="classColumnNcurses.html#a9dad7bb72be6a30d7bef50937e82d953">ColumnNcurses&lt; T &gt;</a>
-, <a class="el" href="classDateSelectorNcurses.html#aca1b4fd8dd7289ac7bdf8f482d483701">DateSelectorNcurses</a>
-, <a class="el" href="classStatusBarNCurses.html#a3b406584bd748e6d1db577717b670731">StatusBarNCurses</a>
 </li>
 </ul>
 

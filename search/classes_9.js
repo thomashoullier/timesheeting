@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['task_176',['Task',['../structTask.html',1,'']]]
+  ['registerncurses_188',['RegisterNcurses',['../classRegisterNcurses.html',1,'']]]
 ];

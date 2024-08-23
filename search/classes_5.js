@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ncurseshandle_167',['NcursesHandle',['../classNcursesHandle.html',1,'']]]
+  ['loggerfile_180',['LoggerFile',['../classLoggerFile.html',1,'']]],
+  ['loggerinterface_181',['LoggerInterface',['../classLoggerInterface.html',1,'']]]
 ];

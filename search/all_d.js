@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['refresh_106',['refresh',['../classColumnNcurses.html#a232f454d72d40e0e9204acafa154f22a',1,'ColumnNcurses::refresh()'],['../classColumnInterfaceBase.html#a5e2a579d5c8e1d610c4e99ae792d07c0',1,'ColumnInterfaceBase::refresh()'],['../classDateSelectorInterface.html#a394a23f60d4923c45794d18c8803bb51',1,'DateSelectorInterface::refresh()'],['../classDateSelectorNcurses.html#a86212d6e113f001d4c1d4bf489836137',1,'DateSelectorNcurses::refresh()'],['../classEntriesTable.html#a7e6e2e0d6726139bd025a47478514078',1,'EntriesTable::refresh()'],['../classProjectTaskTable.html#a518ac9934b4a59356b68d2f9c3bd15a8',1,'ProjectTaskTable::refresh()'],['../classStopwatchNcurses.html#a45edfa87497cc113c1f9c89ecc6e1cbd',1,'StopwatchNcurses::refresh()'],['../classUIScreen.html#a7bc65c511e8891db87c8f00fb62d1578',1,'UIScreen::refresh()']]],
-  ['registerncurses_107',['RegisterNcurses',['../classRegisterNcurses.html',1,'']]],
-  ['remove_5fitem_108',['remove_item',['../classProjectTaskTable.html#a1d9c57fbb63bd2125d6ad4c9a589520e',1,'ProjectTaskTable']]],
-  ['rename_5fitem_109',['rename_item',['../classProjectTaskTable.html#a9395a8481174a758e04afc60ada426d5',1,'ProjectTaskTable']]],
-  ['rowid_110',['RowId',['../db__sqlite__handle_8h.html#a114d9158752be906e1c1dd5a4b2c7f67',1,'db_sqlite_handle.h']]]
+  ['query_5fconfirmation_108',['query_confirmation',['../classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d',1,'StatusBarNCurses']]],
+  ['query_5fcurrent_5fitem_5frename_109',['query_current_item_rename',['../classColumnNcurses.html#a9986ebdbe5e7408796f1fa86db172d67',1,'ColumnNcurses::query_current_item_rename()'],['../classColumnInterfaceBase.html#a5323952c039508835f7f392364adcfc6',1,'ColumnInterfaceBase::query_current_item_rename()'],['../classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260',1,'MenuNCurses::query_current_item_rename()']]],
+  ['query_5fentries_110',['query_entries',['../classDB__SQLite.html#ad582b03e8629ba2725a7d43d006403cb',1,'DB_SQLite::query_entries()'],['../classDB__Interface.html#ad064d107d83b4b4ec655fd2c3f6e9628',1,'DB_Interface::query_entries()']]],
+  ['query_5fentrystaging_111',['query_entrystaging',['../classDB__SQLite.html#a76c5576807ee9d3f47ee25d85a1033a0',1,'DB_SQLite::query_entrystaging()'],['../classDB__Interface.html#a00f2f249ea07bea725e86e8c1655d2a7',1,'DB_Interface::query_entrystaging()']]],
+  ['query_5finput_112',['query_input',['../classColumnInterfaceBase.html#a4fcba3b90cd5986451e83098ea0b34b2',1,'ColumnInterfaceBase::query_input()'],['../classColumnNcurses.html#a3670660db0c1b400d359122532512bfb',1,'ColumnNcurses::query_input() override']]],
+  ['query_5fnew_5fitem_5fname_113',['query_new_item_name',['../classColumnNcurses.html#ae8a607623a0624c1a662e6125d22de45',1,'ColumnNcurses::query_new_item_name()'],['../classColumnInterfaceBase.html#abb5bd6027fad4aecd66dcd390cd5bc21',1,'ColumnInterfaceBase::query_new_item_name()']]],
+  ['query_5fprojects_114',['query_projects',['../classDB__SQLite.html#a9b43b6195eb39044c0fe49cb72877fd0',1,'DB_SQLite::query_projects()'],['../classDB__Interface.html#a3f67c92dcc2dcccc4c4c744683adbf95',1,'DB_Interface::query_projects()']]],
+  ['query_5frow_5finput_115',['query_row_input',['../classColumnNcurses.html#a064e4c4b3966f9969d95a19b2b666fec',1,'ColumnNcurses']]],
+  ['query_5frow_5fof_5fnames_116',['query_row_of_names',['../classDB__SQLite__Handle.html#a2daed0019eb8378c1e47464aee19d25a',1,'DB_SQLite_Handle']]],
+  ['query_5ftasks_117',['query_tasks',['../classDB__SQLite.html#a3961e6425f15ced5d9e7daf0de640cd3',1,'DB_SQLite::query_tasks()'],['../classDB__Interface.html#a37bf545ad6816b24016953510cc2201c',1,'DB_Interface::query_tasks()']]]
 ];

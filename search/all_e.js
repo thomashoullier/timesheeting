@@ -1,24 +1,8 @@
 var searchData=
 [
-  ['sanitize_5finput_111',['sanitize_input',['../classProjectTaskTable.html#a3db376a7b54a8066d887087b9c65af45',1,'ProjectTaskTable']]],
-  ['select_5fnext_5fday_112',['select_next_day',['../classDateSelectorInterface.html#acb3848870b6c3388cde65011cd8a981f',1,'DateSelectorInterface::select_next_day()'],['../classDateSelectorNcurses.html#a60cfadf9c99f2c701ebdfea490d0848d',1,'DateSelectorNcurses::select_next_day()']]],
-  ['select_5fnext_5fitem_113',['select_next_item',['../classColumnNcurses.html#a57b98eacc51fe8808ef6a4dd20029ebc',1,'ColumnNcurses::select_next_item()'],['../classColumnInterfaceBase.html#a5e6636fa7568fb42851510d16db9749b',1,'ColumnInterfaceBase::select_next_item()'],['../classStopwatchNcurses.html#abfb37aedfba311e032da234abcaec056',1,'StopwatchNcurses::select_next_item()']]],
-  ['select_5fprev_5fitem_114',['select_prev_item',['../classColumnNcurses.html#a37d9d7e0a37449857740c825481b3d93',1,'ColumnNcurses::select_prev_item()'],['../classColumnInterfaceBase.html#ad405fd5fc1615a3d82b39ce8870cac3a',1,'ColumnInterfaceBase::select_prev_item()']]],
-  ['select_5fprevious_5fday_115',['select_previous_day',['../classDateSelectorInterface.html#a2712d2222ae928c94734ad5407a8d8fb',1,'DateSelectorInterface::select_previous_day()'],['../classDateSelectorNcurses.html#a58587264b4b441ac76991d6ecb949638',1,'DateSelectorNcurses::select_previous_day()']]],
-  ['select_5fprevious_5fitem_116',['select_previous_item',['../classStopwatchNcurses.html#a8d2dbcaadbe3323da4f06de2daa94e86',1,'StopwatchNcurses']]],
-  ['set_5fitems_117',['set_items',['../classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62',1,'StopwatchNcurses::set_items()'],['../classColumnInterface.html#af133c17f1fceeb155ef191f7bf04b94a',1,'ColumnInterface::set_items()'],['../classColumnNcurses.html#a5d408241359a6a5b55195831f7ec45cc',1,'ColumnNcurses::set_items()']]],
-  ['sqlite_5fdb_118',['sqlite_db',['../classDB__SQLite.html#a8517c381d3af75a79f86b4970437f3ee',1,'DB_SQLite']]],
-  ['sqliteconstraintexcept_119',['SQLiteConstraintExcept',['../classSQLiteConstraintExcept.html',1,'']]],
-  ['start_120',['start',['../classDateRange.html#acb94337dfa6e37837ca274eac3f6bef4',1,'DateRange']]],
-  ['status_121',['status',['../classProjectTaskTable.html#aaf1cc3b90f6ab35c87811b4a0d3ea444',1,'ProjectTaskTable']]],
-  ['status_5fbar_122',['status_bar',['../classUI.html#ad235fbe355fe3e61a5232664051947f3',1,'UI']]],
-  ['status_5fbar_5finterface_2eh_123',['status_bar_interface.h',['../status__bar__interface_8h.html',1,'']]],
-  ['status_5fbar_5fncurses_2eh_124',['status_bar_ncurses.h',['../status__bar__ncurses_8h.html',1,'']]],
-  ['statusbarinterface_125',['StatusBarInterface',['../classStatusBarInterface.html',1,'']]],
-  ['statusbarncurses_126',['StatusBarNCurses',['../classStatusBarNCurses.html',1,'']]],
-  ['stop_127',['stop',['../classDateRange.html#afee2897b874594a2f6bccb38f6b21cc4',1,'DateRange']]],
-  ['stopwatch_5fset_5fcurrent_5fnow_128',['stopwatch_set_current_now',['../classEntriesTable.html#a7dc7cc195848b6db5766faf2adab163c',1,'EntriesTable']]],
-  ['stopwatchncurses_129',['StopwatchNcurses',['../classStopwatchNcurses.html',1,'']]],
-  ['str_130',['str',['../classDate.html#a0687c219b572fba46cb878b617c2f0dc',1,'Date']]],
-  ['subtract_5fone_5fday_131',['subtract_one_day',['../classDate.html#a0313cfcbf563e60a3889e2c1cd6ba076',1,'Date']]]
+  ['refresh_118',['refresh',['../classColumnNcurses.html#a232f454d72d40e0e9204acafa154f22a',1,'ColumnNcurses::refresh()'],['../classColumnInterfaceBase.html#a5e2a579d5c8e1d610c4e99ae792d07c0',1,'ColumnInterfaceBase::refresh()'],['../classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298',1,'DateSelectorNcurses::refresh()'],['../classEntriesTable.html#aa8e027c414e70fac000529375901159b',1,'EntriesTable::refresh()'],['../classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683',1,'MenuNCurses::refresh()'],['../classProjectTaskTable.html#acd345b335590713bdfe537c2578aaafe',1,'ProjectTaskTable::refresh()'],['../classUIScreen.html#a7bc65c511e8891db87c8f00fb62d1578',1,'UIScreen::refresh()'],['../classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905',1,'WinNCurses::refresh()']]],
+  ['registerncurses_119',['RegisterNcurses',['../classRegisterNcurses.html',1,'']]],
+  ['remove_5fitem_120',['remove_item',['../classProjectTaskTable.html#a925a6620afaeb8478f21ff03b7e528af',1,'ProjectTaskTable']]],
+  ['rename_5fitem_121',['rename_item',['../classProjectTaskTable.html#a8f3bec92a40c89faf75f2b8a77c28ddc',1,'ProjectTaskTable']]],
+  ['rowid_122',['RowId',['../db__sqlite__handle_8h.html#a114d9158752be906e1c1dd5a4b2c7f67',1,'db_sqlite_handle.h']]]
 ];

@@ -65,7 +65,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classRegisterNcurses-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">RegisterNcurses Class Reference</div>  </div>
@@ -76,108 +75,135 @@ $(function() {
  <a href="classRegisterNcurses.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="register__ncurses_8h_source.html">register_ncurses.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for RegisterNcurses:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classRegisterNcurses.png" usemap="#RegisterNcurses_map" alt=""/>
+  <map id="RegisterNcurses_map" name="RegisterNcurses_map">
+<area href="classMenuNCurses.html" title="A ncurses window holding a generic menu." alt="MenuNCurses" shape="rect" coords="0,56,105,80"/>
+<area href="classWinNCurses.html" title="Base class for NCurses elements in a window." alt="WinNCurses" shape="rect" coords="0,0,105,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0df5bc580c81607789cb51b48a35cc6e"><td class="memItemLeft" align="right" valign="top"><a id="a0df5bc580c81607789cb51b48a35cc6e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterNcurses</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items, int _display_line)</td></tr>
-<tr class="separator:a0df5bc580c81607789cb51b48a35cc6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01b5b2959c3fb0d7b4ed85544f047170"><td class="memItemLeft" align="right" valign="top"><a id="a01b5b2959c3fb0d7b4ed85544f047170"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> ()</td></tr>
-<tr class="separator:a01b5b2959c3fb0d7b4ed85544f047170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9976ad42c147f1d6885bbdb5e029b7dd"><td class="memItemLeft" align="right" valign="top"><a id="a9976ad42c147f1d6885bbdb5e029b7dd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
-<tr class="separator:a9976ad42c147f1d6885bbdb5e029b7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b26f8095883cb642da0a4888b22ab8"><td class="memItemLeft" align="right" valign="top"><a id="a20b26f8095883cb642da0a4888b22ab8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterNcurses</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
+<tr class="separator:a20b26f8095883cb642da0a4888b22ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7d04eb21a2b375b7169d7cc4ff16a8e"><td class="memItemLeft" align="right" valign="top"><a id="ae7d04eb21a2b375b7169d7cc4ff16a8e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_items</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
 <tr class="separator:ae7d04eb21a2b375b7169d7cc4ff16a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ddd8915e66719efeec1db6d23b06d82"><td class="memItemLeft" align="right" valign="top"><a id="a6ddd8915e66719efeec1db6d23b06d82"></a>
-<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_id</b> ()</td></tr>
+<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82">get_current_id</a> ()</td></tr>
+<tr class="memdesc:a6ddd8915e66719efeec1db6d23b06d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Id of the currently selected item. <br /></td></tr>
 <tr class="separator:a6ddd8915e66719efeec1db6d23b06d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fba87a75b5ea5146be4c6be30dc73e0"><td class="memItemLeft" align="right" valign="top"><a id="a6fba87a75b5ea5146be4c6be30dc73e0"></a>
-<a class="el" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_field_type</b> ()</td></tr>
+<a class="el" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterNcurses.html#a6fba87a75b5ea5146be4c6be30dc73e0">get_field_type</a> ()</td></tr>
+<tr class="memdesc:a6fba87a75b5ea5146be4c6be30dc73e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the currently selected column. <br /></td></tr>
 <tr class="separator:a6fba87a75b5ea5146be4c6be30dc73e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabf46d18915a0e61658677ceb1283b96"><td class="memItemLeft" align="right" valign="top"><a id="aabf46d18915a0e61658677ceb1283b96"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_cell_string</b> ()</td></tr>
-<tr class="separator:aabf46d18915a0e61658677ceb1283b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98afbb21f7d5d4bf6515f10412bf9e7d"><td class="memItemLeft" align="right" valign="top"><a id="a98afbb21f7d5d4bf6515f10412bf9e7d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_down_item</b> ()</td></tr>
-<tr class="separator:a98afbb21f7d5d4bf6515f10412bf9e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5634485904ba111b59ce2ff537b2e88"><td class="memItemLeft" align="right" valign="top"><a id="af5634485904ba111b59ce2ff537b2e88"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_up_item</b> ()</td></tr>
-<tr class="separator:af5634485904ba111b59ce2ff537b2e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1131df1c4d88ef5fdf47a803cf8ceec1"><td class="memItemLeft" align="right" valign="top"><a id="a1131df1c4d88ef5fdf47a803cf8ceec1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_right_item</b> ()</td></tr>
-<tr class="separator:a1131df1c4d88ef5fdf47a803cf8ceec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a977290834283b78a75a8fa4673774fab"><td class="memItemLeft" align="right" valign="top"><a id="a977290834283b78a75a8fa4673774fab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_left_item</b> ()</td></tr>
-<tr class="separator:a977290834283b78a75a8fa4673774fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b0a2a34138387a0370cd251bda4aa5"><td class="memItemLeft" align="right" valign="top"><a id="a73b0a2a34138387a0370cd251bda4aa5"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>query_input</b> ()</td></tr>
-<tr class="separator:a73b0a2a34138387a0370cd251bda4aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1be0fbdb82a9559ad733956ca04ae004"><td class="memItemLeft" align="right" valign="top"><a id="a1be0fbdb82a9559ad733956ca04ae004"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>query_current_item_rename</b> ()</td></tr>
-<tr class="separator:a1be0fbdb82a9559ad733956ca04ae004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classMenuNCurses"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMenuNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMenuNCurses.html">MenuNCurses</a></td></tr>
+<tr class="memitem:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a88efc97898781d7e61061e6a2fc7fb27"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MenuNCurses</b> (const std::vector&lt; std::string &gt; &amp;items, WindowPosition winpos, WindowFormat winformat, int _ncols)</td></tr>
+<tr class="separator:a88efc97898781d7e61061e6a2fc7fb27 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2a8a48c342f0ea116f3581cd0986260 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="aa2a8a48c342f0ea116f3581cd0986260"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a> ()</td></tr>
+<tr class="memdesc:aa2a8a48c342f0ea116f3581cd0986260 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query a new string for the currently selected item. <br /></td></tr>
+<tr class="separator:aa2a8a48c342f0ea116f3581cd0986260 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa178927a57b741a40c482289bd547bc4 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="aa178927a57b741a40c482289bd547bc4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4">select_down_item</a> ()</td></tr>
+<tr class="memdesc:aa178927a57b741a40c482289bd547bc4 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item down of the current one. <br /></td></tr>
+<tr class="separator:aa178927a57b741a40c482289bd547bc4 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d4c05bf7bcbc7cb1d7423c2932e00cc inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a9d4c05bf7bcbc7cb1d7423c2932e00cc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a9d4c05bf7bcbc7cb1d7423c2932e00cc">select_up_item</a> ()</td></tr>
+<tr class="memdesc:a9d4c05bf7bcbc7cb1d7423c2932e00cc inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item up of the current one. <br /></td></tr>
+<tr class="separator:a9d4c05bf7bcbc7cb1d7423c2932e00cc inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f4786be5d06e885643fd0589bd25570 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a8f4786be5d06e885643fd0589bd25570"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570">select_right_item</a> ()</td></tr>
+<tr class="memdesc:a8f4786be5d06e885643fd0589bd25570 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item right of the current one. <br /></td></tr>
+<tr class="separator:a8f4786be5d06e885643fd0589bd25570 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9972d2f49fd0e934fb6d875a7760d088 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a9972d2f49fd0e934fb6d875a7760d088"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088">select_left_item</a> ()</td></tr>
+<tr class="memdesc:a9972d2f49fd0e934fb6d875a7760d088 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item left of the current one. <br /></td></tr>
+<tr class="separator:a9972d2f49fd0e934fb6d875a7760d088 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9be6e8d21329760c6c49672feb8df683 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a9be6e8d21329760c6c49672feb8df683"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a> ()</td></tr>
+<tr class="memdesc:a9be6e8d21329760c6c49672feb8df683 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the display. <br /></td></tr>
+<tr class="separator:a9be6e8d21329760c6c49672feb8df683 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3faebacc29327aad5146472527ac37e inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="aa3faebacc29327aad5146472527ac37e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">clear</a> ()</td></tr>
+<tr class="memdesc:aa3faebacc29327aad5146472527ac37e inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the display. <br /></td></tr>
+<tr class="separator:aa3faebacc29327aad5146472527ac37e inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991811fc9e16cd2ffda7d4096381cb23 inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a991811fc9e16cd2ffda7d4096381cb23"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a991811fc9e16cd2ffda7d4096381cb23">set_items</a> (const std::vector&lt; std::string &gt; &amp;items)</td></tr>
+<tr class="memdesc:a991811fc9e16cd2ffda7d4096381cb23 inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the currently held items. <br /></td></tr>
+<tr class="separator:a991811fc9e16cd2ffda7d4096381cb23 inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b72a171d66d7698e47eb7b35e99256a inherit pub_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a5b72a171d66d7698e47eb7b35e99256a"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a5b72a171d66d7698e47eb7b35e99256a">get_current_item_string</a> () const</td></tr>
+<tr class="memdesc:a5b72a171d66d7698e47eb7b35e99256a inherit pub_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the full display string for the current item. <br /></td></tr>
+<tr class="separator:a5b72a171d66d7698e47eb7b35e99256a inherit pub_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classWinNCurses"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classWinNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classWinNCurses.html">WinNCurses</a></td></tr>
+<tr class="memitem:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a76c8f22cb4038348e0d14e2864e8c779"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>WinNCurses</b> (WindowPosition winpos, WindowFormat winformat)</td></tr>
+<tr class="separator:a76c8f22cb4038348e0d14e2864e8c779 inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a60fd7b2ac41ade3f9b9c918455ca9b6f"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">get_input</a> ()</td></tr>
+<tr class="memdesc:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character inputted in the current window. <br /></td></tr>
+<tr class="separator:a60fd7b2ac41ade3f9b9c918455ca9b6f inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4fcaa14d61cf4ce1e660887cd3f2905 inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="ae4fcaa14d61cf4ce1e660887cd3f2905"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905">refresh</a> () const</td></tr>
+<tr class="memdesc:ae4fcaa14d61cf4ce1e660887cd3f2905 inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the display. <br /></td></tr>
+<tr class="separator:ae4fcaa14d61cf4ce1e660887cd3f2905 inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee7f2d0cb1c46e862d7ebec3626af158 inherit pub_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="aee7f2d0cb1c46e862d7ebec3626af158"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#aee7f2d0cb1c46e862d7ebec3626af158">clear</a> () const</td></tr>
+<tr class="memdesc:aee7f2d0cb1c46e862d7ebec3626af158 inherit pub_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the display. <br /></td></tr>
+<tr class="separator:aee7f2d0cb1c46e862d7ebec3626af158 inherit pub_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a11bca07f5e722268eaff0db4335cf803"><td class="memItemLeft" align="right" valign="top"><a id="a11bca07f5e722268eaff0db4335cf803"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
-<tr class="separator:a11bca07f5e722268eaff0db4335cf803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc79cbac9a678448e222dd76e63dcbe2"><td class="memItemLeft" align="right" valign="top"><a id="afc79cbac9a678448e222dd76e63dcbe2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_items</b> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
-<tr class="separator:afc79cbac9a678448e222dd76e63dcbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a290c2914d660723e2a42950dbda64180"><td class="memItemLeft" align="right" valign="top"><a id="a290c2914d660723e2a42950dbda64180"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_cell_index</b> ()</td></tr>
-<tr class="separator:a290c2914d660723e2a42950dbda64180"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa42c0165141f8648a5f7c36d5c3c07dd"><td class="memItemLeft" align="right" valign="top"><a id="aa42c0165141f8648a5f7c36d5c3c07dd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_item_index</b> ()</td></tr>
-<tr class="separator:aa42c0165141f8648a5f7c36d5c3c07dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8beac72e02c02295c00f8760d4d4c622"><td class="memItemLeft" align="right" valign="top"><a id="a8beac72e02c02295c00f8760d4d4c622"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init_menu_window</b> ()</td></tr>
-<tr class="separator:a8beac72e02c02295c00f8760d4d4c622"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a537238a05e772ccbe3bf158359c0512c"><td class="memItemLeft" align="right" valign="top"><a id="a537238a05e772ccbe3bf158359c0512c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy_menu</b> ()</td></tr>
-<tr class="separator:a537238a05e772ccbe3bf158359c0512c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95cc7920239cf13f2b78221fb39b5bd6"><td class="memItemLeft" align="right" valign="top"><a id="a95cc7920239cf13f2b78221fb39b5bd6"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>query_row_input</b> ()</td></tr>
-<tr class="separator:a95cc7920239cf13f2b78221fb39b5bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fc45bcb0914b1bd1420712cb62addbc"><td class="memItemLeft" align="right" valign="top"><a id="a5fc45bcb0914b1bd1420712cb62addbc"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterNcurses.html#a5fc45bcb0914b1bd1420712cb62addbc">items_to_string</a> (const std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt; &amp;items)</td></tr>
+<tr class="memdesc:a5fc45bcb0914b1bd1420712cb62addbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get display strings from the set of items. <br /></td></tr>
+<tr class="separator:a5fc45bcb0914b1bd1420712cb62addbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a4771e2d8b418a54c2d2527b81a4cd467"><td class="memItemLeft" align="right" valign="top"><a id="a4771e2d8b418a54c2d2527b81a4cd467"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>display_line</b></td></tr>
-<tr class="separator:a4771e2d8b418a54c2d2527b81a4cd467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a153ac6854461fba4e0d7700df431bd37"><td class="memItemLeft" align="right" valign="top"><a id="a153ac6854461fba4e0d7700df431bd37"></a>
-WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
-<tr class="separator:a153ac6854461fba4e0d7700df431bd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab68bf5057ca899af338a55d8e6e3ccaa"><td class="memItemLeft" align="right" valign="top"><a id="ab68bf5057ca899af338a55d8e6e3ccaa"></a>
-MENU *&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b></td></tr>
-<tr class="separator:ab68bf5057ca899af338a55d8e6e3ccaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38d950c3a8f45263f218c1c392ceafc8"><td class="memItemLeft" align="right" valign="top"><a id="a38d950c3a8f45263f218c1c392ceafc8"></a>
-std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>held_items</b></td></tr>
+std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterNcurses.html#a38d950c3a8f45263f218c1c392ceafc8">held_items</a></td></tr>
+<tr class="memdesc:a38d950c3a8f45263f218c1c392ceafc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Items stored in the register. <br /></td></tr>
 <tr class="separator:a38d950c3a8f45263f218c1c392ceafc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58a5dc855fc68de48b2c7189427daf15"><td class="memItemLeft" align="right" valign="top"><a id="a58a5dc855fc68de48b2c7189427daf15"></a>
-std::vector&lt; ITEM * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>menu_items</b></td></tr>
-<tr class="separator:a58a5dc855fc68de48b2c7189427daf15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a2b598da815aa1a49623e85fd19fbc950"><td class="memItemLeft" align="right" valign="top"><a id="a2b598da815aa1a49623e85fd19fbc950"></a>
-static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>PAGE_LINES</b> {35}</td></tr>
-<tr class="separator:a2b598da815aa1a49623e85fd19fbc950"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1324e29711232bf19b747d015b0e6f87"><td class="memItemLeft" align="right" valign="top"><a id="a1324e29711232bf19b747d015b0e6f87"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>WIDTH</b> {80}</td></tr>
-<tr class="separator:a1324e29711232bf19b747d015b0e6f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d49eb65a136634a9627c00a17f1087a"><td class="memItemLeft" align="right" valign="top"><a id="a4d49eb65a136634a9627c00a17f1087a"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>ncols</b> {4}</td></tr>
-<tr class="separator:a4d49eb65a136634a9627c00a17f1087a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classMenuNCurses"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classMenuNCurses')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classMenuNCurses.html">MenuNCurses</a></td></tr>
+<tr class="memitem:a4eaad83da7e55422e90bde89bd083d86 inherit pro_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a4eaad83da7e55422e90bde89bd083d86"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a4eaad83da7e55422e90bde89bd083d86">get_item_index</a> () const</td></tr>
+<tr class="memdesc:a4eaad83da7e55422e90bde89bd083d86 inherit pro_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current item index. <br /></td></tr>
+<tr class="separator:a4eaad83da7e55422e90bde89bd083d86 inherit pro_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a765def0bc3ad2b8f595a7d422e6b96da inherit pro_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a765def0bc3ad2b8f595a7d422e6b96da"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a765def0bc3ad2b8f595a7d422e6b96da">get_row_index</a> () const</td></tr>
+<tr class="memdesc:a765def0bc3ad2b8f595a7d422e6b96da inherit pro_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current row index. <br /></td></tr>
+<tr class="separator:a765def0bc3ad2b8f595a7d422e6b96da inherit pro_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09d0ddb1f23caa74a9392edd00584325 inherit pro_methods_classMenuNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a09d0ddb1f23caa74a9392edd00584325"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a09d0ddb1f23caa74a9392edd00584325">get_col_index</a> () const</td></tr>
+<tr class="memdesc:a09d0ddb1f23caa74a9392edd00584325 inherit pro_methods_classMenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current column index. <br /></td></tr>
+<tr class="separator:a09d0ddb1f23caa74a9392edd00584325 inherit pro_methods_classMenuNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classWinNCurses"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classWinNCurses')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classWinNCurses.html">WinNCurses</a></td></tr>
+<tr class="memitem:a69418e712e9fc1d9b96667f0f217dcbd inherit pro_methods_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="a69418e712e9fc1d9b96667f0f217dcbd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWinNCurses.html#a69418e712e9fc1d9b96667f0f217dcbd">destroy_window</a> ()</td></tr>
+<tr class="memdesc:a69418e712e9fc1d9b96667f0f217dcbd inherit pro_methods_classWinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the ncurses window. <br /></td></tr>
+<tr class="separator:a69418e712e9fc1d9b96667f0f217dcbd inherit pro_methods_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classWinNCurses"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classWinNCurses')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classWinNCurses.html">WinNCurses</a></td></tr>
+<tr class="memitem:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memItemLeft" align="right" valign="top"><a id="ae9cded2eec27231f7109938120c48baf"></a>
+WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
+<tr class="separator:ae9cded2eec27231f7109938120c48baf inherit pro_attribs_classWinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structEntry.html" title="Timesheet entry object.">Entry</a> register implementation in ncurses. </p>
-<p>A register is a menu with row item made of several columns. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p>A register is a menu with row items made of several columns. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="register__ncurses_8h_source.html">register_ncurses.h</a></li>
+<li>src/register_ncurses.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

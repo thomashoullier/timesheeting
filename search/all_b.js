@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['page_5flines_86',['PAGE_LINES',['../classColumnNcurses.html#a0eeeb4eb0b836627b3211c78b2061282',1,'ColumnNcurses']]],
-  ['pos_87',['pos',['../classColumnInterfaceBase.html#a90bf99f14b31ed280774754893d697e0',1,'ColumnInterfaceBase']]],
-  ['prepare_5fstatement_88',['prepare_statement',['../classDB__SQLite__Handle.html#a94e62978c620d6a13c5f96de535eda94',1,'DB_SQLite_Handle']]],
-  ['print_89',['print',['../classDateSelectorInterface.html#a0fd68fd0740c7d047e75147e51a5f968',1,'DateSelectorInterface::print()'],['../classDateSelectorNcurses.html#aab6513dd3a899dc3db94c0645e4493ee',1,'DateSelectorNcurses::print()'],['../classStatusBarNCurses.html#a35968a847ddbb4a3209bd0097e510a02',1,'StatusBarNCurses::print()'],['../classStatusBarInterface.html#ade190c7c02971317759145fdadfc5fee',1,'StatusBarInterface::print()']]],
-  ['print_5fwait_90',['print_wait',['../classStatusBarNCurses.html#a178f01c822892031d4e299bd0ccf392d',1,'StatusBarNCurses::print_wait()'],['../classStatusBarInterface.html#a49b866ebc0df62a6a2292b50c1f111b9',1,'StatusBarInterface::print_wait()']]],
-  ['project_91',['Project',['../structProject.html',1,'']]],
-  ['project_5fcol_92',['project_col',['../classProjectTaskTable.html#aae3fdf06d916ce4fdf7cd049889e2fa2',1,'ProjectTaskTable']]],
-  ['project_5ftask_5ftable_2eh_93',['project_task_table.h',['../project__task__table_8h.html',1,'']]],
-  ['projecttasktable_94',['ProjectTaskTable',['../classProjectTaskTable.html',1,'ProjectTaskTable&lt; T_DB, T_ST, T_PROJ, T_TASK, T_LOG, typename &gt;'],['../classProjectTaskTable.html#a56db61ebd5072d6b24a609247dd2ef79',1,'ProjectTaskTable::ProjectTaskTable()']]],
-  ['projecttasktable_3c_20db_5fsqlite_2c_20statusbarncurses_2c_20columnncurses_3c_20project_20_3e_2c_20columnncurses_3c_20task_20_3e_2c_20loggerfile_20_3e_95',['ProjectTaskTable&lt; DB_SQLite, StatusBarNCurses, ColumnNcurses&lt; Project &gt;, ColumnNcurses&lt; Task &gt;, LoggerFile &gt;',['../classProjectTaskTable.html',1,'']]]
+  ['name_93',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem']]],
+  ['namerows_94',['NameRows',['../db__sqlite__handle_8h.html#a1c7d53e92b5b59633e7960e8210525fd',1,'db_sqlite_handle.h']]],
+  ['ncols_95',['ncols',['../classMenuNCurses.html#ad0b4330548624edaf828deea39de9c7c',1,'MenuNCurses']]],
+  ['ncurses_5fhandle_96',['ncurses_handle',['../classUI.html#a150f54f597b90035cb05e7a44222bbe0',1,'UI']]],
+  ['ncurseshandle_97',['NcursesHandle',['../classNcursesHandle.html',1,'NcursesHandle'],['../classNcursesHandle.html#ab431d63cb9979a004d6316ee380a0faa',1,'NcursesHandle::NcursesHandle()']]]
 ];

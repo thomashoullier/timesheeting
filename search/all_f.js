@@ -1,9 +1,25 @@
 var searchData=
 [
-  ['task_132',['Task',['../structTask.html',1,'']]],
-  ['task_5fcol_133',['task_col',['../classProjectTaskTable.html#a811bec85270ca59682209780e686e86f',1,'ProjectTaskTable']]],
-  ['to_5fstring_134',['to_string',['../classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b',1,'Date']]],
-  ['to_5funix_5ftimestamp_135',['to_unix_timestamp',['../classDate.html#a3b121b6e9762e1b77ab6c9fa16265124',1,'Date']]],
-  ['tp_136',['tp',['../classDate.html#a137e31f8095d613175de66c6abc092b8',1,'Date']]],
-  ['try_5fexec_5fstatement_137',['try_exec_statement',['../classDB__SQLite.html#abc4336c4ecb50aadfd039459de83b69a',1,'DB_SQLite']]]
+  ['sanitize_5finput_123',['sanitize_input',['../classProjectTaskTable.html#aeb97a689d9ad20668de9eec07646ca1c',1,'ProjectTaskTable']]],
+  ['select_5fdown_5fitem_124',['select_down_item',['../classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4',1,'MenuNCurses']]],
+  ['select_5fleft_5fitem_125',['select_left_item',['../classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088',1,'MenuNCurses']]],
+  ['select_5fnext_5fday_126',['select_next_day',['../classDateSelectorNcurses.html#a9fca8fbb92052daf8dc1dabeb40bb47d',1,'DateSelectorNcurses']]],
+  ['select_5fnext_5fitem_127',['select_next_item',['../classColumnNcurses.html#a57b98eacc51fe8808ef6a4dd20029ebc',1,'ColumnNcurses::select_next_item()'],['../classColumnInterfaceBase.html#a5e6636fa7568fb42851510d16db9749b',1,'ColumnInterfaceBase::select_next_item()']]],
+  ['select_5fprev_5fitem_128',['select_prev_item',['../classColumnNcurses.html#a37d9d7e0a37449857740c825481b3d93',1,'ColumnNcurses::select_prev_item()'],['../classColumnInterfaceBase.html#ad405fd5fc1615a3d82b39ce8870cac3a',1,'ColumnInterfaceBase::select_prev_item()']]],
+  ['select_5fprevious_5fday_129',['select_previous_day',['../classDateSelectorNcurses.html#a28844e80a74884a2ae387dd505fbb144',1,'DateSelectorNcurses']]],
+  ['select_5fright_5fitem_130',['select_right_item',['../classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570',1,'MenuNCurses']]],
+  ['select_5fup_5fitem_131',['select_up_item',['../classMenuNCurses.html#a9d4c05bf7bcbc7cb1d7423c2932e00cc',1,'MenuNCurses']]],
+  ['set_5fitems_132',['set_items',['../classColumnInterface.html#af133c17f1fceeb155ef191f7bf04b94a',1,'ColumnInterface::set_items()'],['../classColumnNcurses.html#a5d408241359a6a5b55195831f7ec45cc',1,'ColumnNcurses::set_items()'],['../classMenuNCurses.html#a991811fc9e16cd2ffda7d4096381cb23',1,'MenuNCurses::set_items()'],['../classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62',1,'StopwatchNcurses::set_items()']]],
+  ['sqlite_5fdb_133',['sqlite_db',['../classDB__SQLite.html#a8517c381d3af75a79f86b4970437f3ee',1,'DB_SQLite']]],
+  ['sqliteconstraintexcept_134',['SQLiteConstraintExcept',['../classSQLiteConstraintExcept.html',1,'']]],
+  ['start_135',['start',['../classDateRange.html#acb94337dfa6e37837ca274eac3f6bef4',1,'DateRange']]],
+  ['status_136',['status',['../classProjectTaskTable.html#a860729a8db39b1d42a55f2437db2dd4e',1,'ProjectTaskTable']]],
+  ['status_5fbar_137',['status_bar',['../classUI.html#ad235fbe355fe3e61a5232664051947f3',1,'UI']]],
+  ['status_5fbar_5fncurses_2eh_138',['status_bar_ncurses.h',['../status__bar__ncurses_8h.html',1,'']]],
+  ['statusbarncurses_139',['StatusBarNCurses',['../classStatusBarNCurses.html',1,'']]],
+  ['stop_140',['stop',['../classDateRange.html#afee2897b874594a2f6bccb38f6b21cc4',1,'DateRange']]],
+  ['stopwatch_5fset_5fcurrent_5fnow_141',['stopwatch_set_current_now',['../classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114',1,'EntriesTable']]],
+  ['stopwatchncurses_142',['StopwatchNcurses',['../classStopwatchNcurses.html',1,'']]],
+  ['str_143',['str',['../classDate.html#a0687c219b572fba46cb878b617c2f0dc',1,'Date']]],
+  ['subtract_5fone_5fday_144',['subtract_one_day',['../classDate.html#a0313cfcbf563e60a3889e2c1cd6ba076',1,'Date::subtract_one_day()'],['../classDateRange.html#a3539db676dc063a58241bd1f5fb25053',1,'DateRange::subtract_one_day()']]]
 ];

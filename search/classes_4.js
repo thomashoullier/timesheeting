@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['loggerfile_165',['LoggerFile',['../classLoggerFile.html',1,'']]],
-  ['loggerinterface_166',['LoggerInterface',['../classLoggerInterface.html',1,'']]]
+  ['genericitem_179',['GenericItem',['../structGenericItem.html',1,'']]]
 ];

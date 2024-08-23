@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ui_269',['UI',['../classUI.html#a675985a56b5e87ebdc8e5884b9f2ee09',1,'UI']]],
-  ['update_5fproject_5fcol_270',['update_project_col',['../classProjectTaskTable.html#a3364d9c3a19f1b32912c8feea1dd13c8',1,'ProjectTaskTable']]],
-  ['update_5ftask_5fcol_271',['update_task_col',['../classProjectTaskTable.html#a14b3b6bfea8d5475ac670738386434df',1,'ProjectTaskTable']]]
+  ['ui_296',['UI',['../classUI.html#a675985a56b5e87ebdc8e5884b9f2ee09',1,'UI']]],
+  ['update_5fproject_5fcol_297',['update_project_col',['../classProjectTaskTable.html#ad40fcc8ef95a70c1e7ffcfc3a7248731',1,'ProjectTaskTable']]],
+  ['update_5ftask_5fcol_298',['update_task_col',['../classProjectTaskTable.html#a19704a36473b2d5b5c4134b1c6a45982',1,'ProjectTaskTable']]]
 ];

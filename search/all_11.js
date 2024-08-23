@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['width_142',['WIDTH',['../classColumnNcurses.html#a6198a470bfa0479180d16a1bd6a94c99',1,'ColumnNcurses']]],
-  ['win_143',['win',['../classColumnNcurses.html#a9dad7bb72be6a30d7bef50937e82d953',1,'ColumnNcurses::win()'],['../classDateSelectorNcurses.html#aca1b4fd8dd7289ac7bdf8f482d483701',1,'DateSelectorNcurses::win()'],['../classStatusBarNCurses.html#a3b406584bd748e6d1db577717b670731',1,'StatusBarNCurses::win()']]]
+  ['ui_152',['UI',['../classUI.html',1,'UI'],['../classUI.html#a675985a56b5e87ebdc8e5884b9f2ee09',1,'UI::UI()']]],
+  ['uiscreen_153',['UIScreen',['../classUIScreen.html',1,'']]],
+  ['update_5fproject_5fcol_154',['update_project_col',['../classProjectTaskTable.html#ad40fcc8ef95a70c1e7ffcfc3a7248731',1,'ProjectTaskTable']]],
+  ['update_5ftask_5fcol_155',['update_task_col',['../classProjectTaskTable.html#a19704a36473b2d5b5c4134b1c6a45982',1,'ProjectTaskTable']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_7ecolumnncurses_144',['~ColumnNcurses',['../classColumnNcurses.html#a19bc0f687c2e9b904c7ea8c347c628a9',1,'ColumnNcurses']]],
-  ['_7encurseshandle_145',['~NcursesHandle',['../classNcursesHandle.html#a91d5b9dafb6f538aa87c764c504b1cf2',1,'NcursesHandle']]],
-  ['_7eui_146',['~UI',['../classUI.html#a1b23d0c64c7cbb3d143d90ec532a7ccd',1,'UI']]]
+  ['width_156',['WIDTH',['../classColumnNcurses.html#a6198a470bfa0479180d16a1bd6a94c99',1,'ColumnNcurses']]],
+  ['win_157',['win',['../classColumnNcurses.html#a9dad7bb72be6a30d7bef50937e82d953',1,'ColumnNcurses']]],
+  ['winncurses_158',['WinNCurses',['../classWinNCurses.html',1,'']]]
 ];

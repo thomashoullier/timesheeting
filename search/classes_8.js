@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['sqliteconstraintexcept_172',['SQLiteConstraintExcept',['../classSQLiteConstraintExcept.html',1,'']]],
-  ['statusbarinterface_173',['StatusBarInterface',['../classStatusBarInterface.html',1,'']]],
-  ['statusbarncurses_174',['StatusBarNCurses',['../classStatusBarNCurses.html',1,'']]],
-  ['stopwatchncurses_175',['StopwatchNcurses',['../classStopwatchNcurses.html',1,'']]]
+  ['project_185',['Project',['../structProject.html',1,'']]],
+  ['projecttasktable_186',['ProjectTaskTable',['../classProjectTaskTable.html',1,'']]],
+  ['projecttasktable_3c_20db_5fsqlite_2c_20columnncurses_3c_20project_20_3e_2c_20columnncurses_3c_20task_20_3e_2c_20loggerfile_20_3e_187',['ProjectTaskTable&lt; DB_SQLite, ColumnNcurses&lt; Project &gt;, ColumnNcurses&lt; Task &gt;, LoggerFile &gt;',['../classProjectTaskTable.html',1,'']]]
 ];

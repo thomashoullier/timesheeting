@@ -95,23 +95,43 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::string task_name;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classDate.html">Date</a> start;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classDate.html">Date</a> stop;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structEntryStaging.html">   38</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structEntryStaging.html">EntryStaging</a> {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  std::optional&lt;std::string&gt; project_name;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  std::optional&lt;std::string&gt; task_name;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  std::optional&lt;Date&gt; start;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::optional&lt;Date&gt; stop;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">   46</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a> { project_name = 0, task_name = 1, start = 2, stop = 3 };</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DATA_OBJECTS_H</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structEntry.html#add02c0a022eb2ba66e6cea1a0130320e">   37</a></span>&#160;  std::vector&lt;std::string&gt; <a class="code" href="structEntry.html#add02c0a022eb2ba66e6cea1a0130320e">to_strings</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::vector&lt;std::string&gt; display_strings(4);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    display_strings.at(0) = project_name;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    display_strings.at(1) = task_name;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    display_strings.at(2) = start.str;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    display_strings.at(3) = stop.str;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> display_strings;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structEntryStaging.html">   48</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structEntryStaging.html">EntryStaging</a> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  std::optional&lt;std::string&gt; project_name;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  std::optional&lt;std::string&gt; task_name;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  std::optional&lt;Date&gt; start;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::optional&lt;Date&gt; stop;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structEntryStaging.html#a1be08406cdbc55da22bf8be2a6268a78">   56</a></span>&#160;  std::vector&lt;std::string&gt; <a class="code" href="structEntryStaging.html#a1be08406cdbc55da22bf8be2a6268a78">to_strings</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::vector&lt;std::string&gt; display_strings(4);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    display_strings.at(0) = project_name.value_or(<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    display_strings.at(1) = task_name.value_or(<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    display_strings.at(2) = start.has_value() ? start.value().str : <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    display_strings.at(3) = stop.has_value() ? stop.value().str : <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> display_strings;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  };</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">   67</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a> { project_name = 0, task_name = 1, start = 2, stop = 3 };</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DATA_OBJECTS_H</span></div>
 <div class="ttc" id="aclassDate_html"><div class="ttname"><a href="classDate.html">Date</a></div><div class="ttdoc">Date type.</div><div class="ttdef"><b>Definition:</b> date.h:14</div></div>
-<div class="ttc" id="adata__objects_8h_html_a0578a3ec2e36bcf0d94ec723ed6149b5"><div class="ttname"><a href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a></div><div class="ttdeci">EntryField</div><div class="ttdoc">Entry field type (as displayed in the menu).</div><div class="ttdef"><b>Definition:</b> data_objects.h:46</div></div>
+<div class="ttc" id="adata__objects_8h_html_a0578a3ec2e36bcf0d94ec723ed6149b5"><div class="ttname"><a href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a></div><div class="ttdeci">EntryField</div><div class="ttdoc">Entry field type (as displayed in the menu).</div><div class="ttdef"><b>Definition:</b> data_objects.h:67</div></div>
 <div class="ttc" id="adata__objects_8h_html_aeb7ff9cbc21124882bcf962e7dabb6bc"><div class="ttname"><a href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a></div><div class="ttdeci">uint64_t Id</div><div class="ttdoc">Unique id for data items (typically a SQLite rowid).</div><div class="ttdef"><b>Definition:</b> data_objects.h:12</div></div>
-<div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:38</div></div>
+<div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:48</div></div>
+<div class="ttc" id="astructEntryStaging_html_a1be08406cdbc55da22bf8be2a6268a78"><div class="ttname"><a href="structEntryStaging.html#a1be08406cdbc55da22bf8be2a6268a78">EntryStaging::to_strings</a></div><div class="ttdeci">std::vector&lt; std::string &gt; to_strings() const</div><div class="ttdoc">Generate an ordered set of strings for displaying the entrystaging.</div><div class="ttdef"><b>Definition:</b> data_objects.h:56</div></div>
 <div class="ttc" id="astructEntry_html"><div class="ttname"><a href="structEntry.html">Entry</a></div><div class="ttdoc">Timesheet entry object.</div><div class="ttdef"><b>Definition:</b> data_objects.h:29</div></div>
+<div class="ttc" id="astructEntry_html_add02c0a022eb2ba66e6cea1a0130320e"><div class="ttname"><a href="structEntry.html#add02c0a022eb2ba66e6cea1a0130320e">Entry::to_strings</a></div><div class="ttdeci">std::vector&lt; std::string &gt; to_strings() const</div><div class="ttdoc">Generate an ordered set of strings for displaying the entry.</div><div class="ttdef"><b>Definition:</b> data_objects.h:37</div></div>
 <div class="ttc" id="astructGenericItem_html"><div class="ttname"><a href="structGenericItem.html">GenericItem</a></div><div class="ttdoc">A generic item has an Id and a display name.</div><div class="ttdef"><b>Definition:</b> data_objects.h:15</div></div>
 <div class="ttc" id="astructGenericItem_html_a2f417d0fabe992fd739be1422b97b205"><div class="ttname"><a href="structGenericItem.html#a2f417d0fabe992fd739be1422b97b205">GenericItem::id</a></div><div class="ttdeci">Id id</div><div class="ttdoc">Globally unique Id.</div><div class="ttdef"><b>Definition:</b> data_objects.h:17</div></div>
 <div class="ttc" id="astructGenericItem_html_a686d0b214d38028e725e8f5571bb3acf"><div class="ttname"><a href="structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf">GenericItem::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">Name of the item.</div><div class="ttdef"><b>Definition:</b> data_objects.h:19</div></div>
