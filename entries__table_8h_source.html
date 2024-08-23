@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: src/entries_table.h Source File</title>
+<title>timesheeting: src/ui_screens/entries_table.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_34e55e0eb68d60b903860f7098e02d99.html">ui_screens</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -74,14 +74,14 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="data__objects_8h.html">data_objects.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;date.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;date_selector_ncurses.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="db__interface_8h.html">db_interface.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../data_objects/data_objects.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../data_objects/date.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;date_selector/date_selector_ncurses.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../db_interface.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="status__bar__ncurses_8h.html">status_bar/status_bar_ncurses.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;stopwatch_ncurses.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;stopwatch/stopwatch_ncurses.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;ui_screen.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;register_ncurses.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;register/register_ncurses.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T_DB,</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;          <span class="keyword">typename</span> = std::enable_if_t&lt;</div>
@@ -113,221 +113,217 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        reg.<a class="code" href="classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088">select_left_item</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;a&#39;</span>: <span class="comment">// TODO: put this on the stopwatch instead.</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        db-&gt;add_entry(1, <a class="code" href="classDate.html">Date</a>(DatePoint::DayBegin), <a class="code" href="classDate.html">Date</a>(DatePoint::DayEnd));</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        update_register();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;x&#39;</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        remove_item();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;          rename_item();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          update_register();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> &amp;e) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;DB logic error! Nothing was done to the DB.&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;x&#39;</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        remove_item();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;          rename_item();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;          update_register();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> &amp;e) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;DB logic error! Nothing was done to the DB.&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDateParsingFailure.html">DateParsingFailure</a> &amp;e) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;Failed to parse the date. Do nothing.&quot;</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDateParsingFailure.html">DateParsingFailure</a> &amp;e) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;Failed to parse the date. Do nothing.&quot;</span>);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;.&#39;</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a9fca8fbb92052daf8dc1dabeb40bb47d">select_next_day</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        update_register();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">refresh</a>();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;,&#39;</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a28844e80a74884a2ae387dd505fbb144">select_previous_day</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        update_register();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">refresh</a>();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;\t&#39;</span>:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        stopwatch_input_loop();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> ch;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  };</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">char</span> stopwatch_input_loop() {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="keyword">auto</span> ch = stopwatch.<a class="code" href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">get_input</a>();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keywordflow">switch</span> (ch) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        stopwatch.<a class="code" href="classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088">select_left_item</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;i&#39;</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        stopwatch.<a class="code" href="classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570">select_right_item</a>();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;          stopwatch_rename_item();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          update_stopwatch();</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> &amp;e) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;DB logic error! Nothing was done to the DB.&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;.&#39;</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a9fca8fbb92052daf8dc1dabeb40bb47d">select_next_day</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        update_register();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">refresh</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;,&#39;</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a28844e80a74884a2ae387dd505fbb144">select_previous_day</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        update_register();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        date_selector.<a class="code" href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">refresh</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;\t&#39;</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        stopwatch_input_loop();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> ch;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  };</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">char</span> stopwatch_input_loop() {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keyword">auto</span> ch = stopwatch.<a class="code" href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">get_input</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">switch</span> (ch) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        stopwatch.<a class="code" href="classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088">select_left_item</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;i&#39;</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        stopwatch.<a class="code" href="classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570">select_right_item</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;          stopwatch_rename_item();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;          update_stopwatch();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> &amp;e) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;DB logic error! Nothing was done to the DB.&quot;</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDateParsingFailure.html">DateParsingFailure</a> &amp;e) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;Failed to parse the date. Do nothing.&quot;</span>);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDateParsingFailure.html">DateParsingFailure</a> &amp;e) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;Failed to parse the date. Do nothing.&quot;</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39; &#39;</span>:</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">stopwatch_set_current_now</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        update_stopwatch();</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39; &#39;</span>:</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">stopwatch_set_current_now</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        update_stopwatch();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;\n&#39;</span>:</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          db-&gt;commit_entrystaging();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;          <a class="code" href="classDate.html">Date</a> now_start;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;          db-&gt;edit_entrystaging_start(now_start);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;          update_register();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;          update_stopwatch();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> &amp;e) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;DB logic error! Nothing was done to the DB.&quot;</span>);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">return</span> ch;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  };</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">  133</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a> ()<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    reg.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    date_selector.<a class="code" href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">refresh</a>();</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    stopwatch.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  };</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">  139</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    stopwatch.<a class="code" href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">clear</a>();</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    date_selector.<a class="code" href="classDateSelectorNcurses.html#ae741e0e6dd22c2b3dcbd68598a5d9a18">clear</a>();</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    reg.<a class="code" href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">clear</a>();</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  };</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  std::shared_ptr&lt;DB_Interface&gt; db;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  std::shared_ptr&lt;StatusBarNCurses&gt; status;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <a class="code" href="classDateSelectorNcurses.html">DateSelectorNcurses</a> date_selector;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="classRegisterNcurses.html">RegisterNcurses</a> reg;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="classStopwatchNcurses.html">StopwatchNcurses</a> stopwatch;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordtype">void</span> update_register() {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keyword">auto</span> entry_items = db-&gt;query_entries(date_selector.<a class="code" href="classDateSelectorNcurses.html#aca9dfc00274bc9a7bc380afe9a9f2fdb">current_range</a>());</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    reg.set_items(entry_items);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    reg.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  };</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">void</span> update_stopwatch() {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="structEntryStaging.html">EntryStaging</a> entry_staging = db-&gt;query_entrystaging();</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    stopwatch.<a class="code" href="classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62">set_items</a>(entry_staging);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    stopwatch.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  };</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">void</span> rename_item() {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">//TODO: manage the case where the register is empty.</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keyword">auto</span> <span class="keywordtype">id</span> = reg.<a class="code" href="classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82">get_current_id</a>();</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keyword">auto</span> new_str = reg.<a class="code" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a>();</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keyword">auto</span> sanitized_str = sanitize_input(new_str);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keyword">auto</span> field_type = reg.<a class="code" href="classRegisterNcurses.html#a6fba87a75b5ea5146be4c6be30dc73e0">get_field_type</a>();</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">switch</span> (field_type) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">case</span> EntryField::project_name: {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      db-&gt;edit_entry_project(<span class="keywordtype">id</span>, sanitized_str);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">case</span> EntryField::task_name: {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      db-&gt;edit_entry_task(<span class="keywordtype">id</span>, sanitized_str);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordflow">case</span> <span class="charliteral">&#39;\n&#39;</span>:</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;          db-&gt;commit_entrystaging();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;          <a class="code" href="classDate.html">Date</a> now_start;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;          db-&gt;edit_entrystaging_start(now_start);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;          update_register();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          update_stopwatch();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classDBLogicExcept.html">DBLogicExcept</a> &amp;e) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;          status-&gt;print_wait(<span class="stringliteral">&quot;DB logic error! Nothing was done to the DB.&quot;</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;          this-&gt;<a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> ch;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  };</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">  129</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">refresh</a> ()<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    reg.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    date_selector.<a class="code" href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">refresh</a>();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    stopwatch.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  };</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">  135</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">clear</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    stopwatch.<a class="code" href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">clear</a>();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    date_selector.<a class="code" href="classDateSelectorNcurses.html#ae741e0e6dd22c2b3dcbd68598a5d9a18">clear</a>();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    reg.<a class="code" href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">clear</a>();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  };</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  std::shared_ptr&lt;DB_Interface&gt; db;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  std::shared_ptr&lt;StatusBarNCurses&gt; status;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="classDateSelectorNcurses.html">DateSelectorNcurses</a> date_selector;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <a class="code" href="classRegisterNcurses.html">RegisterNcurses</a> reg;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <a class="code" href="classStopwatchNcurses.html">StopwatchNcurses</a> stopwatch;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordtype">void</span> update_register() {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keyword">auto</span> entry_items = db-&gt;query_entries(date_selector.<a class="code" href="classDateSelectorNcurses.html#aca9dfc00274bc9a7bc380afe9a9f2fdb">current_range</a>());</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    reg.set_items(entry_items);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    reg.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  };</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordtype">void</span> update_stopwatch() {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="structEntryStaging.html">EntryStaging</a> entry_staging = db-&gt;query_entrystaging();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    stopwatch.<a class="code" href="classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62">set_items</a>(entry_staging);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    stopwatch.<a class="code" href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">refresh</a>();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">void</span> rename_item() {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="comment">//TODO: manage the case where the register is empty.</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">auto</span> <span class="keywordtype">id</span> = reg.<a class="code" href="classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82">get_current_id</a>();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keyword">auto</span> new_str = reg.<a class="code" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a>();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">auto</span> sanitized_str = sanitize_input(new_str);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keyword">auto</span> field_type = reg.<a class="code" href="classRegisterNcurses.html#a6fba87a75b5ea5146be4c6be30dc73e0">get_field_type</a>();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">switch</span> (field_type) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">case</span> EntryField::project_name: {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      db-&gt;edit_entry_project(<span class="keywordtype">id</span>, sanitized_str);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">case</span> EntryField::task_name: {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      db-&gt;edit_entry_task(<span class="keywordtype">id</span>, sanitized_str);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <a class="code" href="classDate.html">Date</a> new_start_date(sanitized_str);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      db-&gt;edit_entry_start(<span class="keywordtype">id</span>, new_start_date);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <a class="code" href="classDate.html">Date</a> new_start_date(sanitized_str);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      db-&gt;edit_entry_start(<span class="keywordtype">id</span>, new_start_date);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <a class="code" href="classDate.html">Date</a> new_stop_date(sanitized_str);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      db-&gt;edit_entry_stop(<span class="keywordtype">id</span>, new_stop_date);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <a class="code" href="classDate.html">Date</a> new_stop_date(sanitized_str);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      db-&gt;edit_entry_stop(<span class="keywordtype">id</span>, new_stop_date);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordflow">throw</span> std::logic_error(</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;          <span class="stringliteral">&quot;Don&#39;t know what to do for renaming this unknown field type&quot;</span>);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  };</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keywordtype">void</span> stopwatch_rename_item() {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keyword">auto</span> new_str = stopwatch.<a class="code" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a>();</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keyword">auto</span> sanitized_str = sanitize_input(new_str);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keyword">auto</span> field_type = stopwatch.<a class="code" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">get_field_type</a>();</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">switch</span> (field_type) {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">case</span> EntryField::project_name:</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      db-&gt;edit_entrystaging_project_name(sanitized_str);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">case</span> EntryField::task_name:</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      db-&gt;edit_entrystaging_task_name(sanitized_str);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      <a class="code" href="classDate.html">Date</a> new_start_date(sanitized_str);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      db-&gt;edit_entrystaging_start(new_start_date);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="keywordflow">throw</span> std::logic_error(</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;          <span class="stringliteral">&quot;Don&#39;t know what to do for renaming this unknown field type&quot;</span>);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  };</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="keywordtype">void</span> stopwatch_rename_item() {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">auto</span> new_str = stopwatch.<a class="code" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a>();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">auto</span> sanitized_str = sanitize_input(new_str);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keyword">auto</span> field_type = stopwatch.<a class="code" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">get_field_type</a>();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">switch</span> (field_type) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">case</span> EntryField::project_name:</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      db-&gt;edit_entrystaging_project_name(sanitized_str);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">case</span> EntryField::task_name:</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      db-&gt;edit_entrystaging_task_name(sanitized_str);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      <a class="code" href="classDate.html">Date</a> new_start_date(sanitized_str);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      db-&gt;edit_entrystaging_start(new_start_date);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      <a class="code" href="classDate.html">Date</a> new_stop_date(sanitized_str);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      db-&gt;edit_entrystaging_stop(new_stop_date);</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      <a class="code" href="classDate.html">Date</a> new_stop_date(sanitized_str);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      db-&gt;edit_entrystaging_stop(new_stop_date);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Don&#39;t know what to do for renaming this unknown &quot;</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                             <span class="stringliteral">&quot;field type&quot;</span>);</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  };</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">  218</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">stopwatch_set_current_now</a> () {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keyword">auto</span> field_type = stopwatch.<a class="code" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">get_field_type</a>();</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">switch</span>(field_type) {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      <a class="code" href="classDate.html">Date</a> now_start;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      db-&gt;edit_entrystaging_start(now_start);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Don&#39;t know what to do for renaming this unknown &quot;</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                             <span class="stringliteral">&quot;field type&quot;</span>);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  };</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">  214</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">stopwatch_set_current_now</a> () {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keyword">auto</span> field_type = stopwatch.<a class="code" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">get_field_type</a>();</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">switch</span>(field_type) {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      <a class="code" href="classDate.html">Date</a> now_start;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      db-&gt;edit_entrystaging_start(now_start);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      <a class="code" href="classDate.html">Date</a> now_stop;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      db-&gt;edit_entrystaging_stop(now_stop);</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      <a class="code" href="classDate.html">Date</a> now_stop;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      db-&gt;edit_entrystaging_stop(now_stop);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  };</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordtype">void</span> remove_item() {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordtype">bool</span> user_conf = status-&gt;query_confirmation(<span class="stringliteral">&quot;Remove entry? (Y/N)&quot;</span>);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">if</span> (!user_conf) {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keyword">auto</span> <span class="keywordtype">id</span> = reg.<a class="code" href="classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82">get_current_id</a>();</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    db-&gt;delete_entry(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    update_register();</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  };</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  std::string sanitize_input(std::string input) {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keyword">auto</span> s = input;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">// left trim</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    s.erase(s.begin(),</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            std::find_if(s.begin(), s.end(),</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  };</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordtype">void</span> remove_item() {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">bool</span> user_conf = status-&gt;query_confirmation(<span class="stringliteral">&quot;Remove entry? (Y/N)&quot;</span>);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">if</span> (!user_conf) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keyword">auto</span> <span class="keywordtype">id</span> = reg.<a class="code" href="classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82">get_current_id</a>();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    db-&gt;delete_entry(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    update_register();</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  };</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  std::string sanitize_input(std::string input) {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keyword">auto</span> s = input;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">// left trim</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    s.erase(s.begin(),</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            std::find_if(s.begin(), s.end(),</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                         [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ch) {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                           return !std::isspace(ch);}));</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// right trim</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    s.erase(std::find_if(s.rbegin(), s.rend(),</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                         [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ch) {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                           return !std::isspace(ch);}));</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="comment">// right trim</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    s.erase(std::find_if(s.rbegin(), s.rend(),</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                         [](<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ch) {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                           return !std::isspace(ch);}).base(), s.end());</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">return</span> s;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  };</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;};</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ENTRIES_TABLE_H</span></div>
-<div class="ttc" id="aclassDBLogicExcept_html"><div class="ttname"><a href="classDBLogicExcept.html">DBLogicExcept</a></div><div class="ttdoc">Exception thrown when the DB encounters a logic error.</div><div class="ttdef"><b>Definition:</b> db_interface.h:71</div></div>
-<div class="ttc" id="aclassDateParsingFailure_html"><div class="ttname"><a href="classDateParsingFailure.html">DateParsingFailure</a></div><div class="ttdef"><b>Definition:</b> date.h:51</div></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                           return !std::isspace(ch);}).base(), s.end());</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  };</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;};</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ENTRIES_TABLE_H</span></div>
+<div class="ttc" id="aclassDBLogicExcept_html"><div class="ttname"><a href="classDBLogicExcept.html">DBLogicExcept</a></div><div class="ttdoc">Exception thrown when the DB encounters a logic error.</div><div class="ttdef"><b>Definition:</b> db_interface.h:70</div></div>
+<div class="ttc" id="aclassDateParsingFailure_html"><div class="ttname"><a href="classDateParsingFailure.html">DateParsingFailure</a></div><div class="ttdef"><b>Definition:</b> date.h:47</div></div>
 <div class="ttc" id="aclassDateSelectorNcurses_html"><div class="ttname"><a href="classDateSelectorNcurses.html">DateSelectorNcurses</a></div><div class="ttdef"><b>Definition:</b> date_selector_ncurses.h:7</div></div>
 <div class="ttc" id="aclassDateSelectorNcurses_html_a27fc0708191e5a572ab6c3d449424298"><div class="ttname"><a href="classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298">DateSelectorNcurses::refresh</a></div><div class="ttdeci">void refresh() const</div><div class="ttdoc">Refresh the display.</div><div class="ttdef"><b>Definition:</b> date_selector_ncurses.cpp:7</div></div>
 <div class="ttc" id="aclassDateSelectorNcurses_html_a28844e80a74884a2ae387dd505fbb144"><div class="ttname"><a href="classDateSelectorNcurses.html#a28844e80a74884a2ae387dd505fbb144">DateSelectorNcurses::select_previous_day</a></div><div class="ttdeci">void select_previous_day()</div><div class="ttdoc">Select the previous day.</div><div class="ttdef"><b>Definition:</b> date_selector_ncurses.cpp:17</div></div>
@@ -336,18 +332,18 @@ $(function() {
 <div class="ttc" id="aclassDateSelectorNcurses_html_ae741e0e6dd22c2b3dcbd68598a5d9a18"><div class="ttname"><a href="classDateSelectorNcurses.html#ae741e0e6dd22c2b3dcbd68598a5d9a18">DateSelectorNcurses::clear</a></div><div class="ttdeci">void clear() const</div><div class="ttdoc">Clear the display.</div><div class="ttdef"><b>Definition:</b> date_selector_ncurses.cpp:11</div></div>
 <div class="ttc" id="aclassDate_html"><div class="ttname"><a href="classDate.html">Date</a></div><div class="ttdoc">Date type.</div><div class="ttdef"><b>Definition:</b> date.h:14</div></div>
 <div class="ttc" id="aclassEntriesTable_html"><div class="ttname"><a href="classEntriesTable.html">EntriesTable</a></div><div class="ttdoc">Class for holding the table of entries for a given day.</div><div class="ttdef"><b>Definition:</b> entries_table.h:19</div></div>
-<div class="ttc" id="aclassEntriesTable_html_a02be039c3313d4922a4ad5ca8b15d114"><div class="ttname"><a href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">EntriesTable::stopwatch_set_current_now</a></div><div class="ttdeci">void stopwatch_set_current_now()</div><div class="ttdef"><b>Definition:</b> entries_table.h:218</div></div>
-<div class="ttc" id="aclassEntriesTable_html_a08150c45e39601738a6de856f4e5d4aa"><div class="ttname"><a href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">EntriesTable::clear</a></div><div class="ttdeci">void clear() override</div><div class="ttdoc">Clear the screen from the display.</div><div class="ttdef"><b>Definition:</b> entries_table.h:139</div></div>
+<div class="ttc" id="aclassEntriesTable_html_a02be039c3313d4922a4ad5ca8b15d114"><div class="ttname"><a href="classEntriesTable.html#a02be039c3313d4922a4ad5ca8b15d114">EntriesTable::stopwatch_set_current_now</a></div><div class="ttdeci">void stopwatch_set_current_now()</div><div class="ttdef"><b>Definition:</b> entries_table.h:214</div></div>
+<div class="ttc" id="aclassEntriesTable_html_a08150c45e39601738a6de856f4e5d4aa"><div class="ttname"><a href="classEntriesTable.html#a08150c45e39601738a6de856f4e5d4aa">EntriesTable::clear</a></div><div class="ttdeci">void clear() override</div><div class="ttdoc">Clear the screen from the display.</div><div class="ttdef"><b>Definition:</b> entries_table.h:135</div></div>
 <div class="ttc" id="aclassEntriesTable_html_a84d69e16c2fcc93895da015944fb66b3"><div class="ttname"><a href="classEntriesTable.html#a84d69e16c2fcc93895da015944fb66b3">EntriesTable::input_loop</a></div><div class="ttdeci">char input_loop() override</div><div class="ttdoc">UI input loop for the screen.</div><div class="ttdef"><b>Definition:</b> entries_table.h:29</div></div>
-<div class="ttc" id="aclassEntriesTable_html_aa8e027c414e70fac000529375901159b"><div class="ttname"><a href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">EntriesTable::refresh</a></div><div class="ttdeci">void refresh() override</div><div class="ttdoc">Update the screen information and display it.</div><div class="ttdef"><b>Definition:</b> entries_table.h:133</div></div>
-<div class="ttc" id="aclassMenuNCurses_html_a5b72a171d66d7698e47eb7b35e99256a"><div class="ttname"><a href="classMenuNCurses.html#a5b72a171d66d7698e47eb7b35e99256a">MenuNCurses::get_current_item_string</a></div><div class="ttdeci">std::string get_current_item_string() const</div><div class="ttdoc">Get the full display string for the current item.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:73</div></div>
-<div class="ttc" id="aclassMenuNCurses_html_a8f4786be5d06e885643fd0589bd25570"><div class="ttname"><a href="classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570">MenuNCurses::select_right_item</a></div><div class="ttdeci">void select_right_item()</div><div class="ttdoc">Select the item right of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:55</div></div>
-<div class="ttc" id="aclassMenuNCurses_html_a9972d2f49fd0e934fb6d875a7760d088"><div class="ttname"><a href="classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088">MenuNCurses::select_left_item</a></div><div class="ttdeci">void select_left_item()</div><div class="ttdoc">Select the item left of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:56</div></div>
-<div class="ttc" id="aclassMenuNCurses_html_a9be6e8d21329760c6c49672feb8df683"><div class="ttname"><a href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">MenuNCurses::refresh</a></div><div class="ttdeci">void refresh()</div><div class="ttdoc">Refresh the display.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:58</div></div>
-<div class="ttc" id="aclassMenuNCurses_html_a9d4c05bf7bcbc7cb1d7423c2932e00cc"><div class="ttname"><a href="classMenuNCurses.html#a9d4c05bf7bcbc7cb1d7423c2932e00cc">MenuNCurses::select_up_item</a></div><div class="ttdeci">void select_up_item()</div><div class="ttdoc">Select the item up of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:54</div></div>
-<div class="ttc" id="aclassMenuNCurses_html_aa178927a57b741a40c482289bd547bc4"><div class="ttname"><a href="classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4">MenuNCurses::select_down_item</a></div><div class="ttdeci">void select_down_item()</div><div class="ttdoc">Select the item down of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:53</div></div>
+<div class="ttc" id="aclassEntriesTable_html_aa8e027c414e70fac000529375901159b"><div class="ttname"><a href="classEntriesTable.html#aa8e027c414e70fac000529375901159b">EntriesTable::refresh</a></div><div class="ttdeci">void refresh() override</div><div class="ttdoc">Update the screen information and display it.</div><div class="ttdef"><b>Definition:</b> entries_table.h:129</div></div>
+<div class="ttc" id="aclassMenuNCurses_html_a5b72a171d66d7698e47eb7b35e99256a"><div class="ttname"><a href="classMenuNCurses.html#a5b72a171d66d7698e47eb7b35e99256a">MenuNCurses::get_current_item_string</a></div><div class="ttdeci">std::string get_current_item_string() const</div><div class="ttdoc">Get the full display string for the current item.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:43</div></div>
+<div class="ttc" id="aclassMenuNCurses_html_a8f4786be5d06e885643fd0589bd25570"><div class="ttname"><a href="classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570">MenuNCurses::select_right_item</a></div><div class="ttdeci">void select_right_item()</div><div class="ttdoc">Select the item right of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:25</div></div>
+<div class="ttc" id="aclassMenuNCurses_html_a9972d2f49fd0e934fb6d875a7760d088"><div class="ttname"><a href="classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088">MenuNCurses::select_left_item</a></div><div class="ttdeci">void select_left_item()</div><div class="ttdoc">Select the item left of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:26</div></div>
+<div class="ttc" id="aclassMenuNCurses_html_a9be6e8d21329760c6c49672feb8df683"><div class="ttname"><a href="classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683">MenuNCurses::refresh</a></div><div class="ttdeci">void refresh()</div><div class="ttdoc">Refresh the display.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:28</div></div>
+<div class="ttc" id="aclassMenuNCurses_html_a9d4c05bf7bcbc7cb1d7423c2932e00cc"><div class="ttname"><a href="classMenuNCurses.html#a9d4c05bf7bcbc7cb1d7423c2932e00cc">MenuNCurses::select_up_item</a></div><div class="ttdeci">void select_up_item()</div><div class="ttdoc">Select the item up of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:24</div></div>
+<div class="ttc" id="aclassMenuNCurses_html_aa178927a57b741a40c482289bd547bc4"><div class="ttname"><a href="classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4">MenuNCurses::select_down_item</a></div><div class="ttdeci">void select_down_item()</div><div class="ttdoc">Select the item down of the current one.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:23</div></div>
 <div class="ttc" id="aclassMenuNCurses_html_aa2a8a48c342f0ea116f3581cd0986260"><div class="ttname"><a href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">MenuNCurses::query_current_item_rename</a></div><div class="ttdeci">std::string query_current_item_rename()</div><div class="ttdoc">Query a new string for the currently selected item.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:15</div></div>
-<div class="ttc" id="aclassMenuNCurses_html_aa3faebacc29327aad5146472527ac37e"><div class="ttname"><a href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">MenuNCurses::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear the display.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:63</div></div>
+<div class="ttc" id="aclassMenuNCurses_html_aa3faebacc29327aad5146472527ac37e"><div class="ttname"><a href="classMenuNCurses.html#aa3faebacc29327aad5146472527ac37e">MenuNCurses::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear the display.</div><div class="ttdef"><b>Definition:</b> menu_ncurses.cpp:33</div></div>
 <div class="ttc" id="aclassRegisterNcurses_html"><div class="ttname"><a href="classRegisterNcurses.html">RegisterNcurses</a></div><div class="ttdoc">Entry register implementation in ncurses.</div><div class="ttdef"><b>Definition:</b> register_ncurses.h:12</div></div>
 <div class="ttc" id="aclassRegisterNcurses_html_a6ddd8915e66719efeec1db6d23b06d82"><div class="ttname"><a href="classRegisterNcurses.html#a6ddd8915e66719efeec1db6d23b06d82">RegisterNcurses::get_current_id</a></div><div class="ttdeci">Id get_current_id()</div><div class="ttdoc">Get the Id of the currently selected item.</div><div class="ttdef"><b>Definition:</b> register_ncurses.cpp:13</div></div>
 <div class="ttc" id="aclassRegisterNcurses_html_a6fba87a75b5ea5146be4c6be30dc73e0"><div class="ttname"><a href="classRegisterNcurses.html#a6fba87a75b5ea5146be4c6be30dc73e0">RegisterNcurses::get_field_type</a></div><div class="ttdeci">EntryField get_field_type()</div><div class="ttdoc">Get the type of the currently selected column.</div><div class="ttdef"><b>Definition:</b> register_ncurses.cpp:21</div></div>
@@ -355,9 +351,7 @@ $(function() {
 <div class="ttc" id="aclassStopwatchNcurses_html_a0fcb0018dafe72aa317eb1c933f84a52"><div class="ttname"><a href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">StopwatchNcurses::get_field_type</a></div><div class="ttdeci">EntryField get_field_type()</div><div class="ttdoc">Get the field type for the currently selected field.</div><div class="ttdef"><b>Definition:</b> stopwatch_ncurses.cpp:8</div></div>
 <div class="ttc" id="aclassStopwatchNcurses_html_a55c6f08bc3a4119f90f0c6da09f61c62"><div class="ttname"><a href="classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62">StopwatchNcurses::set_items</a></div><div class="ttdeci">void set_items(const EntryStaging &amp;item)</div><div class="ttdoc">Set the current entrystaging item.</div><div class="ttdef"><b>Definition:</b> stopwatch_ncurses.cpp:12</div></div>
 <div class="ttc" id="aclassUIScreen_html"><div class="ttname"><a href="classUIScreen.html">UIScreen</a></div><div class="ttdoc">Interface for a UI screen.</div><div class="ttdef"><b>Definition:</b> ui_screen.h:5</div></div>
-<div class="ttc" id="aclassWinNCurses_html_a60fd7b2ac41ade3f9b9c918455ca9b6f"><div class="ttname"><a href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">WinNCurses::get_input</a></div><div class="ttdeci">char get_input()</div><div class="ttdoc">Get a character inputted in the current window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:10</div></div>
-<div class="ttc" id="adata__objects_8h_html"><div class="ttname"><a href="data__objects_8h.html">data_objects.h</a></div><div class="ttdoc">Shared definition of data objects in the program.</div></div>
-<div class="ttc" id="adb__interface_8h_html"><div class="ttname"><a href="db__interface_8h.html">db_interface.h</a></div><div class="ttdoc">DB virtual interface definition.</div></div>
+<div class="ttc" id="aclassWinNCurses_html_a60fd7b2ac41ade3f9b9c918455ca9b6f"><div class="ttname"><a href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">WinNCurses::get_input</a></div><div class="ttdeci">char get_input()</div><div class="ttdoc">Get a character inputted in the current window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:9</div></div>
 <div class="ttc" id="astatus__bar__ncurses_8h_html"><div class="ttname"><a href="status__bar__ncurses_8h.html">status_bar_ncurses.h</a></div><div class="ttdoc">Status bar interface implementation using ncurses.</div></div>
 <div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:48</div></div>
 </div><!-- fragment --></div><!-- contents -->

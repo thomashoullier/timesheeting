@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: src/status_bar/status_bar_ncurses.h Source File</title>
+<title>timesheeting: src/ui_screens/status_bar/status_bar_ncurses.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aa983340ef3e9ad34b12cc82d5df7b1c.html">status_bar</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_34e55e0eb68d60b903860f7098e02d99.html">ui_screens</a></li><li class="navelem"><a class="el" href="dir_588d1d5528a75321b3274a95f7cb0d4f.html">status_bar</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,7 +73,7 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef STATUS_BAR_NCURSES_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define STATUS_BAR_NCURSES_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../bar_ncurses.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../ncurses/bar_ncurses.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classStatusBarNCurses.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classStatusBarNCurses.html">StatusBarNCurses</a> : <span class="keyword">public</span> <a class="code" href="classBarNCurses.html">BarNCurses</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
@@ -87,9 +87,9 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// STATUS_BAR_NCURSES_H</span></div>
 <div class="ttc" id="aclassBarNCurses_html"><div class="ttname"><a href="classBarNCurses.html">BarNCurses</a></div><div class="ttdoc">A bar is a window with a single line, which can print strings.</div><div class="ttdef"><b>Definition:</b> bar_ncurses.h:8</div></div>
 <div class="ttc" id="aclassStatusBarNCurses_html"><div class="ttname"><a href="classStatusBarNCurses.html">StatusBarNCurses</a></div><div class="ttdoc">Status bar implementation using ncurses.</div><div class="ttdef"><b>Definition:</b> status_bar_ncurses.h:9</div></div>
-<div class="ttc" id="aclassStatusBarNCurses_html_a8326c4fa0134f44510325ef8613ad31d"><div class="ttname"><a href="classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d">StatusBarNCurses::query_confirmation</a></div><div class="ttdeci">bool query_confirmation(const std::string &amp;msg)</div><div class="ttdoc">Ask for confirmation.</div><div class="ttdef"><b>Definition:</b> status_bar_ncurses.cpp:14</div></div>
-<div class="ttc" id="aclassStatusBarNCurses_html_a923297a6713a78610d55df0006a3bbf4"><div class="ttname"><a href="classStatusBarNCurses.html#a923297a6713a78610d55df0006a3bbf4">StatusBarNCurses::print</a></div><div class="ttdeci">void print(const std::string &amp;msg)</div><div class="ttdoc">Print the message in the status bar.</div><div class="ttdef"><b>Definition:</b> status_bar_ncurses.cpp:7</div></div>
-<div class="ttc" id="aclassStatusBarNCurses_html_aa1bb31e0eeba417c9fa84945e55ef7f7"><div class="ttname"><a href="classStatusBarNCurses.html#aa1bb31e0eeba417c9fa84945e55ef7f7">StatusBarNCurses::print_wait</a></div><div class="ttdeci">void print_wait(const std::string &amp;msg)</div><div class="ttdoc">Print the message in the status bar, and then pause until user input.</div><div class="ttdef"><b>Definition:</b> status_bar_ncurses.cpp:9</div></div>
+<div class="ttc" id="aclassStatusBarNCurses_html_a8326c4fa0134f44510325ef8613ad31d"><div class="ttname"><a href="classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d">StatusBarNCurses::query_confirmation</a></div><div class="ttdeci">bool query_confirmation(const std::string &amp;msg)</div><div class="ttdoc">Ask for confirmation.</div><div class="ttdef"><b>Definition:</b> status_bar_ncurses.cpp:13</div></div>
+<div class="ttc" id="aclassStatusBarNCurses_html_a923297a6713a78610d55df0006a3bbf4"><div class="ttname"><a href="classStatusBarNCurses.html#a923297a6713a78610d55df0006a3bbf4">StatusBarNCurses::print</a></div><div class="ttdeci">void print(const std::string &amp;msg)</div><div class="ttdoc">Print the message in the status bar.</div><div class="ttdef"><b>Definition:</b> status_bar_ncurses.cpp:6</div></div>
+<div class="ttc" id="aclassStatusBarNCurses_html_aa1bb31e0eeba417c9fa84945e55ef7f7"><div class="ttname"><a href="classStatusBarNCurses.html#aa1bb31e0eeba417c9fa84945e55ef7f7">StatusBarNCurses::print_wait</a></div><div class="ttdeci">void print_wait(const std::string &amp;msg)</div><div class="ttdoc">Print the message in the status bar, and then pause until user input.</div><div class="ttdef"><b>Definition:</b> status_bar_ncurses.cpp:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

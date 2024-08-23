@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt; Class Template Reference</title>
+<title>timesheeting: ProjectTaskTable&lt; T_DB, T_LOG, typename &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,7 +67,7 @@ $(function() {
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classProjectTaskTable-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt; Class Template Reference</div>  </div>
+<div class="title">ProjectTaskTable&lt; T_DB, T_LOG, typename &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -76,91 +76,91 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="project__task__table_8h_source.html">project_task_table.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;:</div>
+Inheritance diagram for ProjectTaskTable&lt; T_DB, T_LOG, typename &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classProjectTaskTable.png" usemap="#ProjectTaskTable_3C_20T_5FDB_2C_20T_5FPROJ_2C_20T_5FTASK_2C_20T_5FLOG_2C_20typename_20_3E_map" alt=""/>
-  <map id="ProjectTaskTable_3C_20T_5FDB_2C_20T_5FPROJ_2C_20T_5FTASK_2C_20T_5FLOG_2C_20typename_20_3E_map" name="ProjectTaskTable_3C_20T_5FDB_2C_20T_5FPROJ_2C_20T_5FTASK_2C_20T_5FLOG_2C_20typename_20_3E_map">
-<area href="classUIScreen.html" title="Interface for a UI screen." alt="UIScreen" shape="rect" coords="0,0,387,24"/>
+  <img src="classProjectTaskTable.png" usemap="#ProjectTaskTable_3C_20T_5FDB_2C_20T_5FLOG_2C_20typename_20_3E_map" alt=""/>
+  <map id="ProjectTaskTable_3C_20T_5FDB_2C_20T_5FLOG_2C_20typename_20_3E_map" name="ProjectTaskTable_3C_20T_5FDB_2C_20T_5FLOG_2C_20typename_20_3E_map">
+<area href="classUIScreen.html" title="Interface for a UI screen." alt="UIScreen" shape="rect" coords="0,0,276,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5536cb4de54b1de98d14725e147c8206"><td class="memItemLeft" align="right" valign="top"><a id="a5536cb4de54b1de98d14725e147c8206"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a5536cb4de54b1de98d14725e147c8206">ProjectTaskTable</a> (std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt; _status)</td></tr>
-<tr class="memdesc:a5536cb4de54b1de98d14725e147c8206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table constructor. <br /></td></tr>
-<tr class="separator:a5536cb4de54b1de98d14725e147c8206"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd345b335590713bdfe537c2578aaafe"><td class="memItemLeft" align="right" valign="top"><a id="acd345b335590713bdfe537c2578aaafe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#acd345b335590713bdfe537c2578aaafe">refresh</a> () override</td></tr>
-<tr class="memdesc:acd345b335590713bdfe537c2578aaafe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the screen information and display it. <br /></td></tr>
-<tr class="separator:acd345b335590713bdfe537c2578aaafe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b0cf1a84f281b443d52abb4d5b85dd7"><td class="memItemLeft" align="right" valign="top"><a id="a9b0cf1a84f281b443d52abb4d5b85dd7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a9b0cf1a84f281b443d52abb4d5b85dd7">clear</a> () override</td></tr>
-<tr class="memdesc:a9b0cf1a84f281b443d52abb4d5b85dd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the screen from the display. <br /></td></tr>
-<tr class="separator:a9b0cf1a84f281b443d52abb4d5b85dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ad100e2224c9d979b5acea3ee4e92b9"><td class="memItemLeft" align="right" valign="top"><a id="a9ad100e2224c9d979b5acea3ee4e92b9"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a9ad100e2224c9d979b5acea3ee4e92b9">input_loop</a> () override</td></tr>
-<tr class="memdesc:a9ad100e2224c9d979b5acea3ee4e92b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query an user input, treat it or return it. <br /></td></tr>
-<tr class="separator:a9ad100e2224c9d979b5acea3ee4e92b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36cf1a69e55c1c6d88fa5d053143fe4c"><td class="memItemLeft" align="right" valign="top"><a id="a36cf1a69e55c1c6d88fa5d053143fe4c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a36cf1a69e55c1c6d88fa5d053143fe4c">ProjectTaskTable</a> (std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt; _status)</td></tr>
+<tr class="memdesc:a36cf1a69e55c1c6d88fa5d053143fe4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table constructor. <br /></td></tr>
+<tr class="separator:a36cf1a69e55c1c6d88fa5d053143fe4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc6836dee0665d9c2f86b83dea09fe91"><td class="memItemLeft" align="right" valign="top"><a id="abc6836dee0665d9c2f86b83dea09fe91"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#abc6836dee0665d9c2f86b83dea09fe91">refresh</a> () override</td></tr>
+<tr class="memdesc:abc6836dee0665d9c2f86b83dea09fe91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the screen information and display it. <br /></td></tr>
+<tr class="separator:abc6836dee0665d9c2f86b83dea09fe91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11296f6bd0d849a826c1e8a19f3483dc"><td class="memItemLeft" align="right" valign="top"><a id="a11296f6bd0d849a826c1e8a19f3483dc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a11296f6bd0d849a826c1e8a19f3483dc">clear</a> () override</td></tr>
+<tr class="memdesc:a11296f6bd0d849a826c1e8a19f3483dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the screen from the display. <br /></td></tr>
+<tr class="separator:a11296f6bd0d849a826c1e8a19f3483dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae582f263a1c3262804de1e37124354db"><td class="memItemLeft" align="right" valign="top"><a id="ae582f263a1c3262804de1e37124354db"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#ae582f263a1c3262804de1e37124354db">input_loop</a> () override</td></tr>
+<tr class="memdesc:ae582f263a1c3262804de1e37124354db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query an user input, treat it or return it. <br /></td></tr>
+<tr class="separator:ae582f263a1c3262804de1e37124354db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a19704a36473b2d5b5c4134b1c6a45982"><td class="memItemLeft" align="right" valign="top"><a id="a19704a36473b2d5b5c4134b1c6a45982"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a19704a36473b2d5b5c4134b1c6a45982">update_task_col</a> ()</td></tr>
-<tr class="memdesc:a19704a36473b2d5b5c4134b1c6a45982"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the tasks column. <br /></td></tr>
-<tr class="separator:a19704a36473b2d5b5c4134b1c6a45982"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad40fcc8ef95a70c1e7ffcfc3a7248731"><td class="memItemLeft" align="right" valign="top"><a id="ad40fcc8ef95a70c1e7ffcfc3a7248731"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#ad40fcc8ef95a70c1e7ffcfc3a7248731">update_project_col</a> ()</td></tr>
-<tr class="memdesc:ad40fcc8ef95a70c1e7ffcfc3a7248731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the project column. <br /></td></tr>
-<tr class="separator:ad40fcc8ef95a70c1e7ffcfc3a7248731"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb97a689d9ad20668de9eec07646ca1c"><td class="memItemLeft" align="right" valign="top"><a id="aeb97a689d9ad20668de9eec07646ca1c"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#aeb97a689d9ad20668de9eec07646ca1c">sanitize_input</a> (std::string input)</td></tr>
-<tr class="memdesc:aeb97a689d9ad20668de9eec07646ca1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sanitize the queried user input strings. <br /></td></tr>
-<tr class="separator:aeb97a689d9ad20668de9eec07646ca1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e7d83b591b70bc978fab815d680bc1b"><td class="memItemLeft" align="right" valign="top"><a id="a7e7d83b591b70bc978fab815d680bc1b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a7e7d83b591b70bc978fab815d680bc1b">add_item</a> (<a class="el" href="classColumnInterfaceBase.html">ColumnInterfaceBase</a> *cur_col)</td></tr>
-<tr class="memdesc:a7e7d83b591b70bc978fab815d680bc1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an item (project or task). <br /></td></tr>
-<tr class="separator:a7e7d83b591b70bc978fab815d680bc1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f3bec92a40c89faf75f2b8a77c28ddc"><td class="memItemLeft" align="right" valign="top"><a id="a8f3bec92a40c89faf75f2b8a77c28ddc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a8f3bec92a40c89faf75f2b8a77c28ddc">rename_item</a> (<a class="el" href="classColumnInterfaceBase.html">ColumnInterfaceBase</a> *cur_col)</td></tr>
-<tr class="memdesc:a8f3bec92a40c89faf75f2b8a77c28ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an item. <br /></td></tr>
-<tr class="separator:a8f3bec92a40c89faf75f2b8a77c28ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a925a6620afaeb8478f21ff03b7e528af"><td class="memItemLeft" align="right" valign="top"><a id="a925a6620afaeb8478f21ff03b7e528af"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a925a6620afaeb8478f21ff03b7e528af">remove_item</a> (<a class="el" href="classColumnInterfaceBase.html">ColumnInterfaceBase</a> *cur_col)</td></tr>
-<tr class="memdesc:a925a6620afaeb8478f21ff03b7e528af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the currently selected item. <br /></td></tr>
-<tr class="separator:a925a6620afaeb8478f21ff03b7e528af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc761d8e7174ee06ddeda003de7c59e5"><td class="memItemLeft" align="right" valign="top"><a id="afc761d8e7174ee06ddeda003de7c59e5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#afc761d8e7174ee06ddeda003de7c59e5">update_task_col</a> ()</td></tr>
+<tr class="memdesc:afc761d8e7174ee06ddeda003de7c59e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the tasks column. <br /></td></tr>
+<tr class="separator:afc761d8e7174ee06ddeda003de7c59e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d4aede07e4191f347d7611ccc030c9"><td class="memItemLeft" align="right" valign="top"><a id="a65d4aede07e4191f347d7611ccc030c9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a65d4aede07e4191f347d7611ccc030c9">update_project_col</a> ()</td></tr>
+<tr class="memdesc:a65d4aede07e4191f347d7611ccc030c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the project column. <br /></td></tr>
+<tr class="separator:a65d4aede07e4191f347d7611ccc030c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03c0a2f5b96c6136ee27f9a49b1ffcc7"><td class="memItemLeft" align="right" valign="top"><a id="a03c0a2f5b96c6136ee27f9a49b1ffcc7"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a03c0a2f5b96c6136ee27f9a49b1ffcc7">sanitize_input</a> (std::string input)</td></tr>
+<tr class="memdesc:a03c0a2f5b96c6136ee27f9a49b1ffcc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sanitize the queried user input strings. <br /></td></tr>
+<tr class="separator:a03c0a2f5b96c6136ee27f9a49b1ffcc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007e3c636a17fe130820561d72521bb3"><td class="memItemLeft" align="right" valign="top"><a id="a007e3c636a17fe130820561d72521bb3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a007e3c636a17fe130820561d72521bb3">add_item</a> (<a class="el" href="classColumnBase.html">ColumnBase</a> *cur_col)</td></tr>
+<tr class="memdesc:a007e3c636a17fe130820561d72521bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an item (project or task). <br /></td></tr>
+<tr class="separator:a007e3c636a17fe130820561d72521bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6beefb2694a21ad7c541cd802f5bad8"><td class="memItemLeft" align="right" valign="top"><a id="aa6beefb2694a21ad7c541cd802f5bad8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#aa6beefb2694a21ad7c541cd802f5bad8">rename_item</a> (<a class="el" href="classColumnBase.html">ColumnBase</a> *cur_col)</td></tr>
+<tr class="memdesc:aa6beefb2694a21ad7c541cd802f5bad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename an item. <br /></td></tr>
+<tr class="separator:aa6beefb2694a21ad7c541cd802f5bad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39e1bb0d1e665fe2206782f0c8868e77"><td class="memItemLeft" align="right" valign="top"><a id="a39e1bb0d1e665fe2206782f0c8868e77"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a39e1bb0d1e665fe2206782f0c8868e77">remove_item</a> (<a class="el" href="classColumnBase.html">ColumnBase</a> *cur_col)</td></tr>
+<tr class="memdesc:a39e1bb0d1e665fe2206782f0c8868e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the currently selected item. <br /></td></tr>
+<tr class="separator:a39e1bb0d1e665fe2206782f0c8868e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a6f0df314e6679ec8db97e5112487ea8c"><td class="memItemLeft" align="right" valign="top"><a id="a6f0df314e6679ec8db97e5112487ea8c"></a>
-std::shared_ptr&lt; <a class="el" href="classDB__Interface.html">DB_Interface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a6f0df314e6679ec8db97e5112487ea8c">db</a></td></tr>
-<tr class="memdesc:a6f0df314e6679ec8db97e5112487ea8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface to the DB. <br /></td></tr>
-<tr class="separator:a6f0df314e6679ec8db97e5112487ea8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a860729a8db39b1d42a55f2437db2dd4e"><td class="memItemLeft" align="right" valign="top"><a id="a860729a8db39b1d42a55f2437db2dd4e"></a>
-std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a860729a8db39b1d42a55f2437db2dd4e">status</a></td></tr>
-<tr class="memdesc:a860729a8db39b1d42a55f2437db2dd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface to the status bar. <br /></td></tr>
-<tr class="separator:a860729a8db39b1d42a55f2437db2dd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50fda56d45ff7e8a73273d087954a554"><td class="memItemLeft" align="right" valign="top"><a id="a50fda56d45ff7e8a73273d087954a554"></a>
-std::unique_ptr&lt; <a class="el" href="classColumnInterface.html">ColumnInterface</a>&lt; <a class="el" href="structProject.html">Project</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a50fda56d45ff7e8a73273d087954a554">project_col</a></td></tr>
-<tr class="memdesc:a50fda56d45ff7e8a73273d087954a554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column for projects. <br /></td></tr>
-<tr class="separator:a50fda56d45ff7e8a73273d087954a554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b4a14226bbab9f980746cc020c43de5"><td class="memItemLeft" align="right" valign="top"><a id="a5b4a14226bbab9f980746cc020c43de5"></a>
-std::unique_ptr&lt; <a class="el" href="classColumnInterface.html">ColumnInterface</a>&lt; <a class="el" href="structTask.html">Task</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a5b4a14226bbab9f980746cc020c43de5">task_col</a></td></tr>
-<tr class="memdesc:a5b4a14226bbab9f980746cc020c43de5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column for tasks. <br /></td></tr>
-<tr class="separator:a5b4a14226bbab9f980746cc020c43de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad25910b8f1d332bebc5f53356d5fa5f3"><td class="memItemLeft" align="right" valign="top"><a id="ad25910b8f1d332bebc5f53356d5fa5f3"></a>
-<a class="el" href="classLoggerInterface.html">LoggerInterface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#ad25910b8f1d332bebc5f53356d5fa5f3">logger</a></td></tr>
-<tr class="memdesc:ad25910b8f1d332bebc5f53356d5fa5f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the logger singleton. <br /></td></tr>
-<tr class="separator:ad25910b8f1d332bebc5f53356d5fa5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95c3d98db893daba8ed30e78439e51ef"><td class="memItemLeft" align="right" valign="top"><a id="a95c3d98db893daba8ed30e78439e51ef"></a>
+std::shared_ptr&lt; <a class="el" href="classDB__Interface.html">DB_Interface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a95c3d98db893daba8ed30e78439e51ef">db</a></td></tr>
+<tr class="memdesc:a95c3d98db893daba8ed30e78439e51ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface to the DB. <br /></td></tr>
+<tr class="separator:a95c3d98db893daba8ed30e78439e51ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a0c95f88c2708769555098df7bac0c1"><td class="memItemLeft" align="right" valign="top"><a id="a4a0c95f88c2708769555098df7bac0c1"></a>
+std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a4a0c95f88c2708769555098df7bac0c1">status</a></td></tr>
+<tr class="memdesc:a4a0c95f88c2708769555098df7bac0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface to the status bar. <br /></td></tr>
+<tr class="separator:a4a0c95f88c2708769555098df7bac0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa7140499b2212a85c6d1a758f7515fa"><td class="memItemLeft" align="right" valign="top"><a id="afa7140499b2212a85c6d1a758f7515fa"></a>
+std::unique_ptr&lt; <a class="el" href="classColumn.html">Column</a>&lt; <a class="el" href="structProject.html">Project</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#afa7140499b2212a85c6d1a758f7515fa">project_col</a></td></tr>
+<tr class="memdesc:afa7140499b2212a85c6d1a758f7515fa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classColumn.html">Column</a> for projects. <br /></td></tr>
+<tr class="separator:afa7140499b2212a85c6d1a758f7515fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af959b8810699760b42c54d4b7798037b"><td class="memItemLeft" align="right" valign="top"><a id="af959b8810699760b42c54d4b7798037b"></a>
+std::unique_ptr&lt; <a class="el" href="classColumn.html">Column</a>&lt; <a class="el" href="structTask.html">Task</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#af959b8810699760b42c54d4b7798037b">task_col</a></td></tr>
+<tr class="memdesc:af959b8810699760b42c54d4b7798037b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classColumn.html">Column</a> for tasks. <br /></td></tr>
+<tr class="separator:af959b8810699760b42c54d4b7798037b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d3dfce6c50a6368ed4699bfc58a456"><td class="memItemLeft" align="right" valign="top"><a id="a06d3dfce6c50a6368ed4699bfc58a456"></a>
+<a class="el" href="classLoggerInterface.html">LoggerInterface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskTable.html#a06d3dfce6c50a6368ed4699bfc58a456">logger</a></td></tr>
+<tr class="memdesc:a06d3dfce6c50a6368ed4699bfc58a456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the logger singleton. <br /></td></tr>
+<tr class="separator:a06d3dfce6c50a6368ed4699bfc58a456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename T_DB, typename T_PROJ, typename T_TASK, typename T_LOG, typename = std::enable_if_t&lt;            std::is_base_of&lt;DB_Interface, T_DB&gt;::value &amp;&amp;            std::is_base_of&lt;ColumnInterface&lt;Project&gt;, T_PROJ&gt;::value &amp;&amp;            std::is_base_of&lt;ColumnInterface&lt;Task&gt;, T_TASK&gt;::value &amp;&amp;            std::is_base_of&lt;LoggerInterface, T_LOG&gt;::value&gt;&gt;<br />
-class ProjectTaskTable&lt; T_DB, T_PROJ, T_TASK, T_LOG, typename &gt;</h3>
+<div class="textblock"><h3>template&lt;typename T_DB, typename T_LOG, typename = std::enable_if_t&lt;            std::is_base_of&lt;DB_Interface, T_DB&gt;::value &amp;&amp;            std::is_base_of&lt;LoggerInterface, T_LOG&gt;::value&gt;&gt;<br />
+class ProjectTaskTable&lt; T_DB, T_LOG, typename &gt;</h3>
 
 <p>Table for defining projects and tasks using two columns. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="project__task__table_8h_source.html">project_task_table.h</a></li>
+<li>src/ui_screens/<a class="el" href="project__task__table_8h_source.html">project_task_table.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

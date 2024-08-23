@@ -63,8 +63,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classDate-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -79,6 +77,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:adbb87be3df3f30ed207161733321be78"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#adbb87be3df3f30ed207161733321be78">to_string</a> () const</td></tr>
+<tr class="memdesc:adbb87be3df3f30ed207161733321be78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string in the system's timezone.  <a href="classDate.html#adbb87be3df3f30ed207161733321be78">More...</a><br /></td></tr>
+<tr class="separator:adbb87be3df3f30ed207161733321be78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e59ed4ba66eec61c27460c5d09fa1bd"><td class="memItemLeft" align="right" valign="top"><a id="a4e59ed4ba66eec61c27460c5d09fa1bd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a4e59ed4ba66eec61c27460c5d09fa1bd">Date</a> ()</td></tr>
 <tr class="memdesc:a4e59ed4ba66eec61c27460c5d09fa1bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date with the now() timepoint. <br /></td></tr>
@@ -112,19 +113,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a0313cfcbf563e60a3889e2c1cd6ba076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrement the date by one day. <br /></td></tr>
 <tr class="separator:a0313cfcbf563e60a3889e2c1cd6ba076"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a0687c219b572fba46cb878b617c2f0dc"><td class="memItemLeft" align="right" valign="top"><a id="a0687c219b572fba46cb878b617c2f0dc"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#a0687c219b572fba46cb878b617c2f0dc">str</a></td></tr>
-<tr class="memdesc:a0687c219b572fba46cb878b617c2f0dc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classDate.html" title="Date type.">Date</a> as a displayable string. <br /></td></tr>
-<tr class="separator:a0687c219b572fba46cb878b617c2f0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b">to_string</a> ()</td></tr>
-<tr class="memdesc:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string in the system's timezone.  <a href="classDate.html#ad8b79adf6dcf3be04e3b5977903d4c1b">More...</a><br /></td></tr>
-<tr class="separator:ad8b79adf6dcf3be04e3b5977903d4c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a137e31f8095d613175de66c6abc092b8"><td class="memItemLeft" align="right" valign="top"><a id="a137e31f8095d613175de66c6abc092b8"></a>
@@ -135,27 +123,19 @@ std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt;
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classDate.html" title="Date type.">Date</a> type. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad8b79adf6dcf3be04e3b5977903d4c1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8b79adf6dcf3be04e3b5977903d4c1b">&#9670;&nbsp;</a></span>to_string()</h2>
+<a id="adbb87be3df3f30ed207161733321be78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbb87be3df3f30ed207161733321be78">&#9670;&nbsp;</a></span>to_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string Date::to_string </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Convert the internal timepoint to a displayable date string in the system's timezone. </p>
@@ -164,8 +144,8 @@ std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt;
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="date_8h_source.html">date.h</a></li>
-<li>src/date.cpp</li>
+<li>src/data_objects/<a class="el" href="date_8h_source.html">date.h</a></li>
+<li>src/data_objects/date.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

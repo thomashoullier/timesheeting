@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: src/win_ncurses.h Source File</title>
+<title>timesheeting: src/ncurses/win_ncurses.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_490c7813c8bac7d998a1625d090341d3.html">ncurses</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -74,8 +74,8 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;ncurses.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">enum class</span> WindowPosition { top, upper, lower, bottom };</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">enum class</span> WindowFormat { line, block };</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">enum class</span> WindowPosition { top, upper, lower, bottom, left, middle };</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">enum class</span> WindowFormat { line, block, column };</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classWinNCurses.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWinNCurses.html">WinNCurses</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
@@ -97,11 +97,11 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// WIN_NCURSES_H</span></div>
 <div class="ttc" id="aclassWinNCurses_html"><div class="ttname"><a href="classWinNCurses.html">WinNCurses</a></div><div class="ttdoc">Base class for NCurses elements in a window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.h:12</div></div>
-<div class="ttc" id="aclassWinNCurses_html_a60fd7b2ac41ade3f9b9c918455ca9b6f"><div class="ttname"><a href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">WinNCurses::get_input</a></div><div class="ttdeci">char get_input()</div><div class="ttdoc">Get a character inputted in the current window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:10</div></div>
-<div class="ttc" id="aclassWinNCurses_html_a69418e712e9fc1d9b96667f0f217dcbd"><div class="ttname"><a href="classWinNCurses.html#a69418e712e9fc1d9b96667f0f217dcbd">WinNCurses::destroy_window</a></div><div class="ttdeci">void destroy_window()</div><div class="ttdoc">Destroy the ncurses window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:19</div></div>
-<div class="ttc" id="aclassWinNCurses_html_ae4fcaa14d61cf4ce1e660887cd3f2905"><div class="ttname"><a href="classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905">WinNCurses::refresh</a></div><div class="ttdeci">void refresh() const</div><div class="ttdoc">Refresh the display.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:12</div></div>
-<div class="ttc" id="aclassWinNCurses_html_aee7f2d0cb1c46e862d7ebec3626af158"><div class="ttname"><a href="classWinNCurses.html#aee7f2d0cb1c46e862d7ebec3626af158">WinNCurses::clear</a></div><div class="ttdeci">void clear() const</div><div class="ttdoc">Clear the display.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:14</div></div>
-<div class="ttc" id="aclassWinNCurses_html_af884a5c4ee771fc70089e1028c250084"><div class="ttname"><a href="classWinNCurses.html#af884a5c4ee771fc70089e1028c250084">WinNCurses::init_window</a></div><div class="ttdeci">WINDOW * init_window(WindowPosition winpos, WindowFormat winformat)</div><div class="ttdoc">Get a new ncurses window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:21</div></div>
+<div class="ttc" id="aclassWinNCurses_html_a60fd7b2ac41ade3f9b9c918455ca9b6f"><div class="ttname"><a href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">WinNCurses::get_input</a></div><div class="ttdeci">char get_input()</div><div class="ttdoc">Get a character inputted in the current window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:9</div></div>
+<div class="ttc" id="aclassWinNCurses_html_a69418e712e9fc1d9b96667f0f217dcbd"><div class="ttname"><a href="classWinNCurses.html#a69418e712e9fc1d9b96667f0f217dcbd">WinNCurses::destroy_window</a></div><div class="ttdeci">void destroy_window()</div><div class="ttdoc">Destroy the ncurses window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:18</div></div>
+<div class="ttc" id="aclassWinNCurses_html_ae4fcaa14d61cf4ce1e660887cd3f2905"><div class="ttname"><a href="classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905">WinNCurses::refresh</a></div><div class="ttdeci">void refresh() const</div><div class="ttdoc">Refresh the display.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:11</div></div>
+<div class="ttc" id="aclassWinNCurses_html_aee7f2d0cb1c46e862d7ebec3626af158"><div class="ttname"><a href="classWinNCurses.html#aee7f2d0cb1c46e862d7ebec3626af158">WinNCurses::clear</a></div><div class="ttdeci">void clear() const</div><div class="ttdoc">Clear the display.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:13</div></div>
+<div class="ttc" id="aclassWinNCurses_html_af884a5c4ee771fc70089e1028c250084"><div class="ttname"><a href="classWinNCurses.html#af884a5c4ee771fc70089e1028c250084">WinNCurses::init_window</a></div><div class="ttdeci">WINDOW * init_window(WindowPosition winpos, WindowFormat winformat)</div><div class="ttdoc">Get a new ncurses window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

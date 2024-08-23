@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: src/data_objects.h Source File</title>
+<title>timesheeting: src/data_objects/data_objects.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_12f363627a8d2e41b322762f1d2a3fb0.html">data_objects</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -100,8 +100,8 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::vector&lt;std::string&gt; display_strings(4);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    display_strings.at(0) = project_name;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    display_strings.at(1) = task_name;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    display_strings.at(2) = start.str;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    display_strings.at(3) = stop.str;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    display_strings.at(2) = start.to_string();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    display_strings.at(3) = stop.to_string();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> display_strings;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  };</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
@@ -116,8 +116,8 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::vector&lt;std::string&gt; display_strings(4);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    display_strings.at(0) = project_name.value_or(<span class="stringliteral">&quot; &quot;</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    display_strings.at(1) = task_name.value_or(<span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    display_strings.at(2) = start.has_value() ? start.value().str : <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    display_strings.at(3) = stop.has_value() ? stop.value().str : <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    display_strings.at(2) = start.has_value() ? start.value().to_string() : <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    display_strings.at(3) = stop.has_value() ? stop.value().to_string() : <span class="stringliteral">&quot; &quot;</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> display_strings;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  };</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>

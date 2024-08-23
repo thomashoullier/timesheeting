@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['menuempty_182',['MenuEmpty',['../classMenuEmpty.html',1,'']]],
-  ['menuncurses_183',['MenuNCurses',['../classMenuNCurses.html',1,'']]]
+  ['menuempty_164',['MenuEmpty',['../classMenuEmpty.html',1,'']]],
+  ['menuncurses_165',['MenuNCurses',['../classMenuNCurses.html',1,'']]]
 ];

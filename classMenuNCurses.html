@@ -82,9 +82,10 @@ Inheritance diagram for MenuNCurses:</div>
  <div class="center">
   <img src="classMenuNCurses.png" usemap="#MenuNCurses_map" alt=""/>
   <map id="MenuNCurses_map" name="MenuNCurses_map">
-<area href="classWinNCurses.html" title="Base class for NCurses elements in a window." alt="WinNCurses" shape="rect" coords="63,0,180,24"/>
-<area href="classRegisterNcurses.html" title="Entry register implementation in ncurses." alt="RegisterNcurses" shape="rect" coords="0,112,117,136"/>
-<area href="classStopwatchNcurses.html" title="Ncurses implementation of a stopwatch for generating new entries." alt="StopwatchNcurses" shape="rect" coords="127,112,244,136"/>
+<area href="classWinNCurses.html" title="Base class for NCurses elements in a window." alt="WinNCurses" shape="rect" coords="158,0,306,24"/>
+<area href="classColumn.html" alt="Column&lt; T, typename &gt;" shape="rect" coords="0,112,148,136"/>
+<area href="classRegisterNcurses.html" title="Entry register implementation in ncurses." alt="RegisterNcurses" shape="rect" coords="158,112,306,136"/>
+<area href="classStopwatchNcurses.html" title="Ncurses implementation of a stopwatch for generating new entries." alt="StopwatchNcurses" shape="rect" coords="316,112,464,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -97,6 +98,10 @@ Public Member Functions</h2></td></tr>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260">query_current_item_rename</a> ()</td></tr>
 <tr class="memdesc:aa2a8a48c342f0ea116f3581cd0986260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query a new string for the currently selected item. <br /></td></tr>
 <tr class="separator:aa2a8a48c342f0ea116f3581cd0986260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44a46bd54154aeaa309fde4cbb4bf83"><td class="memItemLeft" align="right" valign="top"><a id="ab44a46bd54154aeaa309fde4cbb4bf83"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#ab44a46bd54154aeaa309fde4cbb4bf83">query_new_item_name</a> ()</td></tr>
+<tr class="memdesc:ab44a46bd54154aeaa309fde4cbb4bf83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query a string for a new item. <br /></td></tr>
+<tr class="separator:ab44a46bd54154aeaa309fde4cbb4bf83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa178927a57b741a40c482289bd547bc4"><td class="memItemLeft" align="right" valign="top"><a id="aa178927a57b741a40c482289bd547bc4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4">select_down_item</a> ()</td></tr>
 <tr class="memdesc:aa178927a57b741a40c482289bd547bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item down of the current one. <br /></td></tr>
@@ -184,6 +189,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#ae6e6738afd609b70727c7b8315464022">destroy_menu</a> ()</td></tr>
 <tr class="memdesc:ae6e6738afd609b70727c7b8315464022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor helper. Also called on update. <br /></td></tr>
 <tr class="separator:ae6e6738afd609b70727c7b8315464022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ff90346055de354a8c7399b1266fe6"><td class="memItemLeft" align="right" valign="top"><a id="a10ff90346055de354a8c7399b1266fe6"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuNCurses.html#a10ff90346055de354a8c7399b1266fe6">get_user_string</a> (int display_line)</td></tr>
+<tr class="memdesc:a10ff90346055de354a8c7399b1266fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a new string from the user at a given line in the window. <br /></td></tr>
+<tr class="separator:a10ff90346055de354a8c7399b1266fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -214,8 +223,8 @@ WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><b>win</b></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A ncurses window holding a generic menu. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="menu__ncurses_8h_source.html">menu_ncurses.h</a></li>
-<li>src/menu_ncurses.cpp</li>
+<li>src/ncurses/<a class="el" href="menu__ncurses_8h_source.html">menu_ncurses.h</a></li>
+<li>src/ncurses/menu_ncurses.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
