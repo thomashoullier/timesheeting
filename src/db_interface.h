@@ -5,9 +5,8 @@
 
 #include <exception>
 #include <string>
-#include <vector>
-#include "data_objects.h"
-#include "date_range.h"
+#include "data_objects/data_objects.h"
+#include "data_objects/date_range.h"
 
 /** @brief Virtual interface class for database. */
 class DB_Interface {

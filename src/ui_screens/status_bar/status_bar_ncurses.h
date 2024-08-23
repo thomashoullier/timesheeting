@@ -3,7 +3,7 @@
 #ifndef STATUS_BAR_NCURSES_H
 #define STATUS_BAR_NCURSES_H
 
-#include "../bar_ncurses.h"
+#include "../../ncurses/bar_ncurses.h"
 
 /** @brief Status bar implementation using ncurses. */
 class StatusBarNCurses : public BarNCurses {

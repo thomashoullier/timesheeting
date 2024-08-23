@@ -3,13 +3,13 @@
 #ifndef PROJECT_TASK_TABLE_H
 #define PROJECT_TASK_TABLE_H
 
-#include "column.h"
-#include "data_objects.h"
-#include "db_interface.h"
-#include "logger_interface.h"
+#include "column/column.h"
+#include "../data_objects/data_objects.h"
+#include "../db_interface.h"
+#include "../logger_interface.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "ui_screen.h"
-#include "win_ncurses.h"
+#include "../ncurses/win_ncurses.h"
 #include <memory>
 #include <algorithm>
 

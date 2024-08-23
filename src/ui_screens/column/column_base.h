@@ -1,7 +1,7 @@
 #ifndef COLUMN_BASE_H
 #define COLUMN_BASE_H
 
-#include "data_objects.h"
+#include "../../data_objects/data_objects.h"
 
 /** @brief Class for manipulating a column regardless of its type. */
 class ColumnBase {

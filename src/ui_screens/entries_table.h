@@ -3,14 +3,14 @@
 
 #include <memory>
 #include <stdexcept>
-#include "data_objects.h"
-#include "date.h"
-#include "date_selector_ncurses.h"
-#include "db_interface.h"
+#include "../data_objects/data_objects.h"
+#include "../data_objects/date.h"
+#include "date_selector/date_selector_ncurses.h"
+#include "../db_interface.h"
 #include "status_bar/status_bar_ncurses.h"
-#include "stopwatch_ncurses.h"
+#include "stopwatch/stopwatch_ncurses.h"
 #include "ui_screen.h"
-#include "register_ncurses.h"
+#include "register/register_ncurses.h"
 
 /** @brief Class for holding the table of entries for a given day. */
 template <typename T_DB,

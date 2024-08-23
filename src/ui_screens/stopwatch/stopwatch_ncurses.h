@@ -1,8 +1,8 @@
 #ifndef STOPWATCH_NCURSES_H
 #define STOPWATCH_NCURSES_H
 
-#include "data_objects.h"
-#include "menu_ncurses.h"
+#include "../../data_objects/data_objects.h"
+#include "../../ncurses/menu_ncurses.h"
 
 /** @brief Ncurses implementation of a stopwatch for generating new entries. */
 class StopwatchNcurses : public MenuNCurses {

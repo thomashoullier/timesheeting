@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "data_objects.h"
-#include "menu_ncurses.h"
+#include "../../data_objects/data_objects.h"
+#include "../../ncurses/menu_ncurses.h"
 
 /** @brief Entry register implementation in ncurses.
 

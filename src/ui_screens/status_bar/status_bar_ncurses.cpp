@@ -1,5 +1,4 @@
 #include "status_bar_ncurses.h"
-#include <curses.h>
 
 StatusBarNCurses::StatusBarNCurses()
     : BarNCurses(WindowPosition::bottom) {}

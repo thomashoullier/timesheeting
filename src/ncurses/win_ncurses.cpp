@@ -1,5 +1,4 @@
 #include "win_ncurses.h"
-#include <curses.h>
 #include <stdexcept>
 
 WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)

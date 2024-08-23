@@ -1,13 +1,12 @@
 #ifndef UI_H
 #define UI_H
 
-#include "column.h"
-#include "entries_table.h"
+#include "ui_screens/entries_table.h"
 #include "logger_interface.h"
-#include "ncurses_handle.h"
-#include "project_task_table.h"
+#include "ncurses/ncurses_handle.h"
+#include "ui_screens/project_task_table.h"
 #include "db/db_sqlite.h"
-#include "status_bar/status_bar_ncurses.h"
+#include "ui_screens/status_bar/status_bar_ncurses.h"
 #include "logger/logger_file.h"
 #include <memory>
 

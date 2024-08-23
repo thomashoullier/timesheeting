@@ -1,8 +1,8 @@
 #ifndef DATE_SELECTOR_NCURSES_H
 #define DATE_SELECTOR_NCURSES_H
 
-#include "bar_ncurses.h"
-#include "date_range.h"
+#include "../../ncurses/bar_ncurses.h"
+#include "../../data_objects/date_range.h"
 
 class DateSelectorNcurses : public BarNCurses {
 private:

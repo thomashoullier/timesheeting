@@ -2,9 +2,8 @@
 #define COLUMN_H
 
 #include "column_base.h"
-#include "data_objects.h"
-#include "menu_ncurses.h"
-#include "win_ncurses.h"
+#include "../../data_objects/data_objects.h"
+#include "../../ncurses/menu_ncurses.h"
 #include <type_traits>
 
 template <typename T,
