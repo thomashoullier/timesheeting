@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sanitize_5finput_113',['sanitize_input',['../classProjectTaskTable.html#a03c0a2f5b96c6136ee27f9a49b1ffcc7',1,'ProjectTaskTable']]],
+  ['sanitize_5finput_113',['sanitize_input',['../classMenuNCurses.html#a7b3bc49297fe521f1dcead848e07abb1',1,'MenuNCurses']]],
   ['select_5fdown_5fitem_114',['select_down_item',['../classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4',1,'MenuNCurses::select_down_item()'],['../classColumn.html#a456fbac1d2c4d11978064b310de56548',1,'Column::select_down_item()'],['../classColumnBase.html#aa260495a6f89544c42b333f1bcf56b43',1,'ColumnBase::select_down_item()']]],
   ['select_5fleft_5fitem_115',['select_left_item',['../classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088',1,'MenuNCurses']]],
   ['select_5fnext_5fday_116',['select_next_day',['../classDateSelectorNcurses.html#a9fca8fbb92052daf8dc1dabeb40bb47d',1,'DateSelectorNcurses']]],
