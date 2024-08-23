@@ -8,7 +8,7 @@
 #include "../db_interface.h"
 #include "../logger_interface.h"
 #include "status_bar/status_bar_ncurses.h"
-#include "ui_screen.h"
+#include "ui_component.h"
 #include "../ncurses/win_ncurses.h"
 #include <memory>
 
@@ -17,7 +17,7 @@ template <typename T_DB, typename T_LOG,
           typename = std::enable_if_t<
             std::is_base_of<DB_Interface, T_DB>::value &&
             std::is_base_of<LoggerInterface, T_LOG>::value>>
-class ProjectTaskTable : public UIScreen {
+class ProjectTaskTable : public UIComponent {
 public:
   /** @brief Table constructor. */
   explicit ProjectTaskTable(std::shared_ptr<T_DB> _db,
@@ -99,6 +99,11 @@ public:
       }
     }
   }
+
+  void update() override {
+    update_project_col();
+    update_task_col();
+  };
 
 private:
   /** @brief Interface to the DB. */

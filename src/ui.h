@@ -1,7 +1,7 @@
 #ifndef UI_H
 #define UI_H
 
-#include "ui_screens/entries_table.h"
+#include "ui_screens/entries_screen.h"
 #include "logger_interface.h"
 #include "ncurses/ncurses_handle.h"
 #include "ui_screens/project_task_table.h"
@@ -31,7 +31,7 @@ private:
   /** @brief Logger interface. */
   LoggerInterface *logger;
   /** @brief Screen for the table of entries. */
-  EntriesTable<DB_SQLite> entries_table;
+  EntriesScreen<DB_SQLite> entries_screen;
 };
 
 #endif // UI_H

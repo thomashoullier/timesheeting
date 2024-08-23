@@ -8,23 +8,21 @@
 #include "date_selector/date_selector_ncurses.h"
 #include "../db_interface.h"
 #include "status_bar/status_bar_ncurses.h"
-#include "stopwatch/stopwatch_ncurses.h"
-#include "ui_screen.h"
 #include "register/register_ncurses.h"
+#include "ui_component.h"
 
 /** @brief Class for holding the table of entries for a given day. */
 template <typename T_DB,
           typename = std::enable_if_t<
             std::is_base_of<DB_Interface, T_DB>::value>>
-class EntriesTable : public UIScreen {
+class EntriesTable : public UIComponent {
 public:
   explicit EntriesTable(std::shared_ptr<T_DB> _db,
                         std::shared_ptr<StatusBarNCurses> _status)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
         status(_status),
         date_selector(),
-        reg(db->query_entries(date_selector.current_range())),
-        stopwatch(db->query_entrystaging()) {};
+        reg(db->query_entries(date_selector.current_range())) {};
 
   char input_loop() override {
     while (true) {
@@ -49,7 +47,7 @@ public:
       case 'r':
         try {
           rename_item();
-          update_register();
+          update();
         } catch (DBLogicExcept &e) {
           status->print_wait("DB logic error! Nothing was done to the DB.");
           this->clear();
@@ -62,16 +60,13 @@ public:
         break;
       case '.':
         date_selector.select_next_day();
-        update_register();
+        update();
         date_selector.refresh();
         break;
       case ',':
         date_selector.select_previous_day();
-        update_register();
+        update();
         date_selector.refresh();
-        break;
-      case '\t':
-        stopwatch_input_loop();
         break;
       default:
         return ch;
@@ -79,63 +74,20 @@ public:
     }
   };
 
-  char stopwatch_input_loop() {
-    while (true) {
-      auto ch = stopwatch.get_input();
-      switch (ch) {
-      case 'h':
-        stopwatch.select_left_item();
-        break;
-      case 'i':
-        stopwatch.select_right_item();
-        break;
-      case 'r':
-        try {
-          stopwatch_rename_item();
-          update_stopwatch();
-        } catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
-          this->clear();
-          this->refresh();
-        } catch (DateParsingFailure &e) {
-          status->print_wait("Failed to parse the date. Do nothing.");
-          this->clear();
-          this->refresh();
-        }
-        break;
-      case ' ':
-        stopwatch_set_current_now();
-        update_stopwatch();
-        break;
-      case '\n':
-        try {
-          db->commit_entrystaging();
-          Date now_start;
-          db->edit_entrystaging_start(now_start);
-          update_register();
-          update_stopwatch();
-        } catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
-          this->clear();
-          this->refresh();
-        }
-        break;
-      default:
-        return ch;
-      }
-  }
-  };
-
   void refresh () override {
     reg.refresh();
     date_selector.refresh();
-    stopwatch.refresh();
   };
 
   void clear() override {
-    stopwatch.clear();
     date_selector.clear();
     reg.clear();
+  };
+
+  void update() override {
+    auto entry_items = db->query_entries(date_selector.current_range());
+    reg.set_items(entry_items);
+    reg.refresh();
   };
 
 private:
@@ -143,19 +95,6 @@ private:
   std::shared_ptr<StatusBarNCurses> status;
   DateSelectorNcurses date_selector;
   RegisterNcurses reg;
-  StopwatchNcurses stopwatch;
-
-  void update_register() {
-    auto entry_items = db->query_entries(date_selector.current_range());
-    reg.set_items(entry_items);
-    reg.refresh();
-  };
-
-  void update_stopwatch() {
-    EntryStaging entry_staging = db->query_entrystaging();
-    stopwatch.set_items(entry_staging);
-    stopwatch.refresh();
-  };
 
   void rename_item() {
     //TODO: manage the case where the register is empty.
@@ -184,47 +123,6 @@ private:
     }
   };
 
-  void stopwatch_rename_item() {
-    auto new_str = stopwatch.query_current_item_rename();
-    auto field_type = stopwatch.get_field_type();
-    switch (field_type) {
-    case EntryField::project_name:
-      db->edit_entrystaging_project_name(new_str);
-      break;
-    case EntryField::task_name:
-      db->edit_entrystaging_task_name(new_str);
-      break;
-    case EntryField::start: {
-      Date new_start_date(new_str);
-      db->edit_entrystaging_start(new_start_date);
-    } break;
-    case EntryField::stop: {
-      Date new_stop_date(new_str);
-      db->edit_entrystaging_stop(new_stop_date);
-    } break;
-    default:
-      throw std::logic_error("Don't know what to do for renaming this unknown "
-                             "field type");
-    }
-  };
-
-  /** Set the current item, if it is a date, to now(). */
-  void stopwatch_set_current_now () {
-    auto field_type = stopwatch.get_field_type();
-    switch(field_type) {
-    case EntryField::start: {
-      Date now_start;
-      db->edit_entrystaging_start(now_start);
-    } break;
-    case EntryField::stop: {
-      Date now_stop;
-      db->edit_entrystaging_stop(now_stop);
-    } break;
-    default:
-      return;
-    }
-  };
-
   void remove_item() {
     bool user_conf = status->query_confirmation("Remove entry? (Y/N)");
     if (!user_conf) {
@@ -232,7 +130,7 @@ private:
     }
     auto id = reg.get_current_id();
     db->delete_entry(id);
-    update_register();
+    update();
   };
 };
 
