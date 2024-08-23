@@ -17,6 +17,8 @@ public:
 
   /** @brief Query a new string for the currently selected item. */
   std::string query_current_item_rename();
+  /** @brief Query a string for a new item. */
+  std::string query_new_item_name();
   /** @brief Select the item down of the current one. */
   void select_down_item();
   /** @brief Select the item up of the current one. */
@@ -60,6 +62,8 @@ private:
   void init_menu_window();
   /** @brief Destructor helper. Also called on update. */
   void destroy_menu ();
+  /** @brief Get a new string from the user at a given line in the window. */
+  std::string get_user_string (int display_line);
 };
 
 /** @brief Exception when encountering an empty menu. */

@@ -13,41 +13,11 @@ MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
 MenuNCurses::~MenuNCurses() { destroy_menu(); }
 
 std::string MenuNCurses::query_current_item_rename() {
-  std::string input_buffer{};
-  wclrtoeol(win); // TODO: only clear the current item instead.
-  bool user_wants_to_input = true;
-  while (user_wants_to_input) {
-    auto ch = wgetch(win);
-    switch (ch) {
-    case '\n': // User validates the input.
-      user_wants_to_input = false;
-      break;
-    case 27: // User wants to cancel.
-      input_buffer.clear();
-      user_wants_to_input = false;
-      break;
-    case 127: // Erase last character
-      if (!input_buffer.empty()) {
-        input_buffer.pop_back();
-        // Remove character from screen
-        int y, x;
-        getyx(win, y, x);
-        auto xmax = getmaxx(win);
-        if (x == 0) { // jump to the end of the previous line.
-          wmove(win, y - 1, xmax - 1);
-        } else {
-          wmove(win, y, x - 1);
-        }
-        wdelch(win);
-      }
-      break;
-    default: // Gets added to item.
-      input_buffer.push_back(ch);
-      waddch(win, ch);
-      break;
-    }
-  }
-  return input_buffer;
+  return get_user_string(getcury(win));
+}
+
+std::string MenuNCurses::query_new_item_name() {
+  return get_user_string(getmaxy(win) - 1);
 }
 
 void MenuNCurses::select_down_item() { menu_driver(menu, REQ_DOWN_ITEM); }
@@ -125,4 +95,43 @@ void MenuNCurses::destroy_menu() {
   }
   menu_items.clear();
   display_strings.clear();
+}
+
+std::string MenuNCurses::get_user_string (int display_line) {
+  std::string input_buffer{};
+  wmove(win, display_line, 0);
+  wclrtoeol(win); // TODO: only clear the current item instead.
+  bool user_wants_to_input = true;
+  while (user_wants_to_input) {
+    auto ch = wgetch(win);
+    switch (ch) {
+    case '\n': // User validates the input.
+      user_wants_to_input = false;
+      break;
+    case 27: // User wants to cancel.
+      input_buffer.clear();
+      user_wants_to_input = false;
+      break;
+    case 127: // Erase last character
+      if (!input_buffer.empty()) {
+        input_buffer.pop_back();
+        // Remove character from screen
+        int y, x;
+        getyx(win, y, x);
+        auto xmax = getmaxx(win);
+        if (x == 0) { // jump to the end of the previous line.
+          wmove(win, y - 1, xmax - 1);
+        } else {
+          wmove(win, y, x - 1);
+        }
+        wdelch(win);
+      }
+      break;
+    default: // Gets added to item.
+      input_buffer.push_back(ch);
+      waddch(win, ch);
+      break;
+    }
+  }
+  return input_buffer;
 }

@@ -42,8 +42,7 @@ public:
   };
 
   std::string query_new_item_name() override {
-    // TODO
-    return "NEW ITEM";
+    return MenuNCurses::query_new_item_name();
   };
 
 private:
