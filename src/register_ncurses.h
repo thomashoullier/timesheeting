@@ -10,7 +10,6 @@
 
  A register is a menu with row items made of several columns. */
 class RegisterNcurses : public MenuNCurses {
-  //TODO: do a cpp file
 public:
   RegisterNcurses(const std::vector<Entry> &items);
 

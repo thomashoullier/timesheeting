@@ -34,7 +34,7 @@ struct Entry {
   Date stop;
 
   /** @brief Generate an ordered set of strings for displaying the entry. */
-  std::vector<std::string> to_strings () const {
+  std::vector<std::string> to_strings() const {
     std::vector<std::string> display_strings(4);
     display_strings.at(0) = project_name;
     display_strings.at(1) = task_name;
@@ -50,6 +50,17 @@ struct EntryStaging {
   std::optional<std::string> task_name;
   std::optional<Date> start;
   std::optional<Date> stop;
+
+  /** @brief Generate an ordered set of strings for displaying
+      the entrystaging. */
+  std::vector<std::string> to_strings() const {
+    std::vector<std::string> display_strings(4);
+    display_strings.at(0) = project_name.value_or(" ");
+    display_strings.at(1) = task_name.value_or(" ");
+    display_strings.at(2) = start.has_value() ? start.value().str : " ";
+    display_strings.at(3) = stop.has_value() ? stop.value().str : " ";
+    return display_strings;
+  };
 };
 
 /** @brief Entry field type (as displayed in the menu). */

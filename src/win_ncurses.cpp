@@ -32,6 +32,9 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
   case WindowPosition::upper:
     y = 2;
     break;
+  case WindowPosition::lower:
+    y = max_y - 3;
+    break;
   default:
     throw std::logic_error("WinNCurses: unknown WindowPosition.");
   }

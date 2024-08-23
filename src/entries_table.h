@@ -87,13 +87,13 @@ public:
 
   char stopwatch_input_loop() {
     while (true) {
-      auto ch = stopwatch.query_input();
+      auto ch = stopwatch.get_input();
       switch (ch) {
       case 'h':
-        stopwatch.select_previous_item();
+        stopwatch.select_left_item();
         break;
       case 'i':
-        stopwatch.select_next_item();
+        stopwatch.select_right_item();
         break;
       case 'r':
         try {

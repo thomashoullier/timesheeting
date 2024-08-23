@@ -4,7 +4,7 @@
 #include <ncurses.h>
 
 /** @brief Selector for the position of the window. */
-enum class WindowPosition { top, upper, bottom };
+enum class WindowPosition { top, upper, lower, bottom };
 /** @brief Selector for the format of the window. */
 enum class WindowFormat { line, block };
 
