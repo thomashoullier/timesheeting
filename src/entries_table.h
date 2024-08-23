@@ -7,22 +7,21 @@
 #include "date.h"
 #include "date_selector_ncurses.h"
 #include "db_interface.h"
-#include "status_bar_interface.h"
+#include "status_bar/status_bar_ncurses.h"
 #include "stopwatch_ncurses.h"
 #include "ui_screen.h"
 #include "register_ncurses.h"
 
 /** @brief Class for holding the table of entries for a given day. */
-template <typename T_DB, typename T_ST,
+template <typename T_DB,
           typename = std::enable_if_t<
-            std::is_base_of<DB_Interface, T_DB>::value &&
-            std::is_base_of<StatusBarInterface, T_ST>::value>>
+            std::is_base_of<DB_Interface, T_DB>::value>>
 class EntriesTable : public UIScreen {
 public:
   explicit EntriesTable(std::shared_ptr<T_DB> _db,
-                        std::shared_ptr<T_ST> _status)
+                        std::shared_ptr<StatusBarNCurses> _status)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
-        status(std::static_pointer_cast<StatusBarInterface>(_status)),
+        status(_status),
         date_selector(),
         reg(db->query_entries(date_selector.current_range())),
         stopwatch(db->query_entrystaging()) {};
@@ -145,7 +144,7 @@ public:
 
 private:
   std::shared_ptr<DB_Interface> db;
-  std::shared_ptr<StatusBarInterface> status;
+  std::shared_ptr<StatusBarNCurses> status;
   DateSelectorNcurses date_selector;
   RegisterNcurses reg;
   StopwatchNcurses stopwatch;

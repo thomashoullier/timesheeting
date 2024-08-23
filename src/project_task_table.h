@@ -7,18 +7,17 @@
 #include "data_objects.h"
 #include "db_interface.h"
 #include "logger_interface.h"
-#include "status_bar_interface.h"
+#include "status_bar/status_bar_ncurses.h"
 #include "ui_screen.h"
 #include <memory>
 #include <algorithm>
 
 /** @brief Table for defining projects and tasks using two columns. */
-template <typename T_DB, typename T_ST,
+template <typename T_DB,
           typename T_PROJ, typename T_TASK,
           typename T_LOG,
           typename = std::enable_if_t<
             std::is_base_of<DB_Interface, T_DB>::value &&
-            std::is_base_of<StatusBarInterface, T_ST>::value &&
             std::is_base_of<ColumnInterface<Project>, T_PROJ>::value &&
             std::is_base_of<ColumnInterface<Task>, T_TASK>::value &&
             std::is_base_of<LoggerInterface, T_LOG>::value>>
@@ -26,9 +25,9 @@ class ProjectTaskTable : public UIScreen {
 public:
   /** @brief Table constructor. */
   explicit ProjectTaskTable(std::shared_ptr<T_DB> _db,
-                            std::shared_ptr<T_ST> _status)
+                            std::shared_ptr<StatusBarNCurses> _status)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
-        status(std::static_pointer_cast<StatusBarInterface>(_status)),
+        status(_status),
         project_col(
             std::make_unique<T_PROJ>(std::vector<Project>(), ColPos::left)),
         task_col(std::make_unique<T_TASK>(std::vector<Task>(),
@@ -108,7 +107,7 @@ private:
   /** @brief Interface to the DB. */
   std::shared_ptr<DB_Interface> db;
   /** @brief Interface to the status bar. */
-  std::shared_ptr<StatusBarInterface> status;
+  std::shared_ptr<StatusBarNCurses> status;
   /** @brief Column for projects. */
   std::unique_ptr<ColumnInterface<Project>> project_col;
   /** @brief Column for tasks. */

@@ -28,12 +28,12 @@ private:
   std::shared_ptr<DB_SQLite> db;
   /** @brief Handle to a status bar for ncurses. */
   std::shared_ptr<StatusBarNCurses> status_bar;
-  ProjectTaskTable<DB_SQLite, StatusBarNCurses, ColumnNcurses<Project>,
+  ProjectTaskTable<DB_SQLite, ColumnNcurses<Project>,
                    ColumnNcurses<Task>, LoggerFile> projects_table;
   /** @brief Logger interface. */
   LoggerInterface *logger;
   /** @brief Screen for the table of entries. */
-  EntriesTable<DB_SQLite, StatusBarNCurses> entries_table;
+  EntriesTable<DB_SQLite> entries_table;
 };
 
 #endif // UI_H
