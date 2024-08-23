@@ -1,8 +1,4 @@
 #include "date_selector_ncurses.h"
-#include "bar_ncurses.h"
-#include "date.h"
-#include "win_ncurses.h"
-#include <ncurses.h>
 
 DateSelectorNcurses::DateSelectorNcurses()
   : BarNCurses(WindowPosition::top),

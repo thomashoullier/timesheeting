@@ -2,22 +2,25 @@
 #define DATE_SELECTOR_NCURSES_H
 
 #include "bar_ncurses.h"
-#include "date_selector_interface.h"
-#include <ncurses.h>
+#include "date_range.h"
 
-class DateSelectorNcurses : public DateSelectorInterface,
-                            public BarNCurses {
+class DateSelectorNcurses : public BarNCurses {
 private:
   DateRange range;
 
 public:
   /** @brief Initialize the date range to the current day in local time. */
   DateSelectorNcurses ();
-  void refresh () const override;
-  void clear () const override;
-  DateRange current_range () const override;
-  void select_next_day () override;
-  void select_previous_day () override;
+  /** @brief Refresh the display. */
+  void refresh () const;
+  /** @brief Clear the display. */
+  void clear() const;
+  /** @brief Return the currently selected date range. */
+  DateRange current_range() const;
+  /** @brief Select the next day. */
+  void select_next_day();
+  /** @brief Select the previous day. */
+  void select_previous_day();
 };
 
 #endif // DATE_SELECTOR_NCURSES_H

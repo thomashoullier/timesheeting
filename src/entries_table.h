@@ -5,7 +5,6 @@
 #include <stdexcept>
 #include "data_objects.h"
 #include "date.h"
-#include "date_selector_interface.h"
 #include "date_selector_ncurses.h"
 #include "db_interface.h"
 #include "status_bar_interface.h"
@@ -24,8 +23,8 @@ public:
                         std::shared_ptr<T_ST> _status)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
         status(std::static_pointer_cast<StatusBarInterface>(_status)),
-        date_selector(std::make_unique<DateSelectorNcurses>()),
-        reg(db->query_entries(date_selector->current_range())),
+        date_selector(),
+        reg(db->query_entries(date_selector.current_range())),
         stopwatch(db->query_entrystaging()) {};
 
   char input_loop() override {
@@ -67,14 +66,14 @@ public:
         }
         break;
       case '.':
-        date_selector->select_next_day();
+        date_selector.select_next_day();
         update_register();
-        date_selector->refresh();
+        date_selector.refresh();
         break;
       case ',':
-        date_selector->select_previous_day();
+        date_selector.select_previous_day();
         update_register();
-        date_selector->refresh();
+        date_selector.refresh();
         break;
       case '\t':
         stopwatch_input_loop();
@@ -134,25 +133,25 @@ public:
 
   void refresh () override {
     reg.refresh();
-    date_selector->refresh();
+    date_selector.refresh();
     stopwatch.refresh();
   };
 
   void clear() override {
     stopwatch.clear();
-    date_selector->clear();
+    date_selector.clear();
     reg.clear();
   };
 
 private:
   std::shared_ptr<DB_Interface> db;
   std::shared_ptr<StatusBarInterface> status;
-  std::unique_ptr<DateSelectorInterface> date_selector;
+  DateSelectorNcurses date_selector;
   RegisterNcurses reg;
   StopwatchNcurses stopwatch;
 
   void update_register() {
-    auto entry_items = db->query_entries(date_selector->current_range());
+    auto entry_items = db->query_entries(date_selector.current_range());
     reg.set_items(entry_items);
     reg.refresh();
   };
