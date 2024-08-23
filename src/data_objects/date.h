@@ -16,17 +16,13 @@ private:
   /** @brief Internal time point representation, seconds UTC */
   std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp;
 
+public:
   /** @brief Convert the internal timepoint to a displayable date string
       in the system's timezone.
 
       Note the system's timezone is defined by `/etc/localtime` here,
       not the TZ environment variable. */
-  std::string to_string();
-
-public:
-  /** @brief Date as a displayable string. */
-  std::string str; // TODO: probably no longer required since we have MenuNCurses.
-
+  std::string to_string() const;
   /** @brief Construct the date with the now() timepoint. */
   Date();
   /** @brief Construct the date at the given date point. */

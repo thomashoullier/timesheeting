@@ -5,7 +5,7 @@
 #include <format>
 #include <stdexcept>
 
-std::string Date::to_string () {
+std::string Date::to_string () const {
   std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
   return std::format("{:%d%b%Y %H:%M:%S}", local_time);
 }
@@ -13,8 +13,8 @@ std::string Date::to_string () {
 Date::Date() {
   auto tp_now = std::chrono::system_clock::now();
   tp = std::chrono::floor<std::chrono::seconds>(tp_now);
-  str = to_string();
 }
+
 Date::Date(DatePoint date_point) {
   switch(date_point) {
   case DatePoint::DayBegin: {
@@ -24,7 +24,6 @@ Date::Date(DatePoint date_point) {
       {std::chrono::current_zone(),
        std::chrono::floor<std::chrono::days>(current.get_local_time())};
     tp = midnight.get_sys_time();
-    str = to_string();
   } break;
   case DatePoint::DayEnd: {
     std::chrono::zoned_time current{std::chrono::current_zone(),
@@ -33,7 +32,6 @@ Date::Date(DatePoint date_point) {
       {std::chrono::current_zone(),
        std::chrono::ceil<std::chrono::days>(current.get_local_time())};
     tp = midnight.get_sys_time();
-    str = to_string();
   } break;
   default:
     throw std::logic_error("Unknown date_point.");
@@ -41,7 +39,7 @@ Date::Date(DatePoint date_point) {
 }
 
 Date::Date(uint64_t unix_seconds)
-    : tp(std::chrono::seconds{unix_seconds}), str(to_string()) {}
+    : tp(std::chrono::seconds{unix_seconds}) {}
 
 Date::Date(const std::string &date_str) {
   // TODO: std::chrono::parse is not implemented in gcc 13.3,
@@ -57,7 +55,6 @@ Date::Date(const std::string &date_str) {
   tm.tm_isdst = true; // TODO: this is a hack, works only for our current timezone.
   auto tp_parsed = std::chrono::system_clock::from_time_t(std::mktime(&tm));
   tp = std::chrono::floor<std::chrono::seconds>(tp_parsed);
-  str = to_string();
 }
 
 uint64_t Date::to_unix_timestamp() const {
@@ -71,10 +68,8 @@ std::string Date::get_day_string () const {
 
 void Date::add_one_day() {
   tp += std::chrono::days(1);
-  str = to_string();
 }
 
 void Date::subtract_one_day() {
   tp -= std::chrono::days(1);
-  str = to_string();
 }

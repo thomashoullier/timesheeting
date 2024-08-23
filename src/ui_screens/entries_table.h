@@ -43,10 +43,6 @@ public:
       case 'h':
         reg.select_left_item();
         break;
-      case 'a': // TODO: put this on the stopwatch instead.
-        db->add_entry(1, Date(DatePoint::DayBegin), Date(DatePoint::DayEnd));
-        update_register();
-        break;
       case 'x':
         remove_item();
         break;

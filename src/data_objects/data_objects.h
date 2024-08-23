@@ -38,8 +38,8 @@ struct Entry {
     std::vector<std::string> display_strings(4);
     display_strings.at(0) = project_name;
     display_strings.at(1) = task_name;
-    display_strings.at(2) = start.str;
-    display_strings.at(3) = stop.str;
+    display_strings.at(2) = start.to_string();
+    display_strings.at(3) = stop.to_string();
     return display_strings;
   };
 };
@@ -57,8 +57,8 @@ struct EntryStaging {
     std::vector<std::string> display_strings(4);
     display_strings.at(0) = project_name.value_or(" ");
     display_strings.at(1) = task_name.value_or(" ");
-    display_strings.at(2) = start.has_value() ? start.value().str : " ";
-    display_strings.at(3) = stop.has_value() ? stop.value().str : " ";
+    display_strings.at(2) = start.has_value() ? start.value().to_string() : " ";
+    display_strings.at(3) = stop.has_value() ? stop.value().to_string() : " ";
     return display_strings;
   };
 };
