@@ -30,7 +30,7 @@ public:
 
   char input_loop() override {
     while (true) {
-      status->print(reg.get_current_cell_string());
+      status->print(reg.get_current_item_string());
       auto ch = reg.get_input();
       switch (ch) {
       case 'n':

@@ -32,6 +32,16 @@ struct Entry {
   std::string task_name;
   Date start;
   Date stop;
+
+  /** @brief Generate an ordered set of strings for displaying the entry. */
+  std::vector<std::string> to_strings () const {
+    std::vector<std::string> display_strings(4);
+    display_strings.at(0) = project_name;
+    display_strings.at(1) = task_name;
+    display_strings.at(2) = start.str;
+    display_strings.at(3) = stop.str;
+    return display_strings;
+  };
 };
 
 /** @brief Entry as it is being staged. */

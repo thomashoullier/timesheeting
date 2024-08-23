@@ -70,14 +70,23 @@ void MenuNCurses::set_items(const std::vector<std::string> &items) {
   init_menu(items);
 }
 
+std::string MenuNCurses::get_current_item_string() const {
+  if (display_strings.empty())
+    return "";
+  else
+    return display_strings.at(get_item_index());
+}
+
+int MenuNCurses::get_item_index() const {
+  return item_index(current_item(menu));
+}
+
 int MenuNCurses::get_row_index() const {
-  auto cell_index = item_index(current_item(menu));
-  return cell_index / ncols; // integer division
+  return get_item_index() / ncols; // integer division
 }
 
 int MenuNCurses::get_col_index() const {
-  auto cell_index = item_index(current_item(menu));
-  return cell_index % ncols;
+  return get_item_index() % ncols;
 }
 
 void MenuNCurses::init_menu(const std::vector<std::string> &items) {

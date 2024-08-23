@@ -25,7 +25,7 @@ private:
 
 public:
   /** @brief Date as a displayable string. */
-  std::string str;
+  std::string str; // TODO: probably no longer required since we have MenuNCurses.
 
   /** @brief Construct the date with the now() timepoint. */
   Date();

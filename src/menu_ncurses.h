@@ -2,6 +2,7 @@
 #define MENU_NCURSES_H
 
 #include "win_ncurses.h"
+#include <exception>
 #include <menu.h>
 #include <vector>
 #include <string>
@@ -30,8 +31,12 @@ public:
   void clear();
   /** @brief Replace the currently held items. */
   void set_items(const std::vector<std::string> &items);
+  /** @brief Get the full display string for the current item. */
+  std::string get_current_item_string() const;
 
 protected:
+  /** @brief Get the current item index. */
+  int get_item_index() const;
   /** @brief Get the current row index. */
   int get_row_index() const;
   /** @brief Get the current column index. */
@@ -55,6 +60,17 @@ private:
   void init_menu_window();
   /** @brief Destructor helper. Also called on update. */
   void destroy_menu ();
+};
+
+/** @brief Exception when encountering an empty menu. */
+class MenuEmpty : public std::exception {
+private:
+  /** @brief Exception message. */
+  std::string msg;
+
+public:
+  MenuEmpty (const char* _msg) : msg(_msg) {};
+  const char* what() const throw() { return msg.c_str(); };
 };
 
 #endif // MENU_NCURSES_H
