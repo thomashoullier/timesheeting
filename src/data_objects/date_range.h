@@ -1,9 +1,11 @@
+/** @file
+ * @brief Date range definition. */
 #ifndef DATE_RANGE_H
 #define DATE_RANGE_H
 
 #include "date.h"
 
-/** @brief Class for representing a range of Dates. */
+/** @brief Class for representing a range between a start and stop dates . */
 class DateRange {
 public:
   /** @brief Start of the date range. */

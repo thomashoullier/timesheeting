@@ -39,7 +39,7 @@ public:
   void commit_entrystaging() override;
 
 private:
-  /** @brief Handle to the DB. */
+  /** @brief Low-level handle to the DB. */
   DB_SQLite_Handle sqlite_db;
 
   /** @brief Create the SQL table for projects. */

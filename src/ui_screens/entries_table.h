@@ -1,3 +1,5 @@
+/** @file
+ * @brief EntriesTable definition. */
 #ifndef ENTRIES_TABLE_H
 #define ENTRIES_TABLE_H
 
@@ -17,6 +19,7 @@ template <typename T_DB,
             std::is_base_of<DB_Interface, T_DB>::value>>
 class EntriesTable : public UIComponent {
 public:
+  /** @brief Constructor. */
   explicit EntriesTable(std::shared_ptr<T_DB> _db,
                         std::shared_ptr<StatusBarNCurses> _status)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
@@ -91,11 +94,16 @@ public:
   };
 
 private:
+  /** @brief Handle to the DB. */
   std::shared_ptr<DB_Interface> db;
+  /** @brief Handle to the status bar. */
   std::shared_ptr<StatusBarNCurses> status;
+  /** @brief Handle to the date range selector. */
   DateSelectorNcurses date_selector;
+  /** @brief Handle to the register of entries. */
   RegisterNcurses reg;
 
+  /** @brief Rename an entry in the register. */
   void rename_item() {
     //TODO: manage the case where the register is empty.
     auto id = reg.get_current_id();
@@ -123,6 +131,7 @@ private:
     }
   };
 
+  /** @brief Remove an entry in the register. */
   void remove_item() {
     bool user_conf = status->query_confirmation("Remove entry? (Y/N)");
     if (!user_conf) {

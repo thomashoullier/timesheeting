@@ -1,3 +1,5 @@
+/** @file
+ * @brief StopwatchUI definition. */
 #ifndef STOPWATCH_UI_H
 #define STOPWATCH_UI_H
 
@@ -7,11 +9,13 @@
 #include "../status_bar/status_bar_ncurses.h"
 #include <memory>
 
+/** @brief High-level UI for the stopwatch. */
 template <typename T_DB,
           typename =
               std::enable_if_t<std::is_base_of<DB_Interface, T_DB>::value>>
 class StopwatchUI : public UIComponent {
 public:
+  /** @brief Constructor. */
   explicit StopwatchUI (std::shared_ptr<T_DB> _db,
                         std::shared_ptr<StatusBarNCurses> _status)
     : db(std::static_pointer_cast<DB_Interface>(_db)),
@@ -76,10 +80,14 @@ public:
   };
 
 private:
+  /** @brief Handle to the DB. */
   std::shared_ptr<DB_Interface> db;
+  /** @brief Handle to the low-level stopwatch element. */
   StopwatchNcurses stopwatch;
+  /** @brief Handle to the status bar. */
   std::shared_ptr<StatusBarNCurses> status;
 
+  /** @brief Rename a field in the entry in staging. */
   void rename_item() {
     auto new_str = stopwatch.query_current_item_rename();
     auto field_type = stopwatch.get_field_type();
@@ -104,7 +112,7 @@ private:
     }
   };
 
-  /** @brief Set the current item, if it is a date, to now(). */
+  /** @brief Set the current field, if it is a date, to now(). */
   void set_current_now () {
     auto field_type = stopwatch.get_field_type();
     switch(field_type) {

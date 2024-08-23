@@ -1,3 +1,5 @@
+/** @file
+ * @brief Column definition. */
 #ifndef COLUMN_H
 #define COLUMN_H
 
@@ -6,14 +8,17 @@
 #include "../../ncurses/menu_ncurses.h"
 #include <type_traits>
 
+/** @brief Column menu class. Can hold any GenericItem. */
 template <typename T,
           typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>
 class Column : public ColumnBase, public MenuNCurses {
 public:
+  /** @brief Construct the column with given items and position. */
   Column(const std::vector<T> &items, WindowPosition winpos)
       : MenuNCurses(items_to_string(items), winpos, WindowFormat::column, 1),
         held_items(items) {};
 
+  /** @brief Replace the column items. */
   void set_items(const std::vector<T> &items) {
     held_items = items;
     MenuNCurses::set_items(items_to_string(items));
@@ -45,7 +50,7 @@ public:
   };
 
 private:
-  /** @brief Storage of currently held items. */
+  /** @brief Storage for the currently held items. */
   std::vector<T> held_items;
 
   /** @brief Get display strings from the set of items. */

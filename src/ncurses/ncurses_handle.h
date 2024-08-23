@@ -1,3 +1,5 @@
+/** @file
+ * @brief NcursesHandle definition. */
 #ifndef NCURSES_HANDLE_H
 #define NCURSES_HANDLE_H
 

@@ -5,7 +5,6 @@
 
 #include <exception>
 #include <filesystem>
-#include <stdexcept>
 #include <string>
 #include <cstdint>
 #include <vector>
@@ -43,10 +42,13 @@ private :
  * code. */
 class SQLiteConstraintExcept : public std::exception {
 private:
-  std::string msg; // Message with the exception.
+  /** @brief Exception message. */
+  std::string msg;
 
 public:
+  /** @brief Exception constructor. */
   SQLiteConstraintExcept (const char* _msg) : msg(_msg) {}
+  /** @brief Mandatory std::exception method. */
   const char* what() const throw() {
     return msg.c_str();
   }

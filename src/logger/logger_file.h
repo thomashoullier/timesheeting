@@ -7,10 +7,9 @@
 #include <filesystem>
 #include <memory>
 #include <fstream>
-#include <stdexcept>
-#include <chrono>
 
 /** @brief Logger implementation with a log file.
+ *
  * This is a singleton. */
 class LoggerFile : public LoggerInterface {
 public:

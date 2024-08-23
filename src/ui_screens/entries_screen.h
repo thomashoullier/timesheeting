@@ -1,3 +1,5 @@
+/** @file
+ * @brief EntriesScreen definition. */
 #ifndef ENTRIES_SCREEN_H
 #define ENTRIES_SCREEN_H
 
@@ -7,11 +9,13 @@
 #include "stopwatch/stopwatch_ui.h"
 #include <memory>
 
+/** @brief Entry UI screen. */
 template <typename T_DB,
           typename =
               std::enable_if_t<std::is_base_of<DB_Interface, T_DB>::value>>
 class EntriesScreen : public UIComponent {
 public:
+  /** @brief Constructor. */
   explicit EntriesScreen(std::shared_ptr<T_DB> _db,
                          std::shared_ptr<StatusBarNCurses> _status)
     : stopwatch_ui(std::make_unique<StopwatchUI<T_DB>>(_db, _status)),
@@ -51,7 +55,9 @@ public:
   };
 
 private:
+  /** @brief Handle to the stopwatch. */
   std::unique_ptr<UIComponent> stopwatch_ui;
+  /** @brief Handle to the table holding the entries. */
   std::unique_ptr<UIComponent> entries_table;
 };
 

@@ -27,13 +27,21 @@ struct Task : GenericItem {};
 
 /** @brief Timesheet entry object. */
 struct Entry {
+  /** @brief Id of the entry. */
   Id id;
+  /** @brief Project name associated to the entry. */
   std::string project_name;
+  /** @brief Task name associated to the entry. */
   std::string task_name;
+  /** @brief Start date of the entry. */
   Date start;
+  /** @brief Stop date of the entry. */
   Date stop;
 
-  /** @brief Generate an ordered set of strings for displaying the entry. */
+  /** @brief Generate an ordered set of strings for displaying the entry.
+
+   Typically, the result is like {"Project", "Task",
+  "23Aug2024 16:24:05", "23Aug2024 17:35:38"}*/
   std::vector<std::string> to_strings() const {
     std::vector<std::string> display_strings(4);
     display_strings.at(0) = project_name;
@@ -44,15 +52,23 @@ struct Entry {
   };
 };
 
-/** @brief Entry as it is being staged. */
+/** @brief Entry as it is being staged.
+
+ Each field may or may not be currently filled. */
 struct EntryStaging {
+  /** @brief Project name associated to the entry in staging. */
   std::optional<std::string> project_name;
+  /** @brief Task name associated to the entry in staging. */
   std::optional<std::string> task_name;
+  /** @brief Start date of the entry in staging. */
   std::optional<Date> start;
+  /** @brief Stop date of the entry in staging. */
   std::optional<Date> stop;
 
   /** @brief Generate an ordered set of strings for displaying
-      the entrystaging. */
+      the entrystaging.
+
+  Fields with no values are output as a whitespace character. */
   std::vector<std::string> to_strings() const {
     std::vector<std::string> display_strings(4);
     display_strings.at(0) = project_name.value_or(" ");

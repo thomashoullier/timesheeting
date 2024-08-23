@@ -12,7 +12,7 @@
 #include "../ncurses/win_ncurses.h"
 #include <memory>
 
-/** @brief Table for defining projects and tasks using two columns. */
+/** @brief Projects and tasks UI screen. */
 template <typename T_DB, typename T_LOG,
           typename = std::enable_if_t<
             std::is_base_of<DB_Interface, T_DB>::value &&
@@ -45,7 +45,6 @@ public:
     task_col->clear();
   };
 
-  /** @brief Query an user input, treat it or return it. */
   char input_loop() override {
     ColumnBase *cur_col {project_col.get()};
     while (true) {

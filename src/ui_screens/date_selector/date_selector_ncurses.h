@@ -1,11 +1,15 @@
+/** @file
+ * @brief DateSelectorNcurses definition. */
 #ifndef DATE_SELECTOR_NCURSES_H
 #define DATE_SELECTOR_NCURSES_H
 
 #include "../../ncurses/bar_ncurses.h"
 #include "../../data_objects/date_range.h"
 
+/** @brief Bar for selecting a date range. */
 class DateSelectorNcurses : public BarNCurses {
 private:
+  /** @brief Internal representation of the date range. */
   DateRange range;
 
 public:

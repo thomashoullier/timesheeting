@@ -1,3 +1,5 @@
+/** @file
+ * @brief Top-level UI of the application. */
 #ifndef UI_H
 #define UI_H
 
@@ -10,7 +12,7 @@
 #include "logger/logger_file.h"
 #include <memory>
 
-/** @brief Ncurses UI for timesheeting. */
+/** @brief Ncurses top-level UI for timesheeting. */
 class UI {
 public:
   /** @brief Construct the timesheeting top-level UI. */
@@ -21,15 +23,16 @@ public:
   char input_loop();
 
 private:
+  /** @brief Logger interface. */
+  LoggerInterface *logger;
   /** @brief Handle to the top ncurses management. */
   NcursesHandle ncurses_handle;
   /** @brief SQLite DB interface. */
   std::shared_ptr<DB_SQLite> db;
   /** @brief Handle to a status bar for ncurses. */
   std::shared_ptr<StatusBarNCurses> status_bar;
+  /** @brief Screen for the project/task definition. */
   ProjectTaskScreen<DB_SQLite, LoggerFile> projects_screen;
-  /** @brief Logger interface. */
-  LoggerInterface *logger;
   /** @brief Screen for the table of entries. */
   EntriesScreen<DB_SQLite> entries_screen;
 };

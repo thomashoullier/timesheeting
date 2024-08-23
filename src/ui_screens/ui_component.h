@@ -1,7 +1,9 @@
+/** @file
+ * @brief UIComponent definition. */
 #ifndef UI_COMPONENT_H
 #define UI_COMPONENT_H
 
-/** @brief Interface for a UI component. */
+/** @brief Interface class for a UI component. */
 class UIComponent {
 public:
   virtual ~UIComponent () = default;

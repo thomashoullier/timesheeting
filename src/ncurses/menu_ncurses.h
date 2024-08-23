@@ -1,3 +1,5 @@
+/** @file
+ * @brief MenuNCurses definition. */
 #ifndef MENU_NCURSES_H
 #define MENU_NCURSES_H
 
@@ -10,6 +12,8 @@
 /** @brief A ncurses window holding a generic menu. */
 class MenuNCurses : public WinNCurses {
 public:
+  /** @brief Construct the menu holding the provided display strings,
+   at the given position, with the given format and number of columns. */
   MenuNCurses(const std::vector<std::string> &items,
               WindowPosition winpos, WindowFormat winformat,
               int _ncols);
@@ -55,7 +59,9 @@ private:
   MENU *menu;
   /** @brief ncurses menu items. */
   std::vector<ITEM *> menu_items;
-  /** @brief Persistent storage for the strings being displayed. */
+  /** @brief Persistent storage for the strings being displayed.
+
+   This is needed by ncurses, otherwise the display points to whatever memory. */
   std::vector<std::string> display_strings;
 
   /** @brief Constructor helper: initialize the menu. */
@@ -79,7 +85,9 @@ private:
   std::string msg;
 
 public:
+  /** @brief Exception constructor. */
   MenuEmpty (const char* _msg) : msg(_msg) {};
+  /** @brief Mandatory std::exception method. */
   const char* what() const throw() { return msg.c_str(); };
 };
 

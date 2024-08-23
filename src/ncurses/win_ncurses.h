@@ -1,3 +1,5 @@
+/** @file
+ * @brief WinNCurses definition. */
 #ifndef WIN_NCURSES_H
 #define WIN_NCURSES_H
 
@@ -11,10 +13,11 @@ enum class WindowFormat { line, block, column };
 /** @brief Base class for NCurses elements in a window. */
 class WinNCurses {
 public:
+  /** @brief Construct the window with given position and format. */
   WinNCurses(WindowPosition winpos, WindowFormat winformat);
   ~WinNCurses();
 
-  /** @brief Get a character inputted in the current window. */
+  /** @brief Get a character inputted by the user in the current window. */
   char get_input();
   /** @brief Refresh the display. */
   void refresh() const;
@@ -22,6 +25,7 @@ public:
   void clear() const;
 
 protected:
+  /** Ncurses window object. */
   WINDOW *win;
 
   /** @brief Destroy the ncurses window. */

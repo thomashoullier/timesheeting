@@ -1,6 +1,4 @@
 #include "menu_ncurses.h"
-#include "win_ncurses.h"
-#include <menu.h>
 #include <algorithm>
 
 MenuNCurses::MenuNCurses(const std::vector<std::string> &items,

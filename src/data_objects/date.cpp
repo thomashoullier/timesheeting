@@ -5,11 +5,6 @@
 #include <format>
 #include <stdexcept>
 
-std::string Date::to_string () const {
-  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
-  return std::format("{:%d%b%Y %H:%M:%S}", local_time);
-}
-
 Date::Date() {
   auto tp_now = std::chrono::system_clock::now();
   tp = std::chrono::floor<std::chrono::seconds>(tp_now);
@@ -55,6 +50,11 @@ Date::Date(const std::string &date_str) {
   tm.tm_isdst = true; // TODO: this is a hack, works only for our current timezone.
   auto tp_parsed = std::chrono::system_clock::from_time_t(std::mktime(&tm));
   tp = std::chrono::floor<std::chrono::seconds>(tp_parsed);
+}
+
+std::string Date::to_string () const {
+  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
+  return std::format("{:%d%b%Y %H:%M:%S}", local_time);
 }
 
 uint64_t Date::to_unix_timestamp() const {
