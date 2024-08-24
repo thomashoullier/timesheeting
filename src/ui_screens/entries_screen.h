@@ -7,19 +7,23 @@
 #include "entries_table.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "stopwatch/stopwatch_ui.h"
+#include "../logger_interface.h"
 #include <memory>
 
+
 /** @brief Entry UI screen. */
-template <typename T_DB,
+template <typename T_DB, typename T_LOG,
           typename =
-              std::enable_if_t<std::is_base_of<DB_Interface, T_DB>::value>>
+              std::enable_if_t<std::is_base_of<DB_Interface, T_DB>::value &&
+                               std::is_base_of<LoggerInterface, T_LOG>::value>>
 class EntriesScreen : public UIComponent {
 public:
   /** @brief Constructor. */
   explicit EntriesScreen(std::shared_ptr<T_DB> _db,
                          std::shared_ptr<StatusBarNCurses> _status)
     : stopwatch_ui(std::make_unique<StopwatchUI<T_DB>>(_db, _status)),
-      entries_table(std::make_unique<EntriesTable<T_DB>>(_db, _status)) {};
+      entries_table(std::make_unique<EntriesTable<T_DB>>(_db, _status)),
+      logger(&T_LOG::get()) {};
 
   char input_loop() override {
     UIComponent *cur_focus {entries_table.get()};
@@ -59,6 +63,8 @@ private:
   std::unique_ptr<UIComponent> stopwatch_ui;
   /** @brief Handle to the table holding the entries. */
   std::unique_ptr<UIComponent> entries_table;
+  /** @brief Logger interface. */
+  LoggerInterface *logger;
 };
 
 #endif // ENTRIES_SCREEN_H

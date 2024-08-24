@@ -1,4 +1,8 @@
 #include "logger_file.h"
+#include <chrono>
+#include <ratio>
+#include <sstream>
+#include <string>
 
 LoggerFile& LoggerFile::get() {
   static LoggerFile instance ("timesheeting.log");
@@ -12,8 +16,28 @@ void LoggerFile::log(const std::string &message) {
   *file << get_timestamp() << " : " << message << std::endl;
 }
 
+void LoggerFile::tick() {
+  if (counting) {
+    return;
+  } else {
+    counting = true;
+    tick_point = std::chrono::high_resolution_clock::now();
+  }
+}
+
+void LoggerFile::tock() {
+  auto tock_point = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double, std::milli> dur = tock_point - tick_point;
+  std::ostringstream ostr;
+  ostr.precision(3);
+  ostr << std::fixed << dur.count();
+  this->log("Input loop was: " + ostr.str() + " ms.");
+  counting = false;
+}
+
 LoggerFile::LoggerFile(const std::filesystem::path &log_file)
-    : file(std::make_unique<std::ofstream>(log_file, std::ios::app)) {
+    : file(std::make_unique<std::ofstream>(log_file, std::ios::app)),
+      counting(false) {
   if (!file->good()) {
     throw std::runtime_error("Log file was not opened correctly.");
   }

@@ -34,7 +34,7 @@ private:
   /** @brief Screen for the project/task definition. */
   ProjectTaskScreen<DB_SQLite, LoggerFile> projects_screen;
   /** @brief Screen for the table of entries. */
-  EntriesScreen<DB_SQLite> entries_screen;
+  EntriesScreen<DB_SQLite, LoggerFile> entries_screen;
 };
 
 #endif // UI_H

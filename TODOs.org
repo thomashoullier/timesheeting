@@ -230,7 +230,8 @@ ADDED: [2024-08-02 Fri]
 Currently the logger is added without defining its interface first.
 Add the interface class.
 
-*** TODO Use logger globally
+*** DONE Use logger globally
+CLOSED: [2024-08-24 Sat 10:11]
 ADDED: [2024-08-02 Fri]
 Find a way to initialize the logger and use it globally without
 passing a handle around to every other object in the program.
@@ -248,7 +249,8 @@ ADDED: [2024-08-01 Thu]
 Deploy the doxygen pages using a github action.
 See our past projects where we have done this.
 
-*** TODO Create the DB table for entries.
+*** DONE Create the DB table for entries.
+CLOSED: [2024-08-24 Sat 10:11]
 ADDED: [2024-08-01 Thu]
 Create a DB table for the entries,
 it should contain: id, taskid, start date, stop date, location.
@@ -262,3 +264,15 @@ Example 15.
   redraws everytime we switch between screens.
   We could have the individual screen have methods to refresh and clear
   themselves.
+
+*** TODO Make the logger class singleton grab an implementation of a logger
+ADDED: [2024-08-24 Sat]
+Avoid having to turn every class using a logger into a template on the
+logger type. Make the singleton return an implementation of logger directly.
+We can change the logger type there.
+Also remove the ~logger~ member attributes everywhere, an include should suffice.
+
+*** TODO Create log levels
+ADDED: [2024-08-24 Sat]
+Create log levels and a way to set which ones are active or not.
+Perhaps use an enum to pass which ones should be active or not.

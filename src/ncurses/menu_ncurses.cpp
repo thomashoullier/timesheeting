@@ -102,7 +102,7 @@ std::string MenuNCurses::get_user_string (int display_line) {
   wclrtoeol(win); // TODO: only clear the current item instead.
   bool user_wants_to_input = true;
   while (user_wants_to_input) {
-    auto ch = wgetch(win);
+    auto ch = this->get_input();
     switch (ch) {
     case '\n': // User validates the input.
       user_wants_to_input = false;

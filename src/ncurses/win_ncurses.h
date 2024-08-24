@@ -4,6 +4,7 @@
 #define WIN_NCURSES_H
 
 #include <ncurses.h>
+#include "../logger/logger_file.h"
 
 /** @brief Selector for the position of the window. */
 enum class WindowPosition { top, upper, lower, bottom, left, middle };
@@ -34,6 +35,9 @@ protected:
 private:
   /** @brief Get a new ncurses window. */
   WINDOW* init_window(WindowPosition winpos, WindowFormat winformat);
+  /** @brief Handle to the logger. */
+  // TODO: Grab the logger from the generic class handing out loggers.
+  LoggerFile *logger;
 };
 
 #endif // WIN_NCURSES_H

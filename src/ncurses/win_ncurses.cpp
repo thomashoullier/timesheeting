@@ -2,11 +2,17 @@
 #include <stdexcept>
 
 WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)
-  : win(init_window(winpos, winformat)) {}
+  : win(init_window(winpos, winformat)),
+    logger(&LoggerFile::get()) {}
 
 WinNCurses::~WinNCurses() { destroy_window(); }
 
-char WinNCurses::get_input() { return wgetch(win); }
+char WinNCurses::get_input() {
+  logger->tock();
+  auto ch = wgetch(win);
+  logger->tick();
+  return ch;
+}
 
 void WinNCurses::refresh() const { wrefresh(win); }
 
