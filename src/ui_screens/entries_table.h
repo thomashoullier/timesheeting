@@ -27,7 +27,7 @@ public:
       : db(std::static_pointer_cast<DB_Interface>(_db)),
         status(_status),
         date_selector(),
-        total_bar(Duration(10567)),
+        total_bar(db->query_entries_duration(date_selector.current_range())),
         reg(db->query_entries(date_selector.current_range())) {};
 
   char input_loop() override {
@@ -68,13 +68,13 @@ public:
         date_selector.select_next_day();
         update();
         date_selector.refresh();
-        total_bar.refresh();
+        total_bar.update(db->query_entries_duration
+                         (date_selector.current_range()));
         break;
       case ',':
         date_selector.select_previous_day();
         update();
         date_selector.refresh();
-        total_bar.refresh();
         break;
       default:
         return ch;
@@ -82,7 +82,7 @@ public:
     }
   };
 
-  void refresh () override {
+  void refresh() override {
     reg.refresh();
     date_selector.refresh();
     total_bar.refresh();
@@ -98,6 +98,8 @@ public:
     auto entry_items = db->query_entries(date_selector.current_range());
     reg.set_items(entry_items);
     reg.refresh();
+    total_bar.update(db->query_entries_duration(date_selector.current_range()));
+    total_bar.refresh();
   };
 
 private:

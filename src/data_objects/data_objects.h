@@ -92,6 +92,8 @@ private:
   std::chrono::seconds dur;
 
 public:
+  /** @brief Construct a duration of 0 by default. */
+  Duration() : dur(std::chrono::seconds(0)) {};
   /** @brief Initialize the duration to a number of seconds. */
   Duration (uint64_t seconds) :
     dur(std::chrono::seconds(seconds)) {};

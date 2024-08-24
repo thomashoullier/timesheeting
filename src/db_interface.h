@@ -19,6 +19,9 @@ public:
   /** @brief Return the set of entries ordered by ascending start date
       and included in the provided DateRange. */
   virtual std::vector<Entry> query_entries (const DateRange &date_range) = 0;
+  /** @brief Return the total duration of entries
+      starting within the date range. */
+  virtual Duration query_entries_duration(const DateRange &date_range) = 0;
   /** @brief Get the displayable state of the Entry in staging. */
   virtual EntryStaging query_entrystaging () = 0;
 

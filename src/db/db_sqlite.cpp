@@ -61,6 +61,21 @@ std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
   return vec;
 }
 
+
+Duration DB_SQLite::query_entries_duration(const DateRange &date_range) {
+  auto start_stamp = date_range.start.to_unix_timestamp();
+  auto stop_stamp = date_range.stop.to_unix_timestamp();
+  std::string select_duration_st =
+    "SELECT SUM(stop - start) FROM entries e "
+    "WHERE e.start >= " + std::to_string(start_stamp) + " "
+    "AND e.start < " + std::to_string(stop_stamp) + ";";
+  auto stmt = sqlite_db.prepare_statement(select_duration_st);
+  Duration total = (sqlite3_step(stmt) == SQLITE_ROW) ?
+    Duration(sqlite3_column_int64(stmt, 0)) : Duration();
+  sqlite3_finalize(stmt);
+  return total;
+}
+
 EntryStaging DB_SQLite::query_entrystaging() {
   std::string select_entrystaging_st =
     "SELECT p.name, t.name, start, stop "
