@@ -3,6 +3,7 @@
 #ifndef ENTRIES_TABLE_H
 #define ENTRIES_TABLE_H
 
+#include <cstdint>
 #include <memory>
 #include <stdexcept>
 #include "../data_objects/data_objects.h"
@@ -11,6 +12,7 @@
 #include "../db_interface.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "register/register_ncurses.h"
+#include "total_bar/total_bar.h"
 #include "ui_component.h"
 
 /** @brief Class for holding the table of entries for a given day. */
@@ -25,6 +27,7 @@ public:
       : db(std::static_pointer_cast<DB_Interface>(_db)),
         status(_status),
         date_selector(),
+        total_bar(Duration(10567)),
         reg(db->query_entries(date_selector.current_range())) {};
 
   char input_loop() override {
@@ -65,11 +68,13 @@ public:
         date_selector.select_next_day();
         update();
         date_selector.refresh();
+        total_bar.refresh();
         break;
       case ',':
         date_selector.select_previous_day();
         update();
         date_selector.refresh();
+        total_bar.refresh();
         break;
       default:
         return ch;
@@ -80,11 +85,13 @@ public:
   void refresh () override {
     reg.refresh();
     date_selector.refresh();
+    total_bar.refresh();
   };
 
   void clear() override {
     date_selector.clear();
     reg.clear();
+    total_bar.clear();
   };
 
   void update() override {
@@ -100,6 +107,8 @@ private:
   std::shared_ptr<StatusBarNCurses> status;
   /** @brief Handle to the date range selector. */
   DateSelectorNcurses date_selector;
+  /** @brief Handle to the total duration display. */
+  TotalBar total_bar;
   /** @brief Handle to the register of entries. */
   RegisterNcurses reg;
 

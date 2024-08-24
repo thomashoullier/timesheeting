@@ -3,6 +3,7 @@
 #ifndef DATA_OBJECTS_H
 #define DATA_OBJECTS_H
 
+#include <chrono>
 #include <optional>
 #include <string>
 #include <cstdint>
@@ -81,5 +82,21 @@ struct EntryStaging {
 
 /** @brief Entry field type (as displayed in the menu). */
 enum EntryField { project_name = 0, task_name = 1, start = 2, stop = 3 };
+
+/** @brief Duration type*/
+class Duration {
+private:
+  /** @brief Duration represented as a number of seconds. */
+  std::chrono::seconds dur;
+
+public:
+  /** @brief Initialize the duration to a number of seconds. */
+  Duration (uint64_t seconds) :
+    dur(std::chrono::seconds(seconds)) {};
+  /** @brief Obtain a displayable representation for the duration. */
+  std::string to_string() const {
+    return std::to_string(dur.count());
+  };
+};
 
 #endif // DATA_OBJECTS_H

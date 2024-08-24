@@ -277,3 +277,8 @@ Also remove the ~logger~ member attributes everywhere, an include should suffice
 ADDED: [2024-08-24 Sat]
 Create log levels and a way to set which ones are active or not.
 Perhaps use an enum to pass which ones should be active or not.
+
+*** TODO Try adding an index to the start column in the entries table
+ADDED: [2024-08-24 Sat]
+We often select entries based on their start date.
+Try measuring the improvement.

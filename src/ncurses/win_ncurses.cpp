@@ -36,6 +36,10 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
     x = 0;
     y = 1;
     break;
+  case WindowPosition::top_right:
+    x = WIDTH / 2;
+    y = 1;
+    break;
   case WindowPosition::bottom:
     x = 0;
     y = max_y - 1;

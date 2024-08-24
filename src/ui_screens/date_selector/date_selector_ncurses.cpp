@@ -4,6 +4,10 @@ DateSelectorNcurses::DateSelectorNcurses()
   : BarNCurses(WindowPosition::top, WindowFormat::half_line),
     range(Date(DatePoint::DayBegin), DatePoint::DayEnd) {};
 
+// TODO: This seems a bit wasteful. Store the string to display instead.
+//       Add an update method if needed.
+//       Is explicit printing at all needed after a clear?
+//       Can't we just refresh?
 void DateSelectorNcurses::refresh() const {
   BarNCurses::print(range.start.get_day_string());
 }
