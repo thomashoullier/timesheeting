@@ -14,6 +14,8 @@ public:
   BarNCurses(WindowPosition winpos, WindowFormat winformat);
   /** @brief Print a string in the bar. */
   void print (const std::string &msg) const;
+  /** @brief Print a string to the right of the bar. */
+  void print_right (const std::string &msg) const;
 private:
   /** @brief Filter the kind of WindowFormat to only lines. */
   WindowFormat filter_window_format(WindowFormat winformat);

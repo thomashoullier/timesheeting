@@ -4,7 +4,9 @@
 #define DATA_OBJECTS_H
 
 #include <chrono>
+#include <iomanip>
 #include <optional>
+#include <sstream>
 #include <string>
 #include <cstdint>
 #include "date.h"
@@ -93,9 +95,14 @@ public:
   /** @brief Initialize the duration to a number of seconds. */
   Duration (uint64_t seconds) :
     dur(std::chrono::seconds(seconds)) {};
-  /** @brief Obtain a displayable representation for the duration. */
+  /** @brief Obtain a displayable representation for the duration in
+      hours with 3 decimal places. */
   std::string to_string() const {
-    return std::to_string(dur.count());
+    double hours = static_cast<double>(dur.count()) / 3600;
+    std::ostringstream ostr;
+    ostr << std::fixed << std::setprecision(3)
+         << hours << " hours";
+    return ostr.str();
   };
 };
 

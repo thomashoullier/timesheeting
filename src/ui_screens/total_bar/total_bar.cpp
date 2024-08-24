@@ -11,5 +11,5 @@ void TotalBar::update(const Duration &_duration) {
 }
 
 void TotalBar::refresh() const {
-  BarNCurses::print(display_string);
+  BarNCurses::print_right(display_string);
 }
