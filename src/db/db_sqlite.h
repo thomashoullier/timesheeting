@@ -48,6 +48,8 @@ private:
   void create_tasks_table();
   /** @brief Create the SQL table for entries. */
   void create_entries_table();
+  /** @brief Create an index over the start date of entries. */
+  void create_entries_start_index();
   /** @brief Create the SQL table for entrystaging. */
   void create_entrystaging_table();
   /** @brief Execute a SQL statement with exception catching. */

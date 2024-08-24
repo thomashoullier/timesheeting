@@ -9,6 +9,7 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_projects_table();
   this->create_tasks_table();
   this->create_entries_table();
+  this->create_entries_start_index();
   this->create_entrystaging_table();
 }
 
@@ -132,12 +133,19 @@ void DB_SQLite::create_entries_table() {
     "CREATE TABLE IF NOT EXISTS entries ("
     "id INTEGER PRIMARY KEY, "
     "task_id INTEGER NOT NULL, "
-    "start INTEGER NOT NULL, "
+    "start INTEGER NOT NULL UNIQUE, "
     "stop INTEGER NOT NULL, "
     "FOREIGN KEY (task_id) REFERENCES tasks (id), "
     "CHECK (start <= stop) "
     ");";
   sqlite_db.exec_statement(create_entries_table_st);
+}
+
+void DB_SQLite::create_entries_start_index() {
+  std::string create_entries_start_index_st =
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_entries_start "
+    "ON entries (start);";
+  sqlite_db.exec_statement(create_entries_start_index_st);
 }
 
 void DB_SQLite::create_entrystaging_table() {
