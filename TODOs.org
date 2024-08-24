@@ -265,7 +265,8 @@ Example 15.
   We could have the individual screen have methods to refresh and clear
   themselves.
 
-*** TODO Make the logger class singleton grab an implementation of a logger
+*** DONE Make the logger class singleton grab an implementation of a logger
+CLOSED: [2024-08-24 Sat 12:41]
 ADDED: [2024-08-24 Sat]
 Avoid having to turn every class using a logger into a template on the
 logger type. Make the singleton return an implementation of logger directly.

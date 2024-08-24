@@ -1,11 +1,11 @@
 #include "ui.h"
+#include "logger/logger.h"
 
 UI::UI()
-  : logger(&LoggerFile::get()), ncurses_handle(),
-    db(std::make_shared<DB_SQLite>("timesheeting.db")),
+  : db(std::make_shared<DB_SQLite>("timesheeting.db")),
     status_bar(std::make_shared<StatusBarNCurses>()),
     projects_screen(db, status_bar), entries_screen(db, status_bar) {
-  logger->log("timesheeting UI initialized.");
+  log("timesheeting UI initialized.");
 }
 
 UI::~UI() {}

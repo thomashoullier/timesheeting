@@ -1,16 +1,16 @@
 #include "win_ncurses.h"
+#include "../logger/logger.h"
 #include <stdexcept>
 
 WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)
-  : win(init_window(winpos, winformat)),
-    logger(&LoggerFile::get()) {}
+  : win(init_window(winpos, winformat)) {}
 
 WinNCurses::~WinNCurses() { destroy_window(); }
 
 char WinNCurses::get_input() {
-  logger->tock();
+  tock();
   auto ch = wgetch(win);
-  logger->tick();
+  tick();
   return ch;
 }
 

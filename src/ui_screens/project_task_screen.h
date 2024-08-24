@@ -6,17 +6,16 @@
 #include "column/column.h"
 #include "../data_objects/data_objects.h"
 #include "../db_interface.h"
-#include "../logger_interface.h"
+#include "../logger/logger.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "ui_component.h"
 #include "../ncurses/win_ncurses.h"
 #include <memory>
 
 /** @brief Projects and tasks UI screen. */
-template <typename T_DB, typename T_LOG,
+template <typename T_DB,
           typename = std::enable_if_t<
-            std::is_base_of<DB_Interface, T_DB>::value &&
-            std::is_base_of<LoggerInterface, T_LOG>::value>>
+            std::is_base_of<DB_Interface, T_DB>::value>>
 class ProjectTaskScreen : public UIComponent {
 public:
   /** @brief Table constructor. */
@@ -28,8 +27,7 @@ public:
                     std::make_unique<Column<Project>>(std::vector<Project>(),
                                                       WindowPosition::left)),
         task_col(std::make_unique<Column<Task>>(std::vector<Task>(),
-                                          WindowPosition::middle)),
-        logger(&T_LOG::get()) {
+                                          WindowPosition::middle)) {
     // TODO: initialize directly on actual db data.
     update_project_col();
     update_task_col();
@@ -113,8 +111,6 @@ private:
   std::unique_ptr<Column<Project>> project_col;
   /** @brief Column for tasks. */
   std::unique_ptr<Column<Task>> task_col;
-  /** @brief Pointer to the logger singleton. */
-  LoggerInterface *logger;
 
   /** @brief Update the tasks column. */
   void update_task_col() {
@@ -141,13 +137,13 @@ private:
     if (!new_item_name.empty()) {
       if (cur_col == project_col.get()) {
         db->add_project(new_item_name);
-        logger->log("Added project: " + new_item_name);
+        log("Added project: " + new_item_name);
         update_project_col();
       } else if (cur_col == task_col.get()) {
         try {
         auto project_id = project_col->get_current_id();
         db->add_task(project_id, new_item_name);
-        logger->log("Added task: " + new_item_name);
+        log("Added task: " + new_item_name);
         update_task_col();
         } catch (MenuEmpty &e) {
           return;
