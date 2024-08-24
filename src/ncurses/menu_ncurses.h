@@ -42,7 +42,7 @@ public:
   /** @brief Replace the currently held items. */
   void set_items(const std::vector<std::string> &items);
   /** @brief Get the full display string for the current item. */
-  std::string get_current_item_string() const;
+  const std::string& get_current_item_string() const;
 
 protected:
   /** @brief Get the current item index. */
@@ -63,6 +63,8 @@ private:
 
    This is needed by ncurses, otherwise the display points to whatever memory. */
   std::vector<std::string> display_strings;
+  /** @brief String displayed for showing empty items. */
+  std::string empty_string;
 
   /** @brief Constructor helper: initialize the menu. */
   void init_menu(const std::vector<std::string> &items);

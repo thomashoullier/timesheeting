@@ -5,7 +5,8 @@ MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
                          WindowPosition winpos, WindowFormat winformat,
                          int _ncols)
     : WinNCurses(winpos, winformat),
-      ncols(_ncols) {
+      ncols(_ncols),
+      empty_string("") {
   init_menu(items);
 }
 
@@ -39,10 +40,9 @@ void MenuNCurses::set_items(const std::vector<std::string> &items) {
   init_menu(items);
 }
 
-// TODO: return a reference instead of copy here, it's not going to change.
-std::string MenuNCurses::get_current_item_string() const {
+const std::string& MenuNCurses::get_current_item_string() const {
   if (display_strings.empty())
-    return "";
+    return empty_string;
   else
     return display_strings.at(get_item_index());
 }
