@@ -32,6 +32,10 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
     x = 0;
     y = 1;
     break;
+  case WindowPosition::top_left:
+    x = 0;
+    y = 1;
+    break;
   case WindowPosition::bottom:
     x = 0;
     y = max_y - 1;
@@ -59,6 +63,10 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
   switch(winformat) {
   case WindowFormat::line:
     nx = WIDTH;
+    ny = 1;
+    break;
+  case WindowFormat::half_line:
+    nx = WIDTH / 2;
     ny = 1;
     break;
   case WindowFormat::block:

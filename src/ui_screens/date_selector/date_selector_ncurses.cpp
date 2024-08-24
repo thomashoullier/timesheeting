@@ -1,7 +1,7 @@
 #include "date_selector_ncurses.h"
 
 DateSelectorNcurses::DateSelectorNcurses()
-  : BarNCurses(WindowPosition::top),
+  : BarNCurses(WindowPosition::top, WindowFormat::half_line),
     range(Date(DatePoint::DayBegin), DatePoint::DayEnd) {};
 
 void DateSelectorNcurses::refresh() const {

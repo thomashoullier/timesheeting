@@ -11,9 +11,12 @@
 class BarNCurses : public WinNCurses {
 public:
   /** @brief Construct a bar at the given position. */
-  BarNCurses(WindowPosition winpos);
+  BarNCurses(WindowPosition winpos, WindowFormat winformat);
   /** @brief Print a string in the bar. */
   void print (const std::string &msg) const;
+private:
+  /** @brief Filter the kind of WindowFormat to only lines. */
+  WindowFormat filter_window_format(WindowFormat winformat);
 };
 
 #endif // BAR_NCURSES_H
