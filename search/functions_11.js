@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7encurseshandle_339',['~NcursesHandle',['../classNcursesHandle.html#a91d5b9dafb6f538aa87c764c504b1cf2',1,'NcursesHandle']]],
-  ['_7eui_340',['~UI',['../classUI.html#a1b23d0c64c7cbb3d143d90ec532a7ccd',1,'UI']]]
+  ['what_365',['what',['../classDateParsingFailure.html#a60fe5b3c6e8c126f7d4683110cee3747',1,'DateParsingFailure::what()'],['../classSQLiteConstraintExcept.html#ae5601370e1571637973056698a1fe8f5',1,'SQLiteConstraintExcept::what()'],['../classDBLogicExcept.html#a993643babdcdb9470795e0834833d934',1,'DBLogicExcept::what()'],['../classMenuEmpty.html#ab624abf085df08a7b04a257acd9d14db',1,'MenuEmpty::what()']]],
+  ['winncurses_366',['WinNCurses',['../classWinNCurses.html#a76c8f22cb4038348e0d14e2864e8c779',1,'WinNCurses']]]
 ];

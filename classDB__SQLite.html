@@ -103,6 +103,10 @@ std::vector&lt; <a class="el" href="structTask.html">Task</a> &gt;&#160;</td><td
 std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ad582b03e8629ba2725a7d43d006403cb">query_entries</a> (const <a class="el" href="classDateRange.html">DateRange</a> &amp;date_range) override</td></tr>
 <tr class="memdesc:ad582b03e8629ba2725a7d43d006403cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of entries ordered by ascending start date and included in the provided <a class="el" href="classDateRange.html" title="Class for representing a range between a start and stop dates .">DateRange</a>. <br /></td></tr>
 <tr class="separator:ad582b03e8629ba2725a7d43d006403cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a616b3ba2070885cf3b1d63f82aa1d66f"><td class="memItemLeft" align="right" valign="top"><a id="a616b3ba2070885cf3b1d63f82aa1d66f"></a>
+<a class="el" href="classDuration.html">Duration</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a616b3ba2070885cf3b1d63f82aa1d66f">query_entries_duration</a> (const <a class="el" href="classDateRange.html">DateRange</a> &amp;date_range) override</td></tr>
+<tr class="memdesc:a616b3ba2070885cf3b1d63f82aa1d66f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the total duration of entries starting within the date range. <br /></td></tr>
+<tr class="separator:a616b3ba2070885cf3b1d63f82aa1d66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76c5576807ee9d3f47ee25d85a1033a0"><td class="memItemLeft" align="right" valign="top"><a id="a76c5576807ee9d3f47ee25d85a1033a0"></a>
 <a class="el" href="structEntryStaging.html">EntryStaging</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a76c5576807ee9d3f47ee25d85a1033a0">query_entrystaging</a> () override</td></tr>
 <tr class="memdesc:a76c5576807ee9d3f47ee25d85a1033a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the displayable state of the <a class="el" href="structEntry.html" title="Timesheet entry object.">Entry</a> in staging. <br /></td></tr>
@@ -190,6 +194,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a130c13f83de9dc6e6e071df84e6fd93b">create_entries_table</a> ()</td></tr>
 <tr class="memdesc:a130c13f83de9dc6e6e071df84e6fd93b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the SQL table for entries. <br /></td></tr>
 <tr class="separator:a130c13f83de9dc6e6e071df84e6fd93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641db1f1a499da5581e73634ea005928"><td class="memItemLeft" align="right" valign="top"><a id="a641db1f1a499da5581e73634ea005928"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a641db1f1a499da5581e73634ea005928">create_entries_start_index</a> ()</td></tr>
+<tr class="memdesc:a641db1f1a499da5581e73634ea005928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an index over the start date of entries. <br /></td></tr>
+<tr class="separator:a641db1f1a499da5581e73634ea005928"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e5bdd16c96fd8f1c88a633700ca3c2c"><td class="memItemLeft" align="right" valign="top"><a id="a8e5bdd16c96fd8f1c88a633700ca3c2c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a8e5bdd16c96fd8f1c88a633700ca3c2c">create_entrystaging_table</a> ()</td></tr>
 <tr class="memdesc:a8e5bdd16c96fd8f1c88a633700ca3c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the SQL table for entrystaging. <br /></td></tr>

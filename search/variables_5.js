@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_350',['logger',['../classUI.html#a7b7c4a1f2c20f0537f5fceca65d40180',1,'UI::logger()'],['../classProjectTaskScreen.html#a608a42d19b8846546b629c767624cc62',1,'ProjectTaskScreen::logger()']]]
+  ['id_382',['id',['../structGenericItem.html#a2f417d0fabe992fd739be1422b97b205',1,'GenericItem::id()'],['../structEntry.html#acae03bc40435aa6cce0c87dbc6d07aa4',1,'Entry::id()']]]
 ];

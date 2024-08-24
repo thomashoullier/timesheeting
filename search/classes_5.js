@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['loggerfile_196',['LoggerFile',['../classLoggerFile.html',1,'']]],
-  ['loggerinterface_197',['LoggerInterface',['../classLoggerInterface.html',1,'']]]
+  ['loggerfile_213',['LoggerFile',['../classLoggerFile.html',1,'']]],
+  ['loggerinterface_214',['LoggerInterface',['../classLoggerInterface.html',1,'']]]
 ];

@@ -92,6 +92,14 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#ae4d060e5d3746f0573c3df262cb93047">log</a> (const std::string &amp;message) override</td></tr>
 <tr class="memdesc:ae4d060e5d3746f0573c3df262cb93047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message. <br /></td></tr>
 <tr class="separator:ae4d060e5d3746f0573c3df262cb93047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ce55d92b6da5782ddff9f3a81045d48"><td class="memItemLeft" align="right" valign="top"><a id="a9ce55d92b6da5782ddff9f3a81045d48"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a9ce55d92b6da5782ddff9f3a81045d48">tick</a> () override</td></tr>
+<tr class="memdesc:a9ce55d92b6da5782ddff9f3a81045d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a clock for timing a duration. <br /></td></tr>
+<tr class="separator:a9ce55d92b6da5782ddff9f3a81045d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15eda1c3b5d5e73559dd42b12d63add7"><td class="memItemLeft" align="right" valign="top"><a id="a15eda1c3b5d5e73559dd42b12d63add7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a15eda1c3b5d5e73559dd42b12d63add7">tock</a> () override</td></tr>
+<tr class="memdesc:a15eda1c3b5d5e73559dd42b12d63add7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the clock and log the duration since the first tick. <br /></td></tr>
+<tr class="separator:a15eda1c3b5d5e73559dd42b12d63add7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -122,6 +130,14 @@ Private Attributes</h2></td></tr>
 std::unique_ptr&lt; std::ofstream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a76ba0529b72555db9ea17fbfea38fac7">file</a></td></tr>
 <tr class="memdesc:a76ba0529b72555db9ea17fbfea38fac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the log file for output. <br /></td></tr>
 <tr class="separator:a76ba0529b72555db9ea17fbfea38fac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa50b8e99c1f97d9c46efe877761a2a75"><td class="memItemLeft" align="right" valign="top"><a id="aa50b8e99c1f97d9c46efe877761a2a75"></a>
+std::chrono::high_resolution_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#aa50b8e99c1f97d9c46efe877761a2a75">tick_point</a></td></tr>
+<tr class="memdesc:aa50b8e99c1f97d9c46efe877761a2a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start time point for clocking durations. <br /></td></tr>
+<tr class="separator:aa50b8e99c1f97d9c46efe877761a2a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80dd4cca41e6beeaecdaac3a3f226e76"><td class="memItemLeft" align="right" valign="top"><a id="a80dd4cca41e6beeaecdaac3a3f226e76"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoggerFile.html#a80dd4cca41e6beeaecdaac3a3f226e76">counting</a></td></tr>
+<tr class="memdesc:a80dd4cca41e6beeaecdaac3a3f226e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock state. <br /></td></tr>
+<tr class="separator:a80dd4cca41e6beeaecdaac3a3f226e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Logger implementation with a log file. </p>

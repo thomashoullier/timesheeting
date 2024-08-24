@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['windowformat_378',['WindowFormat',['../win__ncurses_8h.html#afe927fc5254fdeb9dc891e4d476ba791',1,'win_ncurses.h']]],
-  ['windowposition_379',['WindowPosition',['../win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e',1,'win_ncurses.h']]]
+  ['windowformat_412',['WindowFormat',['../win__ncurses_8h.html#afe927fc5254fdeb9dc891e4d476ba791',1,'win_ncurses.h']]],
+  ['windowposition_413',['WindowPosition',['../win__ncurses_8h.html#af22193e1ca848d70fb7d8cc2154c0f0e',1,'win_ncurses.h']]]
 ];

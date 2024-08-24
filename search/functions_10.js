@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['what_337',['what',['../classDateParsingFailure.html#a60fe5b3c6e8c126f7d4683110cee3747',1,'DateParsingFailure::what()'],['../classSQLiteConstraintExcept.html#ae5601370e1571637973056698a1fe8f5',1,'SQLiteConstraintExcept::what()'],['../classDBLogicExcept.html#a993643babdcdb9470795e0834833d934',1,'DBLogicExcept::what()'],['../classMenuEmpty.html#ab624abf085df08a7b04a257acd9d14db',1,'MenuEmpty::what()']]],
-  ['winncurses_338',['WinNCurses',['../classWinNCurses.html#a76c8f22cb4038348e0d14e2864e8c779',1,'WinNCurses']]]
+  ['ui_361',['UI',['../classUI.html#a675985a56b5e87ebdc8e5884b9f2ee09',1,'UI']]],
+  ['update_362',['update',['../classEntriesScreen.html#a31ad80b7b8a8ea517aa4d7e9a6936eb7',1,'EntriesScreen::update()'],['../classEntriesTable.html#a4834923bd85becf6463a496bcfd05505',1,'EntriesTable::update()'],['../classProjectTaskScreen.html#a32e58ab09d3b37d4aa36dcec17574120',1,'ProjectTaskScreen::update()'],['../classStopwatchUI.html#a6ec2168248a26b68505f2a28cd6c838c',1,'StopwatchUI::update()'],['../classTotalBar.html#acc078dfa58c9d95add26e4ce4489637f',1,'TotalBar::update()'],['../classUIComponent.html#a8fc05da8f6ee65034cd71070a64d29d2',1,'UIComponent::update()']]],
+  ['update_5fproject_5fcol_363',['update_project_col',['../classProjectTaskScreen.html#a687db0863caf91c5c769ba8ad5a9f83a',1,'ProjectTaskScreen']]],
+  ['update_5ftask_5fcol_364',['update_task_col',['../classProjectTaskScreen.html#a3e95b143094310e5594965370ee41266',1,'ProjectTaskScreen']]]
 ];

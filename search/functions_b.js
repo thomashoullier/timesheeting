@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['query_5fconfirmation_304',['query_confirmation',['../classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d',1,'StatusBarNCurses']]],
-  ['query_5fcurrent_5fitem_5frename_305',['query_current_item_rename',['../classMenuNCurses.html#aa2a8a48c342f0ea116f3581cd0986260',1,'MenuNCurses::query_current_item_rename()'],['../classColumn.html#af60f6de8ca078464d165ec2bc4d465dc',1,'Column::query_current_item_rename()'],['../classColumnBase.html#a91da4068101cefa0ab07a469861d5576',1,'ColumnBase::query_current_item_rename()']]],
-  ['query_5fentries_306',['query_entries',['../classDB__SQLite.html#ad582b03e8629ba2725a7d43d006403cb',1,'DB_SQLite::query_entries()'],['../classDB__Interface.html#ad064d107d83b4b4ec655fd2c3f6e9628',1,'DB_Interface::query_entries()']]],
-  ['query_5fentrystaging_307',['query_entrystaging',['../classDB__SQLite.html#a76c5576807ee9d3f47ee25d85a1033a0',1,'DB_SQLite::query_entrystaging()'],['../classDB__Interface.html#a00f2f249ea07bea725e86e8c1655d2a7',1,'DB_Interface::query_entrystaging()']]],
-  ['query_5fnew_5fitem_5fname_308',['query_new_item_name',['../classMenuNCurses.html#ab44a46bd54154aeaa309fde4cbb4bf83',1,'MenuNCurses::query_new_item_name()'],['../classColumn.html#a585c8913b72aba6b93eb8f02db13ea63',1,'Column::query_new_item_name()'],['../classColumnBase.html#afe39ec91dc68ae98a41a2d7dab132745',1,'ColumnBase::query_new_item_name()']]],
-  ['query_5fprojects_309',['query_projects',['../classDB__SQLite.html#a9b43b6195eb39044c0fe49cb72877fd0',1,'DB_SQLite::query_projects()'],['../classDB__Interface.html#a3f67c92dcc2dcccc4c4c744683adbf95',1,'DB_Interface::query_projects()']]],
-  ['query_5frow_5fof_5fnames_310',['query_row_of_names',['../classDB__SQLite__Handle.html#a2daed0019eb8378c1e47464aee19d25a',1,'DB_SQLite_Handle']]],
-  ['query_5ftasks_311',['query_tasks',['../classDB__SQLite.html#a3961e6425f15ced5d9e7daf0de640cd3',1,'DB_SQLite::query_tasks()'],['../classDB__Interface.html#a37bf545ad6816b24016953510cc2201c',1,'DB_Interface::query_tasks()']]]
+  ['prepare_5fstatement_323',['prepare_statement',['../classDB__SQLite__Handle.html#a94e62978c620d6a13c5f96de535eda94',1,'DB_SQLite_Handle']]],
+  ['print_324',['print',['../classBarNCurses.html#a72626d85cc95886a1a9270e1633543d3',1,'BarNCurses::print()'],['../classStatusBarNCurses.html#a923297a6713a78610d55df0006a3bbf4',1,'StatusBarNCurses::print()']]],
+  ['print_5fright_325',['print_right',['../classBarNCurses.html#a18efba7c587d8f67361874389189e137',1,'BarNCurses']]],
+  ['print_5fwait_326',['print_wait',['../classStatusBarNCurses.html#aa1bb31e0eeba417c9fa84945e55ef7f7',1,'StatusBarNCurses']]],
+  ['projecttaskscreen_327',['ProjectTaskScreen',['../classProjectTaskScreen.html#a1fb3f81c127a8e34beeecb7e4f01af5e',1,'ProjectTaskScreen']]]
 ];

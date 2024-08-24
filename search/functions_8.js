@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['menuempty_297',['MenuEmpty',['../classMenuEmpty.html#a1a0cb5a75c9066d7701cf2436944565f',1,'MenuEmpty']]],
-  ['menuncurses_298',['MenuNCurses',['../classMenuNCurses.html#a88efc97898781d7e61061e6a2fc7fb27',1,'MenuNCurses']]]
+  ['log_318',['log',['../classLoggerFile.html#ae4d060e5d3746f0573c3df262cb93047',1,'LoggerFile::log()'],['../classLoggerInterface.html#abf46d6d922fed8607768c1bafc3ca62d',1,'LoggerInterface::log()'],['../logger_8h.html#a847d1647f541eb8a4dbcc9a801c72db6',1,'log():&#160;logger.cpp']]],
+  ['loggerfile_319',['LoggerFile',['../classLoggerFile.html#a7037e94f77b90fdf8b3d7f3ce21c345d',1,'LoggerFile']]]
 ];

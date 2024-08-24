@@ -1,16 +1,7 @@
 var searchData=
 [
-  ['sanitize_5finput_316',['sanitize_input',['../classMenuNCurses.html#a7b3bc49297fe521f1dcead848e07abb1',1,'MenuNCurses']]],
-  ['select_5fdown_5fitem_317',['select_down_item',['../classMenuNCurses.html#aa178927a57b741a40c482289bd547bc4',1,'MenuNCurses::select_down_item()'],['../classColumn.html#a456fbac1d2c4d11978064b310de56548',1,'Column::select_down_item()'],['../classColumnBase.html#aa260495a6f89544c42b333f1bcf56b43',1,'ColumnBase::select_down_item()']]],
-  ['select_5fleft_5fitem_318',['select_left_item',['../classMenuNCurses.html#a9972d2f49fd0e934fb6d875a7760d088',1,'MenuNCurses']]],
-  ['select_5fnext_5fday_319',['select_next_day',['../classDateSelectorNcurses.html#a9fca8fbb92052daf8dc1dabeb40bb47d',1,'DateSelectorNcurses']]],
-  ['select_5fprevious_5fday_320',['select_previous_day',['../classDateSelectorNcurses.html#a28844e80a74884a2ae387dd505fbb144',1,'DateSelectorNcurses']]],
-  ['select_5fright_5fitem_321',['select_right_item',['../classMenuNCurses.html#a8f4786be5d06e885643fd0589bd25570',1,'MenuNCurses']]],
-  ['select_5fup_5fitem_322',['select_up_item',['../classColumnBase.html#a22002229272d3c05c2df626baae6fb5d',1,'ColumnBase::select_up_item()'],['../classColumn.html#a8c19304cc22334656a67ec5d82777f5b',1,'Column::select_up_item()'],['../classMenuNCurses.html#a9d4c05bf7bcbc7cb1d7423c2932e00cc',1,'MenuNCurses::select_up_item()']]],
-  ['set_5fcurrent_5fnow_323',['set_current_now',['../classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08',1,'StopwatchUI']]],
-  ['set_5fitems_324',['set_items',['../classMenuNCurses.html#a991811fc9e16cd2ffda7d4096381cb23',1,'MenuNCurses::set_items()'],['../classColumn.html#a8996e21a0aa9b10117e2fd2bc66f64f1',1,'Column::set_items()'],['../classRegisterNcurses.html#ae7d04eb21a2b375b7169d7cc4ff16a8e',1,'RegisterNcurses::set_items()'],['../classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62',1,'StopwatchNcurses::set_items()']]],
-  ['sqliteconstraintexcept_325',['SQLiteConstraintExcept',['../classSQLiteConstraintExcept.html#a730ce7027f010cb334fe63147ebdeb3a',1,'SQLiteConstraintExcept']]],
-  ['stopwatchncurses_326',['StopwatchNcurses',['../classStopwatchNcurses.html#a0bb01f8a48997d5718ad680b811da11a',1,'StopwatchNcurses']]],
-  ['stopwatchui_327',['StopwatchUI',['../classStopwatchUI.html#a598e16f98619bb5be4406835e20c6e3b',1,'StopwatchUI']]],
-  ['subtract_5fone_5fday_328',['subtract_one_day',['../classDate.html#a0313cfcbf563e60a3889e2c1cd6ba076',1,'Date::subtract_one_day()'],['../classDateRange.html#a3539db676dc063a58241bd1f5fb25053',1,'DateRange::subtract_one_day()']]]
+  ['refresh_337',['refresh',['../classMenuNCurses.html#a9be6e8d21329760c6c49672feb8df683',1,'MenuNCurses::refresh()'],['../classWinNCurses.html#ae4fcaa14d61cf4ce1e660887cd3f2905',1,'WinNCurses::refresh()'],['../classDateSelectorNcurses.html#a27fc0708191e5a572ab6c3d449424298',1,'DateSelectorNcurses::refresh()'],['../classEntriesScreen.html#a732876c109aa121bfc1b15df8868ce81',1,'EntriesScreen::refresh()'],['../classEntriesTable.html#aa8e027c414e70fac000529375901159b',1,'EntriesTable::refresh()'],['../classProjectTaskScreen.html#ae6d247caa208bd68210c153c7cd19bfe',1,'ProjectTaskScreen::refresh()'],['../classStopwatchUI.html#a37557e1cc666e5079581752a5ac48c26',1,'StopwatchUI::refresh()'],['../classTotalBar.html#a906fa2be895a969e425d171e2bfd875f',1,'TotalBar::refresh()'],['../classUIComponent.html#af33355d9860c1056b0e7304ded205337',1,'UIComponent::refresh()']]],
+  ['registerncurses_338',['RegisterNcurses',['../classRegisterNcurses.html#a20b26f8095883cb642da0a4888b22ab8',1,'RegisterNcurses']]],
+  ['remove_5fitem_339',['remove_item',['../classEntriesTable.html#ae559cd95df17d615935cab179bafbc75',1,'EntriesTable::remove_item()'],['../classProjectTaskScreen.html#a1816cb68da9ccf32b4aa2d4e9619c8ea',1,'ProjectTaskScreen::remove_item()']]],
+  ['rename_5fitem_340',['rename_item',['../classEntriesTable.html#ab7dbcb51bf8c75734063cfd76bee36a2',1,'EntriesTable::rename_item()'],['../classProjectTaskScreen.html#af3317390ef9bfa5f128a925be0503b09',1,'ProjectTaskScreen::rename_item()'],['../classStopwatchUI.html#a782d41cee36cf1a97bde24b2447df19a',1,'StopwatchUI::rename_item()']]]
 ];
