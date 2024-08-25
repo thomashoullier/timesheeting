@@ -20,10 +20,6 @@ public:
   virtual void select_up_item() = 0;
   /** @brief Query a user input character and pass it. */
   virtual char get_input() = 0;
-  /** @brief Query a new name for the current item. */
-  virtual std::string query_current_item_rename () = 0;
-  /** @brief Query a name for a new item. Empty on cancellation. */
-  virtual std::string query_new_item_name() = 0;
   /** @brief Set the border for highlighting. */
   virtual void set_border() = 0;
   /** @brief Unset the border. */

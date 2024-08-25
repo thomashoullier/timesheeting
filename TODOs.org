@@ -219,7 +219,8 @@ If we start with a completely empty table and we try to add
 a task, the program currently crashes.
 + [2024-08-02 Fri] OK, caught the ColumnEmpty exception, we do nothing.
 
-*** TODO Feature/Ergonomy: Highlight the currently selected column
+*** DONE Feature/Ergonomy: Highlight the currently selected column
+CLOSED: [2024-08-25 Sun 10:43]
 ADDED: [2024-07-31 Wed]
 It is hard to know in which column we are on the project screen.
 It is impossible when the columns are empty.
@@ -303,3 +304,12 @@ CLOSED: [2024-08-25 Sun 09:43]
 ADDED: [2024-08-25 Sun]
 The selection marker in ncurses menu is useless since the element is
 already highlighted. It takes up space for nothing. Remove it.
+
+*** TODO Avoid SQL injections
+ADDED: [2024-08-25 Sun]
+Currently there is a possibility to do SQL injections when
+renaming, adding objects etc.
+This is not critical in our application but it should still be
+avoided as it could potentially destroy the DB.
++ See parameterized queries etc.
+ https://www.sqlite.org/c3ref/bind_blob.html

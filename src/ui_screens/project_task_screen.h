@@ -139,7 +139,7 @@ private:
 
   /** @brief Add an item (project or task). */
   void add_item (ColumnBase *cur_col) {
-    auto new_item_name = cur_col->query_new_item_name();
+    auto new_item_name = status->get_user_string();
     if (!new_item_name.empty()) {
       if (cur_col == project_col.get()) {
         db->add_project(new_item_name);
@@ -147,10 +147,10 @@ private:
         update_project_col();
       } else if (cur_col == task_col.get()) {
         try {
-        auto project_id = project_col->get_current_id();
-        db->add_task(project_id, new_item_name);
-        log("Added task: " + new_item_name);
-        update_task_col();
+          auto project_id = project_col->get_current_id();
+          db->add_task(project_id, new_item_name);
+          log("Added task: " + new_item_name);
+          update_task_col();
         } catch (MenuEmpty &e) {
           return;
         }
@@ -159,10 +159,10 @@ private:
   }
 
   /** @brief Rename an item. */
-  void rename_item (ColumnBase *cur_col) {
+  void rename_item(ColumnBase *cur_col) {
     try {
       auto id = cur_col->get_current_id();
-      auto new_item_name = cur_col->query_current_item_rename();
+      auto new_item_name = status->get_user_string();
       if (!new_item_name.empty()) {
         if (cur_col == project_col.get()) {
           db->edit_project_name(id, new_item_name);

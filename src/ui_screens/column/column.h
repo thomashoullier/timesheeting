@@ -41,14 +41,6 @@ public:
 
   char get_input() override { return MenuNCurses::get_input(); };
 
-  std::string query_current_item_rename() override {
-    return MenuNCurses::query_current_item_rename();
-  };
-
-  std::string query_new_item_name() override {
-    return MenuNCurses::query_new_item_name();
-  };
-
   void set_border() override {
     MenuNCurses::set_border();
   };

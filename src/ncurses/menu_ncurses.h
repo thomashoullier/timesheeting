@@ -19,14 +19,6 @@ public:
               int _ncols);
   ~MenuNCurses();
 
-  /** @brief Query a new string for the currently selected item.
-
-   The string is sanitized. */
-  std::string query_current_item_rename();
-  /** @brief Query a string for a new item.
-
-   The string is sanitized. */
-  std::string query_new_item_name();
   /** @brief Select the item down of the current one. */
   void select_down_item();
   /** @brief Select the item up of the current one. */
@@ -78,10 +70,6 @@ private:
   void init_menu_window();
   /** @brief Destructor helper. Also called on update. */
   void destroy_menu ();
-  /** @brief Get a new string from the user at a given line in the window. */
-  std::string get_user_string (int display_line);
-  /** @brief Sanitize the strings inputted by the users. */
-  std::string sanitize_input(const std::string &input) const;
 };
 
 /** @brief Exception when encountering an empty menu. */

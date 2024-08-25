@@ -91,7 +91,7 @@ private:
 
   /** @brief Rename a field in the entry in staging. */
   void rename_item() {
-    auto new_str = stopwatch.query_current_item_rename();
+    auto new_str = status->get_user_string();
     auto field_type = stopwatch.get_field_type();
     switch (field_type) {
     case EntryField::project_name:

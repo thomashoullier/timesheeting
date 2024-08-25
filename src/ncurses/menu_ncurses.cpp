@@ -1,6 +1,5 @@
 #include "menu_ncurses.h"
 #include "win_ncurses.h"
-#include <algorithm>
 #include <curses.h>
 
 MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
@@ -13,14 +12,6 @@ MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
 }
 
 MenuNCurses::~MenuNCurses() { destroy_menu(); }
-
-std::string MenuNCurses::query_current_item_rename() {
-  return get_user_string(getcury(win));
-}
-
-std::string MenuNCurses::query_new_item_name() {
-  return get_user_string(getmaxy(win) - 1);
-}
 
 void MenuNCurses::select_down_item() { menu_driver(menu, REQ_DOWN_ITEM); }
 void MenuNCurses::select_up_item() { menu_driver(menu, REQ_UP_ITEM); }
@@ -111,57 +102,4 @@ void MenuNCurses::destroy_menu() {
   }
   menu_items.clear();
   display_strings.clear();
-}
-
-std::string MenuNCurses::get_user_string (int display_line) {
-  std::string input_buffer{};
-  wmove(win, display_line, 0);
-  wclrtoeol(win); // TODO: only clear the current item instead.
-  bool user_wants_to_input = true;
-  while (user_wants_to_input) {
-    auto ch = this->get_input();
-    switch (ch) {
-    case '\n': // User validates the input.
-      user_wants_to_input = false;
-      break;
-    case 27: // User wants to cancel.
-      input_buffer.clear();
-      user_wants_to_input = false;
-      break;
-    case 127: // Erase last character
-      if (!input_buffer.empty()) {
-        input_buffer.pop_back();
-        // Remove character from screen
-        int y, x;
-        getyx(win, y, x);
-        auto xmax = getmaxx(win);
-        if (x == 0) { // jump to the end of the previous line.
-          wmove(win, y - 1, xmax - 1);
-        } else {
-          wmove(win, y, x - 1);
-        }
-        wdelch(win);
-      }
-      break;
-    default: // Gets added to item.
-      input_buffer.push_back(ch);
-      waddch(win, ch);
-      break;
-    }
-  }
-  return sanitize_input(input_buffer);
-}
-
-std::string MenuNCurses::sanitize_input(const std::string &input) const {
-    auto s = input;
-    // left trim
-    s.erase(s.begin(),
-            std::find_if(s.begin(), s.end(),
-                         [](unsigned char ch) {
-                           return !std::isspace(ch);}));
-    // right trim
-    s.erase(std::find_if(s.rbegin(), s.rend(),
-                         [](unsigned char ch) {
-                           return !std::isspace(ch);}).base(), s.end());
-    return s;
 }

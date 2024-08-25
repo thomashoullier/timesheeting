@@ -120,7 +120,7 @@ private:
   void rename_item() {
     //TODO: manage the case where the register is empty.
     auto id = reg.get_current_id();
-    auto new_str = reg.query_current_item_rename();
+    auto new_str = status->get_user_string();
     auto field_type = reg.get_field_type();
     switch (field_type) {
     case EntryField::project_name: {
