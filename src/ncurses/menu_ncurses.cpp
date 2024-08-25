@@ -84,6 +84,7 @@ void MenuNCurses::init_menu_window() {
   getmaxyx(win, ny, nx);
   set_menu_sub(menu, derwin(win, ny, nx, 0, 0));
   set_menu_format(menu, ny - 1, ncols);
+  set_menu_mark(menu, NULL);
 }
 
 void MenuNCurses::destroy_menu() {

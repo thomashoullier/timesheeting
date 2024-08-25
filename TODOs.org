@@ -223,6 +223,9 @@ a task, the program currently crashes.
 ADDED: [2024-07-31 Wed]
 It is hard to know in which column we are on the project screen.
 It is impossible when the columns are empty.
++ Perhaps draw a box around the currently selected UI component.
+  Draw the box once we enter the input loop, and remove it once we move
+  out of it.
 
 *** DONE Put the Logger behind an interface class
 CLOSED: [2024-08-02 Fri 20:23]
@@ -255,7 +258,8 @@ ADDED: [2024-08-01 Thu]
 Create a DB table for the entries,
 it should contain: id, taskid, start date, stop date, location.
 
-*** TODO Create panels for entries and projects screens
+*** DEAD Create panels for entries and projects screens
+CLOSED: [2024-08-24 Sat 21:07]
 ADDED: [2024-08-15 Thu]
 + See:https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/panels.html
 Example 15.
@@ -278,7 +282,22 @@ ADDED: [2024-08-24 Sat]
 Create log levels and a way to set which ones are active or not.
 Perhaps use an enum to pass which ones should be active or not.
 
-*** TODO Try adding an index to the start column in the entries table
+*** DONE Try adding an index to the start column in the entries table
+CLOSED: [2024-08-24 Sat 21:07]
 ADDED: [2024-08-24 Sat]
 We often select entries based on their start date.
 Try measuring the improvement.
+We added an index, we could not see the difference in performance since
+our DB was tiny.
+
+*** TODO Use the status bar to query new names or renames
+ADDED: [2024-08-25 Sun]
+Using the menu themselves is impractical, as the cells are too short.
+
+*** TODO Crop/pad the ncurses menu items to some fixed length
+ADDED: [2024-08-25 Sun]
+
+*** TODO Menus: remove the selection marker
+ADDED: [2024-08-25 Sun]
+The selection marker in ncurses menu is useless since the element is
+already highlighted. It takes up space for nothing. Remove it.
