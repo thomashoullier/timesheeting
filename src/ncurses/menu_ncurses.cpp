@@ -116,8 +116,8 @@ std::string MenuNCurses::crop_pad_str(const std::string &str, int len) {
     return str.substr(0, len);
   }
   else {
-    std::stringstream ss;
-    ss << str << std::setw(len - str_len);
-    return ss.str();
+    std::string padding(len - str_len, ' ');
+    std::string padded = str + padding;
+    return padded;
   }
 }

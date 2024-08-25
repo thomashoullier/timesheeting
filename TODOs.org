@@ -296,9 +296,13 @@ CLOSED: [2024-08-25 Sun 17:25]
 ADDED: [2024-08-25 Sun]
 Using the menu themselves is impractical, as the cells are too short.
 
-*** TODO Crop/pad the ncurses menu items to some fixed length
+*** DONE Crop/pad the ncurses menu items to some fixed length
+CLOSED: [2024-08-25 Sun 17:59]
 ADDED: [2024-08-25 Sun]
 The full names must still be displayed in the status bar.
++ [2024-08-25 Sun] The cropping part now works, but the padding is not taken into
+  account by ncurses when spacing the menu items.
++ We fixed the padding by creating the string manually.
 
 *** DONE Menus: remove the selection marker
 CLOSED: [2024-08-25 Sun 09:43]
