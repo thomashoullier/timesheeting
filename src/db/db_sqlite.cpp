@@ -15,19 +15,26 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   // Prepare persistent statements
   std::string select_projects_st = "SELECT id, name FROM projects;";
   select_projects = sqlite_db.prepare_statement(select_projects_st);
+
+  std::string select_tasks_st =
+    "SELECT id, name "
+    "FROM tasks "
+    "WHERE project_id = ? ;";
+  select_tasks = sqlite_db.prepare_statement(select_tasks_st);
 }
 
 DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(select_projects);
+  sqlite3_finalize(select_tasks);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
   sqlite3_reset(select_projects);
-  NameRows rows {};
+  NameRows rows{};
   while (sqlite3_step(select_projects) == SQLITE_ROW) {
     RowId id = sqlite3_column_int64(select_projects, 0);
     auto name_internal = sqlite3_column_text(select_projects, 1);
-    std::string name = reinterpret_cast<const char*>(name_internal);
+    std::string name = reinterpret_cast<const char *>(name_internal);
     rows.push_back(std::make_pair(id, name));
   }
   auto projects = convert_namerows<Project>(rows);
@@ -35,12 +42,16 @@ std::vector<Project> DB_SQLite::query_projects() {
 }
 
 std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
-  std::string select_tasks =
-    "SELECT id, name "
-    "FROM tasks "
-    "WHERE project_id = " + std::to_string(project_id) + ";";
-  auto task_rows = sqlite_db.query_row_of_names(select_tasks);
-  auto tasks = convert_namerows<Task>(task_rows);
+  sqlite3_reset(select_tasks);
+  sqlite3_bind_int64(select_tasks, 1, project_id);
+  NameRows rows{};
+  while (sqlite3_step(select_tasks) == SQLITE_ROW) {
+    RowId id = sqlite3_column_int64(select_tasks, 0);
+    auto name_internal = sqlite3_column_text(select_tasks, 1);
+    std::string name = reinterpret_cast<const char*>(name_internal);
+    rows.push_back(std::make_pair(id, name));
+  }
+  auto tasks = convert_namerows<Task>(rows);
   return tasks;
 }
 

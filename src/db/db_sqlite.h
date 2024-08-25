@@ -46,6 +46,8 @@ private:
   DB_SQLite_Handle sqlite_db;
   /** @brief Statement for querying the projects list. */
   sqlite3_stmt *select_projects;
+  /** @brief Statement for querying the list of tasks for a given project. */
+  sqlite3_stmt *select_tasks;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();
