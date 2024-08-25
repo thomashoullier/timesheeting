@@ -1,8 +1,6 @@
 #include "menu_ncurses.h"
 #include "win_ncurses.h"
 #include <curses.h>
-#include <iomanip>
-#include <sstream>
 
 MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
                          WindowPosition winpos, WindowFormat winformat,

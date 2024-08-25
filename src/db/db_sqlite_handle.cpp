@@ -24,7 +24,9 @@ void DB_SQLite_Handle::check_rc(int rc, const std::string &msg) {
 
 sqlite3_stmt *DB_SQLite_Handle::prepare_statement(const std::string &statement) {
   sqlite3_stmt *stmt;
-  auto rc = sqlite3_prepare_v2(db, statement.c_str(), -1, &stmt, NULL);
+  //auto rc = sqlite3_prepare_v2(db, statement.c_str(), -1, &stmt, NULL);
+  auto rc = sqlite3_prepare_v3(db, statement.c_str(), statement.size(),
+                               SQLITE_PREPARE_PERSISTENT, &stmt, NULL);
   check_rc(rc, "Could not prepare SQL statement: " + statement);
   return stmt;
 }

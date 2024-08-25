@@ -13,6 +13,8 @@ class DB_SQLite : public DB_Interface {
 public:
   /** @brief Open the DB handle. */
   DB_SQLite(const std::filesystem::path &db_file);
+  /** @brief Finalize persistent statements etc. */
+  ~DB_SQLite();
 
   std::vector<Project> query_projects() override;
   std::vector<Task> query_tasks(Id project_id) override;
@@ -42,6 +44,8 @@ public:
 private:
   /** @brief Low-level handle to the DB. */
   DB_SQLite_Handle sqlite_db;
+  /** @brief Statement for querying the projects list. */
+  sqlite3_stmt *select_projects;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();

@@ -11,12 +11,26 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_entries_table();
   this->create_entries_start_index();
   this->create_entrystaging_table();
+
+  // Prepare persistent statements
+  std::string select_projects_st = "SELECT id, name FROM projects;";
+  select_projects = sqlite_db.prepare_statement(select_projects_st);
+}
+
+DB_SQLite::~DB_SQLite() {
+  sqlite3_finalize(select_projects);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
-  std::string select_projects = "SELECT id, name FROM projects;";
-  auto project_rows = sqlite_db.query_row_of_names(select_projects);
-  auto projects = convert_namerows<Project>(project_rows);
+  sqlite3_reset(select_projects);
+  NameRows rows {};
+  while (sqlite3_step(select_projects) == SQLITE_ROW) {
+    RowId id = sqlite3_column_int64(select_projects, 0);
+    auto name_internal = sqlite3_column_text(select_projects, 1);
+    std::string name = reinterpret_cast<const char*>(name_internal);
+    rows.push_back(std::make_pair(id, name));
+  }
+  auto projects = convert_namerows<Project>(rows);
   return projects;
 }
 

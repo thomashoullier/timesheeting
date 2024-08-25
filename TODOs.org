@@ -318,3 +318,7 @@ This is not critical in our application but it should still be
 avoided as it could potentially destroy the DB.
 + See parameterized queries etc.
  https://www.sqlite.org/c3ref/bind_blob.html
++ https://stackoverflow.com/questions/75828153/how-can-i-make-sqlite-reuse-a-prepared-statement-like-a-query-plan-cache
++ We can tell sqlite that these statements are all "persistent" by using
+  the corresponding flag in prepare_v3.
+ https://www.sqlite.org/c3ref/c_prepare_normalize.html#sqlitepreparepersistent
