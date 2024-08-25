@@ -59,6 +59,8 @@ private:
 
    This is needed by ncurses, otherwise the display points to whatever memory. */
   std::vector<std::string> display_strings;
+  /** @brief Shortened display strings for display in-menu only. */
+  std::vector<std::string> short_display_strings;
   /** @brief String displayed for showing empty items. */
   std::string empty_string;
 
@@ -70,6 +72,8 @@ private:
   void init_menu_window();
   /** @brief Destructor helper. Also called on update. */
   void destroy_menu ();
+  /** @brief Crop or pad a string to match a fixed size. */
+  std::string crop_pad_str (const std::string &str, int len);
 };
 
 /** @brief Exception when encountering an empty menu. */

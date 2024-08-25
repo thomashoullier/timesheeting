@@ -1,6 +1,8 @@
 #include "menu_ncurses.h"
 #include "win_ncurses.h"
 #include <curses.h>
+#include <iomanip>
+#include <sstream>
 
 MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
                          WindowPosition winpos, WindowFormat winformat,
@@ -73,12 +75,13 @@ void MenuNCurses::init_menu(const std::vector<std::string> &items) {
 
 void MenuNCurses::init_items(const std::vector<std::string> &items) {
   display_strings.resize(items.size());
+  short_display_strings.resize(items.size());
   menu_items.resize(items.size() + 1);
   for (std::size_t i = 0; i < items.size(); ++i) {
     display_strings.at(i) = items.at(i); // Copy
-    // TODO: crop the strings to some specific maximum length,
-    //       otherwise it goes out of the screen.
-    menu_items.at(i)= new_item(display_strings.at(i).c_str(), NULL);
+    int ITEM_WIDTH {19};
+    short_display_strings.at(i) = crop_pad_str(items.at(i), ITEM_WIDTH);
+    menu_items.at(i)= new_item(short_display_strings.at(i).c_str(), NULL);
   }
   menu_items.back() = NULL;
   menu = new_menu(menu_items.data());
@@ -102,4 +105,19 @@ void MenuNCurses::destroy_menu() {
   }
   menu_items.clear();
   display_strings.clear();
+  short_display_strings.clear();
+}
+
+std::string MenuNCurses::crop_pad_str(const std::string &str, int len) {
+  int str_len = str.length();
+  if (str_len == len)
+    return str;
+  if (str_len > len) {
+    return str.substr(0, len);
+  }
+  else {
+    std::stringstream ss;
+    ss << str << std::setw(len - str_len);
+    return ss.str();
+  }
 }
