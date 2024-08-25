@@ -43,6 +43,8 @@ public:
   void set_items(const std::vector<std::string> &items);
   /** @brief Get the full display string for the current item. */
   const std::string& get_current_item_string() const;
+  /** @brief Get an input from the window, highlighting the window. */
+  char get_input();
 
 protected:
   /** @brief Get the current item index. */
@@ -78,6 +80,10 @@ private:
   std::string get_user_string (int display_line);
   /** @brief Sanitize the strings inputted by the users. */
   std::string sanitize_input(const std::string &input) const;
+  /** @brief Draw a single border on the menu window. */
+  void set_border();
+  /** @brief Erase the border on the menu window. */
+  void unset_border();
 };
 
 /** @brief Exception when encountering an empty menu. */

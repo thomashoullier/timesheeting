@@ -2,7 +2,7 @@
 
 StopwatchNcurses::StopwatchNcurses(const EntryStaging &_entry_staging)
   : MenuNCurses(_entry_staging.to_strings(), WindowPosition::lower,
-                WindowFormat::line, 4),
+                WindowFormat::box, 4),
     entry_staging(_entry_staging) {}
 
 EntryField StopwatchNcurses::get_field_type() {

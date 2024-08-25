@@ -1,5 +1,7 @@
 #include "menu_ncurses.h"
+#include "win_ncurses.h"
 #include <algorithm>
+#include <curses.h>
 
 MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
                          WindowPosition winpos, WindowFormat winformat,
@@ -40,11 +42,36 @@ void MenuNCurses::set_items(const std::vector<std::string> &items) {
   init_menu(items);
 }
 
-const std::string& MenuNCurses::get_current_item_string() const {
+void MenuNCurses::set_border() {
+  int width = getmaxx(win);
+  wmove(win, 0, 0);
+  whline(win, '-', width);
+  WinNCurses::refresh();
+}
+
+void MenuNCurses::unset_border() {
+  wmove(win, 0, 0);
+  wclrtoeol(win);
+  WinNCurses::refresh();
+}
+
+const std::string &MenuNCurses::get_current_item_string() const {
   if (display_strings.empty())
     return empty_string;
   else
     return display_strings.at(get_item_index());
+}
+
+char MenuNCurses::get_input() {
+  // TODO: the borders are refreshed every time,
+  //       we should only refresh them when we switch element,
+  //       from one input loop to the next.
+  //       maybe add a method called at the beginning and end
+  //       of input loops?
+  set_border();
+  auto ch = WinNCurses::get_input();
+  unset_border();
+  return ch;
 }
 
 int MenuNCurses::get_item_index() const {
@@ -82,7 +109,7 @@ void MenuNCurses::init_menu_window() {
   set_menu_win(menu, win);
   int ny, nx;
   getmaxyx(win, ny, nx);
-  set_menu_sub(menu, derwin(win, ny, nx, 0, 0));
+  set_menu_sub(menu, derwin(win, ny-1, nx, 1, 0));
   set_menu_format(menu, ny - 1, ncols);
   set_menu_mark(menu, NULL);
 }

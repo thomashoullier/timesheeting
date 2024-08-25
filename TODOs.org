@@ -296,8 +296,10 @@ Using the menu themselves is impractical, as the cells are too short.
 
 *** TODO Crop/pad the ncurses menu items to some fixed length
 ADDED: [2024-08-25 Sun]
+The full names must still be displayed in the status bar.
 
-*** TODO Menus: remove the selection marker
+*** DONE Menus: remove the selection marker
+CLOSED: [2024-08-25 Sun 09:43]
 ADDED: [2024-08-25 Sun]
 The selection marker in ncurses menu is useless since the element is
 already highlighted. It takes up space for nothing. Remove it.

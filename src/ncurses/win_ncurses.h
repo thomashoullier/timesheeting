@@ -9,7 +9,7 @@
 enum class WindowPosition { top, top_left, top_right,
                             upper, lower, bottom, left, middle };
 /** @brief Selector for the format of the window. */
-enum class WindowFormat { line, half_line, block, column };
+enum class WindowFormat { line, half_line, box, block, column };
 
 /** @brief Base class for NCurses elements in a window. */
 class WinNCurses {

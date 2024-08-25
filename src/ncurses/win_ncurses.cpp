@@ -50,7 +50,7 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
     break;
   case WindowPosition::lower:
     x = 0;
-    y = max_y - 3;
+    y = max_y - 4;
     break;
   case WindowPosition::left:
     x = 0;
@@ -68,6 +68,10 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
   case WindowFormat::line:
     nx = WIDTH;
     ny = 1;
+    break;
+  case WindowFormat::box:
+    nx = WIDTH;
+    ny = 2;
     break;
   case WindowFormat::half_line:
     nx = WIDTH / 2;
