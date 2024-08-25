@@ -291,7 +291,8 @@ Try measuring the improvement.
 We added an index, we could not see the difference in performance since
 our DB was tiny.
 
-*** TODO Use the status bar to query new names or renames
+*** DONE Use the status bar to query new names or renames
+CLOSED: [2024-08-25 Sun 17:25]
 ADDED: [2024-08-25 Sun]
 Using the menu themselves is impractical, as the cells are too short.
 

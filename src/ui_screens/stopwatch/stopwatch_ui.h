@@ -25,6 +25,7 @@ public:
   char input_loop() override {
     stopwatch.set_border();
     while (true) {
+      status->print(stopwatch.get_current_item_string());
       auto ch = stopwatch.get_input();
       switch (ch) {
       case 'h':
