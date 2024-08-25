@@ -23,6 +23,7 @@ public:
       status(_status) {};
 
   char input_loop() override {
+    stopwatch.set_border();
     while (true) {
       auto ch = stopwatch.get_input();
       switch (ch) {
@@ -65,6 +66,7 @@ public:
         }
         break;
       default:
+        stopwatch.unset_border();
         return ch;
       }
     }

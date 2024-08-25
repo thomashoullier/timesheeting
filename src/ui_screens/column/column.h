@@ -49,6 +49,14 @@ public:
     return MenuNCurses::query_new_item_name();
   };
 
+  void set_border() override {
+    MenuNCurses::set_border();
+  };
+
+  void unset_border() override {
+    MenuNCurses::unset_border();
+  };
+
 private:
   /** @brief Storage for the currently held items. */
   std::vector<T> held_items;

@@ -62,18 +62,6 @@ const std::string &MenuNCurses::get_current_item_string() const {
     return display_strings.at(get_item_index());
 }
 
-char MenuNCurses::get_input() {
-  // TODO: the borders are refreshed every time,
-  //       we should only refresh them when we switch element,
-  //       from one input loop to the next.
-  //       maybe add a method called at the beginning and end
-  //       of input loops?
-  set_border();
-  auto ch = WinNCurses::get_input();
-  unset_border();
-  return ch;
-}
-
 int MenuNCurses::get_item_index() const {
   return item_index(current_item(menu));
 }

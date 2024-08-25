@@ -24,6 +24,10 @@ public:
   virtual std::string query_current_item_rename () = 0;
   /** @brief Query a name for a new item. Empty on cancellation. */
   virtual std::string query_new_item_name() = 0;
+  /** @brief Set the border for highlighting. */
+  virtual void set_border() = 0;
+  /** @brief Unset the border. */
+  virtual void unset_border() = 0;
 };
 
 #endif // COLUMN_BASE_H

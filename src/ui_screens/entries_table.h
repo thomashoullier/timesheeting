@@ -31,6 +31,7 @@ public:
         reg(db->query_entries(date_selector.current_range())) {};
 
   char input_loop() override {
+    reg.set_border();
     while (true) {
       status->print(reg.get_current_item_string());
       auto ch = reg.get_input();
@@ -77,6 +78,7 @@ public:
         date_selector.refresh();
         break;
       default:
+        reg.unset_border();
         return ch;
       }
     }

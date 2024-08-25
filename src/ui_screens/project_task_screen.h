@@ -45,6 +45,7 @@ public:
 
   char input_loop() override {
     ColumnBase *cur_col {project_col.get()};
+    cur_col->set_border();
     while (true) {
       status->print(cur_col->get_current_item_string());
       auto ch = cur_col->get_input();
@@ -62,10 +63,14 @@ public:
         }
         break;
       case 'h':
+        cur_col->unset_border();
         cur_col = project_col.get();
+        cur_col->set_border();
         break;
       case 'i':
+        cur_col->unset_border();
         cur_col = task_col.get();
+        cur_col->set_border();
         break;
       case 'a':
         try {
@@ -92,6 +97,7 @@ public:
         }
         break;
       default:
+        cur_col->unset_border();
         return ch;
       }
     }
