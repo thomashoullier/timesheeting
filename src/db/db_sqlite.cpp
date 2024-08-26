@@ -1,5 +1,6 @@
 #include "db_sqlite.h"
 #include "db_sqlite_handle.h"
+#include <cstdint>
 #include <iostream>
 #include <optional>
 #include <string>
@@ -16,16 +17,48 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   std::string select_projects_st = "SELECT id, name FROM projects;";
   select_projects = sqlite_db.prepare_statement(select_projects_st);
 
-  std::string select_tasks_st =
-    "SELECT id, name "
-    "FROM tasks "
-    "WHERE project_id = ? ;";
+  std::string select_tasks_st = "SELECT id, name "
+                                "FROM tasks "
+                                "WHERE project_id = ? ;";
   select_tasks = sqlite_db.prepare_statement(select_tasks_st);
+
+  std::string select_entries_st = "SELECT e.id, p.name, t.name, e.start, e.stop "
+    "FROM entries e "
+    "INNER JOIN tasks t ON e.task_id = t.id "
+    "INNER JOIN projects p ON t.project_id = p.id "
+    "WHERE e.start >= ? "
+    "AND e.start < ? "
+    "ORDER BY e.start ASC;";
+  select_entries = sqlite_db.prepare_statement(select_entries_st);
+
+  std::string select_duration_st =
+    "SELECT SUM(stop - start) FROM entries e "
+    "WHERE e.start >= ? "
+    "AND e.start < ? ;";
+  select_duration = sqlite_db.prepare_statement(select_duration_st);
+
+  std::string select_entrystaging_st =
+    "SELECT p.name, t.name, start, stop "
+    "FROM entrystaging "
+    "LEFT JOIN tasks t ON entrystaging.task_id = t.id "
+    "LEFT JOIN projects p ON t.project_id = p.id "
+    ";";
+  select_entrystaging = sqlite_db.prepare_statement(select_entrystaging_st);
+
+  std::string insert_project_st =
+    "INSERT INTO projects (name) "
+    "VALUES (?);";
+  insert_project = sqlite_db.prepare_statement(insert_project_st);
+
 }
 
 DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(select_projects);
   sqlite3_finalize(select_tasks);
+  sqlite3_finalize(select_entries);
+  sqlite3_finalize(select_duration);
+  sqlite3_finalize(select_entrystaging);
+  sqlite3_finalize(insert_project);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -56,65 +89,47 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
 }
 
 std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
-  auto start_stamp = date_range.start.to_unix_timestamp();
-  auto stop_stamp = date_range.stop.to_unix_timestamp();
-  std::string select_entries =
-    "SELECT e.id, p.name, t.name, e.start, e.stop "
-    "FROM entries e "
-    "INNER JOIN tasks t ON e.task_id = t.id "
-    "INNER JOIN projects p ON t.project_id = p.id "
-    "WHERE e.start >= " + std::to_string(start_stamp) + " "
-    "AND e.start < " + std::to_string(stop_stamp) + " "
-    "ORDER BY e.start ASC;";
-  // TODO: put in the db_sqlite_handle somehow.
-  auto stmt = sqlite_db.prepare_statement(select_entries);
+  uint64_t start_stamp = date_range.start.to_unix_timestamp();
+  uint64_t stop_stamp = date_range.stop.to_unix_timestamp();
+  sqlite3_reset(select_entries);
+  sqlite3_bind_int64(select_entries, 1, start_stamp);
+  sqlite3_bind_int64(select_entries, 2, stop_stamp);
   std::vector<Entry> vec;
-  while (sqlite3_step(stmt) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(stmt, 0);
+  while (sqlite3_step(select_entries) == SQLITE_ROW) {
+    RowId id = sqlite3_column_int64(select_entries, 0);
     std::string project_name = reinterpret_cast<const char*>
-      (sqlite3_column_text(stmt, 1));
+      (sqlite3_column_text(select_entries, 1));
     std::string task_name = reinterpret_cast<const char*>
-      (sqlite3_column_text(stmt, 2));
-    uint64_t start_unix = sqlite3_column_int64(stmt, 3);
-    uint64_t stop_unix = sqlite3_column_int64(stmt, 4);
+      (sqlite3_column_text(select_entries, 2));
+    uint64_t start_unix = sqlite3_column_int64(select_entries, 3);
+    uint64_t stop_unix = sqlite3_column_int64(select_entries, 4);
     Date start_date(start_unix);
     Date stop_date(stop_unix);
     Entry e{id, project_name, task_name, start_date, stop_date};
     vec.push_back(e);
   }
-  sqlite3_finalize(stmt);
   return vec;
 }
 
-
 Duration DB_SQLite::query_entries_duration(const DateRange &date_range) {
-  auto start_stamp = date_range.start.to_unix_timestamp();
-  auto stop_stamp = date_range.stop.to_unix_timestamp();
-  std::string select_duration_st =
-    "SELECT SUM(stop - start) FROM entries e "
-    "WHERE e.start >= " + std::to_string(start_stamp) + " "
-    "AND e.start < " + std::to_string(stop_stamp) + ";";
-  auto stmt = sqlite_db.prepare_statement(select_duration_st);
-  Duration total = (sqlite3_step(stmt) == SQLITE_ROW) ?
-    Duration(sqlite3_column_int64(stmt, 0)) : Duration();
-  sqlite3_finalize(stmt);
+  uint64_t start_stamp = date_range.start.to_unix_timestamp();
+  uint64_t stop_stamp = date_range.stop.to_unix_timestamp();
+  sqlite3_reset(select_duration);
+  sqlite3_bind_int64(select_duration, 1, start_stamp);
+  sqlite3_bind_int64(select_duration, 2, stop_stamp);
+  Duration total = (sqlite3_step(select_duration) == SQLITE_ROW) ?
+    Duration(sqlite3_column_int64(select_duration, 0)) : Duration();
   return total;
 }
 
 EntryStaging DB_SQLite::query_entrystaging() {
-  std::string select_entrystaging_st =
-    "SELECT p.name, t.name, start, stop "
-    "FROM entrystaging "
-    "LEFT JOIN tasks t ON entrystaging.task_id = t.id "
-    "LEFT JOIN projects p ON t.project_id = p.id "
-    ";";
-  auto stmt = sqlite_db.prepare_statement(select_entrystaging_st);
-  if (!(sqlite3_step(stmt) == SQLITE_ROW))
+  sqlite3_reset(select_entrystaging);
+  if (!(sqlite3_step(select_entrystaging) == SQLITE_ROW))
     throw DBLogicExcept("query_entrystaging: could not read SQLITE_ROW");
 
   std::optional<std::string> project_name;
   auto project_name_ret = reinterpret_cast<const char*>
-    (sqlite3_column_text(stmt, 0));
+    (sqlite3_column_text(select_entrystaging, 0));
   if (project_name_ret == NULL)
     project_name = std::nullopt;
   else
@@ -122,26 +137,25 @@ EntryStaging DB_SQLite::query_entrystaging() {
 
   std::optional<std::string> task_name;
   auto task_name_ret = reinterpret_cast<const char*>
-    (sqlite3_column_text(stmt, 1));
+    (sqlite3_column_text(select_entrystaging, 1));
   if (task_name_ret == NULL)
     task_name = std::nullopt;
   else
     task_name = task_name_ret;
 
   std::optional<Date> start_date;
-  uint64_t start_unix = sqlite3_column_int64(stmt, 2);
+  uint64_t start_unix = sqlite3_column_int64(select_entrystaging, 2);
   if (start_unix == 0)
     start_date = std::nullopt;
   else
     start_date = Date(start_unix);
 
   std::optional<Date> stop_date;
-  uint64_t stop_unix = sqlite3_column_int64(stmt, 3);
+  uint64_t stop_unix = sqlite3_column_int64(select_entrystaging, 3);
   if (stop_unix == 0)
     stop_date = std::nullopt;
   else
     stop_date = Date(stop_unix);
-  sqlite3_finalize(stmt);
 
   return EntryStaging{project_name, task_name, start_date, stop_date};
 }
@@ -209,10 +223,11 @@ void DB_SQLite::create_entrystaging_table() {
 }
 
 void DB_SQLite::add_project(std::string project_name) {
-  std::string add_project_st = "INSERT INTO projects (name) "
-                               "VALUES ('" +
-                               project_name + "');";
-  try_exec_statement(add_project_st);
+  sqlite3_reset(insert_project);
+  sqlite3_bind_text(insert_project, 1,
+                    project_name.c_str(), project_name.size(),
+                    SQLITE_STATIC);
+  try_step_statement(insert_project);
 }
 
 void DB_SQLite::add_task(Id project_id, std::string task_name) {
@@ -380,6 +395,16 @@ void DB_SQLite::commit_entrystaging(){
 void DB_SQLite::try_exec_statement(const std::string &statement) {
   try {
     sqlite_db.exec_statement(statement);
+  } catch (SQLiteConstraintExcept &e) {
+    std::string msg = "DB logic error!\n";
+    msg += e.what();
+    throw DBLogicExcept(msg.c_str());
+  }
+}
+
+void DB_SQLite::try_step_statement(sqlite3_stmt *stmt) {
+  try {
+    sqlite_db.step_statement(stmt);
   } catch (SQLiteConstraintExcept &e) {
     std::string msg = "DB logic error!\n";
     msg += e.what();

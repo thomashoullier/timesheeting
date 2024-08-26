@@ -12,6 +12,8 @@ void DB_SQLite_Handle::check_rc(int rc, const std::string &msg) {
   switch (rc) {
   case SQLITE_OK:
     return;
+  case SQLITE_DONE: // Emitted when a step is finished.
+    return;
   case SQLITE_CONSTRAINT:
     throw SQLiteConstraintExcept(msg.c_str());
       break;
@@ -34,6 +36,11 @@ sqlite3_stmt *DB_SQLite_Handle::prepare_statement(const std::string &statement) 
 void DB_SQLite_Handle::exec_statement(const std::string &statement) {
   auto rc = sqlite3_exec(db, statement.c_str(), NULL, NULL, NULL);
   check_rc(rc, "Error when executing statement: " + statement);
+}
+
+void DB_SQLite_Handle::step_statement(sqlite3_stmt *stmt) {
+  auto rc = sqlite3_step(stmt);
+  check_rc(rc, "Error when stepping statment. ");
 }
 
 NameRows DB_SQLite_Handle::query_row_of_names(const std::string &statement) {

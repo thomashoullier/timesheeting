@@ -322,3 +322,18 @@ avoided as it could potentially destroy the DB.
 + We can tell sqlite that these statements are all "persistent" by using
   the corresponding flag in prepare_v3.
  https://www.sqlite.org/c3ref/c_prepare_normalize.html#sqlitepreparepersistent
+
+*** TODO End-to-end testing with tmux
+ADDED: [2024-08-25 Sun]
+We can test the application in an end-to-end fashion with tmux,
+sending characters to the application for performing a planned test scenario.
+Do we need to pace the inputs somehow, in any case a sufficient time between
+inputs should do.
+https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-testing-an-ncurses-application
+
+*** TODO Shorten the date display in menus
+ADDED: [2024-08-26 Mon]
+When displayed in the entries registry and in entrystaging, the dates
+should only read as ~HH:MM~. Do no modify the input mechanism for now,
+still accept full dates only.
+This will make room for a "Location" column.

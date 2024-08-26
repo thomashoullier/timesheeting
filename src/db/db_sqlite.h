@@ -48,6 +48,16 @@ private:
   sqlite3_stmt *select_projects;
   /** @brief Statement for querying the list of tasks for a given project. */
   sqlite3_stmt *select_tasks;
+  /** @brief Statement for querying the list of entries over a given date
+      range. */
+  sqlite3_stmt *select_entries;
+  /** @brief Statement for querying the total duration of entries over
+      a date range. */
+  sqlite3_stmt *select_duration;
+  /** @brief Statement for querying the entry contained in entrystaging. */
+  sqlite3_stmt *select_entrystaging;
+  /** @brief Statement for adding a project. */
+  sqlite3_stmt *insert_project;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();
@@ -61,6 +71,8 @@ private:
   void create_entrystaging_table();
   /** @brief Execute a SQL statement with exception catching. */
   void try_exec_statement(const std::string &statement);
+  /** @brief Step a SQL statement with exception catching. */
+  void try_step_statement(sqlite3_stmt *stmt);
 
   /** @brief Convert a NameRows object to a GenericItem. */
   template <typename T,
