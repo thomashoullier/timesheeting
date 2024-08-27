@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['date_226',['Date',['../classDate.html',1,'']]],
-  ['dateparsingfailure_227',['DateParsingFailure',['../classDateParsingFailure.html',1,'']]],
-  ['daterange_228',['DateRange',['../classDateRange.html',1,'']]],
-  ['dateselectorncurses_229',['DateSelectorNcurses',['../classDateSelectorNcurses.html',1,'']]],
-  ['db_5finterface_230',['DB_Interface',['../classDB__Interface.html',1,'']]],
-  ['db_5fsqlite_231',['DB_SQLite',['../classDB__SQLite.html',1,'']]],
-  ['db_5fsqlite_5fhandle_232',['DB_SQLite_Handle',['../classDB__SQLite__Handle.html',1,'']]],
-  ['dblogicexcept_233',['DBLogicExcept',['../classDBLogicExcept.html',1,'']]],
-  ['duration_234',['Duration',['../classDuration.html',1,'']]]
+  ['date_231',['Date',['../classDate.html',1,'']]],
+  ['dateparsingfailure_232',['DateParsingFailure',['../classDateParsingFailure.html',1,'']]],
+  ['daterange_233',['DateRange',['../classDateRange.html',1,'']]],
+  ['dateselectorncurses_234',['DateSelectorNcurses',['../classDateSelectorNcurses.html',1,'']]],
+  ['db_5finterface_235',['DB_Interface',['../classDB__Interface.html',1,'']]],
+  ['db_5fsqlite_236',['DB_SQLite',['../classDB__SQLite.html',1,'']]],
+  ['db_5fsqlite_5fhandle_237',['DB_SQLite_Handle',['../classDB__SQLite__Handle.html',1,'']]],
+  ['dblogicexcept_238',['DBLogicExcept',['../classDBLogicExcept.html',1,'']]],
+  ['duration_239',['Duration',['../classDuration.html',1,'']]]
 ];
