@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7encurseshandle_367',['~NcursesHandle',['../classNcursesHandle.html#a91d5b9dafb6f538aa87c764c504b1cf2',1,'NcursesHandle']]],
-  ['_7eui_368',['~UI',['../classUI.html#a1b23d0c64c7cbb3d143d90ec532a7ccd',1,'UI']]]
+  ['_7edb_5fsqlite_398',['~DB_SQLite',['../classDB__SQLite.html#a79659082e17646c90c5a97bec236d7e6',1,'DB_SQLite']]],
+  ['_7encurseshandle_399',['~NcursesHandle',['../classNcursesHandle.html#a91d5b9dafb6f538aa87c764c504b1cf2',1,'NcursesHandle']]],
+  ['_7eui_400',['~UI',['../classUI.html#a1b23d0c64c7cbb3d143d90ec532a7ccd',1,'UI']]]
 ];

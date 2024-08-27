@@ -14,5 +14,6 @@ var searchData=
   ['create_5fentrystaging_5ftable_18',['create_entrystaging_table',['../classDB__SQLite.html#a8e5bdd16c96fd8f1c88a633700ca3c2c',1,'DB_SQLite']]],
   ['create_5fprojects_5ftable_19',['create_projects_table',['../classDB__SQLite.html#a5152b53ae8dd9d5edc54ccc9b9220d28',1,'DB_SQLite']]],
   ['create_5ftasks_5ftable_20',['create_tasks_table',['../classDB__SQLite.html#a3116dedb5003b1fd6d0c3a8f5af4db90',1,'DB_SQLite']]],
-  ['current_5frange_21',['current_range',['../classDateSelectorNcurses.html#aca9dfc00274bc9a7bc380afe9a9f2fdb',1,'DateSelectorNcurses']]]
+  ['crop_5fpad_5fstr_21',['crop_pad_str',['../classMenuNCurses.html#af8d8e67894ff25585a0bc07e329229fc',1,'MenuNCurses']]],
+  ['current_5frange_22',['current_range',['../classDateSelectorNcurses.html#aca9dfc00274bc9a7bc380afe9a9f2fdb',1,'DateSelectorNcurses']]]
 ];

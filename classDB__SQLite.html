@@ -91,6 +91,10 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a793904210d1abe1a90cce2b10467a9ad">DB_SQLite</a> (const std::filesystem::path &amp;db_file)</td></tr>
 <tr class="memdesc:a793904210d1abe1a90cce2b10467a9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open the DB handle. <br /></td></tr>
 <tr class="separator:a793904210d1abe1a90cce2b10467a9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79659082e17646c90c5a97bec236d7e6"><td class="memItemLeft" align="right" valign="top"><a id="a79659082e17646c90c5a97bec236d7e6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a79659082e17646c90c5a97bec236d7e6">~DB_SQLite</a> ()</td></tr>
+<tr class="memdesc:a79659082e17646c90c5a97bec236d7e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize persistent statements etc. <br /></td></tr>
+<tr class="separator:a79659082e17646c90c5a97bec236d7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b43b6195eb39044c0fe49cb72877fd0"><td class="memItemLeft" align="right" valign="top"><a id="a9b43b6195eb39044c0fe49cb72877fd0"></a>
 std::vector&lt; <a class="el" href="structProject.html">Project</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a9b43b6195eb39044c0fe49cb72877fd0">query_projects</a> () override</td></tr>
 <tr class="memdesc:a9b43b6195eb39044c0fe49cb72877fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of projects stored in the DB. <br /></td></tr>
@@ -206,6 +210,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#abc4336c4ecb50aadfd039459de83b69a">try_exec_statement</a> (const std::string &amp;statement)</td></tr>
 <tr class="memdesc:abc4336c4ecb50aadfd039459de83b69a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a SQL statement with exception catching. <br /></td></tr>
 <tr class="separator:abc4336c4ecb50aadfd039459de83b69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade861edc2c8a9fc07e91efb5dff348a4"><td class="memItemLeft" align="right" valign="top"><a id="ade861edc2c8a9fc07e91efb5dff348a4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ade861edc2c8a9fc07e91efb5dff348a4">try_step_statement</a> (sqlite3_stmt *stmt)</td></tr>
+<tr class="memdesc:ade861edc2c8a9fc07e91efb5dff348a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step a SQL statement with exception catching. <br /></td></tr>
+<tr class="separator:ade861edc2c8a9fc07e91efb5dff348a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4c1c201ecee9078c2d2ca81b4908742"><td class="memTemplParams" colspan="2"><a id="ae4c1c201ecee9078c2d2ca81b4908742"></a>
 template&lt;typename T , typename  = std::enable_if_t&lt;std::is_base_of&lt;GenericItem, T&gt;::value&gt;&gt; </td></tr>
 <tr class="memitem:ae4c1c201ecee9078c2d2ca81b4908742"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ae4c1c201ecee9078c2d2ca81b4908742">convert_namerows</a> (const <a class="el" href="db__sqlite__handle_8h.html#a1c7d53e92b5b59633e7960e8210525fd">NameRows</a> &amp;rows)</td></tr>
@@ -218,6 +226,94 @@ Private Attributes</h2></td></tr>
 <a class="el" href="classDB__SQLite__Handle.html">DB_SQLite_Handle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a8517c381d3af75a79f86b4970437f3ee">sqlite_db</a></td></tr>
 <tr class="memdesc:a8517c381d3af75a79f86b4970437f3ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Low-level handle to the DB. <br /></td></tr>
 <tr class="separator:a8517c381d3af75a79f86b4970437f3ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53cd7ffd7d9bafebdd430aaee11ee0df"><td class="memItemLeft" align="right" valign="top"><a id="a53cd7ffd7d9bafebdd430aaee11ee0df"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a53cd7ffd7d9bafebdd430aaee11ee0df">select_projects</a></td></tr>
+<tr class="memdesc:a53cd7ffd7d9bafebdd430aaee11ee0df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for querying the projects list. <br /></td></tr>
+<tr class="separator:a53cd7ffd7d9bafebdd430aaee11ee0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54c3f8794e6ccd1079978e3942a84b8c"><td class="memItemLeft" align="right" valign="top"><a id="a54c3f8794e6ccd1079978e3942a84b8c"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a54c3f8794e6ccd1079978e3942a84b8c">select_tasks</a></td></tr>
+<tr class="memdesc:a54c3f8794e6ccd1079978e3942a84b8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for querying the list of tasks for a given project. <br /></td></tr>
+<tr class="separator:a54c3f8794e6ccd1079978e3942a84b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a396730d523d0fc812e13feb0a19b1122"><td class="memItemLeft" align="right" valign="top"><a id="a396730d523d0fc812e13feb0a19b1122"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a396730d523d0fc812e13feb0a19b1122">select_entries</a></td></tr>
+<tr class="memdesc:a396730d523d0fc812e13feb0a19b1122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for querying the list of entries over a given date range. <br /></td></tr>
+<tr class="separator:a396730d523d0fc812e13feb0a19b1122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe1f2f201d94a0105872b4ad48cbfff8"><td class="memItemLeft" align="right" valign="top"><a id="afe1f2f201d94a0105872b4ad48cbfff8"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#afe1f2f201d94a0105872b4ad48cbfff8">select_duration</a></td></tr>
+<tr class="memdesc:afe1f2f201d94a0105872b4ad48cbfff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for querying the total duration of entries over a date range. <br /></td></tr>
+<tr class="separator:afe1f2f201d94a0105872b4ad48cbfff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaeb43f4e37e23ab15a3d2aee7762d86"><td class="memItemLeft" align="right" valign="top"><a id="abaeb43f4e37e23ab15a3d2aee7762d86"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#abaeb43f4e37e23ab15a3d2aee7762d86">select_entrystaging</a></td></tr>
+<tr class="memdesc:abaeb43f4e37e23ab15a3d2aee7762d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for querying the entry contained in entrystaging. <br /></td></tr>
+<tr class="separator:abaeb43f4e37e23ab15a3d2aee7762d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f6cd038a97108097c46ef7742cf1966"><td class="memItemLeft" align="right" valign="top"><a id="a8f6cd038a97108097c46ef7742cf1966"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a8f6cd038a97108097c46ef7742cf1966">insert_project</a></td></tr>
+<tr class="memdesc:a8f6cd038a97108097c46ef7742cf1966"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for adding a project. <br /></td></tr>
+<tr class="separator:a8f6cd038a97108097c46ef7742cf1966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2b16ee9e5f16745c81f07ae7d4354d"><td class="memItemLeft" align="right" valign="top"><a id="a6d2b16ee9e5f16745c81f07ae7d4354d"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a6d2b16ee9e5f16745c81f07ae7d4354d">insert_task</a></td></tr>
+<tr class="memdesc:a6d2b16ee9e5f16745c81f07ae7d4354d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for adding a task. <br /></td></tr>
+<tr class="separator:a6d2b16ee9e5f16745c81f07ae7d4354d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbabead1bea40cc777bd0c335bc4a15f"><td class="memItemLeft" align="right" valign="top"><a id="acbabead1bea40cc777bd0c335bc4a15f"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#acbabead1bea40cc777bd0c335bc4a15f">insert_entry</a></td></tr>
+<tr class="memdesc:acbabead1bea40cc777bd0c335bc4a15f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for adding an entry. <br /></td></tr>
+<tr class="separator:acbabead1bea40cc777bd0c335bc4a15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60af92c3140f6d8d3d63a7c07cce70c"><td class="memItemLeft" align="right" valign="top"><a id="ae60af92c3140f6d8d3d63a7c07cce70c"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ae60af92c3140f6d8d3d63a7c07cce70c">update_project_name</a></td></tr>
+<tr class="memdesc:ae60af92c3140f6d8d3d63a7c07cce70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing a project's name. <br /></td></tr>
+<tr class="separator:ae60af92c3140f6d8d3d63a7c07cce70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09721acaa97522fdbee70d0300c9cd0"><td class="memItemLeft" align="right" valign="top"><a id="ad09721acaa97522fdbee70d0300c9cd0"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ad09721acaa97522fdbee70d0300c9cd0">update_task_name</a></td></tr>
+<tr class="memdesc:ad09721acaa97522fdbee70d0300c9cd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing a task's name. <br /></td></tr>
+<tr class="separator:ad09721acaa97522fdbee70d0300c9cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5aa294436e3094b4dce35839e03aba2"><td class="memItemLeft" align="right" valign="top"><a id="ab5aa294436e3094b4dce35839e03aba2"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ab5aa294436e3094b4dce35839e03aba2">update_entry_project</a></td></tr>
+<tr class="memdesc:ab5aa294436e3094b4dce35839e03aba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing an entry's project. <br /></td></tr>
+<tr class="separator:ab5aa294436e3094b4dce35839e03aba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e1a81513b1522c0324f027fd48e1d3"><td class="memItemLeft" align="right" valign="top"><a id="a94e1a81513b1522c0324f027fd48e1d3"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a94e1a81513b1522c0324f027fd48e1d3">update_entry_task</a></td></tr>
+<tr class="memdesc:a94e1a81513b1522c0324f027fd48e1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing an entry's task. <br /></td></tr>
+<tr class="separator:a94e1a81513b1522c0324f027fd48e1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7634c5558874cc54587e5911d05265d"><td class="memItemLeft" align="right" valign="top"><a id="ae7634c5558874cc54587e5911d05265d"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ae7634c5558874cc54587e5911d05265d">update_entry_start</a></td></tr>
+<tr class="memdesc:ae7634c5558874cc54587e5911d05265d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing an entry's start date. <br /></td></tr>
+<tr class="separator:ae7634c5558874cc54587e5911d05265d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05db5e452b95ff285554b399e7c54701"><td class="memItemLeft" align="right" valign="top"><a id="a05db5e452b95ff285554b399e7c54701"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a05db5e452b95ff285554b399e7c54701">update_entry_stop</a></td></tr>
+<tr class="memdesc:a05db5e452b95ff285554b399e7c54701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing an entry's stop date. <br /></td></tr>
+<tr class="separator:a05db5e452b95ff285554b399e7c54701"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c2f99f6f739ee015ac95027e87c9987"><td class="memItemLeft" align="right" valign="top"><a id="a0c2f99f6f739ee015ac95027e87c9987"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a0c2f99f6f739ee015ac95027e87c9987">update_entrystaging_project</a></td></tr>
+<tr class="memdesc:a0c2f99f6f739ee015ac95027e87c9987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing the entrystaging project name. <br /></td></tr>
+<tr class="separator:a0c2f99f6f739ee015ac95027e87c9987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a849146701ca9e941a1bfa4b3e854e49d"><td class="memItemLeft" align="right" valign="top"><a id="a849146701ca9e941a1bfa4b3e854e49d"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a849146701ca9e941a1bfa4b3e854e49d">update_entrystaging_task</a></td></tr>
+<tr class="memdesc:a849146701ca9e941a1bfa4b3e854e49d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing the entrystaging task name. <br /></td></tr>
+<tr class="separator:a849146701ca9e941a1bfa4b3e854e49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a449644e4a37358d231e1f73f06a2ab"><td class="memItemLeft" align="right" valign="top"><a id="a0a449644e4a37358d231e1f73f06a2ab"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a0a449644e4a37358d231e1f73f06a2ab">update_entrystaging_start</a></td></tr>
+<tr class="memdesc:a0a449644e4a37358d231e1f73f06a2ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing the entrystaging start date. <br /></td></tr>
+<tr class="separator:a0a449644e4a37358d231e1f73f06a2ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a427d72f4709367b69f77c9fba54ee4d8"><td class="memItemLeft" align="right" valign="top"><a id="a427d72f4709367b69f77c9fba54ee4d8"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a427d72f4709367b69f77c9fba54ee4d8">update_entrystaging_stop</a></td></tr>
+<tr class="memdesc:a427d72f4709367b69f77c9fba54ee4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing the entrystaging stop date. <br /></td></tr>
+<tr class="separator:a427d72f4709367b69f77c9fba54ee4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abacabc0123b453b1a13d2dffe8842a50"><td class="memItemLeft" align="right" valign="top"><a id="abacabc0123b453b1a13d2dffe8842a50"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#abacabc0123b453b1a13d2dffe8842a50">remove_task</a></td></tr>
+<tr class="memdesc:abacabc0123b453b1a13d2dffe8842a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for deleting a task. <br /></td></tr>
+<tr class="separator:abacabc0123b453b1a13d2dffe8842a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa66cec02974e3530009ee87af3ec2935"><td class="memItemLeft" align="right" valign="top"><a id="aa66cec02974e3530009ee87af3ec2935"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#aa66cec02974e3530009ee87af3ec2935">remove_project</a></td></tr>
+<tr class="memdesc:aa66cec02974e3530009ee87af3ec2935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for deleting a project. <br /></td></tr>
+<tr class="separator:aa66cec02974e3530009ee87af3ec2935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae19da2567513d7e9c2b5463fa8c2934f"><td class="memItemLeft" align="right" valign="top"><a id="ae19da2567513d7e9c2b5463fa8c2934f"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ae19da2567513d7e9c2b5463fa8c2934f">remove_entry</a></td></tr>
+<tr class="memdesc:ae19da2567513d7e9c2b5463fa8c2934f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for deleting an entry. <br /></td></tr>
+<tr class="separator:ae19da2567513d7e9c2b5463fa8c2934f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b766ef05b9975deb19db4a0379d0ad6"><td class="memItemLeft" align="right" valign="top"><a id="a3b766ef05b9975deb19db4a0379d0ad6"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a3b766ef05b9975deb19db4a0379d0ad6">insert_entrystaging</a></td></tr>
+<tr class="memdesc:a3b766ef05b9975deb19db4a0379d0ad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for committing the entrystaging to entries. <br /></td></tr>
+<tr class="separator:a3b766ef05b9975deb19db4a0379d0ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>DB implementation using SQLite3. </p>

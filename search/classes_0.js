@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['barncurses_195',['BarNCurses',['../classBarNCurses.html',1,'']]]
+  ['barncurses_223',['BarNCurses',['../classBarNCurses.html',1,'']]]
 ];
