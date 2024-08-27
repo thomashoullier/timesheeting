@@ -17,6 +17,11 @@ public:
   MenuNCurses(const std::vector<std::string> &items,
               WindowPosition winpos, WindowFormat winformat,
               int _ncols);
+  /** @brief Constructor with explicitely provided short display strings. */
+  MenuNCurses(const std::vector<std::string> &items,
+              const std::vector<std::string> &short_items,
+              WindowPosition winpos, WindowFormat winformat, int _ncols);
+  /** @brief Destructor. */
   ~MenuNCurses();
 
   /** @brief Select the item down of the current one. */
@@ -33,6 +38,9 @@ public:
   void clear();
   /** @brief Replace the currently held items. */
   void set_items(const std::vector<std::string> &items);
+  /** @brief Replace the currently held items and short items. */
+  void set_items(const std::vector<std::string> &items,
+                 const std::vector<std::string> &short_items);
   /** @brief Get the full display string for the current item. */
   const std::string& get_current_item_string() const;
   /** @brief Draw a single border on the menu window. */
@@ -49,6 +57,8 @@ protected:
   int get_col_index() const;
 
 private:
+  /** @brief Size of the display cell for each item. */
+  static constexpr int ITEM_WIDTH {19};
   /** @brief Number of columms in the menu. */
   int ncols;
   /** @brief ncurses menu object. */
@@ -65,9 +75,12 @@ private:
   std::string empty_string;
 
   /** @brief Constructor helper: initialize the menu. */
-  void init_menu(const std::vector<std::string> &items);
+  void init_menu();
   /** @brief Initialize the menu items. */
   void init_items(const std::vector<std::string> &items);
+  /** @brief Initialize the menu items and explicit short items. */
+  void init_items(const std::vector<std::string> &items,
+                  const std::vector<std::string> &short_items);
   /** @brief Initialize the menu UI. */
   void init_menu_window();
   /** @brief Destructor helper. Also called on update. */

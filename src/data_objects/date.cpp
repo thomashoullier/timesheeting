@@ -57,6 +57,11 @@ std::string Date::to_string () const {
   return std::format("{:%d%b%Y %H:%M:%S}", local_time);
 }
 
+std::string Date::to_shortstring() const {
+  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
+  return std::format("{:%H:%M}", local_time);
+}
+
 uint64_t Date::to_unix_timestamp() const {
   return tp.time_since_epoch().count();
 }

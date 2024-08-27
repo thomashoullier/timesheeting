@@ -39,6 +39,12 @@ public:
       Note the system's timezone is defined by `/etc/localtime` here,
       not the TZ environment variable. */
   std::string to_string() const;
+  /** @brief Convert the internal timepoint to a short displayable date string
+      in the system's timezone.
+
+      Note the system's timezone is defined by `/etc/localtime` here,
+      not the TZ environment variable. */
+  std::string to_shortstring() const;
   /** @brief Get the date as a UNIX timestamp (UTC) in seconds. */
   uint64_t to_unix_timestamp () const;
   /** @brief Get a displayable string for the date at a day resolution

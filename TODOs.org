@@ -310,7 +310,8 @@ ADDED: [2024-08-25 Sun]
 The selection marker in ncurses menu is useless since the element is
 already highlighted. It takes up space for nothing. Remove it.
 
-*** TODO Avoid SQL injections
+*** DONE Avoid SQL injections
+CLOSED: [2024-08-27 Tue 19:58]
 ADDED: [2024-08-25 Sun]
 Currently there is a possibility to do SQL injections when
 renaming, adding objects etc.
@@ -322,6 +323,7 @@ avoided as it could potentially destroy the DB.
 + We can tell sqlite that these statements are all "persistent" by using
   the corresponding flag in prepare_v3.
  https://www.sqlite.org/c3ref/c_prepare_normalize.html#sqlitepreparepersistent
+- [2024-08-27 Tue] We converted every statement into a parameterized query.
 
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]

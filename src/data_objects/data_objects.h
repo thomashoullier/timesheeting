@@ -53,6 +53,19 @@ struct Entry {
     display_strings.at(3) = stop.to_string();
     return display_strings;
   };
+
+  /** @brief Generate an ordered set of strings for displaying the entry
+      in short form.
+
+   Typically, the result is like {"Project", "Task", "16:24", "17:35"}*/
+  std::vector<std::string> to_shortstrings() const {
+    std::vector<std::string> display_strings(4);
+    display_strings.at(0) = project_name;
+    display_strings.at(1) = task_name;
+    display_strings.at(2) = start.to_shortstring();
+    display_strings.at(3) = stop.to_shortstring();
+    return display_strings;
+  };
 };
 
 /** @brief Entry as it is being staged.
@@ -78,6 +91,21 @@ struct EntryStaging {
     display_strings.at(1) = task_name.value_or(" ");
     display_strings.at(2) = start.has_value() ? start.value().to_string() : " ";
     display_strings.at(3) = stop.has_value() ? stop.value().to_string() : " ";
+    return display_strings;
+  };
+
+  /** @brief Generate an ordered set of strings for displaying
+   the entrystaging in short form.
+
+  Fields with no values are output as a whitespace character. */
+  std::vector<std::string> to_shortstrings() const {
+    std::vector<std::string> display_strings(4);
+    display_strings.at(0) = project_name.value_or(" ");
+    display_strings.at(1) = task_name.value_or(" ");
+    display_strings.at(2) = start.has_value() ?
+      start.value().to_shortstring() : " ";
+    display_strings.at(3) = stop.has_value() ?
+      stop.value().to_shortstring() : " ";
     return display_strings;
   };
 };

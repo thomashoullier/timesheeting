@@ -29,5 +29,8 @@ private:
 
   /** @brief Get display strings from the provided set of items. */
   std::vector<std::string> items_to_string(const std::vector<Entry> &items);
+  /** @brief Get short display strings from the provided set of items. */
+  std::vector<std::string> items_to_shortstring
+  (const std::vector<Entry> &items);
 };
 #endif // REGISTER_NCURSES_H
