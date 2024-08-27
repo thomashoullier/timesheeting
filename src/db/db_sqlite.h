@@ -58,6 +58,38 @@ private:
   sqlite3_stmt *select_entrystaging;
   /** @brief Statement for adding a project. */
   sqlite3_stmt *insert_project;
+  /** @brief Statement for adding a task. */
+  sqlite3_stmt *insert_task;
+  /** @brief Statement for adding an entry. */
+  sqlite3_stmt *insert_entry;
+  /** @brief Statement for editing a project's name. */
+  sqlite3_stmt *update_project_name;
+  /** @brief Statement for editing a task's name. */
+  sqlite3_stmt *update_task_name;
+  /** @brief Statement for editing an entry's project. */
+  sqlite3_stmt *update_entry_project;
+  /** @brief Statement for editing an entry's task. */
+  sqlite3_stmt *update_entry_task;
+  /** @brief Statement for editing an entry's start date. */
+  sqlite3_stmt *update_entry_start;
+  /** @brief Statement for editing an entry's stop date. */
+  sqlite3_stmt *update_entry_stop;
+  /** @brief Statement for editing the entrystaging project name. */
+  sqlite3_stmt *update_entrystaging_project;
+  /** @brief Statement for editing the entrystaging task name. */
+  sqlite3_stmt *update_entrystaging_task;
+  /** @brief Statement for editing the entrystaging start date. */
+  sqlite3_stmt *update_entrystaging_start;
+  /** @brief Statement for editing the entrystaging stop date. */
+  sqlite3_stmt *update_entrystaging_stop;
+  /** @brief Statement for deleting a task. */
+  sqlite3_stmt *remove_task;
+  /** @brief Statement for deleting a project. */
+  sqlite3_stmt *remove_project;
+  /** @brief Statement for deleting an entry. */
+  sqlite3_stmt *remove_entry;
+  /** @brief Statement for committing the entrystaging to entries. */
+  sqlite3_stmt *insert_entrystaging;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();

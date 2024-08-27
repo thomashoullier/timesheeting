@@ -1,7 +1,6 @@
 #include "db_sqlite.h"
 #include "db_sqlite_handle.h"
 #include <cstdint>
-#include <iostream>
 #include <optional>
 #include <string>
 
@@ -50,6 +49,99 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "VALUES (?);";
   insert_project = sqlite_db.prepare_statement(insert_project_st);
 
+  std::string insert_task_st =
+    "INSERT INTO tasks (project_id, name) "
+    "VALUES (?,?);";
+  insert_task = sqlite_db.prepare_statement(insert_task_st);
+
+  std::string insert_entry_st =
+    "INSERT INTO entries (task_id, start, stop) "
+    "VALUES (?, ?, ?);";
+  insert_entry = sqlite_db.prepare_statement(insert_entry_st);
+
+  std::string update_project_name_st =
+    "UPDATE projects "
+    "SET name = ? WHERE id = ?;";
+  update_project_name = sqlite_db.prepare_statement(update_project_name_st);
+
+  std::string alter_task_name_st = "UPDATE tasks SET name = ? WHERE id = ?;";
+  update_task_name = sqlite_db.prepare_statement(alter_task_name_st);
+
+  std::string update_entry_project_st =
+    "UPDATE entries "
+    "SET task_id = ("
+    "SELECT tasks.id FROM tasks "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "WHERE projects.name = ?) "
+    "WHERE entries.id = ? LIMIT 1;";
+  update_entry_project = sqlite_db.prepare_statement(update_entry_project_st);
+
+  std::string update_entry_task_st =
+    "UPDATE entries "
+    "SET task_id = ("
+    "SELECT id FROM tasks "
+    "WHERE name = ?1 "
+    "AND project_id = ("
+    "SELECT projects.id FROM entries "
+    "INNER JOIN tasks ON entries.task_id = tasks.id "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "WHERE entries.id = ?2)) "
+    "WHERE entries.id = ?2;";
+  update_entry_task = sqlite_db.prepare_statement(update_entry_task_st);
+
+  std::string update_entry_start_st =
+    "UPDATE entries SET start = ? WHERE id = ?;";
+  update_entry_start = sqlite_db.prepare_statement(update_entry_start_st);
+
+  std::string update_entry_stop_st =
+      "UPDATE entries SET stop = ? WHERE id = ?;";
+  update_entry_stop = sqlite_db.prepare_statement(update_entry_stop_st);
+
+  std::string update_entrystaging_project_st =
+    "UPDATE entrystaging "
+    "SET task_id = ("
+    "SELECT tasks.id FROM tasks "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "WHERE projects.name = ?) LIMIT 1;";
+  update_entrystaging_project =
+    sqlite_db.prepare_statement(update_entrystaging_project_st);
+
+  std::string update_entrystaging_task_st =
+      "UPDATE entrystaging "
+      "SET task_id = ("
+      "SELECT id FROM tasks "
+      "WHERE name = ? "
+      "AND project_id = ("
+      "SELECT projects.id FROM entrystaging "
+      "INNER JOIN tasks ON entrystaging.task_id = tasks.id "
+      "INNER JOIN projects ON tasks.project_id = projects.id "
+      "));";
+  update_entrystaging_task =
+    sqlite_db.prepare_statement(update_entrystaging_task_st);
+
+  std::string update_entrystaging_start_st =
+    "UPDATE entrystaging SET start = ?;";
+  update_entrystaging_start =
+    sqlite_db.prepare_statement(update_entrystaging_start_st);
+
+  std::string update_entrystaging_stop_st = "UPDATE entrystaging SET stop = ?;";
+  update_entrystaging_stop =
+    sqlite_db.prepare_statement(update_entrystaging_stop_st);
+
+  std::string remove_task_st = "DELETE FROM tasks WHERE id = ?;";
+  remove_task = sqlite_db.prepare_statement(remove_task_st);
+
+  std::string remove_project_st = "DELETE FROM projects WHERE id = ?;";
+  remove_project = sqlite_db.prepare_statement(remove_project_st);
+
+  std::string remove_entry_st = "DELETE FROM entries WHERE id = ?;";
+  remove_entry = sqlite_db.prepare_statement(remove_entry_st);
+
+  std::string insert_entrystaging_st =
+    "INSERT INTO entries (task_id, start, stop) "
+    "SELECT task_id, start, stop "
+    "FROM entrystaging;";
+  insert_entrystaging = sqlite_db.prepare_statement(insert_entrystaging_st);
 }
 
 DB_SQLite::~DB_SQLite() {
@@ -59,6 +151,22 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(select_duration);
   sqlite3_finalize(select_entrystaging);
   sqlite3_finalize(insert_project);
+  sqlite3_finalize(insert_task);
+  sqlite3_finalize(insert_entry);
+  sqlite3_finalize(update_project_name);
+  sqlite3_finalize(update_task_name);
+  sqlite3_finalize(update_entry_project);
+  sqlite3_finalize(update_entry_task);
+  sqlite3_finalize(update_entry_start);
+  sqlite3_finalize(update_entry_stop);
+  sqlite3_finalize(update_entrystaging_project);
+  sqlite3_finalize(update_entrystaging_task);
+  sqlite3_finalize(update_entrystaging_start);
+  sqlite3_finalize(update_entrystaging_stop);
+  sqlite3_finalize(remove_task);
+  sqlite3_finalize(remove_project);
+  sqlite3_finalize(remove_entry);
+  sqlite3_finalize(insert_entrystaging);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -231,165 +339,120 @@ void DB_SQLite::add_project(std::string project_name) {
 }
 
 void DB_SQLite::add_task(Id project_id, std::string task_name) {
-  std::string add_task_st = "INSERT INTO tasks (project_id, name) "
-                            "VALUES ('" +
-                            std::to_string(project_id) +
-                            "', "
-                            "'" +
-                            task_name + "');";
-  try_exec_statement(add_task_st);
+  sqlite3_reset(insert_task);
+  sqlite3_bind_int64(insert_task, 1, project_id);
+  sqlite3_bind_text(insert_task, 2, task_name.c_str(), task_name.size(),
+                    SQLITE_STATIC);
+  try_step_statement(insert_task);
 }
 
 void DB_SQLite::add_entry(Id task_id, const Date &start, const Date &stop) {
-  std::string add_entry_st = "INSERT INTO entries (task_id, start, stop) "
-    "VALUES ('" +
-    std::to_string(task_id) + "', "
-    "'" + std::to_string(start.to_unix_timestamp()) + "', "
-    "'" + std::to_string(stop.to_unix_timestamp()) + "'"
-    ");";
-  try_exec_statement(add_entry_st);
+  sqlite3_reset(insert_entry);
+  sqlite3_bind_int64(insert_entry, 1, task_id);
+  sqlite3_bind_int64(insert_entry, 2, start.to_unix_timestamp());
+  sqlite3_bind_int64(insert_entry, 3, stop.to_unix_timestamp());
+  try_step_statement(insert_entry);
 }
 
 void DB_SQLite::edit_project_name(Id project_id, std::string new_project_name) {
-  std::string alter_project_name_st = "UPDATE projects "
-                                      "SET name = '" +
-                                      new_project_name +
-                                      "' "
-                                      "WHERE id = " +
-                                      std::to_string(project_id) + ";";
-  try_exec_statement(alter_project_name_st);
+  sqlite3_reset(update_project_name);
+  sqlite3_bind_text(update_project_name, 1,
+                    new_project_name.c_str(), new_project_name.size(),
+                    SQLITE_STATIC);
+  sqlite3_bind_int64(update_project_name, 2, project_id);
+  try_step_statement(update_project_name);
 }
 
 void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
-  std::string alter_task_name_st = "UPDATE tasks "
-                                   "SET name = '" +
-                                   new_task_name +
-                                   "' "
-                                   "WHERE id = " +
-                                   std::to_string(task_id) + ";";
-  try_exec_statement(alter_task_name_st);
+  sqlite3_reset(update_task_name);
+  sqlite3_bind_text(update_task_name, 1,
+                    new_task_name.c_str(), new_task_name.size(),
+                    SQLITE_STATIC);
+  sqlite3_bind_int64(update_task_name, 2, task_id);
+  try_step_statement(update_task_name);
 }
 
 void DB_SQLite::edit_entry_project(Id entry_id,
                                    const std::string &new_project_name) {
-  std::string alter_entry_project_st =
-    "UPDATE entries "
-    "SET task_id = ("
-    "SELECT tasks.id FROM tasks "
-    "INNER JOIN projects ON tasks.project_id = projects.id "
-    "WHERE projects.name = '" + new_project_name + "'"
-    ") "
-    "WHERE entries.id = " + std::to_string(entry_id) + " "
-    "LIMIT 1;";
-  try_exec_statement(alter_entry_project_st);
+  sqlite3_reset(update_entry_project);
+  sqlite3_bind_text(update_entry_project, 1, new_project_name.c_str(),
+                    new_project_name.size(), SQLITE_STATIC);
+  sqlite3_bind_int64(update_entry_project, 2, entry_id);
+  try_step_statement(update_entry_project);
 }
 
 void DB_SQLite::edit_entry_task(Id entry_id, const std::string &new_task_name) {
-  std::string alter_entry_task_st =
-    "UPDATE entries "
-    "SET task_id = ("
-    "SELECT id FROM tasks "
-    "WHERE name = '" + new_task_name + "' "
-    "AND project_id = ("
-    "SELECT projects.id FROM entries "
-    "INNER JOIN tasks ON entries.task_id = tasks.id "
-    "INNER JOIN projects ON tasks.project_id = projects.id "
-    "WHERE entries.id = " + std::to_string(entry_id) +
-    ")"
-    ") "
-    "WHERE entries.id = " + std::to_string(entry_id) + ";";
-  try_exec_statement(alter_entry_task_st);
+  sqlite3_reset(update_entry_task);
+  sqlite3_bind_text(update_entry_task, 1, new_task_name.c_str(),
+                    new_task_name.size(), SQLITE_STATIC);
+  sqlite3_bind_int64(update_entry_task, 2, entry_id);
+  try_step_statement(update_entry_task);
 }
 
 void DB_SQLite::edit_entry_start(Id entry_id, const Date &new_start_date) {
-  std::string alter_entry_start_st = "UPDATE entries "
-    "SET start = "
-    "'" + std::to_string(new_start_date.to_unix_timestamp()) + "' "
-    "WHERE id = " + std::to_string(entry_id) + ";";
-  try_exec_statement(alter_entry_start_st);
+  sqlite3_reset(update_entry_start);
+  sqlite3_bind_int64(update_entry_start, 1, new_start_date.to_unix_timestamp());
+  sqlite3_bind_int64(update_entry_start, 2, entry_id);
+  try_step_statement(update_entry_start);
 }
 
 void DB_SQLite::edit_entry_stop(Id entry_id, const Date &new_stop_date) {
-  std::string alter_entry_stop_st =
-      "UPDATE entries "
-      "SET stop = "
-      "'" +
-      std::to_string(new_stop_date.to_unix_timestamp()) +
-      "' "
-      "WHERE id = " +
-      std::to_string(entry_id) + ";";
-  try_exec_statement(alter_entry_stop_st);
+  sqlite3_reset(update_entry_stop);
+  sqlite3_bind_int64(update_entry_stop, 1, new_stop_date.to_unix_timestamp());
+  sqlite3_bind_int64(update_entry_stop, 2, entry_id);
+  try_step_statement(update_entry_stop);
 }
 
 void DB_SQLite::edit_entrystaging_project_name
     (const std::string &new_project_name) {
-  std::string alter_entrystaging_project_st =
-    "UPDATE entrystaging "
-    "SET task_id = ("
-    "SELECT tasks.id FROM tasks "
-    "INNER JOIN projects ON tasks.project_id = projects.id "
-    "WHERE projects.name = '" + new_project_name + "'"
-    ") "
-    "LIMIT 1;";
-  try_exec_statement(alter_entrystaging_project_st);
+  sqlite3_reset(update_entrystaging_project);
+  sqlite3_bind_text(update_entrystaging_project, 1, new_project_name.c_str(),
+                    new_project_name.size(), SQLITE_STATIC);
+  try_step_statement(update_entrystaging_project);
 }
 
 void DB_SQLite::edit_entrystaging_task_name(const std::string &new_task_name) {
-  std::string alter_entrystaging_task_st =
-    "UPDATE entrystaging "
-    "SET task_id = ("
-    "SELECT id FROM tasks "
-    "WHERE name = '" + new_task_name + "' "
-    "AND project_id = ("
-    "SELECT projects.id FROM entrystaging "
-    "INNER JOIN tasks ON entrystaging.task_id = tasks.id "
-    "INNER JOIN projects ON tasks.project_id = projects.id "
-    "));";
-  try_exec_statement(alter_entrystaging_task_st);
+  sqlite3_reset(update_entrystaging_task);
+  sqlite3_bind_text(update_entrystaging_task, 1, new_task_name.c_str(),
+                    new_task_name.size(), SQLITE_STATIC);
+  try_step_statement(update_entrystaging_task);
 }
 
 void DB_SQLite::edit_entrystaging_start(const Date &new_start) {
-  std::string alter_entrystaging_start_st =
-      "UPDATE entrystaging "
-      "SET start = "
-      "'" + std::to_string(new_start.to_unix_timestamp()) + "';";
-  try_exec_statement(alter_entrystaging_start_st);
+  sqlite3_reset(update_entrystaging_start);
+  sqlite3_bind_int64(update_entrystaging_start, 1,
+                     new_start.to_unix_timestamp());
+  try_step_statement(update_entrystaging_start);
 }
+
 void DB_SQLite::edit_entrystaging_stop(const Date &new_stop) {
-  std::string alter_entrystaging_stop_st =
-      "UPDATE entrystaging "
-      "SET stop = "
-      "'" + std::to_string(new_stop.to_unix_timestamp()) + "';";
-  try_exec_statement(alter_entrystaging_stop_st);
+  sqlite3_reset(update_entrystaging_stop);
+  sqlite3_bind_int64(update_entrystaging_stop, 1,
+                     new_stop.to_unix_timestamp());
+  try_step_statement(update_entrystaging_stop);
 }
 
 void DB_SQLite::delete_task(Id task_id) {
-  std::string delete_task_st =
-    "DELETE FROM tasks "
-    "WHERE id = " + std::to_string(task_id) + ";";
-  try_exec_statement(delete_task_st);
+  sqlite3_reset(remove_task);
+  sqlite3_bind_int64(remove_task, 1, task_id);
+  try_step_statement(remove_task);
 }
 
 void DB_SQLite::delete_project(Id project_id) {
-  std::string delete_project_st =
-    "DELETE FROM projects "
-    "WHERE id = " + std::to_string(project_id) + ";";
-  try_exec_statement(delete_project_st);
+  sqlite3_reset(remove_project);
+  sqlite3_bind_int64(remove_project, 1, project_id);
+  try_step_statement(remove_project);
 }
 
 void DB_SQLite::delete_entry(Id entry_id) {
-  std::string delete_entry_st =
-    "DELETE FROM entries "
-    "WHERE id = " + std::to_string(entry_id) + ";";
-  try_exec_statement(delete_entry_st);
+  sqlite3_reset(remove_entry);
+  sqlite3_bind_int64(remove_entry, 1, entry_id);
+  try_step_statement(remove_entry);
 }
 
 void DB_SQLite::commit_entrystaging(){
-  std::string commit_entrystaging_st =
-    "INSERT INTO entries (task_id, start, stop) "
-    "SELECT task_id, start, stop "
-    "FROM entrystaging;";
-  try_exec_statement(commit_entrystaging_st);
+  sqlite3_reset(insert_entrystaging);
+  try_step_statement(insert_entrystaging);
 }
 
 void DB_SQLite::try_exec_statement(const std::string &statement) {

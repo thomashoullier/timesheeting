@@ -337,3 +337,9 @@ When displayed in the entries registry and in entrystaging, the dates
 should only read as ~HH:MM~. Do no modify the input mechanism for now,
 still accept full dates only.
 This will make room for a "Location" column.
+
+*** TODO Factoring: create an utility to simplify the management of SQL statements
+ADDED: [2024-08-26 Mon]
+In db_sqlite.cpp, the functions are quite long, and we juggle with many
+statements. Create a statement object for preparing, stepping, finalizing
+the statements automatically. Hold these statements in a container.
