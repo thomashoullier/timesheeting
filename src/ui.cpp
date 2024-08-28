@@ -4,7 +4,9 @@
 UI::UI()
   : db(std::make_shared<DB_SQLite>("timesheeting.db")),
     status_bar(std::make_shared<StatusBarNCurses>()),
-    projects_screen(db, status_bar), entries_screen(db, status_bar) {
+    projects_screen(db, status_bar),
+    locations_screen(db, status_bar),
+    entries_screen(db, status_bar) {
   log("timesheeting UI initialized.");
 }
 
@@ -22,6 +24,9 @@ char UI::input_loop() {
       break;
     case '2':
       cur_screen = &projects_screen;
+      break;
+    case '3':
+      cur_screen = &locations_screen;
       break;
     default:
       return ch;

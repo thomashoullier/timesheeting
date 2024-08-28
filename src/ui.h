@@ -5,6 +5,7 @@
 
 #include "ui_screens/entries_screen.h"
 #include "ncurses/ncurses_handle.h"
+#include "ui_screens/locations_screen.h"
 #include "ui_screens/project_task_screen.h"
 #include "db/db_sqlite.h"
 #include "ui_screens/status_bar/status_bar_ncurses.h"
@@ -29,6 +30,8 @@ private:
   std::shared_ptr<StatusBarNCurses> status_bar;
   /** @brief Screen for the project/task definition. */
   ProjectTaskScreen<DB_SQLite> projects_screen;
+  /** @brief Screen for the locations definition. */
+  LocationsScreen<DB_SQLite> locations_screen;
   /** @brief Screen for the table of entries. */
   EntriesScreen<DB_SQLite> entries_screen;
 };
