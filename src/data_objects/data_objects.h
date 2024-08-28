@@ -26,7 +26,8 @@ struct GenericItem {
 struct Project : GenericItem {};
 /** @brief Specialization of GenericItem into a Task item. */
 struct Task : GenericItem {};
-
+/** @brief Specialization of GenericItem into a Location item. */
+struct Location : GenericItem {};
 
 /** @brief Timesheet entry object. */
 struct Entry {

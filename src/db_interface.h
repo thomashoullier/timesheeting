@@ -16,6 +16,8 @@ public:
   virtual std::vector<Project> query_projects() = 0;
   /** @brief Return the set of tasks for a given project. */
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
+  /** @brief Return the set of locations stored in the DB. */
+  virtual std::vector<Location> query_locations () = 0;
   /** @brief Return the set of entries ordered by ascending start date
       and included in the provided DateRange. */
   virtual std::vector<Entry> query_entries (const DateRange &date_range) = 0;
@@ -29,6 +31,8 @@ public:
   virtual void add_project(std::string project_name) = 0;
   /** @brief Add a task to a given project with the provided task name. */
   virtual void add_task(Id project_id, std::string task_name) = 0;
+  /** @brief Add a location to the DB with the provided name. */
+  virtual void add_location(const std::string &location_name) = 0;
   /** @brief Add an entry for a given task with a start and stop dates. */
   virtual void add_entry(Id task_id, const Date &start, const Date &stop) = 0;
   /** @brief Edit a project's name. */
@@ -37,6 +41,9 @@ public:
   /** @brief Edit a task's name. */
   virtual void edit_task_name(Id task_id,
                               std::string new_task_name) = 0;
+  /** @brief Edit a location's name. */
+  virtual void edit_location_name(Id location_id,
+                                  const std::string &new_location_name) = 0;
   /** @brief Edit an entry's project. */
   virtual void edit_entry_project(Id entry_id,
                                   const std::string &new_project_name) = 0;
@@ -63,6 +70,8 @@ public:
   virtual void delete_task (Id task_id) = 0;
   /** @brief Delete the project with provided Id and all associated tasks. */
   virtual void delete_project (Id project_id) = 0;
+  /** @brief Delete the location with provided Id. */
+  virtual void delete_location (Id location_id) = 0;
   /** @brief Delete a timesheet entry. */
   virtual void delete_entry (Id entry_id) = 0;
   /** @brief Commit the entrystaging to the entries table. */

@@ -18,14 +18,18 @@ public:
 
   std::vector<Project> query_projects() override;
   std::vector<Task> query_tasks(Id project_id) override;
+  std::vector<Location> query_locations() override;
   std::vector<Entry> query_entries(const DateRange &date_range) override;
   Duration query_entries_duration(const DateRange &date_range) override;
   EntryStaging query_entrystaging () override;
   void add_project(std::string project_name) override;
   void add_task(Id project_id, std::string task_name) override;
+  void add_location(const std::string &location_name) override;
   void add_entry(Id task_id, const Date &start, const Date &stop) override;
   void edit_project_name(Id project_id, std::string new_project_name) override;
   void edit_task_name(Id task_id, std::string new_task_name) override;
+  void edit_location_name(Id location_id,
+                          const std::string &new_location_name) override;
   void edit_entry_project(Id entry_id,
                           const std::string &new_project_name) override;
   void edit_entry_task(Id entry_id, const std::string &new_task_name) override;
@@ -38,6 +42,7 @@ public:
   void edit_entrystaging_stop(const Date &new_stop) override;
   void delete_task(Id task_id) override;
   void delete_project(Id project_id) override;
+  void delete_location (Id location_id) override;
   void delete_entry(Id entry_id) override;
   void commit_entrystaging() override;
 
@@ -48,6 +53,8 @@ private:
   sqlite3_stmt *select_projects;
   /** @brief Statement for querying the list of tasks for a given project. */
   sqlite3_stmt *select_tasks;
+  /** @brief Statement for querying the list of locations. */
+  sqlite3_stmt *select_locations;
   /** @brief Statement for querying the list of entries over a given date
       range. */
   sqlite3_stmt *select_entries;
@@ -60,12 +67,16 @@ private:
   sqlite3_stmt *insert_project;
   /** @brief Statement for adding a task. */
   sqlite3_stmt *insert_task;
+  /** @brief Statement for adding a location. */
+  sqlite3_stmt *insert_location;
   /** @brief Statement for adding an entry. */
   sqlite3_stmt *insert_entry;
   /** @brief Statement for editing a project's name. */
   sqlite3_stmt *update_project_name;
   /** @brief Statement for editing a task's name. */
   sqlite3_stmt *update_task_name;
+  /** @brief Statement for editing a location's name. */
+  sqlite3_stmt *update_location_name;
   /** @brief Statement for editing an entry's project. */
   sqlite3_stmt *update_entry_project;
   /** @brief Statement for editing an entry's task. */
@@ -86,6 +97,8 @@ private:
   sqlite3_stmt *remove_task;
   /** @brief Statement for deleting a project. */
   sqlite3_stmt *remove_project;
+  /** @brief Statement for deleting a location. */
+  sqlite3_stmt *remove_location;
   /** @brief Statement for deleting an entry. */
   sqlite3_stmt *remove_entry;
   /** @brief Statement for committing the entrystaging to entries. */
