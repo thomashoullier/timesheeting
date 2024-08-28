@@ -8,6 +8,7 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   : sqlite_db (db_file) {
   this->create_projects_table();
   this->create_tasks_table();
+  this->create_locations_table();
   this->create_entries_table();
   this->create_entries_start_index();
   this->create_entrystaging_table();
@@ -288,6 +289,14 @@ void DB_SQLite::create_tasks_table() {
       "ON DELETE CASCADE"
       ");";
   sqlite_db.exec_statement(create_tasks_table_st);
+}
+
+void DB_SQLite::create_locations_table() {
+  std::string create_locations_table_st =
+    "CREATE TABLE IF NOT EXISTS locations ("
+    "id INTEGER PRIMARY KEY, "
+    "name TEXT NOT NULL UNIQUE);";
+  sqlite_db.exec_statement(create_locations_table_st);
 }
 
 void DB_SQLite::create_entries_table() {

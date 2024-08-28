@@ -333,7 +333,8 @@ Do we need to pace the inputs somehow, in any case a sufficient time between
 inputs should do.
 https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-testing-an-ncurses-application
 
-*** TODO Shorten the date display in menus
+*** DONE Shorten the date display in menus
+CLOSED: [2024-08-27 Tue 21:23]
 ADDED: [2024-08-26 Mon]
 When displayed in the entries registry and in entrystaging, the dates
 should only read as ~HH:MM~. Do no modify the input mechanism for now,

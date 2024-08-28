@@ -95,6 +95,8 @@ private:
   void create_projects_table();
   /** @brief Create the SQL table for tasks. */
   void create_tasks_table();
+  /** @brief Create the SQL table for locations. */
+  void create_locations_table();
   /** @brief Create the SQL table for entries. */
   void create_entries_table();
   /** @brief Create an index over the start date of entries. */
