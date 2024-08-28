@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['project_5fcol_435',['project_col',['../classProjectTaskScreen.html#ac3d00264e13d0f4029148abe3daa4ac5',1,'ProjectTaskScreen']]],
-  ['project_5fname_436',['project_name',['../structEntry.html#a18402b0ed4db921879cfa2f45e19410c',1,'Entry::project_name()'],['../structEntryStaging.html#a9ca68ca5a15ee103ace0573d66448b0c',1,'EntryStaging::project_name()']]],
-  ['projects_5fscreen_437',['projects_screen',['../classUI.html#a6124900631621e32e29797cf9ee69b0e',1,'UI']]]
+  ['name_460',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem']]],
+  ['ncols_461',['ncols',['../classMenuNCurses.html#ad0b4330548624edaf828deea39de9c7c',1,'MenuNCurses']]],
+  ['ncurses_5fhandle_462',['ncurses_handle',['../classUI.html#a150f54f597b90035cb05e7a44222bbe0',1,'UI']]]
 ];

@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['update_5fentry_5fproject_461',['update_entry_project',['../classDB__SQLite.html#ab5aa294436e3094b4dce35839e03aba2',1,'DB_SQLite']]],
-  ['update_5fentry_5fstart_462',['update_entry_start',['../classDB__SQLite.html#ae7634c5558874cc54587e5911d05265d',1,'DB_SQLite']]],
-  ['update_5fentry_5fstop_463',['update_entry_stop',['../classDB__SQLite.html#a05db5e452b95ff285554b399e7c54701',1,'DB_SQLite']]],
-  ['update_5fentry_5ftask_464',['update_entry_task',['../classDB__SQLite.html#a94e1a81513b1522c0324f027fd48e1d3',1,'DB_SQLite']]],
-  ['update_5fentrystaging_5fproject_465',['update_entrystaging_project',['../classDB__SQLite.html#a0c2f99f6f739ee015ac95027e87c9987',1,'DB_SQLite']]],
-  ['update_5fentrystaging_5fstart_466',['update_entrystaging_start',['../classDB__SQLite.html#a0a449644e4a37358d231e1f73f06a2ab',1,'DB_SQLite']]],
-  ['update_5fentrystaging_5fstop_467',['update_entrystaging_stop',['../classDB__SQLite.html#a427d72f4709367b69f77c9fba54ee4d8',1,'DB_SQLite']]],
-  ['update_5fentrystaging_5ftask_468',['update_entrystaging_task',['../classDB__SQLite.html#a849146701ca9e941a1bfa4b3e854e49d',1,'DB_SQLite']]],
-  ['update_5fproject_5fname_469',['update_project_name',['../classDB__SQLite.html#ae60af92c3140f6d8d3d63a7c07cce70c',1,'DB_SQLite']]],
-  ['update_5ftask_5fname_470',['update_task_name',['../classDB__SQLite.html#ad09721acaa97522fdbee70d0300c9cd0',1,'DB_SQLite']]]
+  ['task_5fcol_486',['task_col',['../classProjectTaskScreen.html#a15c4ad874157f18c506de1552f0a1640',1,'ProjectTaskScreen']]],
+  ['task_5fname_487',['task_name',['../structEntry.html#a69cde5f2b4eae8370ee52fc6dcdda044',1,'Entry::task_name()'],['../structEntryStaging.html#ac364ac2b8a1a94429dc9507d5e0eedc4',1,'EntryStaging::task_name()']]],
+  ['tick_5fpoint_488',['tick_point',['../classLoggerFile.html#aa50b8e99c1f97d9c46efe877761a2a75',1,'LoggerFile']]],
+  ['total_5fbar_489',['total_bar',['../classEntriesTable.html#a48245bae46945e9f9efa7a8654a1d0a4',1,'EntriesTable']]],
+  ['tp_490',['tp',['../classDate.html#a137e31f8095d613175de66c6abc092b8',1,'Date']]]
 ];

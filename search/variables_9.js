@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['range_438',['range',['../classDateSelectorNcurses.html#a3961402fd2d927666c2e3bb94e812383',1,'DateSelectorNcurses']]],
-  ['reg_439',['reg',['../classEntriesTable.html#a95a7c9ca2f792be41e4e02f7c7a13f7b',1,'EntriesTable']]],
-  ['remove_5fentry_440',['remove_entry',['../classDB__SQLite.html#ae19da2567513d7e9c2b5463fa8c2934f',1,'DB_SQLite']]],
-  ['remove_5fproject_441',['remove_project',['../classDB__SQLite.html#aa66cec02974e3530009ee87af3ec2935',1,'DB_SQLite']]],
-  ['remove_5ftask_442',['remove_task',['../classDB__SQLite.html#abacabc0123b453b1a13d2dffe8842a50',1,'DB_SQLite']]]
+  ['project_5fcol_463',['project_col',['../classProjectTaskScreen.html#ac3d00264e13d0f4029148abe3daa4ac5',1,'ProjectTaskScreen']]],
+  ['project_5fname_464',['project_name',['../structEntry.html#a18402b0ed4db921879cfa2f45e19410c',1,'Entry::project_name()'],['../structEntryStaging.html#a9ca68ca5a15ee103ace0573d66448b0c',1,'EntryStaging::project_name()']]],
+  ['projects_5fscreen_465',['projects_screen',['../classUI.html#a6124900631621e32e29797cf9ee69b0e',1,'UI']]]
 ];

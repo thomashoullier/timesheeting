@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['menu_429',['menu',['../classMenuNCurses.html#ac95742d2f238fccb36f6ad575d6938cd',1,'MenuNCurses']]],
-  ['menu_5fitems_430',['menu_items',['../classMenuNCurses.html#ad102d4b21f4caacfbccb4310e66bd054',1,'MenuNCurses']]],
-  ['msg_431',['msg',['../classDateParsingFailure.html#ae0609be0e4d5b32ada910048ddaf2545',1,'DateParsingFailure::msg()'],['../classSQLiteConstraintExcept.html#a871d9fbaac6ed756d276e7207bfc8a49',1,'SQLiteConstraintExcept::msg()'],['../classDBLogicExcept.html#aac48c0130f642f062751880bc4a99718',1,'DBLogicExcept::msg()'],['../classMenuEmpty.html#abbc58cd3081eba6f646f39591d97b691',1,'MenuEmpty::msg()']]]
+  ['location_5fcol_455',['location_col',['../classLocationsScreen.html#a42a391f5da027d05d0f874f64ef15c8b',1,'LocationsScreen']]],
+  ['locations_5fscreen_456',['locations_screen',['../classUI.html#a459bccdf62567bab6f8ea8e1a8802da8',1,'UI']]]
 ];
