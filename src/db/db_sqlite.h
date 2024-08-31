@@ -50,6 +50,8 @@ public:
   void delete_location (Id location_id) override;
   void delete_entry(Id entry_id) override;
   void commit_entrystaging() override;
+  std::vector<ProjectTotal> report_project_totals(const DateRange &date_range)
+    override;
 
 private:
   /** @brief Low-level handle to the DB. */

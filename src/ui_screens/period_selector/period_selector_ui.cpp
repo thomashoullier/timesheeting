@@ -39,6 +39,10 @@ void PeriodSelectorUI::refresh() { period_selector.refresh(); }
 void PeriodSelectorUI::clear() { period_selector.clear(); }
 void PeriodSelectorUI::update() { this->refresh(); }
 
+DateRange PeriodSelectorUI::get_current_date_range() {
+  return period_selector.get_current_date_range();
+}
+
 void PeriodSelectorUI::rename_item() {
   auto new_str = status->get_user_string();
   auto field_type = period_selector.get_field_type();

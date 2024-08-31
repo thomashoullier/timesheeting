@@ -20,6 +20,9 @@ void PeriodSelectorNCurses::set_stop(const Date &new_stop_date) {
 }
 
 void PeriodSelectorNCurses::update() {
-  MenuNCurses::set_items(period.to_string(),
-                         period.to_day_strings());
+  MenuNCurses::set_items(period.to_string(), period.to_day_strings());
+}
+
+DateRange PeriodSelectorNCurses::get_current_date_range() const {
+  return period;
 }

@@ -8,7 +8,7 @@ UI::UI()
     projects_screen(db, status_bar),
     locations_screen(db, status_bar),
     entries_screen(db, status_bar),
-    project_report_screen(status_bar) {
+    project_report_screen(db, status_bar) {
   log("timesheeting UI initialized.");
 }
 

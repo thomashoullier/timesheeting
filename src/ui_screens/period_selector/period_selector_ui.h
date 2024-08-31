@@ -15,6 +15,8 @@ public:
   void clear() override;
   void update() override;
 
+  DateRange get_current_date_range();
+
 private:
   /** @brief Handle to the low-level period selector element. */
   PeriodSelectorNCurses period_selector;

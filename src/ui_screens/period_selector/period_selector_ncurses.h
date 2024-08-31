@@ -18,6 +18,8 @@ public:
   void set_start(const Date &new_start_date);
   /** @brief Set the period stop date. */
   void set_stop(const Date &new_stop_date);
+  /** @brief Return the current date range. */
+  DateRange get_current_date_range() const;
 
 private:
   /** @brief Currently selected period. */

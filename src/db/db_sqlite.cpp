@@ -573,6 +573,15 @@ void DB_SQLite::commit_entrystaging(){
   try_step_statement(insert_entrystaging);
 }
 
+std::vector<ProjectTotal>
+DB_SQLite::report_project_totals(const DateRange &date_range) {
+  std::vector<ProjectTotal> totals;
+  totals.push_back(ProjectTotal{"Project 1", Duration(450)});
+  totals.push_back(ProjectTotal{"Project 2", Duration(1500)});
+  totals.push_back(ProjectTotal{"Project 3", Duration(5501)});
+  return totals;
+}
+
 void DB_SQLite::try_exec_statement(const std::string &statement) {
   try {
     sqlite_db.exec_statement(statement);

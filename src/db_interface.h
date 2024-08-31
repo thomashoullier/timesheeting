@@ -7,6 +7,7 @@
 #include <string>
 #include "data_objects/data_objects.h"
 #include "data_objects/date_range.h"
+#include "data_objects/project_total.h"
 
 /** @brief Virtual interface class for database. */
 class DB_Interface {
@@ -83,6 +84,10 @@ public:
   virtual void delete_entry (Id entry_id) = 0;
   /** @brief Commit the entrystaging to the entries table. */
   virtual void commit_entrystaging () = 0;
+  /** @brief Report the total duration worked per project
+      over given date range. */
+  virtual std::vector<ProjectTotal> report_project_totals
+  (const DateRange &date_range) = 0;
 };
 
 /** @brief Exception thrown when the DB encounters a logic error. */

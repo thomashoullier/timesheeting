@@ -36,7 +36,7 @@ private:
   /** @brief Screen for the table of entries. */
   EntriesScreen<DB_SQLite> entries_screen;
   /** @brief Screen for the project totals report. */
-  ProjectReportScreen project_report_screen;
+  ProjectReportScreen<DB_SQLite> project_report_screen;
 };
 
 #endif // UI_H
