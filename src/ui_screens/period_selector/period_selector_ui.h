@@ -20,6 +20,9 @@ private:
   PeriodSelectorNCurses period_selector;
   /** @brief Handle to the status bar.*/
   std::shared_ptr<StatusBarNCurses> status;
+
+  /** @brief Rename a field. */
+  void rename_item ();
 };
 
 #endif // PERIOD_SELECTOR_UI_H

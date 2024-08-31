@@ -346,3 +346,9 @@ ADDED: [2024-08-26 Mon]
 In db_sqlite.cpp, the functions are quite long, and we juggle with many
 statements. Create a statement object for preparing, stepping, finalizing
 the statements automatically. Hold these statements in a container.
+
+*** TODO Fix date parsing
+ADDED: [2024-08-31 Sat]
+In ~date.h~, constructor from string.
+The date parsing we are doing is wrong. We hardcoded the current dst
+in our location to make it work.
