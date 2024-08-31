@@ -131,10 +131,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ad64ac4df8af527f6252e916d06789788">add_location</a> (const std::string &amp;location_name) override</td></tr>
 <tr class="memdesc:ad64ac4df8af527f6252e916d06789788"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a location to the DB with the provided name. <br /></td></tr>
 <tr class="separator:ad64ac4df8af527f6252e916d06789788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8094f97503b0db19e08041912318e8ca"><td class="memItemLeft" align="right" valign="top"><a id="a8094f97503b0db19e08041912318e8ca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a8094f97503b0db19e08041912318e8ca">add_entry</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> task_id, const <a class="el" href="classDate.html">Date</a> &amp;start, const <a class="el" href="classDate.html">Date</a> &amp;stop) override</td></tr>
-<tr class="memdesc:a8094f97503b0db19e08041912318e8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an entry for a given task with a start and stop dates. <br /></td></tr>
-<tr class="separator:a8094f97503b0db19e08041912318e8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bbe0c14fcbdc2635e945cb5138dac39"><td class="memItemLeft" align="right" valign="top"><a id="a2bbe0c14fcbdc2635e945cb5138dac39"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a2bbe0c14fcbdc2635e945cb5138dac39">add_entry</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> task_id, const <a class="el" href="classDate.html">Date</a> &amp;start, const <a class="el" href="classDate.html">Date</a> &amp;stop, <a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> location_id) override</td></tr>
+<tr class="memdesc:a2bbe0c14fcbdc2635e945cb5138dac39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an entry for a given task with a start and stop dates. <br /></td></tr>
+<tr class="separator:a2bbe0c14fcbdc2635e945cb5138dac39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac96fe62fabaed27d0fe3547ebbc77104"><td class="memItemLeft" align="right" valign="top"><a id="ac96fe62fabaed27d0fe3547ebbc77104"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ac96fe62fabaed27d0fe3547ebbc77104">edit_project_name</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id, std::string new_project_name) override</td></tr>
 <tr class="memdesc:ac96fe62fabaed27d0fe3547ebbc77104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit a project's name. <br /></td></tr>
@@ -163,6 +163,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ae3f02f4b10e4df5f6877e1155c600fe4">edit_entry_stop</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> entry_id, const <a class="el" href="classDate.html">Date</a> &amp;new_stop_date) override</td></tr>
 <tr class="memdesc:ae3f02f4b10e4df5f6877e1155c600fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit an entry's stop date. <br /></td></tr>
 <tr class="separator:ae3f02f4b10e4df5f6877e1155c600fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95aa2743642ff97624a835f15429c0a7"><td class="memItemLeft" align="right" valign="top"><a id="a95aa2743642ff97624a835f15429c0a7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a95aa2743642ff97624a835f15429c0a7">edit_entry_location</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> entry_id, const std::string &amp;new_location_name) override</td></tr>
+<tr class="memdesc:a95aa2743642ff97624a835f15429c0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit an entry's location. <br /></td></tr>
+<tr class="separator:a95aa2743642ff97624a835f15429c0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55a49fa826525e18f33f594bd680f7e0"><td class="memItemLeft" align="right" valign="top"><a id="a55a49fa826525e18f33f594bd680f7e0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a55a49fa826525e18f33f594bd680f7e0">edit_entrystaging_project_name</a> (const std::string &amp;new_project_name) override</td></tr>
 <tr class="memdesc:a55a49fa826525e18f33f594bd680f7e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit the entrystaging's project name. <br /></td></tr>
@@ -179,6 +183,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a97f2a0542850adeb536cf8416793dffd">edit_entrystaging_stop</a> (const <a class="el" href="classDate.html">Date</a> &amp;new_stop) override</td></tr>
 <tr class="memdesc:a97f2a0542850adeb536cf8416793dffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit the entrystaging's stop date. <br /></td></tr>
 <tr class="separator:a97f2a0542850adeb536cf8416793dffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb028d0679b6777f598cab2811f7425b"><td class="memItemLeft" align="right" valign="top"><a id="adb028d0679b6777f598cab2811f7425b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#adb028d0679b6777f598cab2811f7425b">edit_entrystaging_location_name</a> (const std::string &amp;new_location_name) override</td></tr>
+<tr class="memdesc:adb028d0679b6777f598cab2811f7425b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit the entrystaging's location. <br /></td></tr>
+<tr class="separator:adb028d0679b6777f598cab2811f7425b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fe6213661936337a64edee874648a41"><td class="memItemLeft" align="right" valign="top"><a id="a1fe6213661936337a64edee874648a41"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a1fe6213661936337a64edee874648a41">delete_task</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> task_id) override</td></tr>
 <tr class="memdesc:a1fe6213661936337a64edee874648a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the task with provided Id. <br /></td></tr>
@@ -314,6 +322,10 @@ sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a05db5e452b95ff285554b399e7c54701">update_entry_stop</a></td></tr>
 <tr class="memdesc:a05db5e452b95ff285554b399e7c54701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing an entry's stop date. <br /></td></tr>
 <tr class="separator:a05db5e452b95ff285554b399e7c54701"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5454aa2cfa46774ca4df8aae0f3e130"><td class="memItemLeft" align="right" valign="top"><a id="ab5454aa2cfa46774ca4df8aae0f3e130"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ab5454aa2cfa46774ca4df8aae0f3e130">update_entry_location</a></td></tr>
+<tr class="memdesc:ab5454aa2cfa46774ca4df8aae0f3e130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing an entry's location. <br /></td></tr>
+<tr class="separator:ab5454aa2cfa46774ca4df8aae0f3e130"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c2f99f6f739ee015ac95027e87c9987"><td class="memItemLeft" align="right" valign="top"><a id="a0c2f99f6f739ee015ac95027e87c9987"></a>
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a0c2f99f6f739ee015ac95027e87c9987">update_entrystaging_project</a></td></tr>
 <tr class="memdesc:a0c2f99f6f739ee015ac95027e87c9987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing the entrystaging project name. <br /></td></tr>
@@ -330,6 +342,10 @@ sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a427d72f4709367b69f77c9fba54ee4d8">update_entrystaging_stop</a></td></tr>
 <tr class="memdesc:a427d72f4709367b69f77c9fba54ee4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing the entrystaging stop date. <br /></td></tr>
 <tr class="separator:a427d72f4709367b69f77c9fba54ee4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f0410278fac1ed7f369106f331eb24"><td class="memItemLeft" align="right" valign="top"><a id="ae9f0410278fac1ed7f369106f331eb24"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ae9f0410278fac1ed7f369106f331eb24">update_entrystaging_location</a></td></tr>
+<tr class="memdesc:ae9f0410278fac1ed7f369106f331eb24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for editing the entrystaging location. <br /></td></tr>
+<tr class="separator:ae9f0410278fac1ed7f369106f331eb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abacabc0123b453b1a13d2dffe8842a50"><td class="memItemLeft" align="right" valign="top"><a id="abacabc0123b453b1a13d2dffe8842a50"></a>
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#abacabc0123b453b1a13d2dffe8842a50">remove_task</a></td></tr>
 <tr class="memdesc:abacabc0123b453b1a13d2dffe8842a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statement for deleting a task. <br /></td></tr>

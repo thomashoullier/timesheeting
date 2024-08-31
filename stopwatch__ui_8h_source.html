@@ -173,30 +173,33 @@ $(function() {
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <a class="code" href="classDate.html">Date</a> new_stop_date(new_str);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <a class="code" href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">db</a>-&gt;edit_entrystaging_stop(new_stop_date);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Don&#39;t know what to do for renaming this unknown &quot;</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                             <span class="stringliteral">&quot;field type&quot;</span>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  };</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08">  119</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08">set_current_now</a> () {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">auto</span> field_type = <a class="code" href="classStopwatchUI.html#af02bc0cb9cf46d7cb6880412b05573a6">stopwatch</a>.<a class="code" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">get_field_type</a>();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">switch</span>(field_type) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <a class="code" href="classDate.html">Date</a> now_start;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <a class="code" href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">db</a>-&gt;edit_entrystaging_start(now_start);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <a class="code" href="classDate.html">Date</a> now_stop;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <a class="code" href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">db</a>-&gt;edit_entrystaging_stop(now_stop);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    } <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  };</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// STOPWATCH_UI_H</span></div>
-<div class="ttc" id="aclassDBLogicExcept_html"><div class="ttname"><a href="classDBLogicExcept.html">DBLogicExcept</a></div><div class="ttdoc">Exception thrown when the DB encounters a logic error.</div><div class="ttdef"><b>Definition:</b> db_interface.h:82</div></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">case</span> EntryField::location_name: {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <a class="code" href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">db</a>-&gt;edit_entrystaging_location_name(new_str);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Don&#39;t know what to do for renaming this unknown &quot;</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                             <span class="stringliteral">&quot;field type&quot;</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  };</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08">  122</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08">set_current_now</a> () {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">auto</span> field_type = <a class="code" href="classStopwatchUI.html#af02bc0cb9cf46d7cb6880412b05573a6">stopwatch</a>.<a class="code" href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">get_field_type</a>();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">switch</span>(field_type) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">case</span> EntryField::start: {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <a class="code" href="classDate.html">Date</a> now_start;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <a class="code" href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">db</a>-&gt;edit_entrystaging_start(now_start);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">case</span> EntryField::stop: {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      <a class="code" href="classDate.html">Date</a> now_stop;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <a class="code" href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">db</a>-&gt;edit_entrystaging_stop(now_stop);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    } <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  };</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;};</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// STOPWATCH_UI_H</span></div>
+<div class="ttc" id="aclassDBLogicExcept_html"><div class="ttname"><a href="classDBLogicExcept.html">DBLogicExcept</a></div><div class="ttdoc">Exception thrown when the DB encounters a logic error.</div><div class="ttdef"><b>Definition:</b> db_interface.h:89</div></div>
 <div class="ttc" id="aclassDB__Interface_html"><div class="ttname"><a href="classDB__Interface.html">DB_Interface</a></div><div class="ttdoc">Virtual interface class for database.</div><div class="ttdef"><b>Definition:</b> db_interface.h:12</div></div>
 <div class="ttc" id="aclassDateParsingFailure_html"><div class="ttname"><a href="classDateParsingFailure.html">DateParsingFailure</a></div><div class="ttdoc">Exception indicating that Date has failed to parse an input string.</div><div class="ttdef"><b>Definition:</b> date.h:60</div></div>
 <div class="ttc" id="aclassDate_html"><div class="ttname"><a href="classDate.html">Date</a></div><div class="ttdoc">Date object.</div><div class="ttdef"><b>Definition:</b> date.h:19</div></div>
@@ -211,7 +214,7 @@ $(function() {
 <div class="ttc" id="aclassStopwatchNcurses_html_a0fcb0018dafe72aa317eb1c933f84a52"><div class="ttname"><a href="classStopwatchNcurses.html#a0fcb0018dafe72aa317eb1c933f84a52">StopwatchNcurses::get_field_type</a></div><div class="ttdeci">EntryField get_field_type()</div><div class="ttdoc">Get the field type for the currently selected field.</div><div class="ttdef"><b>Definition:</b> stopwatch_ncurses.cpp:8</div></div>
 <div class="ttc" id="aclassStopwatchNcurses_html_a55c6f08bc3a4119f90f0c6da09f61c62"><div class="ttname"><a href="classStopwatchNcurses.html#a55c6f08bc3a4119f90f0c6da09f61c62">StopwatchNcurses::set_items</a></div><div class="ttdeci">void set_items(const EntryStaging &amp;item)</div><div class="ttdoc">Set the current entrystaging item.</div><div class="ttdef"><b>Definition:</b> stopwatch_ncurses.cpp:12</div></div>
 <div class="ttc" id="aclassStopwatchUI_html"><div class="ttname"><a href="classStopwatchUI.html">StopwatchUI</a></div><div class="ttdoc">High-level UI for the stopwatch.</div><div class="ttdef"><b>Definition:</b> stopwatch_ui.h:16</div></div>
-<div class="ttc" id="aclassStopwatchUI_html_a28f45b80d005ebc25ce1c289c8c9ca08"><div class="ttname"><a href="classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08">StopwatchUI::set_current_now</a></div><div class="ttdeci">void set_current_now()</div><div class="ttdoc">Set the current field, if it is a date, to now().</div><div class="ttdef"><b>Definition:</b> stopwatch_ui.h:119</div></div>
+<div class="ttc" id="aclassStopwatchUI_html_a28f45b80d005ebc25ce1c289c8c9ca08"><div class="ttname"><a href="classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08">StopwatchUI::set_current_now</a></div><div class="ttdeci">void set_current_now()</div><div class="ttdoc">Set the current field, if it is a date, to now().</div><div class="ttdef"><b>Definition:</b> stopwatch_ui.h:122</div></div>
 <div class="ttc" id="aclassStopwatchUI_html_a34ab3a24565a608d9411bbedd9770234"><div class="ttname"><a href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">StopwatchUI::db</a></div><div class="ttdeci">std::shared_ptr&lt; DB_Interface &gt; db</div><div class="ttdoc">Handle to the DB.</div><div class="ttdef"><b>Definition:</b> stopwatch_ui.h:83</div></div>
 <div class="ttc" id="aclassStopwatchUI_html_a37557e1cc666e5079581752a5ac48c26"><div class="ttname"><a href="classStopwatchUI.html#a37557e1cc666e5079581752a5ac48c26">StopwatchUI::refresh</a></div><div class="ttdeci">void refresh() override</div><div class="ttdoc">Refresh the component's display.</div><div class="ttdef"><b>Definition:</b> stopwatch_ui.h:76</div></div>
 <div class="ttc" id="aclassStopwatchUI_html_a598e16f98619bb5be4406835e20c6e3b"><div class="ttname"><a href="classStopwatchUI.html#a598e16f98619bb5be4406835e20c6e3b">StopwatchUI::StopwatchUI</a></div><div class="ttdeci">StopwatchUI(std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; StatusBarNCurses &gt; _status)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> stopwatch_ui.h:19</div></div>
@@ -224,7 +227,7 @@ $(function() {
 <div class="ttc" id="aclassUIComponent_html"><div class="ttname"><a href="classUIComponent.html">UIComponent</a></div><div class="ttdoc">Interface class for a UI component.</div><div class="ttdef"><b>Definition:</b> ui_component.h:7</div></div>
 <div class="ttc" id="aclassWinNCurses_html_a60fd7b2ac41ade3f9b9c918455ca9b6f"><div class="ttname"><a href="classWinNCurses.html#a60fd7b2ac41ade3f9b9c918455ca9b6f">WinNCurses::get_input</a></div><div class="ttdeci">char get_input()</div><div class="ttdoc">Get a character inputted by the user in the current window.</div><div class="ttdef"><b>Definition:</b> win_ncurses.cpp:10</div></div>
 <div class="ttc" id="astopwatch__ncurses_8h_html"><div class="ttname"><a href="stopwatch__ncurses_8h.html">stopwatch_ncurses.h</a></div><div class="ttdoc">StopwatchNcurses definition.</div></div>
-<div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:75</div></div>
+<div class="ttc" id="astructEntryStaging_html"><div class="ttname"><a href="structEntryStaging.html">EntryStaging</a></div><div class="ttdoc">Entry as it is being staged.</div><div class="ttdef"><b>Definition:</b> data_objects.h:80</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
