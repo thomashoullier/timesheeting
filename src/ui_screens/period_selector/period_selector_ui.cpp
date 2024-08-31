@@ -3,7 +3,7 @@
 
 PeriodSelectorUI::PeriodSelectorUI
 (std::shared_ptr<StatusBarNCurses> _status)
-  : period_selector(DateRange(Date(), Date())),
+  : period_selector(DateRange(Date(DatePoint::YearBegin), Date())),
     status(_status) {}
 
 char PeriodSelectorUI::input_loop() {

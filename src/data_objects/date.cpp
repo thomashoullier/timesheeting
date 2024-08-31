@@ -28,6 +28,16 @@ Date::Date(DatePoint date_point) {
        std::chrono::ceil<std::chrono::days>(current.get_local_time())};
     tp = midnight.get_sys_time();
   } break;
+  case DatePoint::YearBegin: {
+    std::chrono::zoned_time current{std::chrono::current_zone(),
+                                    std::chrono::system_clock::now()};
+    // TODO: this is hacky, is there no better way?
+    std::chrono::zoned_time first_day
+      {std::chrono::current_zone(),
+       std::chrono::floor<std::chrono::days>
+       (std::chrono::floor<std::chrono::years>(current.get_local_time()))};
+    tp = first_day.get_sys_time();
+  } break;
   default:
     throw std::logic_error("Unknown date_point.");
   }
