@@ -14,6 +14,9 @@ UI::~UI() {}
 
 char UI::input_loop() {
   UIComponent *cur_screen {&projects_screen};
+  projects_screen.clear();
+  locations_screen.clear();
+  entries_screen.clear();
   while (true) {
     cur_screen->refresh();
     auto ch = cur_screen->input_loop();
