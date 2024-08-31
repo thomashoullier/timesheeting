@@ -6,6 +6,7 @@
 #include "ui_screens/entries_screen.h"
 #include "ncurses/ncurses_handle.h"
 #include "ui_screens/locations_screen.h"
+#include "ui_screens/project_report_screen.h"
 #include "ui_screens/project_task_screen.h"
 #include "db/db_sqlite.h"
 #include "ui_screens/status_bar/status_bar_ncurses.h"
@@ -34,6 +35,8 @@ private:
   LocationsScreen<DB_SQLite> locations_screen;
   /** @brief Screen for the table of entries. */
   EntriesScreen<DB_SQLite> entries_screen;
+  /** @brief Screen for the project totals report. */
+  ProjectReportScreen project_report_screen;
 };
 
 #endif // UI_H

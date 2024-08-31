@@ -4,6 +4,7 @@
 #define DATE_RANGE_H
 
 #include "date.h"
+#include <vector>
 
 /** @brief Class for representing a range between a start and stop dates . */
 class DateRange {
@@ -20,5 +21,9 @@ public:
   void add_one_day();
   /** @brief Shift the date range by subtracting one day. */
   void subtract_one_day();
+  /** @brief Get the date range as full strings. */
+  std::vector<std::string> to_string() const;
+  /** @brief Get thet date range as short strings with only the day. */
+  std::vector<std::string> to_day_strings() const;
 };
 #endif // DATE_RANGE_H

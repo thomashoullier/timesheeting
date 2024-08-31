@@ -1,12 +1,14 @@
 #include "ui.h"
 #include "logger/logger.h"
+#include "ui_screens/project_report_screen.h"
 
 UI::UI()
   : db(std::make_shared<DB_SQLite>("timesheeting.db")),
     status_bar(std::make_shared<StatusBarNCurses>()),
     projects_screen(db, status_bar),
     locations_screen(db, status_bar),
-    entries_screen(db, status_bar) {
+    entries_screen(db, status_bar),
+    project_report_screen(status_bar) {
   log("timesheeting UI initialized.");
 }
 
@@ -17,6 +19,7 @@ char UI::input_loop() {
   projects_screen.clear();
   locations_screen.clear();
   entries_screen.clear();
+  project_report_screen.clear();
   while (true) {
     cur_screen->refresh();
     auto ch = cur_screen->input_loop();
@@ -30,6 +33,9 @@ char UI::input_loop() {
       break;
     case '3':
       cur_screen = &locations_screen;
+      break;
+    case '4':
+      cur_screen = &project_report_screen;
       break;
     default:
       return ch;
