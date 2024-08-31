@@ -25,8 +25,10 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   std::string select_locations_st = "SELECT id, name FROM locations;";
   select_locations = sqlite_db.prepare_statement(select_locations_st);
 
-  std::string select_entries_st = "SELECT e.id, p.name, t.name, e.start, e.stop "
+  std::string select_entries_st =
+    "SELECT e.id, p.name, t.name, e.start, e.stop, l.name "
     "FROM entries e "
+    "INNER JOIN locations l ON e.location_id = l.id "
     "INNER JOIN tasks t ON e.task_id = t.id "
     "INNER JOIN projects p ON t.project_id = p.id "
     "WHERE e.start >= ? "
@@ -41,8 +43,9 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   select_duration = sqlite_db.prepare_statement(select_duration_st);
 
   std::string select_entrystaging_st =
-    "SELECT p.name, t.name, start, stop "
+    "SELECT p.name, t.name, start, stop, l.name "
     "FROM entrystaging "
+    "LEFT JOIN locations l ON entrystaging.location_id = l.id "
     "LEFT JOIN tasks t ON entrystaging.task_id = t.id "
     "LEFT JOIN projects p ON t.project_id = p.id "
     ";";
@@ -62,8 +65,8 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   insert_location = sqlite_db.prepare_statement(insert_location_st);
 
   std::string insert_entry_st =
-    "INSERT INTO entries (task_id, start, stop) "
-    "VALUES (?, ?, ?);";
+    "INSERT INTO entries (task_id, start, stop, location_id) "
+    "VALUES (?, ?, ?, ?);";
   insert_entry = sqlite_db.prepare_statement(insert_entry_st);
 
   std::string update_project_name_st =
@@ -108,6 +111,13 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
       "UPDATE entries SET stop = ? WHERE id = ?;";
   update_entry_stop = sqlite_db.prepare_statement(update_entry_stop_st);
 
+  std::string update_entry_location_st =
+    "UPDATE entries SET location_id = ("
+    "SELECT id FROM locations "
+    "WHERE name = ?) "
+    "WHERE id = ?;";
+  update_entry_location = sqlite_db.prepare_statement(update_entry_location_st);
+
   std::string update_entrystaging_project_st =
     "UPDATE entrystaging "
     "SET task_id = ("
@@ -139,6 +149,14 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   update_entrystaging_stop =
     sqlite_db.prepare_statement(update_entrystaging_stop_st);
 
+  std::string update_entrystaging_location_st =
+    "UPDATE entrystaging SET location_id = ("
+    "SELECT id FROM locations "
+    "WHERE name = ?"
+    ");";
+  update_entrystaging_location =
+    sqlite_db.prepare_statement(update_entrystaging_location_st);
+
   std::string remove_task_st = "DELETE FROM tasks WHERE id = ?;";
   remove_task = sqlite_db.prepare_statement(remove_task_st);
 
@@ -152,8 +170,8 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   remove_entry = sqlite_db.prepare_statement(remove_entry_st);
 
   std::string insert_entrystaging_st =
-    "INSERT INTO entries (task_id, start, stop) "
-    "SELECT task_id, start, stop "
+    "INSERT INTO entries (task_id, start, stop, location_id) "
+    "SELECT task_id, start, stop, location_id "
     "FROM entrystaging;";
   insert_entrystaging = sqlite_db.prepare_statement(insert_entrystaging_st);
 }
@@ -176,10 +194,12 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(update_entry_task);
   sqlite3_finalize(update_entry_start);
   sqlite3_finalize(update_entry_stop);
+  sqlite3_finalize(update_entry_location);
   sqlite3_finalize(update_entrystaging_project);
   sqlite3_finalize(update_entrystaging_task);
   sqlite3_finalize(update_entrystaging_start);
   sqlite3_finalize(update_entrystaging_stop);
+  sqlite3_finalize(update_entrystaging_location);
   sqlite3_finalize(remove_task);
   sqlite3_finalize(remove_project);
   sqlite3_finalize(remove_location);
@@ -244,7 +264,10 @@ std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
     uint64_t stop_unix = sqlite3_column_int64(select_entries, 4);
     Date start_date(start_unix);
     Date stop_date(stop_unix);
-    Entry e{id, project_name, task_name, start_date, stop_date};
+    std::string location_name = reinterpret_cast<const char*>
+      (sqlite3_column_text(select_entries, 5));
+    Entry e{id, project_name, task_name, start_date, stop_date,
+            location_name};
     vec.push_back(e);
   }
   return vec;
@@ -296,7 +319,16 @@ EntryStaging DB_SQLite::query_entrystaging() {
   else
     stop_date = Date(stop_unix);
 
-  return EntryStaging{project_name, task_name, start_date, stop_date};
+  std::optional<std::string> location_name;
+  auto location_name_ret = reinterpret_cast<const char*>
+    (sqlite3_column_text(select_entrystaging, 4));
+  if (location_name_ret == NULL)
+    location_name = std::nullopt;
+  else
+    location_name = location_name_ret;
+
+  return EntryStaging{project_name, task_name, start_date, stop_date,
+                      location_name};
 }
 
 void DB_SQLite::create_projects_table() {
@@ -336,7 +368,9 @@ void DB_SQLite::create_entries_table() {
     "task_id INTEGER NOT NULL, "
     "start INTEGER NOT NULL UNIQUE, "
     "stop INTEGER NOT NULL, "
+    "location_id INTEGER NOT NULL, "
     "FOREIGN KEY (task_id) REFERENCES tasks (id), "
+    "FOREIGN KEY (location_id) REFERENCES locations (id), "
     "CHECK (start <= stop) "
     ");";
   sqlite_db.exec_statement(create_entries_table_st);
@@ -356,14 +390,16 @@ void DB_SQLite::create_entrystaging_table() {
     "task_id INTEGER, "
     "start INTEGER, "
     "stop INTEGER, "
-    "FOREIGN KEY (task_id) REFERENCES tasks (id) "
-    ");" ;
+    "location_id INTEGER, "
+    "FOREIGN KEY (task_id) REFERENCES tasks (id), "
+    "FOREIGN KEY (location_id) REFERENCES locations (id)"
+    ");";
   sqlite_db.exec_statement(create_entrystaging_table_st);
 
   // Insert a first row if it does not already exist.
   std::string insert_row_st =
-    "INSERT INTO entrystaging (task_id, start, stop) "
-    "SELECT NULL, NULL, NULL "
+    "INSERT INTO entrystaging (task_id, start, stop, location_id) "
+    "SELECT NULL, NULL, NULL, NULL "
     "WHERE NOT EXISTS (SELECT * FROM entrystaging)"
     ";";
   try_exec_statement(insert_row_st);
@@ -393,11 +429,13 @@ void DB_SQLite::add_location(const std::string &location_name) {
   try_step_statement(insert_location);
 }
 
-void DB_SQLite::add_entry(Id task_id, const Date &start, const Date &stop) {
+void DB_SQLite::add_entry(Id task_id, const Date &start, const Date &stop,
+                          Id location_id) {
   sqlite3_reset(insert_entry);
   sqlite3_bind_int64(insert_entry, 1, task_id);
   sqlite3_bind_int64(insert_entry, 2, start.to_unix_timestamp());
   sqlite3_bind_int64(insert_entry, 3, stop.to_unix_timestamp());
+  sqlite3_bind_int64(insert_entry, 4, location_id);
   try_step_statement(insert_entry);
 }
 
@@ -460,6 +498,15 @@ void DB_SQLite::edit_entry_stop(Id entry_id, const Date &new_stop_date) {
   try_step_statement(update_entry_stop);
 }
 
+void DB_SQLite::edit_entry_location(Id entry_id,
+                                    const std::string &new_location_name) {
+  sqlite3_reset(update_entry_location);
+  sqlite3_bind_text(update_entry_location, 1, new_location_name.c_str(),
+                    new_location_name.size(), SQLITE_STATIC);
+  sqlite3_bind_int64(update_entry_location, 2, entry_id);
+  try_step_statement(update_entry_location);
+}
+
 void DB_SQLite::edit_entrystaging_project_name
     (const std::string &new_project_name) {
   sqlite3_reset(update_entrystaging_project);
@@ -487,6 +534,14 @@ void DB_SQLite::edit_entrystaging_stop(const Date &new_stop) {
   sqlite3_bind_int64(update_entrystaging_stop, 1,
                      new_stop.to_unix_timestamp());
   try_step_statement(update_entrystaging_stop);
+}
+
+void DB_SQLite::edit_entrystaging_location_name
+    (const std::string &new_location_name) {
+  sqlite3_reset(update_entrystaging_location);
+  sqlite3_bind_text(update_entrystaging_location, 1, new_location_name.c_str(),
+                    new_location_name.size(), SQLITE_STATIC);
+  try_step_statement(update_entrystaging_location);
 }
 
 void DB_SQLite::delete_task(Id task_id) {

@@ -138,6 +138,9 @@ private:
       Date new_stop_date(new_str);
       db->edit_entry_stop(id, new_stop_date);
     } break;
+    case EntryField::location_name: {
+      db->edit_entry_location(id, new_str);
+    } break;
     default:
       throw std::logic_error(
           "Don't know what to do for renaming this unknown field type");

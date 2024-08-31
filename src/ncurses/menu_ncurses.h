@@ -58,7 +58,7 @@ protected:
 
 private:
   /** @brief Size of the display cell for each item. */
-  static constexpr int ITEM_WIDTH {19};
+  static constexpr int ITEM_WIDTH {15};
   /** @brief Number of columms in the menu. */
   int ncols;
   /** @brief ncurses menu object. */

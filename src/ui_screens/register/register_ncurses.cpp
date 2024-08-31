@@ -2,7 +2,7 @@
 
 RegisterNcurses::RegisterNcurses(const std::vector<Entry> &items)
   : MenuNCurses(items_to_string(items), items_to_shortstring(items),
-                WindowPosition::upper, WindowFormat::block, 4),
+                WindowPosition::upper, WindowFormat::block, 5),
       held_items(items) {}
 
 void RegisterNcurses::set_items(const std::vector<Entry> &items) {

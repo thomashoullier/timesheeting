@@ -34,7 +34,8 @@ public:
   /** @brief Add a location to the DB with the provided name. */
   virtual void add_location(const std::string &location_name) = 0;
   /** @brief Add an entry for a given task with a start and stop dates. */
-  virtual void add_entry(Id task_id, const Date &start, const Date &stop) = 0;
+  virtual void add_entry(Id task_id, const Date &start, const Date &stop,
+                         Id location_id) = 0;
   /** @brief Edit a project's name. */
   virtual void edit_project_name(Id project_id,
                                  std::string new_project_name) = 0;
@@ -56,6 +57,9 @@ public:
   /** @brief Edit an entry's stop date. */
   virtual void edit_entry_stop(Id entry_id,
                                const Date &new_stop_date) = 0;
+  /** @brief Edit an entry's location. */
+  virtual void edit_entry_location(Id entry_id,
+                                   const std::string &new_location_name) = 0;
   /** @brief Edit the entrystaging's project name. */
   virtual void edit_entrystaging_project_name
       (const std::string &new_project_name) = 0;
@@ -66,6 +70,9 @@ public:
   virtual void edit_entrystaging_start (const Date &new_start) = 0;
   /** @brief Edit the entrystaging's stop date. */
   virtual void edit_entrystaging_stop (const Date &new_stop) = 0;
+  /** @brief Edit the entrystaging's location. */
+  virtual void edit_entrystaging_location_name
+      (const std::string &new_location_name) = 0;
   /** @brief Delete the task with provided Id. */
   virtual void delete_task (Id task_id) = 0;
   /** @brief Delete the project with provided Id and all associated tasks. */

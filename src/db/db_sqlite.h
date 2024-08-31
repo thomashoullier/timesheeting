@@ -25,7 +25,8 @@ public:
   void add_project(std::string project_name) override;
   void add_task(Id project_id, std::string task_name) override;
   void add_location(const std::string &location_name) override;
-  void add_entry(Id task_id, const Date &start, const Date &stop) override;
+  void add_entry(Id task_id, const Date &start, const Date &stop,
+                 Id location_id) override;
   void edit_project_name(Id project_id, std::string new_project_name) override;
   void edit_task_name(Id task_id, std::string new_task_name) override;
   void edit_location_name(Id location_id,
@@ -35,11 +36,15 @@ public:
   void edit_entry_task(Id entry_id, const std::string &new_task_name) override;
   void edit_entry_start(Id entry_id, const Date &new_start_date) override;
   void edit_entry_stop(Id entry_id, const Date &new_stop_date) override;
+  void edit_entry_location(Id entry_id,
+                           const std::string &new_location_name) override;
   void edit_entrystaging_project_name
       (const std::string &new_project_name) override;
   void edit_entrystaging_task_name(const std::string &new_task_name) override;
   void edit_entrystaging_start(const Date &new_start) override;
   void edit_entrystaging_stop(const Date &new_stop) override;
+  void edit_entrystaging_location_name
+      (const std::string &new_location_name) override;
   void delete_task(Id task_id) override;
   void delete_project(Id project_id) override;
   void delete_location (Id location_id) override;
@@ -85,6 +90,8 @@ private:
   sqlite3_stmt *update_entry_start;
   /** @brief Statement for editing an entry's stop date. */
   sqlite3_stmt *update_entry_stop;
+  /** @brief Statement for editing an entry's location. */
+  sqlite3_stmt *update_entry_location;
   /** @brief Statement for editing the entrystaging project name. */
   sqlite3_stmt *update_entrystaging_project;
   /** @brief Statement for editing the entrystaging task name. */
@@ -93,6 +100,8 @@ private:
   sqlite3_stmt *update_entrystaging_start;
   /** @brief Statement for editing the entrystaging stop date. */
   sqlite3_stmt *update_entrystaging_stop;
+  /** @brief Statement for editing the entrystaging location. */
+  sqlite3_stmt *update_entrystaging_location;
   /** @brief Statement for deleting a task. */
   sqlite3_stmt *remove_task;
   /** @brief Statement for deleting a project. */
