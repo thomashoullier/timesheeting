@@ -4,6 +4,7 @@
 #include "period_selector/period_selector_ui.h"
 #include "project_totals_register/project_totals_register.h"
 #include "status_bar/status_bar_ncurses.h"
+#include "total_bar/total_bar.h"
 #include "ui_component.h"
 #include "../db_interface.h"
 #include <memory>
@@ -17,6 +18,7 @@ public:
     : db(std::static_pointer_cast<DB_Interface>(_db)),
       status(_status),
       period_selector_ui(PeriodSelectorUI(_status)),
+      total_bar(Duration(10000)), // TODO
       reg(ProjectTotalsRegister
           (db->report_project_totals
            (period_selector_ui.get_current_date_range())))
@@ -45,16 +47,19 @@ public:
 
   void refresh() override {
     period_selector_ui.refresh();
+    total_bar.refresh();
     reg.refresh();
   };
   void clear() override {
     period_selector_ui.clear();
+    total_bar.clear();
     reg.clear();
   };
 
   void update() override {
     period_selector_ui.update();
     auto cur_range = period_selector_ui.get_current_date_range();
+    total_bar.update(Duration(10000)); // TODO
     reg.set_items(db->report_project_totals(cur_range));
     reg.update();
   };
@@ -63,6 +68,7 @@ private:
   std::shared_ptr<DB_Interface>  db;
   std::shared_ptr<StatusBarNCurses> status;
   PeriodSelectorUI period_selector_ui;
+  TotalBar total_bar;
   ProjectTotalsRegister reg;
 };
 

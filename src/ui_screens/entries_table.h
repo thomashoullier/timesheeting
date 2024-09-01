@@ -69,6 +69,7 @@ public:
         date_selector.select_next_day();
         update();
         date_selector.refresh();
+        // TODO: superfluous update?
         total_bar.update(db->query_entries_duration
                          (date_selector.current_range()));
         break;

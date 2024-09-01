@@ -352,3 +352,25 @@ ADDED: [2024-08-31 Sat]
 In ~date.h~, constructor from string.
 The date parsing we are doing is wrong. We hardcoded the current dst
 in our location to make it work.
+
+*** TODO Make the DB a singleton
+ADDED: [2024-09-01 Sun]
+We can do it in the same fashion as logger. A top file selects the db
+implementation.
+This will avoid making the UI classes templates.
+
+*** TODO Make the status bar a singleton
+ADDED: [2024-09-01 Sun]
+We have a single status bar for the whole program. It makes sense
+to share it with a singleton mechanism instead of passing a handle
+down the full hierarchy of ui elements.
+
+*** TODO Refactor MenuNCurses
+ADDED: <2024-09-01 Sun>
+We can include the status bar display and basic input_loop navigation directly
+in the MenuNCurses class.
+
+*** TODO Add a total bar to the project totals report
+ADDED: [2024-09-01 Sun]
+Add a total of totals over the same date range on the project totals report
+screen.
