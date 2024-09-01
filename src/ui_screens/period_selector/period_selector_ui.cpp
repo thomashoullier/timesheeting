@@ -22,6 +22,7 @@ char PeriodSelectorUI::input_loop() {
       try {
         rename_item();
         update();
+        return '\n'; // Update above too.
       } catch (DateParsingFailure &e) {
         status->print_wait("Failed to parse the date. Do nothing.");
         this->clear();
