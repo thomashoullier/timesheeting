@@ -174,6 +174,17 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "SELECT task_id, start, stop, location_id "
     "FROM entrystaging;";
   insert_entrystaging = sqlite_db.prepare_statement(insert_entrystaging_st);
+
+  std::string sum_duration_per_project_st =
+    "SELECT projects.name, SUM(entries.stop - entries.start) "
+    "FROM projects "
+    "INNER JOIN tasks ON projects.id = tasks.project_id "
+    "INNER JOIN entries ON tasks.id = entries.task_id "
+    "WHERE entries.start >= ? "
+    "AND entries.start < ? "
+    "GROUP BY projects.name;";
+  sum_duration_per_project =
+    sqlite_db.prepare_statement(sum_duration_per_project_st);
 }
 
 DB_SQLite::~DB_SQLite() {
@@ -205,6 +216,7 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(remove_location);
   sqlite3_finalize(remove_entry);
   sqlite3_finalize(insert_entrystaging);
+  sqlite3_finalize(sum_duration_per_project);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -575,10 +587,19 @@ void DB_SQLite::commit_entrystaging(){
 
 std::vector<ProjectTotal>
 DB_SQLite::report_project_totals(const DateRange &date_range) {
+  uint64_t start_stamp = date_range.start.to_unix_timestamp();
+  uint64_t stop_stamp = date_range.stop.to_unix_timestamp();
+  sqlite3_reset(sum_duration_per_project);
+  sqlite3_bind_int64(sum_duration_per_project, 1, start_stamp);
+  sqlite3_bind_int64(sum_duration_per_project, 2, stop_stamp);
   std::vector<ProjectTotal> totals;
-  totals.push_back(ProjectTotal{"Project 1", Duration(450)});
-  totals.push_back(ProjectTotal{"Project 2", Duration(1500)});
-  totals.push_back(ProjectTotal{"Project 3", Duration(5501)});
+  while (sqlite3_step(sum_duration_per_project) == SQLITE_ROW) {
+    std::string project_name = reinterpret_cast<const char*>
+      (sqlite3_column_text(sum_duration_per_project, 0));
+    uint64_t seconds = sqlite3_column_int64(sum_duration_per_project, 1);
+    Duration duration(seconds);
+    totals.push_back(ProjectTotal{project_name, duration});
+  }
   return totals;
 }
 

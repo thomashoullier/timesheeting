@@ -114,6 +114,8 @@ private:
   sqlite3_stmt *remove_entry;
   /** @brief Statement for committing the entrystaging to entries. */
   sqlite3_stmt *insert_entrystaging;
+  /** @brief Sum duration per project for a given date range. */
+  sqlite3_stmt *sum_duration_per_project;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();
