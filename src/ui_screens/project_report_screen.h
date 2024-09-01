@@ -18,7 +18,8 @@ public:
     : db(std::static_pointer_cast<DB_Interface>(_db)),
       status(_status),
       period_selector_ui(PeriodSelectorUI(_status)),
-      total_bar(Duration(10000)), // TODO
+      total_bar(db->query_entries_duration
+                (period_selector_ui.get_current_date_range())),
       reg(ProjectTotalsRegister
           (db->report_project_totals
            (period_selector_ui.get_current_date_range())))
@@ -59,7 +60,8 @@ public:
   void update() override {
     period_selector_ui.update();
     auto cur_range = period_selector_ui.get_current_date_range();
-    total_bar.update(Duration(10000)); // TODO
+    auto overall_duration = db->query_entries_duration(cur_range);
+    total_bar.update(overall_duration);
     reg.set_items(db->report_project_totals(cur_range));
     reg.update();
   };

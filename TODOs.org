@@ -352,6 +352,7 @@ ADDED: [2024-08-31 Sat]
 In ~date.h~, constructor from string.
 The date parsing we are doing is wrong. We hardcoded the current dst
 in our location to make it work.
+We could wait for gcc 14 to have the proper C++20 feature to do this.
 
 *** TODO Make the DB a singleton
 ADDED: [2024-09-01 Sun]
@@ -370,7 +371,19 @@ ADDED: <2024-09-01 Sun>
 We can include the status bar display and basic input_loop navigation directly
 in the MenuNCurses class.
 
-*** TODO Add a total bar to the project totals report
+*** DONE Add a total bar to the project totals report
+CLOSED: [2024-09-01 Sun 13:55]
 ADDED: [2024-09-01 Sun]
 Add a total of totals over the same date range on the project totals report
 screen.
+
+*** TODO Implement the ability to archive/restore projects, tasks and locations
+ADDED: [2024-09-01 Sun]
+Add the specified archival capabilities projects, tasks and locations.
+This only affects which items are displayed in the project/task screen,
+and which items can be selected in the stopwatch.
+We choose to retain the ability to edit a project or task in the
+entries registry even if it is archived.
+This can be implemented with a flag in the DB, pay attention to the consistency:
+an archived project must also archive all of its tasks. A given project
+can have some tasks archived and some not.
