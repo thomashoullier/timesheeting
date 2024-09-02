@@ -97,6 +97,10 @@ virtual std::vector&lt; <a class="el" href="structTask.html">Task</a> &gt;&#160;
 virtual std::vector&lt; <a class="el" href="structLocation.html">Location</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#ab588a91c72bba2381fb1f28380cd1476">query_locations</a> ()=0</td></tr>
 <tr class="memdesc:ab588a91c72bba2381fb1f28380cd1476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of locations stored in the DB. <br /></td></tr>
 <tr class="separator:ab588a91c72bba2381fb1f28380cd1476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ff0a1c174a095d618bed43833622374"><td class="memItemLeft" align="right" valign="top"><a id="a3ff0a1c174a095d618bed43833622374"></a>
+virtual std::vector&lt; <a class="el" href="structLocation.html">Location</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a3ff0a1c174a095d618bed43833622374">query_locations_active</a> ()=0</td></tr>
+<tr class="memdesc:a3ff0a1c174a095d618bed43833622374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of active locations. <br /></td></tr>
+<tr class="separator:a3ff0a1c174a095d618bed43833622374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad064d107d83b4b4ec655fd2c3f6e9628"><td class="memItemLeft" align="right" valign="top"><a id="ad064d107d83b4b4ec655fd2c3f6e9628"></a>
 virtual std::vector&lt; <a class="el" href="structEntry.html">Entry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#ad064d107d83b4b4ec655fd2c3f6e9628">query_entries</a> (const <a class="el" href="classDateRange.html">DateRange</a> &amp;date_range)=0</td></tr>
 <tr class="memdesc:ad064d107d83b4b4ec655fd2c3f6e9628"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of entries ordered by ascending start date and included in the provided <a class="el" href="classDateRange.html" title="Class for representing a range between a start and stop dates .">DateRange</a>. <br /></td></tr>
@@ -137,6 +141,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#accfa9d1edda98d3628c7c291df46db6c">edit_location_name</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> location_id, const std::string &amp;new_location_name)=0</td></tr>
 <tr class="memdesc:accfa9d1edda98d3628c7c291df46db6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit a location's name. <br /></td></tr>
 <tr class="separator:accfa9d1edda98d3628c7c291df46db6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a593dff8cbd153560c2a6145c8eff47a1"><td class="memItemLeft" align="right" valign="top"><a id="a593dff8cbd153560c2a6145c8eff47a1"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a593dff8cbd153560c2a6145c8eff47a1">toggle_location_active</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> location_id)=0</td></tr>
+<tr class="memdesc:a593dff8cbd153560c2a6145c8eff47a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the location active state. <br /></td></tr>
+<tr class="separator:a593dff8cbd153560c2a6145c8eff47a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac1c3238ec6202bb127e134e07c104ab"><td class="memItemLeft" align="right" valign="top"><a id="aac1c3238ec6202bb127e134e07c104ab"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#aac1c3238ec6202bb127e134e07c104ab">edit_entry_project</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> entry_id, const std::string &amp;new_project_name)=0</td></tr>
 <tr class="memdesc:aac1c3238ec6202bb127e134e07c104ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit an entry's project. <br /></td></tr>
@@ -197,6 +205,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a5b9f3bf8d6ee6c7d1e89d24ffb24b60a">commit_entrystaging</a> ()=0</td></tr>
 <tr class="memdesc:a5b9f3bf8d6ee6c7d1e89d24ffb24b60a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commit the entrystaging to the entries table. <br /></td></tr>
 <tr class="separator:a5b9f3bf8d6ee6c7d1e89d24ffb24b60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c55097ea3ac4176c70c3d618082fa21"><td class="memItemLeft" align="right" valign="top"><a id="a9c55097ea3ac4176c70c3d618082fa21"></a>
+virtual std::vector&lt; <a class="el" href="structProjectTotal.html">ProjectTotal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a9c55097ea3ac4176c70c3d618082fa21">report_project_totals</a> (const <a class="el" href="classDateRange.html">DateRange</a> &amp;date_range)=0</td></tr>
+<tr class="memdesc:a9c55097ea3ac4176c70c3d618082fa21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report the total duration worked per project over given date range. <br /></td></tr>
+<tr class="separator:a9c55097ea3ac4176c70c3d618082fa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Virtual interface class for database. </p>

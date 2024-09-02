@@ -27,6 +27,7 @@ var searchData=
   ['display_5fstring_49',['display_string',['../classTotalBar.html#ae4e6ce7884a4b499980401e26d01234b',1,'TotalBar']]],
   ['display_5fstrings_50',['display_strings',['../classMenuNCurses.html#ad891ca93fa1eb8817828f6006d374654',1,'MenuNCurses']]],
   ['dur_51',['dur',['../classDuration.html#a4cbbbe8777802eebd1d2779e66eaf605',1,'Duration']]],
-  ['duration_52',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
-  ['duration_53',['Duration',['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration::Duration()'],['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration(uint64_t seconds)'],['../classDuration.html',1,'Duration']]]
+  ['duration_52',['Duration',['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration::Duration()'],['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration(uint64_t seconds)']]],
+  ['duration_53',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
+  ['duration_54',['Duration',['../classDuration.html',1,'']]]
 ];

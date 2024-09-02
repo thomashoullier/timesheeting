@@ -126,6 +126,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLocationsScreen.html#a5b76ce49904bfb9bf1cd0f11778a3794">remove_item</a> ()</td></tr>
 <tr class="memdesc:a5b76ce49904bfb9bf1cd0f11778a3794"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an item in the column. <br /></td></tr>
 <tr class="separator:a5b76ce49904bfb9bf1cd0f11778a3794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07a3fb4cb86b3f321af10ddf63564d6c"><td class="memItemLeft" align="right" valign="top"><a id="a07a3fb4cb86b3f321af10ddf63564d6c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLocationsScreen.html#a07a3fb4cb86b3f321af10ddf63564d6c">toggle_active_item</a> ()</td></tr>
+<tr class="memdesc:a07a3fb4cb86b3f321af10ddf63564d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the active flag on the selected item. <br /></td></tr>
+<tr class="separator:a07a3fb4cb86b3f321af10ddf63564d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a376dcaf89ce1576b191014819afc236c"><td class="memItemLeft" align="right" valign="top"><a id="a376dcaf89ce1576b191014819afc236c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLocationsScreen.html#a376dcaf89ce1576b191014819afc236c">toggle_archive_visibility</a> ()</td></tr>
+<tr class="memdesc:a376dcaf89ce1576b191014819afc236c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the archive items visibility. <br /></td></tr>
+<tr class="separator:a376dcaf89ce1576b191014819afc236c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -141,6 +149,10 @@ std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCu
 std::unique_ptr&lt; <a class="el" href="classColumn.html">Column</a>&lt; <a class="el" href="structLocation.html">Location</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLocationsScreen.html#a42a391f5da027d05d0f874f64ef15c8b">location_col</a></td></tr>
 <tr class="memdesc:a42a391f5da027d05d0f874f64ef15c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classColumn.html" title="Column menu class. Can hold any GenericItem.">Column</a> holding the locations. <br /></td></tr>
 <tr class="separator:a42a391f5da027d05d0f874f64ef15c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a041530b8377f64d73386b8bead5eb714"><td class="memItemLeft" align="right" valign="top"><a id="a041530b8377f64d73386b8bead5eb714"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLocationsScreen.html#a041530b8377f64d73386b8bead5eb714">show_only_active</a></td></tr>
+<tr class="memdesc:a041530b8377f64d73386b8bead5eb714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to show only active items. <br /></td></tr>
+<tr class="separator:a041530b8377f64d73386b8bead5eb714"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T_DB, typename = std::enable_if_t&lt;std::is_base_of&lt;DB_Interface, T_DB&gt;::value&gt;&gt;<br />
