@@ -20,7 +20,8 @@ public:
     : db(std::static_pointer_cast<DB_Interface>(_db)),
       status(_status),
       location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
-                                                      WindowPosition::left)) {
+                                                      WindowPosition::left)),
+      show_only_active(false) {
     update_location_col();
   };
 
@@ -64,6 +65,12 @@ public:
           status->print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
+      case 'b':
+        toggle_active_item();
+        break;
+      case '.':
+        toggle_archive_visibility();
+        break;
       default:
         location_col->unset_border();
         return ch;
@@ -78,10 +85,16 @@ private:
   std::shared_ptr<StatusBarNCurses> status;
   /** @brief Column holding the locations. */
   std::unique_ptr<Column<Location>> location_col;
+  /** @brief Whether to show only active items. */
+  bool show_only_active;
 
   /** @brief Update the location column. */
   void update_location_col() {
-    auto location_items = db->query_locations();
+    std::vector<Location> location_items;
+    if (show_only_active)
+      location_items = db->query_locations_active();
+    else
+      location_items = db->query_locations();
     location_col->set_items(location_items);
     location_col->refresh();
   };
@@ -125,6 +138,23 @@ private:
       return;
     }
   };
+
+  /** @brief Toggle the active flag on the selected item. */
+  void toggle_active_item () {
+    try {
+      auto id = location_col->get_current_id();
+      db->toggle_location_active(id);
+      update_location_col();
+    } catch (MenuEmpty &e) {
+      return;
+    }
+  }
+
+  /** @brief Toggle the archive items visibility. */
+  void toggle_archive_visibility() {
+    show_only_active = !show_only_active;
+    update_location_col();
+  }
 };
 
 #endif // LOCATIONS_SCREEN_H

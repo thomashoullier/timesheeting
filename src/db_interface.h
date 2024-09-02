@@ -19,6 +19,8 @@ public:
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
   /** @brief Return the set of locations stored in the DB. */
   virtual std::vector<Location> query_locations () = 0;
+  /** @brief Return the set of active locations. */
+  virtual std::vector<Location> query_locations_active () = 0;
   /** @brief Return the set of entries ordered by ascending start date
       and included in the provided DateRange. */
   virtual std::vector<Entry> query_entries (const DateRange &date_range) = 0;
@@ -46,6 +48,8 @@ public:
   /** @brief Edit a location's name. */
   virtual void edit_location_name(Id location_id,
                                   const std::string &new_location_name) = 0;
+  /** @brief Toggle the location active state. */
+  virtual void toggle_location_active(Id location_id) = 0;
   /** @brief Edit an entry's project. */
   virtual void edit_entry_project(Id entry_id,
                                   const std::string &new_project_name) = 0;

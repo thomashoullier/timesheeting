@@ -370,6 +370,7 @@ down the full hierarchy of ui elements.
 ADDED: <2024-09-01 Sun>
 We can include the status bar display and basic input_loop navigation directly
 in the MenuNCurses class.
+Add the border highlighting there also.
 
 *** DONE Add a total bar to the project totals report
 CLOSED: [2024-09-01 Sun 13:55]
@@ -382,8 +383,24 @@ ADDED: [2024-09-01 Sun]
 Add the specified archival capabilities projects, tasks and locations.
 This only affects which items are displayed in the project/task screen,
 and which items can be selected in the stopwatch.
+Maybe implement a constraint in the DB that entrystaging cannot contain
+an archived task or location at all.
 We choose to retain the ability to edit a project or task in the
 entries registry even if it is archived.
 This can be implemented with a flag in the DB, pay attention to the consistency:
 an archived project must also archive all of its tasks. A given project
 can have some tasks archived and some not.
+Implement a show/hide archived items in every Column, and the ability
+to restore/archive there.
+
+*** TODO Make constructors explicit
+ADDED: [2024-09-01 Sun]
+Through ignorance on our part, we have neglected to set constructors to explicit
+by default. Fix it.
+
+*** TODO Run pragma optimize on closing sqlite
+ADDED: [2024-09-01 Sun]
+It seems recommended: https://www.sqlite.org/lang_analyze.html
+
+*** TODO Mark archived hierarchy items in some way in their own screen
+ADDED: [2024-09-02 Mon]

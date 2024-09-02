@@ -19,6 +19,7 @@ public:
   std::vector<Project> query_projects() override;
   std::vector<Task> query_tasks(Id project_id) override;
   std::vector<Location> query_locations() override;
+  std::vector<Location> query_locations_active() override;
   std::vector<Entry> query_entries(const DateRange &date_range) override;
   Duration query_entries_duration(const DateRange &date_range) override;
   EntryStaging query_entrystaging () override;
@@ -31,6 +32,7 @@ public:
   void edit_task_name(Id task_id, std::string new_task_name) override;
   void edit_location_name(Id location_id,
                           const std::string &new_location_name) override;
+  void toggle_location_active(Id location_id) override;
   void edit_entry_project(Id entry_id,
                           const std::string &new_project_name) override;
   void edit_entry_task(Id entry_id, const std::string &new_task_name) override;
@@ -62,6 +64,8 @@ private:
   sqlite3_stmt *select_tasks;
   /** @brief Statement for querying the list of locations. */
   sqlite3_stmt *select_locations;
+  /** @brief Statement for querying the list of active locations. */
+  sqlite3_stmt *select_locations_active;
   /** @brief Statement for querying the list of entries over a given date
       range. */
   sqlite3_stmt *select_entries;
@@ -84,6 +88,8 @@ private:
   sqlite3_stmt *update_task_name;
   /** @brief Statement for editing a location's name. */
   sqlite3_stmt *update_location_name;
+  /** @brief Statement for toggling the location active flag. */
+  sqlite3_stmt *toggle_location_flag;
   /** @brief Statement for editing an entry's project. */
   sqlite3_stmt *update_entry_project;
   /** @brief Statement for editing an entry's task. */
