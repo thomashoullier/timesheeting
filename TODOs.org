@@ -417,3 +417,7 @@ For instance, the queries for the list of tasks return a different
 order depending on active/archived. Enforce a consistent order between
 both. The choice which would make the most choice is to enforce an
 order by Id at the DB level.
+
+*** TODO Consider implementing an undo and redo
+ADDED: [2024-09-03 Tue]
+Perhaps at least the last SQL db action?

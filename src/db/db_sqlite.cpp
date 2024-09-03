@@ -148,20 +148,23 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "SET task_id = ("
     "SELECT tasks.id FROM tasks "
     "INNER JOIN projects ON tasks.project_id = projects.id "
-    "WHERE projects.name = ?) LIMIT 1;";
+    "WHERE projects.name = ? "
+    "AND tasks.active = TRUE"
+    ") LIMIT 1;";
   update_entrystaging_project =
     sqlite_db.prepare_statement(update_entrystaging_project_st);
 
   std::string update_entrystaging_task_st =
-      "UPDATE entrystaging "
-      "SET task_id = ("
-      "SELECT id FROM tasks "
-      "WHERE name = ? "
-      "AND project_id = ("
-      "SELECT projects.id FROM entrystaging "
-      "INNER JOIN tasks ON entrystaging.task_id = tasks.id "
-      "INNER JOIN projects ON tasks.project_id = projects.id "
-      "));";
+    "UPDATE entrystaging "
+    "SET task_id = ("
+    "SELECT id FROM tasks "
+    "WHERE name = ? "
+    "AND active = TRUE "
+    "AND project_id = ("
+    "SELECT projects.id FROM entrystaging "
+    "INNER JOIN tasks ON entrystaging.task_id = tasks.id "
+    "INNER JOIN projects ON tasks.project_id = projects.id "
+    "));";
   update_entrystaging_task =
     sqlite_db.prepare_statement(update_entrystaging_task_st);
 
