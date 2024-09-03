@@ -75,7 +75,7 @@ public:
   virtual void edit_entrystaging_start (const Date &new_start) = 0;
   /** @brief Edit the entrystaging's stop date. */
   virtual void edit_entrystaging_stop (const Date &new_stop) = 0;
-  /** @brief Edit the entrystaging's location. */
+  /** @brief Edit the entrystaging's location with an active location. */
   virtual void edit_entrystaging_location_name
       (const std::string &new_location_name) = 0;
   /** @brief Delete the task with provided Id. */

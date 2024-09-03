@@ -165,8 +165,8 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   std::string update_entrystaging_location_st =
     "UPDATE entrystaging SET location_id = ("
     "SELECT id FROM locations "
-    "WHERE name = ?"
-    ");";
+    "WHERE name = ? "
+    "AND active = TRUE);";
   update_entrystaging_location =
     sqlite_db.prepare_statement(update_entrystaging_location_st);
 
