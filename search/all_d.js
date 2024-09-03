@@ -8,5 +8,6 @@ var searchData=
   ['query_5flocations_5factive_164',['query_locations_active',['../classDB__SQLite.html#ad4e59c545bb491521e1b2dbf17799927',1,'DB_SQLite::query_locations_active()'],['../classDB__Interface.html#a3ff0a1c174a095d618bed43833622374',1,'DB_Interface::query_locations_active()']]],
   ['query_5fprojects_165',['query_projects',['../classDB__SQLite.html#a9b43b6195eb39044c0fe49cb72877fd0',1,'DB_SQLite::query_projects()'],['../classDB__Interface.html#a3f67c92dcc2dcccc4c4c744683adbf95',1,'DB_Interface::query_projects()']]],
   ['query_5frow_5fof_5fnames_166',['query_row_of_names',['../classDB__SQLite__Handle.html#a2daed0019eb8378c1e47464aee19d25a',1,'DB_SQLite_Handle']]],
-  ['query_5ftasks_167',['query_tasks',['../classDB__SQLite.html#a3961e6425f15ced5d9e7daf0de640cd3',1,'DB_SQLite::query_tasks()'],['../classDB__Interface.html#a37bf545ad6816b24016953510cc2201c',1,'DB_Interface::query_tasks()']]]
+  ['query_5ftasks_167',['query_tasks',['../classDB__SQLite.html#a3961e6425f15ced5d9e7daf0de640cd3',1,'DB_SQLite::query_tasks()'],['../classDB__Interface.html#a37bf545ad6816b24016953510cc2201c',1,'DB_Interface::query_tasks()']]],
+  ['query_5ftasks_5factive_168',['query_tasks_active',['../classDB__SQLite.html#af57a880fc7bbf0649938a3499aac29c0',1,'DB_SQLite::query_tasks_active()'],['../classDB__Interface.html#ae479c7774fc6a3013b4973d07feb2497',1,'DB_Interface::query_tasks_active()']]]
 ];

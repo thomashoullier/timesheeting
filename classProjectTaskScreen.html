@@ -130,6 +130,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskScreen.html#a1816cb68da9ccf32b4aa2d4e9619c8ea">remove_item</a> (<a class="el" href="classColumnBase.html">ColumnBase</a> *cur_col)</td></tr>
 <tr class="memdesc:a1816cb68da9ccf32b4aa2d4e9619c8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the currently selected item. <br /></td></tr>
 <tr class="separator:a1816cb68da9ccf32b4aa2d4e9619c8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dc12b419a9bb46f452d0ea4d80a292b"><td class="memItemLeft" align="right" valign="top"><a id="a1dc12b419a9bb46f452d0ea4d80a292b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskScreen.html#a1dc12b419a9bb46f452d0ea4d80a292b">toggle_active_item</a> (<a class="el" href="classColumnBase.html">ColumnBase</a> *cur_col)</td></tr>
+<tr class="memdesc:a1dc12b419a9bb46f452d0ea4d80a292b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the active flag on the selected item. <br /></td></tr>
+<tr class="separator:a1dc12b419a9bb46f452d0ea4d80a292b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a305c1e9e318606c30062197d27bfd087"><td class="memItemLeft" align="right" valign="top"><a id="a305c1e9e318606c30062197d27bfd087"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskScreen.html#a305c1e9e318606c30062197d27bfd087">toggle_archive_visibility</a> ()</td></tr>
+<tr class="memdesc:a305c1e9e318606c30062197d27bfd087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle archive items visibility. <br /></td></tr>
+<tr class="separator:a305c1e9e318606c30062197d27bfd087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -149,6 +157,10 @@ std::unique_ptr&lt; <a class="el" href="classColumn.html">Column</a>&lt; <a clas
 std::unique_ptr&lt; <a class="el" href="classColumn.html">Column</a>&lt; <a class="el" href="structTask.html">Task</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskScreen.html#a15c4ad874157f18c506de1552f0a1640">task_col</a></td></tr>
 <tr class="memdesc:a15c4ad874157f18c506de1552f0a1640"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classColumn.html" title="Column menu class. Can hold any GenericItem.">Column</a> for tasks. <br /></td></tr>
 <tr class="separator:a15c4ad874157f18c506de1552f0a1640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a5f451134506b2b8280b8899f199f2"><td class="memItemLeft" align="right" valign="top"><a id="a45a5f451134506b2b8280b8899f199f2"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectTaskScreen.html#a45a5f451134506b2b8280b8899f199f2">show_only_active</a></td></tr>
+<tr class="memdesc:a45a5f451134506b2b8280b8899f199f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to show only active items. <br /></td></tr>
+<tr class="separator:a45a5f451134506b2b8280b8899f199f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T_DB, typename = std::enable_if_t&lt;            std::is_base_of&lt;DB_Interface, T_DB&gt;::value&gt;&gt;<br />
