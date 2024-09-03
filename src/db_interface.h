@@ -17,6 +17,8 @@ public:
   virtual std::vector<Project> query_projects() = 0;
   /** @brief Return the set of tasks for a given project. */
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
+  /** @brief Return the set of active tasks for a given project. */
+  virtual std::vector<Task> query_tasks_active (Id project_id) = 0;
   /** @brief Return the set of locations stored in the DB. */
   virtual std::vector<Location> query_locations () = 0;
   /** @brief Return the set of active locations. */
@@ -50,6 +52,8 @@ public:
                                   const std::string &new_location_name) = 0;
   /** @brief Toggle the location active state. */
   virtual void toggle_location_active(Id location_id) = 0;
+  /** @brief Toggle a task active state. */
+  virtual void toggle_task_active(Id task_id) = 0;
   /** @brief Edit an entry's project. */
   virtual void edit_entry_project(Id entry_id,
                                   const std::string &new_project_name) = 0;

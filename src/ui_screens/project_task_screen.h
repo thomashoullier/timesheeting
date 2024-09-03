@@ -27,7 +27,8 @@ public:
                     std::make_unique<Column<Project>>(std::vector<Project>(),
                                                       WindowPosition::left)),
         task_col(std::make_unique<Column<Task>>(std::vector<Task>(),
-                                          WindowPosition::middle)) {
+                                                WindowPosition::middle)),
+        show_only_active(true) {
     // TODO: initialize directly on actual db data.
     update_project_col();
     update_task_col();
@@ -96,6 +97,12 @@ public:
           status->print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
+      case 'b':
+        toggle_active_item(cur_col);
+        break;
+      case '.':
+        toggle_archive_visibility();
+        break;
       default:
         cur_col->unset_border();
         return ch;
@@ -117,12 +124,18 @@ private:
   std::unique_ptr<Column<Project>> project_col;
   /** @brief Column for tasks. */
   std::unique_ptr<Column<Task>> task_col;
+  /** @brief Whether to show only active items. */
+  bool show_only_active;
 
   /** @brief Update the tasks column. */
   void update_task_col() {
     try {
       Id cur_project = project_col->get_current_id();
-      auto task_items = db->query_tasks(cur_project);
+      std::vector<Task> task_items;
+      if (show_only_active)
+        task_items = db->query_tasks_active(cur_project);
+      else
+        task_items = db->query_tasks(cur_project);
       task_col->set_items(task_items);
       task_col->refresh();
     } catch (MenuEmpty &e) {
@@ -197,6 +210,28 @@ private:
       return;
     }
   }
+
+  /** @brief Toggle the active flag on the selected item. */
+  void toggle_active_item (ColumnBase *cur_col) {
+    try {
+      auto id = cur_col ->get_current_id();
+      if (cur_col == task_col.get()) {
+        db->toggle_task_active(id);
+        update_task_col();
+      } else if (cur_col == project_col.get()) {
+        // TODO
+      }
+    } catch (MenuEmpty &e) {
+      return;
+    }
+  };
+
+  /** @brief Toggle archive items visibility. */
+  void toggle_archive_visibility () {
+    show_only_active = !show_only_active;
+    update_project_col();
+    update_task_col();
+  };
 };
 
 #endif // PROJECT_TASK_TABLE_H

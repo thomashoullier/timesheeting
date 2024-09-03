@@ -22,6 +22,13 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
                                 "WHERE project_id = ? ;";
   select_tasks = sqlite_db.prepare_statement(select_tasks_st);
 
+  std::string select_tasks_active_st =
+    "SELECT id, name "
+    "FROM tasks "
+    "WHERE project_id = ? "
+    "AND active = TRUE;";
+  select_tasks_active = sqlite_db.prepare_statement(select_tasks_active_st);
+
   std::string select_locations_st = "SELECT id, name FROM locations;";
   select_locations = sqlite_db.prepare_statement(select_locations_st);
 
@@ -63,8 +70,8 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   insert_project = sqlite_db.prepare_statement(insert_project_st);
 
   std::string insert_task_st =
-    "INSERT INTO tasks (project_id, name) "
-    "VALUES (?,?);";
+    "INSERT INTO tasks (project_id, name, active) "
+    "VALUES (?, ?, TRUE);";
   insert_task = sqlite_db.prepare_statement(insert_task_st);
 
   std::string insert_location_st =
@@ -93,6 +100,11 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "UPDATE locations SET active = NOT active "
     "WHERE id = ?;";
   toggle_location_flag = sqlite_db.prepare_statement(toggle_location_flag_st);
+
+  std::string toggle_task_flag_st =
+    "UPDATE tasks SET active = NOT active "
+    "WHERE id = ?;";
+  toggle_task_flag = sqlite_db.prepare_statement(toggle_task_flag_st);
 
   std::string update_entry_project_st =
     "UPDATE entries "
@@ -203,6 +215,7 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
 DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(select_projects);
   sqlite3_finalize(select_tasks);
+  sqlite3_finalize(select_tasks_active);
   sqlite3_finalize(select_locations);
   sqlite3_finalize(select_locations_active);
   sqlite3_finalize(select_entries);
@@ -216,6 +229,7 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(update_task_name);
   sqlite3_finalize(update_location_name);
   sqlite3_finalize(toggle_location_flag);
+  sqlite3_finalize(toggle_task_flag);
   sqlite3_finalize(update_entry_project);
   sqlite3_finalize(update_entry_task);
   sqlite3_finalize(update_entry_start);
@@ -254,6 +268,20 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
   while (sqlite3_step(select_tasks) == SQLITE_ROW) {
     RowId id = sqlite3_column_int64(select_tasks, 0);
     auto name_internal = sqlite3_column_text(select_tasks, 1);
+    std::string name = reinterpret_cast<const char *>(name_internal);
+    rows.push_back(std::make_pair(id, name));
+  }
+  auto tasks = convert_namerows<Task>(rows);
+  return tasks;
+}
+
+std::vector<Task> DB_SQLite::query_tasks_active(Id project_id) {
+  sqlite3_reset(select_tasks_active);
+  sqlite3_bind_int64(select_tasks_active, 1, project_id);
+  NameRows rows{};
+  while (sqlite3_step(select_tasks_active) == SQLITE_ROW) {
+    RowId id = sqlite3_column_int64(select_tasks_active, 0);
+    auto name_internal = sqlite3_column_text(select_tasks_active, 1);
     std::string name = reinterpret_cast<const char *>(name_internal);
     rows.push_back(std::make_pair(id, name));
   }
@@ -386,6 +414,7 @@ void DB_SQLite::create_tasks_table() {
       "id INTEGER PRIMARY KEY, "
       "name TEXT NOT NULL, "
       "project_id INTEGER NOT NULL, "
+      "active BOOLEAN NOT NULL CHECK (active IN (0,1)), "
       "UNIQUE(name, project_id), "
       "FOREIGN KEY (project_id) REFERENCES projects (id) "
       "ON DELETE CASCADE"
@@ -504,6 +533,12 @@ void DB_SQLite::toggle_location_active(Id location_id) {
   sqlite3_reset(toggle_location_flag);
   sqlite3_bind_int64(toggle_location_flag, 1, location_id);
   try_step_statement(toggle_location_flag);
+}
+
+void DB_SQLite::toggle_task_active(Id task_id) {
+  sqlite3_reset(toggle_task_flag);
+  sqlite3_bind_int64(toggle_task_flag, 1, task_id);
+  try_step_statement(toggle_task_flag);
 }
 
 void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {

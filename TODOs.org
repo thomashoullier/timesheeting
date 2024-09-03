@@ -392,6 +392,12 @@ an archived project must also archive all of its tasks. A given project
 can have some tasks archived and some not.
 Implement a show/hide archived items in every Column, and the ability
 to restore/archive there.
++ [2024-09-03 Tue] In fact, we only need to set an archived flag on a project
+  to not show it on the hierarchy items and not be able to select it
+  in entrystaging. Then if we unarchive it, the tasks automatically
+  come back online, and archived tasks stay archived.
++ Check that, when we enter a project in entrystaging, the first task
+  which is automatically proposed is not an archived one.
 
 *** TODO Make constructors explicit
 ADDED: [2024-09-01 Sun]
@@ -404,3 +410,10 @@ It seems recommended: https://www.sqlite.org/lang_analyze.html
 
 *** TODO Mark archived hierarchy items in some way in their own screen
 ADDED: [2024-09-02 Mon]
+
+*** TODO Enforce a display order for hierarchy items
+ADDED: [2024-09-03 Tue]
+For instance, the queries for the list of tasks return a different
+order depending on active/archived. Enforce a consistent order between
+both. The choice which would make the most choice is to enforce an
+order by Id at the DB level.

@@ -21,7 +21,7 @@ public:
       status(_status),
       location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
                                                       WindowPosition::left)),
-      show_only_active(false) {
+      show_only_active(true) {
     update_location_col();
   };
 
