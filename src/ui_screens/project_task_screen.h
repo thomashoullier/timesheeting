@@ -145,7 +145,11 @@ private:
 
   /** @brief Update the project column. */
   void update_project_col() {
-    auto project_items = db->query_projects();
+    std::vector<Project> project_items;
+    if (show_only_active)
+      project_items = db->query_projects_active();
+    else
+      project_items = db->query_projects();
     project_col->set_items(project_items);
     project_col->refresh();
   }
@@ -219,7 +223,9 @@ private:
         db->toggle_task_active(id);
         update_task_col();
       } else if (cur_col == project_col.get()) {
-        // TODO
+        db->toggle_project_active(id);
+        update_project_col();
+        update_task_col();
       }
     } catch (MenuEmpty &e) {
       return;

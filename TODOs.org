@@ -378,7 +378,8 @@ ADDED: [2024-09-01 Sun]
 Add a total of totals over the same date range on the project totals report
 screen.
 
-*** TODO Implement the ability to archive/restore projects, tasks and locations
+*** DONE Implement the ability to archive/restore projects, tasks and locations
+CLOSED: [2024-09-04 Wed 19:45]
 ADDED: [2024-09-01 Sun]
 Add the specified archival capabilities projects, tasks and locations.
 This only affects which items are displayed in the project/task screen,
@@ -410,6 +411,7 @@ It seems recommended: https://www.sqlite.org/lang_analyze.html
 
 *** TODO Mark archived hierarchy items in some way in their own screen
 ADDED: [2024-09-02 Mon]
++ This requires passing the active flag to the UI.
 
 *** TODO Enforce a display order for hierarchy items
 ADDED: [2024-09-03 Tue]

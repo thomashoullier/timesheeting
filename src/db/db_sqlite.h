@@ -17,6 +17,7 @@ public:
   ~DB_SQLite();
 
   std::vector<Project> query_projects() override;
+  std::vector<Project> query_projects_active() override;
   std::vector<Task> query_tasks(Id project_id) override;
   std::vector<Task> query_tasks_active(Id project_id) override;
   std::vector<Location> query_locations() override;
@@ -35,6 +36,7 @@ public:
                           const std::string &new_location_name) override;
   void toggle_location_active(Id location_id) override;
   void toggle_task_active(Id task_id) override;
+  void toggle_project_active(Id project_id) override;
   void edit_entry_project(Id entry_id,
                           const std::string &new_project_name) override;
   void edit_entry_task(Id entry_id, const std::string &new_task_name) override;
@@ -62,6 +64,8 @@ private:
   DB_SQLite_Handle sqlite_db;
   /** @brief Statement for querying the projects list. */
   sqlite3_stmt *select_projects;
+  /** @brief Statement for querying the list of active projects. */
+  sqlite3_stmt *select_projects_active;
   /** @brief Statement for querying the list of tasks for a given project. */
   sqlite3_stmt *select_tasks;
   /** @brief Statement for querying the list of active tasks for a given
@@ -97,6 +101,8 @@ private:
   sqlite3_stmt *toggle_location_flag;
   /** @brief Statement for toggling the task active flag. */
   sqlite3_stmt *toggle_task_flag;
+  /** @brief Statement for toggling the project active flag. */
+  sqlite3_stmt *toggle_project_flag;
   /** @brief Statement for editing an entry's project. */
   sqlite3_stmt *update_entry_project;
   /** @brief Statement for editing an entry's task. */

@@ -15,6 +15,8 @@ public:
   virtual ~DB_Interface() = default;
   /** @brief Return the set of projects stored in the DB. */
   virtual std::vector<Project> query_projects() = 0;
+  /** @brief Return the set of active projects. */
+  virtual std::vector<Project> query_projects_active() = 0;
   /** @brief Return the set of tasks for a given project. */
   virtual std::vector<Task> query_tasks (Id project_id) = 0;
   /** @brief Return the set of active tasks for a given project. */
@@ -54,6 +56,8 @@ public:
   virtual void toggle_location_active(Id location_id) = 0;
   /** @brief Toggle a task active state. */
   virtual void toggle_task_active(Id task_id) = 0;
+  /** @brief Toggle a project active state. */
+  virtual void toggle_project_active(Id project_id) = 0;
   /** @brief Edit an entry's project. */
   virtual void edit_entry_project(Id entry_id,
                                   const std::string &new_project_name) = 0;
