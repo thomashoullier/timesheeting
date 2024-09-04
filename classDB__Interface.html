@@ -89,6 +89,10 @@ Public Member Functions</h2></td></tr>
 virtual std::vector&lt; <a class="el" href="structProject.html">Project</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a3f67c92dcc2dcccc4c4c744683adbf95">query_projects</a> ()=0</td></tr>
 <tr class="memdesc:a3f67c92dcc2dcccc4c4c744683adbf95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of projects stored in the DB. <br /></td></tr>
 <tr class="separator:a3f67c92dcc2dcccc4c4c744683adbf95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeff3aaf533948559c28002851b421ad7"><td class="memItemLeft" align="right" valign="top"><a id="aeff3aaf533948559c28002851b421ad7"></a>
+virtual std::vector&lt; <a class="el" href="structProject.html">Project</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#aeff3aaf533948559c28002851b421ad7">query_projects_active</a> ()=0</td></tr>
+<tr class="memdesc:aeff3aaf533948559c28002851b421ad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of active projects. <br /></td></tr>
+<tr class="separator:aeff3aaf533948559c28002851b421ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37bf545ad6816b24016953510cc2201c"><td class="memItemLeft" align="right" valign="top"><a id="a37bf545ad6816b24016953510cc2201c"></a>
 virtual std::vector&lt; <a class="el" href="structTask.html">Task</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a37bf545ad6816b24016953510cc2201c">query_tasks</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id)=0</td></tr>
 <tr class="memdesc:a37bf545ad6816b24016953510cc2201c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the set of tasks for a given project. <br /></td></tr>
@@ -153,6 +157,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a544bea5387d22e3506123ce78b69d5c3">toggle_task_active</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> task_id)=0</td></tr>
 <tr class="memdesc:a544bea5387d22e3506123ce78b69d5c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle a task active state. <br /></td></tr>
 <tr class="separator:a544bea5387d22e3506123ce78b69d5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a961b0aa7a492a94a2c546979301c43b6"><td class="memItemLeft" align="right" valign="top"><a id="a961b0aa7a492a94a2c546979301c43b6"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#a961b0aa7a492a94a2c546979301c43b6">toggle_project_active</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id)=0</td></tr>
+<tr class="memdesc:a961b0aa7a492a94a2c546979301c43b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle a project active state. <br /></td></tr>
+<tr class="separator:a961b0aa7a492a94a2c546979301c43b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac1c3238ec6202bb127e134e07c104ab"><td class="memItemLeft" align="right" valign="top"><a id="aac1c3238ec6202bb127e134e07c104ab"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html#aac1c3238ec6202bb127e134e07c104ab">edit_entry_project</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> entry_id, const std::string &amp;new_project_name)=0</td></tr>
 <tr class="memdesc:aac1c3238ec6202bb127e134e07c104ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edit an entry's project. <br /></td></tr>
