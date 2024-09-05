@@ -94,6 +94,8 @@ std::string Date::get_day_string () const {
 }
 
 void Date::add_one_day() {
+    // TODO isn't there a way to add one day without having to round
+    // to midnight?
     std::chrono::zoned_time next_day{std::chrono::current_zone(),
                                      tp + std::chrono::days(1)};
     std::chrono::zoned_time midnight

@@ -718,7 +718,10 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
   auto day_stop = day_start;
   day_stop.add_one_day();
   DateRange cur_day (day_start, day_stop);
-  totals.daily_totals.at(0) = query_entries_duration(cur_day);
+  for (std::size_t i = 0 ; i < totals.daily_totals.size() ; i++) {
+    totals.daily_totals.at(i) = query_entries_duration(cur_day);
+    cur_day.add_one_day();
+  }
   return totals;
 }
 

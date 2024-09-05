@@ -457,3 +457,8 @@ date. Are we sure it does the correct thing around a DST change?
 + We fixed it by getting the UTC time point + 1 day, converting
   to zoned time and rounding to nearest day whenever we shift
   the dates in the range selected.
+
+*** TODO Check the WeekBegin date around DST changes
+ADDED: [2024-09-05 Thu]
+We are unsure about whether it does the best thing around DST changes.
+It should get the midnight of the last monday.
