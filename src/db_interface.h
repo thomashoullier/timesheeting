@@ -8,6 +8,7 @@
 #include "data_objects/data_objects.h"
 #include "data_objects/date_range.h"
 #include "data_objects/project_total.h"
+#include "data_objects/weekly_totals.h"
 
 /** @brief Virtual interface class for database. */
 class DB_Interface {
@@ -100,6 +101,8 @@ public:
       over given date range. */
   virtual std::vector<ProjectTotal> report_project_totals
   (const DateRange &date_range) = 0;
+  /** @brief Report the weekly totals. */
+  virtual WeeklyTotals report_weekly_totals (const Date &first_day_start) = 0;
 };
 
 /** @brief Exception thrown when the DB encounters a logic error. */

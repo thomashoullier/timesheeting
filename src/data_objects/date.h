@@ -10,7 +10,7 @@
 #include <string>
 
 /** @brief Shorthands for common date points. */
-enum class DatePoint { DayBegin, DayEnd, YearBegin };
+enum class DatePoint { DayBegin, DayEnd, YearBegin, WeekBegin };
 
 /** @brief Date object.
 

@@ -447,7 +447,8 @@ ADDED: [2024-09-04 Wed]
   Use this struct to interface with the DB. The DB returns the full
   report struct instead of little pieces.
 
-*** TODO Check the day selector around DST changes
+*** DONE Check the day selector around DST changes
+CLOSED: [2024-09-05 Thu 19:59]
 ADDED: [2024-09-05 Thu]
 We change the selected day by adding or subtracting one day from the
 date. Are we sure it does the correct thing around a DST change?

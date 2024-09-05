@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <optional>
 #include <string>
+#include "../logger/logger.h"
 
 DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   : sqlite_db (db_file) {
@@ -707,6 +708,17 @@ DB_SQLite::report_project_totals(const DateRange &date_range) {
     Duration duration(seconds);
     totals.push_back(ProjectTotal{project_name, duration});
   }
+  return totals;
+}
+
+WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
+  log("report_weekly_totals starting on: " + first_day_start.to_string());
+  WeeklyTotals totals;
+  auto day_start = first_day_start;
+  auto day_stop = day_start;
+  day_stop.add_one_day();
+  DateRange cur_day (day_start, day_stop);
+  totals.daily_totals.at(0) = query_entries_duration(cur_day);
   return totals;
 }
 

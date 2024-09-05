@@ -58,6 +58,7 @@ public:
   void commit_entrystaging() override;
   std::vector<ProjectTotal> report_project_totals(const DateRange &date_range)
     override;
+  WeeklyTotals report_weekly_totals (const Date &first_day_start) override;
 
 private:
   /** @brief Low-level handle to the DB. */

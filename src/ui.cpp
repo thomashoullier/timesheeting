@@ -1,4 +1,5 @@
 #include "ui.h"
+#include "data_objects/date.h"
 #include "logger/logger.h"
 #include "ui_screens/project_report_screen.h"
 
@@ -10,6 +11,13 @@ UI::UI()
     entries_screen(db, status_bar),
     project_report_screen(db, status_bar) {
   log("timesheeting UI initialized.");
+  // TEMP testing the weekly totals report
+  auto totals = db->report_weekly_totals(Date(DatePoint::WeekBegin));
+  auto strings = totals.to_strings();
+  log("Weekly totals: ");
+  for (const auto &str : strings) {
+    log(str);
+  }
 }
 
 UI::~UI() {}
