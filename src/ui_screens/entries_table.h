@@ -14,6 +14,7 @@
 #include "register/register_ncurses.h"
 #include "total_bar/total_bar.h"
 #include "ui_component.h"
+#include "../logger/logger.h"
 
 /** @brief Class for holding the table of entries for a given day. */
 template <typename T_DB,
@@ -65,19 +66,23 @@ public:
           this->refresh();
         }
         break;
-      case '.':
+      case '.': {
         date_selector.select_next_day();
+        auto log_dates = date_selector.current_range().to_string();
+        log("Selected day range: " + log_dates.at(0) + " ; " + log_dates.at(1));
         update();
         date_selector.refresh();
         // TODO: superfluous update?
         total_bar.update(db->query_entries_duration
                          (date_selector.current_range()));
-        break;
-      case ',':
+      } break;
+      case ',': {
         date_selector.select_previous_day();
+        auto log_dates = date_selector.current_range().to_string();
+        log("Selected day range: " + log_dates.at(0) + " ; " + log_dates.at(1));
         update();
         date_selector.refresh();
-        break;
+      } break;
       default:
         reg.unset_border();
         return ch;

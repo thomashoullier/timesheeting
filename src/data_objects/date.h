@@ -50,9 +50,11 @@ public:
   /** @brief Get a displayable string for the date at a day resolution
       in the system's timezone. */
   std::string get_day_string () const;
-  /** @brief Increment the date by one day. */
+  /** @brief Increment the date by one day
+      and round to nearest local midnight. */
   void add_one_day ();
-  /** @brief Decrement the date by one day. */
+  /** @brief Decrement the date by one day
+      and round to nearest local midnight. */
   void subtract_one_day ();
 };
 

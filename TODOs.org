@@ -423,3 +423,36 @@ order by Id at the DB level.
 *** TODO Consider implementing an undo and redo
 ADDED: [2024-09-03 Tue]
 Perhaps at least the last SQL db action?
+
+*** TODO Implement the weekly report
+ADDED: [2024-09-04 Wed]
++ List of SQLite statements to get all of the information:
+  + Total for the whole week with query_entries_duration()
+  + Total per day with repeated calls to query_entries_duration()
+  + Total per day/week and per project with report_project_totals()
+  + TODO: Total per task for a given day, return the tasks as rows
+    in the statement.
++ UI elements:
+  + A week selector (like the day selector in the entries table)
+  + A total bar with the weekly total
+  + A big menu grid with the following columns: task, mon, tue, wed,
+    thu, fri, sat, sun, total
+    It includes the column headers.
+    + The tasks are grouped by project
+    + The total per project and per day is also displayed.
+    + The last line gives the daily totals.
+    + Blanks should be displayed instead of zeros.
+  + The status bar displays the full string for the hovered element.
++ Create a report struct with sub-struct for every element in the table.
+  Use this struct to interface with the DB. The DB returns the full
+  report struct instead of little pieces.
+
+*** TODO Check the day selector around DST changes
+ADDED: [2024-09-05 Thu]
+We change the selected day by adding or subtracting one day from the
+date. Are we sure it does the correct thing around a DST change?
++ We added a log printing the selected date range. The selected days
+  were indeed off by one hour around DST changes.
++ We fixed it by getting the UTC time point + 1 day, converting
+  to zoned time and rounding to nearest day whenever we shift
+  the dates in the range selected.

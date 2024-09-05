@@ -82,9 +82,19 @@ std::string Date::get_day_string () const {
 }
 
 void Date::add_one_day() {
-  tp += std::chrono::days(1);
+    std::chrono::zoned_time next_day{std::chrono::current_zone(),
+                                     tp + std::chrono::days(1)};
+    std::chrono::zoned_time midnight
+      {std::chrono::current_zone(),
+       std::chrono::round<std::chrono::days>(next_day.get_local_time())};
+    tp = midnight.get_sys_time();
 }
 
 void Date::subtract_one_day() {
-  tp -= std::chrono::days(1);
+  std::chrono::zoned_time prev_day{std::chrono::current_zone(),
+                                   tp - std::chrono::days(1)};
+  std::chrono::zoned_time midnight{
+      std::chrono::current_zone(),
+      std::chrono::round<std::chrono::days>(prev_day.get_local_time())};
+  tp = midnight.get_sys_time();
 }
