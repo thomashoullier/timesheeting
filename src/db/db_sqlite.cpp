@@ -225,6 +225,18 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "GROUP BY projects.name;";
   sum_duration_per_project =
     sqlite_db.prepare_statement(sum_duration_per_project_st);
+
+  std::string duration_per_worked_project_st =
+    "SELECT projects.id, projects.name, SUM(entries.stop - entries.start) "
+    "FROM projects "
+    "INNER JOIN tasks ON projects.id = tasks.project_id "
+    "INNER JOIN entries ON tasks.id = entries.task_id "
+    "WHERE entries.start >= ? "
+    "AND entries.start < ? "
+    "GROUP BY projects.name "
+    "HAVING SUM(entries.stop - entries.start) > 0;";
+  duration_per_worked_project =
+    sqlite_db.prepare_statement(duration_per_worked_project_st);
 }
 
 DB_SQLite::~DB_SQLite() {
@@ -263,6 +275,7 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(remove_entry);
   sqlite3_finalize(insert_entrystaging);
   sqlite3_finalize(sum_duration_per_project);
+  sqlite3_finalize(duration_per_worked_project);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -702,8 +715,8 @@ DB_SQLite::report_project_totals(const DateRange &date_range) {
   sqlite3_bind_int64(sum_duration_per_project, 2, stop_stamp);
   std::vector<ProjectTotal> totals;
   while (sqlite3_step(sum_duration_per_project) == SQLITE_ROW) {
-    std::string project_name = reinterpret_cast<const char*>
-      (sqlite3_column_text(sum_duration_per_project, 0));
+    std::string project_name = reinterpret_cast<const char *>(
+        sqlite3_column_text(sum_duration_per_project, 0));
     uint64_t seconds = sqlite3_column_int64(sum_duration_per_project, 1);
     Duration duration(seconds);
     totals.push_back(ProjectTotal{project_name, duration});
@@ -714,14 +727,37 @@ DB_SQLite::report_project_totals(const DateRange &date_range) {
 WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
   log("report_weekly_totals starting on: " + first_day_start.to_string());
   WeeklyTotals totals;
+  // Daily totals
   auto day_start = first_day_start;
   auto day_stop = day_start;
   day_stop.add_one_day();
-  DateRange cur_day (day_start, day_stop);
-  for (std::size_t i = 0 ; i < totals.daily_totals.size() ; i++) {
+  DateRange cur_day(day_start, day_stop);
+  for (std::size_t i = 0; i < totals.daily_totals.size(); i++) {
     totals.daily_totals.at(i) = query_entries_duration(cur_day);
     cur_day.add_one_day();
   }
+  // Per-project totals
+  sqlite3_reset(duration_per_worked_project);
+  auto week_start = first_day_start;
+  auto week_stop = week_start;
+  week_stop.add_one_week();
+  DateRange cur_week(week_start, week_stop);
+  sqlite3_bind_int64(duration_per_worked_project, 1,
+                     cur_week.start.to_unix_timestamp());
+  sqlite3_bind_int64(duration_per_worked_project, 2,
+                     cur_week.stop.to_unix_timestamp());
+  while(sqlite3_step(duration_per_worked_project) == SQLITE_ROW) {
+    PerProjectTotals per_project_totals;
+    //RowId project_id = sqlite3_column_int64(duration_per_worked_project, 0);
+    std::string project_name = reinterpret_cast<const char*>
+      (sqlite3_column_text(duration_per_worked_project, 1));
+    uint64_t seconds = sqlite3_column_int64(duration_per_worked_project, 2);
+    Duration duration(seconds);
+    per_project_totals.project_name = project_name;
+    per_project_totals.total = duration;
+    totals.project_totals.push_back(per_project_totals);
+  }
+
   return totals;
 }
 

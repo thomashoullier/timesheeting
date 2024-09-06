@@ -136,6 +136,9 @@ private:
   sqlite3_stmt *insert_entrystaging;
   /** @brief Sum duration per project for a given date range. */
   sqlite3_stmt *sum_duration_per_project;
+  /** @brief Sum duration per project actually worked on
+      for a given date range. */
+  sqlite3_stmt *duration_per_worked_project;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();

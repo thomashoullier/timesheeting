@@ -56,6 +56,9 @@ public:
   /** @brief Decrement the date by one day
       and round to nearest local midnight. */
   void subtract_one_day ();
+  /** @brief Increment the date by one week,
+      and round to nearest local midnight. */
+  void add_one_week();
 };
 
 /** @brief Exception indicating that Date has failed to parse an input string. */

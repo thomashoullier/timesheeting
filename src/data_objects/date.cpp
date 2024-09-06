@@ -1,4 +1,5 @@
 #include "date.h"
+#include <bits/chrono.h>
 #include <chrono>
 #include <iomanip>
 #include <sstream>
@@ -110,5 +111,14 @@ void Date::subtract_one_day() {
   std::chrono::zoned_time midnight{
       std::chrono::current_zone(),
       std::chrono::round<std::chrono::days>(prev_day.get_local_time())};
+  tp = midnight.get_sys_time();
+}
+
+void Date::add_one_week() {
+  std::chrono::zoned_time next_week{std::chrono::current_zone(),
+                                   tp + std::chrono::weeks(1)};
+  std::chrono::zoned_time midnight{
+      std::chrono::current_zone(),
+      std::chrono::round<std::chrono::days>(next_week.get_local_time())};
   tp = midnight.get_sys_time();
 }
