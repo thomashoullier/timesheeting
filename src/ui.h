@@ -10,6 +10,7 @@
 #include "ui_screens/project_task_screen.h"
 #include "db/db_sqlite.h"
 #include "ui_screens/status_bar/status_bar_ncurses.h"
+#include "ui_screens/weekly_report_screen.h"
 #include <memory>
 
 /** @brief Ncurses top-level UI for timesheeting. */
@@ -37,6 +38,8 @@ private:
   EntriesScreen<DB_SQLite> entries_screen;
   /** @brief Screen for the project totals report. */
   ProjectReportScreen<DB_SQLite> project_report_screen;
+  /** @brief Weekly report. */
+  WeeklyReportScreen<DB_SQLite> weekly_report_screen;
 };
 
 #endif // UI_H

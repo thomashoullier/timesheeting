@@ -9,7 +9,8 @@ UI::UI()
     projects_screen(db, status_bar),
     locations_screen(db, status_bar),
     entries_screen(db, status_bar),
-    project_report_screen(db, status_bar) {
+    project_report_screen(db, status_bar),
+    weekly_report_screen(db, status_bar) {
   log("timesheeting UI initialized.");
   // TEMP testing the weekly totals report
   auto totals = db->report_weekly_totals(Date(DatePoint::WeekBegin));
@@ -44,6 +45,9 @@ char UI::input_loop() {
       break;
     case '4':
       cur_screen = &project_report_screen;
+      break;
+    case '5':
+      cur_screen = &weekly_report_screen;
       break;
     default:
       return ch;

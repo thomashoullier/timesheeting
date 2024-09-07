@@ -434,7 +434,7 @@ ADDED: [2024-09-04 Wed]
     in the statement.
 + UI elements:
   + A week selector (like the day selector in the entries table)
-  + A total bar with the weekly total
+  + A total bar with the weekly total?
   + A big menu grid with the following columns: task, mon, tue, wed,
     thu, fri, sat, sun, total
     It includes the column headers.
@@ -466,3 +466,8 @@ It should get the midnight of the last monday.
 *** TODO Ergonomy: Add the day of the week on the current day display in entries
 ADDED: [2024-09-07 Sat]
 Add the display for the day of the week (eg. ~Mon~) on the entries screen.
+
+*** TODO Make MenuNCurses have variable item width
+ADDED: [2024-09-07 Sat]
+Currently the width of items inside a menu is hard coded. Make it depend
+on the number of columns requested on construction.

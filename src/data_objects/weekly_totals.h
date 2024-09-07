@@ -37,7 +37,7 @@ struct WeeklyTotals {
   std::vector<PerProjectTotals> project_totals;
 
   /** @brief Output the weekly totals to a set of strings, in order. */
-  std::vector<std::string> to_strings();
+  std::vector<std::string> to_strings() const;
 };
 
 #endif // WEEKLY_TOTALS_H
