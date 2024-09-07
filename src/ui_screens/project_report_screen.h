@@ -22,7 +22,8 @@ public:
                 (period_selector_ui.get_current_date_range())),
       reg(ProjectTotalsRegister
           (db->report_project_totals
-           (period_selector_ui.get_current_date_range())))
+           (period_selector_ui.get_current_date_range()),
+           _status))
   {};
 
   char input_loop() override {

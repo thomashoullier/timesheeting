@@ -1,9 +1,11 @@
 #include "project_totals_register.h"
 
-ProjectTotalsRegister::ProjectTotalsRegister(
-    const std::vector<ProjectTotal> &totals)
-  : MenuNCurses(items_to_string(totals),
-                WindowPosition::upper, WindowFormat::block, 2) {}
+ProjectTotalsRegister::ProjectTotalsRegister
+    (const std::vector<ProjectTotal> &totals,
+     std::shared_ptr<StatusBarNCurses> _status)
+    : MenuNCurses(items_to_string(totals), WindowPosition::upper,
+                  WindowFormat::block, 2),
+      status(_status) {}
 
 std::vector<std::string>
 ProjectTotalsRegister::items_to_string(const std::vector<ProjectTotal> &items) {
@@ -23,6 +25,7 @@ void ProjectTotalsRegister::set_items(const std::vector<ProjectTotal> &totals) {
 char ProjectTotalsRegister::input_loop() {
   this->set_border();
   while (true) {
+    status->print(this->get_current_item_string());
     auto ch = this->get_input();
     switch (ch) {
     case 'n':

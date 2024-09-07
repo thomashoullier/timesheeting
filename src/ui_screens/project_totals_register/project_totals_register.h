@@ -4,13 +4,15 @@
 #include "../../data_objects/project_total.h"
 #include "../../ncurses/menu_ncurses.h"
 #include "../ui_component.h"
+#include "../status_bar/status_bar_ncurses.h"
 
 /** @brief ProjectTotal register implementation in ncurses. */
 class ProjectTotalsRegister : public MenuNCurses,
                               public UIComponent {
 public:
   /** @brief Constructor. */
-  ProjectTotalsRegister(const std::vector<ProjectTotal> &totals);
+  ProjectTotalsRegister(const std::vector<ProjectTotal> &totals,
+                        std::shared_ptr<StatusBarNCurses> _status);
   /** @brief Replace the totals currently displayed. */
   void set_items(const std::vector<ProjectTotal> &totals);
   char input_loop () override;
@@ -19,6 +21,8 @@ public:
   void update() override;
 
 private:
+  /** Handle to the status bar. */
+  std::shared_ptr<StatusBarNCurses> status;
   /** @brief Get display strings from the provided set of items. */
   std::vector<std::string> items_to_string
   (const std::vector<ProjectTotal> &items);
