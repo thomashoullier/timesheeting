@@ -139,6 +139,8 @@ private:
   /** @brief Sum duration per project actually worked on
       for a given date range. */
   sqlite3_stmt *duration_per_worked_project;
+  /** @brief Sum duration for a given project over a given date range. */
+  sqlite3_stmt *project_duration;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();
@@ -152,6 +154,8 @@ private:
   void create_entries_start_index();
   /** @brief Create the SQL table for entrystaging. */
   void create_entrystaging_table();
+  /** @brief Sum duration for a given project over a given date range. */
+  Duration report_project_duration (Id project_id, const DateRange &date_range);
   /** @brief Execute a SQL statement with exception catching. */
   void try_exec_statement(const std::string &statement);
   /** @brief Step a SQL statement with exception catching. */

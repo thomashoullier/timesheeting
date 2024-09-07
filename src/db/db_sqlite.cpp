@@ -236,7 +236,17 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "GROUP BY projects.name "
     "HAVING SUM(entries.stop - entries.start) > 0;";
   duration_per_worked_project =
-    sqlite_db.prepare_statement(duration_per_worked_project_st);
+      sqlite_db.prepare_statement(duration_per_worked_project_st);
+
+  std::string project_duration_st =
+    "SELECT SUM(entries.stop - entries.start) "
+    "FROM projects "
+    "INNER JOIN tasks ON projects.id = tasks.project_id "
+    "INNER JOIN entries ON tasks.id = entries.task_id "
+    "WHERE projects.id = ?"
+    "AND entries.start >= ? "
+    "AND entries.start < ?;";
+  project_duration = sqlite_db.prepare_statement(project_duration_st);
 }
 
 DB_SQLite::~DB_SQLite() {
@@ -276,6 +286,7 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(insert_entrystaging);
   sqlite3_finalize(sum_duration_per_project);
   sqlite3_finalize(duration_per_worked_project);
+  sqlite3_finalize(project_duration);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -724,6 +735,23 @@ DB_SQLite::report_project_totals(const DateRange &date_range) {
   return totals;
 }
 
+Duration DB_SQLite::report_project_duration(Id project_id,
+                                            const DateRange &date_range) {
+  uint64_t start_stamp = date_range.start.to_unix_timestamp();
+  uint64_t stop_stamp = date_range.stop.to_unix_timestamp();
+  sqlite3_reset(project_duration);
+  sqlite3_bind_int64(project_duration, 1, project_id);
+  sqlite3_bind_int64(project_duration, 2, start_stamp);
+  sqlite3_bind_int64(project_duration, 3, stop_stamp);
+  if (sqlite3_step(project_duration) == SQLITE_ROW) {
+    uint64_t seconds = sqlite3_column_int64(project_duration, 0);
+    Duration duration(seconds);
+    return duration;
+  } else {
+    throw DBLogicExcept("report_project_duration: Cannot query duration!");
+  }
+}
+
 WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
   log("report_weekly_totals starting on: " + first_day_start.to_string());
   WeeklyTotals totals;
@@ -748,13 +776,25 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
                      cur_week.stop.to_unix_timestamp());
   while(sqlite3_step(duration_per_worked_project) == SQLITE_ROW) {
     PerProjectTotals per_project_totals;
-    //RowId project_id = sqlite3_column_int64(duration_per_worked_project, 0);
+    RowId project_id = sqlite3_column_int64(duration_per_worked_project, 0);
     std::string project_name = reinterpret_cast<const char*>
       (sqlite3_column_text(duration_per_worked_project, 1));
     uint64_t seconds = sqlite3_column_int64(duration_per_worked_project, 2);
     Duration duration(seconds);
     per_project_totals.project_name = project_name;
     per_project_totals.total = duration;
+    // Daily totals for the current project (by project_id)
+    day_start = first_day_start;
+    day_stop = day_start;
+    day_stop.add_one_day();
+    cur_day.start = day_start;
+    cur_day.stop = day_stop;
+    for (std::size_t i = 0; i < per_project_totals.daily_totals.size(); ++i) {
+      duration = report_project_duration(project_id, cur_day);
+      per_project_totals.daily_totals.at(i) = duration;
+      cur_day.add_one_day();
+    }
+    // TODO: task_totals for the current project.
     totals.project_totals.push_back(per_project_totals);
   }
 
