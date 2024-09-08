@@ -755,6 +755,12 @@ Duration DB_SQLite::report_project_duration(Id project_id,
 WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
   log("report_weekly_totals starting on: " + first_day_start.to_string());
   WeeklyTotals totals;
+  auto week_start = first_day_start;
+  auto week_stop = week_start;
+  week_stop.add_one_week();
+  // Overall weekly total
+  DateRange whole_week(week_start, week_stop);
+  totals.total = query_entries_duration(whole_week);
   // Daily totals
   auto day_start = first_day_start;
   auto day_stop = day_start;
@@ -766,9 +772,6 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
   }
   // Per-project totals
   sqlite3_reset(duration_per_worked_project);
-  auto week_start = first_day_start;
-  auto week_stop = week_start;
-  week_stop.add_one_week();
   DateRange cur_week(week_start, week_stop);
   sqlite3_bind_int64(duration_per_worked_project, 1,
                      cur_week.start.to_unix_timestamp());
