@@ -15,10 +15,10 @@ public:
                               std::shared_ptr<StatusBarNCurses> _status)
     : db(std::static_pointer_cast<DB_Interface>(_db)),
       status(_status),
-      date_selector(),
+      date_selector(DateSelectorNcurses(DateRange(Date(DatePoint::WeekBegin),
+                                                  Date(DatePoint::WeekEnd)))),
       reg(db->report_weekly_totals(date_selector.current_range().start),
           _status)
-      // TODO: the date_selector should be init to the beginning of current week
   {};
 
   char input_loop() override {

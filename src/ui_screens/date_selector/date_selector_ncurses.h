@@ -15,6 +15,8 @@ private:
 public:
   /** @brief Initialize the date range to the current day in local time. */
   DateSelectorNcurses ();
+  /** @brief Initialize the date range to a given one. */
+  DateSelectorNcurses (const DateRange &date_range);
   /** @brief Refresh the display. */
   void refresh () const;
   /** @brief Clear the display. */

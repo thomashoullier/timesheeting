@@ -1,6 +1,8 @@
 #include "weekly_totals.h"
 
 std::vector<std::string> WeeklyTotals::to_strings () const {
+  // TODO: have short strings with zeroes and units omitted, and long strings
+  //       for status bar display.
   std::vector<std::string> strs;
   // Column headers
   strs.push_back("Task");

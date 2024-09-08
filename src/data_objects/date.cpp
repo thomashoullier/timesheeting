@@ -41,6 +41,19 @@ Date::Date(DatePoint date_point) {
                                           monday};
     tp = monday_start;
   } break;
+  case DatePoint::WeekEnd: {
+    std::chrono::zoned_time current{std::chrono::current_zone(),
+                                    std::chrono::system_clock::now()};
+    auto beg_day = std::chrono::floor<std::chrono::days>
+      (current.get_local_time());
+    std::chrono::weekday day = std::chrono::weekday {beg_day};
+    auto gap = day - std::chrono::Monday;
+    auto monday = beg_day - gap;
+    std::chrono::zoned_time monday_start {std::chrono::current_zone(),
+                                          monday};
+    tp = monday_start;
+    add_one_week();
+  } break;
   case DatePoint::YearBegin: {
     std::chrono::zoned_time current{std::chrono::current_zone(),
                                     std::chrono::system_clock::now()};

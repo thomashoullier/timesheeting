@@ -1,8 +1,12 @@
 #include "date_selector_ncurses.h"
 
 DateSelectorNcurses::DateSelectorNcurses()
-  : BarNCurses(WindowPosition::top, WindowFormat::half_line),
-    range(Date(DatePoint::DayBegin), DatePoint::DayEnd) {};
+    : BarNCurses(WindowPosition::top, WindowFormat::half_line),
+      range(Date(DatePoint::DayBegin), DatePoint::DayEnd) {};
+
+DateSelectorNcurses::DateSelectorNcurses(const DateRange &date_range)
+    : BarNCurses(WindowPosition::top, WindowFormat::half_line),
+      range(date_range) {};
 
 // TODO: This seems a bit wasteful. Store the string to display instead.
 //       Add an update method if needed.
