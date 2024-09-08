@@ -57,7 +57,7 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
     y = 2;
     break;
   case WindowPosition::middle:
-    x = 26;
+    x = WIDTH / 2;
     y = 2;
     break;
   default:
@@ -82,7 +82,7 @@ WINDOW* WinNCurses::init_window(WindowPosition winpos, WindowFormat winformat) {
     ny = 35;
     break;
   case WindowFormat::column:
-    nx = 26;
+    nx = WIDTH / 2;
     ny = 35;
     break;
   default:

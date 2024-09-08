@@ -57,10 +57,10 @@ protected:
   int get_col_index() const;
 
 private:
-  /** @brief Size of the display cell for each item. */
-  static constexpr int ITEM_WIDTH {15};
   /** @brief Number of columms in the menu. */
   int ncols;
+  /** @brief Size of the display cell for each item. */
+  const int item_width;
   /** @brief ncurses menu object. */
   MENU *menu;
   /** @brief ncurses menu items. */

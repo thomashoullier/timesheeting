@@ -15,8 +15,8 @@ class Column : public ColumnBase, public MenuNCurses {
 public:
   /** @brief Construct the column with given items and position. */
   Column(const std::vector<T> &items, WindowPosition winpos)
-      : MenuNCurses(items_to_string(items), winpos, WindowFormat::column, 1),
-        held_items(items) {};
+    : MenuNCurses(items_to_string(items), winpos, WindowFormat::column, 1),
+      held_items(items) {};
 
   /** @brief Replace the column items. */
   void set_items(const std::vector<T> &items) {

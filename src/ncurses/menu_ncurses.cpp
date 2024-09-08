@@ -8,6 +8,7 @@ MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
                          int _ncols)
     : WinNCurses(winpos, winformat),
       ncols(_ncols),
+      item_width(getmaxx(win) / ncols - 1),
       empty_string("") {
   init_items(items);
   init_menu();
@@ -19,6 +20,7 @@ MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
                          int _ncols)
     : WinNCurses(winpos, winformat),
       ncols(_ncols),
+      item_width(getmaxx(win) / ncols - 1),
       empty_string("") {
   init_items(items, short_items);
   init_menu();
@@ -97,7 +99,7 @@ void MenuNCurses::init_items(const std::vector<std::string> &items) {
   menu_items.resize(items.size() + 1);
   for (std::size_t i = 0; i < items.size(); ++i) {
     display_strings.at(i) = items.at(i); // Copy
-    short_display_strings.at(i) = crop_pad_str(items.at(i), ITEM_WIDTH);
+    short_display_strings.at(i) = crop_pad_str(items.at(i), item_width);
     menu_items.at(i)= new_item(short_display_strings.at(i).c_str(), NULL);
   }
   menu_items.back() = NULL;
@@ -115,7 +117,7 @@ void MenuNCurses::init_items(const std::vector<std::string> &items,
   menu_items.resize(items.size() + 1);
   for (std::size_t i = 0; i < items.size(); ++i) {
     display_strings.at(i) = items.at(i); // Copy
-    short_display_strings.at(i) = crop_pad_str(short_items.at(i), ITEM_WIDTH);
+    short_display_strings.at(i) = crop_pad_str(short_items.at(i), item_width);
     menu_items.at(i)= new_item(short_display_strings.at(i).c_str(), NULL);
   }
   menu_items.back() = NULL;
