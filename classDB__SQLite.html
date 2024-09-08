@@ -235,6 +235,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 std::vector&lt; <a class="el" href="structProjectTotal.html">ProjectTotal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a59eccdc8e5c16274c6af4bae124b7e1a">report_project_totals</a> (const <a class="el" href="classDateRange.html">DateRange</a> &amp;date_range) override</td></tr>
 <tr class="memdesc:a59eccdc8e5c16274c6af4bae124b7e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report the total duration worked per project over given date range. <br /></td></tr>
 <tr class="separator:a59eccdc8e5c16274c6af4bae124b7e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb4033ee90e34292c63f4eb4b034be4d"><td class="memItemLeft" align="right" valign="top"><a id="acb4033ee90e34292c63f4eb4b034be4d"></a>
+<a class="el" href="structWeeklyTotals.html">WeeklyTotals</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#acb4033ee90e34292c63f4eb4b034be4d">report_weekly_totals</a> (const <a class="el" href="classDate.html">Date</a> &amp;first_day_start) override</td></tr>
+<tr class="memdesc:acb4033ee90e34292c63f4eb4b034be4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report the weekly totals. <br /></td></tr>
+<tr class="separator:acb4033ee90e34292c63f4eb4b034be4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -262,6 +266,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a8e5bdd16c96fd8f1c88a633700ca3c2c">create_entrystaging_table</a> ()</td></tr>
 <tr class="memdesc:a8e5bdd16c96fd8f1c88a633700ca3c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the SQL table for entrystaging. <br /></td></tr>
 <tr class="separator:a8e5bdd16c96fd8f1c88a633700ca3c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5ab67bdfca2f7d4c152fb09d3c2ef9"><td class="memItemLeft" align="right" valign="top"><a id="aef5ab67bdfca2f7d4c152fb09d3c2ef9"></a>
+<a class="el" href="classDuration.html">Duration</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#aef5ab67bdfca2f7d4c152fb09d3c2ef9">report_project_duration</a> (<a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a> project_id, const <a class="el" href="classDateRange.html">DateRange</a> &amp;date_range)</td></tr>
+<tr class="memdesc:aef5ab67bdfca2f7d4c152fb09d3c2ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum duration for a given project over a given date range. <br /></td></tr>
+<tr class="separator:aef5ab67bdfca2f7d4c152fb09d3c2ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc4336c4ecb50aadfd039459de83b69a"><td class="memItemLeft" align="right" valign="top"><a id="abc4336c4ecb50aadfd039459de83b69a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#abc4336c4ecb50aadfd039459de83b69a">try_exec_statement</a> (const std::string &amp;statement)</td></tr>
 <tr class="memdesc:abc4336c4ecb50aadfd039459de83b69a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a SQL statement with exception catching. <br /></td></tr>
@@ -422,6 +430,14 @@ sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a7568bf938db3eadf4df7fffe92bc62a5">sum_duration_per_project</a></td></tr>
 <tr class="memdesc:a7568bf938db3eadf4df7fffe92bc62a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum duration per project for a given date range. <br /></td></tr>
 <tr class="separator:a7568bf938db3eadf4df7fffe92bc62a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd7a00628b71b9f5e54c2f2c6345ad74"><td class="memItemLeft" align="right" valign="top"><a id="afd7a00628b71b9f5e54c2f2c6345ad74"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#afd7a00628b71b9f5e54c2f2c6345ad74">duration_per_worked_project</a></td></tr>
+<tr class="memdesc:afd7a00628b71b9f5e54c2f2c6345ad74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum duration per project actually worked on for a given date range. <br /></td></tr>
+<tr class="separator:afd7a00628b71b9f5e54c2f2c6345ad74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6306789a82fdfa7d8e2ca98cdf4a522e"><td class="memItemLeft" align="right" valign="top"><a id="a6306789a82fdfa7d8e2ca98cdf4a522e"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a6306789a82fdfa7d8e2ca98cdf4a522e">project_duration</a></td></tr>
+<tr class="memdesc:a6306789a82fdfa7d8e2ca98cdf4a522e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum duration for a given project over a given date range. <br /></td></tr>
+<tr class="separator:a6306789a82fdfa7d8e2ca98cdf4a522e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>DB implementation using SQLite3. </p>

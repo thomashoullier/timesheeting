@@ -71,8 +71,14 @@ $(function() {
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
+<li>daily_totals
+: <a class="el" href="structPerProjectTotals.html#a5015f10c8f3e903f04cd223f6b91b69c">PerProjectTotals</a>
+, <a class="el" href="structPerTaskTotals.html#a77cd3e36639c8495770829890b2c9517">PerTaskTotals</a>
+, <a class="el" href="structWeeklyTotals.html#a5151117d0254f5879edb4d2869ee5ecf">WeeklyTotals</a>
+</li>
 <li>date_selector
 : <a class="el" href="classEntriesTable.html#a54935630b2bb97daa2f1246d594fea9a">EntriesTable&lt; T_DB, typename &gt;</a>
+, <a class="el" href="classWeeklyReportScreen.html#a414afbd46a667ba4e3faecda9db63ffa">WeeklyReportScreen&lt; T_DB, typename &gt;</a>
 </li>
 <li>db
 : <a class="el" href="classDB__SQLite__Handle.html#ad40ef15e32a03860ad474de6bf3a6e54">DB_SQLite_Handle</a>
@@ -93,6 +99,9 @@ $(function() {
 </li>
 <li>duration
 : <a class="el" href="classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1">TotalBar</a>
+</li>
+<li>duration_per_worked_project
+: <a class="el" href="classDB__SQLite.html#afd7a00628b71b9f5e54c2f2c6345ad74">DB_SQLite</a>
 </li>
 </ul>
 
@@ -148,8 +157,8 @@ $(function() {
 <li>insert_task
 : <a class="el" href="classDB__SQLite.html#a6d2b16ee9e5f16745c81f07ae7d4354d">DB_SQLite</a>
 </li>
-<li>ITEM_WIDTH
-: <a class="el" href="classMenuNCurses.html#ab54d73c466a6d4a4651d6bf89494eddf">MenuNCurses</a>
+<li>item_width
+: <a class="el" href="classMenuNCurses.html#aa0817dcece617b385ec6d7966a4a278a">MenuNCurses</a>
 </li>
 </ul>
 
@@ -207,12 +216,19 @@ $(function() {
 <li>project_col
 : <a class="el" href="classProjectTaskScreen.html#ac3d00264e13d0f4029148abe3daa4ac5">ProjectTaskScreen&lt; T_DB, typename &gt;</a>
 </li>
+<li>project_duration
+: <a class="el" href="classDB__SQLite.html#a6306789a82fdfa7d8e2ca98cdf4a522e">DB_SQLite</a>
+</li>
 <li>project_name
 : <a class="el" href="structEntry.html#a18402b0ed4db921879cfa2f45e19410c">Entry</a>
 , <a class="el" href="structEntryStaging.html#a9ca68ca5a15ee103ace0573d66448b0c">EntryStaging</a>
+, <a class="el" href="structPerProjectTotals.html#ab5d1b64562ef2cfc8c9ec35f51087beb">PerProjectTotals</a>
 </li>
 <li>project_report_screen
 : <a class="el" href="classUI.html#aa8ed7817346e1daa9d2cf11fabd195ba">UI</a>
+</li>
+<li>project_totals
+: <a class="el" href="structWeeklyTotals.html#ad8a4b0ea6be71beba98a8ccfa1489809">WeeklyTotals</a>
 </li>
 <li>projects_screen
 : <a class="el" href="classUI.html#a6124900631621e32e29797cf9ee69b0e">UI</a>
@@ -226,6 +242,7 @@ $(function() {
 </li>
 <li>reg
 : <a class="el" href="classEntriesTable.html#a95a7c9ca2f792be41e4e02f7c7a13f7b">EntriesTable&lt; T_DB, typename &gt;</a>
+, <a class="el" href="classWeeklyReportScreen.html#a707f620a7ef96815296f3389b6364861">WeeklyReportScreen&lt; T_DB, typename &gt;</a>
 </li>
 <li>remove_entry
 : <a class="el" href="classDB__SQLite.html#ae19da2567513d7e9c2b5463fa8c2934f">DB_SQLite</a>
@@ -290,6 +307,7 @@ $(function() {
 , <a class="el" href="classLocationsScreen.html#ae7db5d66880e3ad0961a5c6defef20ad">LocationsScreen&lt; T_DB, typename &gt;</a>
 , <a class="el" href="classPeriodSelectorUI.html#a598292cdfa0e447c0ec46f5cfd030e24">PeriodSelectorUI</a>
 , <a class="el" href="classProjectTaskScreen.html#a1e380ada1a143181bdb16e4c2b617aa4">ProjectTaskScreen&lt; T_DB, typename &gt;</a>
+, <a class="el" href="classProjectTotalsRegister.html#ae68f136fb781c1630ddfae737c6c7ae6">ProjectTotalsRegister</a>
 , <a class="el" href="classStopwatchUI.html#ac251b7017a0986d1b22576560b2985fe">StopwatchUI&lt; T_DB, typename &gt;</a>
 </li>
 <li>status_bar
@@ -319,6 +337,10 @@ $(function() {
 <li>task_name
 : <a class="el" href="structEntry.html#a69cde5f2b4eae8370ee52fc6dcdda044">Entry</a>
 , <a class="el" href="structEntryStaging.html#ac364ac2b8a1a94429dc9507d5e0eedc4">EntryStaging</a>
+, <a class="el" href="structPerTaskTotals.html#a8ae17b86b9616433588b723473585b50">PerTaskTotals</a>
+</li>
+<li>task_totals
+: <a class="el" href="structPerProjectTotals.html#a20d2bd9a0de5be5283ec33bb13f1650a">PerProjectTotals</a>
 </li>
 <li>tick_point
 : <a class="el" href="classLoggerFile.html#aa50b8e99c1f97d9c46efe877761a2a75">LoggerFile</a>
@@ -331,6 +353,10 @@ $(function() {
 </li>
 <li>toggle_task_flag
 : <a class="el" href="classDB__SQLite.html#a83d6ddd197b0dd32641adafa9bbada6c">DB_SQLite</a>
+</li>
+<li>total
+: <a class="el" href="structPerProjectTotals.html#ae20d8b6630765516c02d9325cb63fdad">PerProjectTotals</a>
+, <a class="el" href="structPerTaskTotals.html#a4d6276d6ab745fa2a9aec0ae69a6415f">PerTaskTotals</a>
 </li>
 <li>total_bar
 : <a class="el" href="classEntriesTable.html#a48245bae46945e9f9efa7a8654a1d0a4">EntriesTable&lt; T_DB, typename &gt;</a>
@@ -385,6 +411,9 @@ $(function() {
 
 
 <h3><a id="index_w"></a>- w -</h3><ul>
+<li>weekly_report_screen
+: <a class="el" href="classUI.html#a184160186e8d316091535b7db851b08c">UI</a>
+</li>
 <li>win
 : <a class="el" href="classWinNCurses.html#ae9cded2eec27231f7109938120c48baf">WinNCurses</a>
 </li>
