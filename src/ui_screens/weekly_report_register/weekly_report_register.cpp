@@ -3,7 +3,7 @@
 WeeklyReportRegister::WeeklyReportRegister(
     const WeeklyTotals &totals, std::shared_ptr<StatusBarNCurses> _status)
     : MenuNCurses(totals.to_strings(), WindowPosition::upper,
-                  WindowFormat::block, 8),
+                  WindowFormat::block, 9),
       status(_status) {}
 
 void WeeklyReportRegister::set_items(const WeeklyTotals &totals) {

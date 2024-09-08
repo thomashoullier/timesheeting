@@ -31,6 +31,8 @@ struct PerProjectTotals {
 /** @brief Struct holding the weekly totals for interface between the
     DB and the UI. */
 struct WeeklyTotals {
+  /** @brief Total duration worked during the week, on any task. */
+  Duration total;
   /** @brief Total duration worked per day of the week, on any task. */
   std::array<Duration, 7> daily_totals;
   /** @brief Set of report per project, including task breakdown. */
