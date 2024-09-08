@@ -40,6 +40,8 @@ struct WeeklyTotals {
 
   /** @brief Output the weekly totals to a set of strings, in order. */
   std::vector<std::string> to_strings() const;
+  /** @brief Output the weekly totals to a set of shortstrings, in order. */
+  std::vector<std::string> to_shortstrings() const;
 };
 
 #endif // WEEKLY_TOTALS_H

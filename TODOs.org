@@ -481,3 +481,10 @@ the screen width.
 
 *** TODO Center the items display in menus
 ADDED: [2024-09-08 Sun]
+
+*** TODO Refresh the reports whenever entries are updated
+ADDED: [2024-09-08 Sun]
+Refresh the reports when entries are updated. The project totals screen
+and weekly report are concerned.
+Perhaps implement something where the need for update is stored somewhere,
+and we actually update only when the user switches to the report.

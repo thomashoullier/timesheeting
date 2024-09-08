@@ -145,6 +145,17 @@ public:
          << hours << " hours";
     return ostr.str();
   };
+  /** @brief Displayable short string of the duration in hours,
+   omitting the units and putting blanks over zeros. */
+  std::string to_shortstring() const {
+    if (dur.count() == 0) {
+      return " ";
+    }
+    double hours = static_cast<double>(dur.count()) / 3600;
+    std::ostringstream ostr;
+    ostr << std::fixed << std::setprecision(3) << hours;
+    return ostr.str();
+  };
 };
 
 #endif // DATA_OBJECTS_H
