@@ -27,6 +27,10 @@ public:
   void select_next_day();
   /** @brief Select the previous day. */
   void select_previous_day();
+  /** @brief Select the next week. */
+  void select_next_week();
+  /** @brief Select the previous week. */
+  void select_previous_week();
 };
 
 #endif // DATE_SELECTOR_NCURSES_H

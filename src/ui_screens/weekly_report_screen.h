@@ -25,7 +25,14 @@ public:
     while(true) {
       auto ch = reg.input_loop();
       switch(ch) {
-        // TODO: select next/prev week
+      case ',':
+        date_selector.select_previous_week();
+        update();
+        break;
+      case '.':
+        date_selector.select_next_week();
+        update();
+        break;
       default:
         return ch;
       }
@@ -43,7 +50,9 @@ public:
   };
 
   void update() override {
-    // TODO
+    auto first_week_day = date_selector.current_range().start;
+    auto week_report = db->report_weekly_totals(first_week_day);
+    reg.set_items(week_report);
     this->refresh();
   };
 

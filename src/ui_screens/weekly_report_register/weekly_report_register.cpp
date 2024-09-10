@@ -7,7 +7,7 @@ WeeklyReportRegister::WeeklyReportRegister(
       status(_status) {}
 
 void WeeklyReportRegister::set_items(const WeeklyTotals &totals) {
-  MenuNCurses::set_items(totals.to_strings());
+  MenuNCurses::set_items(totals.to_strings(), totals.to_shortstrings());
 }
 
 char WeeklyReportRegister::input_loop() {

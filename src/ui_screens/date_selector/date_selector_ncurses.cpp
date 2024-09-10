@@ -23,3 +23,6 @@ DateRange DateSelectorNcurses::current_range() const { return range; }
 void DateSelectorNcurses::select_next_day() { range.add_one_day(); }
 
 void DateSelectorNcurses::select_previous_day() { range.subtract_one_day(); }
+
+void DateSelectorNcurses::select_next_week() { range.add_one_week(); }
+void DateSelectorNcurses::select_previous_week() { range.subtract_one_week(); }

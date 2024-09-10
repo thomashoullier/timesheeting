@@ -135,3 +135,12 @@ void Date::add_one_week() {
       std::chrono::round<std::chrono::days>(next_week.get_local_time())};
   tp = midnight.get_sys_time();
 }
+
+void Date::subtract_one_week() {
+  std::chrono::zoned_time previous_week{std::chrono::current_zone(),
+                                        tp - std::chrono::weeks(1)};
+  std::chrono::zoned_time midnight{
+      std::chrono::current_zone(),
+      std::chrono::round<std::chrono::days>(previous_week.get_local_time())};
+  tp = midnight.get_sys_time();
+}
