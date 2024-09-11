@@ -27,6 +27,14 @@ std::vector<std::string> WeeklyTotals::to_strings () const {
       strs.push_back(daily_dur.to_string());
     }
     strs.push_back(proj.total.to_string());
+    // Per-task totals
+    for (auto const &task : proj.task_totals) {
+      strs.push_back(task.task_name);
+      for (auto const &daily_dur : task.daily_totals) {
+        strs.push_back(daily_dur.to_string());
+      }
+      strs.push_back(task.total.to_string());
+    }
   }
   return strs;
 }
@@ -56,6 +64,14 @@ std::vector<std::string> WeeklyTotals::to_shortstrings() const {
       strs.push_back(daily_dur.to_shortstring());
     }
     strs.push_back(proj.total.to_shortstring());
+    // Per-task totals
+    for (auto const &task : proj.task_totals) {
+      strs.push_back(task.task_name);
+      for (auto const &daily_dur : task.daily_totals) {
+        strs.push_back(daily_dur.to_shortstring());
+      }
+      strs.push_back(task.total.to_shortstring());
+    }
   }
   return strs;
 }

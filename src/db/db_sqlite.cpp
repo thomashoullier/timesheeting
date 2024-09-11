@@ -233,10 +233,22 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "INNER JOIN entries ON tasks.id = entries.task_id "
     "WHERE entries.start >= ? "
     "AND entries.start < ? "
-    "GROUP BY projects.name "
+    "GROUP BY projects.name " // TODO: group by id rather no?
     "HAVING SUM(entries.stop - entries.start) > 0;";
   duration_per_worked_project =
       sqlite_db.prepare_statement(duration_per_worked_project_st);
+
+  std::string duration_per_worked_task_st =
+    "SELECT tasks.id, tasks.name, SUM(entries.stop - entries.start) "
+    "FROM tasks "
+    "INNER JOIN entries ON tasks.id = entries.task_id "
+    "WHERE tasks.project_id = ? "
+    "AND entries.start >= ? "
+    "AND entries.start < ? "
+    "GROUP BY tasks.name " // TODO: group by id?
+    "HAVING SUM(entries.stop - entries.start) > 0;";
+  duration_per_worked_task =
+    sqlite_db.prepare_statement(duration_per_worked_task_st);
 
   std::string project_duration_st =
     "SELECT SUM(entries.stop - entries.start) "
@@ -286,6 +298,7 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(insert_entrystaging);
   sqlite3_finalize(sum_duration_per_project);
   sqlite3_finalize(duration_per_worked_project);
+  sqlite3_finalize(duration_per_worked_task);
   sqlite3_finalize(project_duration);
 }
 
@@ -797,10 +810,26 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
       per_project_totals.daily_totals.at(i) = duration;
       cur_day.add_one_day();
     }
-    // TODO: task_totals for the current project.
+    sqlite3_reset(duration_per_worked_task);
+    sqlite3_bind_int64(duration_per_worked_task, 1, project_id);
+    sqlite3_bind_int64(duration_per_worked_task, 2,
+                       cur_week.start.to_unix_timestamp());
+    sqlite3_bind_int64(duration_per_worked_task, 3,
+                       cur_week.stop.to_unix_timestamp());
+    while(sqlite3_step(duration_per_worked_task) == SQLITE_ROW) {
+      PerTaskTotals per_task_totals;
+      RowId task_id = sqlite3_column_int64(duration_per_worked_task, 0);
+      std::string task_name = reinterpret_cast<const char*>
+        (sqlite3_column_text(duration_per_worked_task, 1));
+      uint64_t seconds = sqlite3_column_int64(duration_per_worked_task, 2);
+      Duration duration (seconds);
+      per_task_totals.task_name = task_name;
+      per_task_totals.total = duration;
+      // TODO Daily totals for the current task.
+      per_project_totals.task_totals.push_back(per_task_totals);
+    }
     totals.project_totals.push_back(per_project_totals);
   }
-
   return totals;
 }
 

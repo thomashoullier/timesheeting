@@ -139,6 +139,9 @@ private:
   /** @brief Sum duration per project actually worked on
       for a given date range. */
   sqlite3_stmt *duration_per_worked_project;
+  /** @brief Sum duration per task actually worked on for a given date range,
+      on a given project. */
+  sqlite3_stmt *duration_per_worked_task;
   /** @brief Sum duration for a given project over a given date range. */
   sqlite3_stmt *project_duration;
 
