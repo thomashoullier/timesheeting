@@ -9,7 +9,7 @@
 class PeriodSelectorUI : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit PeriodSelectorUI (std::shared_ptr<StatusBarNCurses> _status);
+  explicit PeriodSelectorUI ();
   char input_loop() override;
   void refresh() override;
   void clear() override;
@@ -20,8 +20,6 @@ public:
 private:
   /** @brief Handle to the low-level period selector element. */
   PeriodSelectorNCurses period_selector;
-  /** @brief Handle to the status bar.*/
-  std::shared_ptr<StatusBarNCurses> status;
 
   /** @brief Rename a field. */
   void rename_item ();

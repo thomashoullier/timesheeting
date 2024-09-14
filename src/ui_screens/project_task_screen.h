@@ -19,10 +19,8 @@ template <typename T_DB,
 class ProjectTaskScreen : public UIComponent {
 public:
   /** @brief Table constructor. */
-  explicit ProjectTaskScreen(std::shared_ptr<T_DB> _db,
-                             std::shared_ptr<StatusBarNCurses> _status)
+  explicit ProjectTaskScreen(std::shared_ptr<T_DB> _db)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
-        status(_status),
         project_col(
                     std::make_unique<Column<Project>>(std::vector<Project>(),
                                                       WindowPosition::left)),
@@ -48,7 +46,7 @@ public:
     ColumnBase *cur_col {project_col.get()};
     cur_col->set_border();
     while (true) {
-      status->print(cur_col->get_current_item_string());
+      status().print(cur_col->get_current_item_string());
       auto ch = cur_col->get_input();
       switch (ch) {
       case 'n':
@@ -78,7 +76,7 @@ public:
           add_item(cur_col);
         }
         catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
       case 'r':
@@ -86,7 +84,7 @@ public:
           rename_item(cur_col);
         }
         catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
       case 'x':
@@ -94,7 +92,7 @@ public:
           remove_item(cur_col);
         }
         catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
       case 'b':
@@ -118,8 +116,6 @@ public:
 private:
   /** @brief Interface to the DB. */
   std::shared_ptr<DB_Interface> db;
-  /** @brief Interface to the status bar. */
-  std::shared_ptr<StatusBarNCurses> status;
   /** @brief Column for projects. */
   std::unique_ptr<Column<Project>> project_col;
   /** @brief Column for tasks. */
@@ -156,7 +152,7 @@ private:
 
   /** @brief Add an item (project or task). */
   void add_item (ColumnBase *cur_col) {
-    auto new_item_name = status->get_user_string();
+    auto new_item_name = status().get_user_string();
     if (!new_item_name.empty()) {
       if (cur_col == project_col.get()) {
         db->add_project(new_item_name);
@@ -179,7 +175,7 @@ private:
   void rename_item(ColumnBase *cur_col) {
     try {
       auto id = cur_col->get_current_id();
-      auto new_item_name = status->get_user_string();
+      auto new_item_name = status().get_user_string();
       if (!new_item_name.empty()) {
         if (cur_col == project_col.get()) {
           db->edit_project_name(id, new_item_name);
@@ -198,7 +194,7 @@ private:
   void remove_item (ColumnBase *cur_col) {
     try {
       auto id = cur_col->get_current_id();
-      bool user_conf = status->query_confirmation("Remove item? (Y/N)");
+      bool user_conf = status().query_confirmation("Remove item? (Y/N)");
       if (!user_conf) {
         return;
       }

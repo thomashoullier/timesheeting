@@ -28,8 +28,6 @@ private:
   NcursesHandle ncurses_handle;
   /** @brief SQLite DB interface. */
   std::shared_ptr<DB_SQLite> db;
-  /** @brief Handle to a status bar for ncurses. */
-  std::shared_ptr<StatusBarNCurses> status_bar;
   /** @brief Screen for the project/task definition. */
   ProjectTaskScreen<DB_SQLite> projects_screen;
   /** @brief Screen for the locations definition. */

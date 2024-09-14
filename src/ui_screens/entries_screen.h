@@ -18,10 +18,9 @@ template <typename T_DB,
 class EntriesScreen : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit EntriesScreen(std::shared_ptr<T_DB> _db,
-                         std::shared_ptr<StatusBarNCurses> _status)
-    : stopwatch_ui(std::make_unique<StopwatchUI<T_DB>>(_db, _status)),
-      entries_table(std::make_unique<EntriesTable<T_DB>>(_db, _status)) {};
+  explicit EntriesScreen(std::shared_ptr<T_DB> _db)
+    : stopwatch_ui(std::make_unique<StopwatchUI<T_DB>>(_db)),
+      entries_table(std::make_unique<EntriesTable<T_DB>>(_db)) {};
 
   char input_loop() override {
     UIComponent *cur_focus {entries_table.get()};

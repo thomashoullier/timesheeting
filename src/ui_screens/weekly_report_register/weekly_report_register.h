@@ -10,17 +10,13 @@ class WeeklyReportRegister : public MenuNCurses,
                              public UIComponent {
 public:
   /** @brief Constructor*/
-  explicit WeeklyReportRegister(const WeeklyTotals &totals,
-                                std::shared_ptr<StatusBarNCurses> _status);
+  explicit WeeklyReportRegister(const WeeklyTotals &totals);
   /** @brief Replace the totals currently displayed. */
   void set_items(const WeeklyTotals &totals);
   char input_loop() override;
   void refresh() override;
   void clear() override;
   void update() override;
-
-private:
-  std::shared_ptr<StatusBarNCurses> status;
 };
 
 #endif // WEEKLY_REPORT_REGISTER_H

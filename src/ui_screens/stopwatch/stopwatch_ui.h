@@ -16,16 +16,14 @@ template <typename T_DB,
 class StopwatchUI : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit StopwatchUI (std::shared_ptr<T_DB> _db,
-                        std::shared_ptr<StatusBarNCurses> _status)
+  explicit StopwatchUI (std::shared_ptr<T_DB> _db)
     : db(std::static_pointer_cast<DB_Interface>(_db)),
-      stopwatch(db->query_entrystaging()),
-      status(_status) {};
+      stopwatch(db->query_entrystaging()) {};
 
   char input_loop() override {
     stopwatch.set_border();
     while (true) {
-      status->print(stopwatch.get_current_item_string());
+      status().print(stopwatch.get_current_item_string());
       auto ch = stopwatch.get_input();
       switch (ch) {
       case 'h':
@@ -39,11 +37,11 @@ public:
           rename_item();
           update();
         } catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
           this->clear();
           this->refresh();
         } catch (DateParsingFailure &e) {
-          status->print_wait("Failed to parse the date. Do nothing.");
+          status().print_wait("Failed to parse the date. Do nothing.");
           this->clear();
           this->refresh();
         }
@@ -61,7 +59,7 @@ public:
           // Pass the update along by returning the key above.
           return ch;
         } catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
           this->clear();
           this->refresh();
         }
@@ -87,12 +85,10 @@ private:
   std::shared_ptr<DB_Interface> db;
   /** @brief Handle to the low-level stopwatch element. */
   StopwatchNcurses stopwatch;
-  /** @brief Handle to the status bar. */
-  std::shared_ptr<StatusBarNCurses> status;
 
   /** @brief Rename a field in the entry in staging. */
   void rename_item() {
-    auto new_str = status->get_user_string();
+    auto new_str = status().get_user_string();
     auto field_type = stopwatch.get_field_type();
     switch (field_type) {
     case EntryField::project_name:

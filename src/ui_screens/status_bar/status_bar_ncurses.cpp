@@ -1,5 +1,10 @@
 #include "status_bar_ncurses.h"
 
+StatusBarNCurses& StatusBarNCurses::get() {
+  static StatusBarNCurses instance;
+  return instance;
+}
+
 StatusBarNCurses::StatusBarNCurses()
   : BarNCurses(WindowPosition::bottom, WindowFormat::line) {}
 
@@ -19,3 +24,5 @@ bool StatusBarNCurses::query_confirmation(const std::string &msg) {
     return false;
   }
 }
+
+StatusBarNCurses &status() { return StatusBarNCurses::get(); }

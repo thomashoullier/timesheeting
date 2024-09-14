@@ -15,10 +15,8 @@ template <typename T_DB,
 class LocationsScreen : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit LocationsScreen(std::shared_ptr<T_DB> _db,
-                           std::shared_ptr<StatusBarNCurses> _status)
+  explicit LocationsScreen(std::shared_ptr<T_DB> _db)
     : db(std::static_pointer_cast<DB_Interface>(_db)),
-      status(_status),
       location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
                                                       WindowPosition::left)),
       show_only_active(true) {
@@ -32,7 +30,7 @@ public:
   char input_loop () override {
     location_col->set_border();
     while(true) {
-      status->print(location_col->get_current_item_string());
+      status().print(location_col->get_current_item_string());
       auto ch = location_col->get_input();
       switch(ch) {
       case 'n':
@@ -46,7 +44,7 @@ public:
           add_item();
         }
         catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
       case 'r':
@@ -54,7 +52,7 @@ public:
           rename_item();
         }
         catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
       case 'x':
@@ -62,7 +60,7 @@ public:
           remove_item();
         }
         catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
         }
         break;
       case 'b':
@@ -81,8 +79,6 @@ public:
 private:
   /** @brief Interface to the DB. */
   std::shared_ptr<DB_Interface> db;
-  /** @brief Interface to the status bar. */
-  std::shared_ptr<StatusBarNCurses> status;
   /** @brief Column holding the locations. */
   std::unique_ptr<Column<Location>> location_col;
   /** @brief Whether to show only active items. */
@@ -101,7 +97,7 @@ private:
 
   /** @brief Add an item to the column. */
   void add_item () {
-    auto new_item_name = status->get_user_string();
+    auto new_item_name = status().get_user_string();
     if (new_item_name.empty())
       return;
     db->add_location(new_item_name);
@@ -113,7 +109,7 @@ private:
   void rename_item () {
     try {
       auto id = location_col->get_current_id();
-      auto new_item_name = status->get_user_string();
+      auto new_item_name = status().get_user_string();
       if (new_item_name.empty())
         return;
       db->edit_location_name(id, new_item_name);
@@ -129,7 +125,7 @@ private:
   void remove_item() {
     try {
       auto id = location_col->get_current_id();
-      bool user_conf = status->query_confirmation("Remove item? (Y/N)");
+      bool user_conf = status().query_confirmation("Remove item? (Y/N)");
       if (!user_conf)
         return;
       db->delete_location(id);

@@ -11,15 +11,11 @@ template <typename T_DB,
           typename = std::enable_if_t<std::is_base_of_v<DB_Interface, T_DB>>>
 class WeeklyReportScreen : public UIComponent {
 public:
-  explicit WeeklyReportScreen(std::shared_ptr<T_DB> _db,
-                              std::shared_ptr<StatusBarNCurses> _status)
+  explicit WeeklyReportScreen(std::shared_ptr<T_DB> _db)
     : db(std::static_pointer_cast<DB_Interface>(_db)),
-      status(_status),
       date_selector(DateSelectorNcurses(DateRange(Date(DatePoint::WeekBegin),
                                                   Date(DatePoint::WeekEnd)))),
-      reg(db->report_weekly_totals(date_selector.current_range().start),
-          _status)
-  {};
+      reg(db->report_weekly_totals(date_selector.current_range().start)) {};
 
   char input_loop() override {
     while(true) {
@@ -58,7 +54,6 @@ public:
 
 private:
   std::shared_ptr<DB_Interface> db;
-  std::shared_ptr<StatusBarNCurses> status;
   /** @brief Handle to the date range selector. */
   DateSelectorNcurses date_selector;
   /** @brief Register displaying the weekly totals*/

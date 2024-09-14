@@ -4,12 +4,11 @@
 
 UI::UI()
   : db(std::make_shared<DB_SQLite>("timesheeting.db")),
-    status_bar(std::make_shared<StatusBarNCurses>()),
-    projects_screen(db, status_bar),
-    locations_screen(db, status_bar),
-    entries_screen(db, status_bar),
-    project_report_screen(db, status_bar),
-    weekly_report_screen(db, status_bar) {
+    projects_screen(db),
+    locations_screen(db),
+    entries_screen(db),
+    project_report_screen(db),
+    weekly_report_screen(db) {
   logger().log("timesheeting UI initialized.");
 }
 

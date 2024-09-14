@@ -23,10 +23,8 @@ template <typename T_DB,
 class EntriesTable : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit EntriesTable(std::shared_ptr<T_DB> _db,
-                        std::shared_ptr<StatusBarNCurses> _status)
+  explicit EntriesTable(std::shared_ptr<T_DB> _db)
       : db(std::static_pointer_cast<DB_Interface>(_db)),
-        status(_status),
         date_selector(),
         total_bar(db->query_entries_duration(date_selector.current_range())),
         reg(db->query_entries(date_selector.current_range())) {};
@@ -34,7 +32,7 @@ public:
   char input_loop() override {
     reg.set_border();
     while (true) {
-      status->print(reg.get_current_item_string());
+      status().print(reg.get_current_item_string());
       auto ch = reg.get_input();
       switch (ch) {
       case 'n':
@@ -57,11 +55,11 @@ public:
           rename_item();
           update();
         } catch (DBLogicExcept &e) {
-          status->print_wait("DB logic error! Nothing was done to the DB.");
+          status().print_wait("DB logic error! Nothing was done to the DB.");
           this->clear();
           this->refresh();
         } catch (DateParsingFailure &e) {
-          status->print_wait("Failed to parse the date. Do nothing.");
+          status().print_wait("Failed to parse the date. Do nothing.");
           this->clear();
           this->refresh();
         }
@@ -115,8 +113,6 @@ public:
 private:
   /** @brief Handle to the DB. */
   std::shared_ptr<DB_Interface> db;
-  /** @brief Handle to the status bar. */
-  std::shared_ptr<StatusBarNCurses> status;
   /** @brief Handle to the date range selector. */
   DateSelectorNcurses date_selector;
   /** @brief Handle to the total duration display. */
@@ -128,7 +124,7 @@ private:
   void rename_item() {
     //TODO: manage the case where the register is empty.
     auto id = reg.get_current_id();
-    auto new_str = status->get_user_string();
+    auto new_str = status().get_user_string();
     auto field_type = reg.get_field_type();
     switch (field_type) {
     case EntryField::project_name: {
@@ -157,7 +153,7 @@ private:
 
   /** @brief Remove an entry in the register. */
   void remove_item() {
-    bool user_conf = status->query_confirmation("Remove entry? (Y/N)");
+    bool user_conf = status().query_confirmation("Remove entry? (Y/N)");
     if (!user_conf) {
       return;
     }

@@ -13,17 +13,14 @@ template <typename T_DB,
           typename = std::enable_if_t<std::is_base_of_v<DB_Interface, T_DB>>>
 class ProjectReportScreen : public UIComponent {
 public:
-  explicit ProjectReportScreen(std::shared_ptr<T_DB> _db,
-                               std::shared_ptr<StatusBarNCurses> _status)
+  explicit ProjectReportScreen(std::shared_ptr<T_DB> _db)
     : db(std::static_pointer_cast<DB_Interface>(_db)),
-      status(_status),
-      period_selector_ui(PeriodSelectorUI(_status)),
+      period_selector_ui(PeriodSelectorUI()),
       total_bar(db->query_entries_duration
                 (period_selector_ui.get_current_date_range())),
       reg(ProjectTotalsRegister
           (db->report_project_totals
-           (period_selector_ui.get_current_date_range()),
-           _status))
+           (period_selector_ui.get_current_date_range())))
   {};
 
   char input_loop() override {
@@ -69,7 +66,6 @@ public:
 
 private:
   std::shared_ptr<DB_Interface>  db;
-  std::shared_ptr<StatusBarNCurses> status;
   PeriodSelectorUI period_selector_ui;
   TotalBar total_bar;
   ProjectTotalsRegister reg;
