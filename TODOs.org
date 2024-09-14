@@ -354,13 +354,15 @@ The date parsing we are doing is wrong. We hardcoded the current dst
 in our location to make it work.
 We could wait for gcc 14 to have the proper C++20 feature to do this.
 
-*** TODO Make the DB a singleton
+*** DONE Make the DB a singleton
+CLOSED: [2024-09-14 Sat 15:20]
 ADDED: [2024-09-01 Sun]
 We can do it in the same fashion as logger. A top file selects the db
 implementation.
 This will avoid making the UI classes templates.
 
-*** TODO Make the status bar a singleton
+*** DONE Make the status bar a singleton
+CLOSED: [2024-09-14 Sat 15:20]
 ADDED: [2024-09-01 Sun]
 We have a single status bar for the whole program. It makes sense
 to share it with a singleton mechanism instead of passing a handle
@@ -504,3 +506,14 @@ Maybe use the fact that ncurses menus allow items to be selectable or not
 with a different face?
 + [2024-09-14 Sat] The project lines are now in bold thanks to being non-selectable
   in ncurses.
+
+*** TODO Refactor db_sqlite
+ADDED: [2024-09-14 Sat]
+Put the statements away in another class which prepares them and destroys them,
+as well as bind things to them, step them, reset them.
++ We can get smart with the binding and stepping. These can be variadic somehow
+  to bind or return variables of any types in order.
+  Ideally we want to bind with: ~bind(statement, arg1, arg2, arg3, ...)~
+  and retrieve results with: ~res1, res2, res3 = step(statement)~
++ It seems this is indeed possible:
+  https://www.murrayc.com/permalink/2015/12/05/modern-c-variadic-template-parameters-and-tuples/

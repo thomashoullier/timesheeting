@@ -10,6 +10,7 @@
 #include "../data_objects/project_total.h"
 #include "../data_objects/weekly_totals.h"
 #include "db_sqlite_handle.h"
+#include "statement_set.h"
 #include <algorithm>
 #include <iterator>
 
@@ -64,33 +65,30 @@ public:
   void edit_entry_stop(Id entry_id, const Date &new_stop_date);
   void edit_entry_location(Id entry_id,
                            const std::string &new_location_name);
-  void edit_entrystaging_project_name
-      (const std::string &new_project_name);
+  void edit_entrystaging_project_name (const std::string &new_project_name);
   void edit_entrystaging_task_name(const std::string &new_task_name);
   void edit_entrystaging_start(const Date &new_start);
   void edit_entrystaging_stop(const Date &new_stop);
-  void edit_entrystaging_location_name
-      (const std::string &new_location_name);
+  void edit_entrystaging_location_name (const std::string &new_location_name);
   void delete_task(Id task_id);
   void delete_project(Id project_id);
   void delete_location (Id location_id);
   void delete_entry(Id entry_id);
   void commit_entrystaging();
-  std::vector<ProjectTotal> report_project_totals(const DateRange &date_range)
-   ;
+  std::vector<ProjectTotal> report_project_totals(const DateRange &date_range);
   WeeklyTotals report_weekly_totals (const Date &first_day_start);
 
 private:
   /** @brief Open the DB handle. */
   DB_SQLite(const std::filesystem::path &db_file);
   /** @brief Low-level handle to the DB. */
-  DB_SQLite_Handle sqlite_db;
+  std::shared_ptr<DB_SQLite_Handle> sqlite_db;
+  /** @brief Set of all used SQLite statements. */
+  StatementSet statements;
   /** @brief Statement for querying the projects list. */
   sqlite3_stmt *select_projects;
   /** @brief Statement for querying the list of active projects. */
   sqlite3_stmt *select_projects_active;
-  /** @brief Statement for querying the list of tasks for a given project. */
-  sqlite3_stmt *select_tasks;
   /** @brief Statement for querying the list of active tasks for a given
       project. */
   sqlite3_stmt *select_tasks_active;
