@@ -6,20 +6,17 @@
 #include "status_bar/status_bar_ncurses.h"
 #include "total_bar/total_bar.h"
 #include "ui_component.h"
-#include "../db_interface.h"
+#include "../db/db_sqlite.h"
 #include <memory>
 
-template <typename T_DB,
-          typename = std::enable_if_t<std::is_base_of_v<DB_Interface, T_DB>>>
 class ProjectReportScreen : public UIComponent {
 public:
-  explicit ProjectReportScreen(std::shared_ptr<T_DB> _db)
-    : db(std::static_pointer_cast<DB_Interface>(_db)),
-      period_selector_ui(PeriodSelectorUI()),
-      total_bar(db->query_entries_duration
+  explicit ProjectReportScreen()
+    : period_selector_ui(PeriodSelectorUI()),
+      total_bar(db().query_entries_duration
                 (period_selector_ui.get_current_date_range())),
       reg(ProjectTotalsRegister
-          (db->report_project_totals
+          (db().report_project_totals
            (period_selector_ui.get_current_date_range())))
   {};
 
@@ -58,14 +55,13 @@ public:
   void update() override {
     period_selector_ui.update();
     auto cur_range = period_selector_ui.get_current_date_range();
-    auto overall_duration = db->query_entries_duration(cur_range);
+    auto overall_duration = db().query_entries_duration(cur_range);
     total_bar.update(overall_duration);
-    reg.set_items(db->report_project_totals(cur_range));
+    reg.set_items(db().report_project_totals(cur_range));
     reg.update();
   };
 
 private:
-  std::shared_ptr<DB_Interface>  db;
   PeriodSelectorUI period_selector_ui;
   TotalBar total_bar;
   ProjectTotalsRegister reg;

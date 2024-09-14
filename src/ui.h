@@ -26,18 +26,16 @@ public:
 private:
   /** @brief Handle to the top ncurses management. */
   NcursesHandle ncurses_handle;
-  /** @brief SQLite DB interface. */
-  std::shared_ptr<DB_SQLite> db;
   /** @brief Screen for the project/task definition. */
-  ProjectTaskScreen<DB_SQLite> projects_screen;
+  ProjectTaskScreen projects_screen;
   /** @brief Screen for the locations definition. */
-  LocationsScreen<DB_SQLite> locations_screen;
+  LocationsScreen locations_screen;
   /** @brief Screen for the table of entries. */
-  EntriesScreen<DB_SQLite> entries_screen;
+  EntriesScreen entries_screen;
   /** @brief Screen for the project totals report. */
-  ProjectReportScreen<DB_SQLite> project_report_screen;
+  ProjectReportScreen project_report_screen;
   /** @brief Weekly report. */
-  WeeklyReportScreen<DB_SQLite> weekly_report_screen;
+  WeeklyReportScreen weekly_report_screen;
 };
 
 #endif // UI_H

@@ -3,12 +3,11 @@
 #include "ui_screens/project_report_screen.h"
 
 UI::UI()
-  : db(std::make_shared<DB_SQLite>("timesheeting.db")),
-    projects_screen(db),
-    locations_screen(db),
-    entries_screen(db),
-    project_report_screen(db),
-    weekly_report_screen(db) {
+  : projects_screen(),
+    locations_screen(),
+    entries_screen(),
+    project_report_screen(),
+    weekly_report_screen() {
   logger().log("timesheeting UI initialized.");
 }
 

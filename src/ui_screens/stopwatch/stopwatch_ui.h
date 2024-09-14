@@ -5,20 +5,16 @@
 
 #include "../ui_component.h"
 #include "stopwatch_ncurses.h"
-#include "../../db_interface.h"
+#include "../../db/db_sqlite.h"
 #include "../status_bar/status_bar_ncurses.h"
 #include <memory>
 
 /** @brief High-level UI for the stopwatch. */
-template <typename T_DB,
-          typename =
-              std::enable_if_t<std::is_base_of<DB_Interface, T_DB>::value>>
 class StopwatchUI : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit StopwatchUI (std::shared_ptr<T_DB> _db)
-    : db(std::static_pointer_cast<DB_Interface>(_db)),
-      stopwatch(db->query_entrystaging()) {};
+  explicit StopwatchUI ()
+    : stopwatch(db().query_entrystaging()) {};
 
   char input_loop() override {
     stopwatch.set_border();
@@ -52,9 +48,9 @@ public:
         break;
       case '\n':
         try {
-          db->commit_entrystaging();
+          db().commit_entrystaging();
           Date now_start;
-          db->edit_entrystaging_start(now_start);
+          db().edit_entrystaging_start(now_start);
           update();
           // Pass the update along by returning the key above.
           return ch;
@@ -75,14 +71,12 @@ public:
   void clear() override { stopwatch.clear(); };
 
   void update() override {
-    EntryStaging entry_staging = db->query_entrystaging();
+    EntryStaging entry_staging = db().query_entrystaging();
     stopwatch.set_items(entry_staging);
     stopwatch.refresh();
   };
 
 private:
-  /** @brief Handle to the DB. */
-  std::shared_ptr<DB_Interface> db;
   /** @brief Handle to the low-level stopwatch element. */
   StopwatchNcurses stopwatch;
 
@@ -92,21 +86,21 @@ private:
     auto field_type = stopwatch.get_field_type();
     switch (field_type) {
     case EntryField::project_name:
-      db->edit_entrystaging_project_name(new_str);
+      db().edit_entrystaging_project_name(new_str);
       break;
     case EntryField::task_name:
-      db->edit_entrystaging_task_name(new_str);
+      db().edit_entrystaging_task_name(new_str);
       break;
     case EntryField::start: {
       Date new_start_date(new_str);
-      db->edit_entrystaging_start(new_start_date);
+      db().edit_entrystaging_start(new_start_date);
     } break;
     case EntryField::stop: {
       Date new_stop_date(new_str);
-      db->edit_entrystaging_stop(new_stop_date);
+      db().edit_entrystaging_stop(new_stop_date);
     } break;
     case EntryField::location_name: {
-      db->edit_entrystaging_location_name(new_str);
+      db().edit_entrystaging_location_name(new_str);
     } break;
     default:
       throw std::logic_error("Don't know what to do for renaming this unknown "
@@ -120,11 +114,11 @@ private:
     switch(field_type) {
     case EntryField::start: {
       Date now_start;
-      db->edit_entrystaging_start(now_start);
+      db().edit_entrystaging_start(now_start);
     } break;
     case EntryField::stop: {
       Date now_stop;
-      db->edit_entrystaging_stop(now_stop);
+      db().edit_entrystaging_stop(now_stop);
     } break;
     default:
       return;

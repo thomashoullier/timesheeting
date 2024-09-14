@@ -5,7 +5,7 @@
 
 #include "column/column.h"
 #include "../data_objects/data_objects.h"
-#include "../db_interface.h"
+#include "../db/db_sqlite.h"
 #include "../logger/logger.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "ui_component.h"
@@ -13,16 +13,11 @@
 #include <memory>
 
 /** @brief Projects and tasks UI screen. */
-template <typename T_DB,
-          typename = std::enable_if_t<
-            std::is_base_of<DB_Interface, T_DB>::value>>
 class ProjectTaskScreen : public UIComponent {
 public:
   /** @brief Table constructor. */
-  explicit ProjectTaskScreen(std::shared_ptr<T_DB> _db)
-      : db(std::static_pointer_cast<DB_Interface>(_db)),
-        project_col(
-                    std::make_unique<Column<Project>>(std::vector<Project>(),
+  explicit ProjectTaskScreen()
+      : project_col(std::make_unique<Column<Project>>(std::vector<Project>(),
                                                       WindowPosition::left)),
         task_col(std::make_unique<Column<Task>>(std::vector<Task>(),
                                                 WindowPosition::middle)),
@@ -114,8 +109,6 @@ public:
   };
 
 private:
-  /** @brief Interface to the DB. */
-  std::shared_ptr<DB_Interface> db;
   /** @brief Column for projects. */
   std::unique_ptr<Column<Project>> project_col;
   /** @brief Column for tasks. */
@@ -129,9 +122,9 @@ private:
       Id cur_project = project_col->get_current_id();
       std::vector<Task> task_items;
       if (show_only_active)
-        task_items = db->query_tasks_active(cur_project);
+        task_items = db().query_tasks_active(cur_project);
       else
-        task_items = db->query_tasks(cur_project);
+        task_items = db().query_tasks(cur_project);
       task_col->set_items(task_items);
       task_col->refresh();
     } catch (MenuEmpty &e) {
@@ -143,9 +136,9 @@ private:
   void update_project_col() {
     std::vector<Project> project_items;
     if (show_only_active)
-      project_items = db->query_projects_active();
+      project_items = db().query_projects_active();
     else
-      project_items = db->query_projects();
+      project_items = db().query_projects();
     project_col->set_items(project_items);
     project_col->refresh();
   }
@@ -155,13 +148,13 @@ private:
     auto new_item_name = status().get_user_string();
     if (!new_item_name.empty()) {
       if (cur_col == project_col.get()) {
-        db->add_project(new_item_name);
+        db().add_project(new_item_name);
         logger().log("Added project: " + new_item_name);
         update_project_col();
       } else if (cur_col == task_col.get()) {
         try {
           auto project_id = project_col->get_current_id();
-          db->add_task(project_id, new_item_name);
+          db().add_task(project_id, new_item_name);
           logger().log("Added task: " + new_item_name);
           update_task_col();
         } catch (MenuEmpty &e) {
@@ -178,10 +171,10 @@ private:
       auto new_item_name = status().get_user_string();
       if (!new_item_name.empty()) {
         if (cur_col == project_col.get()) {
-          db->edit_project_name(id, new_item_name);
+          db().edit_project_name(id, new_item_name);
           update_project_col();
         } else if (cur_col == task_col.get()) {
-          db->edit_task_name(id, new_item_name);
+          db().edit_task_name(id, new_item_name);
           update_task_col();
         }
       }
@@ -199,10 +192,10 @@ private:
         return;
       }
       if (cur_col == task_col.get()) {
-        db->delete_task(id);
+        db().delete_task(id);
         update_task_col();
       } else if (cur_col == project_col.get()) {
-        db->delete_project(id);
+        db().delete_project(id);
         update_project_col();
         update_task_col();
       }
@@ -216,10 +209,10 @@ private:
     try {
       auto id = cur_col ->get_current_id();
       if (cur_col == task_col.get()) {
-        db->toggle_task_active(id);
+        db().toggle_task_active(id);
         update_task_col();
       } else if (cur_col == project_col.get()) {
-        db->toggle_project_active(id);
+        db().toggle_project_active(id);
         update_project_col();
         update_task_col();
       }

@@ -3,64 +3,86 @@
 #ifndef DB_SQLITE_H
 #define DB_SQLITE_H
 
-#include "../db_interface.h"
+#include <exception>
+#include <string>
+#include "../data_objects/data_objects.h"
+#include "../data_objects/date_range.h"
+#include "../data_objects/project_total.h"
+#include "../data_objects/weekly_totals.h"
 #include "db_sqlite_handle.h"
 #include <algorithm>
 #include <iterator>
 
-/** @brief DB implementation using SQLite3. */
-class DB_SQLite : public DB_Interface {
+/** @brief Exception thrown when the DB encounters a logic error. */
+class DBLogicExcept : public std::exception {
+private:
+  /** @brief Exception message. */
+  std::string msg;
+
 public:
-  /** @brief Open the DB handle. */
-  DB_SQLite(const std::filesystem::path &db_file);
+  /** @brief Exception constructor. */
+  DBLogicExcept (const char* _msg) : msg(_msg) {}
+  /** @brief Mandatory std::exception method. */
+  const char* what() const throw() {
+    return msg.c_str();
+  }
+};
+
+/** @brief DB implementation using SQLite3. */
+class DB_SQLite {
+public:
+  /** @brief Grab the DB singleton. */
+  static DB_SQLite& get();
   /** @brief Finalize persistent statements etc. */
   ~DB_SQLite();
 
-  std::vector<Project> query_projects() override;
-  std::vector<Project> query_projects_active() override;
-  std::vector<Task> query_tasks(Id project_id) override;
-  std::vector<Task> query_tasks_active(Id project_id) override;
-  std::vector<Location> query_locations() override;
-  std::vector<Location> query_locations_active() override;
-  std::vector<Entry> query_entries(const DateRange &date_range) override;
-  Duration query_entries_duration(const DateRange &date_range) override;
-  EntryStaging query_entrystaging () override;
-  void add_project(std::string project_name) override;
-  void add_task(Id project_id, std::string task_name) override;
-  void add_location(const std::string &location_name) override;
+  std::vector<Project> query_projects();
+  std::vector<Project> query_projects_active();
+  std::vector<Task> query_tasks(Id project_id);
+  std::vector<Task> query_tasks_active(Id project_id);
+  std::vector<Location> query_locations();
+  std::vector<Location> query_locations_active();
+  std::vector<Entry> query_entries(const DateRange &date_range);
+  Duration query_entries_duration(const DateRange &date_range);
+  EntryStaging query_entrystaging ();
+  void add_project(std::string project_name);
+  void add_task(Id project_id, std::string task_name);
+  void add_location(const std::string &location_name);
   void add_entry(Id task_id, const Date &start, const Date &stop,
-                 Id location_id) override;
-  void edit_project_name(Id project_id, std::string new_project_name) override;
-  void edit_task_name(Id task_id, std::string new_task_name) override;
+                 Id location_id);
+  void edit_project_name(Id project_id, std::string new_project_name);
+  void edit_task_name(Id task_id, std::string new_task_name);
   void edit_location_name(Id location_id,
-                          const std::string &new_location_name) override;
-  void toggle_location_active(Id location_id) override;
-  void toggle_task_active(Id task_id) override;
-  void toggle_project_active(Id project_id) override;
+                          const std::string &new_location_name);
+  void toggle_location_active(Id location_id);
+  void toggle_task_active(Id task_id);
+  void toggle_project_active(Id project_id);
   void edit_entry_project(Id entry_id,
-                          const std::string &new_project_name) override;
-  void edit_entry_task(Id entry_id, const std::string &new_task_name) override;
-  void edit_entry_start(Id entry_id, const Date &new_start_date) override;
-  void edit_entry_stop(Id entry_id, const Date &new_stop_date) override;
+                          const std::string &new_project_name);
+  void edit_entry_task(Id entry_id, const std::string &new_task_name);
+  void edit_entry_start(Id entry_id, const Date &new_start_date);
+  void edit_entry_stop(Id entry_id, const Date &new_stop_date);
   void edit_entry_location(Id entry_id,
-                           const std::string &new_location_name) override;
+                           const std::string &new_location_name);
   void edit_entrystaging_project_name
-      (const std::string &new_project_name) override;
-  void edit_entrystaging_task_name(const std::string &new_task_name) override;
-  void edit_entrystaging_start(const Date &new_start) override;
-  void edit_entrystaging_stop(const Date &new_stop) override;
+      (const std::string &new_project_name);
+  void edit_entrystaging_task_name(const std::string &new_task_name);
+  void edit_entrystaging_start(const Date &new_start);
+  void edit_entrystaging_stop(const Date &new_stop);
   void edit_entrystaging_location_name
-      (const std::string &new_location_name) override;
-  void delete_task(Id task_id) override;
-  void delete_project(Id project_id) override;
-  void delete_location (Id location_id) override;
-  void delete_entry(Id entry_id) override;
-  void commit_entrystaging() override;
+      (const std::string &new_location_name);
+  void delete_task(Id task_id);
+  void delete_project(Id project_id);
+  void delete_location (Id location_id);
+  void delete_entry(Id entry_id);
+  void commit_entrystaging();
   std::vector<ProjectTotal> report_project_totals(const DateRange &date_range)
-    override;
-  WeeklyTotals report_weekly_totals (const Date &first_day_start) override;
+   ;
+  WeeklyTotals report_weekly_totals (const Date &first_day_start);
 
 private:
+  /** @brief Open the DB handle. */
+  DB_SQLite(const std::filesystem::path &db_file);
   /** @brief Low-level handle to the DB. */
   DB_SQLite_Handle sqlite_db;
   /** @brief Statement for querying the projects list. */
@@ -180,5 +202,8 @@ private:
     return items;
   }
 };
+
+/** @brief Grab the DB. */
+DB_SQLite& db();
 
 #endif // DB_SQLITE_H

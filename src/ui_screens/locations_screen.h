@@ -4,22 +4,19 @@
 #include "column/column.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "ui_component.h"
-#include "../db_interface.h"
+#include "../db/db_sqlite.h"
 #include "../logger/logger.h"
 #include <memory>
 
 /** @brief Locations UI screen. */
-template <typename T_DB,
-          typename =
-              std::enable_if_t<std::is_base_of<DB_Interface, T_DB>::value>>
 class LocationsScreen : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit LocationsScreen(std::shared_ptr<T_DB> _db)
-    : db(std::static_pointer_cast<DB_Interface>(_db)),
-      location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
+  explicit LocationsScreen()
+    : location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
                                                       WindowPosition::left)),
       show_only_active(true) {
+    // TODO: initialize the column directly.
     update_location_col();
   };
 
@@ -77,8 +74,6 @@ public:
   };
 
 private:
-  /** @brief Interface to the DB. */
-  std::shared_ptr<DB_Interface> db;
   /** @brief Column holding the locations. */
   std::unique_ptr<Column<Location>> location_col;
   /** @brief Whether to show only active items. */
@@ -88,9 +83,9 @@ private:
   void update_location_col() {
     std::vector<Location> location_items;
     if (show_only_active)
-      location_items = db->query_locations_active();
+      location_items = db().query_locations_active();
     else
-      location_items = db->query_locations();
+      location_items = db().query_locations();
     location_col->set_items(location_items);
     location_col->refresh();
   };
@@ -100,7 +95,7 @@ private:
     auto new_item_name = status().get_user_string();
     if (new_item_name.empty())
       return;
-    db->add_location(new_item_name);
+    db().add_location(new_item_name);
     logger().log("Added location: " + new_item_name);
     update_location_col();
   };
@@ -112,7 +107,7 @@ private:
       auto new_item_name = status().get_user_string();
       if (new_item_name.empty())
         return;
-      db->edit_location_name(id, new_item_name);
+      db().edit_location_name(id, new_item_name);
       update_location_col();
     } catch (MenuEmpty &e) {
       // TODO: instead of managing this by exception, try to check if the column
@@ -128,7 +123,7 @@ private:
       bool user_conf = status().query_confirmation("Remove item? (Y/N)");
       if (!user_conf)
         return;
-      db->delete_location(id);
+      db().delete_location(id);
       update_location_col();
     } catch (MenuEmpty &e) {
       return;
@@ -139,7 +134,7 @@ private:
   void toggle_active_item () {
     try {
       auto id = location_col->get_current_id();
-      db->toggle_location_active(id);
+      db().toggle_location_active(id);
       update_location_col();
     } catch (MenuEmpty &e) {
       return;

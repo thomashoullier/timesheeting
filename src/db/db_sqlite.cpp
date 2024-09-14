@@ -5,6 +5,11 @@
 #include <string>
 #include "../logger/logger.h"
 
+DB_SQLite& DB_SQLite::get() {
+  static DB_SQLite instance ("timesheeting.db");
+  return instance;
+}
+
 DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   : sqlite_db (db_file) {
   this->create_projects_table();
@@ -890,3 +895,5 @@ void DB_SQLite::try_step_statement(sqlite3_stmt *stmt) {
     throw DBLogicExcept(msg.c_str());
   }
 }
+
+DB_SQLite& db() { return DB_SQLite::get(); }

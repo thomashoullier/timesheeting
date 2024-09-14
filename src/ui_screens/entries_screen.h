@@ -12,15 +12,12 @@
 
 
 /** @brief Entry UI screen. */
-template <typename T_DB,
-          typename =
-              std::enable_if_t<std::is_base_of<DB_Interface, T_DB>::value>>
 class EntriesScreen : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit EntriesScreen(std::shared_ptr<T_DB> _db)
-    : stopwatch_ui(std::make_unique<StopwatchUI<T_DB>>(_db)),
-      entries_table(std::make_unique<EntriesTable<T_DB>>(_db)) {};
+  explicit EntriesScreen()
+    : stopwatch_ui(std::make_unique<StopwatchUI>()),
+      entries_table(std::make_unique<EntriesTable>()) {};
 
   char input_loop() override {
     UIComponent *cur_focus {entries_table.get()};

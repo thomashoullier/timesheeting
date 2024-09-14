@@ -9,7 +9,7 @@
 #include "../data_objects/data_objects.h"
 #include "../data_objects/date.h"
 #include "date_selector/date_selector_ncurses.h"
-#include "../db_interface.h"
+#include "../db/db_sqlite.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "register/register_ncurses.h"
 #include "total_bar/total_bar.h"
@@ -17,17 +17,13 @@
 #include "../logger/logger.h"
 
 /** @brief Class for holding the table of entries for a given day. */
-template <typename T_DB,
-          typename = std::enable_if_t<
-            std::is_base_of<DB_Interface, T_DB>::value>>
 class EntriesTable : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit EntriesTable(std::shared_ptr<T_DB> _db)
-      : db(std::static_pointer_cast<DB_Interface>(_db)),
-        date_selector(),
-        total_bar(db->query_entries_duration(date_selector.current_range())),
-        reg(db->query_entries(date_selector.current_range())) {};
+  explicit EntriesTable()
+      : date_selector(),
+        total_bar(db().query_entries_duration(date_selector.current_range())),
+        reg(db().query_entries(date_selector.current_range())) {};
 
   char input_loop() override {
     reg.set_border();
@@ -72,7 +68,7 @@ public:
         update();
         date_selector.refresh();
         // TODO: superfluous update?
-        total_bar.update(db->query_entries_duration
+        total_bar.update(db().query_entries_duration
                          (date_selector.current_range()));
       } break;
       case ',': {
@@ -103,16 +99,14 @@ public:
   };
 
   void update() override {
-    auto entry_items = db->query_entries(date_selector.current_range());
+    auto entry_items = db().query_entries(date_selector.current_range());
     reg.set_items(entry_items);
     reg.refresh();
-    total_bar.update(db->query_entries_duration(date_selector.current_range()));
+    total_bar.update(db().query_entries_duration(date_selector.current_range()));
     total_bar.refresh();
   };
 
 private:
-  /** @brief Handle to the DB. */
-  std::shared_ptr<DB_Interface> db;
   /** @brief Handle to the date range selector. */
   DateSelectorNcurses date_selector;
   /** @brief Handle to the total duration display. */
@@ -128,22 +122,22 @@ private:
     auto field_type = reg.get_field_type();
     switch (field_type) {
     case EntryField::project_name: {
-      db->edit_entry_project(id, new_str);
+      db().edit_entry_project(id, new_str);
       break;
     }
     case EntryField::task_name: {
-      db->edit_entry_task(id, new_str);
+      db().edit_entry_task(id, new_str);
     } break;
     case EntryField::start: {
       Date new_start_date(new_str);
-      db->edit_entry_start(id, new_start_date);
+      db().edit_entry_start(id, new_start_date);
     } break;
     case EntryField::stop: {
       Date new_stop_date(new_str);
-      db->edit_entry_stop(id, new_stop_date);
+      db().edit_entry_stop(id, new_stop_date);
     } break;
     case EntryField::location_name: {
-      db->edit_entry_location(id, new_str);
+      db().edit_entry_location(id, new_str);
     } break;
     default:
       throw std::logic_error(
@@ -158,7 +152,7 @@ private:
       return;
     }
     auto id = reg.get_current_id();
-    db->delete_entry(id);
+    db().delete_entry(id);
     update();
   };
 };
