@@ -339,12 +339,13 @@ std::vector<Project> DB_SQLite::query_projects_active() {
 }
 
 std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
-  sqlite3_reset(statements.select_tasks.stmt);
-  sqlite3_bind_int64(statements.select_tasks.stmt, 1, project_id);
+  auto &stmt = statements.select_tasks;
+  sqlite3_reset(stmt.stmt);
+  stmt.bind_all(project_id);
   NameRows rows{};
-  while (sqlite3_step(statements.select_tasks.stmt) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(statements.select_tasks.stmt, 0);
-    auto name_internal = sqlite3_column_text(statements.select_tasks.stmt, 1);
+  while (sqlite3_step(stmt.stmt) == SQLITE_ROW) {
+    RowId id = sqlite3_column_int64(stmt.stmt, 0);
+    auto name_internal = sqlite3_column_text(stmt.stmt, 1);
     std::string name = reinterpret_cast<const char *>(name_internal);
     rows.push_back(std::make_pair(id, name));
   }
