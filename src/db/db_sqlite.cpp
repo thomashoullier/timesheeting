@@ -793,7 +793,8 @@ Duration DB_SQLite::report_task_duration(Id task_id,
 }
 
 WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
-  log("report_weekly_totals starting on: " + first_day_start.to_string());
+  logger().log("report_weekly_totals starting on: " +
+             first_day_start.to_string());
   WeeklyTotals totals;
   auto week_start = first_day_start;
   auto week_stop = week_start;

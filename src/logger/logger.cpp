@@ -52,17 +52,4 @@ std::string Logger::get_timestamp() {
   return timeString;
 }
 
-void log(const std::string &msg) {
-  auto *logger = &Logger::get();
-  logger->log(msg);
-}
-
-void tick() {
-  auto *logger = &Logger::get();
-  logger->tick();
-}
-
-void tock() {
-  auto *logger = &Logger::get();
-  logger->tock();
-}
+Logger& logger() { return Logger::get(); }

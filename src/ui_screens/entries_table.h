@@ -69,7 +69,8 @@ public:
       case '.': {
         date_selector.select_next_day();
         auto log_dates = date_selector.current_range().to_string();
-        log("Selected day range: " + log_dates.at(0) + " ; " + log_dates.at(1));
+        logger().log("Selected day range: " + log_dates.at(0) +
+                     " ; " + log_dates.at(1));
         update();
         date_selector.refresh();
         // TODO: superfluous update?
@@ -79,7 +80,8 @@ public:
       case ',': {
         date_selector.select_previous_day();
         auto log_dates = date_selector.current_range().to_string();
-        log("Selected day range: " + log_dates.at(0) + " ; " + log_dates.at(1));
+        logger().log("Selected day range: " + log_dates.at(0) +
+                     " ; " + log_dates.at(1));
         update();
         date_selector.refresh();
       } break;

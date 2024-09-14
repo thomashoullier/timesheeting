@@ -8,9 +8,9 @@ WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)
 WinNCurses::~WinNCurses() { destroy_window(); }
 
 char WinNCurses::get_input() {
-  tock();
+  logger().tock();
   auto ch = wgetch(win);
-  tick();
+  logger().tick();
   return ch;
 }
 

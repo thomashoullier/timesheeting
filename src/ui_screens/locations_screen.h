@@ -105,7 +105,7 @@ private:
     if (new_item_name.empty())
       return;
     db->add_location(new_item_name);
-    log("Added location: " + new_item_name);
+    logger().log("Added location: " + new_item_name);
     update_location_col();
   };
 

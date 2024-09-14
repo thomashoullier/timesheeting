@@ -10,7 +10,7 @@ UI::UI()
     entries_screen(db, status_bar),
     project_report_screen(db, status_bar),
     weekly_report_screen(db, status_bar) {
-  log("timesheeting UI initialized.");
+  logger().log("timesheeting UI initialized.");
 }
 
 UI::~UI() {}

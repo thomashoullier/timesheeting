@@ -33,11 +33,7 @@ private:
   std::string get_timestamp ();
 };
 
-/** @brief Grab the logger and call log(). */
-void log(const std::string &msg);
-/** @brief Grab the logger and call tick(). */
-void tick();
-/** @brief Grab the logger and call tock(). */
-void tock();
+/** @brief Grab the Logger. */
+Logger& logger();
 
 #endif // LOGGER_H

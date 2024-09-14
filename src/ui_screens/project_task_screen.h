@@ -160,13 +160,13 @@ private:
     if (!new_item_name.empty()) {
       if (cur_col == project_col.get()) {
         db->add_project(new_item_name);
-        log("Added project: " + new_item_name);
+        logger().log("Added project: " + new_item_name);
         update_project_col();
       } else if (cur_col == task_col.get()) {
         try {
           auto project_id = project_col->get_current_id();
           db->add_task(project_id, new_item_name);
-          log("Added task: " + new_item_name);
+          logger().log("Added task: " + new_item_name);
           update_task_col();
         } catch (MenuEmpty &e) {
           return;
