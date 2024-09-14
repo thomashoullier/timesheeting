@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: StopwatchUI&lt; T_DB, typename &gt; Class Template Reference</title>
+<title>timesheeting: StopwatchUI Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,7 +67,7 @@ $(function() {
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classStopwatchUI-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">StopwatchUI&lt; T_DB, typename &gt; Class Template Reference</div>  </div>
+<div class="title">StopwatchUI Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -76,69 +76,58 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="stopwatch__ui_8h_source.html">stopwatch_ui.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for StopwatchUI&lt; T_DB, typename &gt;:</div>
+Inheritance diagram for StopwatchUI:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classStopwatchUI.png" usemap="#StopwatchUI_3C_20T_5FDB_2C_20typename_20_3E_map" alt=""/>
-  <map id="StopwatchUI_3C_20T_5FDB_2C_20typename_20_3E_map" name="StopwatchUI_3C_20T_5FDB_2C_20typename_20_3E_map">
-<area href="classUIComponent.html" title="Interface class for a UI component." alt="UIComponent" shape="rect" coords="0,0,199,24"/>
+  <img src="classStopwatchUI.png" usemap="#StopwatchUI_map" alt=""/>
+  <map id="StopwatchUI_map" name="StopwatchUI_map">
+<area href="classUIComponent.html" title="Interface class for a UI component." alt="UIComponent" shape="rect" coords="0,0,86,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a598e16f98619bb5be4406835e20c6e3b"><td class="memItemLeft" align="right" valign="top"><a id="a598e16f98619bb5be4406835e20c6e3b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a598e16f98619bb5be4406835e20c6e3b">StopwatchUI</a> (std::shared_ptr&lt; T_DB &gt; _db, std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt; _status)</td></tr>
-<tr class="memdesc:a598e16f98619bb5be4406835e20c6e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
-<tr class="separator:a598e16f98619bb5be4406835e20c6e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a624d82274a6426b9770e7a3f5a1b0acb"><td class="memItemLeft" align="right" valign="top"><a id="a624d82274a6426b9770e7a3f5a1b0acb"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a624d82274a6426b9770e7a3f5a1b0acb">input_loop</a> () override</td></tr>
-<tr class="memdesc:a624d82274a6426b9770e7a3f5a1b0acb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a> input loop for the component. <br /></td></tr>
-<tr class="separator:a624d82274a6426b9770e7a3f5a1b0acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37557e1cc666e5079581752a5ac48c26"><td class="memItemLeft" align="right" valign="top"><a id="a37557e1cc666e5079581752a5ac48c26"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a37557e1cc666e5079581752a5ac48c26">refresh</a> () override</td></tr>
-<tr class="memdesc:a37557e1cc666e5079581752a5ac48c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the component's display. <br /></td></tr>
-<tr class="separator:a37557e1cc666e5079581752a5ac48c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75a6e511ece529f2528480c5dbd68627"><td class="memItemLeft" align="right" valign="top"><a id="a75a6e511ece529f2528480c5dbd68627"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a75a6e511ece529f2528480c5dbd68627">clear</a> () override</td></tr>
-<tr class="memdesc:a75a6e511ece529f2528480c5dbd68627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the component from the display. <br /></td></tr>
-<tr class="separator:a75a6e511ece529f2528480c5dbd68627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ec2168248a26b68505f2a28cd6c838c"><td class="memItemLeft" align="right" valign="top"><a id="a6ec2168248a26b68505f2a28cd6c838c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a6ec2168248a26b68505f2a28cd6c838c">update</a> () override</td></tr>
-<tr class="memdesc:a6ec2168248a26b68505f2a28cd6c838c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the state of the component to reflect the latest program state. <br /></td></tr>
-<tr class="separator:a6ec2168248a26b68505f2a28cd6c838c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac060caddfd3c6f1188272ca2e5593da"><td class="memItemLeft" align="right" valign="top"><a id="aac060caddfd3c6f1188272ca2e5593da"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#aac060caddfd3c6f1188272ca2e5593da">StopwatchUI</a> ()</td></tr>
+<tr class="memdesc:aac060caddfd3c6f1188272ca2e5593da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
+<tr class="separator:aac060caddfd3c6f1188272ca2e5593da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a73f3408407f1a068dc9b75d56c62ca"><td class="memItemLeft" align="right" valign="top"><a id="a1a73f3408407f1a068dc9b75d56c62ca"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a1a73f3408407f1a068dc9b75d56c62ca">input_loop</a> () override</td></tr>
+<tr class="memdesc:a1a73f3408407f1a068dc9b75d56c62ca"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a> input loop for the component. <br /></td></tr>
+<tr class="separator:a1a73f3408407f1a068dc9b75d56c62ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61902b3f783578222e8c923e716d904"><td class="memItemLeft" align="right" valign="top"><a id="aa61902b3f783578222e8c923e716d904"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#aa61902b3f783578222e8c923e716d904">refresh</a> () override</td></tr>
+<tr class="memdesc:aa61902b3f783578222e8c923e716d904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the component's display. <br /></td></tr>
+<tr class="separator:aa61902b3f783578222e8c923e716d904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a702d48fac28895735ffcc4af8b0d0918"><td class="memItemLeft" align="right" valign="top"><a id="a702d48fac28895735ffcc4af8b0d0918"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a702d48fac28895735ffcc4af8b0d0918">clear</a> () override</td></tr>
+<tr class="memdesc:a702d48fac28895735ffcc4af8b0d0918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the component from the display. <br /></td></tr>
+<tr class="separator:a702d48fac28895735ffcc4af8b0d0918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d95d320c5723aa725683f320fad90d"><td class="memItemLeft" align="right" valign="top"><a id="a91d95d320c5723aa725683f320fad90d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a91d95d320c5723aa725683f320fad90d">update</a> () override</td></tr>
+<tr class="memdesc:a91d95d320c5723aa725683f320fad90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the state of the component to reflect the latest program state. <br /></td></tr>
+<tr class="separator:a91d95d320c5723aa725683f320fad90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a782d41cee36cf1a97bde24b2447df19a"><td class="memItemLeft" align="right" valign="top"><a id="a782d41cee36cf1a97bde24b2447df19a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a782d41cee36cf1a97bde24b2447df19a">rename_item</a> ()</td></tr>
-<tr class="memdesc:a782d41cee36cf1a97bde24b2447df19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename a field in the entry in staging. <br /></td></tr>
-<tr class="separator:a782d41cee36cf1a97bde24b2447df19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28f45b80d005ebc25ce1c289c8c9ca08"><td class="memItemLeft" align="right" valign="top"><a id="a28f45b80d005ebc25ce1c289c8c9ca08"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a28f45b80d005ebc25ce1c289c8c9ca08">set_current_now</a> ()</td></tr>
-<tr class="memdesc:a28f45b80d005ebc25ce1c289c8c9ca08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current field, if it is a date, to now(). <br /></td></tr>
-<tr class="separator:a28f45b80d005ebc25ce1c289c8c9ca08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae960d2ff8d6cc51d4dcf41cb3233e1d1"><td class="memItemLeft" align="right" valign="top"><a id="ae960d2ff8d6cc51d4dcf41cb3233e1d1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#ae960d2ff8d6cc51d4dcf41cb3233e1d1">rename_item</a> ()</td></tr>
+<tr class="memdesc:ae960d2ff8d6cc51d4dcf41cb3233e1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename a field in the entry in staging. <br /></td></tr>
+<tr class="separator:ae960d2ff8d6cc51d4dcf41cb3233e1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a6cf204705e2b66104002eb510a65a"><td class="memItemLeft" align="right" valign="top"><a id="a60a6cf204705e2b66104002eb510a65a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a60a6cf204705e2b66104002eb510a65a">set_current_now</a> ()</td></tr>
+<tr class="memdesc:a60a6cf204705e2b66104002eb510a65a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current field, if it is a date, to now(). <br /></td></tr>
+<tr class="separator:a60a6cf204705e2b66104002eb510a65a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a34ab3a24565a608d9411bbedd9770234"><td class="memItemLeft" align="right" valign="top"><a id="a34ab3a24565a608d9411bbedd9770234"></a>
-std::shared_ptr&lt; <a class="el" href="classDB__Interface.html">DB_Interface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#a34ab3a24565a608d9411bbedd9770234">db</a></td></tr>
-<tr class="memdesc:a34ab3a24565a608d9411bbedd9770234"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the DB. <br /></td></tr>
-<tr class="separator:a34ab3a24565a608d9411bbedd9770234"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af02bc0cb9cf46d7cb6880412b05573a6"><td class="memItemLeft" align="right" valign="top"><a id="af02bc0cb9cf46d7cb6880412b05573a6"></a>
-<a class="el" href="classStopwatchNcurses.html">StopwatchNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#af02bc0cb9cf46d7cb6880412b05573a6">stopwatch</a></td></tr>
-<tr class="memdesc:af02bc0cb9cf46d7cb6880412b05573a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the low-level stopwatch element. <br /></td></tr>
-<tr class="separator:af02bc0cb9cf46d7cb6880412b05573a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac251b7017a0986d1b22576560b2985fe"><td class="memItemLeft" align="right" valign="top"><a id="ac251b7017a0986d1b22576560b2985fe"></a>
-std::shared_ptr&lt; <a class="el" href="classStatusBarNCurses.html">StatusBarNCurses</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#ac251b7017a0986d1b22576560b2985fe">status</a></td></tr>
-<tr class="memdesc:ac251b7017a0986d1b22576560b2985fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the status bar. <br /></td></tr>
-<tr class="separator:ac251b7017a0986d1b22576560b2985fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af63374d8c7eff44bb3b5375302ef2034"><td class="memItemLeft" align="right" valign="top"><a id="af63374d8c7eff44bb3b5375302ef2034"></a>
+<a class="el" href="classStopwatchNcurses.html">StopwatchNcurses</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStopwatchUI.html#af63374d8c7eff44bb3b5375302ef2034">stopwatch</a></td></tr>
+<tr class="memdesc:af63374d8c7eff44bb3b5375302ef2034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the low-level stopwatch element. <br /></td></tr>
+<tr class="separator:af63374d8c7eff44bb3b5375302ef2034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename T_DB, typename = std::enable_if_t&lt;std::is_base_of&lt;DB_Interface, T_DB&gt;::value&gt;&gt;<br />
-class StopwatchUI&lt; T_DB, typename &gt;</h3>
-
-<p>High-level <a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a> for the stopwatch. </p>
+<div class="textblock"><p>High-level <a class="el" href="classUI.html" title="Ncurses top-level UI for timesheeting.">UI</a> for the stopwatch. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/ui_screens/stopwatch/<a class="el" href="stopwatch__ui_8h_source.html">stopwatch_ui.h</a></li>
 </ul>

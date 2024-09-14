@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['file_84',['file',['../classLoggerFile.html#a76ba0529b72555db9ea17fbfea38fac7',1,'LoggerFile']]],
-  ['filter_5fwindow_5fformat_85',['filter_window_format',['../classBarNCurses.html#a17237e9ede1f75418749dba77b77aca3',1,'BarNCurses']]]
+  ['file_59',['file',['../classLogger.html#a5ca1a36e291c4e93f87cfd93260a0f3c',1,'Logger']]],
+  ['filter_5fwindow_5fformat_60',['filter_window_format',['../classBarNCurses.html#a17237e9ede1f75418749dba77b77aca3',1,'BarNCurses']]]
 ];

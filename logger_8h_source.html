@@ -70,19 +70,41 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="logger_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LOGGER_H</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LOGGER_H</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="logger_8h.html#a847d1647f541eb8a4dbcc9a801c72db6">log</a>(<span class="keyword">const</span> std::string &amp;msg);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="logger_8h.html#a873dd91783f9efb4a590aded1f70d6b0">tick</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="logger_8h.html#ae8035fedc35c1a5e6e44ef765d57bd98">tock</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LOGGER_H</span></div>
-<div class="ttc" id="alogger_8h_html_a847d1647f541eb8a4dbcc9a801c72db6"><div class="ttname"><a href="logger_8h.html#a847d1647f541eb8a4dbcc9a801c72db6">log</a></div><div class="ttdeci">void log(const std::string &amp;msg)</div><div class="ttdoc">Call an implementation of LoggerInterface::log().</div><div class="ttdef"><b>Definition:</b> logger.cpp:4</div></div>
-<div class="ttc" id="alogger_8h_html_a873dd91783f9efb4a590aded1f70d6b0"><div class="ttname"><a href="logger_8h.html#a873dd91783f9efb4a590aded1f70d6b0">tick</a></div><div class="ttdeci">void tick()</div><div class="ttdoc">Call an implementation of LoggerInterface::tick().</div><div class="ttdef"><b>Definition:</b> logger.cpp:9</div></div>
-<div class="ttc" id="alogger_8h_html_ae8035fedc35c1a5e6e44ef765d57bd98"><div class="ttname"><a href="logger_8h.html#ae8035fedc35c1a5e6e44ef765d57bd98">tock</a></div><div class="ttdeci">void tock()</div><div class="ttdoc">Call an implementation of LoggerInterface::tock().</div><div class="ttdef"><b>Definition:</b> logger.cpp:14</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef LOGGER_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define LOGGER_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classLogger.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLogger.html">Logger</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">static</span> <a class="code" href="classLogger.html">Logger</a>&amp; <a class="code" href="classLogger.html#a9b12ce53593be134b7d7dea62607d22d">get</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> log (<span class="keyword">const</span> std::string &amp;message);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">void</span> tick ();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> tock ();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classLogger.html#a5ca1a36e291c4e93f87cfd93260a0f3c">   24</a></span>&#160;  std::unique_ptr&lt;std::ofstream&gt; <a class="code" href="classLogger.html#a5ca1a36e291c4e93f87cfd93260a0f3c">file</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classLogger.html#a30974a96bf022d4fa694d34ea98cef43">   26</a></span>&#160;  std::chrono::high_resolution_clock::time_point <a class="code" href="classLogger.html#a30974a96bf022d4fa694d34ea98cef43">tick_point</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classLogger.html#aececfa75062cc69f9d0270a565b2d911">   28</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classLogger.html#aececfa75062cc69f9d0270a565b2d911">counting</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="classLogger.html#ac57339d496603747a053693a465c498e">Logger</a> (<span class="keyword">const</span> std::filesystem::path &amp;log_file_path);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  std::string <a class="code" href="classLogger.html#a9d23ad0e8ad8d5e02f705ebcdab33385">get_timestamp</a> ();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="classLogger.html">Logger</a>&amp; <a class="code" href="logger_8h.html#a958389afed44a9bd29974edd6b24d151">logger</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LOGGER_H</span></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="classLogger.html">Logger</a></div><div class="ttdoc">Logger implementation with a log file.</div><div class="ttdef"><b>Definition:</b> logger.h:14</div></div>
+<div class="ttc" id="aclassLogger_html_a30974a96bf022d4fa694d34ea98cef43"><div class="ttname"><a href="classLogger.html#a30974a96bf022d4fa694d34ea98cef43">Logger::tick_point</a></div><div class="ttdeci">std::chrono::high_resolution_clock::time_point tick_point</div><div class="ttdoc">Start time point for clocking durations.</div><div class="ttdef"><b>Definition:</b> logger.h:26</div></div>
+<div class="ttc" id="aclassLogger_html_a5ca1a36e291c4e93f87cfd93260a0f3c"><div class="ttname"><a href="classLogger.html#a5ca1a36e291c4e93f87cfd93260a0f3c">Logger::file</a></div><div class="ttdeci">std::unique_ptr&lt; std::ofstream &gt; file</div><div class="ttdoc">Handle to the log file for output.</div><div class="ttdef"><b>Definition:</b> logger.h:24</div></div>
+<div class="ttc" id="aclassLogger_html_a9b12ce53593be134b7d7dea62607d22d"><div class="ttname"><a href="classLogger.html#a9b12ce53593be134b7d7dea62607d22d">Logger::get</a></div><div class="ttdeci">static Logger &amp; get()</div><div class="ttdoc">Grab the log file singleton.</div><div class="ttdef"><b>Definition:</b> logger.cpp:7</div></div>
+<div class="ttc" id="aclassLogger_html_a9d23ad0e8ad8d5e02f705ebcdab33385"><div class="ttname"><a href="classLogger.html#a9d23ad0e8ad8d5e02f705ebcdab33385">Logger::get_timestamp</a></div><div class="ttdeci">std::string get_timestamp()</div><div class="ttdoc">Get the current date as a timestamp.</div><div class="ttdef"><b>Definition:</b> logger.cpp:46</div></div>
+<div class="ttc" id="aclassLogger_html_ac57339d496603747a053693a465c498e"><div class="ttname"><a href="classLogger.html#ac57339d496603747a053693a465c498e">Logger::Logger</a></div><div class="ttdeci">Logger(const std::filesystem::path &amp;log_file_path)</div><div class="ttdoc">Logger constructor using a file.</div><div class="ttdef"><b>Definition:</b> logger.cpp:38</div></div>
+<div class="ttc" id="aclassLogger_html_aececfa75062cc69f9d0270a565b2d911"><div class="ttname"><a href="classLogger.html#aececfa75062cc69f9d0270a565b2d911">Logger::counting</a></div><div class="ttdeci">bool counting</div><div class="ttdoc">Clock state.</div><div class="ttdef"><b>Definition:</b> logger.h:28</div></div>
+<div class="ttc" id="alogger_8h_html_a958389afed44a9bd29974edd6b24d151"><div class="ttname"><a href="logger_8h.html#a958389afed44a9bd29974edd6b24d151">logger</a></div><div class="ttdeci">Logger &amp; logger()</div><div class="ttdoc">Grab the Logger.</div><div class="ttdef"><b>Definition:</b> logger.cpp:55</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['counting_532',['counting',['../classLoggerFile.html#a80dd4cca41e6beeaecdaac3a3f226e76',1,'LoggerFile']]]
+  ['counting_451',['counting',['../classLogger.html#aececfa75062cc69f9d0270a565b2d911',1,'Logger']]]
 ];

@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['range_572',['range',['../classDateSelectorNcurses.html#a3961402fd2d927666c2e3bb94e812383',1,'DateSelectorNcurses']]],
-  ['reg_573',['reg',['../classEntriesTable.html#a95a7c9ca2f792be41e4e02f7c7a13f7b',1,'EntriesTable::reg()'],['../classWeeklyReportScreen.html#a707f620a7ef96815296f3389b6364861',1,'WeeklyReportScreen::reg()']]],
-  ['remove_5fentry_574',['remove_entry',['../classDB__SQLite.html#ae19da2567513d7e9c2b5463fa8c2934f',1,'DB_SQLite']]],
-  ['remove_5flocation_575',['remove_location',['../classDB__SQLite.html#a27e6a7711c3cf1c744027947f280c437',1,'DB_SQLite']]],
-  ['remove_5fproject_576',['remove_project',['../classDB__SQLite.html#aa66cec02974e3530009ee87af3ec2935',1,'DB_SQLite']]],
-  ['remove_5ftask_577',['remove_task',['../classDB__SQLite.html#abacabc0123b453b1a13d2dffe8842a50',1,'DB_SQLite']]]
+  ['range_491',['range',['../classDateSelectorNcurses.html#a3961402fd2d927666c2e3bb94e812383',1,'DateSelectorNcurses']]],
+  ['reg_492',['reg',['../classEntriesTable.html#a92a703039818f6756031bc9cb2b7713e',1,'EntriesTable::reg()'],['../classWeeklyReportScreen.html#a946c504d307267b978d475c696d4f0fe',1,'WeeklyReportScreen::reg()']]],
+  ['remove_5fentry_493',['remove_entry',['../classDB__SQLite.html#ae19da2567513d7e9c2b5463fa8c2934f',1,'DB_SQLite']]],
+  ['remove_5flocation_494',['remove_location',['../classDB__SQLite.html#a27e6a7711c3cf1c744027947f280c437',1,'DB_SQLite']]],
+  ['remove_5fproject_495',['remove_project',['../classDB__SQLite.html#aa66cec02974e3530009ee87af3ec2935',1,'DB_SQLite']]],
+  ['remove_5ftask_496',['remove_task',['../classDB__SQLite.html#abacabc0123b453b1a13d2dffe8842a50',1,'DB_SQLite']]]
 ];

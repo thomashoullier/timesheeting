@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: src/logger/logger.h File Reference</title>
+<title>timesheeting: Statement Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,45 +59,47 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ffde1fbcaa8d6b0d34e29c3bddf7a801.html">logger</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classStatement-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">logger.h File Reference</div>  </div>
+<div class="title">Statement Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classLogger.html" title="Logger implementation with a log file.">Logger</a> interface implementation with a log file.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
-<code>#include &lt;chrono&gt;</code><br />
-</div>
-<p><a href="logger_8h_source.html">Go to the source code of this file.</a></p>
+<p><a class="el" href="classStatement.html" title="Statement object.">Statement</a> object.  
+ <a href="classStatement.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="statement_8h_source.html">statement.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html">Logger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogger.html" title="Logger implementation with a log file.">Logger</a> implementation with a log file.  <a href="classLogger.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae0928f59a98d35f27b22e15b81fbc4e0"><td class="memItemLeft" align="right" valign="top"><a id="ae0928f59a98d35f27b22e15b81fbc4e0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatement.html#ae0928f59a98d35f27b22e15b81fbc4e0">Statement</a> (sqlite3_stmt *_stmt)</td></tr>
+<tr class="memdesc:ae0928f59a98d35f27b22e15b81fbc4e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
+<tr class="separator:ae0928f59a98d35f27b22e15b81fbc4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57fdfef84b5f92d83850f6467b46012a"><td class="memItemLeft" align="right" valign="top"><a id="a57fdfef84b5f92d83850f6467b46012a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatement.html#a57fdfef84b5f92d83850f6467b46012a">~Statement</a> ()</td></tr>
+<tr class="memdesc:a57fdfef84b5f92d83850f6467b46012a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
+<tr class="separator:a57fdfef84b5f92d83850f6467b46012a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a958389afed44a9bd29974edd6b24d151"><td class="memItemLeft" align="right" valign="top"><a id="a958389afed44a9bd29974edd6b24d151"></a>
-<a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a958389afed44a9bd29974edd6b24d151">logger</a> ()</td></tr>
-<tr class="memdesc:a958389afed44a9bd29974edd6b24d151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grab the <a class="el" href="classLogger.html" title="Logger implementation with a log file.">Logger</a>. <br /></td></tr>
-<tr class="separator:a958389afed44a9bd29974edd6b24d151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a3990a65769e59c37d7d3acf16afa29b0"><td class="memItemLeft" align="right" valign="top"><a id="a3990a65769e59c37d7d3acf16afa29b0"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatement.html#a3990a65769e59c37d7d3acf16afa29b0">stmt</a></td></tr>
+<tr class="memdesc:a3990a65769e59c37d7d3acf16afa29b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">SQLite statement. <br /></td></tr>
+<tr class="separator:a3990a65769e59c37d7d3acf16afa29b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classLogger.html" title="Logger implementation with a log file.">Logger</a> interface implementation with a log file. </p>
-</div></div><!-- contents -->
+<div class="textblock"><p><a class="el" href="classStatement.html" title="Statement object.">Statement</a> object. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/db/<a class="el" href="statement_8h_source.html">statement.h</a></li>
+<li>src/db/statement.cpp</li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

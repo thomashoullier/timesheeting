@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: src/db_interface.h File Reference</title>
+<title>timesheeting: StatementSet Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,42 +59,36 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classStatementSet-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">db_interface.h File Reference</div>  </div>
+<div class="title">StatementSet Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>DB virtual interface definition.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;exception&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &quot;<a class="el" href="data__objects_8h_source.html">data_objects/data_objects.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="date__range_8h_source.html">data_objects/date_range.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="project__total_8h_source.html">data_objects/project_total.h</a>&quot;</code><br />
-<code>#include &quot;data_objects/weekly_totals.h&quot;</code><br />
-</div>
-<p><a href="db__interface_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__Interface.html">DB_Interface</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual interface class for database.  <a href="classDB__Interface.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDBLogicExcept.html">DBLogicExcept</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception thrown when the DB encounters a logic error.  <a href="classDBLogicExcept.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a42cfa0626e2810f86c05c8365a9cbeae"><td class="memItemLeft" align="right" valign="top"><a id="a42cfa0626e2810f86c05c8365a9cbeae"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatementSet.html#a42cfa0626e2810f86c05c8365a9cbeae">StatementSet</a> (std::shared_ptr&lt; <a class="el" href="classDB__SQLite__Handle.html">DB_SQLite_Handle</a> &gt; sqlite_db)</td></tr>
+<tr class="memdesc:a42cfa0626e2810f86c05c8365a9cbeae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize all of the statements. <br /></td></tr>
+<tr class="separator:a42cfa0626e2810f86c05c8365a9cbeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a67d94278665ff88b7ff4beb2a4d99529"><td class="memItemLeft" align="right" valign="top"><a id="a67d94278665ff88b7ff4beb2a4d99529"></a>
+<a class="el" href="classStatement.html">Statement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatementSet.html#a67d94278665ff88b7ff4beb2a4d99529">select_tasks</a></td></tr>
+<tr class="memdesc:a67d94278665ff88b7ff4beb2a4d99529"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatement.html" title="Statement object.">Statement</a> for querying the list of tasks for a given project. <br /></td></tr>
+<tr class="separator:a67d94278665ff88b7ff4beb2a4d99529"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>DB virtual interface definition. </p>
-</div></div><!-- contents -->
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/db/<a class="el" href="statement__set_8h_source.html">statement_set.h</a></li>
+<li>src/db/statement_set.cpp</li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
