@@ -2,6 +2,7 @@
 #define WEEKLY_TOTALS_H
 
 #include "data_objects.h"
+#include "../ncurses/string_with_face.h"
 #include <array>
 #include <string>
 #include <vector>
@@ -41,7 +42,7 @@ struct WeeklyTotals {
   /** @brief Output the weekly totals to a set of strings, in order. */
   std::vector<std::string> to_strings() const;
   /** @brief Output the weekly totals to a set of shortstrings, in order. */
-  std::vector<std::string> to_shortstrings() const;
+  std::vector<StringWithFace> to_shortstrings() const;
 };
 
 #endif // WEEKLY_TOTALS_H

@@ -417,7 +417,7 @@ ADDED: [2024-09-02 Mon]
 ADDED: [2024-09-03 Tue]
 For instance, the queries for the list of tasks return a different
 order depending on active/archived. Enforce a consistent order between
-both. The choice which would make the most choice is to enforce an
+both. The choice which would make the most sense is to enforce an
 order by Id at the DB level.
 
 *** TODO Consider implementing an undo and redo
@@ -479,7 +479,8 @@ ADDED: [2024-09-08 Sun]
 Currently the columns have a set width which is too short. Make them occupy
 the screen width.
 
-*** TODO Center the items display in menus
+*** DEAD Center the items display in menus
+CLOSED: [2024-09-14 Sat 09:09]
 ADDED: [2024-09-08 Sun]
 
 *** TODO Refresh the reports whenever entries are updated
@@ -488,3 +489,18 @@ Refresh the reports when entries are updated. The project totals screen
 and weekly report are concerned.
 Perhaps implement something where the need for update is stored somewhere,
 and we actually update only when the user switches to the report.
+
+*** TODO Refactor: Use a class for calendar days and weeks
+ADDED: [2024-09-13 Fri]
+We often manipulate a calendar day (entries screen), and weeks (weekly report).
+Convert it to Dates, DateRange etc. as needed.
+
+*** DONE In the weekly report, highlight the project names
+CLOSED: [2024-09-14 Sat 10:20]
+ADDED: [2024-09-14 Sat]
+The projects and tasks are all with the same typeface, this is confusing.
+Make projects stand out more than tasks.
+Maybe use the fact that ncurses menus allow items to be selectable or not
+with a different face?
++ [2024-09-14 Sat] The project lines are now in bold thanks to being non-selectable
+  in ncurses.

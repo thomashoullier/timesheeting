@@ -39,31 +39,31 @@ std::vector<std::string> WeeklyTotals::to_strings () const {
   return strs;
 }
 
-std::vector<std::string> WeeklyTotals::to_shortstrings() const {
-  std::vector<std::string> strs;
+std::vector<StringWithFace> WeeklyTotals::to_shortstrings() const {
+  std::vector<StringWithFace> strs;
   // Column headers
-  strs.push_back("Task");
-  strs.push_back("Mon");
-  strs.push_back("Tue");
-  strs.push_back("Wed");
-  strs.push_back("Thu");
-  strs.push_back("Fri");
-  strs.push_back("Sat");
-  strs.push_back("Sun");
-  strs.push_back("TOTAL");
+  strs.push_back(StringWithFace("Task"));
+  strs.push_back(StringWithFace("Mon"));
+  strs.push_back(StringWithFace("Tue"));
+  strs.push_back(StringWithFace("Wed"));
+  strs.push_back(StringWithFace("Thu"));
+  strs.push_back(StringWithFace("Fri"));
+  strs.push_back(StringWithFace("Sat"));
+  strs.push_back(StringWithFace("Sun"));
+  strs.push_back(StringWithFace("TOTAL"));
   // Daily totals, all tasks
-  strs.push_back("ALL");
+  strs.push_back(StringWithFace("ALL"));
   for (auto const &dur : daily_totals) {
     strs.push_back(dur.to_shortstring());
   }
   strs.push_back(total.to_shortstring());
   // Per-project totals
   for (auto const &proj : project_totals) {
-    strs.push_back(proj.project_name);
+    strs.push_back(StringWithFace(proj.project_name, true));
     for (auto const &daily_dur : proj.daily_totals) {
-      strs.push_back(daily_dur.to_shortstring());
+      strs.push_back(StringWithFace(daily_dur.to_shortstring(), true));
     }
-    strs.push_back(proj.total.to_shortstring());
+    strs.push_back(StringWithFace(proj.total.to_shortstring(), true));
     // Per-task totals
     for (auto const &task : proj.task_totals) {
       strs.push_back(task.task_name);

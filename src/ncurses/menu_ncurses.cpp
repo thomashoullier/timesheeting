@@ -1,6 +1,8 @@
 #include "menu_ncurses.h"
+#include "string_with_face.h"
 #include "win_ncurses.h"
 #include <curses.h>
+#include <menu.h>
 #include <stdexcept>
 
 MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
@@ -26,10 +28,30 @@ MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
   init_menu();
 }
 
+MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
+                         const std::vector<StringWithFace> &short_items,
+                         WindowPosition winpos, WindowFormat winformat,
+                         int _ncols)
+    : WinNCurses(winpos, winformat), ncols(_ncols),
+      item_width(getmaxx(win) / ncols - 1), empty_string("") {
+  init_items(items, short_items);
+  init_menu();
+}
+
 MenuNCurses::~MenuNCurses() { destroy_menu(); }
 
-void MenuNCurses::select_down_item() { menu_driver(menu, REQ_DOWN_ITEM); }
-void MenuNCurses::select_up_item() { menu_driver(menu, REQ_UP_ITEM); }
+void MenuNCurses::select_down_item() {
+  menu_driver(menu, REQ_DOWN_ITEM);
+  if (not(item_opts(current_item(menu)) == O_SELECTABLE))
+    // Skip the non-selectable items.
+    menu_driver(menu, REQ_DOWN_ITEM);
+}
+void MenuNCurses::select_up_item() {
+  menu_driver(menu, REQ_UP_ITEM);
+  if (not(item_opts(current_item(menu)) == O_SELECTABLE))
+    // Skip the non-selectable items.
+    menu_driver(menu, REQ_UP_ITEM);
+}
 void MenuNCurses::select_right_item() { menu_driver(menu, REQ_RIGHT_ITEM); }
 void MenuNCurses::select_left_item() { menu_driver(menu, REQ_LEFT_ITEM); }
 
@@ -51,6 +73,13 @@ void MenuNCurses::set_items(const std::vector<std::string> &items) {
 
 void MenuNCurses::set_items(const std::vector<std::string> &items,
                             const std::vector<std::string> &short_items) {
+  destroy_menu();
+  init_items(items, short_items);
+  init_menu();
+}
+
+void MenuNCurses::set_items(const std::vector<std::string> &items,
+                            const std::vector<StringWithFace> &short_items) {
   destroy_menu();
   init_items(items, short_items);
   init_menu();
@@ -124,6 +153,27 @@ void MenuNCurses::init_items(const std::vector<std::string> &items,
   menu = new_menu(menu_items.data());
 }
 
+void MenuNCurses::init_items(const std::vector<std::string> &items,
+                             const std::vector<StringWithFace> &short_items) {
+  if (items.size() != short_items.size()) {
+    throw std::logic_error
+      ("MenuNCurses::init_items, items and short_items size mismatch");
+  }
+  display_strings.resize(items.size());
+  short_display_strings.resize(items.size());
+  menu_items.resize(items.size() + 1);
+  for (std::size_t i = 0; i < items.size(); ++i) {
+    display_strings.at(i) = items.at(i); // Copy
+    short_display_strings.at(i) = crop_pad_str(short_items.at(i).str,
+                                               item_width);
+    menu_items.at(i)= new_item(short_display_strings.at(i).c_str(), NULL);
+    if (short_items.at(i).highlight)
+      item_opts_off(menu_items.at(i), O_SELECTABLE);
+  }
+  menu_items.back() = NULL;
+  menu = new_menu(menu_items.data());
+}
+
 void MenuNCurses::init_menu_window() {
   set_menu_win(menu, win);
   int ny, nx;
@@ -131,6 +181,7 @@ void MenuNCurses::init_menu_window() {
   set_menu_sub(menu, derwin(win, ny-1, nx, 1, 0));
   set_menu_format(menu, ny - 1, ncols);
   set_menu_mark(menu, NULL);
+  set_menu_grey(menu, A_BOLD);
 }
 
 void MenuNCurses::destroy_menu() {

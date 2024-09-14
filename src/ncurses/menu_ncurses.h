@@ -4,6 +4,7 @@
 #define MENU_NCURSES_H
 
 #include "win_ncurses.h"
+#include "string_with_face.h"
 #include <exception>
 #include <menu.h>
 #include <vector>
@@ -20,6 +21,11 @@ public:
   /** @brief Constructor with explicitely provided short display strings. */
   MenuNCurses(const std::vector<std::string> &items,
               const std::vector<std::string> &short_items,
+              WindowPosition winpos, WindowFormat winformat, int _ncols);
+  /** @brief Constructor with explicitely provided short display strings
+      with face. */
+  MenuNCurses(const std::vector<std::string> &items,
+              const std::vector<StringWithFace> &short_items,
               WindowPosition winpos, WindowFormat winformat, int _ncols);
   /** @brief Destructor. */
   ~MenuNCurses();
@@ -41,6 +47,9 @@ public:
   /** @brief Replace the currently held items and short items. */
   void set_items(const std::vector<std::string> &items,
                  const std::vector<std::string> &short_items);
+  /** @brief Replace the currently held items and short items with a face. */
+  void set_items(const std::vector<std::string> &items,
+                 const std::vector<StringWithFace> &short_items);
   /** @brief Get the full display string for the current item. */
   const std::string& get_current_item_string() const;
   /** @brief Draw a single border on the menu window. */
@@ -81,6 +90,9 @@ private:
   /** @brief Initialize the menu items and explicit short items. */
   void init_items(const std::vector<std::string> &items,
                   const std::vector<std::string> &short_items);
+  /** @brief Initialize the menu items and explicit short items with face. */
+  void init_items(const std::vector<std::string> &items,
+                  const std::vector<StringWithFace> &short_items);
   /** @brief Initialize the menu UI. */
   void init_menu_window();
   /** @brief Destructor helper. Also called on update. */
