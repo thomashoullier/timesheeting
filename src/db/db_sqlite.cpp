@@ -255,10 +255,19 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     "FROM projects "
     "INNER JOIN tasks ON projects.id = tasks.project_id "
     "INNER JOIN entries ON tasks.id = entries.task_id "
-    "WHERE projects.id = ?"
+    "WHERE projects.id = ? "
     "AND entries.start >= ? "
     "AND entries.start < ?;";
   project_duration = sqlite_db.prepare_statement(project_duration_st);
+
+  std::string task_duration_st =
+    "SELECT SUM(entries.stop - entries.start) "
+    "FROM tasks "
+    "INNER JOIN entries ON tasks.id = entries.task_id "
+    "WHERE tasks.id = ? "
+    "AND entries.start >= ? "
+    "AND entries.start < ?;";
+  task_duration = sqlite_db.prepare_statement(task_duration_st);
 }
 
 DB_SQLite::~DB_SQLite() {
@@ -300,6 +309,7 @@ DB_SQLite::~DB_SQLite() {
   sqlite3_finalize(duration_per_worked_project);
   sqlite3_finalize(duration_per_worked_task);
   sqlite3_finalize(project_duration);
+  sqlite3_finalize(task_duration);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -765,6 +775,23 @@ Duration DB_SQLite::report_project_duration(Id project_id,
   }
 }
 
+Duration DB_SQLite::report_task_duration(Id task_id,
+                                         const DateRange &date_range) {
+  uint64_t start_stamp = date_range.start.to_unix_timestamp();
+  uint64_t stop_stamp = date_range.stop.to_unix_timestamp();
+  sqlite3_reset(task_duration);
+  sqlite3_bind_int64(task_duration, 1, task_id);
+  sqlite3_bind_int64(task_duration, 2, start_stamp);
+  sqlite3_bind_int64(task_duration, 3, stop_stamp);
+  if (sqlite3_step(task_duration) == SQLITE_ROW) {
+    uint64_t seconds = sqlite3_column_int64(task_duration, 0);
+    Duration duration(seconds);
+    return duration;
+  } else {
+    throw DBLogicExcept("report_task_duration: Cannot query duration!");
+  }
+}
+
 WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
   log("report_weekly_totals starting on: " + first_day_start.to_string());
   WeeklyTotals totals;
@@ -816,16 +843,26 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
                        cur_week.start.to_unix_timestamp());
     sqlite3_bind_int64(duration_per_worked_task, 3,
                        cur_week.stop.to_unix_timestamp());
-    while(sqlite3_step(duration_per_worked_task) == SQLITE_ROW) {
+    while (sqlite3_step(duration_per_worked_task) == SQLITE_ROW) {
       PerTaskTotals per_task_totals;
       RowId task_id = sqlite3_column_int64(duration_per_worked_task, 0);
-      std::string task_name = reinterpret_cast<const char*>
-        (sqlite3_column_text(duration_per_worked_task, 1));
+      std::string task_name = reinterpret_cast<const char *>(
+          sqlite3_column_text(duration_per_worked_task, 1));
       uint64_t seconds = sqlite3_column_int64(duration_per_worked_task, 2);
-      Duration duration (seconds);
+      Duration duration(seconds);
       per_task_totals.task_name = task_name;
       per_task_totals.total = duration;
-      // TODO Daily totals for the current task.
+      // Daily totals for the current task.
+      day_start = first_day_start;
+      day_stop = day_start;
+      day_stop.add_one_day();
+      cur_day.start = day_start;
+      cur_day.stop = day_stop;
+      for (std::size_t i = 0; i < per_task_totals.daily_totals.size(); ++i) {
+        duration = report_task_duration(task_id, cur_day);
+        per_task_totals.daily_totals.at(i) = duration;
+        cur_day.add_one_day();
+      }
       per_project_totals.task_totals.push_back(per_task_totals);
     }
     totals.project_totals.push_back(per_project_totals);
