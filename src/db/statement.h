@@ -21,6 +21,10 @@ public:
   /** @brief Destructor. */
   ~Statement();
 
+  /**@brief Try to step the statement. Reset if it has finished.
+     Return true if there is a result available. */
+  bool step();
+
   /** @brief Bind all arguments to the statement. */
   template <class... T> void bind_all(const T &...values);
   /** @brief Get the results of all columns. */

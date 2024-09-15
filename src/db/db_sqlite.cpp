@@ -340,16 +340,12 @@ std::vector<Project> DB_SQLite::query_projects_active() {
 
 std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
   auto &stmt = statements.select_tasks;
-  sqlite3_reset(stmt.stmt);
   stmt.bind_all(project_id);
-  NameRows rows{};
-  while (sqlite3_step(stmt.stmt) == SQLITE_ROW) {
+  std::vector<Task> tasks;
+  while (stmt.step()) {
     auto [id, name] = stmt.get_all<RowId, std::string>();
-    // auto id = stmt.get_column<RowId>(0);
-    // auto name = stmt.get_column<std::string>(1);
-    rows.push_back(std::make_pair(id, name));
+    tasks.push_back(Task{id, name});
   }
-  auto tasks = convert_namerows<Task>(rows);
   return tasks;
 }
 
