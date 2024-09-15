@@ -21,30 +21,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_entrystaging_table();
 
   // Prepare persistent statements
-  std::string select_projects_st = "SELECT id, name FROM projects;";
-  select_projects = sqlite_db->prepare_statement(select_projects_st);
-
-  std::string select_projects_active_st =
-    "SELECT id, name FROM projects WHERE active = TRUE;";
-  select_projects_active =
-    sqlite_db->prepare_statement(select_projects_active_st);
-
-  std::string select_tasks_active_st =
-    "SELECT id, name "
-    "FROM tasks "
-    "WHERE project_id = ? "
-    "AND active = TRUE;";
-  select_tasks_active = sqlite_db->prepare_statement(select_tasks_active_st);
-
-  std::string select_locations_st = "SELECT id, name FROM locations;";
-  select_locations = sqlite_db->prepare_statement(select_locations_st);
-
-  std::string select_locations_active_st =
-    "SELECT id, name FROM locations "
-    "WHERE active = TRUE;";
-  select_locations_active = sqlite_db->prepare_statement
-    (select_locations_active_st);
-
   std::string select_entries_st =
     "SELECT e.id, p.name, t.name, e.start, e.stop, l.name "
     "FROM entries e "
@@ -272,11 +248,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
 }
 
 DB_SQLite::~DB_SQLite() {
-  sqlite3_finalize(select_projects);
-  sqlite3_finalize(select_projects_active);
-  sqlite3_finalize(select_tasks_active);
-  sqlite3_finalize(select_locations);
-  sqlite3_finalize(select_locations_active);
   sqlite3_finalize(select_entries);
   sqlite3_finalize(select_duration);
   sqlite3_finalize(select_entrystaging);
@@ -313,28 +284,22 @@ DB_SQLite::~DB_SQLite() {
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
-  sqlite3_reset(select_projects);
-  NameRows rows{};
-  while (sqlite3_step(select_projects) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(select_projects, 0);
-    auto name_internal = sqlite3_column_text(select_projects, 1);
-    std::string name = reinterpret_cast<const char *>(name_internal);
-    rows.push_back(std::make_pair(id, name));
+  auto &stmt = statements.select_projects;
+  std::vector<Project> projects;
+  while (stmt.step()) {
+    auto [id, name] = stmt.get_all<RowId, std::string>();
+    projects.push_back(Project{id, name});
   }
-  auto projects = convert_namerows<Project>(rows);
   return projects;
 }
 
 std::vector<Project> DB_SQLite::query_projects_active() {
-  sqlite3_reset(select_projects_active);
-  NameRows rows{};
-  while (sqlite3_step(select_projects_active) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(select_projects_active, 0);
-    auto name_internal = sqlite3_column_text(select_projects_active, 1);
-    std::string name = reinterpret_cast<const char *>(name_internal);
-    rows.push_back(std::make_pair(id, name));
+  auto &stmt = statements.select_projects_active;
+  std::vector<Project> projects;
+  while (stmt.step()) {
+    auto [id, name] = stmt.get_all<RowId, std::string>();
+    projects.push_back(Project{id, name});
   }
-  auto projects = convert_namerows<Project>(rows);
   return projects;
 }
 
@@ -350,42 +315,33 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
 }
 
 std::vector<Task> DB_SQLite::query_tasks_active(Id project_id) {
-  sqlite3_reset(select_tasks_active);
-  sqlite3_bind_int64(select_tasks_active, 1, project_id);
-  NameRows rows{};
-  while (sqlite3_step(select_tasks_active) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(select_tasks_active, 0);
-    auto name_internal = sqlite3_column_text(select_tasks_active, 1);
-    std::string name = reinterpret_cast<const char *>(name_internal);
-    rows.push_back(std::make_pair(id, name));
+  auto &stmt = statements.select_tasks_active;
+  stmt.bind_all(project_id);
+  std::vector<Task> tasks;
+  while (stmt.step()) {
+    auto [id, name] = stmt.get_all<RowId, std::string>();
+    tasks.push_back(Task{id, name});
   }
-  auto tasks = convert_namerows<Task>(rows);
   return tasks;
 }
 
 std::vector<Location> DB_SQLite::query_locations() {
-  sqlite3_reset(select_locations);
-  NameRows rows{};
-  while (sqlite3_step(select_locations) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(select_locations, 0);
-    auto name_internal = sqlite3_column_text(select_locations, 1);
-    std::string name = reinterpret_cast<const char *>(name_internal);
-    rows.push_back(std::make_pair(id, name));
+  auto &stmt = statements.select_locations;
+  std::vector<Location> locations;
+  while (stmt.step()) {
+    auto [id, name] = stmt.get_all<RowId, std::string>();
+    locations.push_back(Location{id, name});
   }
-  auto locations = convert_namerows<Location>(rows);
   return locations;
 }
 
 std::vector<Location> DB_SQLite::query_locations_active() {
-  sqlite3_reset(select_locations_active);
-  NameRows rows{};
-  while (sqlite3_step(select_locations_active) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(select_locations_active, 0);
-    auto name_internal = sqlite3_column_text(select_locations_active, 1);
-    std::string name = reinterpret_cast<const char *>(name_internal);
-    rows.push_back(std::make_pair(id, name));
+  auto &stmt = statements.select_locations_active;
+  std::vector<Location> locations;
+  while (stmt.step()) {
+    auto [id, name] = stmt.get_all<RowId, std::string>();
+    locations.push_back(Location{id, name});
   }
-  auto locations = convert_namerows<Location>(rows);
   return locations;
 }
 

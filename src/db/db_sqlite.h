@@ -85,17 +85,6 @@ private:
   std::shared_ptr<DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */
   StatementSet statements;
-  /** @brief Statement for querying the projects list. */
-  sqlite3_stmt *select_projects;
-  /** @brief Statement for querying the list of active projects. */
-  sqlite3_stmt *select_projects_active;
-  /** @brief Statement for querying the list of active tasks for a given
-      project. */
-  sqlite3_stmt *select_tasks_active;
-  /** @brief Statement for querying the list of locations. */
-  sqlite3_stmt *select_locations;
-  /** @brief Statement for querying the list of active locations. */
-  sqlite3_stmt *select_locations_active;
   /** @brief Statement for querying the list of entries over a given date
       range. */
   sqlite3_stmt *select_entries;

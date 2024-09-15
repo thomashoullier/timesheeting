@@ -522,6 +522,9 @@ as well as bind things to them, step them, reset them.
 + Make sure to call reset at the END of processing a statement, not the
   beginning. We can automatically clean once we reach the end of the stepping
   in the method which gets the results.
++ We can factor further the db_sqlite methods which return a list of
+  a generic item through a template. This takes the statement as input,
+  and the type to return, and it is always the same thing in the method body.
 
 *** TODO Make sure the types are coherent
 ADDED: [2024-09-14 Sat]
