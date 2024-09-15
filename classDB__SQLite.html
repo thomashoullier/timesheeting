@@ -245,11 +245,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ade861edc2c8a9fc07e91efb5dff348a4">try_step_statement</a> (sqlite3_stmt *stmt)</td></tr>
 <tr class="memdesc:ade861edc2c8a9fc07e91efb5dff348a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step a SQL statement with exception catching. <br /></td></tr>
 <tr class="separator:ade861edc2c8a9fc07e91efb5dff348a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4c1c201ecee9078c2d2ca81b4908742"><td class="memTemplParams" colspan="2"><a id="ae4c1c201ecee9078c2d2ca81b4908742"></a>
-template&lt;typename T , typename  = std::enable_if_t&lt;std::is_base_of&lt;GenericItem, T&gt;::value&gt;&gt; </td></tr>
-<tr class="memitem:ae4c1c201ecee9078c2d2ca81b4908742"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ae4c1c201ecee9078c2d2ca81b4908742">convert_namerows</a> (const <a class="el" href="db__sqlite__handle_8h.html#a1c7d53e92b5b59633e7960e8210525fd">NameRows</a> &amp;rows)</td></tr>
-<tr class="memdesc:ae4c1c201ecee9078c2d2ca81b4908742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a NameRows object to a <a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a>. <br /></td></tr>
-<tr class="separator:ae4c1c201ecee9078c2d2ca81b4908742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade75c9b121210fafc807b91c210f14b5"><td class="memTemplParams" colspan="2"><a id="ade75c9b121210fafc807b91c210f14b5"></a>
+template&lt;typename T , typename  = std::enable_if_t&lt;std::is_base_of_v&lt;GenericItem, T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ade75c9b121210fafc807b91c210f14b5"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#ade75c9b121210fafc807b91c210f14b5">query_generic_items</a> (<a class="el" href="classStatement.html">Statement</a> &amp;statement)</td></tr>
+<tr class="memdesc:ade75c9b121210fafc807b91c210f14b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query template for GenericItems. <br /></td></tr>
+<tr class="separator:ade75c9b121210fafc807b91c210f14b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -261,26 +261,6 @@ std::shared_ptr&lt; <a class="el" href="classDB__SQLite__Handle.html">DB_SQLite_
 <a class="el" href="classStatementSet.html">StatementSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a3c56a23b4d44e1d875393a849240aea8">statements</a></td></tr>
 <tr class="memdesc:a3c56a23b4d44e1d875393a849240aea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set of all used SQLite statements. <br /></td></tr>
 <tr class="separator:a3c56a23b4d44e1d875393a849240aea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53cd7ffd7d9bafebdd430aaee11ee0df"><td class="memItemLeft" align="right" valign="top"><a id="a53cd7ffd7d9bafebdd430aaee11ee0df"></a>
-sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a53cd7ffd7d9bafebdd430aaee11ee0df">select_projects</a></td></tr>
-<tr class="memdesc:a53cd7ffd7d9bafebdd430aaee11ee0df"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatement.html" title="Statement object.">Statement</a> for querying the projects list. <br /></td></tr>
-<tr class="separator:a53cd7ffd7d9bafebdd430aaee11ee0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fcca497a13735e2f3d934bb71b4ca3b"><td class="memItemLeft" align="right" valign="top"><a id="a5fcca497a13735e2f3d934bb71b4ca3b"></a>
-sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a5fcca497a13735e2f3d934bb71b4ca3b">select_projects_active</a></td></tr>
-<tr class="memdesc:a5fcca497a13735e2f3d934bb71b4ca3b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatement.html" title="Statement object.">Statement</a> for querying the list of active projects. <br /></td></tr>
-<tr class="separator:a5fcca497a13735e2f3d934bb71b4ca3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb913552ba2b77522f2e8c6e14b0092e"><td class="memItemLeft" align="right" valign="top"><a id="acb913552ba2b77522f2e8c6e14b0092e"></a>
-sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#acb913552ba2b77522f2e8c6e14b0092e">select_tasks_active</a></td></tr>
-<tr class="memdesc:acb913552ba2b77522f2e8c6e14b0092e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatement.html" title="Statement object.">Statement</a> for querying the list of active tasks for a given project. <br /></td></tr>
-<tr class="separator:acb913552ba2b77522f2e8c6e14b0092e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcce322265ebe038f7ae730f75d7f63b"><td class="memItemLeft" align="right" valign="top"><a id="adcce322265ebe038f7ae730f75d7f63b"></a>
-sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#adcce322265ebe038f7ae730f75d7f63b">select_locations</a></td></tr>
-<tr class="memdesc:adcce322265ebe038f7ae730f75d7f63b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatement.html" title="Statement object.">Statement</a> for querying the list of locations. <br /></td></tr>
-<tr class="separator:adcce322265ebe038f7ae730f75d7f63b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accae88eb6ea14db84743344c2c8921a2"><td class="memItemLeft" align="right" valign="top"><a id="accae88eb6ea14db84743344c2c8921a2"></a>
-sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#accae88eb6ea14db84743344c2c8921a2">select_locations_active</a></td></tr>
-<tr class="memdesc:accae88eb6ea14db84743344c2c8921a2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatement.html" title="Statement object.">Statement</a> for querying the list of active locations. <br /></td></tr>
-<tr class="separator:accae88eb6ea14db84743344c2c8921a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a396730d523d0fc812e13feb0a19b1122"><td class="memItemLeft" align="right" valign="top"><a id="a396730d523d0fc812e13feb0a19b1122"></a>
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDB__SQLite.html#a396730d523d0fc812e13feb0a19b1122">select_entries</a></td></tr>
 <tr class="memdesc:a396730d523d0fc812e13feb0a19b1122"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatement.html" title="Statement object.">Statement</a> for querying the list of entries over a given date range. <br /></td></tr>

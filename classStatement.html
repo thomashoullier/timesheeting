@@ -64,6 +64,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classStatement-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Statement Class Reference</div>  </div>
@@ -85,6 +86,29 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatement.html#a57fdfef84b5f92d83850f6467b46012a">~Statement</a> ()</td></tr>
 <tr class="memdesc:a57fdfef84b5f92d83850f6467b46012a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
 <tr class="separator:a57fdfef84b5f92d83850f6467b46012a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a442a1e524d2fc1b9c2feeed05eccedc0"><td class="memItemLeft" align="right" valign="top"><a id="a442a1e524d2fc1b9c2feeed05eccedc0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatement.html#a442a1e524d2fc1b9c2feeed05eccedc0">step</a> ()</td></tr>
+<tr class="memdesc:a442a1e524d2fc1b9c2feeed05eccedc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to step the statement. Reset if it has finished. Return true if there is a result available. <br /></td></tr>
+<tr class="separator:a442a1e524d2fc1b9c2feeed05eccedc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca3dfaf0f13376e96c73306f4b124321"><td class="memTemplParams" colspan="2"><a id="aca3dfaf0f13376e96c73306f4b124321"></a>
+template&lt;class... T&gt; </td></tr>
+<tr class="memitem:aca3dfaf0f13376e96c73306f4b124321"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#aca3dfaf0f13376e96c73306f4b124321">bind_all</a> (const T &amp;...values)</td></tr>
+<tr class="memdesc:aca3dfaf0f13376e96c73306f4b124321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind all arguments to the statement. <br /></td></tr>
+<tr class="separator:aca3dfaf0f13376e96c73306f4b124321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7616390a1e04ef39dcfcae8534a4754"><td class="memTemplParams" colspan="2"><a id="ac7616390a1e04ef39dcfcae8534a4754"></a>
+template&lt;class... T&gt; </td></tr>
+<tr class="memitem:ac7616390a1e04ef39dcfcae8534a4754"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#ac7616390a1e04ef39dcfcae8534a4754">get_all</a> ()</td></tr>
+<tr class="memdesc:ac7616390a1e04ef39dcfcae8534a4754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the results of all columns. <br /></td></tr>
+<tr class="separator:ac7616390a1e04ef39dcfcae8534a4754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22a3595572a742aca50b308a69b79eb"><td class="memTemplParams" colspan="2"><a id="af22a3595572a742aca50b308a69b79eb"></a>
+template&lt;class... T, std::size_t... Is&gt; </td></tr>
+<tr class="memitem:af22a3595572a742aca50b308a69b79eb"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#af22a3595572a742aca50b308a69b79eb">get_all_helper</a> (std::index_sequence&lt; Is... &gt;)</td></tr>
+<tr class="memdesc:af22a3595572a742aca50b308a69b79eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for <a class="el" href="classStatement.html#ac7616390a1e04ef39dcfcae8534a4754" title="Get the results of all columns.">get_all()</a>. Associates arguments with their index. <br /></td></tr>
+<tr class="separator:af22a3595572a742aca50b308a69b79eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1c44f5bead33bd4012e3ae8def3296"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:aaa1c44f5bead33bd4012e3ae8def3296"><td class="memTemplItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#aaa1c44f5bead33bd4012e3ae8def3296">get_column</a> (int icol)</td></tr>
+<tr class="memdesc:aaa1c44f5bead33bd4012e3ae8def3296"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for getting uint64_t.  <a href="classStatement.html#aaa1c44f5bead33bd4012e3ae8def3296">More...</a><br /></td></tr>
+<tr class="separator:aaa1c44f5bead33bd4012e3ae8def3296"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -92,10 +116,46 @@ Public Attributes</h2></td></tr>
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatement.html#a3990a65769e59c37d7d3acf16afa29b0">stmt</a></td></tr>
 <tr class="memdesc:a3990a65769e59c37d7d3acf16afa29b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">SQLite statement. <br /></td></tr>
 <tr class="separator:a3990a65769e59c37d7d3acf16afa29b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a65f3c85e34a0d05b4a921307b3ea6c43"><td class="memItemLeft" align="right" valign="top"><a id="a65f3c85e34a0d05b4a921307b3ea6c43"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatement.html#a65f3c85e34a0d05b4a921307b3ea6c43">bind</a> (int index, uint64_t num)</td></tr>
+<tr class="memdesc:a65f3c85e34a0d05b4a921307b3ea6c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind an uint64_t to a parameter of the statement. <br /></td></tr>
+<tr class="separator:a65f3c85e34a0d05b4a921307b3ea6c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a4b3c57294dfd15d1629ea5d85889dd"><td class="memTemplParams" colspan="2"><a id="a7a4b3c57294dfd15d1629ea5d85889dd"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7a4b3c57294dfd15d1629ea5d85889dd"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#a7a4b3c57294dfd15d1629ea5d85889dd">get_column</a> (int icol)</td></tr>
+<tr class="memdesc:a7a4b3c57294dfd15d1629ea5d85889dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a result from the current row in a given column. <br /></td></tr>
+<tr class="separator:a7a4b3c57294dfd15d1629ea5d85889dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classStatement.html" title="Statement object.">Statement</a> object. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaa1c44f5bead33bd4012e3ae8def3296"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1c44f5bead33bd4012e3ae8def3296">&#9670;&nbsp;</a></span>get_column()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Statement::get_column </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>icol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specialization for getting uint64_t. </p>
+<p>Specialization for getting std::string. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/db/<a class="el" href="statement_8h_source.html">statement.h</a></li>
 <li>src/db/statement.cpp</li>
 </ul>
