@@ -13,6 +13,7 @@
 #include "statement_set.h"
 #include <algorithm>
 #include <iterator>
+#include <type_traits>
 
 /** @brief Exception thrown when the DB encounters a logic error. */
 class DBLogicExcept : public std::exception {
@@ -176,21 +177,23 @@ private:
   void try_exec_statement(const std::string &statement);
   /** @brief Step a SQL statement with exception catching. */
   void try_step_statement(sqlite3_stmt *stmt);
-
-  /** @brief Convert a NameRows object to a GenericItem. */
+  /** @brief Query template for GenericItems. */
   template <typename T,
-            typename = std::enable_if_t<std::is_base_of<GenericItem, T>::value>>
-  std::vector<T> convert_namerows (const NameRows &rows) {
-    std::vector<T> items;
-    items.reserve(rows.size());
-    std::transform(rows.begin(), rows.end(),
-                   std::back_inserter(items),
-                   [](const auto &pair) {return T{pair.first, pair.second}; });
-    return items;
-  }
+            typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>
+  std::vector<T> query_generic_items(Statement &statement);
 };
 
 /** @brief Grab the DB. */
-DB_SQLite& db();
+DB_SQLite &db();
+
+template <typename T, class>
+std::vector<T> DB_SQLite::query_generic_items(Statement &statement) {
+  std::vector<T> items;
+  while(statement.step()) {
+    auto [id, name] = statement.get_all<RowId, std::string>();
+    items.push_back(T{id, name});
+  }
+  return items;
+}
 
 #endif // DB_SQLITE_H

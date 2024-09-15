@@ -284,65 +284,29 @@ DB_SQLite::~DB_SQLite() {
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
-  auto &stmt = statements.select_projects;
-  std::vector<Project> projects;
-  while (stmt.step()) {
-    auto [id, name] = stmt.get_all<RowId, std::string>();
-    projects.push_back(Project{id, name});
-  }
-  return projects;
+  return query_generic_items<Project>(statements.select_projects);
 }
 
 std::vector<Project> DB_SQLite::query_projects_active() {
-  auto &stmt = statements.select_projects_active;
-  std::vector<Project> projects;
-  while (stmt.step()) {
-    auto [id, name] = stmt.get_all<RowId, std::string>();
-    projects.push_back(Project{id, name});
-  }
-  return projects;
+  return query_generic_items<Project>(statements.select_projects_active);
 }
 
 std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
-  auto &stmt = statements.select_tasks;
-  stmt.bind_all(project_id);
-  std::vector<Task> tasks;
-  while (stmt.step()) {
-    auto [id, name] = stmt.get_all<RowId, std::string>();
-    tasks.push_back(Task{id, name});
-  }
-  return tasks;
+  statements.select_tasks.bind_all(project_id);
+  return query_generic_items<Task>(statements.select_tasks);
 }
 
 std::vector<Task> DB_SQLite::query_tasks_active(Id project_id) {
-  auto &stmt = statements.select_tasks_active;
-  stmt.bind_all(project_id);
-  std::vector<Task> tasks;
-  while (stmt.step()) {
-    auto [id, name] = stmt.get_all<RowId, std::string>();
-    tasks.push_back(Task{id, name});
-  }
-  return tasks;
+  statements.select_tasks_active.bind_all(project_id);
+  return query_generic_items<Task>(statements.select_tasks_active);
 }
 
 std::vector<Location> DB_SQLite::query_locations() {
-  auto &stmt = statements.select_locations;
-  std::vector<Location> locations;
-  while (stmt.step()) {
-    auto [id, name] = stmt.get_all<RowId, std::string>();
-    locations.push_back(Location{id, name});
-  }
-  return locations;
+  return query_generic_items<Location>(statements.select_locations);
 }
 
 std::vector<Location> DB_SQLite::query_locations_active() {
-  auto &stmt = statements.select_locations_active;
-  std::vector<Location> locations;
-  while (stmt.step()) {
-    auto [id, name] = stmt.get_all<RowId, std::string>();
-    locations.push_back(Location{id, name});
-  }
-  return locations;
+  return query_generic_items<Location>(statements.select_locations_active);
 }
 
 std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
