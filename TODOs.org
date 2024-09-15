@@ -517,6 +517,11 @@ as well as bind things to them, step them, reset them.
   and retrieve results with: ~res1, res2, res3 = step(statement)~
 + It seems this is indeed possible:
   https://www.murrayc.com/permalink/2015/12/05/modern-c-variadic-template-parameters-and-tuples/
++ I think we can look for SQLITE_DONE to signal the end of stepping a statement
+  to the user-code in db_sqlite. We can get results until this signal comes up.
++ Make sure to call reset at the END of processing a statement, not the
+  beginning. We can automatically clean once we reach the end of the stepping
+  in the method which gets the results.
 
 *** TODO Make sure the types are coherent
 ADDED: [2024-09-14 Sat]

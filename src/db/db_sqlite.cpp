@@ -344,9 +344,9 @@ std::vector<Task> DB_SQLite::query_tasks(Id project_id) {
   stmt.bind_all(project_id);
   NameRows rows{};
   while (sqlite3_step(stmt.stmt) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(stmt.stmt, 0);
-    auto name_internal = sqlite3_column_text(stmt.stmt, 1);
-    std::string name = reinterpret_cast<const char *>(name_internal);
+    auto [id, name] = stmt.get_all<RowId, std::string>();
+    // auto id = stmt.get_column<RowId>(0);
+    // auto name = stmt.get_column<std::string>(1);
     rows.push_back(std::make_pair(id, name));
   }
   auto tasks = convert_namerows<Task>(rows);
