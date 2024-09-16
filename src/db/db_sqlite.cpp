@@ -21,17 +21,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_entrystaging_table();
 
   // Prepare persistent statements
-  std::string select_entries_st =
-    "SELECT e.id, p.name, t.name, e.start, e.stop, l.name "
-    "FROM entries e "
-    "INNER JOIN locations l ON e.location_id = l.id "
-    "INNER JOIN tasks t ON e.task_id = t.id "
-    "INNER JOIN projects p ON t.project_id = p.id "
-    "WHERE e.start >= ? "
-    "AND e.start < ? "
-    "ORDER BY e.start ASC;";
-  select_entries = sqlite_db->prepare_statement(select_entries_st);
-
   std::string select_duration_st =
     "SELECT SUM(stop - start) FROM entries e "
     "WHERE e.start >= ? "
@@ -248,7 +237,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
 }
 
 DB_SQLite::~DB_SQLite() {
-  sqlite3_finalize(select_entries);
   sqlite3_finalize(select_duration);
   sqlite3_finalize(select_entrystaging);
   sqlite3_finalize(insert_project);
@@ -310,26 +298,17 @@ std::vector<Location> DB_SQLite::query_locations_active() {
 }
 
 std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
-  uint64_t start_stamp = date_range.start.to_unix_timestamp();
-  uint64_t stop_stamp = date_range.stop.to_unix_timestamp();
-  sqlite3_reset(select_entries);
-  sqlite3_bind_int64(select_entries, 1, start_stamp);
-  sqlite3_bind_int64(select_entries, 2, stop_stamp);
+  auto &stmt = statements.select_entries;
+  stmt.bind_all(date_range.start.to_unix_timestamp(),
+                date_range.stop.to_unix_timestamp());
   std::vector<Entry> vec;
-  while (sqlite3_step(select_entries) == SQLITE_ROW) {
-    RowId id = sqlite3_column_int64(select_entries, 0);
-    std::string project_name = reinterpret_cast<const char*>
-      (sqlite3_column_text(select_entries, 1));
-    std::string task_name = reinterpret_cast<const char*>
-      (sqlite3_column_text(select_entries, 2));
-    uint64_t start_unix = sqlite3_column_int64(select_entries, 3);
-    uint64_t stop_unix = sqlite3_column_int64(select_entries, 4);
+  while (stmt.step()) {
+    auto [id, project_name, task_name, start_unix, stop_unix, location_name] =
+      stmt.get_all<RowId, std::string, std::string, uint64_t, uint64_t,
+                   std::string>();
     Date start_date(start_unix);
     Date stop_date(stop_unix);
-    std::string location_name = reinterpret_cast<const char*>
-      (sqlite3_column_text(select_entries, 5));
-    Entry e{id, project_name, task_name, start_date, stop_date,
-            location_name};
+    Entry e{id, project_name, task_name, start_date, stop_date, location_name};
     vec.push_back(e);
   }
   return vec;

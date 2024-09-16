@@ -23,6 +23,9 @@ public:
   Statement select_locations;
   /** @brief Statement for querying the list of active locations. */
   Statement select_locations_active;
+  /** @brief Statement for querying the list of entries over a given date
+      range. */
+  Statement select_entries;
 };
 
 #endif // STATEMENT_SET_H
