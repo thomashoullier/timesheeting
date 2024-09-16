@@ -21,12 +21,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_entrystaging_table();
 
   // Prepare persistent statements
-  std::string select_duration_st =
-    "SELECT SUM(stop - start) FROM entries e "
-    "WHERE e.start >= ? "
-    "AND e.start < ? ;";
-  select_duration = sqlite_db->prepare_statement(select_duration_st);
-
   std::string select_entrystaging_st =
     "SELECT p.name, t.name, start, stop, l.name "
     "FROM entrystaging "
@@ -237,7 +231,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
 }
 
 DB_SQLite::~DB_SQLite() {
-  sqlite3_finalize(select_duration);
   sqlite3_finalize(select_entrystaging);
   sqlite3_finalize(insert_project);
   sqlite3_finalize(insert_task);
@@ -315,14 +308,11 @@ std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
 }
 
 Duration DB_SQLite::query_entries_duration(const DateRange &date_range) {
-  uint64_t start_stamp = date_range.start.to_unix_timestamp();
-  uint64_t stop_stamp = date_range.stop.to_unix_timestamp();
-  sqlite3_reset(select_duration);
-  sqlite3_bind_int64(select_duration, 1, start_stamp);
-  sqlite3_bind_int64(select_duration, 2, stop_stamp);
-  Duration total = (sqlite3_step(select_duration) == SQLITE_ROW) ?
-    Duration(sqlite3_column_int64(select_duration, 0)) : Duration();
-  return total;
+  auto &stmt = statements.select_duration;
+  stmt.bind_all(date_range.start.to_unix_timestamp(),
+                date_range.stop.to_unix_timestamp());
+  auto [total_seconds] = stmt.single_get_all<uint64_t>();
+  return Duration(total_seconds);
 }
 
 EntryStaging DB_SQLite::query_entrystaging() {

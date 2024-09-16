@@ -2,6 +2,7 @@
 #define STATEMENT_H
 
 #include "db_sqlite_handle.h"
+#include <stdexcept>
 #include <tuple>
 #include <utility>
 
@@ -34,9 +35,16 @@ public:
       index.*/
   template <class... T, std::size_t... Is>
   std::tuple<T...> get_all_helper(std::index_sequence<Is...>);
+  /** @brief Get the results of all columns in the case of a single row.
+
+   Step, get the results, and then reset.
+   Return the default tuple values in case no data is available. */
+  template <class... T>
+  std::tuple<T...> single_get_all();
 };
 
-template <class... T> void Statement::bind_all(const T &...values) {
+template <class... T>
+void Statement::bind_all(const T &...values) {
   // TODO: Use an index_sequence for compile time index, and uniform way
   //       of doing things.
   int index = 0;
@@ -46,7 +54,8 @@ template <class... T> void Statement::bind_all(const T &...values) {
   }(), ...);
 };
 
-template <class... T> std::tuple<T...> Statement::get_all() {
+template <class... T>
+std::tuple<T...> Statement::get_all() {
   return get_all_helper<T...>(std::index_sequence_for<T...>{});
 }
 
@@ -54,6 +63,14 @@ template <class... T, std::size_t... Is>
 std::tuple<T...> Statement::get_all_helper(std::index_sequence<Is...>) {
   return std::make_tuple(get_column<T>(Is)...);
 }
+
+template <class... T>
+std::tuple<T...> Statement::single_get_all() {
+  auto results = step() ? get_all<T...>() : std::make_tuple(T{}...);
+  sqlite3_reset(stmt);
+  return results;
+}
+
 
 /** @brief Specialization for getting uint64_t. */
 template <> uint64_t Statement::get_column(int icol);

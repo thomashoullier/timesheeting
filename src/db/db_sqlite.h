@@ -86,9 +86,6 @@ private:
   std::shared_ptr<DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */
   StatementSet statements;
-  /** @brief Statement for querying the total duration of entries over
-      a date range. */
-  sqlite3_stmt *select_duration;
   /** @brief Statement for querying the entry contained in entrystaging. */
   sqlite3_stmt *select_entrystaging;
   /** @brief Statement for adding a project. */
