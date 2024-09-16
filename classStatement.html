@@ -105,6 +105,10 @@ template&lt;class... T, std::size_t... Is&gt; </td></tr>
 <tr class="memitem:af22a3595572a742aca50b308a69b79eb"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#af22a3595572a742aca50b308a69b79eb">get_all_helper</a> (std::index_sequence&lt; Is... &gt;)</td></tr>
 <tr class="memdesc:af22a3595572a742aca50b308a69b79eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for <a class="el" href="classStatement.html#ac7616390a1e04ef39dcfcae8534a4754" title="Get the results of all columns.">get_all()</a>. Associates arguments with their index. <br /></td></tr>
 <tr class="separator:af22a3595572a742aca50b308a69b79eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8f996385482bdd986f5b680ca4718e7"><td class="memTemplParams" colspan="2">template&lt;class... T&gt; </td></tr>
+<tr class="memitem:ae8f996385482bdd986f5b680ca4718e7"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#ae8f996385482bdd986f5b680ca4718e7">single_get_all</a> ()</td></tr>
+<tr class="memdesc:ae8f996385482bdd986f5b680ca4718e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the results of all columns in the case of a single row.  <a href="classStatement.html#ae8f996385482bdd986f5b680ca4718e7">More...</a><br /></td></tr>
+<tr class="separator:ae8f996385482bdd986f5b680ca4718e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa1c44f5bead33bd4012e3ae8def3296"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
 <tr class="memitem:aaa1c44f5bead33bd4012e3ae8def3296"><td class="memTemplItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classStatement.html#aaa1c44f5bead33bd4012e3ae8def3296">get_column</a> (int icol)</td></tr>
 <tr class="memdesc:aaa1c44f5bead33bd4012e3ae8def3296"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for getting uint64_t.  <a href="classStatement.html#aaa1c44f5bead33bd4012e3ae8def3296">More...</a><br /></td></tr>
@@ -152,6 +156,25 @@ template&lt;&gt; </div>
 
 <p>Specialization for getting uint64_t. </p>
 <p>Specialization for getting std::string. </p>
+
+</div>
+</div>
+<a id="ae8f996385482bdd986f5b680ca4718e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8f996385482bdd986f5b680ca4718e7">&#9670;&nbsp;</a></span>single_get_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class... T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; T... &gt; Statement::single_get_all</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the results of all columns in the case of a single row. </p>
+<p>Step, get the results, and then reset. Return the default tuple values in case no data is available. </p>
 
 </div>
 </div>
