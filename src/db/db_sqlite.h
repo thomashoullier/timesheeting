@@ -86,8 +86,6 @@ private:
   std::shared_ptr<DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */
   StatementSet statements;
-  /** @brief Statement for adding a project. */
-  sqlite3_stmt *insert_project;
   /** @brief Statement for adding a task. */
   sqlite3_stmt *insert_task;
   /** @brief Statement for adding a location. */

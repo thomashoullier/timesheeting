@@ -21,11 +21,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_entrystaging_table();
 
   // Prepare persistent statements
-  std::string insert_project_st =
-    "INSERT INTO projects (name, active) "
-    "VALUES (?, TRUE);";
-  insert_project = sqlite_db->prepare_statement(insert_project_st);
-
   std::string insert_task_st =
     "INSERT INTO tasks (project_id, name, active) "
     "VALUES (?, ?, TRUE);";
@@ -222,7 +217,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
 }
 
 DB_SQLite::~DB_SQLite() {
-  sqlite3_finalize(insert_project);
   sqlite3_finalize(insert_task);
   sqlite3_finalize(insert_location);
   sqlite3_finalize(insert_entry);
@@ -420,11 +414,10 @@ void DB_SQLite::create_entrystaging_table() {
 }
 
 void DB_SQLite::add_project(std::string project_name) {
-  sqlite3_reset(insert_project);
-  sqlite3_bind_text(insert_project, 1,
-                    project_name.c_str(), project_name.size(),
-                    SQLITE_STATIC);
-  try_step_statement(insert_project);
+  auto &stmt = statements.insert_project;
+  stmt.bind_all(project_name);
+  if (not(stmt.execute()))
+    throw DBLogicExcept("add_project: could not add project.");
 }
 
 void DB_SQLite::add_task(Id project_id, std::string task_name) {

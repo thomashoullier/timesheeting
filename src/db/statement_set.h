@@ -31,6 +31,8 @@ public:
   Statement select_duration;
   /** @brief Statement for querying the entry contained in entrystaging. */
   Statement select_entrystaging;
+  /** @brief Statement for adding a project. */
+  Statement insert_project;
 };
 
 #endif // STATEMENT_SET_H
