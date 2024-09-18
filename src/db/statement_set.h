@@ -29,7 +29,8 @@ public:
   /** @brief Statement for querying the total duration of entries over
       a date range. */
   Statement select_duration;
-
+  /** @brief Statement for querying the entry contained in entrystaging. */
+  Statement select_entrystaging;
 };
 
 #endif // STATEMENT_SET_H

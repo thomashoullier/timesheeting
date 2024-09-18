@@ -23,6 +23,6 @@ template <> uint64_t Statement::get_column(int icol) {
 }
 
 template <> std::string Statement::get_column(int icol) {
-  auto text = sqlite3_column_text(stmt, icol);
-  return reinterpret_cast<const char*>(text);
+  auto text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, icol));
+  return (text == NULL ? std::string{} : text);
 }

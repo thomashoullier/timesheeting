@@ -21,15 +21,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_entrystaging_table();
 
   // Prepare persistent statements
-  std::string select_entrystaging_st =
-    "SELECT p.name, t.name, start, stop, l.name "
-    "FROM entrystaging "
-    "LEFT JOIN locations l ON entrystaging.location_id = l.id "
-    "LEFT JOIN tasks t ON entrystaging.task_id = t.id "
-    "LEFT JOIN projects p ON t.project_id = p.id "
-    ";";
-  select_entrystaging = sqlite_db->prepare_statement(select_entrystaging_st);
-
   std::string insert_project_st =
     "INSERT INTO projects (name, active) "
     "VALUES (?, TRUE);";
@@ -231,7 +222,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
 }
 
 DB_SQLite::~DB_SQLite() {
-  sqlite3_finalize(select_entrystaging);
   sqlite3_finalize(insert_project);
   sqlite3_finalize(insert_task);
   sqlite3_finalize(insert_location);
@@ -316,48 +306,37 @@ Duration DB_SQLite::query_entries_duration(const DateRange &date_range) {
 }
 
 EntryStaging DB_SQLite::query_entrystaging() {
-  sqlite3_reset(select_entrystaging);
-  if (!(sqlite3_step(select_entrystaging) == SQLITE_ROW))
-    throw DBLogicExcept("query_entrystaging: could not read SQLITE_ROW");
-
+  auto &stmt = statements.select_entrystaging;
+  auto [project_name_ret, task_name_ret, start_unix, stop_unix,
+        location_name_ret]
+    = stmt.single_get_all<std::string, std::string, uint64_t, uint64_t,
+                          std::string>();
+  // Replace NULL values with explicit nullopt.
   std::optional<std::string> project_name;
-  auto project_name_ret = reinterpret_cast<const char*>
-    (sqlite3_column_text(select_entrystaging, 0));
-  if (project_name_ret == NULL)
+  if (project_name_ret.empty())
     project_name = std::nullopt;
   else
     project_name = project_name_ret;
-
   std::optional<std::string> task_name;
-  auto task_name_ret = reinterpret_cast<const char*>
-    (sqlite3_column_text(select_entrystaging, 1));
-  if (task_name_ret == NULL)
+  if (task_name_ret.empty())
     task_name = std::nullopt;
   else
     task_name = task_name_ret;
-
   std::optional<Date> start_date;
-  uint64_t start_unix = sqlite3_column_int64(select_entrystaging, 2);
   if (start_unix == 0)
     start_date = std::nullopt;
   else
     start_date = Date(start_unix);
-
   std::optional<Date> stop_date;
-  uint64_t stop_unix = sqlite3_column_int64(select_entrystaging, 3);
   if (stop_unix == 0)
     stop_date = std::nullopt;
   else
     stop_date = Date(stop_unix);
-
   std::optional<std::string> location_name;
-  auto location_name_ret = reinterpret_cast<const char*>
-    (sqlite3_column_text(select_entrystaging, 4));
-  if (location_name_ret == NULL)
+  if (location_name_ret.empty())
     location_name = std::nullopt;
   else
     location_name = location_name_ret;
-
   return EntryStaging{project_name, task_name, start_date, stop_date,
                       location_name};
 }
