@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['weeklyreportregister_310',['WeeklyReportRegister',['../classWeeklyReportRegister.html',1,'']]],
-  ['weeklyreportscreen_311',['WeeklyReportScreen',['../classWeeklyReportScreen.html',1,'']]],
-  ['weeklytotals_312',['WeeklyTotals',['../structWeeklyTotals.html',1,'']]],
-  ['winncurses_313',['WinNCurses',['../classWinNCurses.html',1,'']]]
+  ['weeklyreportregister_311',['WeeklyReportRegister',['../classWeeklyReportRegister.html',1,'']]],
+  ['weeklyreportscreen_312',['WeeklyReportScreen',['../classWeeklyReportScreen.html',1,'']]],
+  ['weeklytotals_313',['WeeklyTotals',['../structWeeklyTotals.html',1,'']]],
+  ['winncurses_314',['WinNCurses',['../classWinNCurses.html',1,'']]]
 ];

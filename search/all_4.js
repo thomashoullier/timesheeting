@@ -11,5 +11,6 @@ var searchData=
   ['entry_5fstaging_57',['entry_staging',['../classStopwatchNcurses.html#a0ac946441600c6e7535b328d55973a16',1,'StopwatchNcurses']]],
   ['entryfield_58',['EntryField',['../data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5',1,'data_objects.h']]],
   ['entrystaging_59',['EntryStaging',['../structEntryStaging.html',1,'']]],
-  ['exec_5fstatement_60',['exec_statement',['../classDB__SQLite__Handle.html#a5bab8f6fc987589eddcf0a3ce8c5f839',1,'DB_SQLite_Handle']]]
+  ['exec_5fstatement_60',['exec_statement',['../classDB__SQLite__Handle.html#a5bab8f6fc987589eddcf0a3ce8c5f839',1,'DB_SQLite_Handle']]],
+  ['execute_61',['execute',['../classStatement.html#a1d79bc60487559861a7b291cb0593e17',1,'Statement']]]
 ];
