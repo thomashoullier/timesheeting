@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ncurses_5fhandle_2eh_324',['ncurses_handle.h',['../ncurses__handle_8h.html',1,'']]]
+  ['menu_5fncurses_2eh_318',['menu_ncurses.h',['../menu__ncurses_8h.html',1,'']]]
 ];

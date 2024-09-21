@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: src/data_objects/data_objects.h File Reference</title>
+<title>timesheeting: src/data_objects/generic_item.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,25 +66,18 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">data_objects.h File Reference</div>  </div>
+<div class="title">generic_item.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Shared definition of data objects in the program.  
+<p><a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a> definition.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;iomanip&gt;</code><br />
-<code>#include &lt;optional&gt;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;cstdint&gt;</code><br />
-<code>#include &quot;<a class="el" href="date_8h_source.html">date.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &quot;id.h&quot;</code><br />
 </div>
-<p><a href="data__objects_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="generic__item_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -100,39 +93,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLocation.html">Location</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of <a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a> into a <a class="el" href="structLocation.html" title="Specialization of GenericItem into a Location item.">Location</a> item.  <a href="structLocation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEntry.html">Entry</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timesheet entry object.  <a href="structEntry.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEntryStaging.html">EntryStaging</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structEntry.html" title="Timesheet entry object.">Entry</a> as it is being staged.  <a href="structEntryStaging.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDuration.html">Duration</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classDuration.html" title="Duration type.">Duration</a> type.  <a href="classDuration.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:aeb7ff9cbc21124882bcf962e7dabb6bc"><td class="memItemLeft" align="right" valign="top"><a id="aeb7ff9cbc21124882bcf962e7dabb6bc"></a>
-typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data__objects_8h.html#aeb7ff9cbc21124882bcf962e7dabb6bc">Id</a></td></tr>
-<tr class="memdesc:aeb7ff9cbc21124882bcf962e7dabb6bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique id for data items (typically a SQLite rowid). <br /></td></tr>
-<tr class="separator:aeb7ff9cbc21124882bcf962e7dabb6bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a0578a3ec2e36bcf0d94ec723ed6149b5"><td class="memItemLeft" align="right" valign="top"><a id="a0578a3ec2e36bcf0d94ec723ed6149b5"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data__objects_8h.html#a0578a3ec2e36bcf0d94ec723ed6149b5">EntryField</a> { <br />
-&#160;&#160;<b>project_name</b> = 0
-, <b>task_name</b> = 1
-, <b>start</b> = 2
-, <b>stop</b> = 3
-, <br />
-&#160;&#160;<b>location_name</b> = 4
-<br />
- }</td></tr>
-<tr class="memdesc:a0578a3ec2e36bcf0d94ec723ed6149b5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structEntry.html" title="Timesheet entry object.">Entry</a> field type (as displayed in the menu). <br /></td></tr>
-<tr class="separator:a0578a3ec2e36bcf0d94ec723ed6149b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Shared definition of data objects in the program. </p>
+<div class="textblock"><p><a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a> definition. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

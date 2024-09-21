@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ncurseshandle_285',['NcursesHandle',['../classNcursesHandle.html',1,'']]]
+  ['ncurseshandle_280',['NcursesHandle',['../classNcursesHandle.html',1,'']]]
 ];

@@ -72,7 +72,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef WEEKLY_TOTALS_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define WEEKLY_TOTALS_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="data__objects_8h.html">data_objects.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;duration.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../ncurses/string_with_face.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
@@ -101,8 +101,7 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// WEEKLY_TOTALS_H</span></div>
-<div class="ttc" id="aclassDuration_html"><div class="ttname"><a href="classDuration.html">Duration</a></div><div class="ttdoc">Duration type.</div><div class="ttdef"><b>Definition:</b> data_objects.h:128</div></div>
-<div class="ttc" id="adata__objects_8h_html"><div class="ttname"><a href="data__objects_8h.html">data_objects.h</a></div><div class="ttdoc">Shared definition of data objects in the program.</div></div>
+<div class="ttc" id="aclassDuration_html"><div class="ttname"><a href="classDuration.html">Duration</a></div><div class="ttdoc">Duration type.</div><div class="ttdef"><b>Definition:</b> duration.h:8</div></div>
 <div class="ttc" id="astructPerProjectTotals_html"><div class="ttname"><a href="structPerProjectTotals.html">PerProjectTotals</a></div><div class="ttdoc">Report of totals for a given project.</div><div class="ttdef"><b>Definition:</b> weekly_totals.h:21</div></div>
 <div class="ttc" id="astructPerProjectTotals_html_a20d2bd9a0de5be5283ec33bb13f1650a"><div class="ttname"><a href="structPerProjectTotals.html#a20d2bd9a0de5be5283ec33bb13f1650a">PerProjectTotals::task_totals</a></div><div class="ttdeci">std::vector&lt; PerTaskTotals &gt; task_totals</div><div class="ttdoc">Set of per-task totals.</div><div class="ttdef"><b>Definition:</b> weekly_totals.h:29</div></div>
 <div class="ttc" id="astructPerProjectTotals_html_a5015f10c8f3e903f04cd223f6b91b69c"><div class="ttname"><a href="structPerProjectTotals.html#a5015f10c8f3e903f04cd223f6b91b69c">PerProjectTotals::daily_totals</a></div><div class="ttdeci">std::array&lt; Duration, 7 &gt; daily_totals</div><div class="ttdoc">Daily breakdown of the total, all tasks included.</div><div class="ttdef"><b>Definition:</b> weekly_totals.h:27</div></div>
