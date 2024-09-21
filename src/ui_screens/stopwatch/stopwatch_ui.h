@@ -32,10 +32,6 @@ public:
         try {
           rename_item();
           update();
-        } catch (DBLogicExcept &e) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-          this->clear();
-          this->refresh();
         } catch (DateParsingFailure &e) {
           status().print_wait("Failed to parse the date. Do nothing.");
           this->clear();
@@ -47,19 +43,14 @@ public:
         update();
         break;
       case '\n':
-        try {
+        {
           db().commit_entrystaging();
           Date now_start;
           db().edit_entrystaging_start(now_start);
           update();
           // Pass the update along by returning the key above.
           return ch;
-        } catch (DBLogicExcept &e) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-          this->clear();
-          this->refresh();
-        }
-        break;
+        } break;
       default:
         stopwatch.unset_border();
         return ch;

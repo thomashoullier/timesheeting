@@ -13,21 +13,6 @@
 #include "statement_set.h"
 #include <type_traits>
 
-/** @brief Exception thrown when the DB encounters a logic error. */
-class DBLogicExcept : public std::exception {
-private:
-  /** @brief Exception message. */
-  std::string msg;
-
-public:
-  /** @brief Exception constructor. */
-  DBLogicExcept (const char* _msg) : msg(_msg) {}
-  /** @brief Mandatory std::exception method. */
-  const char* what() const throw() {
-    return msg.c_str();
-  }
-};
-
 /** @brief DB implementation using SQLite3. */
 class DB_SQLite {
 public:

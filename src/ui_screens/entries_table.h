@@ -50,10 +50,6 @@ public:
         try {
           rename_item();
           update();
-        } catch (DBLogicExcept &e) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-          this->clear();
-          this->refresh();
         } catch (DateParsingFailure &e) {
           status().print_wait("Failed to parse the date. Do nothing.");
           this->clear();

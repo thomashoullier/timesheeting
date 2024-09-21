@@ -75,12 +75,7 @@ public:
           status().print_wait("DB logic error! Nothing was done to the DB.");
         break;
       case 'x':
-        try {
-          remove_item(cur_col);
-        }
-        catch (DBLogicExcept &e) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        }
+        remove_item(cur_col);
         break;
       case 'b':
         toggle_active_item(cur_col);
