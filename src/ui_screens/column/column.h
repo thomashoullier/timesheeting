@@ -4,7 +4,6 @@
 #define COLUMN_H
 
 #include "column_base.h"
-#include "../../data_objects/data_objects.h"
 #include "../../ncurses/menu_ncurses.h"
 #include <type_traits>
 

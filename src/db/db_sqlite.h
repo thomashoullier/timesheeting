@@ -3,14 +3,16 @@
 #ifndef DB_SQLITE_H
 #define DB_SQLITE_H
 
-#include <exception>
-#include <string>
-#include "../data_objects/data_objects.h"
 #include "../data_objects/date_range.h"
+#include "../data_objects/duration.h"
+#include "../data_objects/entry.h"
+#include "../data_objects/entry_staging.h"
+#include "../data_objects/generic_item.h"
 #include "../data_objects/project_total.h"
 #include "../data_objects/weekly_totals.h"
 #include "db_sqlite_handle.h"
 #include "statement_set.h"
+#include <string>
 #include <type_traits>
 
 /** @brief DB implementation using SQLite3. */

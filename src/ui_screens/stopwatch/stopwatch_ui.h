@@ -7,7 +7,6 @@
 #include "stopwatch_ncurses.h"
 #include "../../db/db_sqlite.h"
 #include "../status_bar/status_bar_ncurses.h"
-#include <memory>
 
 /** @brief High-level UI for the stopwatch. */
 class StopwatchUI : public UIComponent {

@@ -3,7 +3,8 @@
 #ifndef STOPWATCH_NCURSES_H
 #define STOPWATCH_NCURSES_H
 
-#include "../../data_objects/data_objects.h"
+#include "../../data_objects/entry_field.h"
+#include "../../data_objects/entry_staging.h"
 #include "../../ncurses/menu_ncurses.h"
 
 /** @brief Ncurses implementation of a stopwatch for staging new entries. */

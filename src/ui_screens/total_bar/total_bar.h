@@ -4,7 +4,7 @@
 #define TOTAL_BAR_H
 
 #include <string>
-#include "../../data_objects/data_objects.h"
+#include "../../data_objects/duration.h"
 #include "../../ncurses/bar_ncurses.h"
 
 /** @brief Bar for displaying a duration. */

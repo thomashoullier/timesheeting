@@ -3,10 +3,12 @@
 #ifndef REGISTER_NCURSES_H
 #define REGISTER_NCURSES_H
 
+#include "../../data_objects/entry.h"
+#include "../../data_objects/entry_field.h"
+#include "../../data_objects/id.h"
+#include "../../ncurses/menu_ncurses.h"
 #include <string>
 #include <vector>
-#include "../../data_objects/data_objects.h"
-#include "../../ncurses/menu_ncurses.h"
 
 /** @brief Entry register implementation in ncurses.
 

@@ -4,7 +4,6 @@
 #define PROJECT_TASK_TABLE_H
 
 #include "column/column.h"
-#include "../data_objects/data_objects.h"
 #include "../db/db_sqlite.h"
 #include "../logger/logger.h"
 #include "status_bar/status_bar_ncurses.h"

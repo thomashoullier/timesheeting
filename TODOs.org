@@ -507,7 +507,8 @@ with a different face?
 + [2024-09-14 Sat] The project lines are now in bold thanks to being non-selectable
   in ncurses.
 
-*** TODO Refactor db_sqlite
+*** DONE Refactor db_sqlite
+CLOSED: [2024-09-21 Sat 18:14]
 ADDED: [2024-09-14 Sat]
 Put the statements away in another class which prepares them and destroys them,
 as well as bind things to them, step them, reset them.

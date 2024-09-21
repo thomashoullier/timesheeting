@@ -3,18 +3,16 @@
 #ifndef ENTRIES_TABLE_H
 #define ENTRIES_TABLE_H
 
-#include <cstdint>
-#include <memory>
-#include <stdexcept>
-#include "../data_objects/data_objects.h"
 #include "../data_objects/date.h"
-#include "date_selector/date_selector_ncurses.h"
+#include "../data_objects/entry_field.h"
 #include "../db/db_sqlite.h"
-#include "status_bar/status_bar_ncurses.h"
+#include "../logger/logger.h"
+#include "date_selector/date_selector_ncurses.h"
 #include "register/register_ncurses.h"
+#include "status_bar/status_bar_ncurses.h"
 #include "total_bar/total_bar.h"
 #include "ui_component.h"
-#include "../logger/logger.h"
+#include <stdexcept>
 
 /** @brief Class for holding the table of entries for a given day. */
 class EntriesTable : public UIComponent {

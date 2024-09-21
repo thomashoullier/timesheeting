@@ -3,8 +3,9 @@
 #ifndef PROJECT_TOTAL_H
 #define PROJECT_TOTAL_H
 
-#include "data_objects.h"
+#include "duration.h"
 #include <string>
+#include <vector>
 
 /** @brief Struct holding a total worked time for a given project. */
 struct ProjectTotal {

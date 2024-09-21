@@ -1,7 +1,7 @@
 #ifndef WEEKLY_TOTALS_H
 #define WEEKLY_TOTALS_H
 
-#include "data_objects.h"
+#include "duration.h"
 #include "../ncurses/string_with_face.h"
 #include <array>
 #include <string>
