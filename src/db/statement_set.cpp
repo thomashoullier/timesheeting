@@ -63,5 +63,73 @@ StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
          "WHERE id = ?;")),
       toggle_project_flag(db->prepare_statement(
          "UPDATE projects SET active = NOT active "
-         "WHERE id = ?"))
-{}
+         "WHERE id = ?")),
+      update_entry_project(db->prepare_statement(
+         "UPDATE entries "
+         "SET task_id = ("
+         "SELECT tasks.id FROM tasks "
+         "INNER JOIN projects ON tasks.project_id = projects.id "
+         "WHERE projects.name = ?) "
+         "WHERE entries.id = ? LIMIT 1;")),
+      update_entry_task(db->prepare_statement(
+         "UPDATE entries "
+         "SET task_id = ("
+         "SELECT id FROM tasks "
+         "WHERE name = ?1 "
+         "AND project_id = ("
+         "SELECT projects.id FROM entries "
+         "INNER JOIN tasks ON entries.task_id = tasks.id "
+         "INNER JOIN projects ON tasks.project_id = projects.id "
+         "WHERE entries.id = ?2)) "
+         "WHERE entries.id = ?2;")),
+      update_entry_start(db->prepare_statement(
+         "UPDATE entries SET start = ? WHERE id = ?;")),
+      update_entry_stop(db->prepare_statement(
+         "UPDATE entries SET stop = ? WHERE id = ?;")),
+      update_entry_location(db->prepare_statement(
+         "UPDATE entries SET location_id = ("
+         "SELECT id FROM locations "
+         "WHERE name = ?) "
+         "WHERE id = ?;")),
+      update_entrystaging_project(db->prepare_statement(
+         "UPDATE entrystaging "
+         "SET task_id = ("
+         "SELECT tasks.id FROM tasks "
+         "INNER JOIN projects ON tasks.project_id = projects.id "
+         "WHERE projects.name = ? "
+         "AND projects.active = TRUE "
+         "AND tasks.active = TRUE"
+         ") LIMIT 1;")),
+      update_entrystaging_task(db->prepare_statement(
+         "UPDATE entrystaging "
+         "SET task_id = ("
+         "SELECT id FROM tasks "
+         "WHERE name = ? "
+         "AND active = TRUE "
+         "AND project_id = ("
+         "SELECT projects.id FROM entrystaging "
+         "INNER JOIN tasks ON entrystaging.task_id = tasks.id "
+         "INNER JOIN projects ON tasks.project_id = projects.id "
+         "));")),
+      update_entrystaging_start(db->prepare_statement(
+         "UPDATE entrystaging SET start = ?;")),
+      update_entrystaging_stop(db->prepare_statement(
+         "UPDATE entrystaging SET stop = ?;")),
+      update_entrystaging_location(db->prepare_statement(
+         "UPDATE entrystaging SET location_id = ("
+         "SELECT id FROM locations "
+         "WHERE name = ? "
+         "AND active = TRUE);")),
+      remove_task(db->prepare_statement(
+         "DELETE FROM tasks WHERE id = ?;")),
+      remove_project(db->prepare_statement(
+         "DELETE FROM projects WHERE id = ?;")),
+      remove_location(db->prepare_statement(
+         "DELETE FROM locations WHERE id = ?;")),
+      remove_entry(db->prepare_statement(
+         "DELETE FROM entries WHERE id = ?;")),
+      insert_entrystaging(db->prepare_statement(
+         "INSERT INTO entries (task_id, start, stop, location_id) "
+         "SELECT task_id, start, stop, location_id "
+         "FROM entrystaging;"))
+      {}

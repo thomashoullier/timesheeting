@@ -57,23 +57,23 @@ public:
   bool toggle_location_active(Id location_id);
   bool toggle_task_active(Id task_id);
   bool toggle_project_active(Id project_id);
-  void edit_entry_project(Id entry_id,
+  bool edit_entry_project(Id entry_id,
                           const std::string &new_project_name);
-  void edit_entry_task(Id entry_id, const std::string &new_task_name);
-  void edit_entry_start(Id entry_id, const Date &new_start_date);
-  void edit_entry_stop(Id entry_id, const Date &new_stop_date);
-  void edit_entry_location(Id entry_id,
+  bool edit_entry_task(Id entry_id, const std::string &new_task_name);
+  bool edit_entry_start(Id entry_id, const Date &new_start_date);
+  bool edit_entry_stop(Id entry_id, const Date &new_stop_date);
+  bool edit_entry_location(Id entry_id,
                            const std::string &new_location_name);
-  void edit_entrystaging_project_name (const std::string &new_project_name);
-  void edit_entrystaging_task_name(const std::string &new_task_name);
-  void edit_entrystaging_start(const Date &new_start);
-  void edit_entrystaging_stop(const Date &new_stop);
-  void edit_entrystaging_location_name (const std::string &new_location_name);
-  void delete_task(Id task_id);
-  void delete_project(Id project_id);
-  void delete_location (Id location_id);
-  void delete_entry(Id entry_id);
-  void commit_entrystaging();
+  bool edit_entrystaging_project_name (const std::string &new_project_name);
+  bool edit_entrystaging_task_name(const std::string &new_task_name);
+  bool edit_entrystaging_start(const Date &new_start);
+  bool edit_entrystaging_stop(const Date &new_stop);
+  bool edit_entrystaging_location_name (const std::string &new_location_name);
+  bool delete_task(Id task_id);
+  bool delete_project(Id project_id);
+  bool delete_location (Id location_id);
+  bool delete_entry(Id entry_id);
+  bool commit_entrystaging();
   std::vector<ProjectTotal> report_project_totals(const DateRange &date_range);
   WeeklyTotals report_weekly_totals (const Date &first_day_start);
 
@@ -84,36 +84,6 @@ private:
   std::shared_ptr<DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */
   StatementSet statements;
-  /** @brief Statement for editing an entry's project. */
-  sqlite3_stmt *update_entry_project;
-  /** @brief Statement for editing an entry's task. */
-  sqlite3_stmt *update_entry_task;
-  /** @brief Statement for editing an entry's start date. */
-  sqlite3_stmt *update_entry_start;
-  /** @brief Statement for editing an entry's stop date. */
-  sqlite3_stmt *update_entry_stop;
-  /** @brief Statement for editing an entry's location. */
-  sqlite3_stmt *update_entry_location;
-  /** @brief Statement for editing the entrystaging project name. */
-  sqlite3_stmt *update_entrystaging_project;
-  /** @brief Statement for editing the entrystaging task name. */
-  sqlite3_stmt *update_entrystaging_task;
-  /** @brief Statement for editing the entrystaging start date. */
-  sqlite3_stmt *update_entrystaging_start;
-  /** @brief Statement for editing the entrystaging stop date. */
-  sqlite3_stmt *update_entrystaging_stop;
-  /** @brief Statement for editing the entrystaging location. */
-  sqlite3_stmt *update_entrystaging_location;
-  /** @brief Statement for deleting a task. */
-  sqlite3_stmt *remove_task;
-  /** @brief Statement for deleting a project. */
-  sqlite3_stmt *remove_project;
-  /** @brief Statement for deleting a location. */
-  sqlite3_stmt *remove_location;
-  /** @brief Statement for deleting an entry. */
-  sqlite3_stmt *remove_entry;
-  /** @brief Statement for committing the entrystaging to entries. */
-  sqlite3_stmt *insert_entrystaging;
   /** @brief Sum duration per project for a given date range. */
   sqlite3_stmt *sum_duration_per_project;
   /** @brief Sum duration per project actually worked on

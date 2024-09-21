@@ -49,6 +49,36 @@ public:
   Statement toggle_task_flag;
   /** @brief Statement for toggling the project active flag. */
   Statement toggle_project_flag;
+  /** @brief Statement for editing an entry's project. */
+  Statement update_entry_project;
+  /** @brief Statement for editing an entry's task. */
+  Statement update_entry_task;
+  /** @brief Statement for editing an entry's start date. */
+  Statement update_entry_start;
+  /** @brief Statement for editing an entry's stop date. */
+  Statement update_entry_stop;
+  /** @brief Statement for editing an entry's location. */
+  Statement update_entry_location;
+  /** @brief Statement for editing the entrystaging project name. */
+  Statement update_entrystaging_project;
+  /** @brief Statement for editing the entrystaging task name. */
+  Statement update_entrystaging_task;
+  /** @brief Statement for editing the entrystaging start date. */
+  Statement update_entrystaging_start;
+  /** @brief Statement for editing the entrystaging stop date. */
+  Statement update_entrystaging_stop;
+  /** @brief Statement for editing the entrystaging location. */
+  Statement update_entrystaging_location;
+  /** @brief Statement for deleting a task. */
+  Statement remove_task;
+  /** @brief Statement for deleting a project. */
+  Statement remove_project;
+  /** @brief Statement for deleting a location. */
+  Statement remove_location;
+  /** @brief Statement for deleting an entry. */
+  Statement remove_entry;
+  /** @brief Statement for committing the entrystaging to entries. */
+  Statement insert_entrystaging;
 };
 
 #endif // STATEMENT_SET_H
