@@ -47,7 +47,7 @@ public:
   std::vector<Entry> query_entries(const DateRange &date_range);
   Duration query_entries_duration(const DateRange &date_range);
   EntryStaging query_entrystaging ();
-  void add_project(std::string project_name);
+  bool add_project(std::string project_name);
   void add_task(Id project_id, std::string task_name);
   void add_location(const std::string &location_name);
   void add_entry(Id task_id, const Date &start, const Date &stop,

@@ -413,11 +413,10 @@ void DB_SQLite::create_entrystaging_table() {
   try_exec_statement(insert_row_st);
 }
 
-void DB_SQLite::add_project(std::string project_name) {
+bool DB_SQLite::add_project(std::string project_name) {
   auto &stmt = statements.insert_project;
   stmt.bind_all(project_name);
-  if (not(stmt.execute()))
-    throw DBLogicExcept("add_project: could not add project.");
+  return stmt.execute();
 }
 
 void DB_SQLite::add_task(Id project_id, std::string task_name) {
