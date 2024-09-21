@@ -12,53 +12,12 @@
 class LocationsScreen : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit LocationsScreen()
-    : location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
-                                                      WindowPosition::left)),
-      show_only_active(true) {
-    // TODO: initialize the column directly.
-    update_location_col();
-  };
+  explicit LocationsScreen();
 
-  void refresh () override { location_col->refresh(); };
-  void clear () override { location_col->clear(); };
-  void update () override { update_location_col(); };
-
-  char input_loop () override {
-    location_col->set_border();
-    while(true) {
-      status().print(location_col->get_current_item_string());
-      auto ch = location_col->get_input();
-      switch(ch) {
-      case 'n':
-        location_col->select_down_item();
-        break;
-      case 'e':
-        location_col->select_up_item();
-        break;
-      case 'a':
-        if (not(add_item()))
-            status().print_wait("DB logic error! Nothing was done to the DB.");
-        break;
-      case 'r':
-        if (not(rename_item()))
-            status().print_wait("DB logic error! Nothing was done to the DB.");
-        break;
-      case 'x':
-        remove_item();
-        break;
-      case 'b':
-        toggle_active_item();
-        break;
-      case '.':
-        toggle_archive_visibility();
-        break;
-      default:
-        location_col->unset_border();
-        return ch;
-      }
-    }
-  };
+  void refresh () override;
+  void clear () override;
+  void update () override;
+  char input_loop () override;
 
 private:
   /** @brief Column holding the locations. */
@@ -67,74 +26,17 @@ private:
   bool show_only_active;
 
   /** @brief Update the location column. */
-  void update_location_col() {
-    std::vector<Location> location_items;
-    if (show_only_active)
-      location_items = db().query_locations_active();
-    else
-      location_items = db().query_locations();
-    location_col->set_items(location_items);
-    location_col->refresh();
-  };
-
+  void update_location_col();
   /** @brief Add an item to the column. */
-  bool add_item () {
-    auto new_item_name = status().get_user_string();
-    if (new_item_name.empty())
-      return true;
-    auto success = db().add_location(new_item_name);
-    logger().log("Added location: " + new_item_name);
-    update_location_col();
-    return success;
-  };
-
+  bool add_item ();
   /** @brief Rename an item in the column. */
-  bool rename_item () {
-    try {
-      auto id = location_col->get_current_id();
-      auto new_item_name = status().get_user_string();
-      if (new_item_name.empty())
-        return true;
-      auto success = db().edit_location_name(id, new_item_name);
-      update_location_col();
-      return success;
-    } catch (MenuEmpty &e) {
-      // TODO: instead of managing this by exception, try to check if the column
-      // is empty explicitely.
-      return true;
-    }
-  };
-
+  bool rename_item ();
   /** @brief Remove an item in the column. */
-  void remove_item() {
-    try {
-      auto id = location_col->get_current_id();
-      bool user_conf = status().query_confirmation("Remove item? (Y/N)");
-      if (!user_conf)
-        return;
-      db().delete_location(id);
-      update_location_col();
-    } catch (MenuEmpty &e) {
-      return;
-    }
-  };
-
+  void remove_item();
   /** @brief Toggle the active flag on the selected item. */
-  void toggle_active_item () {
-    try {
-      auto id = location_col->get_current_id();
-      db().toggle_location_active(id);
-      update_location_col();
-    } catch (MenuEmpty &e) {
-      return;
-    }
-  }
-
+  void toggle_active_item ();
   /** @brief Toggle the archive items visibility. */
-  void toggle_archive_visibility() {
-    show_only_active = !show_only_active;
-    update_location_col();
-  }
+  void toggle_archive_visibility();
 };
 
 #endif // LOCATIONS_SCREEN_H

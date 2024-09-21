@@ -4,53 +4,18 @@
 #define ENTRIES_SCREEN_H
 
 #include "ui_component.h"
-#include "entries_table.h"
-#include "status_bar/status_bar_ncurses.h"
-#include "stopwatch/stopwatch_ui.h"
-#include "../logger/logger.h"
 #include <memory>
-
 
 /** @brief Entry UI screen. */
 class EntriesScreen : public UIComponent {
 public:
   /** @brief Constructor. */
-  explicit EntriesScreen()
-    : stopwatch_ui(std::make_unique<StopwatchUI>()),
-      entries_table(std::make_unique<EntriesTable>()) {};
+  explicit EntriesScreen();
 
-  char input_loop() override {
-    UIComponent *cur_focus {entries_table.get()};
-    while(true) {
-      auto ch = cur_focus->input_loop();
-      switch(ch) {
-      case '\t':
-        cur_focus = (cur_focus == stopwatch_ui.get()) ?
-          entries_table.get() : stopwatch_ui.get();
-      break;
-      case '\n': // Update request is passed
-        entries_table->update();
-        break;
-      default:
-        return ch;
-      }
-    }
-  };
-
-  void refresh() override {
-    stopwatch_ui->refresh();
-    entries_table->refresh();
-  };
-
-  void clear() override {
-    stopwatch_ui->clear();
-    entries_table->clear();
-  };
-
-  void update() override {
-    stopwatch_ui->update();
-    entries_table->update();
-  };
+  char input_loop() override;
+  void refresh() override;
+  void clear() override;
+  void update() override;
 
 private:
   /** @brief Handle to the stopwatch. */

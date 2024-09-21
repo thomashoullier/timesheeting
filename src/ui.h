@@ -8,10 +8,7 @@
 #include "ui_screens/locations_screen.h"
 #include "ui_screens/project_report_screen.h"
 #include "ui_screens/project_task_screen.h"
-#include "db/db_sqlite.h"
-#include "ui_screens/status_bar/status_bar_ncurses.h"
 #include "ui_screens/weekly_report_screen.h"
-#include <memory>
 
 /** @brief Ncurses top-level UI for timesheeting. */
 class UI {
