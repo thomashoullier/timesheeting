@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['registerncurses_299',['RegisterNcurses',['../classRegisterNcurses.html',1,'']]]
+  ['registerncurses_295',['RegisterNcurses',['../classRegisterNcurses.html',1,'']]]
 ];

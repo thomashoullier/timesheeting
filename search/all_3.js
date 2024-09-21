@@ -25,6 +25,6 @@ var searchData=
   ['duration_44',['Duration',['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration::Duration()'],['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration(uint64_t seconds)']]],
   ['duration_45',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
   ['duration_46',['Duration',['../classDuration.html',1,'']]],
-  ['duration_5fper_5fworked_5fproject_47',['duration_per_worked_project',['../classDB__SQLite.html#afd7a00628b71b9f5e54c2f2c6345ad74',1,'DB_SQLite']]],
-  ['duration_5fper_5fworked_5ftask_48',['duration_per_worked_task',['../classDB__SQLite.html#a8e7593736fdb7397b860f96ee1ecf5eb',1,'DB_SQLite']]]
+  ['duration_5fper_5fworked_5fproject_47',['duration_per_worked_project',['../classStatementSet.html#a3c7d5cf3abd0171d2c782e159f793872',1,'StatementSet']]],
+  ['duration_5fper_5fworked_5ftask_48',['duration_per_worked_task',['../classStatementSet.html#a6edff466bc1742948d3099d5941ad565',1,'StatementSet']]]
 ];

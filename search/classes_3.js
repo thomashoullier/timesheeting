@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['entriesscreen_279',['EntriesScreen',['../classEntriesScreen.html',1,'']]],
-  ['entriestable_280',['EntriesTable',['../classEntriesTable.html',1,'']]],
-  ['entry_281',['Entry',['../structEntry.html',1,'']]],
-  ['entrystaging_282',['EntryStaging',['../structEntryStaging.html',1,'']]]
+  ['entriesscreen_275',['EntriesScreen',['../classEntriesScreen.html',1,'']]],
+  ['entriestable_276',['EntriesTable',['../classEntriesTable.html',1,'']]],
+  ['entry_277',['Entry',['../structEntry.html',1,'']]],
+  ['entrystaging_278',['EntryStaging',['../structEntryStaging.html',1,'']]]
 ];
