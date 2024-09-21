@@ -37,20 +37,12 @@ public:
         location_col->select_up_item();
         break;
       case 'a':
-        try {
-          add_item();
-        }
-        catch (DBLogicExcept &e) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        }
+        if (not(add_item()))
+            status().print_wait("DB logic error! Nothing was done to the DB.");
         break;
       case 'r':
-        try {
-          rename_item();
-        }
-        catch (DBLogicExcept &e) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        }
+        if (not(rename_item()))
+            status().print_wait("DB logic error! Nothing was done to the DB.");
         break;
       case 'x':
         try {
@@ -91,28 +83,30 @@ private:
   };
 
   /** @brief Add an item to the column. */
-  void add_item () {
+  bool add_item () {
     auto new_item_name = status().get_user_string();
     if (new_item_name.empty())
-      return;
-    db().add_location(new_item_name);
+      return true;
+    auto success = db().add_location(new_item_name);
     logger().log("Added location: " + new_item_name);
     update_location_col();
+    return success;
   };
 
   /** @brief Rename an item in the column. */
-  void rename_item () {
+  bool rename_item () {
     try {
       auto id = location_col->get_current_id();
       auto new_item_name = status().get_user_string();
       if (new_item_name.empty())
-        return;
-      db().edit_location_name(id, new_item_name);
+        return true;
+      auto success = db().edit_location_name(id, new_item_name);
       update_location_col();
+      return success;
     } catch (MenuEmpty &e) {
       // TODO: instead of managing this by exception, try to check if the column
       // is empty explicitely.
-      return;
+      return true;
     }
   };
 

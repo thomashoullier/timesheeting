@@ -33,6 +33,22 @@ public:
   Statement select_entrystaging;
   /** @brief Statement for adding a project. */
   Statement insert_project;
+  /** @brief Statement for adding a task. */
+  Statement insert_task;
+  /** @brief Statement for adding a location. */
+  Statement insert_location;
+  /** @brief Statement for editing a project's name. */
+  Statement update_project_name;
+  /** @brief Statement for editing a task's name. */
+  Statement update_task_name;
+  /** @brief Statement for editing a location's name. */
+  Statement update_location_name;
+  /** @brief Statement for toggling the location active flag. */
+  Statement toggle_location_flag;
+  /** @brief Statement for toggling the task active flag. */
+  Statement toggle_task_flag;
+  /** @brief Statement for toggling the project active flag. */
+  Statement toggle_project_flag;
 };
 
 #endif // STATEMENT_SET_H

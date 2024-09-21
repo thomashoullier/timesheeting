@@ -71,12 +71,8 @@ public:
           status().print_wait("DB logic error! Nothing was done to the DB.");
         break;
       case 'r':
-        try {
-          rename_item(cur_col);
-        }
-        catch (DBLogicExcept &e) {
+        if (not(rename_item(cur_col)))
           status().print_wait("DB logic error! Nothing was done to the DB.");
-        }
         break;
       case 'x':
         try {
@@ -141,44 +137,48 @@ private:
 
   /** @brief Add an item (project or task). */
   bool add_item (ColumnBase *cur_col) {
+    // TODO: rewrite, this got ugly.
     auto new_item_name = status().get_user_string();
-    if (!new_item_name.empty()) {
-      if (cur_col == project_col.get()) {
-        auto success = db().add_project(new_item_name);
-        logger().log("Added project: " + new_item_name);
-        update_project_col();
+    if (new_item_name.empty())
+      return true;
+    if (cur_col == project_col.get()) {
+      auto success = db().add_project(new_item_name);
+      logger().log("Added project: " + new_item_name);
+      update_project_col();
+      return success;
+    } else if (cur_col == task_col.get()) {
+      try {
+        auto project_id = project_col->get_current_id();
+        auto success = db().add_task(project_id, new_item_name);
+        logger().log("Added task: " + new_item_name);
+        update_task_col();
         return success;
-      } else if (cur_col == task_col.get()) {
-        try {
-          auto project_id = project_col->get_current_id();
-          db().add_task(project_id, new_item_name);
-          logger().log("Added task: " + new_item_name);
-          update_task_col();
-          return true; // TEMP
-        } catch (MenuEmpty &e) {
-          return true;
-        }
+      } catch (MenuEmpty &e) {
+        return true;
       }
     }
-    return true; // TEMP
+    return true;
   }
 
   /** @brief Rename an item. */
-  void rename_item(ColumnBase *cur_col) {
+  bool rename_item(ColumnBase *cur_col) {
     try {
       auto id = cur_col->get_current_id();
       auto new_item_name = status().get_user_string();
       if (!new_item_name.empty()) {
         if (cur_col == project_col.get()) {
-          db().edit_project_name(id, new_item_name);
+          auto success = db().edit_project_name(id, new_item_name);
           update_project_col();
+          return success;
         } else if (cur_col == task_col.get()) {
-          db().edit_task_name(id, new_item_name);
+          auto success = db().edit_task_name(id, new_item_name);
           update_task_col();
+          return success;
         }
       }
+      return true;
     } catch (MenuEmpty &e) {
-      return;
+      return true;
     }
   }
 

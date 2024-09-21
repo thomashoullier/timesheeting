@@ -21,48 +21,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   this->create_entrystaging_table();
 
   // Prepare persistent statements
-  std::string insert_task_st =
-    "INSERT INTO tasks (project_id, name, active) "
-    "VALUES (?, ?, TRUE);";
-  insert_task = sqlite_db->prepare_statement(insert_task_st);
-
-  std::string insert_location_st =
-    "INSERT INTO locations (name, active) "
-    "VALUES (?, 1);";
-  insert_location = sqlite_db->prepare_statement(insert_location_st);
-
-  std::string insert_entry_st =
-    "INSERT INTO entries (task_id, start, stop, location_id) "
-    "VALUES (?, ?, ?, ?);";
-  insert_entry = sqlite_db->prepare_statement(insert_entry_st);
-
-  std::string update_project_name_st =
-    "UPDATE projects "
-    "SET name = ? WHERE id = ?;";
-  update_project_name = sqlite_db->prepare_statement(update_project_name_st);
-
-  std::string alter_task_name_st = "UPDATE tasks SET name = ? WHERE id = ?;";
-  update_task_name = sqlite_db->prepare_statement(alter_task_name_st);
-
-  std::string alter_location_name_st =
-    "UPDATE locations SET name = ? WHERE id = ?;";
-  update_location_name = sqlite_db->prepare_statement(alter_location_name_st);
-
-  std::string toggle_location_flag_st =
-    "UPDATE locations SET active = NOT active "
-    "WHERE id = ?;";
-  toggle_location_flag = sqlite_db->prepare_statement(toggle_location_flag_st);
-
-  std::string toggle_task_flag_st =
-    "UPDATE tasks SET active = NOT active "
-    "WHERE id = ?;";
-  toggle_task_flag = sqlite_db->prepare_statement(toggle_task_flag_st);
-
-  std::string toggle_project_flag_st =
-    "UPDATE projects SET active = NOT active "
-    "WHERE id = ?";
-  toggle_project_flag = sqlite_db->prepare_statement(toggle_project_flag_st);
-
   std::string update_entry_project_st =
     "UPDATE entries "
     "SET task_id = ("
@@ -217,15 +175,6 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
 }
 
 DB_SQLite::~DB_SQLite() {
-  sqlite3_finalize(insert_task);
-  sqlite3_finalize(insert_location);
-  sqlite3_finalize(insert_entry);
-  sqlite3_finalize(update_project_name);
-  sqlite3_finalize(update_task_name);
-  sqlite3_finalize(update_location_name);
-  sqlite3_finalize(toggle_location_flag);
-  sqlite3_finalize(toggle_task_flag);
-  sqlite3_finalize(toggle_project_flag);
   sqlite3_finalize(update_entry_project);
   sqlite3_finalize(update_entry_task);
   sqlite3_finalize(update_entry_start);
@@ -419,76 +368,53 @@ bool DB_SQLite::add_project(std::string project_name) {
   return stmt.execute();
 }
 
-void DB_SQLite::add_task(Id project_id, std::string task_name) {
-  sqlite3_reset(insert_task);
-  sqlite3_bind_int64(insert_task, 1, project_id);
-  sqlite3_bind_text(insert_task, 2, task_name.c_str(), task_name.size(),
-                    SQLITE_STATIC);
-  try_step_statement(insert_task);
+bool DB_SQLite::add_task(Id project_id, std::string task_name) {
+  auto &stmt = statements.insert_task;
+  stmt.bind_all(project_id, task_name);
+  return stmt.execute();
 }
 
-void DB_SQLite::add_location(const std::string &location_name) {
-  sqlite3_reset(insert_location);
-  sqlite3_bind_text(insert_location, 1,
-                    location_name.c_str(), location_name.size(),
-                    SQLITE_STATIC);
-  try_step_statement(insert_location);
+bool DB_SQLite::add_location(const std::string &location_name) {
+  auto &stmt = statements.insert_location;
+  stmt.bind_all(location_name);
+  return stmt.execute();
 }
 
-void DB_SQLite::add_entry(Id task_id, const Date &start, const Date &stop,
-                          Id location_id) {
-  sqlite3_reset(insert_entry);
-  sqlite3_bind_int64(insert_entry, 1, task_id);
-  sqlite3_bind_int64(insert_entry, 2, start.to_unix_timestamp());
-  sqlite3_bind_int64(insert_entry, 3, stop.to_unix_timestamp());
-  sqlite3_bind_int64(insert_entry, 4, location_id);
-  try_step_statement(insert_entry);
+bool DB_SQLite::edit_project_name(Id project_id, std::string new_project_name) {
+  auto &stmt = statements.update_project_name;
+  stmt.bind_all(new_project_name, project_id);
+  return stmt.execute();
 }
 
-void DB_SQLite::edit_project_name(Id project_id, std::string new_project_name) {
-  sqlite3_reset(update_project_name);
-  sqlite3_bind_text(update_project_name, 1,
-                    new_project_name.c_str(), new_project_name.size(),
-                    SQLITE_STATIC);
-  sqlite3_bind_int64(update_project_name, 2, project_id);
-  try_step_statement(update_project_name);
+bool DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
+  auto &stmt = statements.update_task_name;
+  stmt.bind_all(new_task_name, task_id);
+  return stmt.execute();
 }
 
-void DB_SQLite::edit_location_name(Id location_id,
+bool DB_SQLite::edit_location_name(Id location_id,
                                    const std::string &new_location_name) {
-  sqlite3_reset(update_location_name);
-  sqlite3_bind_text(update_location_name, 1,
-                    new_location_name.c_str(), new_location_name.size(),
-                    SQLITE_STATIC);
-  sqlite3_bind_int64(update_location_name, 2, location_id);
-  try_step_statement(update_location_name);
+  auto &stmt = statements.update_location_name;
+  stmt.bind_all(new_location_name, location_id);
+  return stmt.execute();
 }
 
-void DB_SQLite::toggle_location_active(Id location_id) {
-  sqlite3_reset(toggle_location_flag);
-  sqlite3_bind_int64(toggle_location_flag, 1, location_id);
-  try_step_statement(toggle_location_flag);
+bool DB_SQLite::toggle_location_active(Id location_id) {
+  auto &stmt = statements.toggle_location_flag;
+  stmt.bind_all(location_id);
+  return stmt.execute();
 }
 
-void DB_SQLite::toggle_task_active(Id task_id) {
-  sqlite3_reset(toggle_task_flag);
-  sqlite3_bind_int64(toggle_task_flag, 1, task_id);
-  try_step_statement(toggle_task_flag);
+bool DB_SQLite::toggle_task_active(Id task_id) {
+  auto &stmt = statements.toggle_task_flag;
+  stmt.bind_all(task_id);
+  return stmt.execute();
 }
 
-void DB_SQLite::toggle_project_active(Id project_id) {
-  sqlite3_reset(toggle_project_flag);
-  sqlite3_bind_int64(toggle_project_flag, 1, project_id);
-  try_step_statement(toggle_project_flag);
-}
-
-void DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
-  sqlite3_reset(update_task_name);
-  sqlite3_bind_text(update_task_name, 1,
-                    new_task_name.c_str(), new_task_name.size(),
-                    SQLITE_STATIC);
-  sqlite3_bind_int64(update_task_name, 2, task_id);
-  try_step_statement(update_task_name);
+bool DB_SQLite::toggle_project_active(Id project_id) {
+  auto &stmt = statements.toggle_project_flag;
+  stmt.bind_all(project_id);
+  return stmt.execute();
 }
 
 void DB_SQLite::edit_entry_project(Id entry_id,

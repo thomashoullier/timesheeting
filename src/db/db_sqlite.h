@@ -48,17 +48,15 @@ public:
   Duration query_entries_duration(const DateRange &date_range);
   EntryStaging query_entrystaging ();
   bool add_project(std::string project_name);
-  void add_task(Id project_id, std::string task_name);
-  void add_location(const std::string &location_name);
-  void add_entry(Id task_id, const Date &start, const Date &stop,
-                 Id location_id);
-  void edit_project_name(Id project_id, std::string new_project_name);
-  void edit_task_name(Id task_id, std::string new_task_name);
-  void edit_location_name(Id location_id,
+  bool add_task(Id project_id, std::string task_name);
+  bool add_location(const std::string &location_name);
+  bool edit_project_name(Id project_id, std::string new_project_name);
+  bool edit_task_name(Id task_id, std::string new_task_name);
+  bool edit_location_name(Id location_id,
                           const std::string &new_location_name);
-  void toggle_location_active(Id location_id);
-  void toggle_task_active(Id task_id);
-  void toggle_project_active(Id project_id);
+  bool toggle_location_active(Id location_id);
+  bool toggle_task_active(Id task_id);
+  bool toggle_project_active(Id project_id);
   void edit_entry_project(Id entry_id,
                           const std::string &new_project_name);
   void edit_entry_task(Id entry_id, const std::string &new_task_name);
@@ -86,24 +84,6 @@ private:
   std::shared_ptr<DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */
   StatementSet statements;
-  /** @brief Statement for adding a task. */
-  sqlite3_stmt *insert_task;
-  /** @brief Statement for adding a location. */
-  sqlite3_stmt *insert_location;
-  /** @brief Statement for adding an entry. */
-  sqlite3_stmt *insert_entry;
-  /** @brief Statement for editing a project's name. */
-  sqlite3_stmt *update_project_name;
-  /** @brief Statement for editing a task's name. */
-  sqlite3_stmt *update_task_name;
-  /** @brief Statement for editing a location's name. */
-  sqlite3_stmt *update_location_name;
-  /** @brief Statement for toggling the location active flag. */
-  sqlite3_stmt *toggle_location_flag;
-  /** @brief Statement for toggling the task active flag. */
-  sqlite3_stmt *toggle_task_flag;
-  /** @brief Statement for toggling the project active flag. */
-  sqlite3_stmt *toggle_project_flag;
   /** @brief Statement for editing an entry's project. */
   sqlite3_stmt *update_entry_project;
   /** @brief Statement for editing an entry's task. */
