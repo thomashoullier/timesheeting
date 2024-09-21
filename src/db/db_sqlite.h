@@ -11,8 +11,6 @@
 #include "../data_objects/weekly_totals.h"
 #include "db_sqlite_handle.h"
 #include "statement_set.h"
-#include <algorithm>
-#include <iterator>
 #include <type_traits>
 
 /** @brief Exception thrown when the DB encounters a logic error. */
@@ -35,8 +33,6 @@ class DB_SQLite {
 public:
   /** @brief Grab the DB singleton. */
   static DB_SQLite& get();
-  /** @brief Finalize persistent statements etc. */
-  ~DB_SQLite();
 
   std::vector<Project> query_projects();
   std::vector<Project> query_projects_active();
@@ -84,18 +80,6 @@ private:
   std::shared_ptr<DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */
   StatementSet statements;
-  /** @brief Sum duration per project for a given date range. */
-  sqlite3_stmt *sum_duration_per_project;
-  /** @brief Sum duration per project actually worked on
-      for a given date range. */
-  sqlite3_stmt *duration_per_worked_project;
-  /** @brief Sum duration per task actually worked on for a given date range,
-      on a given project. */
-  sqlite3_stmt *duration_per_worked_task;
-  /** @brief Sum duration for a given project over a given date range. */
-  sqlite3_stmt *project_duration;
-  /** @brief Sum duration for a given task over a given date range. */
-  sqlite3_stmt *task_duration;
 
   /** @brief Create the SQL table for projects. */
   void create_projects_table();
@@ -113,27 +97,23 @@ private:
   Duration report_project_duration (Id project_id, const DateRange &date_range);
   /** @brief Sum duration for a given task over a given date range. */
   Duration report_task_duration (Id task_id, const DateRange &date_range);
-  /** @brief Execute a SQL statement with exception catching. */
-  void try_exec_statement(const std::string &statement);
-  /** @brief Step a SQL statement with exception catching. */
-  void try_step_statement(sqlite3_stmt *stmt);
   /** @brief Query template for GenericItems. */
   template <typename T,
             typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>
   std::vector<T> query_generic_items(Statement &statement);
 };
 
-/** @brief Grab the DB. */
-DB_SQLite &db();
-
 template <typename T, class>
 std::vector<T> DB_SQLite::query_generic_items(Statement &statement) {
   std::vector<T> items;
-  while(statement.step()) {
+  while (statement.step()) {
     auto [id, name] = statement.get_all<RowId, std::string>();
     items.push_back(T{id, name});
   }
   return items;
 }
+
+/** @brief Grab the DB. */
+DB_SQLite &db();
 
 #endif // DB_SQLITE_H

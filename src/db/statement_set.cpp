@@ -131,5 +131,46 @@ StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
       insert_entrystaging(db->prepare_statement(
          "INSERT INTO entries (task_id, start, stop, location_id) "
          "SELECT task_id, start, stop, location_id "
-         "FROM entrystaging;"))
-      {}
+         "FROM entrystaging;")),
+      sum_duration_per_project(db->prepare_statement(
+         "SELECT projects.name, SUM(entries.stop - entries.start) "
+         "FROM projects "
+         "INNER JOIN tasks ON projects.id = tasks.project_id "
+         "INNER JOIN entries ON tasks.id = entries.task_id "
+         "WHERE entries.start >= ? "
+         "AND entries.start < ? "
+         "GROUP BY projects.name;")),
+      project_duration(db->prepare_statement(
+         "SELECT SUM(entries.stop - entries.start) "
+         "FROM projects "
+         "INNER JOIN tasks ON projects.id = tasks.project_id "
+         "INNER JOIN entries ON tasks.id = entries.task_id "
+         "WHERE projects.id = ? "
+         "AND entries.start >= ? "
+         "AND entries.start < ?;")),
+      task_duration(db->prepare_statement(
+         "SELECT SUM(entries.stop - entries.start) "
+         "FROM tasks "
+         "INNER JOIN entries ON tasks.id = entries.task_id "
+         "WHERE tasks.id = ? "
+         "AND entries.start >= ? "
+         "AND entries.start < ?;")),
+      duration_per_worked_project(db->prepare_statement(
+         "SELECT projects.id, projects.name, SUM(entries.stop - entries.start) "
+         "FROM projects "
+         "INNER JOIN tasks ON projects.id = tasks.project_id "
+         "INNER JOIN entries ON tasks.id = entries.task_id "
+         "WHERE entries.start >= ? "
+         "AND entries.start < ? "
+         "GROUP BY projects.name " // TODO: group by id rather no?
+         "HAVING SUM(entries.stop - entries.start) > 0;")),
+      duration_per_worked_task(db->prepare_statement(
+         "SELECT tasks.id, tasks.name, SUM(entries.stop - entries.start) "
+         "FROM tasks "
+         "INNER JOIN entries ON tasks.id = entries.task_id "
+         "WHERE tasks.project_id = ? "
+         "AND entries.start >= ? "
+         "AND entries.start < ? "
+         "GROUP BY tasks.name " // TODO: group by id?
+         "HAVING SUM(entries.stop - entries.start) > 0;"))
+         {}

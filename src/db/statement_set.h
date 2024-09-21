@@ -79,6 +79,18 @@ public:
   Statement remove_entry;
   /** @brief Statement for committing the entrystaging to entries. */
   Statement insert_entrystaging;
+  /** @brief Sum duration per project for a given date range. */
+  Statement sum_duration_per_project;
+  /** @brief Sum duration for a given project over a given date range. */
+  Statement project_duration;
+  /** @brief Sum duration for a given task over a given date range. */
+  Statement task_duration;
+  /** @brief Sum duration per project actually worked on
+      for a given date range. */
+  Statement duration_per_worked_project;
+  /** @brief Sum duration per task actually worked on for a given date range,
+      on a given project. */
+  Statement duration_per_worked_task;
 };
 
 #endif // STATEMENT_SET_H
