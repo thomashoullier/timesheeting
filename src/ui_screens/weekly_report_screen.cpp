@@ -2,7 +2,7 @@
 
 WeeklyReportScreen::WeeklyReportScreen()
   : week_selector{},
-    reg(db().report_weekly_totals(week_selector.current_range().start)) {};
+    reg(db().report_weekly_totals(week_selector.current_week())) {};
 
 char WeeklyReportScreen::input_loop() {
   while (true) {
@@ -33,8 +33,7 @@ void WeeklyReportScreen::clear() {
 }
 
 void WeeklyReportScreen::update() {
-  auto first_week_day = week_selector.current_range().start;
-  auto week_report = db().report_weekly_totals(first_week_day);
+  auto week_report = db().report_weekly_totals(week_selector.current_week());
   reg.set_items(week_report);
   this->refresh();
 }

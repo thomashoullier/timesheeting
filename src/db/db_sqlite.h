@@ -4,6 +4,7 @@
 #define DB_SQLITE_H
 
 #include "../data_objects/date_range.h"
+#include "../data_objects/week.h"
 #include "../data_objects/duration.h"
 #include "../data_objects/entry.h"
 #include "../data_objects/entry_staging.h"
@@ -58,7 +59,7 @@ public:
   bool delete_entry(Id entry_id);
   bool commit_entrystaging();
   std::vector<ProjectTotal> report_project_totals(const DateRange &date_range);
-  WeeklyTotals report_weekly_totals (const Date &first_day_start);
+  WeeklyTotals report_weekly_totals (const Week &week);
 
 private:
   /** @brief Open the DB handle. */

@@ -2,7 +2,9 @@
 #define WEEK_H
 
 #include "date_range.h"
+#include "day.h"
 #include <string>
+#include <array>
 
 class Week {
 private:
@@ -20,6 +22,8 @@ public:
   DateRange to_date_range() const;
   /** @brief Return a string representation for the week. */
   std::string to_string() const;
+  /** @brief Return the set of Days within the week, in order. */
+  std::array<Day, 7> days() const;
 };
 
 #endif // WEEK_H

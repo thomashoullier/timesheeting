@@ -1,8 +1,11 @@
 #include "week_selector.h"
 
 WeekSelector::WeekSelector()
-    : BarNCurses(WindowPosition::top, WindowFormat::half_line),
-      week{} {}
+    : BarNCurses(WindowPosition::top, WindowFormat::half_line), week{} {}
+
+Week WeekSelector::current_week() const {
+  return week;
+}
 
 DateRange WeekSelector::current_range() const { return week.to_date_range(); }
 

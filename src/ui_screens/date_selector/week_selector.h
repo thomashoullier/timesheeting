@@ -13,6 +13,8 @@ private:
 public:
   /** @brief Initialize the day to the first day of the week in local time. */
   WeekSelector();
+  /** @brief Return the currently selected week. */
+  Week current_week() const;
   /** @brief Return the current week as a DateRange. */
   DateRange current_range() const;
   /** @brief Select the next week. */

@@ -366,31 +366,24 @@ Duration DB_SQLite::report_task_duration(Id task_id,
   return Duration(seconds);
 }
 
-// TODO: use a Week object here as argument.
-WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
-  logger().log("report_weekly_totals starting on: " +
-             first_day_start.to_string());
+WeeklyTotals DB_SQLite::report_weekly_totals(const Week &week) {
+  logger().log("report_weekly_totals for week over date range: " +
+               week.to_date_range().start.to_string() + " ; " +
+               week.to_date_range().stop.to_string());
   WeeklyTotals totals;
-  auto week_start = first_day_start;
-  auto week_stop = week_start;
-  week_stop.add_one_week();
   // Overall weekly total
-  DateRange whole_week(week_start, week_stop);
-  totals.total = query_entries_duration(whole_week);
+  totals.total = query_entries_duration(week.to_date_range());
   // Daily totals
-  auto day_start = first_day_start;
-  auto day_stop = day_start;
-  day_stop.add_one_day();
-  DateRange cur_day(day_start, day_stop);
-  for (std::size_t i = 0; i < totals.daily_totals.size(); i++) {
-    totals.daily_totals.at(i) = query_entries_duration(cur_day);
-    cur_day.add_one_day();
+  // TODO: find a way to avoid the explicit i.
+  std::size_t i = 0;
+  for (const auto &day : week.days()) {
+    totals.daily_totals.at(i) = query_entries_duration(day.to_date_range());
+    ++i;
   }
   // Per-project totals
   auto &stmt_per_project = statements.duration_per_worked_project;
-  DateRange cur_week(week_start, week_stop);
-  stmt_per_project.bind_all(cur_week.start.to_unix_timestamp(),
-                            cur_week.stop.to_unix_timestamp());
+  stmt_per_project.bind_all(week.to_date_range().start.to_unix_timestamp(),
+                            week.to_date_range().stop.to_unix_timestamp());
   while(stmt_per_project.step()) {
     PerProjectTotals per_project_totals;
     auto [project_id, project_name, seconds] =
@@ -398,20 +391,16 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
     per_project_totals.project_name = project_name;
     per_project_totals.total = Duration(seconds);
     // Daily totals for the current project (by project_id)
-    day_start = first_day_start;
-    day_stop = day_start;
-    day_stop.add_one_day();
-    cur_day.start = day_start;
-    cur_day.stop = day_stop;
-    for (std::size_t i = 0; i < per_project_totals.daily_totals.size(); ++i) {
+    i = 0;
+    for (const auto &day : week.days()) {
       per_project_totals.daily_totals.at(i) =
-        report_project_duration(project_id, cur_day);
-      cur_day.add_one_day();
+        report_project_duration(project_id, day.to_date_range());
+      ++i;
     }
     auto &stmt_per_task = statements.duration_per_worked_task;
     stmt_per_task.bind_all(project_id,
-                           cur_week.start.to_unix_timestamp(),
-                           cur_week.stop.to_unix_timestamp());
+                           week.to_date_range().start.to_unix_timestamp(),
+                           week.to_date_range().stop.to_unix_timestamp());
     while (stmt_per_task.step()) {
       PerTaskTotals per_task_totals;
       auto [task_id, task_name, seconds] =
@@ -419,15 +408,11 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
       per_task_totals.task_name = task_name;
       per_task_totals.total = Duration(seconds);
       // Daily totals for the current task.
-      day_start = first_day_start;
-      day_stop = day_start;
-      day_stop.add_one_day();
-      cur_day.start = day_start;
-      cur_day.stop = day_stop;
-      for (std::size_t i = 0; i < per_task_totals.daily_totals.size(); ++i) {
+      i = 0;
+      for (const auto &day : week.days()) {
         per_task_totals.daily_totals.at(i) =
-          report_task_duration(task_id, cur_day);
-        cur_day.add_one_day();
+          report_task_duration(task_id, day.to_date_range());
+        ++i;
       }
       per_project_totals.task_totals.push_back(per_task_totals);
     }

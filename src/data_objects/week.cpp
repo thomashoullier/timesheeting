@@ -32,3 +32,13 @@ DateRange Week::to_date_range() const {
 }
 
 std::string Week::to_string() const { return std::format("{:%d%b%Y %V}", ymd); }
+
+std::array<Day, 7> Week::days() const {
+  std::array<Day, 7> week_days;
+  Day cur_day {ymd};
+  for (auto i = 0 ; i < 7 ; ++i) {
+    week_days.at(i) = cur_day;
+    cur_day.next();
+  }
+  return week_days;
+}
