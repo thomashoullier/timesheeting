@@ -33,5 +33,5 @@ DateRange Day::to_date_range() const {
 }
 
 std::string Day::to_string() const {
-  return std::format("{:%d%b%Y}", ymd);
+  return std::format("{:%d%b%Y %a}", ymd);
 }

@@ -467,7 +467,8 @@ ADDED: [2024-09-05 Thu]
 We are unsure about whether it does the best thing around DST changes.
 It should get the midnight of the last monday.
 
-*** TODO Ergonomy: Add the day of the week on the current day display in entries
+*** DONE Ergonomy: Add the day of the week on the current day display in entries
+CLOSED: [2024-09-22 Sun 18:19]
 ADDED: [2024-09-07 Sat]
 Add the display for the day of the week (eg. ~Mon~) on the entries screen.
 

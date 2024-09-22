@@ -31,7 +31,10 @@ DateRange Week::to_date_range() const {
   return DateRange{Date{utc_begin}, Date{utc_end}};
 }
 
-std::string Week::to_string() const { return std::format("{:%d%b%Y %V}", ymd); }
+std::string Week::to_string() const {
+  return std::format("{:%d%b%Y W%V}", ymd);
+}
+
 
 std::array<Day, 7> Week::days() const {
   std::array<Day, 7> week_days;
