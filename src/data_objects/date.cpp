@@ -11,7 +11,12 @@ Date::Date() {
   tp = std::chrono::floor<std::chrono::seconds>(tp_now);
 }
 
+Date::Date(std::chrono::time_point<std::chrono::system_clock,
+                                   std::chrono::seconds> _tp)
+  : tp{_tp} {}
+
 Date::Date(DatePoint date_point) {
+  // TODO: remove, this is a local time concern.
   switch(date_point) {
   case DatePoint::DayBegin: {
     std::chrono::zoned_time current{std::chrono::current_zone(),

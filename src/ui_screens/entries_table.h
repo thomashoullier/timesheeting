@@ -3,7 +3,7 @@
 #ifndef ENTRIES_TABLE_H
 #define ENTRIES_TABLE_H
 
-#include "date_selector/date_selector_ncurses.h"
+#include "date_selector/day_selector.h"
 #include "register/register_ncurses.h"
 #include "total_bar/total_bar.h"
 #include "ui_component.h"
@@ -20,8 +20,8 @@ public:
   void update() override;
 
 private:
-  /** @brief Handle to the date range selector. */
-  DateSelectorNcurses date_selector;
+  /** @brief Handle to the day selector. */
+  DaySelector day_selector;
   /** @brief Handle to the total duration display. */
   TotalBar total_bar;
   /** @brief Handle to the register of entries. */

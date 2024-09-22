@@ -4,9 +4,9 @@
 #include "../logger/logger.h"
 
 EntriesTable::EntriesTable()
-  : date_selector(),
-    total_bar(db().query_entries_duration(date_selector.current_range())),
-    reg(db().query_entries(date_selector.current_range())) {}
+  : day_selector(),
+    total_bar(db().query_entries_duration(day_selector.current_range())),
+    reg(db().query_entries(day_selector.current_range())) {}
 
 char EntriesTable::input_loop() {
   reg.set_border();
@@ -40,23 +40,23 @@ char EntriesTable::input_loop() {
       }
       break;
     case '.': {
-      date_selector.select_next_day();
-      auto log_dates = date_selector.current_range().to_string();
+      day_selector.select_next_day();
+      auto log_dates = day_selector.current_range().to_string();
       logger().log("Selected day range: " + log_dates.at(0) + " ; " +
                    log_dates.at(1));
       update();
-      date_selector.refresh();
+      day_selector.refresh();
       // TODO: superfluous update?
       total_bar.update(
-          db().query_entries_duration(date_selector.current_range()));
+          db().query_entries_duration(day_selector.current_range()));
     } break;
     case ',': {
-      date_selector.select_previous_day();
-      auto log_dates = date_selector.current_range().to_string();
+      day_selector.select_previous_day();
+      auto log_dates = day_selector.current_range().to_string();
       logger().log("Selected day range: " + log_dates.at(0) + " ; " +
                    log_dates.at(1));
       update();
-      date_selector.refresh();
+      day_selector.refresh();
     } break;
     default:
       reg.unset_border();
@@ -67,21 +67,21 @@ char EntriesTable::input_loop() {
 
 void EntriesTable::refresh() {
   reg.refresh();
-  date_selector.refresh();
+  day_selector.refresh();
   total_bar.refresh();
 }
 
 void EntriesTable::clear() {
-  date_selector.clear();
+  day_selector.clear();
   reg.clear();
   total_bar.clear();
 }
 
 void EntriesTable::update() {
-  auto entry_items = db().query_entries(date_selector.current_range());
+  auto entry_items = db().query_entries(day_selector.current_range());
   reg.set_items(entry_items);
   reg.refresh();
-  total_bar.update(db().query_entries_duration(date_selector.current_range()));
+  total_bar.update(db().query_entries_duration(day_selector.current_range()));
   total_bar.refresh();
 }
 

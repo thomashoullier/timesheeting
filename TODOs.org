@@ -414,6 +414,7 @@ It seems recommended: https://www.sqlite.org/lang_analyze.html
 *** TODO Mark archived hierarchy items in some way in their own screen
 ADDED: [2024-09-02 Mon]
 + This requires passing the active flag to the UI.
++ We can use string_with_face to do this.
 
 *** TODO Enforce a display order for hierarchy items
 ADDED: [2024-09-03 Tue]
@@ -426,7 +427,8 @@ order by Id at the DB level.
 ADDED: [2024-09-03 Tue]
 Perhaps at least the last SQL db action?
 
-*** TODO Implement the weekly report
+*** DONE Implement the weekly report
+CLOSED: [2024-09-21 Sat 21:04]
 ADDED: [2024-09-04 Wed]
 + List of SQLite statements to get all of the information:
   + Total for the whole week with query_entries_duration()

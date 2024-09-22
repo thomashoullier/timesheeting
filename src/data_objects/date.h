@@ -17,13 +17,15 @@ enum class DatePoint { DayBegin, DayEnd, YearBegin, WeekBegin, WeekEnd };
  The time is internally represented in UTC, and inputted/displayed in the
 current system's timezone. */
 class Date {
-private:
+public:
   /** @brief Internal time point representation, seconds UTC */
   std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp;
 
-public:
   /** @brief Construct the date with the now() timepoint. */
   Date();
+  /** @brief Construct the date from a given timepoint. */
+  Date(std::chrono::time_point<std::chrono::system_clock,
+                               std::chrono::seconds> _tp);
   /** @brief Construct the date at the given date point shorthand. */
   Date(DatePoint date_point);
   /** @brief Construct the date from a UNIX timestamp (UTC) in seconds. */
