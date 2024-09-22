@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['task_298',['Task',['../structTask.html',1,'']]],
-  ['totalbar_299',['TotalBar',['../classTotalBar.html',1,'']]]
+  ['task_309',['Task',['../structTask.html',1,'']]],
+  ['totalbar_310',['TotalBar',['../classTotalBar.html',1,'']]]
 ];

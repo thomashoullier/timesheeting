@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filter_5fwindow_5fformat_361',['filter_window_format',['../classBarNCurses.html#a17237e9ede1f75418749dba77b77aca3',1,'BarNCurses']]]
+  ['filter_5fwindow_5fformat_376',['filter_window_format',['../classBarNCurses.html#a17237e9ede1f75418749dba77b77aca3',1,'BarNCurses']]]
 ];
