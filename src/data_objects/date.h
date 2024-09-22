@@ -10,7 +10,7 @@
 #include <string>
 
 /** @brief Shorthands for common date points. */
-enum class DatePoint { DayBegin, DayEnd, YearBegin, WeekBegin, WeekEnd };
+enum class DatePoint { YearBegin };
 
 /** @brief Date object.
 
@@ -52,18 +52,6 @@ public:
   /** @brief Get a displayable string for the date at a day resolution
       in the system's timezone. */
   std::string get_day_string () const;
-  /** @brief Increment the date by one day
-      and round to nearest local midnight. */
-  void add_one_day ();
-  /** @brief Decrement the date by one day
-      and round to nearest local midnight. */
-  void subtract_one_day ();
-  /** @brief Increment the date by one week,
-      and round to nearest local midnight. */
-  void add_one_week();
-  /** @brief Decrement the date by one week,
-      and round to the nearest local midnight. */
-  void subtract_one_week();
 };
 
 /** @brief Exception indicating that Date has failed to parse an input string. */

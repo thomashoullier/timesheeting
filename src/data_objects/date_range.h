@@ -17,14 +17,6 @@ public:
   /** @brief Initialize the date range. */
   DateRange(const Date &_start, const Date &_stop);
 
-  /** @brief Shift the date range by adding one day. */
-  void add_one_day();
-  /** @brief Shift the date range by subtracting one day. */
-  void subtract_one_day();
-  /** @brief Shift the date range by adding one week. */
-  void add_one_week();
-  /** @brief Shift the date range by subtracting one week. */
-  void subtract_one_week();
   /** @brief Get the date range as full strings. */
   std::vector<std::string> to_string() const;
   /** @brief Get thet date range as short strings with only the day. */

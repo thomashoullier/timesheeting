@@ -16,49 +16,7 @@ Date::Date(std::chrono::time_point<std::chrono::system_clock,
   : tp{_tp} {}
 
 Date::Date(DatePoint date_point) {
-  // TODO: remove, this is a local time concern.
   switch(date_point) {
-  case DatePoint::DayBegin: {
-    std::chrono::zoned_time current{std::chrono::current_zone(),
-                                    std::chrono::system_clock::now()};
-    std::chrono::zoned_time midnight
-      {std::chrono::current_zone(),
-       std::chrono::floor<std::chrono::days>(current.get_local_time())};
-    tp = midnight.get_sys_time();
-  } break;
-  case DatePoint::DayEnd: {
-    std::chrono::zoned_time current{std::chrono::current_zone(),
-                                    std::chrono::system_clock::now()};
-    std::chrono::zoned_time midnight
-      {std::chrono::current_zone(),
-       std::chrono::ceil<std::chrono::days>(current.get_local_time())};
-    tp = midnight.get_sys_time();
-  } break;
-  case DatePoint::WeekBegin: {
-    std::chrono::zoned_time current{std::chrono::current_zone(),
-                                    std::chrono::system_clock::now()};
-    auto beg_day = std::chrono::floor<std::chrono::days>
-      (current.get_local_time());
-    std::chrono::weekday day = std::chrono::weekday {beg_day};
-    auto gap = day - std::chrono::Monday;
-    auto monday = beg_day - gap;
-    std::chrono::zoned_time monday_start {std::chrono::current_zone(),
-                                          monday};
-    tp = monday_start;
-  } break;
-  case DatePoint::WeekEnd: {
-    std::chrono::zoned_time current{std::chrono::current_zone(),
-                                    std::chrono::system_clock::now()};
-    auto beg_day = std::chrono::floor<std::chrono::days>
-      (current.get_local_time());
-    std::chrono::weekday day = std::chrono::weekday {beg_day};
-    auto gap = day - std::chrono::Monday;
-    auto monday = beg_day - gap;
-    std::chrono::zoned_time monday_start {std::chrono::current_zone(),
-                                          monday};
-    tp = monday_start;
-    add_one_week();
-  } break;
   case DatePoint::YearBegin: {
     std::chrono::zoned_time current{std::chrono::current_zone(),
                                     std::chrono::system_clock::now()};
@@ -110,42 +68,4 @@ uint64_t Date::to_unix_timestamp() const {
 std::string Date::get_day_string () const {
   std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
   return std::format("{:%d%b%Y}", local_time);
-}
-
-void Date::add_one_day() {
-    // TODO isn't there a way to add one day without having to round
-    // to midnight?
-    std::chrono::zoned_time next_day{std::chrono::current_zone(),
-                                     tp + std::chrono::days(1)};
-    std::chrono::zoned_time midnight
-      {std::chrono::current_zone(),
-       std::chrono::round<std::chrono::days>(next_day.get_local_time())};
-    tp = midnight.get_sys_time();
-}
-
-void Date::subtract_one_day() {
-  std::chrono::zoned_time prev_day{std::chrono::current_zone(),
-                                   tp - std::chrono::days(1)};
-  std::chrono::zoned_time midnight{
-      std::chrono::current_zone(),
-      std::chrono::round<std::chrono::days>(prev_day.get_local_time())};
-  tp = midnight.get_sys_time();
-}
-
-void Date::add_one_week() {
-  std::chrono::zoned_time next_week{std::chrono::current_zone(),
-                                   tp + std::chrono::weeks(1)};
-  std::chrono::zoned_time midnight{
-      std::chrono::current_zone(),
-      std::chrono::round<std::chrono::days>(next_week.get_local_time())};
-  tp = midnight.get_sys_time();
-}
-
-void Date::subtract_one_week() {
-  std::chrono::zoned_time previous_week{std::chrono::current_zone(),
-                                        tp - std::chrono::weeks(1)};
-  std::chrono::zoned_time midnight{
-      std::chrono::current_zone(),
-      std::chrono::round<std::chrono::days>(previous_week.get_local_time())};
-  tp = midnight.get_sys_time();
 }

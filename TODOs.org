@@ -494,7 +494,8 @@ and weekly report are concerned.
 Perhaps implement something where the need for update is stored somewhere,
 and we actually update only when the user switches to the report.
 
-*** TODO Refactor: Use a class for calendar days and weeks
+*** DONE Refactor: Use a class for calendar days and weeks
+CLOSED: [2024-09-22 Sun 16:13]
 ADDED: [2024-09-13 Fri]
 We often manipulate a calendar day (entries screen), and weeks (weekly report).
 Convert it to Dates, DateRange etc. as needed.
@@ -533,3 +534,23 @@ as well as bind things to them, step them, reset them.
 ADDED: [2024-09-14 Sat]
 For instance, sqlite uses the type sqlite3_int64, we use uint64_t,
 should we switch?
+
+*** TODO Extract library modules
+ADDED: [2024-09-22 Sun]
+Extract generic library modules from the existing codebase, to import them
+more easily and test them separately. Only extract the parts which are generic.
++ sqlite lib
++ ncurses lib
++ date management objects? (day, week, date, date_range, duration)
+
+*** TODO Implement the configuration file
+ADDED: [2024-09-22 Sun]
++ Do we really need a configuration file? Couldn't we just provide the
+  configuration as CLI arguments with sensible defaults?
+Should be a file in a default location like XDG_CONFIG_etc.
+Format should be json?
+Content is:
++ timezone setting (or system one if not set)
+
++ Have an internal singleton loading the configuration only once and
+  then giving it on request using an internel representation.
