@@ -1,7 +1,7 @@
 #ifndef WEEKLY_REPORT_SCREEN_H
 #define WEEKLY_REPORT_SCREEN_H
 
-#include "date_selector/date_selector_ncurses.h"
+#include "date_selector/week_selector.h"
 #include "ui_component.h"
 #include "../db/db_sqlite.h"
 #include "weekly_report_register/weekly_report_register.h"
@@ -17,7 +17,7 @@ public:
 
 private:
   /** @brief Handle to the date range selector. */
-  DateSelectorNcurses date_selector;
+  WeekSelector week_selector;
   /** @brief Register displaying the weekly totals*/
   WeeklyReportRegister reg;
 };

@@ -366,6 +366,7 @@ Duration DB_SQLite::report_task_duration(Id task_id,
   return Duration(seconds);
 }
 
+// TODO: use a Week object here as argument.
 WeeklyTotals DB_SQLite::report_weekly_totals(const Date &first_day_start) {
   logger().log("report_weekly_totals starting on: " +
              first_day_start.to_string());

@@ -1,5 +1,7 @@
 #include "day.h"
+#include "date.h"
 #include <chrono>
+#include <stdexcept>
 
 Day::Day() {
   Date utc_now{};
