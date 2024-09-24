@@ -4,15 +4,11 @@
 #define PROJECT_TASK_TABLE_H
 
 #include "column/column.h"
-#include "../db/db_sqlite.h"
-#include "../logger/logger.h"
-#include "status_bar/status_bar_ncurses.h"
-#include "ui_component.h"
-#include "../ncurses/win_ncurses.h"
+#include "ui_screen.h"
 #include <memory>
 
 /** @brief Projects and tasks UI screen. */
-class ProjectTaskScreen : public UIComponent {
+class ProjectTaskScreen : public UIScreen {
 public:
   /** @brief Table constructor. */
   explicit ProjectTaskScreen();

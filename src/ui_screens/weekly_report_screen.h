@@ -2,11 +2,10 @@
 #define WEEKLY_REPORT_SCREEN_H
 
 #include "date_selector/week_selector.h"
-#include "ui_component.h"
-#include "../db/db_sqlite.h"
+#include "ui_screen.h"
 #include "weekly_report_register/weekly_report_register.h"
 
-class WeeklyReportScreen : public UIComponent {
+class WeeklyReportScreen : public UIScreen {
 public:
   explicit WeeklyReportScreen();
 

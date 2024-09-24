@@ -35,7 +35,6 @@ std::string Week::to_string() const {
   return std::format("{:%d%b%Y W%V}", ymd);
 }
 
-
 std::array<Day, 7> Week::days() const {
   std::array<Day, 7> week_days;
   Day cur_day {ymd};

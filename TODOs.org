@@ -494,6 +494,22 @@ Refresh the reports when entries are updated. The project totals screen
 and weekly report are concerned.
 Perhaps implement something where the need for update is stored somewhere,
 and we actually update only when the user switches to the report.
++ We can have an UpdateManager which stores flags for each screen which
+  tell whether a given screen is in need of update or not.
+  When we refresh a screen, we check whether it needs to be updated also
+  and do it.
+  Each screen has a handle to the shared UpdateManager.
+  For simplicity, we can set everything to need updates whenever
+  the DB state is changed with respect to entries or hierarchy items.
++ The UpdateManager can centralize the management of updates:
+  + It receives a call from UI screen saying that "entries have changed",
+    or "hierarchy items have changed", and then it sets flags on the UIComponents
+    to signal a need to update.
+    The UIComponent have a generic refresh which calls the update if it is
+    needed and set their flag back to zero.
+    Both can be instanciated separately and then "connected" later? See how we
+    both have how the UIComponents signal their changes and the UpdateManager
+    set flags in the UIComponents.
 
 *** DONE Refactor: Use a class for calendar days and weeks
 CLOSED: [2024-09-22 Sun 16:13]
@@ -552,6 +568,13 @@ Should be a file in a default location like XDG_CONFIG_etc.
 Format should be json?
 Content is:
 + timezone setting (or system one if not set)
++ log level
++ db location
++ log location
 
 + Have an internal singleton loading the configuration only once and
   then giving it on request using an internel representation.
+
+*** TODO Create namespaces for the libs and different parts of the program
+ADDED: [2024-09-22 Sun]
+Currently everything is in the global namespace, which is bad practice.

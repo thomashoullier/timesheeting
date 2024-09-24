@@ -25,6 +25,8 @@ char EntriesScreen::input_loop() {
 }
 
 void EntriesScreen::refresh() {
+  if (needs_update)
+    update();
   stopwatch_ui->refresh();
   entries_table->refresh();
 };
@@ -37,4 +39,5 @@ void EntriesScreen::clear() {
 void EntriesScreen::update() {
   stopwatch_ui->update();
   entries_table->update();
+  needs_update = false;
 };

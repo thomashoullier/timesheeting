@@ -2,14 +2,11 @@
 #define LOCATIONS_SCREEN_H
 
 #include "column/column.h"
-#include "status_bar/status_bar_ncurses.h"
-#include "ui_component.h"
-#include "../db/db_sqlite.h"
-#include "../logger/logger.h"
+#include "ui_screen.h"
 #include <memory>
 
 /** @brief Locations UI screen. */
-class LocationsScreen : public UIComponent {
+class LocationsScreen : public UIScreen {
 public:
   /** @brief Constructor. */
   explicit LocationsScreen();

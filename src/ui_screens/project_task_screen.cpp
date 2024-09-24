@@ -1,4 +1,7 @@
 #include "project_task_screen.h"
+#include "../db/db_sqlite.h"
+#include "status_bar/status_bar_ncurses.h"
+#include "../logger/logger.h"
 
 ProjectTaskScreen::ProjectTaskScreen()
     : project_col(std::make_unique<Column<Project>>(std::vector<Project>(),

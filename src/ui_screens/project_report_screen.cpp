@@ -30,6 +30,8 @@ char ProjectReportScreen::input_loop() {
 }
 
 void ProjectReportScreen::refresh() {
+  if (needs_update)
+    update();
   period_selector_ui.refresh();
   total_bar.refresh();
   reg.refresh();
@@ -48,4 +50,5 @@ void ProjectReportScreen::update() {
   total_bar.update(overall_duration);
   reg.set_items(db().report_project_totals(cur_range));
   reg.update();
+  needs_update = false;
 }

@@ -1,4 +1,7 @@
 #include "locations_screen.h"
+#include "status_bar/status_bar_ncurses.h"
+#include "../db/db_sqlite.h"
+#include "../logger/logger.h"
 
 LocationsScreen::LocationsScreen()
     : location_col(std::make_unique<Column<Location>>(std::vector<Location>(),

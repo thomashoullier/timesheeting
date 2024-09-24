@@ -4,9 +4,9 @@
 #include "period_selector/period_selector_ui.h"
 #include "project_totals_register/project_totals_register.h"
 #include "total_bar/total_bar.h"
-#include "ui_component.h"
+#include "ui_screen.h"
 
-class ProjectReportScreen : public UIComponent {
+class ProjectReportScreen : public UIScreen {
 public:
   explicit ProjectReportScreen();
 

@@ -3,11 +3,11 @@
 #ifndef ENTRIES_SCREEN_H
 #define ENTRIES_SCREEN_H
 
-#include "ui_component.h"
+#include "ui_screen.h"
 #include <memory>
 
 /** @brief Entry UI screen. */
-class EntriesScreen : public UIComponent {
+class EntriesScreen : public UIScreen {
 public:
   /** @brief Constructor. */
   explicit EntriesScreen();
