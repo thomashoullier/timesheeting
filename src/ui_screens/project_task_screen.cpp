@@ -2,6 +2,7 @@
 #include "../db/db_sqlite.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "../logger/logger.h"
+#include "update_manager.h"
 
 ProjectTaskScreen::ProjectTaskScreen()
     : project_col(std::make_unique<Column<Project>>(std::vector<Project>(),
@@ -54,12 +55,18 @@ char ProjectTaskScreen::input_loop() {
       cur_col->set_border();
       break;
     case 'a':
-      if (not(add_item(cur_col)))
+      if (not(add_item(cur_col))) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
+      } else {
+        UpdateManager::get().projects_tasks_have_changed();
+      }
       break;
     case 'r':
-      if (not(rename_item(cur_col)))
+      if (not(rename_item(cur_col))) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
+      } else {
+        UpdateManager::get().projects_tasks_have_changed();
+      }
       break;
     case 'x':
       remove_item(cur_col);
@@ -78,6 +85,7 @@ char ProjectTaskScreen::input_loop() {
 }
 
 void ProjectTaskScreen::update() {
+  logger().log("ProjectTaskScreen update.");
   update_project_col();
   update_task_col();
 }

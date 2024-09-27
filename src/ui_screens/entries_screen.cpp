@@ -1,6 +1,7 @@
 #include "entries_screen.h"
 #include "entries_table.h"
 #include "stopwatch/stopwatch_ui.h"
+#include "../logger/logger.h"
 
 EntriesScreen::EntriesScreen()
     : stopwatch_ui(std::make_unique<StopwatchUI>()),
@@ -37,6 +38,7 @@ void EntriesScreen::clear() {
 };
 
 void EntriesScreen::update() {
+  logger().log("EntriesScreen update.");
   stopwatch_ui->update();
   entries_table->update();
   needs_update = false;

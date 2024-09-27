@@ -1,6 +1,7 @@
 #include "stopwatch_ui.h"
 #include "../../db/db_sqlite.h"
 #include "../status_bar/status_bar_ncurses.h"
+#include "../update_manager.h"
 
 StopwatchUI::StopwatchUI() : stopwatch(db().query_entrystaging()) {};
 
@@ -19,6 +20,7 @@ char StopwatchUI::input_loop() {
     case 'r':
       try {
         rename_item();
+        UpdateManager::get().entries_have_changed();
         update();
       } catch (DateParsingFailure &e) {
         status().print_wait("Failed to parse the date. Do nothing.");
@@ -33,6 +35,7 @@ char StopwatchUI::input_loop() {
     case '\n':
       {
         db().commit_entrystaging();
+        UpdateManager::get().entries_have_changed();
         Date now_start;
         db().edit_entrystaging_start(now_start);
         update();

@@ -1,5 +1,6 @@
 #include "weekly_report_screen.h"
 #include "../db/db_sqlite.h"
+#include "../logger/logger.h"
 
 WeeklyReportScreen::WeeklyReportScreen()
   : week_selector{},
@@ -36,8 +37,9 @@ void WeeklyReportScreen::clear() {
 }
 
 void WeeklyReportScreen::update() {
+  logger().log("WeeklyReportScreen update.");
   auto week_report = db().report_weekly_totals(week_selector.current_week());
   reg.set_items(week_report);
-  this->refresh();
   needs_update = false;
+  this->refresh();
 }

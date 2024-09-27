@@ -2,6 +2,7 @@
 #include "../db/db_sqlite.h"
 #include "status_bar/status_bar_ncurses.h"
 #include "../logger/logger.h"
+#include "update_manager.h"
 
 EntriesTable::EntriesTable()
   : day_selector(),
@@ -28,11 +29,13 @@ char EntriesTable::input_loop() {
       break;
     case 'x':
       remove_item();
+      UpdateManager::get().entries_have_changed();
       break;
     case 'r':
       try {
         rename_item();
         update();
+        UpdateManager::get().entries_have_changed();
       } catch (DateParsingFailure &e) {
         status().print_wait("Failed to parse the date. Do nothing.");
         this->clear();

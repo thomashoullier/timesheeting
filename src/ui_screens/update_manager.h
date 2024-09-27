@@ -1,0 +1,54 @@
+#ifndef UPDATE_MANAGER_H
+#define UPDATE_MANAGER_H
+
+#include "entries_screen.h"
+#include "locations_screen.h"
+#include "project_report_screen.h"
+#include "project_task_screen.h"
+#include "weekly_report_screen.h"
+#include <memory>
+
+/** @brief Manages the update of UIScreens based on catching changes through a
+ singleton interface and propagate the need for UIScreens to update based on
+these changes through handles to the UIScreens. */
+class UpdateManager {
+public:
+  /** @brief Grab the update manager singleton interface.
+
+   Initialize it on the first call. */
+  static UpdateManager&
+  get(std::shared_ptr<ProjectTaskScreen> _projects_screen = nullptr,
+      std::shared_ptr<LocationsScreen> _locations_screen = nullptr,
+      std::shared_ptr<EntriesScreen> _entries_screen = nullptr,
+      std::shared_ptr<ProjectReportScreen> _project_report_screen = nullptr,
+      std::shared_ptr<WeeklyReportScreen> _weekly_report_screen = nullptr);
+
+  /** @brief Signal a change in the entries state. */
+  void entries_have_changed ();
+  /** @brief Signal a change in the state of projects or tasks. */
+  void projects_tasks_have_changed ();
+  /** @brief Signal a change in the state of locations. */
+  void locations_have_changed ();
+
+private:
+  /** @brief Screen for the project/task definition. */
+  std::shared_ptr<ProjectTaskScreen> projects_screen;
+  /** @brief Screen for the locations definition. */
+  std::shared_ptr<LocationsScreen> locations_screen;
+  /** @brief Screen for the table of entries. */
+  std::shared_ptr<EntriesScreen> entries_screen;
+  /** @brief Screen for the project totals report. */
+  std::shared_ptr<ProjectReportScreen> project_report_screen;
+  /** @brief Weekly report. */
+  std::shared_ptr<WeeklyReportScreen> weekly_report_screen;
+
+  /** @brief Constructor with member initialization. */
+  UpdateManager(std::shared_ptr<ProjectTaskScreen> _projects_screen,
+                std::shared_ptr<LocationsScreen> _locations_screen,
+                std::shared_ptr<EntriesScreen> _entries_screen,
+                std::shared_ptr<ProjectReportScreen> _project_report_screen,
+                std::shared_ptr<WeeklyReportScreen> _weekly_report_screen);
+};
+
+
+#endif // UPDATE_MANAGER_H

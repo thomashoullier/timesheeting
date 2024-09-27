@@ -2,6 +2,7 @@
 #include "status_bar/status_bar_ncurses.h"
 #include "../db/db_sqlite.h"
 #include "../logger/logger.h"
+#include "update_manager.h"
 
 LocationsScreen::LocationsScreen()
     : location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
@@ -13,7 +14,10 @@ LocationsScreen::LocationsScreen()
 
 void LocationsScreen::refresh() { location_col->refresh(); };
 void LocationsScreen::clear() { location_col->clear(); };
-void LocationsScreen::update() { update_location_col(); };
+void LocationsScreen::update() {
+  logger().log("LocationsScreen update.");
+  update_location_col();
+};
 
 char LocationsScreen::input_loop() {
   location_col->set_border();
@@ -28,12 +32,18 @@ char LocationsScreen::input_loop() {
       location_col->select_up_item();
       break;
     case 'a':
-      if (not(add_item()))
+      if (not(add_item())) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
+      } else {
+        UpdateManager::get().locations_have_changed();
+      }
       break;
     case 'r':
-      if (not(rename_item()))
+      if (not(rename_item())) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
+      } else {
+        UpdateManager::get().locations_have_changed();
+      }
       break;
     case 'x':
       remove_item();

@@ -1,5 +1,6 @@
 #include "project_report_screen.h"
 #include "../db/db_sqlite.h"
+#include "../logger/logger.h"
 
 ProjectReportScreen::ProjectReportScreen()
     : period_selector_ui(PeriodSelectorUI()),
@@ -44,6 +45,7 @@ void ProjectReportScreen::clear() {
 }
 
 void ProjectReportScreen::update() {
+  logger().log("ProjectReportScreen update.");
   period_selector_ui.update();
   auto cur_range = period_selector_ui.get_current_date_range();
   auto overall_duration = db().query_entries_duration(cur_range);
