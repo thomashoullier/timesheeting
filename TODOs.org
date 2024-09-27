@@ -488,7 +488,8 @@ the screen width.
 CLOSED: [2024-09-14 Sat 09:09]
 ADDED: [2024-09-08 Sun]
 
-*** TODO Refresh the reports whenever entries are updated
+*** DONE Refresh the reports whenever entries are updated
+CLOSED: [2024-09-27 Fri 20:35]
 ADDED: [2024-09-08 Sun]
 Refresh the reports when entries are updated. The project totals screen
 and weekly report are concerned.
@@ -564,6 +565,7 @@ more easily and test them separately. Only extract the parts which are generic.
 ADDED: [2024-09-22 Sun]
 + Do we really need a configuration file? Couldn't we just provide the
   configuration as CLI arguments with sensible defaults?
+  + Yes we do need a file, otherwise the CLI becomes unusable.
 Should be a file in a default location like XDG_CONFIG_etc.
 Format should be json?
 Content is:
