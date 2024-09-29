@@ -46,7 +46,8 @@ char EntriesTable::input_loop() {
       day_selector.select_next_day();
       auto log_dates = day_selector.current_range().to_string();
       logger().log("Selected day range: " + log_dates.at(0) + " ; " +
-                   log_dates.at(1));
+                   log_dates.at(1),
+                   LogLevel::debug);
       update();
       day_selector.refresh();
       // TODO: superfluous update?
@@ -57,7 +58,8 @@ char EntriesTable::input_loop() {
       day_selector.select_previous_day();
       auto log_dates = day_selector.current_range().to_string();
       logger().log("Selected day range: " + log_dates.at(0) + " ; " +
-                   log_dates.at(1));
+                   log_dates.at(1),
+                   LogLevel::debug);
       update();
       day_selector.refresh();
     } break;

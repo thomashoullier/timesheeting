@@ -369,7 +369,8 @@ Duration DB_SQLite::report_task_duration(Id task_id,
 WeeklyTotals DB_SQLite::report_weekly_totals(const Week &week) {
   logger().log("report_weekly_totals for week over date range: " +
                week.to_date_range().start.to_string() + " ; " +
-               week.to_date_range().stop.to_string());
+               week.to_date_range().stop.to_string(),
+               LogLevel::debug);
   WeeklyTotals totals;
   // Overall weekly total
   totals.total = query_entries_duration(week.to_date_range());

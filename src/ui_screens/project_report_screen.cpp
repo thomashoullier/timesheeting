@@ -45,7 +45,7 @@ void ProjectReportScreen::clear() {
 }
 
 void ProjectReportScreen::update() {
-  logger().log("ProjectReportScreen update.");
+  logger().log("ProjectReportScreen update.", LogLevel::debug);
   period_selector_ui.update();
   auto cur_range = period_selector_ui.get_current_date_range();
   auto overall_duration = db().query_entries_duration(cur_range);

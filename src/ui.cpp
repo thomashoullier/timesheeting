@@ -9,7 +9,7 @@ UI::UI()
     entries_screen(std::make_shared<EntriesScreen>()),
     project_report_screen(std::make_shared<ProjectReportScreen>()),
     weekly_report_screen(std::make_shared<WeeklyReportScreen>()) {
-  logger().log("timesheeting UI initialized.");
+  logger().log("timesheeting UI initialized.", LogLevel::debug);
   // Initialize the update manager with handle to all the screens.
   UpdateManager::get(projects_screen,
                      locations_screen,

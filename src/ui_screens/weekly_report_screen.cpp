@@ -37,7 +37,7 @@ void WeeklyReportScreen::clear() {
 }
 
 void WeeklyReportScreen::update() {
-  logger().log("WeeklyReportScreen update.");
+  logger().log("WeeklyReportScreen update.", LogLevel::debug);
   auto week_report = db().report_weekly_totals(week_selector.current_week());
   reg.set_items(week_report);
   needs_update = false;

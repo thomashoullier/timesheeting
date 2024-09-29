@@ -2,18 +2,37 @@
 #include <chrono>
 #include <ratio>
 #include <sstream>
+#include <stdexcept>
 #include <string>
+
+std::string log_level_string (LogLevel level) {
+  switch (level) {
+  case LogLevel::info:
+    return "info";
+    break;
+  case LogLevel::debug:
+    return "debug";
+    break;
+  case LogLevel::error:
+    return "error";
+    break;
+  default:
+    throw std::runtime_error("Unknown LogLevel");
+  }
+}
 
 Logger &Logger::get(const std::filesystem::path &log_filepath) {
   static Logger instance (log_filepath);
   return instance;
 }
 
-void Logger::log(const std::string &message) {
+void Logger::log(const std::string &message, LogLevel level) {
   if (!file->good()) {
     throw std::runtime_error("Log file cannot be written to.");
   }
-  *file << get_timestamp() << " : " << message << std::endl;
+  *file << get_timestamp() << " "
+        << "[" << log_level_string(level) << "] "
+        << ": " << message << std::endl;
 }
 
 void Logger::tick() {
@@ -31,7 +50,7 @@ void Logger::tock() {
   std::ostringstream ostr;
   ostr.precision(3);
   ostr << std::fixed << dur.count();
-  this->log("Input loop was: " + ostr.str() + " ms.");
+  this->log("Input loop was: " + ostr.str() + " ms.", LogLevel::debug);
   counting = false;
 }
 

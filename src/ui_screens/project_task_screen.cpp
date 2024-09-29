@@ -85,7 +85,7 @@ char ProjectTaskScreen::input_loop() {
 }
 
 void ProjectTaskScreen::update() {
-  logger().log("ProjectTaskScreen update.");
+  logger().log("ProjectTaskScreen update.", LogLevel::debug);
   update_project_col();
   update_task_col();
 }
@@ -122,14 +122,14 @@ bool ProjectTaskScreen::add_item(ColumnBase *cur_col) {
     return true;
   if (cur_col == project_col.get()) {
     auto success = db().add_project(new_item_name);
-    logger().log("Added project: " + new_item_name);
+    logger().log("Added project: " + new_item_name, LogLevel::info);
     update_project_col();
     return success;
   } else if (cur_col == task_col.get()) {
     try {
       auto project_id = project_col->get_current_id();
       auto success = db().add_task(project_id, new_item_name);
-      logger().log("Added task: " + new_item_name);
+      logger().log("Added task: " + new_item_name, LogLevel::info);
       update_task_col();
       return success;
     } catch (MenuEmpty &e) {

@@ -15,7 +15,7 @@ LocationsScreen::LocationsScreen()
 void LocationsScreen::refresh() { location_col->refresh(); };
 void LocationsScreen::clear() { location_col->clear(); };
 void LocationsScreen::update() {
-  logger().log("LocationsScreen update.");
+  logger().log("LocationsScreen update.", LogLevel::debug);
   update_location_col();
 };
 
@@ -76,7 +76,7 @@ bool LocationsScreen::add_item() {
   if (new_item_name.empty())
     return true;
   auto success = db().add_location(new_item_name);
-  logger().log("Added location: " + new_item_name);
+  logger().log("Added location: " + new_item_name, LogLevel::info);
   update_location_col();
   return success;
 }

@@ -38,7 +38,7 @@ void EntriesScreen::clear() {
 };
 
 void EntriesScreen::update() {
-  logger().log("EntriesScreen update.");
+  logger().log("EntriesScreen update.", LogLevel::debug);
   stopwatch_ui->update();
   entries_table->update();
   needs_update = false;
