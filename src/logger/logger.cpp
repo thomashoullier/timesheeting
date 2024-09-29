@@ -4,8 +4,8 @@
 #include <sstream>
 #include <string>
 
-Logger& Logger::get() {
-  static Logger instance ("timesheeting.log");
+Logger &Logger::get(const std::filesystem::path &log_filepath) {
+  static Logger instance (log_filepath);
   return instance;
 }
 

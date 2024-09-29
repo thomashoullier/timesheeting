@@ -341,7 +341,8 @@ should only read as ~HH:MM~. Do no modify the input mechanism for now,
 still accept full dates only.
 This will make room for a "Location" column.
 
-*** TODO Factoring: create an utility to simplify the management of SQL statements
+*** DONE Factoring: create an utility to simplify the management of SQL statements
+CLOSED: [2024-09-28 Sat 15:34]
 ADDED: [2024-08-26 Mon]
 In db_sqlite.cpp, the functions are quite long, and we juggle with many
 statements. Create a statement object for preparing, stepping, finalizing
@@ -567,13 +568,12 @@ ADDED: [2024-09-22 Sun]
   configuration as CLI arguments with sensible defaults?
   + Yes we do need a file, otherwise the CLI becomes unusable.
 Should be a file in a default location like XDG_CONFIG_etc.
-Format should be json?
 Content is:
-+ timezone setting (or system one if not set)
-+ log level
-+ db location
-+ log location
-
+  + timezone setting (or system one if not set)
+  + log level
+  + db location
+  + log location
++ Let's use a TOML format. The library tomlplusplus seems OK.
 + Have an internal singleton loading the configuration only once and
   then giving it on request using an internel representation.
 
@@ -585,3 +585,22 @@ Currently everything is in the global namespace, which is bad practice.
 ADDED: [2024-09-27 Fri]
 Monitor closely the refresh() and update() operations and remove the
 useless ones.
+
+*** TODO Github issue with doxygen deployment
+ADDED:[2024-09-27 Fri]
+
+We are hitting this bug: https://github.com/JamesIves/github-pages-deploy-action/issues/1697
+
+*** TODO Implement the display of durations in days/hours/minutes
+ADDED: [2024-09-28 Sat]
++ It should be switchable on the fly with an automatic update.
++ The Duration class could query the current setting in a configuration struct
+held somewhere.
++ Implement an internal configuration struct first. Maybe another singleton?
++ We may need a decoupling from Duration, to avoid coupling it with the
+  configuration class? Maybe query the config in the total bar instead? or in a
+  Duration decoupler class?
++ Maybe set it per duration item, not across the whole program. This simplifies
+  the updates.
++ Wait a minute, how long is a day of work? We have to set this in a config file
+  somewhere.

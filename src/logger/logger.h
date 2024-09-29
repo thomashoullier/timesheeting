@@ -13,8 +13,10 @@
  * This is a singleton. */
 class Logger {
 public:
-  /** @brief Grab the log file singleton. */
-  static Logger& get();
+  /** @brief Grab the log file singleton.
+
+   Initialize on the first call.*/
+  static Logger& get(const std::filesystem::path &log_filepath = "");
   void log (const std::string &message);
   void tick ();
   void tock ();
