@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['ui_309',['UI',['../classUI.html',1,'']]],
-  ['uicomponent_310',['UIComponent',['../classUIComponent.html',1,'']]],
-  ['uiscreen_311',['UIScreen',['../classUIScreen.html',1,'']]]
+  ['ui_0',['UI',['../classUI.html',1,'']]],
+  ['uicomponent_1',['UIComponent',['../classUIComponent.html',1,'']]],
+  ['uiscreen_2',['UIScreen',['../classUIScreen.html',1,'']]],
+  ['updatemanager_3',['UpdateManager',['../classUpdateManager.html',1,'']]],
+  ['userconfig_4',['UserConfig',['../structUserConfig.html',1,'']]]
 ];
