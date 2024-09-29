@@ -16,6 +16,8 @@ public:
 private:
   /** @brief Check the configuration is valid. */
   void check_configuration ();
+  /** @brief Expand tilde and braces/variables in file paths. */
+  std::filesystem::path expand_tilde(const std::filesystem::path &path);
 };
 
 

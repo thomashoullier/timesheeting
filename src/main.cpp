@@ -5,9 +5,7 @@
 int main() {
 
   // Loading the configuration file.
-  // TODO: use "~" expansion: detect leading '~/' and replace with home.
-  auto config =
-      ConfigLoader().load("/home/hori/.config/timesheeting/timesheeting.toml");
+  auto config = ConfigLoader().load("~/.config/timesheeting/timesheeting.toml");
 
   // Initialize the Logger.
   Logger::get(config.log_filepath);
