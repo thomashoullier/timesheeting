@@ -7,6 +7,7 @@
 #include <memory>
 #include <fstream>
 #include <chrono>
+#include <vector>
 
 enum class LogLevel { info, debug, error };
 
@@ -16,11 +17,19 @@ std::string log_level_string (LogLevel level);
  *
  * This is a singleton. */
 class Logger {
+  /** @brief Struct defining the active log levels. */
+  struct ActiveLevels {
+    bool info = false;
+    bool debug = false;
+    bool error = false;
+  };
+
 public:
   /** @brief Grab the log file singleton.
 
    Initialize on the first call.*/
-  static Logger& get(const std::filesystem::path &log_filepath = "");
+  static Logger& get(const std::filesystem::path &log_filepath = "",
+                     const std::vector<LogLevel> &levels_to_log = {});
   void log (const std::string &message, LogLevel level = LogLevel::info);
   void tick ();
   void tock ();
@@ -28,15 +37,20 @@ public:
 private:
   /** @brief Handle to the log file for output. */
   std::unique_ptr<std::ofstream> file;
+  /** @brief Active log levels. */
+  ActiveLevels active_levels;
   /** @brief Start time point for clocking durations. */
   std::chrono::high_resolution_clock::time_point tick_point;
   /** @brief Clock state. */
   bool counting;
 
   /** @brief Logger constructor using a file. */
-  Logger (const std::filesystem::path &log_file_path);
+  Logger(const std::filesystem::path &log_file_path,
+         const std::vector<LogLevel> &levels_to_log);
   /** @brief Get the current date as a timestamp. */
   std::string get_timestamp ();
+  /** @brief Is the provided loglevel active? */
+  bool level_is_active (LogLevel level);
 };
 
 /** @brief Grab the Logger. */

@@ -8,7 +8,8 @@ int main() {
   auto config = ConfigLoader().load("~/.config/timesheeting/timesheeting.toml");
 
   // Initialize the Logger.
-  Logger::get(config.log_filepath);
+  Logger::get(config.log_filepath,
+              {LogLevel::info, LogLevel::error});
   logger().tick(); // For measuring startup time.
 
   // Loading the UI and entering input loop.
