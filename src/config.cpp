@@ -1,5 +1,6 @@
 #include "config.h"
 #include <filesystem>
+#include <stdexcept>
 
 UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
   auto config_path = expand_tilde(config_file);
@@ -25,6 +26,9 @@ std::vector<std::string> ConfigLoader::parse_stringvec(toml::array *arr) {
   arr->for_each([&strings](auto&& el) {
     if constexpr (toml::is_string<decltype(el)>)
       strings.push_back(std::string(el));
+    else
+      throw std::runtime_error("Invalid configuration array type: should be"
+                               " a string.");
   });
   return strings;
 }
