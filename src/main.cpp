@@ -5,7 +5,7 @@
 int main() {
 
   // Loading the configuration file.
-  auto config = ConfigLoader().load("~/.config/timesheeting/timesheeting.toml");
+  auto config = config::ConfigLoader().load();
 
   // Initialize the Logger.
   Logger::get(config.log_filepath,
