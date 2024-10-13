@@ -14,6 +14,7 @@ namespace config {
 
   /** @brief Config file loader class. */
   class ConfigLoader {
+    // TODO: Make sure the parsed filepaths actually exist.
   public:
     /** @brief Load the configuration file into an internal representation. */
     UserConfig load(const std::filesystem::path &config_file);
@@ -29,8 +30,12 @@ namespace config {
   private:
     /** @brief Expand tilde and braces/variables in file paths. */
     std::filesystem::path expand_tilde(const std::filesystem::path &path);
+    /** @brief Parse a filepath from the configuation. */
+    std::filesystem::path parse_filepath
+    (const toml::node_view<toml::node> &config_node);
     /** @brief Parse a toml array into a string vector. */
-    std::vector<std::string> parse_stringvec(toml::array *arr);
+    std::vector<std::string> parse_stringvec
+    (const toml::node_view<toml::node> &config_node);
     /** @brief Search for the config file in default locations. */
     std::filesystem::path find_config_file ();
   };

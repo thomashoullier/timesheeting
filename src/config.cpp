@@ -6,10 +6,11 @@ namespace config {
   UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
     auto config_path = expand_tilde(config_file);
     auto config = toml::parse_file(config_path.u8string());
-    auto log_filepath = config["config"]["log_file"].value_or("");
-    auto active_log_levels = config["config"]["active_log_levels"];
-    return UserConfig(expand_tilde(log_filepath),
-                      parse_stringvec(active_log_levels.as_array()));
+    auto log_filepath = parse_filepath(config["config"]["log_file"]);
+    auto active_log_levels = parse_stringvec
+      (config["config"]["active_log_levels"]);
+    return UserConfig(log_filepath,
+                      active_log_levels);
   }
 
   UserConfig ConfigLoader::load() {
@@ -27,9 +28,24 @@ namespace config {
     return path;
   }
 
-  std::vector<std::string> ConfigLoader::parse_stringvec(toml::array *arr) {
+  std::filesystem::path
+  ConfigLoader::parse_filepath(const toml::node_view<toml::node> &config_node) {
+    std::string str = config_node.value_or(std::string{});
+    if (str.empty()) {
+      throw std::runtime_error("Could not read filepath from configuration.");
+    }
+    std::filesystem::path path = str;
+    path = expand_tilde(path);
+    if (not std::filesystem::exists(path))
+      throw std::runtime_error("Provided filepath does not exist: " +
+                               std::string(path));
+    return path;
+  }
+
+  std::vector<std::string> ConfigLoader::parse_stringvec
+  (const toml::node_view<toml::node> &config_node) {
     std::vector<std::string> strings;
-    arr->for_each([&strings](auto &&el) {
+    config_node.as_array()->for_each([&strings](auto &&el) {
       if constexpr (toml::is_string<decltype(el)>)
         strings.push_back(std::string(el));
       else

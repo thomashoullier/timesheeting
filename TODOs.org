@@ -605,3 +605,9 @@ held somewhere.
   the updates.
 + Wait a minute, how long is a day of work? We have to set this in a config file
   somewhere.
+
+*** TODO Extract a generic library for the config file
+ADDED: [2024-10-13 Sun]
+There is a generic part to the config file module.
++ Searching for the default location.
++ Expanding tilde.
