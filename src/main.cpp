@@ -9,7 +9,7 @@ int main() {
 
   // Initialize the Logger.
   Logger::get(config.log_filepath,
-              {LogLevel::info, LogLevel::error});
+              config.log_levels_to_activate);
   logger().tick(); // For measuring startup time.
 
   // Loading the UI and entering input loop.

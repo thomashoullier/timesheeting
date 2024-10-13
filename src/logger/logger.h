@@ -7,11 +7,14 @@
 #include <memory>
 #include <fstream>
 #include <chrono>
+#include <string>
 #include <vector>
 
 enum class LogLevel { info, debug, error };
 
-std::string log_level_string (LogLevel level);
+/* TODO: Put these methods inside LogLevel. */
+std::string log_level_string(LogLevel level);
+LogLevel log_level_from_string (const std::string &level_str);
 
 /** @brief Logger implementation with a log file.
  *
@@ -29,7 +32,7 @@ public:
 
    Initialize on the first call.*/
   static Logger& get(const std::filesystem::path &log_filepath = "",
-                     const std::vector<LogLevel> &levels_to_log = {});
+                     const std::vector<std::string> &levels_to_log = {});
   void log (const std::string &message, LogLevel level = LogLevel::info);
   void tick ();
   void tock ();
@@ -46,7 +49,7 @@ private:
 
   /** @brief Logger constructor using a file. */
   Logger(const std::filesystem::path &log_file_path,
-         const std::vector<LogLevel> &levels_to_log);
+         const std::vector<std::string> &levels_to_log);
   /** @brief Get the current date as a timestamp. */
   std::string get_timestamp ();
   /** @brief Is the provided loglevel active? */

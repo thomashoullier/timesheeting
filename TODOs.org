@@ -278,7 +278,8 @@ logger type. Make the singleton return an implementation of logger directly.
 We can change the logger type there.
 Also remove the ~logger~ member attributes everywhere, an include should suffice.
 
-*** TODO Create log levels
+*** DONE Create log levels
+CLOSED: [2024-10-13 Sun 09:28]
 ADDED: [2024-08-24 Sat]
 Create log levels and a way to set which ones are active or not.
 Perhaps use an enum to pass which ones should be active or not.

@@ -21,8 +21,20 @@ std::string log_level_string (LogLevel level) {
   }
 }
 
+LogLevel log_level_from_string (const std::string &level_str) {
+  if (level_str == "info") {
+    return LogLevel::info;
+  } else if (level_str == "debug") {
+    return LogLevel::debug;
+  } else if (level_str == "error") {
+    return LogLevel::error;
+  } else {
+    throw std::runtime_error("log_level_from_string: unknown log level.");
+  }
+}
+
 Logger &Logger::get(const std::filesystem::path &log_filepath,
-                    const std::vector<LogLevel> &levels_to_log) {
+                    const std::vector<std::string> &levels_to_log) {
   static Logger instance (log_filepath, levels_to_log);
   return instance;
 }
@@ -58,14 +70,15 @@ void Logger::tock() {
 }
 
 Logger::Logger(const std::filesystem::path &log_file,
-               const std::vector<LogLevel> &levels_to_log)
+               const std::vector<std::string> &levels_to_log)
     : file(std::make_unique<std::ofstream>(log_file, std::ios::app)),
       counting(false) {
   if (!file->good()) {
     throw std::runtime_error("Log file was not opened correctly.");
   }
   // Initialize the active log levels.
-  for (auto level : levels_to_log) {
+  for (const auto &level_str : levels_to_log) {
+    auto level = log_level_from_string(level_str);
     switch (level) {
     case LogLevel::info:
       active_levels.info = true;

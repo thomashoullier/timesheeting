@@ -1,12 +1,13 @@
 #include "config.h"
 #include <filesystem>
-#include <toml++/toml.hpp>
 
 UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
   auto config_path = expand_tilde(config_file);
   auto config = toml::parse_file(config_path.u8string());
   auto log_filepath = config["config"]["log_file"].value_or("");
-  return UserConfig(expand_tilde(log_filepath));
+  auto active_log_levels = config["config"]["active_log_levels"];
+  return UserConfig(expand_tilde(log_filepath),
+                    parse_stringvec(active_log_levels.as_array()));
 }
 
 std::filesystem::path
@@ -17,4 +18,13 @@ ConfigLoader::expand_tilde(const std::filesystem::path &path) {
     return home_dir / str.substr(2);
   }
   return path;
+}
+
+std::vector<std::string> ConfigLoader::parse_stringvec(toml::array *arr) {
+  std::vector<std::string> strings;
+  arr->for_each([&strings](auto&& el) {
+    if constexpr (toml::is_string<decltype(el)>)
+      strings.push_back(std::string(el));
+  });
+  return strings;
 }
