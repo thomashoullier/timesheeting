@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['location_5fcol_0',['location_col',['../classLocationsScreen.html#aab902ce049b5f14e76f5c0ad39410067',1,'LocationsScreen']]],
-  ['location_5fname_1',['location_name',['../structEntry.html#a9543ea0daf2271171a9fd1bcb2c1ad66',1,'Entry::location_name()'],['../structEntryStaging.html#aa7c1ccf1ba580180efd161e48c1714a5',1,'EntryStaging::location_name()']]],
-  ['locations_5fscreen_2',['locations_screen',['../classUI.html#a81892b1b3a69aca9a3ecb81b1bedc9b6',1,'UI::locations_screen()'],['../classUpdateManager.html#a4a0a330e33cf16212e45622df2a7669f',1,'UpdateManager::locations_screen()']]]
+  ['id_0',['id',['../structEntry.html#acae03bc40435aa6cce0c87dbc6d07aa4',1,'Entry::id()'],['../structGenericItem.html#a2f417d0fabe992fd739be1422b97b205',1,'GenericItem::id()']]],
+  ['insert_5fentrystaging_1',['insert_entrystaging',['../classStatementSet.html#a17ed781bf4f86b13570c3229e27bca36',1,'StatementSet']]],
+  ['insert_5flocation_2',['insert_location',['../classStatementSet.html#a2551187e8479d54a8be52962757e1f14',1,'StatementSet']]],
+  ['insert_5fproject_3',['insert_project',['../classStatementSet.html#af54475592f711fedc9abeb8a4a07f48d',1,'StatementSet']]],
+  ['insert_5ftask_4',['insert_task',['../classStatementSet.html#a80eecad86d9ad672377318fdfb80e9ac',1,'StatementSet']]],
+  ['item_5fwidth_5',['item_width',['../classMenuNCurses.html#aa0817dcece617b385ec6d7966a4a278a',1,'MenuNCurses']]]
 ];

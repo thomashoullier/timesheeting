@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['date_0',['Date',['../classDate.html',1,'']]],
-  ['dateparsingfailure_1',['DateParsingFailure',['../classDateParsingFailure.html',1,'']]],
-  ['daterange_2',['DateRange',['../classDateRange.html',1,'']]],
-  ['day_3',['Day',['../classDay.html',1,'']]],
-  ['dayselector_4',['DaySelector',['../classDaySelector.html',1,'']]],
-  ['db_5fsqlite_5',['DB_SQLite',['../classDB__SQLite.html',1,'']]],
-  ['db_5fsqlite_5fhandle_6',['DB_SQLite_Handle',['../classDB__SQLite__Handle.html',1,'']]],
-  ['duration_7',['Duration',['../classDuration.html',1,'']]]
+  ['column_0',['Column',['../classColumn.html',1,'']]],
+  ['column_3c_20location_20_3e_1',['Column&lt; Location &gt;',['../classColumn.html',1,'']]],
+  ['column_3c_20project_20_3e_2',['Column&lt; Project &gt;',['../classColumn.html',1,'']]],
+  ['column_3c_20task_20_3e_3',['Column&lt; Task &gt;',['../classColumn.html',1,'']]],
+  ['columnbase_4',['ColumnBase',['../classColumnBase.html',1,'']]],
+  ['configloader_5',['ConfigLoader',['../classConfigLoader.html',1,'']]]
 ];

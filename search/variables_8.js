@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem']]],
-  ['ncols_1',['ncols',['../classMenuNCurses.html#ad0b4330548624edaf828deea39de9c7c',1,'MenuNCurses']]],
-  ['ncurses_5fhandle_2',['ncurses_handle',['../classUI.html#a150f54f597b90035cb05e7a44222bbe0',1,'UI']]]
+  ['menu_0',['menu',['../classMenuNCurses.html#ac95742d2f238fccb36f6ad575d6938cd',1,'MenuNCurses']]],
+  ['menu_5fitems_1',['menu_items',['../classMenuNCurses.html#ad102d4b21f4caacfbccb4310e66bd054',1,'MenuNCurses']]],
+  ['msg_2',['msg',['../classDateParsingFailure.html#ae0609be0e4d5b32ada910048ddaf2545',1,'DateParsingFailure::msg()'],['../classSQLiteConstraintExcept.html#a871d9fbaac6ed756d276e7207bfc8a49',1,'SQLiteConstraintExcept::msg()'],['../classMenuEmpty.html#abbc58cd3081eba6f646f39591d97b691',1,'MenuEmpty::msg()']]]
 ];

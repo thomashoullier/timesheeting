@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['location_0',['Location',['../structLocation.html',1,'']]],
-  ['locationsscreen_1',['LocationsScreen',['../classLocationsScreen.html',1,'']]],
-  ['logger_2',['Logger',['../classLogger.html',1,'']]]
+  ['genericitem_0',['GenericItem',['../structGenericItem.html',1,'']]]
 ];

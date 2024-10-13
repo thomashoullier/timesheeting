@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">logger.h File Reference</div></div>
 </div><!--header-->
@@ -86,6 +87,8 @@ $(function() {
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div>
 <p><a href="logger_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -94,9 +97,26 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html">Logger</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogger.html" title="Logger implementation with a log file.">Logger</a> implementation with a log file.  <a href="classLogger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogger_1_1ActiveLevels.html">Logger::ActiveLevels</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct defining the active log levels.  <a href="structLogger_1_1ActiveLevels.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aca1fd1d8935433e6ba2e3918214e07f9"><td class="memItemLeft" align="right" valign="top"><a id="aca1fd1d8935433e6ba2e3918214e07f9" name="aca1fd1d8935433e6ba2e3918214e07f9"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>LogLevel</b> { <b>info</b>
+, <b>debug</b>
+, <b>error</b>
+ }</td></tr>
+<tr class="separator:aca1fd1d8935433e6ba2e3918214e07f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:acaa29f3b874d03d2004e643717f58631"><td class="memItemLeft" align="right" valign="top"><a id="acaa29f3b874d03d2004e643717f58631" name="acaa29f3b874d03d2004e643717f58631"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>log_level_string</b> (LogLevel level)</td></tr>
+<tr class="separator:acaa29f3b874d03d2004e643717f58631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ff61d35f848ef1eb2553a39dc334ff6"><td class="memItemLeft" align="right" valign="top"><a id="a7ff61d35f848ef1eb2553a39dc334ff6" name="a7ff61d35f848ef1eb2553a39dc334ff6"></a>
+LogLevel&#160;</td><td class="memItemRight" valign="bottom"><b>log_level_from_string</b> (const std::string &amp;level_str)</td></tr>
+<tr class="separator:a7ff61d35f848ef1eb2553a39dc334ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66e3e3c277d097d2818ef8dd7654f0c8"><td class="memItemLeft" align="right" valign="top"><a id="a66e3e3c277d097d2818ef8dd7654f0c8" name="a66e3e3c277d097d2818ef8dd7654f0c8"></a>
 <a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>logger</b> ()</td></tr>
 <tr class="memdesc:a66e3e3c277d097d2818ef8dd7654f0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grab the <a class="el" href="classLogger.html" title="Logger implementation with a log file.">Logger</a>. <br /></td></tr>

@@ -2,7 +2,7 @@ var searchData=
 [
   ['generic_5fitem_2eh_0',['generic_item.h',['../generic__item_8h.html',1,'']]],
   ['genericitem_1',['GenericItem',['../structGenericItem.html',1,'']]],
-  ['get_2',['get',['../classDB__SQLite.html#a1aac7f85a8f5430d1288e977f910094a',1,'DB_SQLite::get()'],['../classLogger.html#ac6f0d7bd5e9b97e32c2bfaa7e46aa70b',1,'Logger::get()'],['../classStatusBarNCurses.html#a27063526080922613e47646db1ccd76c',1,'StatusBarNCurses::get()'],['../classUpdateManager.html#a7ab3ea644cda813d67ce3e73cf36387c',1,'UpdateManager::get()']]],
+  ['get_2',['get',['../classDB__SQLite.html#a1aac7f85a8f5430d1288e977f910094a',1,'DB_SQLite::get()'],['../classLogger.html#abb0d64a1fb123b83d82678916ffaa3f9',1,'Logger::get()'],['../classStatusBarNCurses.html#a27063526080922613e47646db1ccd76c',1,'StatusBarNCurses::get()'],['../classUpdateManager.html#a7ab3ea644cda813d67ce3e73cf36387c',1,'UpdateManager::get()']]],
   ['get_5fall_3',['get_all',['../classStatement.html#ac7616390a1e04ef39dcfcae8534a4754',1,'Statement']]],
   ['get_5fall_5fhelper_4',['get_all_helper',['../classStatement.html#af22a3595572a742aca50b308a69b79eb',1,'Statement']]],
   ['get_5fcol_5findex_5',['get_col_index',['../classMenuNCurses.html#a09d0ddb1f23caa74a9392edd00584325',1,'MenuNCurses']]],

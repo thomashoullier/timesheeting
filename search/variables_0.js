@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['counting_0',['counting',['../classLogger.html#aececfa75062cc69f9d0270a565b2d911',1,'Logger']]]
+  ['active_5flevels_0',['active_levels',['../classLogger.html#abf30e0694a5634876f40df3e0ac8d8ac',1,'Logger']]]
 ];
