@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: ConfigLoader Class Reference</title>
+<title>timesheeting: config::UserConfig Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,44 +67,30 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>config</b></li><li class="navelem"><a class="el" href="structconfig_1_1UserConfig.html">UserConfig</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="classConfigLoader-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">ConfigLoader Class Reference</div></div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structconfig_1_1UserConfig-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">config::UserConfig Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Config file loader class.  
- <a href="classConfigLoader.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:ace46a38f747101297316651f791c30a1"><td class="memItemLeft" align="right" valign="top"><a id="ace46a38f747101297316651f791c30a1" name="ace46a38f747101297316651f791c30a1"></a>
-<a class="el" href="structUserConfig.html">UserConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (const std::filesystem::path &amp;config_file)</td></tr>
-<tr class="memdesc:ace46a38f747101297316651f791c30a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the configuration file into an internal representation. <br /></td></tr>
-<tr class="separator:ace46a38f747101297316651f791c30a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a54287b8351d96ca7349d65a5dd80f6e3"><td class="memItemLeft" align="right" valign="top"><a id="a54287b8351d96ca7349d65a5dd80f6e3" name="a54287b8351d96ca7349d65a5dd80f6e3"></a>
-std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>expand_tilde</b> (const std::filesystem::path &amp;path)</td></tr>
-<tr class="memdesc:a54287b8351d96ca7349d65a5dd80f6e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand tilde and braces/variables in file paths. <br /></td></tr>
-<tr class="separator:a54287b8351d96ca7349d65a5dd80f6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09b27a3c0ac4273ca05a760a1e0dba01"><td class="memItemLeft" align="right" valign="top"><a id="a09b27a3c0ac4273ca05a760a1e0dba01" name="a09b27a3c0ac4273ca05a760a1e0dba01"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parse_stringvec</b> (toml::array *arr)</td></tr>
-<tr class="memdesc:a09b27a3c0ac4273ca05a760a1e0dba01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a toml array into a string vector. <br /></td></tr>
-<tr class="separator:a09b27a3c0ac4273ca05a760a1e0dba01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a8398f0d47235d824b129764371659700"><td class="memItemLeft" align="right" valign="top"><a id="a8398f0d47235d824b129764371659700" name="a8398f0d47235d824b129764371659700"></a>
+std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>log_filepath</b></td></tr>
+<tr class="separator:a8398f0d47235d824b129764371659700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65bbb1a6b4903bf8c66e476709a9553"><td class="memItemLeft" align="right" valign="top"><a id="ab65bbb1a6b4903bf8c66e476709a9553" name="ab65bbb1a6b4903bf8c66e476709a9553"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>log_levels_to_activate</b></td></tr>
+<tr class="separator:ab65bbb1a6b4903bf8c66e476709a9553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Config file loader class. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="config_8h_source.html">config.h</a></li>
-<li>src/config.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

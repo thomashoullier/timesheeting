@@ -24,5 +24,5 @@ var searchData=
   ['update_5ftask_5fcol_21',['update_task_col',['../classProjectTaskScreen.html#a8902138bb72c87319acafa04a3133b8c',1,'ProjectTaskScreen']]],
   ['update_5ftask_5fname_22',['update_task_name',['../classStatementSet.html#af24310d1c696e8bf65af94d416eebaa5',1,'StatementSet']]],
   ['updatemanager_23',['UpdateManager',['../classUpdateManager.html',1,'UpdateManager'],['../classUpdateManager.html#aa45378f27ac372c9eec169b7ef5cf368',1,'UpdateManager::UpdateManager()']]],
-  ['userconfig_24',['UserConfig',['../structUserConfig.html',1,'']]]
+  ['userconfig_24',['UserConfig',['../structconfig_1_1UserConfig.html',1,'config']]]
 ];

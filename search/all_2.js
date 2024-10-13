@@ -9,7 +9,7 @@ var searchData=
   ['column_3c_20task_20_3e_6',['Column&lt; Task &gt;',['../classColumn.html',1,'']]],
   ['column_5fbase_2eh_7',['column_base.h',['../column__base_8h.html',1,'']]],
   ['columnbase_8',['ColumnBase',['../classColumnBase.html',1,'']]],
-  ['configloader_9',['ConfigLoader',['../classConfigLoader.html',1,'']]],
+  ['configloader_9',['ConfigLoader',['../classconfig_1_1ConfigLoader.html',1,'config']]],
   ['counting_10',['counting',['../classLogger.html#aececfa75062cc69f9d0270a565b2d911',1,'Logger']]],
   ['create_5fentries_5fstart_5findex_11',['create_entries_start_index',['../classDB__SQLite.html#a641db1f1a499da5581e73634ea005928',1,'DB_SQLite']]],
   ['create_5fentries_5ftable_12',['create_entries_table',['../classDB__SQLite.html#a130c13f83de9dc6e6e071df84e6fd93b',1,'DB_SQLite']]],

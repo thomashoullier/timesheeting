@@ -1,7 +1,7 @@
 var searchData=
 [
   ['level_5fis_5factive_0',['level_is_active',['../classLogger.html#a39521644fcedeffb9f6d180db677ab32',1,'Logger']]],
-  ['load_1',['load',['../classConfigLoader.html#ace46a38f747101297316651f791c30a1',1,'ConfigLoader']]],
+  ['load_1',['load',['../classconfig_1_1ConfigLoader.html#a8ba932ff83505849955dc5bbda349fdb',1,'config::ConfigLoader::load(const std::filesystem::path &amp;config_file)'],['../classconfig_1_1ConfigLoader.html#a2f119f94a908caba73aa355bb17af7d4',1,'config::ConfigLoader::load()']]],
   ['location_2',['Location',['../structLocation.html',1,'']]],
   ['location_5fcol_3',['location_col',['../classLocationsScreen.html#aab902ce049b5f14e76f5c0ad39410067',1,'LocationsScreen']]],
   ['location_5fname_4',['location_name',['../structEntry.html#a9543ea0daf2271171a9fd1bcb2c1ad66',1,'Entry::location_name()'],['../structEntryStaging.html#aa7c1ccf1ba580180efd161e48c1714a5',1,'EntryStaging::location_name()']]],
