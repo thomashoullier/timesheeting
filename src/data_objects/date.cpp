@@ -1,10 +1,11 @@
 #include "date.h"
 #include <bits/chrono.h>
 #include <chrono>
+#include <format>
 #include <iomanip>
 #include <sstream>
-#include <format>
 #include <stdexcept>
+#include "../time_zone.h"
 
 Date::Date() {
   auto tp_now = std::chrono::system_clock::now();
@@ -18,11 +19,11 @@ Date::Date(std::chrono::time_point<std::chrono::system_clock,
 Date::Date(DatePoint date_point) {
   switch(date_point) {
   case DatePoint::YearBegin: {
-    std::chrono::zoned_time current{std::chrono::current_zone(),
+    std::chrono::zoned_time current{TimeZone::get().zone,
                                     std::chrono::system_clock::now()};
     // TODO: this is hacky, is there no better way?
     std::chrono::zoned_time first_day
-      {std::chrono::current_zone(),
+      {TimeZone::get().zone,
        std::chrono::floor<std::chrono::days>
        (std::chrono::floor<std::chrono::years>(current.get_local_time()))};
     tp = first_day.get_sys_time();
@@ -52,12 +53,12 @@ Date::Date(const std::string &date_str) {
 }
 
 std::string Date::to_string () const {
-  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
+  std::chrono::zoned_seconds local_time {TimeZone::get().zone, tp};
   return std::format("{:%d%b%Y %H:%M:%S}", local_time);
 }
 
 std::string Date::to_shortstring() const {
-  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
+  std::chrono::zoned_seconds local_time {TimeZone::get().zone, tp};
   return std::format("{:%H:%M}", local_time);
 }
 
@@ -66,6 +67,6 @@ uint64_t Date::to_unix_timestamp() const {
 }
 
 std::string Date::get_day_string () const {
-  std::chrono::zoned_seconds local_time {std::chrono::current_zone(), tp};
+  std::chrono::zoned_seconds local_time {TimeZone::get().zone, tp};
   return std::format("{:%d%b%Y}", local_time);
 }

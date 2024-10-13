@@ -1,5 +1,6 @@
 #include "db/db_sqlite.h"
 #include "logger/logger.h"
+#include "time_zone.h"
 #include "ui.h"
 #include "config.h"
 
@@ -11,6 +12,9 @@ int main() {
   Logger::get(config.log_filepath,
               config.log_levels_to_activate);
   logger().tick(); // For measuring startup time.
+
+  // Initialize the TimeZone.
+  TimeZone::get("Europe/Paris");
 
   // Initialize the DB.
   DB_SQLite::get(config.db_filepath);

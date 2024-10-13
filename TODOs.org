@@ -571,8 +571,11 @@ ADDED: [2024-09-22 Sun]
 Should be a file in a default location like XDG_CONFIG_etc.
 Content is:
   + timezone setting (or system one if not set)
+    + Have a dedicated timezone singleton which is initialized once,
+      and called instead of ~std::chrono::current_zone()~.
+      See ~std::chrono::tzdb::locate_zone~.
   + OK log level
-  + db location
+  + OK db location
   + OK log location
 + Let's use a TOML format. The library tomlplusplus seems OK.
 + Have an internal singleton loading the configuration only once and
