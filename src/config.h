@@ -9,6 +9,7 @@
 namespace config {
   struct UserConfig {
     std::filesystem::path log_filepath;
+    std::filesystem::path db_filepath;
     std::vector<std::string> log_levels_to_activate;
   };
 

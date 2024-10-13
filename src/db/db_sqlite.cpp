@@ -5,8 +5,8 @@
 #include <string>
 #include "../logger/logger.h"
 
-DB_SQLite& DB_SQLite::get() {
-  static DB_SQLite instance ("timesheeting.db");
+DB_SQLite &DB_SQLite::get(const std::filesystem::path &db_filepath) {
+  static DB_SQLite instance (db_filepath);
   return instance;
 }
 

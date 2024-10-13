@@ -7,10 +7,10 @@ namespace config {
     auto config_path = expand_tilde(config_file);
     auto config = toml::parse_file(config_path.u8string());
     auto log_filepath = parse_filepath(config["config"]["log_file"]);
+    auto db_filepath = parse_filepath(config["config"]["db_file"]);
     auto active_log_levels = parse_stringvec
       (config["config"]["active_log_levels"]);
-    return UserConfig(log_filepath,
-                      active_log_levels);
+    return UserConfig(log_filepath, db_filepath, active_log_levels);
   }
 
   UserConfig ConfigLoader::load() {

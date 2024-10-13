@@ -13,6 +13,7 @@
 #include "../data_objects/weekly_totals.h"
 #include "db_sqlite_handle.h"
 #include "statement_set.h"
+#include <filesystem>
 #include <string>
 #include <type_traits>
 
@@ -20,7 +21,7 @@
 class DB_SQLite {
 public:
   /** @brief Grab the DB singleton. */
-  static DB_SQLite& get();
+  static DB_SQLite& get(const std::filesystem::path &db_filepath = "");
 
   std::vector<Project> query_projects();
   std::vector<Project> query_projects_active();
