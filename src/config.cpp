@@ -36,9 +36,9 @@ namespace config {
     }
     std::filesystem::path path = str;
     path = expand_tilde(path);
-    if (not std::filesystem::exists(path))
+    if (not std::filesystem::exists(path.parent_path()))
       throw std::runtime_error("Provided filepath does not exist: " +
-                               std::string(path));
+                               std::string(path.parent_path()));
     return path;
   }
 
