@@ -65,6 +65,8 @@ public:
 private:
   /** @brief Open the DB handle. */
   DB_SQLite(const std::filesystem::path &db_file);
+  /** @brief Initialize the DB and provide the ready statement set. */
+  StatementSet init_db();
   /** @brief Low-level handle to the DB. */
   std::shared_ptr<DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */

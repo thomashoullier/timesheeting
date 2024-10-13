@@ -12,13 +12,17 @@ DB_SQLite &DB_SQLite::get(const std::filesystem::path &db_filepath) {
 
 DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     : sqlite_db(std::make_shared<DB_SQLite_Handle>(db_file)),
-      statements(sqlite_db) {
+      statements{init_db()} {
+}
+
+StatementSet DB_SQLite::init_db() {
   this->create_projects_table();
   this->create_tasks_table();
   this->create_locations_table();
   this->create_entries_table();
   this->create_entries_start_index();
   this->create_entrystaging_table();
+  return StatementSet(sqlite_db);
 }
 
 std::vector<Project> DB_SQLite::query_projects() {
@@ -110,7 +114,7 @@ EntryStaging DB_SQLite::query_entrystaging() {
 
 void DB_SQLite::create_projects_table() {
   std::string create_projects_table_st =
-    "CREATE TABLE  IF NOT EXISTS projects ("
+    "CREATE TABLE IF NOT EXISTS projects ("
     "id INTEGER PRIMARY KEY,"
     "name TEXT NOT NULL UNIQUE, "
     "active BOOLEAN NOT NULL CHECK (active IN (0,1))"
