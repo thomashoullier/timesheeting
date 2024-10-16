@@ -1,0 +1,11 @@
+[config]
+# Path to the log file to use.
+log_file = "~/.local/timesheeting/timesheeting.log"
+# Path to the DB to use.
+db_file = "~/.local/timesheeting/timesheeting.db"
+# Set of log levels to activate.
+active_log_levels = [ "debug", "error", "info" ]
+# Timezone used program-wide.
+# The format is a TZ string.
+# See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone = "Europe/Paris"

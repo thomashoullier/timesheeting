@@ -14,6 +14,10 @@ The project is just starting.
 * ![Release notes](doc/RELEASE_NOTES.md)
 * [Doxygen](https://thomashoullier.github.io/timesheeting/index.html)
 
+## Configuration file
+The program is configured using a single TOML file.
+A reference configuration is included: [timesheeting.toml](timesheeting.toml).
+
 ## Build instructions
 ### Software
 #### Example main
