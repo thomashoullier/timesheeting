@@ -563,14 +563,15 @@ more easily and test them separately. Only extract the parts which are generic.
 + ncurses lib
 + date management objects? (day, week, date, date_range, duration)
 
-*** TODO Implement the configuration file
+*** DONE Implement the configuration file
+CLOSED: [2024-10-16 Wed 20:29]
 ADDED: [2024-09-22 Sun]
 + Do we really need a configuration file? Couldn't we just provide the
   configuration as CLI arguments with sensible defaults?
   + Yes we do need a file, otherwise the CLI becomes unusable.
 Should be a file in a default location like XDG_CONFIG_etc.
 Content is:
-  + timezone setting (or system one if not set)
+  + OK timezone setting (or system one if not set)
     + Have a dedicated timezone singleton which is initialized once,
       and called instead of ~std::chrono::current_zone()~.
       See ~std::chrono::tzdb::locate_zone~.
@@ -590,10 +591,12 @@ ADDED: [2024-09-27 Fri]
 Monitor closely the refresh() and update() operations and remove the
 useless ones.
 
-*** TODO Github issue with doxygen deployment
+*** DONE Github issue with doxygen deployment
+CLOSED: [2024-10-16 Wed 20:25]
 ADDED:[2024-09-27 Fri]
 
 We are hitting this bug: https://github.com/JamesIves/github-pages-deploy-action/issues/1697
++ [2024-10-16 Wed] This solved itself.
 
 *** TODO Implement the display of durations in days/hours/minutes
 ADDED: [2024-09-28 Sat]

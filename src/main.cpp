@@ -14,7 +14,7 @@ int main() {
   logger().tick(); // For measuring startup time.
 
   // Initialize the TimeZone.
-  TimeZone::get("Europe/Paris");
+  TimeZone::get(config.timezone);
 
   // Initialize the DB.
   DB_SQLite::get(config.db_filepath);

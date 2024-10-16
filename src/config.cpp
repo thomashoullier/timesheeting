@@ -10,7 +10,11 @@ namespace config {
     auto db_filepath = parse_filepath(config["config"]["db_file"]);
     auto active_log_levels = parse_stringvec
       (config["config"]["active_log_levels"]);
-    return UserConfig(log_filepath, db_filepath, active_log_levels);
+    auto timezone = parse_string(config["config"]["timezone"]);
+    return UserConfig(log_filepath,
+                      db_filepath,
+                      active_log_levels,
+                      timezone);
   }
 
   UserConfig ConfigLoader::load() {
@@ -28,13 +32,18 @@ namespace config {
     return path;
   }
 
-  std::filesystem::path
-  ConfigLoader::parse_filepath(const toml::node_view<toml::node> &config_node) {
+  std::string ConfigLoader::parse_string
+  (const toml::node_view<toml::node> &config_node) {
     std::string str = config_node.value_or(std::string{});
     if (str.empty()) {
-      throw std::runtime_error("Could not read filepath from configuration.");
+      throw std::runtime_error("String read from the configuration is empty.");
     }
-    std::filesystem::path path = str;
+    return str;
+  }
+
+  std::filesystem::path
+  ConfigLoader::parse_filepath(const toml::node_view<toml::node> &config_node) {
+    std::filesystem::path path = parse_string(config_node);
     path = expand_tilde(path);
     if (not std::filesystem::exists(path.parent_path()))
       throw std::runtime_error("Provided filepath does not exist: " +
