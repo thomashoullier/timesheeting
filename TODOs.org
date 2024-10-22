@@ -611,6 +611,12 @@ held somewhere.
   the updates.
 + Wait a minute, how long is a day of work? We have to set this in a config file
   somewhere.
++ Currently the Duration are printed through a ~to_string~ method.
++ We can have a singleton DurationDisplay which holds:
+  + The duration of a day of work (init from the config),
+  + The current mode for display: day/hour/minute.
+  + A method for producing a string from a duration with the current mode
+    and config.
 
 *** TODO Extract a generic library for the config file
 ADDED: [2024-10-13 Sun]

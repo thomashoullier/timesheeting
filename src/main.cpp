@@ -1,4 +1,5 @@
 #include "db/db_sqlite.h"
+#include "duration_displayer.h"
 #include "logger/logger.h"
 #include "time_zone.h"
 #include "ui.h"
@@ -18,6 +19,12 @@ int main() {
 
   // Initialize the DB.
   DB_SQLite::get(config.db_filepath);
+
+  // Initialize the DurationDisplayer
+  DurationDisplayer::get(config.hours_per_workday);
+  // TEMP
+  DurationDisplayer::get().cycle_format();
+  DurationDisplayer::get().cycle_format();
 
   // Loading the UI and entering input loop.
   UI ui;

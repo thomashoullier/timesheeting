@@ -12,6 +12,7 @@ namespace config {
     std::filesystem::path db_filepath;
     std::vector<std::string> log_levels_to_activate;
     std::string timezone;
+    float hours_per_workday;
   };
 
   /** @brief Config file loader class. */
@@ -37,15 +38,17 @@ namespace config {
         Empty strings are forbidden and raise an exception. */
     std::string parse_string
     (const toml::node_view<toml::node> &config_node);
-    /** @brief Parse a filepath from the configuation. */
-    std::filesystem::path
-    parse_filepath(const toml::node_view<toml::node> &config_node);
+    /** @brief Parse a float number from the configuration. */
+    float parse_float(const toml::node_view<toml::node> &config_node);
+    /** @brief Parse a filepath from the configuration. */
+    std::filesystem::path parse_filepath(
+        const toml::node_view<toml::node> &config_node);
     /** @brief Parse a toml array into a string vector. */
-    std::vector<std::string>
-    parse_stringvec(const toml::node_view<toml::node> &config_node);
+    std::vector<std::string> parse_stringvec(
+        const toml::node_view<toml::node> &config_node);
     /** @brief Search for the config file in default locations. */
     std::filesystem::path find_config_file();
   };
-  } // namespace config
+} // namespace config
 
 #endif // CONFIG_H

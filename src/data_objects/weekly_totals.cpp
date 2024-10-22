@@ -1,9 +1,11 @@
 #include "weekly_totals.h"
+#include "../duration_displayer.h"
 
 std::vector<std::string> WeeklyTotals::to_strings () const {
   // TODO: have short strings with zeroes and units omitted, and long strings
   //       for status bar display.
   std::vector<std::string> strs;
+  auto duration_formatter = DurationDisplayer::get();
   // Column headers
   strs.push_back("Project/Task");
   strs.push_back("Monday");
@@ -17,23 +19,23 @@ std::vector<std::string> WeeklyTotals::to_strings () const {
   // Daily totals, all tasks
   strs.push_back("All tasks");
   for (auto const &dur : daily_totals) {
-    strs.push_back(dur.to_string());
+    strs.push_back(duration_formatter.to_string(dur));
   }
-  strs.push_back(total.to_string());
+  strs.push_back(duration_formatter.to_string(total));
   // Per-project totals
   for (auto const &proj : project_totals) {
     strs.push_back(proj.project_name);
     for (auto const &daily_dur : proj.daily_totals) {
-      strs.push_back(daily_dur.to_string());
+      strs.push_back(duration_formatter.to_string(daily_dur));
     }
-    strs.push_back(proj.total.to_string());
+    strs.push_back(duration_formatter.to_string(proj.total));
     // Per-task totals
     for (auto const &task : proj.task_totals) {
       strs.push_back(task.task_name);
       for (auto const &daily_dur : task.daily_totals) {
-        strs.push_back(daily_dur.to_string());
+        strs.push_back(duration_formatter.to_string(daily_dur));
       }
-      strs.push_back(task.total.to_string());
+      strs.push_back(duration_formatter.to_string(task.total));
     }
   }
   return strs;
@@ -41,6 +43,7 @@ std::vector<std::string> WeeklyTotals::to_strings () const {
 
 std::vector<StringWithFace> WeeklyTotals::to_shortstrings() const {
   std::vector<StringWithFace> strs;
+  auto duration_formatter = DurationDisplayer::get();
   // Column headers
   strs.push_back(StringWithFace("Task"));
   strs.push_back(StringWithFace("Mon"));
@@ -54,23 +57,25 @@ std::vector<StringWithFace> WeeklyTotals::to_shortstrings() const {
   // Daily totals, all tasks
   strs.push_back(StringWithFace("ALL"));
   for (auto const &dur : daily_totals) {
-    strs.push_back(dur.to_shortstring());
+    strs.push_back(duration_formatter.to_shortstring(dur));
   }
-  strs.push_back(total.to_shortstring());
+  strs.push_back(duration_formatter.to_shortstring(total));
   // Per-project totals
   for (auto const &proj : project_totals) {
     strs.push_back(StringWithFace(proj.project_name, true));
     for (auto const &daily_dur : proj.daily_totals) {
-      strs.push_back(StringWithFace(daily_dur.to_shortstring(), true));
+      strs.push_back(StringWithFace(duration_formatter.to_shortstring(daily_dur),
+                                    true));
     }
-    strs.push_back(StringWithFace(proj.total.to_shortstring(), true));
+    strs.push_back(StringWithFace(duration_formatter.to_shortstring(proj.total),
+                                  true));
     // Per-task totals
     for (auto const &task : proj.task_totals) {
       strs.push_back(task.task_name);
       for (auto const &daily_dur : task.daily_totals) {
-        strs.push_back(daily_dur.to_shortstring());
+        strs.push_back(duration_formatter.to_shortstring(daily_dur));
       }
-      strs.push_back(task.total.to_shortstring());
+      strs.push_back(duration_formatter.to_shortstring(task.total));
     }
   }
   return strs;

@@ -1,6 +1,8 @@
 #include "config.h"
+#include <cmath>
 #include <filesystem>
 #include <stdexcept>
+#include <limits>
 
 namespace config {
   UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
@@ -11,10 +13,12 @@ namespace config {
     auto active_log_levels = parse_stringvec
       (config["config"]["active_log_levels"]);
     auto timezone = parse_string(config["config"]["timezone"]);
+    auto hours_per_day = parse_float(config["config"]["hours_per_workday"]);
     return UserConfig(log_filepath,
                       db_filepath,
                       active_log_levels,
-                      timezone);
+                      timezone,
+                      hours_per_day);
   }
 
   UserConfig ConfigLoader::load() {
@@ -39,6 +43,15 @@ namespace config {
       throw std::runtime_error("String read from the configuration is empty.");
     }
     return str;
+  }
+
+  float ConfigLoader::parse_float
+  (const toml::node_view<toml::node> &config_node) {
+    float num = config_node.value_or(std::numeric_limits<float>::quiet_NaN());
+    if (std::isnan(num)) {
+      throw std::runtime_error("Float read from the configuration is empty.");
+    }
+    return num;
   }
 
   std::filesystem::path
