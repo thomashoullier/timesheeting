@@ -11,5 +11,6 @@ var searchData=
   ['db_5fsqlite_5fhandle_8',['DB_SQLite_Handle',['../classDB__SQLite__Handle.html#a461d5bdf0044a229afe20917fed84624',1,'DB_SQLite_Handle']]],
   ['destroy_5fmenu_9',['destroy_menu',['../classMenuNCurses.html#ae6e6738afd609b70727c7b8315464022',1,'MenuNCurses']]],
   ['destroy_5fwindow_10',['destroy_window',['../classWinNCurses.html#a69418e712e9fc1d9b96667f0f217dcbd',1,'WinNCurses']]],
-  ['duration_11',['Duration',['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration::Duration()'],['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration(uint64_t seconds)']]]
+  ['duration_11',['Duration',['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration::Duration()'],['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration(uint64_t seconds)']]],
+  ['duration_5fdisplay_5fchanged_12',['duration_display_changed',['../classUpdateManager.html#a023b5a241f82a09a7b0fd016c877ea20',1,'UpdateManager']]]
 ];

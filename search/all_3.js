@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['daily_5ftotals_0',['daily_totals',['../structPerTaskTotals.html#a77cd3e36639c8495770829890b2c9517',1,'PerTaskTotals::daily_totals()'],['../structPerProjectTotals.html#a5015f10c8f3e903f04cd223f6b91b69c',1,'PerProjectTotals::daily_totals()'],['../structWeeklyTotals.html#a5151117d0254f5879edb4d2869ee5ecf',1,'WeeklyTotals::daily_totals()']]],
+  ['daily_5ftotals_0',['daily_totals',['../structWeeklyTotals.html#a5151117d0254f5879edb4d2869ee5ecf',1,'WeeklyTotals::daily_totals()'],['../structPerTaskTotals.html#a77cd3e36639c8495770829890b2c9517',1,'PerTaskTotals::daily_totals()'],['../structPerProjectTotals.html#a5015f10c8f3e903f04cd223f6b91b69c',1,'PerProjectTotals::daily_totals()']]],
   ['date_1',['Date',['../classDate.html',1,'Date'],['../classDate.html#aec4f884c9e251fd1102db04f23cf006a',1,'Date::Date(const std::string &amp;date_str)'],['../classDate.html#abe724716ef2aae8ddd0cc4ca7c2808df',1,'Date::Date(uint64_t unix_seconds)'],['../classDate.html#a8c51d6a2611298fb28c477857947961b',1,'Date::Date(DatePoint date_point)'],['../classDate.html#a2d3a9f214e5c1175362d9ad672b323c6',1,'Date::Date(std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt; _tp)'],['../classDate.html#a4e59ed4ba66eec61c27460c5d09fa1bd',1,'Date::Date()']]],
   ['date_2eh_2',['date.h',['../date_8h.html',1,'']]],
   ['date_5frange_2eh_3',['date_range.h',['../date__range_8h.html',1,'']]],
@@ -25,6 +25,8 @@ var searchData=
   ['dur_22',['dur',['../classDuration.html#a4cbbbe8777802eebd1d2779e66eaf605',1,'Duration']]],
   ['duration_23',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
   ['duration_24',['Duration',['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration::Duration()'],['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration(uint64_t seconds)'],['../classDuration.html',1,'Duration']]],
-  ['duration_5fper_5fworked_5fproject_25',['duration_per_worked_project',['../classStatementSet.html#a3c7d5cf3abd0171d2c782e159f793872',1,'StatementSet']]],
-  ['duration_5fper_5fworked_5ftask_26',['duration_per_worked_task',['../classStatementSet.html#a6edff466bc1742948d3099d5941ad565',1,'StatementSet']]]
+  ['duration_5fdisplay_5fchanged_25',['duration_display_changed',['../classUpdateManager.html#a023b5a241f82a09a7b0fd016c877ea20',1,'UpdateManager']]],
+  ['duration_5fper_5fworked_5fproject_26',['duration_per_worked_project',['../classStatementSet.html#a3c7d5cf3abd0171d2c782e159f793872',1,'StatementSet']]],
+  ['duration_5fper_5fworked_5ftask_27',['duration_per_worked_task',['../classStatementSet.html#a6edff466bc1742948d3099d5941ad565',1,'StatementSet']]],
+  ['durationdisplayer_28',['DurationDisplayer',['../classDurationDisplayer.html',1,'']]]
 ];

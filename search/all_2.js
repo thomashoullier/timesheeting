@@ -19,5 +19,6 @@ var searchData=
   ['create_5ftasks_5ftable_16',['create_tasks_table',['../classDB__SQLite.html#a3116dedb5003b1fd6d0c3a8f5af4db90',1,'DB_SQLite']]],
   ['crop_5fpad_5fstr_17',['crop_pad_str',['../classMenuNCurses.html#af8d8e67894ff25585a0bc07e329229fc',1,'MenuNCurses']]],
   ['current_5frange_18',['current_range',['../classDaySelector.html#a6a41d3a7e81e68a0c35e16803320b438',1,'DaySelector::current_range()'],['../classWeekSelector.html#afde3349469b874c8046f146b46b089ab',1,'WeekSelector::current_range() const']]],
-  ['current_5fweek_19',['current_week',['../classWeekSelector.html#a6364f1d4a3b7f08c115c4135860271a4',1,'WeekSelector']]]
+  ['current_5fweek_19',['current_week',['../classWeekSelector.html#a6364f1d4a3b7f08c115c4135860271a4',1,'WeekSelector']]],
+  ['cycle_5fformat_20',['cycle_format',['../classDurationDisplayer.html#a8691df7f5aed7ace23dbc2a9ec926cc7',1,'DurationDisplayer']]]
 ];

@@ -92,14 +92,30 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Duration</b> (uint64_t seconds)</td></tr>
 <tr class="memdesc:aad077633351bd92e6585c42c53e390c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the duration to a number of seconds. <br /></td></tr>
 <tr class="separator:aad077633351bd92e6585c42c53e390c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3495c156f763c0124247003d8a10d38d"><td class="memItemLeft" align="right" valign="top"><a id="a3495c156f763c0124247003d8a10d38d" name="a3495c156f763c0124247003d8a10d38d"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> () const</td></tr>
-<tr class="memdesc:a3495c156f763c0124247003d8a10d38d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a displayable representation for the duration in hours with 3 decimal places. <br /></td></tr>
-<tr class="separator:a3495c156f763c0124247003d8a10d38d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab61eca716b94ed234063727fd494044b"><td class="memItemLeft" align="right" valign="top"><a id="ab61eca716b94ed234063727fd494044b" name="ab61eca716b94ed234063727fd494044b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_shortstring</b> () const</td></tr>
-<tr class="memdesc:ab61eca716b94ed234063727fd494044b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displayable short string of the duration in hours, omitting the units and putting blanks over zeros. <br /></td></tr>
-<tr class="separator:ab61eca716b94ed234063727fd494044b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fe544732fafea89541f19732947753"><td class="memItemLeft" align="right" valign="top"><a id="a01fe544732fafea89541f19732947753" name="a01fe544732fafea89541f19732947753"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_hour_string</b> () const</td></tr>
+<tr class="memdesc:a01fe544732fafea89541f19732947753"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a displayable representation for the duration in hours with 3 decimal places. <br /></td></tr>
+<tr class="separator:a01fe544732fafea89541f19732947753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04a0cc3f55138336717b0e194d56222"><td class="memItemLeft" align="right" valign="top"><a id="ae04a0cc3f55138336717b0e194d56222" name="ae04a0cc3f55138336717b0e194d56222"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_hour_shortstring</b> () const</td></tr>
+<tr class="memdesc:ae04a0cc3f55138336717b0e194d56222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displayable short string of the duration in hours, omitting the units and putting blanks over zeros. <br /></td></tr>
+<tr class="separator:ae04a0cc3f55138336717b0e194d56222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66c5cdf6941da059fd5a6c7d6f4808c1"><td class="memItemLeft" align="right" valign="top"><a id="a66c5cdf6941da059fd5a6c7d6f4808c1" name="a66c5cdf6941da059fd5a6c7d6f4808c1"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_second_string</b> () const</td></tr>
+<tr class="memdesc:a66c5cdf6941da059fd5a6c7d6f4808c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a displayable representation for the duration in seconds. <br /></td></tr>
+<tr class="separator:a66c5cdf6941da059fd5a6c7d6f4808c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96621822bd325cedde7761f65b4aabba"><td class="memItemLeft" align="right" valign="top"><a id="a96621822bd325cedde7761f65b4aabba" name="a96621822bd325cedde7761f65b4aabba"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_second_shortstring</b> () const</td></tr>
+<tr class="memdesc:a96621822bd325cedde7761f65b4aabba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displayable short string of the duration in seconds. <br /></td></tr>
+<tr class="separator:a96621822bd325cedde7761f65b4aabba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b42ca6b9a3d794ea62d552beab81fbf"><td class="memItemLeft" align="right" valign="top"><a id="a3b42ca6b9a3d794ea62d552beab81fbf" name="a3b42ca6b9a3d794ea62d552beab81fbf"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_day_string</b> (float hours_per_day) const</td></tr>
+<tr class="memdesc:a3b42ca6b9a3d794ea62d552beab81fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a displayable representation for the duration in days, provided a number of hours (typically of work) per day. <br /></td></tr>
+<tr class="separator:a3b42ca6b9a3d794ea62d552beab81fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab9661a372f4d950e9ab50d2f7f6525"><td class="memItemLeft" align="right" valign="top"><a id="aeab9661a372f4d950e9ab50d2f7f6525" name="aeab9661a372f4d950e9ab50d2f7f6525"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_day_shortstring</b> (float hours_per_day) const</td></tr>
+<tr class="memdesc:aeab9661a372f4d950e9ab50d2f7f6525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displayable short string of the duration in days. <br /></td></tr>
+<tr class="separator:aeab9661a372f4d950e9ab50d2f7f6525"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>

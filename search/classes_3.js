@@ -7,5 +7,6 @@ var searchData=
   ['dayselector_4',['DaySelector',['../classDaySelector.html',1,'']]],
   ['db_5fsqlite_5',['DB_SQLite',['../classDB__SQLite.html',1,'']]],
   ['db_5fsqlite_5fhandle_6',['DB_SQLite_Handle',['../classDB__SQLite__Handle.html',1,'']]],
-  ['duration_7',['Duration',['../classDuration.html',1,'']]]
+  ['duration_7',['Duration',['../classDuration.html',1,'']]],
+  ['durationdisplayer_8',['DurationDisplayer',['../classDurationDisplayer.html',1,'']]]
 ];
