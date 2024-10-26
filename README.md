@@ -64,6 +64,8 @@ cd ./doc/irs/
 latexmk -pdf irs.tex
 ```
 
+The result is `irs.pdf`
+
 #### Doxygen pages
 Build the doxygen pages, while at the project's root,
 

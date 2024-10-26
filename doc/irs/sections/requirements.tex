@@ -64,7 +64,7 @@ in the program at the time of export.
 \paragraph{IRS1-HED-060 -- Header timezone}
 The timezone used to generate the dates in the header shall be indicated
 with a TZ identifier string (\textit{eg} \lstinline{Europe/Paris}).
-The list of current TZ identifiers may be found at [RD1].
+The list of current TZ identifiers may be found at [RD2].
 
 \paragraph{IRS1-HED-070 -- Header program version}
 The version of the program at the time of export shall be written
@@ -98,9 +98,9 @@ Where,
 A \lstinline{:} separator is present between hours and minutes, and between
 minutes and seconds.
 
-Note the corresponding \lstinline{strftime} format string for the date
-format is \lstinline{%d%b%Y %H:%M:%S}. Note the date is always represented
-with a fixed number of characters.
+Note the corresponding \lstinline{strftime} \cite{cpp:strftime} format string
+for the date format is \lstinline{%d%b%Y %H:%M:%S}. Note the date is always
+represented with a fixed number of characters.
 
 \paragraph{IRS1-HED-100 -- Export date format}
 The export date shall be written on a single text line beginning with
