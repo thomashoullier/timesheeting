@@ -33,8 +33,16 @@
 { \centering
   \begin{tabularx}{\textwidth}{| c | X | c | c | X |} \hline
     Index & Title & Reference & Revision & Author \\ \hline
-    AD1 & timesheeting system architecture document & PRJ1-SAD1 & v1.0 & Thomas
+    AD1 & timesheeting specification document & PRJ1-SPE1 & v1.0 & Thomas
     HOULLIER \\ \hline
+  \end{tabularx} \par }
+
+\section*{Reference documents}
+{ \centering
+  \begin{tabularx}{\textwidth}{| c | X | c | c | X |} \hline
+    Index & Title & Reference & Revision & Author \\ \hline
+    RD1 & List of tz database time zones &
+    \cite{wiki:tz_list} & 1246415064 & Wikipedia \\ \hline
   \end{tabularx} \par }
 
 \section*{Document distribution}
@@ -49,6 +57,9 @@ is provided along with the released document.
 \printglossary[type=\acronymtype,style=index]
 \pagestyle{plain}
 \input{sections/introduction}
+\input{sections/definitions}
+\input{sections/requirements}
+\input{sections/example}
 
 \appendix
 

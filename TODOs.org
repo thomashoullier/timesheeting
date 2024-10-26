@@ -639,8 +639,9 @@ ADDED: [2024-10-26 Sat]
 + CSV file extension
 + UTF-8 encoding
 + (Human-) readable with the software less
-+ Delimiter is coma
++ Delimiter is comma
 + Column list:
+  + Entry id
   + Project ID
   + Project name
   + Task id
@@ -657,14 +658,7 @@ ADDED: [2024-10-26 Sat]
   + Stop of the exported period
 + Header date format.
 + Entry dates format.
-+ Project names are unique.
-+ Project ID are unique.
-+ Task names are unique per project.
-+ Task ID are unique.
 + No field may be empty.
-+ Location id are unique
-+ Location names are unique
-+ Stop date is guaranteed to be after start date in entries.
 
 *** TODO Add CLI export tool
 ADDED: [2024-10-26 Sat]

@@ -1,17 +1,19 @@
 \section{Introduction}
 \subsection{Context}
-We answer to the project requirement XXX for exporting timesheet data.
+We answer to the project requirement R-DEX-010 [AD1] by providing a format
+for timesheet data export to a file.
+
 The format is meant to be interoperable, \textit{ie} it is meant to be
 easily usable with a wide selection of external programs. The external
 programs typically targetted are spreadsheet programs (\emph{Libreoffice Calc},
 \emph{Gnumeric}), \gls{CLI} text programs (\emph{less}, \emph{vi}),
 and Python libraries such as \emph{pandas}.
 
-\subsection{Document structure}
-The document is structured as follows,
+We prioritize ease of use and readability for the exported format over
+compactness and efficiency.
 
-\begin{itemize}
-\item Definitions (header, body)
-\item Requirements list
-\item Example of compliant timesheet in external format.
-\end{itemize}
+\subsection{Document structure}
+The document is structured as follows. First, definitions are given
+(\cref{sec:definitions}), then the requirements for the exported file
+are listed (\cref{sec:requirements}) and finally an example of a compliant
+export file is given (\cref{sec:example}).

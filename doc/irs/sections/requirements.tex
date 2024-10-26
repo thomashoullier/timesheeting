@@ -1,0 +1,208 @@
+\section{Requirements} \label{sec:requirements}
+The requirements for the timesheet exported file format are listed here.
+They are split into general, header and body sections.
+
+\subsection{General}
+The general requirements apply to the \emph{file} as a whole.
+
+\paragraph{IRS1-GEN-010 -- File type}
+The \emph{file} shall be a text file.
+
+\paragraph{IRS1-GEN-020 -- File extension}
+The \emph{file} extension shall be \lstinline{.csv}.
+
+\paragraph{IRS1-GEN-030 -- File encoding}
+The \emph{file} shall be encoded in \lstinline{UTF-8}.
+
+\paragraph{IRS1-GEN-040 -- Line endings}
+The \emph{file} shall use UNIX line endings (LF).
+
+\paragraph{IRS1-GEN-050 -- File ending}
+The \emph{file} shall end with a newline character.
+
+\paragraph{IRS1-GEN-060 -- File structure}
+The \emph{file} shall contain
+\begin{itemize}
+\item a header,
+\item a body.
+\end{itemize}
+
+\paragraph{IRS1-GEN-070 -- Header location}
+The header of the \emph{file} shall be a contiguous set of text lines
+at the beginning of the \emph{file}.
+
+\paragraph{IRS1-GEN-080 -- Body location}
+The body of the \emph{file} shall be a contiguous set of text lines
+immediately following the header lines (\textit{ie} without gap or empty lines
+in between).
+
+\subsection{Header}
+The header requirements apply to the header part of the \emph{file}.
+
+\paragraph{IRS1-HED-010 -- Header format}
+Every line in the header shall begin with a \lstinline{#} character
+followed by a whitespace.
+
+\paragraph{IRS1-HED-020 -- Header export date}
+The header shall contain the date at which the \emph{file} was generated.
+
+Note the time reference is the local system clock, as is the case in the
+rest of the program.
+
+\paragraph{IRS1-HED-030 -- Period start date}
+The header shall contain the start date for the time period specified
+during the export.
+
+\paragraph{IRS1-HED-040 -- Period stop date}
+The header shall contain the stop date for the time period specified
+during the export.
+
+\paragraph{IRS1-HED-050 -- Header dates timezone}
+The dates in the header shall be expressed in the timezone set
+in the program at the time of export.
+
+\paragraph{IRS1-HED-060 -- Header timezone}
+The timezone used to generate the dates in the header shall be indicated
+with a TZ identifier string (\textit{eg} \lstinline{Europe/Paris}).
+The list of current TZ identifiers may be found at [RD1].
+
+\paragraph{IRS1-HED-070 -- Header program version}
+The version of the program at the time of export shall be written
+in the header.
+
+\paragraph{IRS1-HED-080 -- Program version string}
+The program version (R-REL-010 [AD1]) shall be indicated by a string
+\lstinline{XX.YY}. With,
+\begin{itemize}
+\item \lstinline{XX}: The major program version (\textit{eg} \lstinline{03}),
+\item \lstinline{YY}: The minor program version (\textit{eg} \lstinline{26}).
+\end{itemize}
+
+A dot character separates the major version and minor version.
+Note the program version string has a fixed size.
+
+\paragraph{IRS1-HED-090 -- Header date format}
+The dates in the header shall conform to the format
+\lstinline{DDMMMYYYY HH:MM:SS}.
+Where,
+\begin{itemize}
+\item \lstinline{DD} is the number of the day of the month
+  (\textit{eg} \lstinline{09}),
+\item \lstinline{MMM} is the abbreviated month name, with first letter
+  capitalized and remaining letters in lower case (\textit{eg} \lstinline{Oct}),
+\item \lstinline{YYYY} is the year number (\textit{eg} \lstinline{2024}),
+\item \lstinline{HH} is the hours number (\textit{eg} \lstinline{07}),
+\item \lstinline{MM} is the minutes number (\textit{eg} \lstinline{39})
+\end{itemize}
+
+A \lstinline{:} separator is present between hours and minutes, and between
+minutes and seconds.
+
+Note the corresponding \lstinline{strftime} format string for the date
+format is \lstinline{%d%b%Y %H:%M:%S}. Note the date is always represented
+with a fixed number of characters.
+
+\paragraph{IRS1-HED-100 -- Export date format}
+The export date shall be written on a single text line beginning with
+\lstinline{Export date: } followed by a whitespace and the export date
+formatted according to IRS1-HED-090.
+
+An example line is,
+\begin{lstlisting}[numbers=none]
+  # Export date: 26Oct2024 14:52:28
+\end{lstlisting}
+
+\paragraph{IRS1-HED-110 -- Period start date format}
+The export period start date shall be written on a single text line beginning
+with \lstinline{Export start date:} followed by a whitespace and the period
+start date formatted according to IRS1-HED-090.
+
+An example line is,
+\begin{lstlisting}[numbers=none]
+  # Export start date: 01Jan2024 00:00:00
+\end{lstlisting}
+
+\paragraph{IRS1-HED-120 -- Period stop date format}
+The export period stop date shall be written on a single text line beginning
+with \lstinline{Export stop date:} followed by a whitespace and the period
+stop date formatted according to IRS1-HED-090.
+
+An example line is,
+\begin{lstlisting}[numbers=none]
+  # Export stop date: 31Dec2024 23:59:59
+\end{lstlisting}
+
+\paragraph{IRS1-HED-130 -- Header timezone format}
+The header timezone shall be written on a single text line
+beginning with \lstinline{Header timezone:} followed by a whitespace
+and the TZ identifier string (IRS1-HED-060).
+
+An example line is,
+\begin{lstlisting}[numbers=none]
+  # Header timezone: Europe/Paris
+\end{lstlisting}
+
+\paragraph{IRS1-HED-140 -- Program version format}
+The program version shall be written in the header on a single text line
+beginning with \lstinline{timesheeting version:} followed by a whitespace
+and the program version string (IRS1-HED-080).
+
+An example line is,
+\begin{lstlisting}[numbers=none]
+  # timesheeting version: 03.26
+\end{lstlisting}
+
+\paragraph{IRS1-HED-150 -- Header ordering}
+The elements of the header shall be ordered as follows,
+\begin{enumerate}
+\item Export date (IRS1-HED-020),
+\item Period start date (IRS1-HED-030),
+\item Period stop date (IRS1-HED-040),
+\item Header timezone (IRS1-HED-060),
+\item Program version (IRS1-HED-070).
+\end{enumerate}
+
+\subsection{Body}
+\paragraph{IRS1-BDY-010 -- CSV format}
+The body of the \emph{file} shall be in \gls{CSV} format.
+
+\paragraph{IRS1-BDY-020 -- CSV delimiter}
+The delimiter character used by the \gls{CSV} format shall be a comma followed
+by a whitespace (\lstinline{, }).
+
+\paragraph{IRS1-BDY-030 -- Body structure}
+The body of the \emph{file} shall contain,
+\begin{itemize}
+\item A line of column names at the top,
+\item Timesheet data entries.
+\end{itemize}
+
+\paragraph{IRS1-BDY-040 -- Column list}
+The body \gls{CSV} columns shall be, in order,
+\begin{enumerate}
+\item Entry ID,
+\item Project ID,
+\item Project name,
+\item Task ID,
+\item Task name,
+\item Location ID,
+\item Location name,
+\item Start date,
+\item Stop date.
+\end{enumerate}
+
+\paragraph{IRS1-BDY-050 -- No empty fields}
+The timesheet entries in the \emph{file} body shall not contain any empty
+fields.
+
+\paragraph{IRS1-BDY-060 -- Id format}
+The ID fields in timesheet entries shall be represented as a number string
+of variable length.
+
+\paragraph{IRS1-BDY-070 -- Timesheet date format}
+The date fields in timesheet entries shall be represented as a \gls{UTC}
+UNIX timestamp in seconds.
+
+\paragraph{IRS1-BDY-080 -- Timesheet name format}
+The name fields in timesheet entries shall be represented as a string
+which may contain whitespace.
