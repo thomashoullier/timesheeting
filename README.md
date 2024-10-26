@@ -4,12 +4,14 @@
 The project is just starting.
 
 ## Project timeline
+* *26Oct2024*: `PRJ1-IRS1-v1.0` released.
 * *10Feb2024*: `PRJ1-SAD1-v1.0` released.
 * *22Jan2024*: `PRJ1-SPE1-v1.0` released.
 * *20Jan2024*: Project launch.
 
 ## Documentation summary
 * `PRJ1-SPE1-v1.0` timesheeting specification document
+* `PRJ1-IRS1-v1.0` external timesheet format
 * `PRJ1-SAD1-v1.0` timesheeting system architecture document
 * ![Release notes](doc/RELEASE_NOTES.md)
 * [Doxygen](https://thomashoullier.github.io/timesheeting/index.html)
