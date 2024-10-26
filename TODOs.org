@@ -598,7 +598,8 @@ ADDED:[2024-09-27 Fri]
 We are hitting this bug: https://github.com/JamesIves/github-pages-deploy-action/issues/1697
 + [2024-10-16 Wed] This solved itself.
 
-*** TODO Implement the display of durations in days/hours/minutes
+*** DONE Implement the display of durations in days/hours/minutes
+CLOSED: [2024-10-26 Sat 09:58]
 ADDED: [2024-09-28 Sat]
 + It should be switchable on the fly with an automatic update.
 + The Duration class could query the current setting in a configuration struct

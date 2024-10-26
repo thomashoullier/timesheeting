@@ -1,4 +1,5 @@
 #include "ui.h"
+#include "duration_displayer.h"
 #include "logger/logger.h"
 #include <memory>
 #include "ui_screens/update_manager.h"
@@ -43,6 +44,10 @@ char UI::input_loop() {
       break;
     case '5':
       cur_screen = weekly_report_screen;
+      break;
+    case 'd':
+      DurationDisplayer::get().cycle_format();
+      UpdateManager::get().duration_display_changed();
       break;
     default:
       return ch;

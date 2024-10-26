@@ -29,6 +29,8 @@ public:
   void projects_tasks_have_changed ();
   /** @brief Signal a change in the state of locations. */
   void locations_have_changed ();
+  /** @brief Signal a change in the DurationDisplayer format. */
+  void duration_display_changed ();
 
 private:
   /** @brief Screen for the project/task definition. */

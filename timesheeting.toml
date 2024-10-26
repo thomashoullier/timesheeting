@@ -9,3 +9,5 @@ active_log_levels = [ "debug", "error", "info" ]
 # The format is a TZ string.
 # See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone = "Europe/Paris"
+# Definition of the number of hours in a work day.
+hours_per_workday = 7.7

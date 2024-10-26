@@ -46,3 +46,9 @@ void UpdateManager::projects_tasks_have_changed() {
 void UpdateManager::locations_have_changed() {
   entries_screen->signal_update_need();
 }
+
+void UpdateManager::duration_display_changed () {
+  entries_screen->signal_update_need();
+  project_report_screen->signal_update_need();
+  weekly_report_screen->signal_update_need();
+}

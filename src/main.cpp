@@ -22,9 +22,6 @@ int main() {
 
   // Initialize the DurationDisplayer
   DurationDisplayer::get(config.hours_per_workday);
-  // TEMP
-  DurationDisplayer::get().cycle_format();
-  DurationDisplayer::get().cycle_format();
 
   // Loading the UI and entering input loop.
   UI ui;
