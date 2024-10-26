@@ -624,3 +624,50 @@ ADDED: [2024-10-13 Sun]
 There is a generic part to the config file module.
 + Searching for the default location.
 + Expanding tilde.
+
+*** TODO Autocomplete of stopwatch hierarchy items
+ADDED: [2024-10-26 Sat]
+
+*** TODO Add a CLI interface
+ADDED: [2024-10-26 Sat]
++ Print the version number.
++ Select the config file as argument.
+
+*** TODO Document the timesheet export format
+ADDED: [2024-10-26 Sat]
+
++ CSV file extension
++ UTF-8 encoding
++ (Human-) readable with the software less
++ Delimiter is coma
++ Column list:
+  + Project ID
+  + Project name
+  + Task id
+  + Task name
+  + Location id
+  + Location name
+  + Start date
+  + Stop date
++ Header format: contiguous block of lines at the beginning, with # first
+  character.
++ Header list:
+  + Exported on: <Date>
+  + Start of the exported period
+  + Stop of the exported period
++ Header date format.
++ Entry dates format.
++ Project names are unique.
++ Project ID are unique.
++ Task names are unique per project.
++ Task ID are unique.
++ No field may be empty.
++ Location id are unique
++ Location names are unique
++ Stop date is guaranteed to be after start date in entries.
+
+*** TODO Add CLI export tool
+ADDED: [2024-10-26 Sat]
+
+*** TODO Clean old log entries
+ADDED: [2024-10-26 Sat]

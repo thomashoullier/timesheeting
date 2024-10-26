@@ -56,6 +56,14 @@ latexmk -pdf sad.tex
 
 The result is `sad.pdf`.
 
+#### PRJ1-IRS1 external timesheet format
+The PDF is build with,
+
+```{shell}
+cd ./doc/irs/
+latexmk -pdf irs.tex
+```
+
 #### Doxygen pages
 Build the doxygen pages, while at the project's root,
 
