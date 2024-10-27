@@ -4,6 +4,7 @@
 #include "time_zone.h"
 #include "ui.h"
 #include "config.h"
+#include "version.h"
 
 int main() {
   // Loading the configuration file.
@@ -13,6 +14,9 @@ int main() {
   Logger::get(config.log_filepath,
               config.log_levels_to_activate);
   logger().tick(); // For measuring startup time.
+
+  Logger::get().log("Launching timesheeting v" + version::TIMESHEETING_VERSION,
+                    LogLevel::info);
 
   // Initialize the TimeZone.
   TimeZone::get(config.timezone);

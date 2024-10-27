@@ -1,4 +1,5 @@
 #include "db_sqlite_handle.h"
+#include <string>
 
 DB_SQLite_Handle::DB_SQLite_Handle(const std::filesystem::path &db_file) {
   auto rc = sqlite3_open(db_file.c_str(), &db);
@@ -16,7 +17,7 @@ void DB_SQLite_Handle::check_rc(int rc, const std::string &msg) {
     return;
   case SQLITE_CONSTRAINT:
     throw SQLiteConstraintExcept(msg.c_str());
-      break;
+    break;
   default:
     throw std::runtime_error(msg + "\n" +
                              "SQLite error code: " + std::to_string(rc));
@@ -24,7 +25,37 @@ void DB_SQLite_Handle::check_rc(int rc, const std::string &msg) {
   }
 }
 
-sqlite3_stmt *DB_SQLite_Handle::prepare_statement(const std::string &statement) {
+void DB_SQLite_Handle::check_user_version(int user_version) {
+  auto db_user_version = get_user_version();
+  if (db_user_version == 0) { // Initialize new DB
+    set_user_version(user_version);
+  } else if (db_user_version == user_version) { // Match.
+    return;
+  } else { // Version mismatch
+    throw std::runtime_error("DB version mismatch, expected v"
+                             + std::to_string(user_version) + " but got v"
+                             + std::to_string(db_user_version));
+  }
+}
+
+void DB_SQLite_Handle::set_user_version(int user_version) {
+  // NOTE: it is not possible to use a parameterized PRAGMA in SQLite.
+  exec_statement("PRAGMA user_version = " + std::to_string(user_version)
+                 + ";");
+}
+
+int DB_SQLite_Handle::get_user_version() const {
+  const std::string statement{"PRAGMA user_version;"};
+  sqlite3_stmt *stmt;
+  sqlite3_prepare_v2(db, statement.c_str(), statement.size(), &stmt, NULL);
+  sqlite3_step(stmt);
+  int user_version = sqlite3_column_int(stmt, 0);
+  sqlite3_finalize(stmt);
+  return user_version;
+}
+
+sqlite3_stmt *DB_SQLite_Handle::prepare_statement(
+    const std::string &statement) {
   sqlite3_stmt *stmt;
   //auto rc = sqlite3_prepare_v2(db, statement.c_str(), -1, &stmt, NULL);
   auto rc = sqlite3_prepare_v3(db, statement.c_str(), statement.size(),

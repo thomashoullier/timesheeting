@@ -4,6 +4,7 @@
 #include <optional>
 #include <string>
 #include "../logger/logger.h"
+#include "../version.h"
 
 DB_SQLite &DB_SQLite::get(const std::filesystem::path &db_filepath) {
   static DB_SQLite instance (db_filepath);
@@ -13,6 +14,10 @@ DB_SQLite &DB_SQLite::get(const std::filesystem::path &db_filepath) {
 DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
     : sqlite_db(std::make_shared<DB_SQLite_Handle>(db_file)),
       statements{init_db()} {
+  sqlite_db->check_user_version(version::TIMESHEETING_DB_VERSION);
+  Logger::get().log("Loaded DB v"
+                    + std::to_string(sqlite_db->get_user_version()),
+                    LogLevel::info);
 }
 
 StatementSet DB_SQLite::init_db() {

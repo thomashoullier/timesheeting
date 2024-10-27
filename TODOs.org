@@ -354,7 +354,10 @@ ADDED: [2024-08-31 Sat]
 In ~date.h~, constructor from string.
 The date parsing we are doing is wrong. We hardcoded the current dst
 in our location to make it work.
-We could wait for gcc 14 to have the proper C++20 feature to do this.
++ We could wait for gcc 14 to have the proper C++20 feature to do this.
++ We tried howard hinnant date, but encountered a compiling error
+  abount uninitialized variables when using parse. This is probably
+  related to musl.
 
 *** DONE Make the DB a singleton
 CLOSED: [2024-09-14 Sat 15:20]
@@ -628,12 +631,23 @@ There is a generic part to the config file module.
 *** TODO Autocomplete of stopwatch hierarchy items
 ADDED: [2024-10-26 Sat]
 
+*** DONE Add a program version number.
+CLOSED: [2024-10-27 Sun 11:40]
+ADDED: [2024-10-27 Sun]
+
+*** DONE Add a DB version number.
+CLOSED: [2024-10-27 Sun 11:40]
+ADDED: [2024-10-27 Sun]
+This will be useful if we ever make a change to the DB layout,
+and need to manage migrations.
+
 *** TODO Add a CLI interface
 ADDED: [2024-10-26 Sat]
 + Print the version number.
 + Select the config file as argument.
 
-*** TODO Document the timesheet export format
+*** DONE Document the timesheet export format
+CLOSED: [2024-10-27 Sun 10:35]
 ADDED: [2024-10-26 Sat]
 
 + CSV file extension

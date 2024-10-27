@@ -22,6 +22,10 @@ public:
   DB_SQLite_Handle (const std::filesystem::path &db_file);
   ~DB_SQLite_Handle ();
 
+  /** @brief Check or initialize the user_version of the DB. */
+  void check_user_version(int user_version);
+  /** @brief Get user_version of the DB. */
+  int get_user_version() const;
   /** @brief Prepare a SQL statement. */
   sqlite3_stmt* prepare_statement (const std::string &statement);
   /** @brief Execute a SQL statement in the DB. */
@@ -38,6 +42,8 @@ private :
   /** @brief Check a SQLite return code and raise exception with message in case
    * of reported errors. */
   void check_rc (int rc, const std::string &msg);
+  /** @brief Set the user_version of the DB. */
+  void set_user_version(int user_version);
 };
 
 /** @brief Exception thrown when encountering the SQLITE_CONSTRAINT error
