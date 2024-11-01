@@ -73,6 +73,12 @@ justification/tradeoff.
 + Detail every possible user interaction and how it propagates through
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema
+* External timesheet format
+** TODO v2.0
+ADDED: [2024-10-30 Wed]
+Additions:
++ In which order do the entries appear? Probably by ascending start date.
++ The entry start dates are between the period start date and period stop date.
 
 * Test plan
 Details every tests used to check the software.
@@ -643,8 +649,13 @@ and need to manage migrations.
 
 *** TODO Add a CLI interface
 ADDED: [2024-10-26 Sat]
-+ Print the version number.
++ Print the version number. (this is a backup in case the log crashes
+  completely).
 + Select the config file as argument.
++ Library to use: TCLAP (MIT license)
++ Decouple TCLAP from the program by wrapping it in our own library.
++ The ignore_rest flag is by default in TCLAP, it does not seem
+  possible to remove it.
 
 *** DONE Document the timesheet export format
 CLOSED: [2024-10-27 Sun 10:35]
@@ -679,3 +690,15 @@ ADDED: [2024-10-26 Sat]
 
 *** TODO Clean old log entries
 ADDED: [2024-10-26 Sat]
+
+*** TODO Consider adding the possibility of moving a task to another project.
+ADDED: [2024-10-31 Thu]
+This is a real life need we encounter.
+
+*** TODO Implement the key bindings in the configuration
+ADDED: [2024-10-31 Thu]
++ Try avoiding a singleton pattern for this?
++ How do we deal with the keys which are already in the ncurses library?
+  We may have to implement a key binding system there.
+  We could have all interactive ncurses element take a shared pointer to
+  a table of keys.

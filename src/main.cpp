@@ -1,3 +1,4 @@
+#include "cli.h"
 #include "db/db_sqlite.h"
 #include "duration_displayer.h"
 #include "logger/logger.h"
@@ -6,7 +7,10 @@
 #include "config.h"
 #include "version.h"
 
-int main() {
+int main(int argc, const char *const *argv) {
+  // CLI
+  cli::parse(argc, argv);
+
   // Loading the configuration file.
   auto config = config::ConfigLoader().load();
 

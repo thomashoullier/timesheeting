@@ -19,6 +19,8 @@ include_directories(${SQLite3_INCLUDE_DIRS})
 
 find_package(tomlplusplus REQUIRED)
 
+include_directories(BEFORE /usr/include/tclap)
+
 # Main
 add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp"
   "${TIMESHEETING_SRC}")
