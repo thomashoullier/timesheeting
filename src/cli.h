@@ -2,10 +2,16 @@
 #define CLI_H
 
 #include <tclap/CmdLine.h>
+#include <filesystem>
 
 namespace cli {
-  // Parse the CLI arguments.
-  void parse(int argc, const char *const *argv);
+  /** @brief Parsed CLI data. */
+  struct CLIData {
+    std::filesystem::path config_filepath;
+  };
+
+  /** @brief Parse the CLI arguments. */
+  CLIData parse(int argc, const char *const *argv);
 };
 
 #endif // CLI_H

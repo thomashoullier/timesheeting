@@ -647,7 +647,8 @@ ADDED: [2024-10-27 Sun]
 This will be useful if we ever make a change to the DB layout,
 and need to manage migrations.
 
-*** TODO Add a CLI interface
+*** DONE Add a CLI interface
+CLOSED: [2024-11-01 Fri 14:57]
 ADDED: [2024-10-26 Sat]
 + Print the version number. (this is a backup in case the log crashes
   completely).
@@ -702,3 +703,7 @@ ADDED: [2024-10-31 Thu]
   We may have to implement a key binding system there.
   We could have all interactive ncurses element take a shared pointer to
   a table of keys.
+
+*** TODO Catch the fact that a configuration file does not exist
+ADDED: [2024-11-01 Fri]
+We currently get a toml exception which is too cryptic for users.

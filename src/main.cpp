@@ -9,10 +9,12 @@
 
 int main(int argc, const char *const *argv) {
   // CLI
-  cli::parse(argc, argv);
+  auto cli_data = cli::parse(argc, argv);
 
   // Loading the configuration file.
-  auto config = config::ConfigLoader().load();
+  auto config = (cli_data.config_filepath.empty()) ?
+    config::ConfigLoader().load() :
+    config::ConfigLoader().load(cli_data.config_filepath);
 
   // Initialize the Logger.
   Logger::get(config.log_filepath,
