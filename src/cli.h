@@ -1,7 +1,7 @@
 #ifndef CLI_H
 #define CLI_H
 
-#include "cli_manager.h"
+#include <tclap/CmdLine.h>
 
 namespace cli {
   // Parse the CLI arguments.
