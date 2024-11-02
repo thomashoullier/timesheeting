@@ -73,6 +73,25 @@ std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
   return vec;
 }
 
+std::vector<ExportRow> DB_SQLite::query_export_entries
+(const DateRange &date_range) {
+  auto &stmt = statements.select_export_entries;
+  stmt.bind_all(date_range.start.to_unix_timestamp(),
+                date_range.stop.to_unix_timestamp());
+  std::vector<ExportRow> vec;
+  while (stmt.step()) {
+    auto [entry_id, project_id, project_name, task_id, task_name, location_id,
+          location_name, start_date_stamp, stop_date_stamp] =
+      stmt.get_all<RowId, RowId, std::string, RowId, std::string, RowId,
+                   std::string, uint64_t, uint64_t>();
+    ExportRow r{entry_id, project_id, project_name, task_id, task_name,
+                location_id, location_name, Date(start_date_stamp),
+                Date(stop_date_stamp)};
+    vec.push_back(r);
+  }
+  return vec;
+}
+
 Duration DB_SQLite::query_entries_duration(const DateRange &date_range) {
   auto &stmt = statements.select_duration;
   stmt.bind_all(date_range.start.to_unix_timestamp(),

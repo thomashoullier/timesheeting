@@ -26,6 +26,8 @@ public:
   /** @brief Statement for querying the list of entries over a given date
       range. */
   Statement select_entries;
+  /** @brief Statement for querying the export data for entries. */
+  Statement select_export_entries;
   /** @brief Statement for querying the total duration of entries over
       a date range. */
   Statement select_duration;

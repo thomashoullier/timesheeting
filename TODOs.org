@@ -687,7 +687,8 @@ ADDED: [2024-10-26 Sat]
 + Entry dates format.
 + No field may be empty.
 
-*** TODO Add CLI export tool
+*** DONE Add CLI export tool
+CLOSED: [2024-11-02 Sat 15:52]
 ADDED: [2024-10-26 Sat]
 
 *** TODO Clean old log entries
@@ -711,3 +712,9 @@ We currently get a toml exception which is too cryptic for users.
 
 *** TODO Triggering the "export file already exists exception" leaks memory
 ADDED: [2024-11-02 Sat]
+
+*** TODO Export the CSV from the DB line by line instead of in-full
+ADDED: [2024-11-02 Sat]
+Our goal is to reduce the memory footprint of the export operation.
+We can do it very easily by having the DB function return
+a std::generator<ExportRow> but we have to wait for GCC14.

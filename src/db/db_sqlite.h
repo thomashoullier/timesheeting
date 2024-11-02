@@ -4,13 +4,14 @@
 #define DB_SQLITE_H
 
 #include "../data_objects/date_range.h"
-#include "../data_objects/week.h"
 #include "../data_objects/duration.h"
 #include "../data_objects/entry.h"
 #include "../data_objects/entry_staging.h"
 #include "../data_objects/generic_item.h"
 #include "../data_objects/project_total.h"
+#include "../data_objects/week.h"
 #include "../data_objects/weekly_totals.h"
+#include "../data_objects/export_row.h"
 #include "db_sqlite_handle.h"
 #include "statement_set.h"
 #include <filesystem>
@@ -21,7 +22,7 @@
 class DB_SQLite {
 public:
   /** @brief Grab the DB singleton. */
-  static DB_SQLite& get(const std::filesystem::path &db_filepath = "");
+  static DB_SQLite &get(const std::filesystem::path &db_filepath = "");
 
   std::vector<Project> query_projects();
   std::vector<Project> query_projects_active();
@@ -30,6 +31,7 @@ public:
   std::vector<Location> query_locations();
   std::vector<Location> query_locations_active();
   std::vector<Entry> query_entries(const DateRange &date_range);
+  std::vector<ExportRow> query_export_entries(const DateRange &date_range);
   Duration query_entries_duration(const DateRange &date_range);
   EntryStaging query_entrystaging ();
   bool add_project(std::string project_name);

@@ -28,6 +28,16 @@ StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
           "WHERE e.start >= ? "
           "AND e.start < ? "
           "ORDER BY e.start ASC;")),
+      select_export_entries(db->prepare_statement(
+          "SELECT e.id, p.id, p.name, t.id, t.name, l.id, l.name, "
+          "e.start, e.stop "
+          "FROM entries e "
+          "INNER JOIN locations l ON e.location_id = l.id "
+          "INNER JOIN tasks t ON e.task_id = t.id "
+          "INNER JOIN projects p ON t.project_id = p.id "
+          "WHERE e.start >= ? "
+          "AND e.start < ? "
+          "ORDER BY e.start ASC;")),
       select_duration(db->prepare_statement(
           "SELECT SUM(stop - start) FROM entries e "
           "WHERE e.start >= ? "

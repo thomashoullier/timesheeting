@@ -1,5 +1,7 @@
 #include "csv_exporter.h"
 #include "data_objects/date.h"
+#include "data_objects/date_range.h"
+#include "db/db_sqlite.h"
 #include "time_zone.h"
 #include "version.h"
 #include <filesystem>
@@ -40,5 +42,15 @@ CSVExporter::CSVExporter(const std::string &beg_date_str,
                << version::TIMESHEETING_VERSION << std::endl
                << "# timesheeting DB version: "
                << std::to_string(version::TIMESHEETING_DB_VERSION) << std::endl;
-  // Call DB line std::generator and write csv body line by line.
+
+  // Write body
+  // TODO Call DB line std::generator and write csv body line by line.
+  *export_file <<
+    "Entry ID, Project ID, Project name, Task ID, Task name, Location ID, "
+    "Location name, Start date, Stop date" << std::endl;
+  DateRange period(beg_date, end_date);
+  auto full_register = db().query_export_entries(period);
+  for (const auto &row : full_register) {
+    *export_file << row.to_csv() << std::endl;
+  }
 }
