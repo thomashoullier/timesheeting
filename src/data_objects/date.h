@@ -52,6 +52,10 @@ public:
   /** @brief Get a displayable string for the date at a day resolution
       in the system's timezone. */
   std::string get_day_string () const;
+  /** @brief Date less than operator. */
+  friend bool operator< (Date date_1, Date date_2);
+  /** @brief Date more than operator. */
+  friend bool operator> (Date date_1, Date date_2);
 };
 
 /** @brief Exception indicating that Date has failed to parse an input string. */

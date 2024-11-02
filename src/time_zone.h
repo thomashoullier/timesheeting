@@ -9,6 +9,9 @@ class TimeZone {
 public:
   static TimeZone& get(const std::string &tz_string = "");
 
+  /** @brief Get the current timezone name (TZ string). */
+  std::string name() const;
+
   /** @brief Program-wide zone set. */
   const std::chrono::time_zone *zone;
 

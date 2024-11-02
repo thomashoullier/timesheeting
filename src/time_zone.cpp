@@ -2,8 +2,12 @@
 #include <chrono>
 
 TimeZone &TimeZone::get(const std::string &tz_string) {
-  static TimeZone instance {tz_string};
+  static TimeZone instance{tz_string};
   return instance;
+}
+
+std::string TimeZone::name() const {
+  return std::string(zone->name());
 }
 
 TimeZone::TimeZone(const std::string &tz_string)

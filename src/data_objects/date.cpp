@@ -70,3 +70,11 @@ std::string Date::get_day_string () const {
   std::chrono::zoned_seconds local_time {TimeZone::get().zone, tp};
   return std::format("{:%d%b%Y}", local_time);
 }
+
+bool operator< (Date date_1, Date date_2) {
+  return date_1.to_unix_timestamp() < date_2.to_unix_timestamp();
+}
+
+bool operator>(Date date_1, Date date_2) {
+  return date_1.to_unix_timestamp() > date_2.to_unix_timestamp();
+}

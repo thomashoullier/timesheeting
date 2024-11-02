@@ -79,6 +79,7 @@ ADDED: [2024-10-30 Wed]
 Additions:
 + In which order do the entries appear? Probably by ascending start date.
 + The entry start dates are between the period start date and period stop date.
++ Add the DB version to the export file header.
 
 * Test plan
 Details every tests used to check the software.
@@ -707,3 +708,6 @@ ADDED: [2024-10-31 Thu]
 *** TODO Catch the fact that a configuration file does not exist
 ADDED: [2024-11-01 Fri]
 We currently get a toml exception which is too cryptic for users.
+
+*** TODO Triggering the "export file already exists exception" leaks memory
+ADDED: [2024-11-02 Sat]
