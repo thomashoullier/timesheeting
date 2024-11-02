@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem']]],
+  ['name_0',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem::name()'],['../classTimeZone.html#a34381ccf6a14213aa67e230b8d37f996',1,'TimeZone::name()']]],
   ['namerows_1',['NameRows',['../db__sqlite__handle_8h.html#a1c7d53e92b5b59633e7960e8210525fd',1,'db_sqlite_handle.h']]],
   ['ncols_2',['ncols',['../classMenuNCurses.html#ad0b4330548624edaf828deea39de9c7c',1,'MenuNCurses']]],
   ['ncurses_5fhandle_3',['ncurses_handle',['../classUI.html#a150f54f597b90035cb05e7a44222bbe0',1,'UI']]],
