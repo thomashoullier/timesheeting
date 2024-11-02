@@ -70,6 +70,10 @@ The list of current TZ identifiers may be found at [RD2].
 The version of the program at the time of export shall be written
 in the header.
 
+\paragraph{IRS1-HED-075 -- Header database version}
+The \gls{DB} version of the program at the time of export shall
+be written in the header.
+
 \paragraph{IRS1-HED-080 -- Program version string}
 The program version (R-REL-010 [AD1]) shall be indicated by a string
 \lstinline{XX.YY}. With,
@@ -80,6 +84,10 @@ The program version (R-REL-010 [AD1]) shall be indicated by a string
 
 A dot character separates the major version and minor version.
 Note the program version string has a fixed size.
+
+\paragraph{IRS1-HED-085 -- Database version string}
+The program \gls{DB} version shall be indicated by an integer string
+of variable length. An example is \lstinline{23}.
 
 \paragraph{IRS1-HED-090 -- Header date format}
 The dates in the header shall conform to the format
@@ -159,7 +167,8 @@ The elements of the header shall be ordered as follows,
 \item Period start date (IRS1-HED-030),
 \item Period stop date (IRS1-HED-040),
 \item Header timezone (IRS1-HED-060),
-\item Program version (IRS1-HED-070).
+\item Program version (IRS1-HED-070),
+\item Program \gls{DB} version (IRS1-HED-075).
 \end{enumerate}
 
 \subsection{Body}
@@ -206,3 +215,12 @@ UNIX timestamp in seconds.
 \paragraph{IRS1-BDY-080 -- Timesheet name format}
 The name fields in timesheet entries shall be represented as a string
 which may contain whitespace.
+
+\paragraph{IRS1-BDY-090 -- Timesheet entries ordering}
+The timesheet entries in the \emph{file} body shall be ordered by
+increasing entry start date.
+
+\paragraph{IRS1-BDY-100 -- Timesheet entries period}
+The timesheet entries in the \emph{file} body shall have a
+start date chronologically contained within the period specified
+by the header start date and stop date.

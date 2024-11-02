@@ -78,8 +78,13 @@ justification/tradeoff.
 ADDED: [2024-10-30 Wed]
 Additions:
 + In which order do the entries appear? Probably by ascending start date.
+  + OK IRS1-BDY-090 added
 + The entry start dates are between the period start date and period stop date.
+  + OK IRS1-BDY-100 added
 + Add the DB version to the export file header.
+  + IRS1-HED-075, IRS1-HED-085 added
+  + IRS1-HED-150 modified.
++ Example of compliant file modified.
 
 * Test plan
 Details every tests used to check the software.
