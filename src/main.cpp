@@ -1,4 +1,5 @@
 #include "cli.h"
+#include "csv_exporter.h"
 #include "db/db_sqlite.h"
 #include "duration_displayer.h"
 #include "logger/logger.h"
@@ -30,7 +31,15 @@ int main(int argc, const char *const *argv) {
   // Initialize the DB.
   DB_SQLite::get(config.db_filepath);
 
-  // Initialize the DurationDisplayer
+  // Export to csv
+  if (not(cli_data.beg_date.empty()) and not(cli_data.end_date.empty())
+      and not(cli_data.export_file.empty())) {
+    CSVExporter(cli_data.beg_date, cli_data.end_date,
+                cli_data.export_file);
+    return 0; // Terminate the program after CSV export.
+  }
+
+  // initialize the DurationDisplayer
   DurationDisplayer::get(config.hours_per_workday);
 
   // Loading the UI and entering input loop.

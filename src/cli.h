@@ -8,6 +8,9 @@ namespace cli {
   /** @brief Parsed CLI data. */
   struct CLIData {
     std::filesystem::path config_filepath;
+    std::string beg_date;
+    std::string end_date;
+    std::filesystem::path export_file;
   };
 
   /** @brief Parse the CLI arguments. */
