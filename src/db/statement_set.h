@@ -43,6 +43,8 @@ public:
   Statement update_project_name;
   /** @brief Statement for editing a task's name. */
   Statement update_task_name;
+  /** @brief Statement for editing a task's project. */
+  Statement update_task_project;
   /** @brief Statement for editing a location's name. */
   Statement update_location_name;
   /** @brief Statement for toggling the location active flag. */

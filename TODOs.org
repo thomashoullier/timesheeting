@@ -699,9 +699,12 @@ ADDED: [2024-10-26 Sat]
 *** TODO Clean old log entries
 ADDED: [2024-10-26 Sat]
 
-*** TODO Consider adding the possibility of moving a task to another project.
+*** DONE Consider adding the possibility of moving a task to another project.
+CLOSED: [2024-11-03 Sun 10:19]
 ADDED: [2024-10-31 Thu]
 This is a real life need we encounter.
+- [2024-11-03 Sun] OK implemented. No problem, the DB schema allows it perfectly.
+  Error cases are also handled well out of the box.
 
 *** TODO Implement the key bindings in the configuration
 ADDED: [2024-10-31 Thu]

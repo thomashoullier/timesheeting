@@ -244,6 +244,12 @@ bool DB_SQLite::edit_task_name(Id task_id, std::string new_task_name) {
   return stmt.execute();
 }
 
+bool DB_SQLite::edit_task_project(Id task_id, std::string project_name) {
+  auto &stmt = statements.update_task_project;
+  stmt.bind_all(project_name, task_id);
+  return stmt.execute();
+}
+
 bool DB_SQLite::edit_location_name(Id location_id,
                                    const std::string &new_location_name) {
   auto &stmt = statements.update_location_name;

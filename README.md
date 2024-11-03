@@ -4,6 +4,7 @@
 The project is just starting.
 
 ## Project timeline
+* *02Nov2024*: `PRJ1-IRS1-v1.1` released.
 * *26Oct2024*: `PRJ1-IRS1-v1.0` released.
 * *10Feb2024*: `PRJ1-SAD1-v1.0` released.
 * *22Jan2024*: `PRJ1-SPE1-v1.0` released.

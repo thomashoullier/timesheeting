@@ -39,6 +39,7 @@ public:
   bool add_location(const std::string &location_name);
   bool edit_project_name(Id project_id, std::string new_project_name);
   bool edit_task_name(Id task_id, std::string new_task_name);
+  bool edit_task_project(Id task_id, std::string project_name);
   bool edit_location_name(Id location_id,
                           const std::string &new_location_name);
   bool toggle_location_active(Id location_id);

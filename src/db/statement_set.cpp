@@ -63,6 +63,12 @@ StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
          "SET name = ? WHERE id = ?;")),
       update_task_name(db->prepare_statement(
          "UPDATE tasks SET name = ? WHERE id = ?;")),
+      update_task_project(db->prepare_statement(
+         "UPDATE tasks "
+         "SET project_id = ("
+         "SELECT projects.id FROM projects "
+         "WHERE projects.name = ?) "
+         "WHERE id = ?;")),
       update_location_name(db->prepare_statement(
          "UPDATE locations SET name = ? WHERE id = ?;")),
       toggle_location_flag(db->prepare_statement(

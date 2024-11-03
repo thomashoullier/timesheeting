@@ -3,6 +3,7 @@
 #include "status_bar/status_bar_ncurses.h"
 #include "../logger/logger.h"
 #include "update_manager.h"
+#include <stdexcept>
 
 ProjectTaskScreen::ProjectTaskScreen()
     : project_col(std::make_unique<Column<Project>>(std::vector<Project>(),
@@ -63,6 +64,13 @@ char ProjectTaskScreen::input_loop() {
       break;
     case 'r':
       if (not(rename_item(cur_col))) {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+      } else {
+        UpdateManager::get().projects_tasks_have_changed();
+      }
+      break;
+    case 'p':
+      if (not(change_task_project(cur_col))) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
       } else {
         UpdateManager::get().projects_tasks_have_changed();
@@ -153,6 +161,25 @@ bool ProjectTaskScreen::rename_item(ColumnBase *cur_col) {
         update_task_col();
         return success;
       }
+    }
+    return true;
+  } catch (MenuEmpty &e) {
+    return true;
+  }
+}
+
+bool ProjectTaskScreen::change_task_project(ColumnBase *cur_col) {
+  if (cur_col == project_col.get())
+    return true; // Do nothing while in the project column.
+  if (cur_col != task_col.get())
+    throw std::runtime_error("change_task_project: Unknown column type.");
+  try {
+    auto id = cur_col->get_current_id();
+    auto new_project_name = status().get_user_string();
+    if (!new_project_name.empty()) {
+      auto success = db().edit_task_project(id, new_project_name);
+      update_task_col();
+      return success;
     }
     return true;
   } catch (MenuEmpty &e) {

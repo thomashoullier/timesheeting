@@ -34,6 +34,8 @@ private:
   bool add_item (ColumnBase *cur_col);
   /** @brief Rename an item. */
   bool rename_item(ColumnBase *cur_col);
+  /** @brief Change a task's project. */
+  bool change_task_project(ColumnBase *cur_col);
   /** @brief Remove the currently selected item. */
   void remove_item (ColumnBase *cur_col);
   /** @brief Toggle the active flag on the selected item. */
