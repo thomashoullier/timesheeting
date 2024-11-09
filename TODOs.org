@@ -74,7 +74,8 @@ justification/tradeoff.
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema
 * External timesheet format
-** TODO v2.0
+** DONE v1.1
+CLOSED: [2024-11-03 Sun 12:11]
 ADDED: [2024-10-30 Wed]
 Additions:
 + In which order do the entries appear? Probably by ascending start date.
@@ -726,3 +727,13 @@ ADDED: [2024-11-02 Sat]
 Our goal is to reduce the memory footprint of the export operation.
 We can do it very easily by having the DB function return
 a std::generator<ExportRow> but we have to wait for GCC14.
+
+*** TODO Bind the cancel key to escape
+ADDED: [2024-11-09 Sat]
+We must use a string sequence for representing escape.
+
+*** TODO Bind arrow keys to up/down/left/right
+ADDED: [2024-11-09 Sat]
+Use alternative bindings to bind arrow keys to navigation.
+It does not seem we can escape a character to represent the arrow
+key. We have to use a string to represent it.

@@ -5,6 +5,7 @@
 #include <string>
 #include <toml++/toml.hpp>
 #include <vector>
+#include "data_objects/key.h"
 
 namespace config {
   struct UserConfig {
@@ -13,6 +14,7 @@ namespace config {
     std::vector<std::string> log_levels_to_activate;
     std::string timezone;
     float hours_per_workday;
+    KeyBindings bindings;
   };
 
   /** @brief Config file loader class. */
@@ -46,6 +48,10 @@ namespace config {
     /** @brief Parse a toml array into a string vector. */
     std::vector<std::string> parse_stringvec(
         const toml::node_view<toml::node> &config_node);
+    /** @brief Parse key bindings. */
+    KeyBindings parse_bindings(const toml::node_view<toml::node> &keys_node);
+    /** @brief Parse a key. */
+    char parse_key (const toml::node_view<toml::node> &key_node);
     /** @brief Search for the config file in default locations. */
     std::filesystem::path find_config_file();
   };

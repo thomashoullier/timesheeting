@@ -1,13 +1,28 @@
 [config]
-# Path to the log file to use.
 log_file = "~/.local/timesheeting/timesheeting.log"
-# Path to the DB to use.
 db_file = "~/.local/timesheeting/timesheeting.db"
-# Set of log levels to activate.
 active_log_levels = [ "debug", "error", "info" ]
-# Timezone used program-wide.
-# The format is a TZ string.
-# See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone = "Europe/Paris"
-# Definition of the number of hours in a work day.
 hours_per_workday = 7.7
+[keys]
+up = "e"
+down = "n"
+left = "h"
+right = "i"
+subtabs = "\t"
+previous = ","
+next = "."
+validate = "\n"
+# cancel = "ESCAPE" TODO
+duration_display = "d"
+entries_screen = "1"
+projects_screen = "2"
+locations_screen = "3"
+project_report_screen = "4"
+weekly_report_screen = "5"
+add = "a"
+rename = "r"
+remove = "x"
+active_toggle = "b"
+active_visibility = "."
+task_project_change = "p"
