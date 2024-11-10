@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['menuempty_0',['MenuEmpty',['../classMenuEmpty.html',1,'']]],
-  ['menuncurses_1',['MenuNCurses',['../classMenuNCurses.html',1,'']]]
+  ['location_0',['Location',['../structLocation.html',1,'']]],
+  ['locationsscreen_1',['LocationsScreen',['../classLocationsScreen.html',1,'']]],
+  ['logger_2',['Logger',['../classLogger.html',1,'']]]
 ];

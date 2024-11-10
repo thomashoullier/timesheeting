@@ -6,8 +6,10 @@ var searchData=
   ['db_3',['db',['../classDB__SQLite__Handle.html#ad40ef15e32a03860ad474de6bf3a6e54',1,'DB_SQLite_Handle']]],
   ['display_5fstring_4',['display_string',['../classTotalBar.html#ae4e6ce7884a4b499980401e26d01234b',1,'TotalBar']]],
   ['display_5fstrings_5',['display_strings',['../classMenuNCurses.html#ad891ca93fa1eb8817828f6006d374654',1,'MenuNCurses']]],
-  ['dur_6',['dur',['../classDuration.html#a4cbbbe8777802eebd1d2779e66eaf605',1,'Duration']]],
-  ['duration_7',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
-  ['duration_5fper_5fworked_5fproject_8',['duration_per_worked_project',['../classStatementSet.html#a3c7d5cf3abd0171d2c782e159f793872',1,'StatementSet']]],
-  ['duration_5fper_5fworked_5ftask_9',['duration_per_worked_task',['../classStatementSet.html#a6edff466bc1742948d3099d5941ad565',1,'StatementSet']]]
+  ['down_6',['down',['../structKeyBindings.html#af891ef4fb5b8471dd265efa0954a6cc2',1,'KeyBindings']]],
+  ['dur_7',['dur',['../classDuration.html#a4cbbbe8777802eebd1d2779e66eaf605',1,'Duration']]],
+  ['duration_8',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
+  ['duration_5fdisplay_9',['duration_display',['../structKeyBindings.html#a839bd58de8b1292f4cf94aa046b14f49',1,'KeyBindings']]],
+  ['duration_5fper_5fworked_5fproject_10',['duration_per_worked_project',['../classStatementSet.html#a3c7d5cf3abd0171d2c782e159f793872',1,'StatementSet']]],
+  ['duration_5fper_5fworked_5ftask_11',['duration_per_worked_task',['../classStatementSet.html#a6edff466bc1742948d3099d5941ad565',1,'StatementSet']]]
 ];

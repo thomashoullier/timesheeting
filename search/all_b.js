@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['name_0',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem::name()'],['../classTimeZone.html#a34381ccf6a14213aa67e230b8d37f996',1,'TimeZone::name()']]],
-  ['namerows_1',['NameRows',['../db__sqlite__handle_8h.html#a1c7d53e92b5b59633e7960e8210525fd',1,'db_sqlite_handle.h']]],
-  ['ncols_2',['ncols',['../classMenuNCurses.html#ad0b4330548624edaf828deea39de9c7c',1,'MenuNCurses']]],
-  ['ncurses_5fhandle_3',['ncurses_handle',['../classUI.html#a150f54f597b90035cb05e7a44222bbe0',1,'UI']]],
-  ['ncurses_5fhandle_2eh_4',['ncurses_handle.h',['../ncurses__handle_8h.html',1,'']]],
-  ['ncurseshandle_5',['NcursesHandle',['../classNcursesHandle.html',1,'NcursesHandle'],['../classNcursesHandle.html#ab431d63cb9979a004d6316ee380a0faa',1,'NcursesHandle::NcursesHandle()']]],
-  ['next_6',['next',['../classDay.html#a4f464d2254a3ca3a4055a0de31c9917a',1,'Day::next()'],['../classWeek.html#ac6766d6bfb8cae86812bd2c3d6567b0e',1,'Week::next()']]]
+  ['menu_0',['menu',['../classMenuNCurses.html#ac95742d2f238fccb36f6ad575d6938cd',1,'MenuNCurses']]],
+  ['menu_5fitems_1',['menu_items',['../classMenuNCurses.html#ad102d4b21f4caacfbccb4310e66bd054',1,'MenuNCurses']]],
+  ['menu_5fncurses_2eh_2',['menu_ncurses.h',['../menu__ncurses_8h.html',1,'']]],
+  ['menuempty_3',['MenuEmpty',['../classMenuEmpty.html',1,'MenuEmpty'],['../classMenuEmpty.html#a1a0cb5a75c9066d7701cf2436944565f',1,'MenuEmpty::MenuEmpty()']]],
+  ['menuncurses_4',['MenuNCurses',['../classMenuNCurses.html',1,'MenuNCurses'],['../classMenuNCurses.html#a88efc97898781d7e61061e6a2fc7fb27',1,'MenuNCurses::MenuNCurses(const std::vector&lt; std::string &gt; &amp;items, WindowPosition winpos, WindowFormat winformat, int _ncols)'],['../classMenuNCurses.html#acf750187f23970b447df3bfa81d75361',1,'MenuNCurses::MenuNCurses(const std::vector&lt; std::string &gt; &amp;items, const std::vector&lt; std::string &gt; &amp;short_items, WindowPosition winpos, WindowFormat winformat, int _ncols)'],['../classMenuNCurses.html#ad12439d10220508dd99c93e9632505c0',1,'MenuNCurses::MenuNCurses(const std::vector&lt; std::string &gt; &amp;items, const std::vector&lt; StringWithFace &gt; &amp;short_items, WindowPosition winpos, WindowFormat winformat, int _ncols)']]],
+  ['msg_5',['msg',['../classDateParsingFailure.html#ae0609be0e4d5b32ada910048ddaf2545',1,'DateParsingFailure::msg()'],['../classSQLiteConstraintExcept.html#a871d9fbaac6ed756d276e7207bfc8a49',1,'SQLiteConstraintExcept::msg()'],['../classMenuEmpty.html#abbc58cd3081eba6f646f39591d97b691',1,'MenuEmpty::msg()']]]
 ];

@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['operator_3c_0',['operator&lt;',['../classDate.html#a79958398db7f78189cf3855402457e98',1,'Date']]],
-  ['operator_3e_1',['operator&gt;',['../classDate.html#adb667c8811688bcee16665e74a8c5097',1,'Date']]]
+  ['name_0',['name',['../structGenericItem.html#a686d0b214d38028e725e8f5571bb3acf',1,'GenericItem::name()'],['../classTimeZone.html#a34381ccf6a14213aa67e230b8d37f996',1,'TimeZone::name()']]],
+  ['namerows_1',['NameRows',['../db__sqlite__handle_8h.html#a1c7d53e92b5b59633e7960e8210525fd',1,'db_sqlite_handle.h']]],
+  ['ncols_2',['ncols',['../classMenuNCurses.html#ad0b4330548624edaf828deea39de9c7c',1,'MenuNCurses']]],
+  ['ncurses_5fhandle_3',['ncurses_handle',['../classUI.html#a150f54f597b90035cb05e7a44222bbe0',1,'UI']]],
+  ['ncurses_5fhandle_2eh_4',['ncurses_handle.h',['../ncurses__handle_8h.html',1,'']]],
+  ['ncurseshandle_5',['NcursesHandle',['../classNcursesHandle.html',1,'NcursesHandle'],['../classNcursesHandle.html#ab431d63cb9979a004d6316ee380a0faa',1,'NcursesHandle::NcursesHandle()']]],
+  ['next_6',['next',['../structKeyBindings.html#a28c85d290a34a9583002f7b82dd0dbce',1,'KeyBindings::next()'],['../classDay.html#a4f464d2254a3ca3a4055a0de31c9917a',1,'Day::next()'],['../classWeek.html#ac6766d6bfb8cae86812bd2c3d6567b0e',1,'Week::next()']]]
 ];

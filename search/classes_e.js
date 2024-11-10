@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['week_0',['Week',['../classWeek.html',1,'']]],
-  ['weeklyreportregister_1',['WeeklyReportRegister',['../classWeeklyReportRegister.html',1,'']]],
-  ['weeklyreportscreen_2',['WeeklyReportScreen',['../classWeeklyReportScreen.html',1,'']]],
-  ['weeklytotals_3',['WeeklyTotals',['../structWeeklyTotals.html',1,'']]],
-  ['weekselector_4',['WeekSelector',['../classWeekSelector.html',1,'']]],
-  ['winncurses_5',['WinNCurses',['../classWinNCurses.html',1,'']]]
+  ['ui_0',['UI',['../classUI.html',1,'']]],
+  ['uicomponent_1',['UIComponent',['../classUIComponent.html',1,'']]],
+  ['uiscreen_2',['UIScreen',['../classUIScreen.html',1,'']]],
+  ['updatemanager_3',['UpdateManager',['../classUpdateManager.html',1,'']]],
+  ['userconfig_4',['UserConfig',['../structconfig_1_1UserConfig.html',1,'config']]]
 ];

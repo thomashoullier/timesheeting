@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['menu_0',['menu',['../classMenuNCurses.html#ac95742d2f238fccb36f6ad575d6938cd',1,'MenuNCurses']]],
-  ['menu_5fitems_1',['menu_items',['../classMenuNCurses.html#ad102d4b21f4caacfbccb4310e66bd054',1,'MenuNCurses']]],
-  ['menu_5fncurses_2eh_2',['menu_ncurses.h',['../menu__ncurses_8h.html',1,'']]],
-  ['menuempty_3',['MenuEmpty',['../classMenuEmpty.html',1,'MenuEmpty'],['../classMenuEmpty.html#a1a0cb5a75c9066d7701cf2436944565f',1,'MenuEmpty::MenuEmpty()']]],
-  ['menuncurses_4',['MenuNCurses',['../classMenuNCurses.html',1,'MenuNCurses'],['../classMenuNCurses.html#a88efc97898781d7e61061e6a2fc7fb27',1,'MenuNCurses::MenuNCurses(const std::vector&lt; std::string &gt; &amp;items, WindowPosition winpos, WindowFormat winformat, int _ncols)'],['../classMenuNCurses.html#acf750187f23970b447df3bfa81d75361',1,'MenuNCurses::MenuNCurses(const std::vector&lt; std::string &gt; &amp;items, const std::vector&lt; std::string &gt; &amp;short_items, WindowPosition winpos, WindowFormat winformat, int _ncols)'],['../classMenuNCurses.html#ad12439d10220508dd99c93e9632505c0',1,'MenuNCurses::MenuNCurses(const std::vector&lt; std::string &gt; &amp;items, const std::vector&lt; StringWithFace &gt; &amp;short_items, WindowPosition winpos, WindowFormat winformat, int _ncols)']]],
-  ['msg_5',['msg',['../classDateParsingFailure.html#ae0609be0e4d5b32ada910048ddaf2545',1,'DateParsingFailure::msg()'],['../classSQLiteConstraintExcept.html#a871d9fbaac6ed756d276e7207bfc8a49',1,'SQLiteConstraintExcept::msg()'],['../classMenuEmpty.html#abbc58cd3081eba6f646f39591d97b691',1,'MenuEmpty::msg()']]]
+  ['left_0',['left',['../structKeyBindings.html#a0d158a253d1cf116ae396f0c92ecf70d',1,'KeyBindings']]],
+  ['level_5fis_5factive_1',['level_is_active',['../classLogger.html#a39521644fcedeffb9f6d180db677ab32',1,'Logger']]],
+  ['load_2',['load',['../classconfig_1_1ConfigLoader.html#a8ba932ff83505849955dc5bbda349fdb',1,'config::ConfigLoader::load(const std::filesystem::path &amp;config_file)'],['../classconfig_1_1ConfigLoader.html#a2f119f94a908caba73aa355bb17af7d4',1,'config::ConfigLoader::load()']]],
+  ['location_3',['Location',['../structLocation.html',1,'']]],
+  ['location_5fcol_4',['location_col',['../classLocationsScreen.html#aab902ce049b5f14e76f5c0ad39410067',1,'LocationsScreen']]],
+  ['location_5fname_5',['location_name',['../structEntry.html#a9543ea0daf2271171a9fd1bcb2c1ad66',1,'Entry::location_name()'],['../structEntryStaging.html#aa7c1ccf1ba580180efd161e48c1714a5',1,'EntryStaging::location_name()']]],
+  ['locations_5fhave_5fchanged_6',['locations_have_changed',['../classUpdateManager.html#adc451e37287d440e5e13bd353e67ded7',1,'UpdateManager']]],
+  ['locations_5fscreen_7',['locations_screen',['../classUpdateManager.html#a4a0a330e33cf16212e45622df2a7669f',1,'UpdateManager::locations_screen()'],['../structKeyBindings.html#a4090bacfd89935f49633f463ec756afb',1,'KeyBindings::locations_screen()'],['../classUI.html#a81892b1b3a69aca9a3ecb81b1bedc9b6',1,'UI::locations_screen()']]],
+  ['locationsscreen_8',['LocationsScreen',['../classLocationsScreen.html',1,'LocationsScreen'],['../classLocationsScreen.html#a169460ed4bb362787b496e3337508595',1,'LocationsScreen::LocationsScreen()']]],
+  ['logger_9',['Logger',['../classLogger.html',1,'Logger'],['../classLogger.html#a6d4741a6d6ed2d0561985064605a62c5',1,'Logger::Logger()']]],
+  ['logger_10',['logger',['../logger_8h.html#a66e3e3c277d097d2818ef8dd7654f0c8',1,'logger.cpp']]],
+  ['logger_2eh_11',['logger.h',['../logger_8h.html',1,'']]]
 ];
