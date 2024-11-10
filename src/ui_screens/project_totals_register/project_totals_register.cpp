@@ -1,5 +1,6 @@
 #include "project_totals_register.h"
 #include "../../bound_keys.h"
+#include "../status_bar/status_bar.h"
 
 ProjectTotalsRegister::ProjectTotalsRegister
     (const std::vector<ProjectTotal> &totals)

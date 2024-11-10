@@ -1,6 +1,6 @@
 #include "project_task_screen.h"
 #include "../db/db_sqlite.h"
-#include "status_bar/status_bar_ncurses.h"
+#include "status_bar/status_bar.h"
 #include "../logger/logger.h"
 #include "update_manager.h"
 #include <stdexcept>

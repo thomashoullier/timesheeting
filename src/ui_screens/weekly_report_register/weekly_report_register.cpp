@@ -1,5 +1,6 @@
 #include "weekly_report_register.h"
 #include "../../bound_keys.h"
+#include "../status_bar/status_bar.h"
 
 WeeklyReportRegister::WeeklyReportRegister(const WeeklyTotals &totals)
   : MenuNCurses(totals.to_strings(), totals.to_shortstrings(),

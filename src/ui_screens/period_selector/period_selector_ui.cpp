@@ -1,6 +1,7 @@
 #include "period_selector_ui.h"
 #include "period_selector_ncurses.h"
 #include "../../bound_keys.h"
+#include "../status_bar/status_bar.h"
 
 PeriodSelectorUI::PeriodSelectorUI ()
   : period_selector(DateRange(Date(DatePoint::YearBegin), Date())) {}

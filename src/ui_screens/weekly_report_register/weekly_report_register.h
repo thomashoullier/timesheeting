@@ -4,7 +4,6 @@
 #include "../../ncurses/menu_ncurses.h"
 #include "../ui_component.h"
 #include "../../data_objects/weekly_totals.h"
-#include "../status_bar/status_bar_ncurses.h"
 
 class WeeklyReportRegister : public MenuNCurses,
                              public UIComponent {

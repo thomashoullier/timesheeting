@@ -3,8 +3,6 @@
 
 #include "period_selector_ncurses.h"
 #include "../ui_component.h"
-#include "../status_bar/status_bar_ncurses.h"
-#include <memory>
 
 class PeriodSelectorUI : public UIComponent {
 public:

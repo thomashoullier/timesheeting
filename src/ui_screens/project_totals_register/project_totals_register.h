@@ -4,7 +4,6 @@
 #include "../../data_objects/project_total.h"
 #include "../../ncurses/menu_ncurses.h"
 #include "../ui_component.h"
-#include "../status_bar/status_bar_ncurses.h"
 
 /** @brief ProjectTotal register implementation in ncurses. */
 class ProjectTotalsRegister : public MenuNCurses,
