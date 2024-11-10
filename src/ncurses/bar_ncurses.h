@@ -16,13 +16,15 @@ public:
   void print(const std::string &msg) const;
   /** @brief Print a string to the right of the bar. */
   void print_right(const std::string &msg) const;
+  /** @brief Print after the cursor in a different style. */
+  void print_after_cursor(const std::string &msg);
 
   /** @brief Make cursor visible/invisible. */
   void set_cursor_visibility(bool visible);
   /** @brief Prepare the bar for cursor-based input. */
   void prepare_input();
   /** @brief Add character to the bar. */
-  void add_char (char ch);
+  void add_char(char ch);
   /** @brief Remove last character from bar. */
   void remove_char();
   /** @brief Get the max size of the bar. */

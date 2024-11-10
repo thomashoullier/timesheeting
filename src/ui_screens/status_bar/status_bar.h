@@ -20,6 +20,8 @@ public:
   bool query_confirmation (const std::string &msg);
   /** @brief Get a new string from the user. */
   std::string get_user_string();
+  /** @brief Get a user string, with suggestions. */
+  std::string get_user_string_suggestions();
 
 private:
   /** @brief Constructor. */

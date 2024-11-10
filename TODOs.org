@@ -760,3 +760,22 @@ ADDED: [2024-11-10 Sun]
 ADDED: [2024-11-10 Sun]
 Note these are optional. Only those which are present in the configuration
 are loaded. The rest are kept to zero.
+
+*** TODO Implement fuzzy search suggestions
+ADDED: [2024-11-10 Sun]
+When typing in the status bar, add the option to provide a set
+of possible choices to choose from. These choices are displayed
+next to the typed text in highlighted format.
++ One choice is displayed at a time. Based on a fuzzy search.
++ The choice may be selected by tabbing. Immediately selecting it.
++ See https://github.com/rapidfuzz/rapidfuzz-cpp, available in
+  gentoo, MIT licensed.
++ Places where we want suggestions:
+  + Entries screen
+    + Renaming entry project
+    + Renaming entry task
+    + Renaming entry location
+  + Stopwatch
+    + Setting the stopwatch project.
+    + Setting the stopwatch task.
+    + Setting the stopwatch location.

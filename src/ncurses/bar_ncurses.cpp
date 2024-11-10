@@ -1,5 +1,6 @@
 #include "bar_ncurses.h"
 #include "win_ncurses.h"
+#include <ncurses.h>
 #include <stdexcept>
 
 BarNCurses::BarNCurses(WindowPosition winpos, WindowFormat winformat)
@@ -19,6 +20,17 @@ void BarNCurses::print_right(const std::string &msg) const {
   wmove(win, 0, max_x - str_len);
   wprintw(win, msg.c_str());
   this->refresh();
+}
+
+void BarNCurses::print_after_cursor(const std::string &msg) {
+  wclrtoeol(win); // Clear after the current content.
+  wattron(win, A_STANDOUT);
+  int y, x;
+  getyx(win, y, x);
+  wmove(win, y, x + 2);
+  wprintw(win, msg.c_str());
+  wattroff(win, A_STANDOUT);
+  wmove(win, y, x); // Reset cursor position.
 }
 
 void BarNCurses::set_cursor_visibility(bool visible) {
@@ -42,9 +54,7 @@ void BarNCurses::remove_char() {
   wdelch(win);
 }
 
-std::size_t BarNCurses::max_size() const {
-  return (std::size_t) getmaxx(win);
-}
+std::size_t BarNCurses::max_size() const { return (std::size_t)getmaxx(win); }
 
 WindowFormat BarNCurses::filter_window_format(WindowFormat winformat) {
   switch (winformat) {

@@ -66,7 +66,7 @@ void LocationsScreen::update_location_col() {
 }
 
 bool LocationsScreen::add_item() {
-  auto new_item_name = status().get_user_string();
+  auto new_item_name = status().get_user_string_suggestions();
   if (new_item_name.empty())
     return true;
   auto success = db().add_location(new_item_name);

@@ -58,6 +58,37 @@ std::string StatusBarNCurses::get_user_string() {
   return sanitize_input(input_buffer);
 }
 
+std::string StatusBarNCurses::get_user_string_suggestions() {
+  std::string input_buffer{};
+  this->prepare_input();
+  this->set_cursor_visibility(true);
+  bool user_wants_to_input = true;
+  while (user_wants_to_input) {
+    auto ch = this->get_input();
+    auto kb = BoundKeys::get().kb;
+    if (kb.validate.bound_to(ch)) {
+      user_wants_to_input = false;
+    } else if (kb.cancel.bound_to(ch)) {
+      input_buffer.clear();
+      user_wants_to_input = false;
+    } else if (ch == 127) { // Backspace
+      if (!input_buffer.empty()) {
+        input_buffer.pop_back();
+        this->remove_char();
+      }
+    } else {
+      if (input_buffer.size() < this->max_size() - 1) {
+        input_buffer.push_back(ch);
+        this->add_char(ch);
+      }
+    }
+    // Manage the suggestions
+    this->print_after_cursor("HELLO");
+  }
+  this->set_cursor_visibility(false);
+  return sanitize_input(input_buffer);
+}
+
 std::string StatusBarNCurses::sanitize_input(const std::string &input) const {
     auto s = input;
     // left trim
