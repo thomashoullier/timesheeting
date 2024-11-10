@@ -21,6 +21,31 @@ void BarNCurses::print_right(const std::string &msg) const {
   this->refresh();
 }
 
+void BarNCurses::set_cursor_visibility(bool visible) {
+  if (visible)
+    curs_set(1);
+  else
+    curs_set(0);
+}
+
+void BarNCurses::prepare_input() {
+  wmove(win, 0, 0);
+  wclrtoeol(win);
+}
+
+void BarNCurses::add_char(char ch) { waddch(win, ch); }
+
+void BarNCurses::remove_char() {
+  int y, x;
+  getyx(win, y, x);
+  wmove(win, y, x - 1);
+  wdelch(win);
+}
+
+std::size_t BarNCurses::max_size() const {
+  return (std::size_t) getmaxx(win);
+}
+
 WindowFormat BarNCurses::filter_window_format(WindowFormat winformat) {
   switch (winformat) {
   case WindowFormat::line:

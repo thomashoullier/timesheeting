@@ -29,16 +29,13 @@ bool StatusBarNCurses::query_confirmation(const std::string &msg) {
 StatusBarNCurses &status() { return StatusBarNCurses::get(); }
 
 std::string StatusBarNCurses::get_user_string() {
-  // TODO: decouple from ncurses functions.
-  //       Write these functions as an interface to BarNCurses.
   std::string input_buffer{};
-  wmove(win, 0, 0);
-  wclrtoeol(win);
-  curs_set(1);
+  this->prepare_input();
+  this->set_cursor_visibility(true);
   bool user_wants_to_input = true;
   while (user_wants_to_input) {
     auto ch = this->get_input();
-    switch (ch) {
+    switch (ch) { // TODO: Replace with dynamic bindings.
     case '\n': // User validates the input.
       user_wants_to_input = false;
       break;
@@ -49,25 +46,18 @@ std::string StatusBarNCurses::get_user_string() {
     case 127: // Erase last character
       if (!input_buffer.empty()) {
         input_buffer.pop_back();
-        // Remove character from screen
-        int y, x;
-        getyx(win, y, x);
-        auto xmax = getmaxx(win);
-        if (x == 0) { // jump to the end of the previous line.
-          wmove(win, y - 1, xmax - 1);
-        } else {
-          wmove(win, y, x - 1);
-        }
-        wdelch(win);
+        this->remove_char();
       }
       break;
     default: // Gets added to item.
-      input_buffer.push_back(ch);
-      waddch(win, ch);
+      if (input_buffer.size() < this->max_size() - 1) {
+        input_buffer.push_back(ch);
+        this->add_char(ch);
+      }
       break;
     }
   }
-  curs_set(0);
+  this->set_cursor_visibility(false);
   return sanitize_input(input_buffer);
 }
 
