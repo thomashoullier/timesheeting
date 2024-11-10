@@ -2,6 +2,7 @@
 #include "../../db/db_sqlite.h"
 #include "../status_bar/status_bar_ncurses.h"
 #include "../update_manager.h"
+#include "../../bound_keys.h"
 
 StopwatchUI::StopwatchUI() : stopwatch(db().query_entrystaging()) {};
 
@@ -10,14 +11,12 @@ char StopwatchUI::input_loop() {
   while (true) {
     status().print(stopwatch.get_current_item_string());
     auto ch = stopwatch.get_input();
-    switch (ch) {
-    case 'h':
+    auto kb = BoundKeys::get().kb;
+    if (kb.left.bound_to(ch)) {
       stopwatch.select_left_item();
-      break;
-    case 'i':
+    } else if (kb.right.bound_to(ch)) {
       stopwatch.select_right_item();
-      break;
-    case 'r':
+    } else if (kb.rename.bound_to(ch)) {
       try {
         rename_item();
         UpdateManager::get().entries_have_changed();
@@ -27,22 +26,18 @@ char StopwatchUI::input_loop() {
         this->clear();
         this->refresh();
       }
-      break;
-    case ' ':
+    } else if (kb.set_now.bound_to(ch)) {
       set_current_now();
       update();
-      break;
-    case '\n':
-      {
-        db().commit_entrystaging();
-        UpdateManager::get().entries_have_changed();
-        Date now_start;
-        db().edit_entrystaging_start(now_start);
-        update();
-        // Pass the update along by returning the key above.
-        return ch;
-      } break;
-    default:
+    } else if (kb.validate.bound_to(ch)) {
+      db().commit_entrystaging();
+      UpdateManager::get().entries_have_changed();
+      Date now_start;
+      db().edit_entrystaging_start(now_start);
+      update();
+      // Pass the update along by returning the key above.
+      return ch;
+    } else {
       stopwatch.unset_border();
       return ch;
     }

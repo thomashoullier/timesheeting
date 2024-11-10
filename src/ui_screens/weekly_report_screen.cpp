@@ -1,6 +1,7 @@
 #include "weekly_report_screen.h"
 #include "../db/db_sqlite.h"
 #include "../logger/logger.h"
+#include "../bound_keys.h"
 
 WeeklyReportScreen::WeeklyReportScreen()
   : week_selector{},
@@ -9,16 +10,14 @@ WeeklyReportScreen::WeeklyReportScreen()
 char WeeklyReportScreen::input_loop() {
   while (true) {
     auto ch = reg.input_loop();
-    switch (ch) {
-    case ',':
+    auto kb = BoundKeys::get().kb;
+    if (kb.previous.bound_to(ch)) {
       week_selector.select_previous_week();
       update();
-      break;
-    case '.':
+    } else if (kb.next.bound_to(ch)) {
       week_selector.select_next_week();
       update();
-      break;
-    default:
+    } else {
       return ch;
     }
   }

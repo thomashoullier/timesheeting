@@ -3,6 +3,7 @@
 #include "status_bar/status_bar_ncurses.h"
 #include "../logger/logger.h"
 #include "update_manager.h"
+#include "../bound_keys.h"
 
 EntriesTable::EntriesTable()
   : day_selector(),
@@ -14,24 +15,19 @@ char EntriesTable::input_loop() {
   while (true) {
     status().print(reg.get_current_item_string());
     auto ch = reg.get_input();
-    switch (ch) {
-    case 'n':
+    auto kb = BoundKeys::get().kb;
+    if (kb.down.bound_to(ch)) {
       reg.select_down_item();
-      break;
-    case 'e':
+    } else if (kb.up.bound_to(ch)) {
       reg.select_up_item();
-      break;
-    case 'i':
+    } else if (kb.right.bound_to(ch)) {
       reg.select_right_item();
-      break;
-    case 'h':
+    } else if (kb.left.bound_to(ch)) {
       reg.select_left_item();
-      break;
-    case 'x':
+    } else if (kb.remove.bound_to(ch)) {
       remove_item();
       UpdateManager::get().entries_have_changed();
-      break;
-    case 'r':
+    } else if (kb.rename.bound_to(ch)) {
       try {
         rename_item();
         update();
@@ -41,8 +37,7 @@ char EntriesTable::input_loop() {
         this->clear();
         this->refresh();
       }
-      break;
-    case '.': {
+    } else if (kb.next.bound_to(ch)) {
       day_selector.select_next_day();
       auto log_dates = day_selector.current_range().to_string();
       logger().log("Selected day range: " + log_dates.at(0) + " ; " +
@@ -51,10 +46,9 @@ char EntriesTable::input_loop() {
       update();
       day_selector.refresh();
       // TODO: superfluous update?
-      total_bar.update(
-          db().query_entries_duration(day_selector.current_range()));
-    } break;
-    case ',': {
+      total_bar
+        .update(db().query_entries_duration(day_selector.current_range()));
+    } else if (kb.previous.bound_to(ch)) {
       day_selector.select_previous_day();
       auto log_dates = day_selector.current_range().to_string();
       logger().log("Selected day range: " + log_dates.at(0) + " ; " +
@@ -62,8 +56,7 @@ char EntriesTable::input_loop() {
                    LogLevel::debug);
       update();
       day_selector.refresh();
-    } break;
-    default:
+    } else {
       reg.unset_border();
       return ch;
     }

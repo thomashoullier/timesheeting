@@ -3,6 +3,7 @@
 #include "../db/db_sqlite.h"
 #include "../logger/logger.h"
 #include "update_manager.h"
+#include "../bound_keys.h"
 
 LocationsScreen::LocationsScreen()
     : location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
@@ -24,37 +25,30 @@ char LocationsScreen::input_loop() {
   while (true) {
     status().print(location_col->get_current_item_string());
     auto ch = location_col->get_input();
-    switch (ch) {
-    case 'n':
+    auto kb = BoundKeys::get().kb;
+    if (kb.down.bound_to(ch)) {
       location_col->select_down_item();
-      break;
-    case 'e':
+    } else if (kb.up.bound_to(ch)) {
       location_col->select_up_item();
-      break;
-    case 'a':
+    } else if (kb.add.bound_to(ch)) {
       if (not(add_item())) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
       } else {
         UpdateManager::get().locations_have_changed();
       }
-      break;
-    case 'r':
+    } else if (kb.rename.bound_to(ch)) {
       if (not(rename_item())) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
       } else {
         UpdateManager::get().locations_have_changed();
       }
-      break;
-    case 'x':
+    } else if (kb.remove.bound_to(ch)) {
       remove_item();
-      break;
-    case 'b':
+    } else if (kb.active_toggle.bound_to(ch)) {
       toggle_active_item();
-      break;
-    case '.':
+    } else if (kb.active_visibility.bound_to(ch)) {
       toggle_archive_visibility();
-      break;
-    default:
+    } else {
       location_col->unset_border();
       return ch;
     }

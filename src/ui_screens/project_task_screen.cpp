@@ -4,6 +4,7 @@
 #include "../logger/logger.h"
 #include "update_manager.h"
 #include <stdexcept>
+#include "../bound_keys.h"
 
 ProjectTaskScreen::ProjectTaskScreen()
     : project_col(std::make_unique<Column<Project>>(std::vector<Project>(),
@@ -32,60 +33,50 @@ char ProjectTaskScreen::input_loop() {
   while (true) {
     status().print(cur_col->get_current_item_string());
     auto ch = cur_col->get_input();
-    switch (ch) {
-    case 'n':
+    auto kb = BoundKeys::get().kb;
+    if (kb.down.bound_to(ch)) {
       cur_col->select_down_item();
       if (cur_col == project_col.get()) {
         update_task_col();
       }
-      break;
-    case 'e':
+    } else if (kb.up.bound_to(ch)) {
       cur_col->select_up_item();
       if (cur_col == project_col.get()) {
         update_task_col();
       }
-      break;
-    case 'h':
+    } else if (kb.left.bound_to(ch)) {
       cur_col->unset_border();
       cur_col = project_col.get();
       cur_col->set_border();
-      break;
-    case 'i':
+    } else if (kb.right.bound_to(ch)) {
       cur_col->unset_border();
       cur_col = task_col.get();
       cur_col->set_border();
-      break;
-    case 'a':
+    } else if (kb.add.bound_to(ch)) {
       if (not(add_item(cur_col))) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
       } else {
         UpdateManager::get().projects_tasks_have_changed();
       }
-      break;
-    case 'r':
+    } else if (kb.rename.bound_to(ch)) {
       if (not(rename_item(cur_col))) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
       } else {
         UpdateManager::get().projects_tasks_have_changed();
       }
-      break;
-    case 'p':
+    } else if (kb.task_project_change.bound_to(ch)) {
       if (not(change_task_project(cur_col))) {
         status().print_wait("DB logic error! Nothing was done to the DB.");
       } else {
         UpdateManager::get().projects_tasks_have_changed();
       }
-      break;
-    case 'x':
+    } else if (kb.remove.bound_to(ch)) {
       remove_item(cur_col);
-      break;
-    case 'b':
+    } else if (kb.active_toggle.bound_to(ch)) {
       toggle_active_item(cur_col);
-      break;
-    case '.':
+    } else if (kb.active_visibility.bound_to(ch)) {
       toggle_archive_visibility();
-      break;
-    default:
+    } else {
       cur_col->unset_border();
       return ch;
     }

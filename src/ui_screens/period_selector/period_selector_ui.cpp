@@ -1,5 +1,6 @@
 #include "period_selector_ui.h"
 #include "period_selector_ncurses.h"
+#include "../../bound_keys.h"
 
 PeriodSelectorUI::PeriodSelectorUI ()
   : period_selector(DateRange(Date(DatePoint::YearBegin), Date())) {}
@@ -9,14 +10,12 @@ char PeriodSelectorUI::input_loop() {
   while (true) {
     status().print(period_selector.get_current_item_string());
     auto ch = period_selector.get_input();
-    switch(ch) {
-    case 'h':
+    auto kb = BoundKeys::get().kb;
+    if (kb.left.bound_to(ch)) {
       period_selector.select_left_item();
-      break;
-    case 'i':
+    } else if (kb.right.bound_to(ch)) {
       period_selector.select_right_item();
-      break;
-    case 'r':
+    } else if (kb.rename.bound_to(ch)) {
       try {
         rename_item();
         update();
@@ -26,8 +25,7 @@ char PeriodSelectorUI::input_loop() {
         this->clear();
         this->refresh();
       }
-      break;
-    default:
+    } else {
       period_selector.unset_border();
       return ch;
     }

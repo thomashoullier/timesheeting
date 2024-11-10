@@ -737,3 +737,10 @@ ADDED: [2024-11-09 Sat]
 Use alternative bindings to bind arrow keys to navigation.
 It does not seem we can escape a character to represent the arrow
 key. We have to use a string to represent it.
+
+*** TODO Use a hash function to match key bindings dynamically
+ADDED:[2024-11-10 Sun]
+Currently we are doing an else if table, which is suboptimal.
+This should not matter very much of course, but it is
+cleaner to use some kind of hash from dynamic key to an enum of keys,
+and then match the enums in a switch statement.

@@ -1,3 +1,4 @@
+#include "bound_keys.h"
 #include "cli.h"
 #include "csv_exporter.h"
 #include "db/db_sqlite.h"
@@ -30,6 +31,9 @@ int main(int argc, const char *const *argv) {
 
   // Initialize the DB.
   DB_SQLite::get(config.db_filepath);
+
+  // Initialize the key bindings.
+  BoundKeys::get(&config.bindings);
 
   // Export to csv
   if (not(cli_data.beg_date.empty()) and not(cli_data.end_date.empty())

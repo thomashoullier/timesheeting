@@ -3,6 +3,7 @@
 #include "logger/logger.h"
 #include <memory>
 #include "ui_screens/update_manager.h"
+#include "bound_keys.h"
 
 UI::UI()
   : projects_screen(std::make_shared<ProjectTaskScreen>()),
@@ -29,27 +30,21 @@ char UI::input_loop() {
     cur_screen->refresh();
     auto ch = cur_screen->input_loop();
     cur_screen->clear();
-    switch (ch) {
-    case '1':
+    auto kb = BoundKeys::get().kb;
+    if (kb.entries_screen.bound_to(ch)) {
       cur_screen = entries_screen;
-      break;
-    case '2':
+    } else if (kb.projects_screen.bound_to(ch)) {
       cur_screen = projects_screen;
-      break;
-    case '3':
+    } else if (kb.locations_screen.bound_to(ch)) {
       cur_screen = locations_screen;
-      break;
-    case '4':
+    } else if (kb.project_report_screen.bound_to(ch)) {
       cur_screen = project_report_screen;
-      break;
-    case '5':
+    } else if (kb.weekly_report_screen.bound_to(ch)) {
       cur_screen = weekly_report_screen;
-      break;
-    case 'd':
+    } else if (kb.duration_display.bound_to(ch)) {
       DurationDisplayer::get().cycle_format();
       UpdateManager::get().duration_display_changed();
-      break;
-    default:
+    } else {
       return ch;
     }
   }

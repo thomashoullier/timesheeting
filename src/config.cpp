@@ -89,6 +89,7 @@ namespace config {
     kb.subtabs.primary = parse_key(keys_node["subtabs"]);
     kb.previous.primary = parse_key(keys_node["previous"]);
     kb.next.primary = parse_key(keys_node["next"]);
+    kb.set_now.primary = parse_key(keys_node["set_now"]);
     kb.validate.primary = parse_key(keys_node["validate"]);
     kb.duration_display.primary = parse_key(keys_node["duration_display"]);
     kb.entries_screen.primary = parse_key(keys_node["entries_screen"]);

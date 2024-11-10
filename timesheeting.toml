@@ -12,6 +12,7 @@ right = "i"
 subtabs = "\t"
 previous = ","
 next = "."
+set_now = " "
 validate = "\n"
 # cancel = "ESCAPE" TODO
 duration_display = "d"

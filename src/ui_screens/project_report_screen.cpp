@@ -1,6 +1,7 @@
 #include "project_report_screen.h"
 #include "../db/db_sqlite.h"
 #include "../logger/logger.h"
+#include "../bound_keys.h"
 
 ProjectReportScreen::ProjectReportScreen()
     : period_selector_ui(PeriodSelectorUI()),
@@ -14,17 +15,15 @@ char ProjectReportScreen::input_loop() {
   cur_focus = &reg;
   while (true) {
     auto ch = cur_focus->input_loop();
-    switch (ch) {
-    case '\t':
+    auto kb = BoundKeys::get().kb;
+    if (kb.subtabs.bound_to(ch)) {
       if (cur_focus == &period_selector_ui)
         cur_focus = &reg;
       else
         cur_focus = &period_selector_ui;
-      break;
-    case '\n': // Update request is passed
+    } else if (kb.validate.bound_to(ch)) { // Update request is passed
       this->update();
-      break;
-    default:
+    } else {
       return ch;
     }
   }

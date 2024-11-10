@@ -1,4 +1,5 @@
 #include "project_totals_register.h"
+#include "../../bound_keys.h"
 
 ProjectTotalsRegister::ProjectTotalsRegister
     (const std::vector<ProjectTotal> &totals)
@@ -25,20 +26,16 @@ char ProjectTotalsRegister::input_loop() {
   while (true) {
     status().print(this->get_current_item_string());
     auto ch = this->get_input();
-    switch (ch) {
-    case 'n':
+    auto kb = BoundKeys::get().kb;
+    if (kb.down.bound_to(ch)) {
       this->select_down_item();
-      break;
-    case 'e':
+    } else if (kb.up.bound_to(ch)) {
       this->select_up_item();
-      break;
-    case 'i':
+    } else if (kb.right.bound_to(ch)) {
       this->select_right_item();
-      break;
-    case 'h':
+    } else if (kb.left.bound_to(ch)) {
       this->select_left_item();
-      break;
-    default:
+    } else {
       this->unset_border();
       return ch;
     }
