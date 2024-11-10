@@ -1,5 +1,6 @@
 #include "status_bar.h"
 #include <algorithm>
+#include "../../bound_keys.h"
 
 StatusBarNCurses &StatusBarNCurses::get() {
   static StatusBarNCurses instance;
@@ -35,26 +36,22 @@ std::string StatusBarNCurses::get_user_string() {
   bool user_wants_to_input = true;
   while (user_wants_to_input) {
     auto ch = this->get_input();
-    switch (ch) { // TODO: Replace with dynamic bindings.
-    case '\n': // User validates the input.
+    auto kb = BoundKeys::get().kb;
+    if (kb.validate.bound_to(ch)) {
       user_wants_to_input = false;
-      break;
-    case 27: // User wants to cancel.
+    } else if (kb.cancel.bound_to(ch)) {
       input_buffer.clear();
       user_wants_to_input = false;
-      break;
-    case 127: // Erase last character
+    } else if (ch == 127) { // Backspace
       if (!input_buffer.empty()) {
         input_buffer.pop_back();
         this->remove_char();
       }
-      break;
-    default: // Gets added to item.
+    } else {
       if (input_buffer.size() < this->max_size() - 1) {
         input_buffer.push_back(ch);
         this->add_char(ch);
       }
-      break;
     }
   }
   this->set_cursor_visibility(false);

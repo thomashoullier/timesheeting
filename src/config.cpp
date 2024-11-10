@@ -91,6 +91,7 @@ namespace config {
     kb.next.primary = parse_key(keys_node["next"]);
     kb.set_now.primary = parse_key(keys_node["set_now"]);
     kb.validate.primary = parse_key(keys_node["validate"]);
+    kb.cancel.primary = parse_key(keys_node["cancel"]);
     kb.duration_display.primary = parse_key(keys_node["duration_display"]);
     kb.entries_screen.primary = parse_key(keys_node["entries_screen"]);
     kb.projects_screen.primary = parse_key(keys_node["projects_screen"]);
@@ -111,6 +112,10 @@ namespace config {
 
   char ConfigLoader::parse_key (const toml::node_view<toml::node> &keys_node) {
     auto str = parse_string(keys_node);
+    // Parsing special keys
+    if (str == "ESCAPE")
+      return 27;
+    // Parsing regular keys
     if (str.length() != 1)
       throw std::runtime_error("Invalid string for key binding.");
     char c = str.at(0);

@@ -707,7 +707,8 @@ This is a real life need we encounter.
 - [2024-11-03 Sun] OK implemented. No problem, the DB schema allows it perfectly.
   Error cases are also handled well out of the box.
 
-*** TODO Implement the key bindings in the configuration
+*** DONE Implement the key bindings in the configuration
+CLOSED: [2024-11-10 Sun 15:44]
 ADDED: [2024-10-31 Thu]
 + Try avoiding a singleton pattern for this?
 + How do we deal with the keys which are already in the ncurses library?
@@ -728,7 +729,8 @@ Our goal is to reduce the memory footprint of the export operation.
 We can do it very easily by having the DB function return
 a std::generator<ExportRow> but we have to wait for GCC14.
 
-*** TODO Bind the cancel key to escape
+*** DONE Bind the cancel key to escape
+CLOSED: [2024-11-10 Sun 15:48]
 ADDED: [2024-11-09 Sat]
 We must use a string sequence for representing escape.
 
@@ -738,6 +740,11 @@ Use alternative bindings to bind arrow keys to navigation.
 It does not seem we can escape a character to represent the arrow
 key. We have to use a string to represent it.
 
+*** TODO Implement a set of special keys available for bindings
+ADDED: [2024-11-10 Sun]
+Add a set of special keys along with "ESCAPE", such as "ALT", "LSHIFT",
+etc.
+
 *** TODO Use a hash function to match key bindings dynamically
 ADDED: [2024-11-10 Sun]
 Currently we are doing an else if table, which is suboptimal.
@@ -745,5 +752,11 @@ This should not matter very much of course, but it is
 cleaner to use some kind of hash from dynamic key to an enum of keys,
 and then match the enums in a switch statement.
 
-*** TODO Limit string inputs to 80 columns
+*** DONE Limit string inputs to 80 columns
+CLOSED: [2024-11-10 Sun 15:44]
 ADDED: [2024-11-10 Sun]
+
+*** TODO Implement the alternative key bindings
+ADDED: [2024-11-10 Sun]
+Note these are optional. Only those which are present in the configuration
+are loaded. The rest are kept to zero.
