@@ -769,7 +769,7 @@ next to the typed text in highlighted format.
 + One choice is displayed at a time. Based on a fuzzy search.
 + The choice may be selected by tabbing. Immediately selecting it.
 + See https://github.com/rapidfuzz/rapidfuzz-cpp, available in
-  gentoo, MIT licensed.
+  gentoo, MIT licensed. We probably want partial-token-set-ratio.
 + Places where we want suggestions:
   + Entries screen
     + Renaming entry project

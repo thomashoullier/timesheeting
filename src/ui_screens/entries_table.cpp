@@ -86,25 +86,31 @@ void EntriesTable::update() {
 void EntriesTable::rename_item() {
   // TODO: manage the case where the register is empty.
   auto id = reg.get_current_id();
-  auto new_str = status().get_user_string();
   auto field_type = reg.get_field_type();
   switch (field_type) {
   case EntryField::project_name: {
+    auto projects = db().query_projects();
+    auto project_names = generic_item_names(projects);
+    auto new_str = status().get_user_string_suggestions(project_names);
     db().edit_entry_project(id, new_str);
     break;
   }
   case EntryField::task_name: {
+    auto new_str = status().get_user_string();
     db().edit_entry_task(id, new_str);
   } break;
   case EntryField::start: {
+    auto new_str = status().get_user_string();
     Date new_start_date(new_str);
     db().edit_entry_start(id, new_start_date);
   } break;
   case EntryField::stop: {
+    auto new_str = status().get_user_string();
     Date new_stop_date(new_str);
     db().edit_entry_stop(id, new_stop_date);
   } break;
   case EntryField::location_name: {
+    auto new_str = status().get_user_string();
     db().edit_entry_location(id, new_str);
   } break;
   default:

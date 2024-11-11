@@ -4,6 +4,7 @@
 #define STATUS_BAR_H
 
 #include "../../ncurses/bar_ncurses.h"
+#include <vector>
 
 /** @brief Status bar implementation using ncurses. */
 class StatusBarNCurses : public BarNCurses {
@@ -21,7 +22,8 @@ public:
   /** @brief Get a new string from the user. */
   std::string get_user_string();
   /** @brief Get a user string, with suggestions. */
-  std::string get_user_string_suggestions();
+  std::string get_user_string_suggestions
+    (const std::vector<std::string> &suggestions);
 
 private:
   /** @brief Constructor. */

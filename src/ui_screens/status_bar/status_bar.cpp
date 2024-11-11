@@ -1,4 +1,5 @@
 #include "status_bar.h"
+#include "suggestion.h"
 #include <algorithm>
 #include "../../bound_keys.h"
 
@@ -58,7 +59,8 @@ std::string StatusBarNCurses::get_user_string() {
   return sanitize_input(input_buffer);
 }
 
-std::string StatusBarNCurses::get_user_string_suggestions() {
+std::string StatusBarNCurses::get_user_string_suggestions
+(const std::vector<std::string> &suggestions) {
   std::string input_buffer{};
   this->prepare_input();
   this->set_cursor_visibility(true);
@@ -83,7 +85,8 @@ std::string StatusBarNCurses::get_user_string_suggestions() {
       }
     }
     // Manage the suggestions
-    this->print_after_cursor("HELLO");
+    auto best_match = suggestion::best_match(input_buffer, suggestions);
+    this->print_after_cursor(best_match);
   }
   this->set_cursor_visibility(false);
   return sanitize_input(input_buffer);
