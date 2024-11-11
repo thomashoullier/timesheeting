@@ -24,12 +24,11 @@ var searchData=
   ['display_5fstrings_21',['display_strings',['../classMenuNCurses.html#ad891ca93fa1eb8817828f6006d374654',1,'MenuNCurses']]],
   ['down_22',['down',['../structKeyBindings.html#af891ef4fb5b8471dd265efa0954a6cc2',1,'KeyBindings']]],
   ['dur_23',['dur',['../classDuration.html#a4cbbbe8777802eebd1d2779e66eaf605',1,'Duration']]],
-  ['duration_24',['Duration',['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration']]],
-  ['duration_25',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
-  ['duration_26',['Duration',['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration()'],['../classDuration.html',1,'Duration']]],
-  ['duration_5fdisplay_27',['duration_display',['../structKeyBindings.html#a839bd58de8b1292f4cf94aa046b14f49',1,'KeyBindings']]],
-  ['duration_5fdisplay_5fchanged_28',['duration_display_changed',['../classUpdateManager.html#a023b5a241f82a09a7b0fd016c877ea20',1,'UpdateManager']]],
-  ['duration_5fper_5fworked_5fproject_29',['duration_per_worked_project',['../classStatementSet.html#a3c7d5cf3abd0171d2c782e159f793872',1,'StatementSet']]],
-  ['duration_5fper_5fworked_5ftask_30',['duration_per_worked_task',['../classStatementSet.html#a6edff466bc1742948d3099d5941ad565',1,'StatementSet']]],
-  ['durationdisplayer_31',['DurationDisplayer',['../classDurationDisplayer.html',1,'']]]
+  ['duration_24',['duration',['../classTotalBar.html#a4a76959d3137aa54d1017387c39f25d1',1,'TotalBar']]],
+  ['duration_25',['Duration',['../classDuration.html#aad077633351bd92e6585c42c53e390c8',1,'Duration::Duration(uint64_t seconds)'],['../classDuration.html#a688948a87d69e8982cf7e292c7fe4b0a',1,'Duration::Duration()'],['../classDuration.html',1,'Duration']]],
+  ['duration_5fdisplay_26',['duration_display',['../structKeyBindings.html#a839bd58de8b1292f4cf94aa046b14f49',1,'KeyBindings']]],
+  ['duration_5fdisplay_5fchanged_27',['duration_display_changed',['../classUpdateManager.html#a023b5a241f82a09a7b0fd016c877ea20',1,'UpdateManager']]],
+  ['duration_5fper_5fworked_5fproject_28',['duration_per_worked_project',['../classStatementSet.html#a3c7d5cf3abd0171d2c782e159f793872',1,'StatementSet']]],
+  ['duration_5fper_5fworked_5ftask_29',['duration_per_worked_task',['../classStatementSet.html#a6edff466bc1742948d3099d5941ad565',1,'StatementSet']]],
+  ['durationdisplayer_30',['DurationDisplayer',['../classDurationDisplayer.html',1,'']]]
 ];

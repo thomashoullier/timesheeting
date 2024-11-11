@@ -74,7 +74,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">generic_item.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -82,6 +83,8 @@ $(function() {
 <p><a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a> definition.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;id.h&quot;</code><br />
 </div>
 <p><a href="generic__item_8h_source.html">Go to the source code of this file.</a></p>
@@ -100,6 +103,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLocation.html">Location</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of <a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a> into a <a class="el" href="structLocation.html" title="Specialization of GenericItem into a Location item.">Location</a> item.  <a href="structLocation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ae994c0ecb7dccacc6529fe0da0d3629a"><td class="memTemplParams" colspan="2"><a id="ae994c0ecb7dccacc6529fe0da0d3629a" name="ae994c0ecb7dccacc6529fe0da0d3629a"></a>
+template&lt;typename T , typename  = std::enable_if_t&lt;std::is_base_of_v&lt;GenericItem, T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ae994c0ecb7dccacc6529fe0da0d3629a"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>generic_item_names</b> (const std::vector&lt; T &gt; &amp;items)</td></tr>
+<tr class="memdesc:ae994c0ecb7dccacc6529fe0da0d3629a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a set of generic items into the set of their names. <br /></td></tr>
+<tr class="separator:ae994c0ecb7dccacc6529fe0da0d3629a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structGenericItem.html" title="A generic item has an Id and a display name.">GenericItem</a> definition. </p>
