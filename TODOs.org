@@ -41,6 +41,7 @@ justification/tradeoff.
 + Detail every possible user interaction and how it propagates through
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema
+
 * External timesheet format
 * Test plan
 Details every tests used to check the software.
