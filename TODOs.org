@@ -4,28 +4,30 @@
 #+title: TODO
 
 * Specification
-** TODO Specification items to add in v1.1
+** DONE Specification items to add in v1.1
+CLOSED: [2024-11-16 Sat 15:59]
 We list the specification items which should be added later.
-+ Which day of the week is the first day?
-+ First day of the week user configuration?
-+ On which day does the daily entries screen open by default?
-+ On which week does the weekly report open by default?
-+ Default values of entry metadata when left unspecified.
-+ What should happen when the software detects that the save data
++ OK What should happen when the software detects that the save data
   is corrupted using the mechanism specified by R-QUA-020?
-+ Template list of tasks for new projects.
-+ Maintenance, bug reporting and persistent reports, non-regression.
-+ Language of the interface: English.
-+ Indicate to the user at runtime where to report bugs.
-+ Specify the format in which the software is released.
++ OK Language of the interface: English.
++ OK Indicate to the user at runtime where to report bugs.
++ OK Specify the format in which the software is released.
   As source, plus appimage?
+
+** New feature ideas
++ Template list of tasks for new projects.
 + Description or comment associated to hierarchy items.
-+ Where should the stopwatch be displayed?
 
 * System architecture document
 * Subsystem requirements document
 ** PRJ1-SRS1
 Details the requirements applicable to subsystems, as described in the SAD.
++ Which day of the week is the first day?
++ First day of the week user configuration?
++ On which day does the daily entries screen open by default?
++ On which week does the weekly report open by default?
++ Default values of entry metadata when left unspecified.
++ Where should the stopwatch be displayed?
 
 * System Design document
 ** PRJ1-SDD1
@@ -182,7 +184,8 @@ It seems recommended: https://www.sqlite.org/lang_analyze.html
 ADDED: [2024-09-03 Tue]
 Perhaps at least the last SQL db action?
 
-*** TODO Use a date format with timezone in logs.
+*** DONE Use a date format with timezone in logs.
+CLOSED: [2024-11-16 Sat 15:05]
 ADDED: [2024-11-16 Sat]
 Currently the logs are ambiguous, they show the local time but without
 more indication.
