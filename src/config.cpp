@@ -92,6 +92,7 @@ namespace config {
     kb.set_now.primary = parse_key(keys_node["set_now"]);
     kb.validate.primary = parse_key(keys_node["validate"]);
     kb.cancel.primary = parse_key(keys_node["cancel"]);
+    kb.select_suggestion.primary = parse_key(keys_node["select_suggestion"]);
     kb.duration_display.primary = parse_key(keys_node["duration_display"]);
     kb.entries_screen.primary = parse_key(keys_node["entries_screen"]);
     kb.projects_screen.primary = parse_key(keys_node["projects_screen"]);

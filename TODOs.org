@@ -772,7 +772,7 @@ next to the typed text in highlighted format.
   gentoo, MIT licensed. We probably want partial-token-set-ratio.
 + Places where we want suggestions:
   + Entries screen
-    + Renaming entry project
+    + OK Renaming entry project
     + Renaming entry task
     + Renaming entry location
   + Stopwatch

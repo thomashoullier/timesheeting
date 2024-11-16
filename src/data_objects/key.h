@@ -35,6 +35,8 @@ struct KeyBindings {
   Key validate;
   /** @brief Cancel. */
   Key cancel;
+  /** @brief Select suggestion. */
+  Key select_suggestion;
   /** @brief Cycle between duration display formats. */
   Key duration_display;
   /** @brief Switch to entries screen. */

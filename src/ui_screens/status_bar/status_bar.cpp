@@ -65,6 +65,7 @@ std::string StatusBarNCurses::get_user_string_suggestions
   this->prepare_input();
   this->set_cursor_visibility(true);
   bool user_wants_to_input = true;
+  std::string best_match {};
   while (user_wants_to_input) {
     auto ch = this->get_input();
     auto kb = BoundKeys::get().kb;
@@ -78,6 +79,11 @@ std::string StatusBarNCurses::get_user_string_suggestions
         input_buffer.pop_back();
         this->remove_char();
       }
+    } else if (kb.select_suggestion.bound_to(ch)){
+      if (!best_match.empty()) {
+        input_buffer = best_match;
+        user_wants_to_input = false;
+      }
     } else {
       if (input_buffer.size() < this->max_size() - 1) {
         input_buffer.push_back(ch);
@@ -85,7 +91,7 @@ std::string StatusBarNCurses::get_user_string_suggestions
       }
     }
     // Manage the suggestions
-    auto best_match = suggestion::best_match(input_buffer, suggestions);
+    best_match = suggestion::best_match(input_buffer, suggestions);
     this->print_after_cursor(best_match);
   }
   this->set_cursor_visibility(false);
