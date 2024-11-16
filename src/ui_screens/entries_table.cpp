@@ -96,7 +96,10 @@ void EntriesTable::rename_item() {
     break;
   }
   case EntryField::task_name: {
-    auto new_str = status().get_user_string();
+    auto project_id = db().query_entry_project_id(id);
+    auto tasks = db().query_tasks(project_id);
+    auto task_names = generic_item_names(tasks);
+    auto new_str = status().get_user_string_suggestions(task_names);
     db().edit_entry_task(id, new_str);
   } break;
   case EntryField::start: {
@@ -110,7 +113,9 @@ void EntriesTable::rename_item() {
     db().edit_entry_stop(id, new_stop_date);
   } break;
   case EntryField::location_name: {
-    auto new_str = status().get_user_string();
+    auto locations = db().query_locations();
+    auto location_names = generic_item_names(locations);
+    auto new_str = status().get_user_string_suggestions(location_names);
     db().edit_entry_location(id, new_str);
   } break;
   default:

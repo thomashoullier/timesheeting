@@ -53,24 +53,38 @@ void StopwatchUI::update() {
 }
 
 void StopwatchUI::rename_item() {
-  auto new_str = status().get_user_string();
   auto field_type = stopwatch.get_field_type();
   switch (field_type) {
-  case EntryField::project_name:
+  case EntryField::project_name: {
+    auto projects = db().query_projects_active();
+    auto project_names = generic_item_names(projects);
+    auto new_str = status().get_user_string_suggestions(project_names);
     db().edit_entrystaging_project_name(new_str);
-    break;
-  case EntryField::task_name:
-    db().edit_entrystaging_task_name(new_str);
-    break;
+  } break;
+  case EntryField::task_name: {
+    auto current_entry_staging = db().query_entrystaging();
+    if(current_entry_staging.project_name.has_value()) {
+      auto project_id = db().query_entrystaging_project_id();
+      auto tasks = db().query_tasks_active(project_id);
+      auto task_names = generic_item_names(tasks);
+      auto new_str = status().get_user_string_suggestions(task_names);
+      db().edit_entrystaging_task_name(new_str);
+    }
+  } break;
   case EntryField::start: {
+    auto new_str = status().get_user_string();
     Date new_start_date(new_str);
     db().edit_entrystaging_start(new_start_date);
   } break;
   case EntryField::stop: {
+    auto new_str = status().get_user_string();
     Date new_stop_date(new_str);
     db().edit_entrystaging_stop(new_stop_date);
   } break;
   case EntryField::location_name: {
+    auto locations = db().query_locations_active();
+    auto location_names = generic_item_names(locations);
+    auto new_str = status().get_user_string_suggestions(location_names);
     db().edit_entrystaging_location_name(new_str);
   } break;
   default:

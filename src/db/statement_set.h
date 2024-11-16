@@ -26,6 +26,8 @@ public:
   /** @brief Statement for querying the list of entries over a given date
       range. */
   Statement select_entries;
+  /** @brief Statement to return the project id for an entry. */
+  Statement select_entry_project_id;
   /** @brief Statement for querying the export data for entries. */
   Statement select_export_entries;
   /** @brief Statement for querying the total duration of entries over
@@ -33,6 +35,8 @@ public:
   Statement select_duration;
   /** @brief Statement for querying the entry contained in entrystaging. */
   Statement select_entrystaging;
+  /** @brief Statement for querying the project id in entrystaging. */
+  Statement select_entrystaging_project_id;
   /** @brief Statement for adding a project. */
   Statement insert_project;
   /** @brief Statement for adding a task. */

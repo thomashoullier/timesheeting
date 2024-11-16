@@ -28,6 +28,10 @@ StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
           "WHERE e.start >= ? "
           "AND e.start < ? "
           "ORDER BY e.start ASC;")),
+      select_entry_project_id(db->prepare_statement(
+          "SELECT t.project_id FROM entries e "
+          "INNER JOIN tasks t ON e.task_id = t.id "
+          "WHERE e.id = ?;")),
       select_export_entries(db->prepare_statement(
           "SELECT e.id, p.id, p.name, t.id, t.name, l.id, l.name, "
           "e.start, e.stop "
@@ -49,6 +53,10 @@ StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
           "LEFT JOIN tasks t ON entrystaging.task_id = t.id "
           "LEFT JOIN projects p ON t.project_id = p.id "
           ";")),
+      select_entrystaging_project_id(db->prepare_statement(
+          "SELECT t.project_id "
+          "FROM entrystaging es "
+          "INNER JOIN tasks t ON es.task_id = t.id;")),
       insert_project(db->prepare_statement(
           "INSERT INTO projects (name, active) "
           "VALUES (?, TRUE);")),

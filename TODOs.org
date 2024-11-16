@@ -761,7 +761,8 @@ ADDED: [2024-11-10 Sun]
 Note these are optional. Only those which are present in the configuration
 are loaded. The rest are kept to zero.
 
-*** TODO Implement fuzzy search suggestions
+*** DONE Implement fuzzy search suggestions
+CLOSED: [2024-11-16 Sat 10:28]
 ADDED: [2024-11-10 Sun]
 When typing in the status bar, add the option to provide a set
 of possible choices to choose from. These choices are displayed
@@ -773,9 +774,19 @@ next to the typed text in highlighted format.
 + Places where we want suggestions:
   + Entries screen
     + OK Renaming entry project
-    + Renaming entry task
-    + Renaming entry location
+    + OK Renaming entry task
+    + OK Renaming entry location
   + Stopwatch
-    + Setting the stopwatch project.
-    + Setting the stopwatch task.
-    + Setting the stopwatch location.
+    + OK Setting the stopwatch project.
+    + OK Setting the stopwatch task.
+    + OK Setting the stopwatch location.
+
+*** TODO Renaming task empties the project
+ADDED: [2024-11-16 Sat]
+Currently, when renaming a task in entrystaging, a cancellation will
+empty the project cell. Make it so that it does nothing instead.
+
+*** TODO Suggestion on substrings
+ADDED: [2024-11-16 Sat]
+The suggestion engine prefers matching "Northern Office" rather than
+"Office". We need to prefer the shorter match.

@@ -73,6 +73,13 @@ std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
   return vec;
 }
 
+Id DB_SQLite::query_entry_project_id(Id entry_id) {
+  auto &stmt = statements.select_entry_project_id;
+  stmt.bind_all(entry_id);
+  auto [project_id] = stmt.single_get_all<uint64_t>();
+  return project_id;
+}
+
 std::vector<ExportRow> DB_SQLite::query_export_entries
 (const DateRange &date_range) {
   auto &stmt = statements.select_export_entries;
@@ -134,6 +141,12 @@ EntryStaging DB_SQLite::query_entrystaging() {
     location_name = location_name_ret;
   return EntryStaging{project_name, task_name, start_date, stop_date,
                       location_name};
+}
+
+Id DB_SQLite::query_entrystaging_project_id() {
+  auto &stmt = statements.select_entrystaging_project_id;
+  auto [project_id] = stmt.single_get_all<uint64_t>();
+  return project_id;
 }
 
 void DB_SQLite::create_projects_table() {

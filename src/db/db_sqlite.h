@@ -31,9 +31,11 @@ public:
   std::vector<Location> query_locations();
   std::vector<Location> query_locations_active();
   std::vector<Entry> query_entries(const DateRange &date_range);
+  Id query_entry_project_id(Id entry_id);
   std::vector<ExportRow> query_export_entries(const DateRange &date_range);
   Duration query_entries_duration(const DateRange &date_range);
   EntryStaging query_entrystaging ();
+  Id query_entrystaging_project_id();
   bool add_project(std::string project_name);
   bool add_task(Id project_id, std::string task_name);
   bool add_location(const std::string &location_name);
