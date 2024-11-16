@@ -52,14 +52,19 @@ Date::Date(const std::string &date_str) {
   tp = std::chrono::floor<std::chrono::seconds>(tp_parsed);
 }
 
-std::string Date::to_string () const {
-  std::chrono::zoned_seconds local_time {TimeZone::get().zone, tp};
+std::string Date::to_string() const {
+  std::chrono::zoned_seconds local_time{TimeZone::get().zone, tp};
   return std::format("{:%d%b%Y %H:%M:%S}", local_time);
 }
 
 std::string Date::to_shortstring() const {
-  std::chrono::zoned_seconds local_time {TimeZone::get().zone, tp};
+  std::chrono::zoned_seconds local_time{TimeZone::get().zone, tp};
   return std::format("{:%H:%M}", local_time);
+}
+
+std::string Date::to_fullstring() const {
+  std::chrono::zoned_seconds local_time{TimeZone::get().zone, tp};
+  return std::format("{:%d%b%Y %H:%M:%S %z}", local_time);
 }
 
 uint64_t Date::to_unix_timestamp() const {

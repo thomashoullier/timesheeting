@@ -4,6 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include "../data_objects/date.h"
 
 std::string log_level_string (LogLevel level) {
   switch (level) {
@@ -40,6 +41,9 @@ Logger &Logger::get(const std::filesystem::path &log_filepath,
 }
 
 void Logger::log(const std::string &message, LogLevel level) {
+  if (message.find('\n') < message.length()) {
+    throw std::runtime_error("Log message must fit on a single line.");
+  }
   if (level_is_active(level)) {
     if (!file->good()) {
       throw std::runtime_error("Log file cannot be written to.");
@@ -96,12 +100,8 @@ Logger::Logger(const std::filesystem::path &log_file,
 }
 
 std::string Logger::get_timestamp() {
-  auto date = std::chrono::system_clock::now();
-  auto date_t = std::chrono::system_clock::to_time_t(date);
-  char timeString[std::size("yyyy-mm-dd hh:mm:ss")];
-  std::strftime(std::data(timeString), std::size(timeString), "%F %T",
-                std::localtime(&date_t));
-  return timeString;
+  Date now;
+  return now.to_fullstring();
 }
 
 bool Logger::level_is_active(LogLevel level) {

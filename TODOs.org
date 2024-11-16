@@ -69,6 +69,10 @@ in our location to make it work.
 ADDED: [2024-11-02 Sat]
 
 ** Testing
+*** TODO Put the basic CI in place
+ADDED: [2024-11-16 Sat]
+Check the build only, at first.
+
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]
 We can test the application in an end-to-end fashion with tmux,
@@ -178,8 +182,16 @@ It seems recommended: https://www.sqlite.org/lang_analyze.html
 ADDED: [2024-09-03 Tue]
 Perhaps at least the last SQL db action?
 
+*** TODO Use a date format with timezone in logs.
+ADDED: [2024-11-16 Sat]
+Currently the logs are ambiguous, they show the local time but without
+more indication.
 *** TODO Clean old log entries
 ADDED: [2024-10-26 Sat]
++ Launch it at startup.
+Start from the top of the log file, parse the date into an internal UTC format,
+compare it with startup time, any line which is older than target gets deleted,
+we stop once we reach the first recent enough entry.
 
 *** TODO Catch the fact that a configuration file does not exist
 ADDED: [2024-11-01 Fri]
