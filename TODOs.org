@@ -4,7 +4,7 @@
 #+title: TODO
 
 * Specification
-** TODO Specification items to add in v2
+** TODO Specification items to add in v1.1
 We list the specification items which should be added later.
 + Which day of the week is the first day?
 + First day of the week user configuration?
@@ -83,7 +83,8 @@ We are unsure about whether it does the best thing around DST changes.
 It should get the midnight of the last monday.
 
 ** Ergonomy
-*** TODO Enforce a display order for hierarchy items
+*** DONE Enforce a display order for hierarchy items
+CLOSED: [2024-11-16 Sat 13:35]
 ADDED: [2024-09-03 Tue]
 For instance, the queries for the list of tasks return a different
 order depending on active/archived. Enforce a consistent order between
@@ -104,6 +105,11 @@ empty the project cell. Make it so that it does nothing instead.
 ADDED: [2024-11-16 Sat]
 The suggestion engine prefers matching "Northern Office" rather than
 "Office". We need to prefer the shorter match.
+*** TODO Toggle archive visibility resets the screen
+ADDED: [2024-11-16 Sat]
+Currently, toggling archive visibility resets the whole screen.
+Make it so the selection stays in place.
+
 ** Refactoring
 *** TODO Refactor MenuNCurses
 ADDED: <2024-09-01 Sun>
@@ -159,6 +165,11 @@ cleaner to use some kind of hash from dynamic key to an enum of keys,
 and then match the enums in a switch statement.
 
 ** Features
+*** TODO Implement a check of the DB when opening
+ADDED: [2024-11-16 Sat]
+Check that all tables are indeed present.
+Check the version of the DB.
+
 *** TODO Run pragma optimize on closing sqlite
 ADDED: [2024-09-01 Sun]
 It seems recommended: https://www.sqlite.org/lang_analyze.html

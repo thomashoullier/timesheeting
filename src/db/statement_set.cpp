@@ -2,23 +2,26 @@
 
 StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
     : select_projects(db->prepare_statement(
-          "SELECT id, name FROM projects;")),
+          "SELECT id, name FROM projects ORDER BY name ASC;")),
       select_projects_active(db->prepare_statement(
-          "SELECT id, name FROM projects WHERE active = TRUE;")),
+          "SELECT id, name FROM projects WHERE active = TRUE "
+          "ORDER BY name ASC;")),
       select_tasks(db->prepare_statement(
           "SELECT id, name "
           "FROM tasks "
-          "WHERE project_id = ? ;")),
+          "WHERE project_id = ? "
+          "ORDER BY name ASC;")),
       select_tasks_active(db->prepare_statement(
           "SELECT id, name "
           "FROM tasks "
           "WHERE project_id = ? "
-          "AND active = TRUE;")),
+          "AND active = TRUE "
+          "ORDER BY name ASC;")),
       select_locations(db->prepare_statement(
-          "SELECT id, name FROM locations;")),
+          "SELECT id, name FROM locations ORDER BY name ASC;")),
       select_locations_active(db->prepare_statement(
           "SELECT id, name FROM locations "
-          "WHERE active = TRUE;")),
+          "WHERE active = TRUE ORDER BY name ASC;")),
       select_entries(db->prepare_statement(
           "SELECT e.id, p.name, t.name, e.start, e.stop, l.name "
           "FROM entries e "
