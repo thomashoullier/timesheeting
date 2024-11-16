@@ -4,27 +4,6 @@
 #+title: TODO
 
 * Specification
-** DONE Make the specification into a latex document
-CLOSED: [2024-01-21 Sun 22:12]
-ADDED: <2024-01-20 Sat>
-
-We want to be able to publish signed revisions of it.
-+ OK Add a document reference to it.
-+ OK Add an applicable documents table to it.
-+ OK Number requirements
-+ OK Add rationale for some requirements.
-+ OK Complete the definition list.
-  + OK UI screen
-  + OK save profile?
-+ OK Add list of acronyms
-
-** DONE Publication of PRJ1-SPE1-v1.0
-CLOSED: [2024-01-23 Tue 20:22]
-+ OK Sign the pdf with gpg.
-+ OK Tag the relevant commit.
-+ OK Publish as a release on github.
-+ OK Publish on personal website.
-
 ** TODO Specification items to add in v2
 We list the specification items which should be added later.
 + Which day of the week is the first day?
@@ -44,19 +23,6 @@ We list the specification items which should be added later.
 + Where should the stopwatch be displayed?
 
 * System architecture document
-** DONE Drafting PRJ1-SAD1-v1.0
-CLOSED: [2024-02-11 Sun 10:50]
-ADDED: [2024-01-24 Wed]
-+ Decompose the system into subsystems.
-+ Describe also the build process, interaction with the software distributor,
-  and dependencies.
-+ Don't propose solutions/libraries for implementing the subsystems yet,
-  this is the role of the design document.
-+ Must include a matrix dispatching the requirements to subsystems.
-+ See 'embedded database' for the database subsystem.
-+ Provide justification for the architecture choice, in particular why
-  a web app is not made.
-
 * Subsystem requirements document
 ** PRJ1-SRS1
 Details the requirements applicable to subsystems, as described in the SAD.
@@ -74,19 +40,6 @@ justification/tradeoff.
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema
 * External timesheet format
-** DONE v1.1
-CLOSED: [2024-11-03 Sun 12:11]
-ADDED: [2024-10-30 Wed]
-Additions:
-+ In which order do the entries appear? Probably by ascending start date.
-  + OK IRS1-BDY-090 added
-+ The entry start dates are between the period start date and period stop date.
-  + OK IRS1-BDY-100 added
-+ Add the DB version to the export file header.
-  + IRS1-HED-075, IRS1-HED-085 added
-  + IRS1-HED-150 modified.
-+ Example of compliant file modified.
-
 * Test plan
 Details every tests used to check the software.
 + Include manual GUI tests.
@@ -100,268 +53,8 @@ directly in the project readme.
 + We can do a graphviz of all documentation and software. We can show every version
   and the "Applicable documents" links between them.
 
-** DONE Add a project timeline
-CLOSED: [2024-01-23 Tue 19:59]
-Add to the README a project timeline with the dates of release of the
-documents and software.
-
 * Software
-** DONE Draft the GUI
-CLOSED: [2024-02-18 Sun 17:44]
-Reach a point where every main UI screen is present. Individual dialogs will be
-implemented later.
-+ Main UI with tabs and toolbar.
-+ About dialog
-+ Tabs:
-  + Daily entries
-  + Hierarchy items
-  + Project totals
-  + Weekly report
-  + Export tool
-+ Status:
-  + Stopwatch in use
-  + Save done/in progress/failed
-
-** DEAD Draft the Daily entries screen
-CLOSED: [2024-07-21 Sun 18:51]
-ADDED: [2024-02-28 Wed]
-Implement the gtk objects for presenting the daily entries.
-It is roughly a VBox containing:
-+ Day:
-  + Current selected day display,
-  + Select next/prev
-  + Click on selected day to open calendar dialog and switch.
-+ The total time for the day
-+ The scrollable list of entries with, on each line,
-  + Project name, Task name, start time, duration
-+ The entry addition interface below, with a stopwatch.
-
-*** Table of entries
-See this:
-https://stackoverflow.com/questions/77035908/gtkmm-4-10-scrolled-window-set-adjustments-horizontal-vertical-not-aut
-There is an example from the gtkmm team here:
-https://github.com/GNOME/gtkmm/blob/master/demos/gtk-demo/example_listview_columnview.cc
-
-We should use ColumnView instead of TreeView since
-TreeView is deprecated.
-See
-https://stackoverflow.com/questions/76711050/how-to-create-a-treeview-like-ui-using-columnview-in-gtk4
-https://stackoverflow.com/questions/73145916/how-do-i-use-gtk4s-columnview-to-replace-treeview-in-python
-
-** DEAD Dealing with stopwatch state
-CLOSED: [2024-07-21 Sun 18:51]
-How do we deal with the stopwatch object?
-It needs to live in a given tab, but its state is also displayed in the status
-bar. How do we share a view-only object from the tab to the status bar?
-+ Maybe create the stopwatch object in main, and pass a shared_pointer
-  throughout the object tree towards the "Daily entries" tab and a const
-  shared_pointer to the status bar?
-
-** Fixes
-*** DONE Manage more projects and tasks than one page
-CLOSED: [2024-07-28 Sun 10:35]
-ADDED: [2024-07-27 Sat]
-Currently the window goes blank if we add too many projects.
-OK, we implemented this using menu, and ~set_menu_format~.
-
-** Features
-*** DONE Rename tasks
-CLOSED: [2024-07-28 Sun 15:52]
-- <2024-07-28 Sun> Added the db interface for renaming tasks. Made renaming
-  mostly generic in project_task_table.
-
-*** DONE Add tasks
-CLOSED: [2024-07-28 Sun 16:17]
-- [2024-07-28 Sun] Implemented the adding of tasks in project_task_table.
-
-*** DONE Add a status bar
-CLOSED: [2024-07-29 Mon 22:34]
-The status bar should display the name of the current project or task
-with more characters.
-It will be used to ask for confirmation for deletions, and display
-error messages.
-
-*** DONE Make project and task names UNIQUE
-CLOSED: [2024-07-30 Tue 21:53]
-Do not do anything to the DB in case it is rejected.
-A conflict can happen when:
-+ Adding a new project or task.
-+ Renaming existing project or task.
-
-*** DONE Status bar: message with continue on press any key.
-CLOSED: [2024-07-31 Wed 19:50]
-ADDED: [2024-07-30 Tue]
-Add a status bar interface: error message with a continue on key
-press, to let the user see the message before the program continues.
-
-Display an error message in the status bar when the user tries
-to violate uniqueness.
-
-*** DONE Fix: Handle the case where we have zero projects when starting
-CLOSED: [2024-07-31 Wed 20:47]
-ADDED: [2024-07-30 Tue]
-If we start with an empty DB, the interface just crashes.
-This is probably related to the status bar display of the current
-item in the input loop for ~project_task_table~.
-+ Handled the empty task case by displaying an empty string.
-+ The program still crashes when started with an empty DB.
-  Maybe we can initialize the DB if it is empty?
-  But if the user deletes the last project this would likely crash.
-  + Ok we can now display completely empty project/tasks tables.
-
-*** DONE Fix: the tasks must be unique per project only
-CLOSED: [2024-08-01 Thu 13:02]
-ADDED: [2024-08-01 Thu]
-The tasks are currently set to be globally unique. This is wrong.
-They must be unique per project.
-+ Modify the DB table to enforce this rule.
-+ OK, we modified the table, renaming and adding work as expected.
-
-*** DONE Delete tasks
-CLOSED: [2024-08-01 Thu 20:36]
-Ask confirmation in the status bar.
-
-*** DONE Delete projects
-CLOSED: [2024-08-01 Thu 21:06]
-Also delete all tasks.
-
-*** DONE Fix: Deal with trying to add a task when no project exists.
-CLOSED: [2024-08-02 Fri 19:34]
-ADDED: [2024-08-01 Thu]
-If we start with a completely empty table and we try to add
-a task, the program currently crashes.
-+ [2024-08-02 Fri] OK, caught the ColumnEmpty exception, we do nothing.
-
-*** DONE Feature/Ergonomy: Highlight the currently selected column
-CLOSED: [2024-08-25 Sun 10:43]
-ADDED: [2024-07-31 Wed]
-It is hard to know in which column we are on the project screen.
-It is impossible when the columns are empty.
-+ Perhaps draw a box around the currently selected UI component.
-  Draw the box once we enter the input loop, and remove it once we move
-  out of it.
-
-*** DONE Put the Logger behind an interface class
-CLOSED: [2024-08-02 Fri 20:23]
-ADDED: [2024-08-02 Fri]
-Currently the logger is added without defining its interface first.
-Add the interface class.
-
-*** DONE Use logger globally
-CLOSED: [2024-08-24 Sat 10:11]
-ADDED: [2024-08-02 Fri]
-Find a way to initialize the logger and use it globally without
-passing a handle around to every other object in the program.
-
-*** DONE Initiate the doxygen documentation
-CLOSED: [2024-08-03 Sat 17:39]
-ADDED: [2024-08-01 Thu]
-The goal is to write the documentation for all the important source
-files (esp. interfaces). We need to be able to generate the
-doxygen html pages locally.
-
-*** DONE Deploy the doxygen pages to a github site.
-CLOSED: [2024-08-03 Sat 17:56]
-ADDED: [2024-08-01 Thu]
-Deploy the doxygen pages using a github action.
-See our past projects where we have done this.
-
-*** DONE Create the DB table for entries.
-CLOSED: [2024-08-24 Sat 10:11]
-ADDED: [2024-08-01 Thu]
-Create a DB table for the entries,
-it should contain: id, taskid, start date, stop date, location.
-
-*** DEAD Create panels for entries and projects screens
-CLOSED: [2024-08-24 Sat 21:07]
-ADDED: [2024-08-15 Thu]
-+ See:https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/panels.html
-Example 15.
-+ Putting screens inside of ncurses windows breaks our current abstractions.
-  One way to circumvent this is to have a ncurses top-level UI, which
-  redraws everytime we switch between screens.
-  We could have the individual screen have methods to refresh and clear
-  themselves.
-
-*** DONE Make the logger class singleton grab an implementation of a logger
-CLOSED: [2024-08-24 Sat 12:41]
-ADDED: [2024-08-24 Sat]
-Avoid having to turn every class using a logger into a template on the
-logger type. Make the singleton return an implementation of logger directly.
-We can change the logger type there.
-Also remove the ~logger~ member attributes everywhere, an include should suffice.
-
-*** DONE Create log levels
-CLOSED: [2024-10-13 Sun 09:28]
-ADDED: [2024-08-24 Sat]
-Create log levels and a way to set which ones are active or not.
-Perhaps use an enum to pass which ones should be active or not.
-
-*** DONE Try adding an index to the start column in the entries table
-CLOSED: [2024-08-24 Sat 21:07]
-ADDED: [2024-08-24 Sat]
-We often select entries based on their start date.
-Try measuring the improvement.
-We added an index, we could not see the difference in performance since
-our DB was tiny.
-
-*** DONE Use the status bar to query new names or renames
-CLOSED: [2024-08-25 Sun 17:25]
-ADDED: [2024-08-25 Sun]
-Using the menu themselves is impractical, as the cells are too short.
-
-*** DONE Crop/pad the ncurses menu items to some fixed length
-CLOSED: [2024-08-25 Sun 17:59]
-ADDED: [2024-08-25 Sun]
-The full names must still be displayed in the status bar.
-+ [2024-08-25 Sun] The cropping part now works, but the padding is not taken into
-  account by ncurses when spacing the menu items.
-+ We fixed the padding by creating the string manually.
-
-*** DONE Menus: remove the selection marker
-CLOSED: [2024-08-25 Sun 09:43]
-ADDED: [2024-08-25 Sun]
-The selection marker in ncurses menu is useless since the element is
-already highlighted. It takes up space for nothing. Remove it.
-
-*** DONE Avoid SQL injections
-CLOSED: [2024-08-27 Tue 19:58]
-ADDED: [2024-08-25 Sun]
-Currently there is a possibility to do SQL injections when
-renaming, adding objects etc.
-This is not critical in our application but it should still be
-avoided as it could potentially destroy the DB.
-+ See parameterized queries etc.
- https://www.sqlite.org/c3ref/bind_blob.html
-+ https://stackoverflow.com/questions/75828153/how-can-i-make-sqlite-reuse-a-prepared-statement-like-a-query-plan-cache
-+ We can tell sqlite that these statements are all "persistent" by using
-  the corresponding flag in prepare_v3.
- https://www.sqlite.org/c3ref/c_prepare_normalize.html#sqlitepreparepersistent
-- [2024-08-27 Tue] We converted every statement into a parameterized query.
-
-*** TODO End-to-end testing with tmux
-ADDED: [2024-08-25 Sun]
-We can test the application in an end-to-end fashion with tmux,
-sending characters to the application for performing a planned test scenario.
-Do we need to pace the inputs somehow, in any case a sufficient time between
-inputs should do.
-https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-testing-an-ncurses-application
-
-*** DONE Shorten the date display in menus
-CLOSED: [2024-08-27 Tue 21:23]
-ADDED: [2024-08-26 Mon]
-When displayed in the entries registry and in entrystaging, the dates
-should only read as ~HH:MM~. Do no modify the input mechanism for now,
-still accept full dates only.
-This will make room for a "Location" column.
-
-*** DONE Factoring: create an utility to simplify the management of SQL statements
-CLOSED: [2024-09-28 Sat 15:34]
-ADDED: [2024-08-26 Mon]
-In db_sqlite.cpp, the functions are quite long, and we juggle with many
-statements. Create a statement object for preparing, stepping, finalizing
-the statements automatically. Hold these statements in a container.
-
+** Bugs
 *** TODO Fix date parsing
 ADDED: [2024-08-31 Sat]
 In ~date.h~, constructor from string.
@@ -372,68 +65,24 @@ in our location to make it work.
   abount uninitialized variables when using parse. This is probably
   related to musl.
 
-*** DONE Make the DB a singleton
-CLOSED: [2024-09-14 Sat 15:20]
-ADDED: [2024-09-01 Sun]
-We can do it in the same fashion as logger. A top file selects the db
-implementation.
-This will avoid making the UI classes templates.
+*** TODO Triggering the "export file already exists exception" leaks memory
+ADDED: [2024-11-02 Sat]
 
-*** DONE Make the status bar a singleton
-CLOSED: [2024-09-14 Sat 15:20]
-ADDED: [2024-09-01 Sun]
-We have a single status bar for the whole program. It makes sense
-to share it with a singleton mechanism instead of passing a handle
-down the full hierarchy of ui elements.
+** Testing
+*** TODO End-to-end testing with tmux
+ADDED: [2024-08-25 Sun]
+We can test the application in an end-to-end fashion with tmux,
+sending characters to the application for performing a planned test scenario.
+Do we need to pace the inputs somehow, in any case a sufficient time between
+inputs should do.
+https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-testing-an-ncurses-application
 
-*** TODO Refactor MenuNCurses
-ADDED: <2024-09-01 Sun>
-We can include the status bar display and basic input_loop navigation directly
-in the MenuNCurses class.
-Add the border highlighting there also.
+*** TODO Check the WeekBegin date around DST changes
+ADDED: [2024-09-05 Thu]
+We are unsure about whether it does the best thing around DST changes.
+It should get the midnight of the last monday.
 
-*** DONE Add a total bar to the project totals report
-CLOSED: [2024-09-01 Sun 13:55]
-ADDED: [2024-09-01 Sun]
-Add a total of totals over the same date range on the project totals report
-screen.
-
-*** DONE Implement the ability to archive/restore projects, tasks and locations
-CLOSED: [2024-09-04 Wed 19:45]
-ADDED: [2024-09-01 Sun]
-Add the specified archival capabilities projects, tasks and locations.
-This only affects which items are displayed in the project/task screen,
-and which items can be selected in the stopwatch.
-Maybe implement a constraint in the DB that entrystaging cannot contain
-an archived task or location at all.
-We choose to retain the ability to edit a project or task in the
-entries registry even if it is archived.
-This can be implemented with a flag in the DB, pay attention to the consistency:
-an archived project must also archive all of its tasks. A given project
-can have some tasks archived and some not.
-Implement a show/hide archived items in every Column, and the ability
-to restore/archive there.
-+ [2024-09-03 Tue] In fact, we only need to set an archived flag on a project
-  to not show it on the hierarchy items and not be able to select it
-  in entrystaging. Then if we unarchive it, the tasks automatically
-  come back online, and archived tasks stay archived.
-+ Check that, when we enter a project in entrystaging, the first task
-  which is automatically proposed is not an archived one.
-
-*** TODO Make constructors explicit
-ADDED: [2024-09-01 Sun]
-Through ignorance on our part, we have neglected to set constructors to explicit
-by default. Fix it.
-
-*** TODO Run pragma optimize on closing sqlite
-ADDED: [2024-09-01 Sun]
-It seems recommended: https://www.sqlite.org/lang_analyze.html
-
-*** TODO Mark archived hierarchy items in some way in their own screen
-ADDED: [2024-09-02 Mon]
-+ This requires passing the active flag to the UI.
-+ We can use string_with_face to do this.
-
+** Ergonomy
 *** TODO Enforce a display order for hierarchy items
 ADDED: [2024-09-03 Tue]
 For instance, the queries for the list of tasks return a different
@@ -441,130 +90,31 @@ order depending on active/archived. Enforce a consistent order between
 both. The choice which would make the most sense is to enforce an
 order by Id at the DB level.
 
-*** TODO Consider implementing an undo and redo
-ADDED: [2024-09-03 Tue]
-Perhaps at least the last SQL db action?
+*** TODO Mark archived hierarchy items in some way in their own screen
+ADDED: [2024-09-02 Mon]
++ This requires passing the active flag to the UI.
++ We can use string_with_face to do this.
 
-*** DONE Implement the weekly report
-CLOSED: [2024-09-21 Sat 21:04]
-ADDED: [2024-09-04 Wed]
-+ List of SQLite statements to get all of the information:
-  + Total for the whole week with query_entries_duration()
-  + Total per day with repeated calls to query_entries_duration()
-  + Total per day/week and per project with report_project_totals()
-  + TODO: Total per task for a given day, return the tasks as rows
-    in the statement.
-+ UI elements:
-  + A week selector (like the day selector in the entries table)
-  + A total bar with the weekly total?
-  + A big menu grid with the following columns: task, mon, tue, wed,
-    thu, fri, sat, sun, total
-    It includes the column headers.
-    + The tasks are grouped by project
-    + The total per project and per day is also displayed.
-    + The last line gives the daily totals.
-    + Blanks should be displayed instead of zeros.
-  + The status bar displays the full string for the hovered element.
-+ Create a report struct with sub-struct for every element in the table.
-  Use this struct to interface with the DB. The DB returns the full
-  report struct instead of little pieces.
+*** TODO Renaming task empties the project
+ADDED: [2024-11-16 Sat]
+Currently, when renaming a task in entrystaging, a cancellation will
+empty the project cell. Make it so that it does nothing instead.
 
-*** DONE Check the day selector around DST changes
-CLOSED: [2024-09-05 Thu 19:59]
-ADDED: [2024-09-05 Thu]
-We change the selected day by adding or subtracting one day from the
-date. Are we sure it does the correct thing around a DST change?
-+ We added a log printing the selected date range. The selected days
-  were indeed off by one hour around DST changes.
-+ We fixed it by getting the UTC time point + 1 day, converting
-  to zoned time and rounding to nearest day whenever we shift
-  the dates in the range selected.
+*** TODO Suggestion on substrings
+ADDED: [2024-11-16 Sat]
+The suggestion engine prefers matching "Northern Office" rather than
+"Office". We need to prefer the shorter match.
+** Refactoring
+*** TODO Refactor MenuNCurses
+ADDED: <2024-09-01 Sun>
+We can include the status bar display and basic input_loop navigation directly
+in the MenuNCurses class.
+Add the border highlighting there also.
 
-*** TODO Check the WeekBegin date around DST changes
-ADDED: [2024-09-05 Thu]
-We are unsure about whether it does the best thing around DST changes.
-It should get the midnight of the last monday.
-
-*** DONE Ergonomy: Add the day of the week on the current day display in entries
-CLOSED: [2024-09-22 Sun 18:19]
-ADDED: [2024-09-07 Sat]
-Add the display for the day of the week (eg. ~Mon~) on the entries screen.
-
-*** DONE Make MenuNCurses have variable item width
-CLOSED: [2024-09-08 Sun 11:11]
-ADDED: [2024-09-07 Sat]
-Currently the width of items inside a menu is hard coded. Make it depend
-on the number of columns requested on construction.
-
-*** DONE Adjust the width of ncurses columns
-CLOSED: [2024-09-08 Sun 11:11]
-ADDED: [2024-09-08 Sun]
-Currently the columns have a set width which is too short. Make them occupy
-the screen width.
-
-*** DEAD Center the items display in menus
-CLOSED: [2024-09-14 Sat 09:09]
-ADDED: [2024-09-08 Sun]
-
-*** DONE Refresh the reports whenever entries are updated
-CLOSED: [2024-09-27 Fri 20:35]
-ADDED: [2024-09-08 Sun]
-Refresh the reports when entries are updated. The project totals screen
-and weekly report are concerned.
-Perhaps implement something where the need for update is stored somewhere,
-and we actually update only when the user switches to the report.
-+ We can have an UpdateManager which stores flags for each screen which
-  tell whether a given screen is in need of update or not.
-  When we refresh a screen, we check whether it needs to be updated also
-  and do it.
-  Each screen has a handle to the shared UpdateManager.
-  For simplicity, we can set everything to need updates whenever
-  the DB state is changed with respect to entries or hierarchy items.
-+ The UpdateManager can centralize the management of updates:
-  + It receives a call from UI screen saying that "entries have changed",
-    or "hierarchy items have changed", and then it sets flags on the UIComponents
-    to signal a need to update.
-    The UIComponent have a generic refresh which calls the update if it is
-    needed and set their flag back to zero.
-    Both can be instanciated separately and then "connected" later? See how we
-    both have how the UIComponents signal their changes and the UpdateManager
-    set flags in the UIComponents.
-
-*** DONE Refactor: Use a class for calendar days and weeks
-CLOSED: [2024-09-22 Sun 16:13]
-ADDED: [2024-09-13 Fri]
-We often manipulate a calendar day (entries screen), and weeks (weekly report).
-Convert it to Dates, DateRange etc. as needed.
-
-*** DONE In the weekly report, highlight the project names
-CLOSED: [2024-09-14 Sat 10:20]
-ADDED: [2024-09-14 Sat]
-The projects and tasks are all with the same typeface, this is confusing.
-Make projects stand out more than tasks.
-Maybe use the fact that ncurses menus allow items to be selectable or not
-with a different face?
-+ [2024-09-14 Sat] The project lines are now in bold thanks to being non-selectable
-  in ncurses.
-
-*** DONE Refactor db_sqlite
-CLOSED: [2024-09-21 Sat 18:14]
-ADDED: [2024-09-14 Sat]
-Put the statements away in another class which prepares them and destroys them,
-as well as bind things to them, step them, reset them.
-+ We can get smart with the binding and stepping. These can be variadic somehow
-  to bind or return variables of any types in order.
-  Ideally we want to bind with: ~bind(statement, arg1, arg2, arg3, ...)~
-  and retrieve results with: ~res1, res2, res3 = step(statement)~
-+ It seems this is indeed possible:
-  https://www.murrayc.com/permalink/2015/12/05/modern-c-variadic-template-parameters-and-tuples/
-+ I think we can look for SQLITE_DONE to signal the end of stepping a statement
-  to the user-code in db_sqlite. We can get results until this signal comes up.
-+ Make sure to call reset at the END of processing a statement, not the
-  beginning. We can automatically clean once we reach the end of the stepping
-  in the method which gets the results.
-+ We can factor further the db_sqlite methods which return a list of
-  a generic item through a template. This takes the statement as input,
-  and the type to return, and it is always the same thing in the method body.
+*** TODO Make constructors explicit
+ADDED: [2024-09-01 Sun]
+Through ignorance on our part, we have neglected to set constructors to explicit
+by default. Fix it.
 
 *** TODO Make sure the types are coherent
 ADDED: [2024-09-14 Sat]
@@ -579,61 +129,9 @@ more easily and test them separately. Only extract the parts which are generic.
 + ncurses lib
 + date management objects? (day, week, date, date_range, duration)
 
-*** DONE Implement the configuration file
-CLOSED: [2024-10-16 Wed 20:29]
-ADDED: [2024-09-22 Sun]
-+ Do we really need a configuration file? Couldn't we just provide the
-  configuration as CLI arguments with sensible defaults?
-  + Yes we do need a file, otherwise the CLI becomes unusable.
-Should be a file in a default location like XDG_CONFIG_etc.
-Content is:
-  + OK timezone setting (or system one if not set)
-    + Have a dedicated timezone singleton which is initialized once,
-      and called instead of ~std::chrono::current_zone()~.
-      See ~std::chrono::tzdb::locate_zone~.
-  + OK log level
-  + OK db location
-  + OK log location
-+ Let's use a TOML format. The library tomlplusplus seems OK.
-+ Have an internal singleton loading the configuration only once and
-  then giving it on request using an internel representation.
-
 *** TODO Create namespaces for the libs and different parts of the program
 ADDED: [2024-09-22 Sun]
 Currently everything is in the global namespace, which is bad practice.
-
-*** TODO Remove useless refreshes and updates
-ADDED: [2024-09-27 Fri]
-Monitor closely the refresh() and update() operations and remove the
-useless ones.
-
-*** DONE Github issue with doxygen deployment
-CLOSED: [2024-10-16 Wed 20:25]
-ADDED:[2024-09-27 Fri]
-
-We are hitting this bug: https://github.com/JamesIves/github-pages-deploy-action/issues/1697
-+ [2024-10-16 Wed] This solved itself.
-
-*** DONE Implement the display of durations in days/hours/minutes
-CLOSED: [2024-10-26 Sat 09:58]
-ADDED: [2024-09-28 Sat]
-+ It should be switchable on the fly with an automatic update.
-+ The Duration class could query the current setting in a configuration struct
-held somewhere.
-+ Implement an internal configuration struct first. Maybe another singleton?
-+ We may need a decoupling from Duration, to avoid coupling it with the
-  configuration class? Maybe query the config in the total bar instead? or in a
-  Duration decoupler class?
-+ Maybe set it per duration item, not across the whole program. This simplifies
-  the updates.
-+ Wait a minute, how long is a day of work? We have to set this in a config file
-  somewhere.
-+ Currently the Duration are printed through a ~to_string~ method.
-+ We can have a singleton DurationDisplay which holds:
-  + The duration of a day of work (init from the config),
-  + The current mode for display: day/hour/minute.
-  + A method for producing a string from a duration with the current mode
-    and config.
 
 *** TODO Extract a generic library for the config file
 ADDED: [2024-10-13 Sun]
@@ -641,87 +139,11 @@ There is a generic part to the config file module.
 + Searching for the default location.
 + Expanding tilde.
 
-*** TODO Autocomplete of stopwatch hierarchy items
-ADDED: [2024-10-26 Sat]
-
-*** DONE Add a program version number.
-CLOSED: [2024-10-27 Sun 11:40]
-ADDED: [2024-10-27 Sun]
-
-*** DONE Add a DB version number.
-CLOSED: [2024-10-27 Sun 11:40]
-ADDED: [2024-10-27 Sun]
-This will be useful if we ever make a change to the DB layout,
-and need to manage migrations.
-
-*** DONE Add a CLI interface
-CLOSED: [2024-11-01 Fri 14:57]
-ADDED: [2024-10-26 Sat]
-+ Print the version number. (this is a backup in case the log crashes
-  completely).
-+ Select the config file as argument.
-+ Library to use: TCLAP (MIT license)
-+ Decouple TCLAP from the program by wrapping it in our own library.
-+ The ignore_rest flag is by default in TCLAP, it does not seem
-  possible to remove it.
-
-*** DONE Document the timesheet export format
-CLOSED: [2024-10-27 Sun 10:35]
-ADDED: [2024-10-26 Sat]
-
-+ CSV file extension
-+ UTF-8 encoding
-+ (Human-) readable with the software less
-+ Delimiter is comma
-+ Column list:
-  + Entry id
-  + Project ID
-  + Project name
-  + Task id
-  + Task name
-  + Location id
-  + Location name
-  + Start date
-  + Stop date
-+ Header format: contiguous block of lines at the beginning, with # first
-  character.
-+ Header list:
-  + Exported on: <Date>
-  + Start of the exported period
-  + Stop of the exported period
-+ Header date format.
-+ Entry dates format.
-+ No field may be empty.
-
-*** DONE Add CLI export tool
-CLOSED: [2024-11-02 Sat 15:52]
-ADDED: [2024-10-26 Sat]
-
-*** TODO Clean old log entries
-ADDED: [2024-10-26 Sat]
-
-*** DONE Consider adding the possibility of moving a task to another project.
-CLOSED: [2024-11-03 Sun 10:19]
-ADDED: [2024-10-31 Thu]
-This is a real life need we encounter.
-- [2024-11-03 Sun] OK implemented. No problem, the DB schema allows it perfectly.
-  Error cases are also handled well out of the box.
-
-*** DONE Implement the key bindings in the configuration
-CLOSED: [2024-11-10 Sun 15:44]
-ADDED: [2024-10-31 Thu]
-+ Try avoiding a singleton pattern for this?
-+ How do we deal with the keys which are already in the ncurses library?
-  We may have to implement a key binding system there.
-  We could have all interactive ncurses element take a shared pointer to
-  a table of keys.
-
-*** TODO Catch the fact that a configuration file does not exist
-ADDED: [2024-11-01 Fri]
-We currently get a toml exception which is too cryptic for users.
-
-*** TODO Triggering the "export file already exists exception" leaks memory
-ADDED: [2024-11-02 Sat]
+** Performance
+*** TODO Remove useless refreshes and updates
+ADDED: [2024-09-27 Fri]
+Monitor closely the refresh() and update() operations and remove the
+useless ones.
 
 *** TODO Export the CSV from the DB line by line instead of in-full
 ADDED: [2024-11-02 Sat]
@@ -729,10 +151,28 @@ Our goal is to reduce the memory footprint of the export operation.
 We can do it very easily by having the DB function return
 a std::generator<ExportRow> but we have to wait for GCC14.
 
-*** DONE Bind the cancel key to escape
-CLOSED: [2024-11-10 Sun 15:48]
-ADDED: [2024-11-09 Sat]
-We must use a string sequence for representing escape.
+*** TODO Use a hash function to match key bindings dynamically
+ADDED: [2024-11-10 Sun]
+Currently we are doing an else if table, which is suboptimal.
+This should not matter very much of course, but it is
+cleaner to use some kind of hash from dynamic key to an enum of keys,
+and then match the enums in a switch statement.
+
+** Features
+*** TODO Run pragma optimize on closing sqlite
+ADDED: [2024-09-01 Sun]
+It seems recommended: https://www.sqlite.org/lang_analyze.html
+
+*** TODO Consider implementing an undo and redo
+ADDED: [2024-09-03 Tue]
+Perhaps at least the last SQL db action?
+
+*** TODO Clean old log entries
+ADDED: [2024-10-26 Sat]
+
+*** TODO Catch the fact that a configuration file does not exist
+ADDED: [2024-11-01 Fri]
+We currently get a toml exception which is too cryptic for users.
 
 *** TODO Bind arrow keys to up/down/left/right
 ADDED: [2024-11-09 Sat]
@@ -745,48 +185,8 @@ ADDED: [2024-11-10 Sun]
 Add a set of special keys along with "ESCAPE", such as "ALT", "LSHIFT",
 etc.
 
-*** TODO Use a hash function to match key bindings dynamically
-ADDED: [2024-11-10 Sun]
-Currently we are doing an else if table, which is suboptimal.
-This should not matter very much of course, but it is
-cleaner to use some kind of hash from dynamic key to an enum of keys,
-and then match the enums in a switch statement.
-
-*** DONE Limit string inputs to 80 columns
-CLOSED: [2024-11-10 Sun 15:44]
-ADDED: [2024-11-10 Sun]
-
 *** TODO Implement the alternative key bindings
 ADDED: [2024-11-10 Sun]
 Note these are optional. Only those which are present in the configuration
 are loaded. The rest are kept to zero.
 
-*** DONE Implement fuzzy search suggestions
-CLOSED: [2024-11-16 Sat 10:28]
-ADDED: [2024-11-10 Sun]
-When typing in the status bar, add the option to provide a set
-of possible choices to choose from. These choices are displayed
-next to the typed text in highlighted format.
-+ One choice is displayed at a time. Based on a fuzzy search.
-+ The choice may be selected by tabbing. Immediately selecting it.
-+ See https://github.com/rapidfuzz/rapidfuzz-cpp, available in
-  gentoo, MIT licensed. We probably want partial-token-set-ratio.
-+ Places where we want suggestions:
-  + Entries screen
-    + OK Renaming entry project
-    + OK Renaming entry task
-    + OK Renaming entry location
-  + Stopwatch
-    + OK Setting the stopwatch project.
-    + OK Setting the stopwatch task.
-    + OK Setting the stopwatch location.
-
-*** TODO Renaming task empties the project
-ADDED: [2024-11-16 Sat]
-Currently, when renaming a task in entrystaging, a cancellation will
-empty the project cell. Make it so that it does nothing instead.
-
-*** TODO Suggestion on substrings
-ADDED: [2024-11-16 Sat]
-The suggestion engine prefers matching "Northern Office" rather than
-"Office". We need to prefer the shorter match.
