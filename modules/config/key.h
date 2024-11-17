@@ -3,7 +3,7 @@
 #ifndef KEY_H
 #define KEY_H
 
-namespace keys {
+namespace config {
   struct Key {
     /** @brief Primary key for binding. */
     char primary = 0;
@@ -63,5 +63,6 @@ namespace keys {
     /** @brief Change the project a task is assigned to. */
     Key task_project_change;
   };
-}
+} // namespace config
+
 #endif // KEY_H

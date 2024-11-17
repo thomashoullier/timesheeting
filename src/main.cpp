@@ -6,7 +6,7 @@
 #include "log_lib/logger.h"
 #include "time_lib/time_zone.h"
 #include "ui.h"
-#include "config.h"
+#include "config/config.h"
 #include "version/version.h"
 
 int main(int argc, const char *const *argv) {
