@@ -75,7 +75,9 @@ ADDED: [2024-11-02 Sat]
 *** TODO Put the basic CI in place
 ADDED: [2024-11-16 Sat]
 Check the build only, at first.
-
+*** TODO Test that all the latex documentation builds
+ADDED: [2024-11-16 Sat]
+Check the latex documentation build.
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]
 We can test the application in an end-to-end fashion with tmux,
@@ -140,7 +142,7 @@ Extract generic library modules from the existing codebase, to import them
 more easily and test them separately. Only extract the parts which are generic.
 + sqlite lib
 + ncurses lib
-+ date management objects? (day, week, date, date_range, duration)
++ date management objects? (day, week, date, date_range, duration, timezone)
 
 *** TODO Create namespaces for the libs and different parts of the program
 ADDED: [2024-09-22 Sun]
