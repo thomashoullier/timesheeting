@@ -4,7 +4,7 @@
 #include "db/db_sqlite.h"
 #include "duration_displayer.h"
 #include "logger/logger.h"
-#include "time_zone.h"
+#include "time_lib/time_zone.h"
 #include "ui.h"
 #include "config.h"
 #include "version.h"
@@ -19,7 +19,7 @@ int main(int argc, const char *const *argv) {
     config::ConfigLoader().load(cli_data.config_filepath);
 
   // Initialize the TimeZone.
-  TimeZone::get(config.timezone);
+  time_lib::TimeZone::get(config.timezone);
 
   // Initialize the Logger.
   Logger::get(config.log_filepath, config.log_levels_to_activate);

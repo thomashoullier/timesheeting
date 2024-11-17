@@ -21,7 +21,7 @@ char StopwatchUI::input_loop() {
         rename_item();
         UpdateManager::get().entries_have_changed();
         update();
-      } catch (DateParsingFailure &e) {
+      } catch (time_lib::DateParsingFailure &e) {
         status().print_wait("Failed to parse the date. Do nothing.");
         this->clear();
         this->refresh();
@@ -32,7 +32,7 @@ char StopwatchUI::input_loop() {
     } else if (kb.validate.bound_to(ch)) {
       db().commit_entrystaging();
       UpdateManager::get().entries_have_changed();
-      Date now_start;
+      time_lib::Date now_start;
       db().edit_entrystaging_start(now_start);
       update();
       // Pass the update along by returning the key above.
@@ -73,12 +73,12 @@ void StopwatchUI::rename_item() {
   } break;
   case EntryField::start: {
     auto new_str = status().get_user_string();
-    Date new_start_date(new_str);
+    time_lib::Date new_start_date(new_str);
     db().edit_entrystaging_start(new_start_date);
   } break;
   case EntryField::stop: {
     auto new_str = status().get_user_string();
-    Date new_stop_date(new_str);
+    time_lib::Date new_stop_date(new_str);
     db().edit_entrystaging_stop(new_stop_date);
   } break;
   case EntryField::location_name: {
@@ -97,11 +97,11 @@ void StopwatchUI::set_current_now() {
   auto field_type = stopwatch.get_field_type();
   switch (field_type) {
   case EntryField::start: {
-    Date now_start;
+    time_lib::Date now_start;
     db().edit_entrystaging_start(now_start);
   } break;
   case EntryField::stop: {
-    Date now_stop;
+    time_lib::Date now_stop;
     db().edit_entrystaging_stop(now_stop);
   } break;
   default:

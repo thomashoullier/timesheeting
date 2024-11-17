@@ -1,8 +1,8 @@
 #ifndef DAY_SELECTOR_H
 #define DAY_SELECTOR_H
 
-#include "../../data_objects/date_range.h"
-#include "../../data_objects/day.h"
+#include "time_lib/date_range.h"
+#include "time_lib/day.h"
 #include "../../ncurses/bar_ncurses.h"
 
 /** @brief Bar for selecting a calendar day. */
@@ -10,14 +10,14 @@ class DaySelector : public BarNCurses {
   // TODO: Factorize with WeekSelector with a template on day/week.
 private:
   /** @brief Internal representation of the day. */
-  Day day;
+  time_lib::Day day;
 
 public:
   /** @brief Initialize the day to the current day in local time. */
   DaySelector();
   /** @brief Return the currently selected day as a date range with a resolution
       of 1 second. */
-  DateRange current_range() const;
+  time_lib::DateRange current_range() const;
   /** @brief Select the next day. */
   void select_next_day();
   /** @brief Select the previous day. */

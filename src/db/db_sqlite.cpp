@@ -56,7 +56,8 @@ std::vector<Location> DB_SQLite::query_locations_active() {
   return query_generic_items<Location>(statements.select_locations_active);
 }
 
-std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
+std::vector<Entry> DB_SQLite::query_entries
+    (const time_lib::DateRange &date_range) {
   auto &stmt = statements.select_entries;
   stmt.bind_all(date_range.start.to_unix_timestamp(),
                 date_range.stop.to_unix_timestamp());
@@ -65,8 +66,8 @@ std::vector<Entry> DB_SQLite::query_entries(const DateRange &date_range) {
     auto [id, project_name, task_name, start_unix, stop_unix, location_name] =
       stmt.get_all<RowId, std::string, std::string, uint64_t, uint64_t,
                    std::string>();
-    Date start_date(start_unix);
-    Date stop_date(stop_unix);
+    time_lib::Date start_date(start_unix);
+    time_lib::Date stop_date(stop_unix);
     Entry e{id, project_name, task_name, start_date, stop_date, location_name};
     vec.push_back(e);
   }
@@ -81,7 +82,7 @@ Id DB_SQLite::query_entry_project_id(Id entry_id) {
 }
 
 std::vector<ExportRow> DB_SQLite::query_export_entries
-(const DateRange &date_range) {
+(const time_lib::DateRange &date_range) {
   auto &stmt = statements.select_export_entries;
   stmt.bind_all(date_range.start.to_unix_timestamp(),
                 date_range.stop.to_unix_timestamp());
@@ -92,19 +93,20 @@ std::vector<ExportRow> DB_SQLite::query_export_entries
       stmt.get_all<RowId, RowId, std::string, RowId, std::string, RowId,
                    std::string, uint64_t, uint64_t>();
     ExportRow r{entry_id, project_id, project_name, task_id, task_name,
-                location_id, location_name, Date(start_date_stamp),
-                Date(stop_date_stamp)};
+                location_id, location_name, time_lib::Date(start_date_stamp),
+                time_lib::Date(stop_date_stamp)};
     vec.push_back(r);
   }
   return vec;
 }
 
-Duration DB_SQLite::query_entries_duration(const DateRange &date_range) {
+time_lib::Duration DB_SQLite::query_entries_duration
+    (const time_lib::DateRange &date_range) {
   auto &stmt = statements.select_duration;
   stmt.bind_all(date_range.start.to_unix_timestamp(),
                 date_range.stop.to_unix_timestamp());
   auto [total_seconds] = stmt.single_get_all<uint64_t>();
-  return Duration(total_seconds);
+  return time_lib::Duration(total_seconds);
 }
 
 EntryStaging DB_SQLite::query_entrystaging() {
@@ -124,16 +126,16 @@ EntryStaging DB_SQLite::query_entrystaging() {
     task_name = std::nullopt;
   else
     task_name = task_name_ret;
-  std::optional<Date> start_date;
+  std::optional<time_lib::Date> start_date;
   if (start_unix == 0)
     start_date = std::nullopt;
   else
-    start_date = Date(start_unix);
-  std::optional<Date> stop_date;
+    start_date = time_lib::Date(start_unix);
+  std::optional<time_lib::Date> stop_date;
   if (stop_unix == 0)
     stop_date = std::nullopt;
   else
-    stop_date = Date(stop_unix);
+    stop_date = time_lib::Date(stop_unix);
   std::optional<std::string> location_name;
   if (location_name_ret.empty())
     location_name = std::nullopt;
@@ -301,13 +303,13 @@ bool DB_SQLite::edit_entry_task(Id entry_id, const std::string &new_task_name) {
   return stmt.execute();
 }
 
-bool DB_SQLite::edit_entry_start(Id entry_id, const Date &new_start_date) {
+bool DB_SQLite::edit_entry_start(Id entry_id, const time_lib::Date &new_start_date) {
   auto &stmt = statements.update_entry_start;
   stmt.bind_all(new_start_date.to_unix_timestamp(), entry_id);
   return stmt.execute();
 }
 
-bool DB_SQLite::edit_entry_stop(Id entry_id, const Date &new_stop_date) {
+bool DB_SQLite::edit_entry_stop(Id entry_id, const time_lib::Date &new_stop_date) {
   auto &stmt = statements.update_entry_stop;
   stmt.bind_all(new_stop_date.to_unix_timestamp(), entry_id);
   return stmt.execute();
@@ -333,13 +335,13 @@ bool DB_SQLite::edit_entrystaging_task_name(const std::string &new_task_name) {
   return stmt.execute();
 }
 
-bool DB_SQLite::edit_entrystaging_start(const Date &new_start) {
+bool DB_SQLite::edit_entrystaging_start(const time_lib::Date &new_start) {
   auto &stmt = statements.update_entrystaging_start;
   stmt.bind_all(new_start.to_unix_timestamp());
   return stmt.execute();
 }
 
-bool DB_SQLite::edit_entrystaging_stop(const Date &new_stop) {
+bool DB_SQLite::edit_entrystaging_stop(const time_lib::Date &new_stop) {
   auto &stmt = statements.update_entrystaging_stop;
   stmt.bind_all(new_stop.to_unix_timestamp());
   return stmt.execute();
@@ -381,39 +383,39 @@ bool DB_SQLite::commit_entrystaging(){
 }
 
 std::vector<ProjectTotal>
-DB_SQLite::report_project_totals(const DateRange &date_range) {
+DB_SQLite::report_project_totals(const time_lib::DateRange &date_range) {
   auto &stmt = statements.sum_duration_per_project;
   stmt.bind_all(date_range.start.to_unix_timestamp(),
                 date_range.stop.to_unix_timestamp());
   std::vector<ProjectTotal> totals;
   while (stmt.step()) {
     auto [project_name, seconds] = stmt.get_all<std::string, uint64_t>();
-    totals.push_back(ProjectTotal{project_name, Duration(seconds)});
+    totals.push_back(ProjectTotal{project_name, time_lib::Duration(seconds)});
   }
   return totals;
 }
 
-Duration DB_SQLite::report_project_duration(Id project_id,
-                                            const DateRange &date_range) {
+time_lib::Duration DB_SQLite::report_project_duration
+    (Id project_id, const time_lib::DateRange &date_range) {
   auto &stmt = statements.project_duration;
   stmt.bind_all(project_id,
                 date_range.start.to_unix_timestamp(),
                 date_range.stop.to_unix_timestamp());
   auto [seconds] = stmt.single_get_all<uint64_t>();
-  return Duration(seconds);
+  return time_lib::Duration(seconds);
 }
 
-Duration DB_SQLite::report_task_duration(Id task_id,
-                                         const DateRange &date_range) {
+time_lib::Duration DB_SQLite::report_task_duration
+    (Id task_id, const time_lib::DateRange &date_range) {
   auto &stmt = statements.task_duration;
   stmt.bind_all(task_id,
                 date_range.start.to_unix_timestamp(),
                 date_range.stop.to_unix_timestamp());
   auto [seconds] = stmt.single_get_all<uint64_t>();
-  return Duration(seconds);
+  return time_lib::Duration(seconds);
 }
 
-WeeklyTotals DB_SQLite::report_weekly_totals(const Week &week) {
+WeeklyTotals DB_SQLite::report_weekly_totals(const time_lib::Week &week) {
   logger().log("report_weekly_totals for week over date range: " +
                week.to_date_range().start.to_string() + " ; " +
                week.to_date_range().stop.to_string(),
@@ -437,7 +439,7 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Week &week) {
     auto [project_id, project_name, seconds] =
       stmt_per_project.get_all<RowId, std::string, uint64_t>();
     per_project_totals.project_name = project_name;
-    per_project_totals.total = Duration(seconds);
+    per_project_totals.total = time_lib::Duration(seconds);
     // Daily totals for the current project (by project_id)
     i = 0;
     for (const auto &day : week.days()) {
@@ -454,7 +456,7 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const Week &week) {
       auto [task_id, task_name, seconds] =
         stmt_per_task.get_all<RowId, std::string, uint64_t>();
       per_task_totals.task_name = task_name;
-      per_task_totals.total = Duration(seconds);
+      per_task_totals.total = time_lib::Duration(seconds);
       // Daily totals for the current task.
       i = 0;
       for (const auto &day : week.days()) {

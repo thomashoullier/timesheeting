@@ -3,13 +3,13 @@
 #ifndef DB_SQLITE_H
 #define DB_SQLITE_H
 
-#include "../data_objects/date_range.h"
-#include "../data_objects/duration.h"
+#include "time_lib/date_range.h"
+#include "time_lib/duration.h"
 #include "../data_objects/entry.h"
 #include "../data_objects/entry_staging.h"
 #include "../data_objects/generic_item.h"
 #include "../data_objects/project_total.h"
-#include "../data_objects/week.h"
+#include "time_lib/week.h"
 #include "../data_objects/weekly_totals.h"
 #include "../data_objects/export_row.h"
 #include "db_sqlite_handle.h"
@@ -30,10 +30,12 @@ public:
   std::vector<Task> query_tasks_active(Id project_id);
   std::vector<Location> query_locations();
   std::vector<Location> query_locations_active();
-  std::vector<Entry> query_entries(const DateRange &date_range);
+  std::vector<Entry> query_entries(const time_lib::DateRange &date_range);
   Id query_entry_project_id(Id entry_id);
-  std::vector<ExportRow> query_export_entries(const DateRange &date_range);
-  Duration query_entries_duration(const DateRange &date_range);
+  std::vector<ExportRow> query_export_entries
+    (const time_lib::DateRange &date_range);
+  time_lib::Duration query_entries_duration
+    (const time_lib::DateRange &date_range);
   EntryStaging query_entrystaging ();
   Id query_entrystaging_project_id();
   bool add_project(std::string project_name);
@@ -50,22 +52,23 @@ public:
   bool edit_entry_project(Id entry_id,
                           const std::string &new_project_name);
   bool edit_entry_task(Id entry_id, const std::string &new_task_name);
-  bool edit_entry_start(Id entry_id, const Date &new_start_date);
-  bool edit_entry_stop(Id entry_id, const Date &new_stop_date);
+  bool edit_entry_start(Id entry_id, const time_lib::Date &new_start_date);
+  bool edit_entry_stop(Id entry_id, const time_lib::Date &new_stop_date);
   bool edit_entry_location(Id entry_id,
                            const std::string &new_location_name);
   bool edit_entrystaging_project_name (const std::string &new_project_name);
   bool edit_entrystaging_task_name(const std::string &new_task_name);
-  bool edit_entrystaging_start(const Date &new_start);
-  bool edit_entrystaging_stop(const Date &new_stop);
+  bool edit_entrystaging_start(const time_lib::Date &new_start);
+  bool edit_entrystaging_stop(const time_lib::Date &new_stop);
   bool edit_entrystaging_location_name (const std::string &new_location_name);
   bool delete_task(Id task_id);
   bool delete_project(Id project_id);
   bool delete_location (Id location_id);
   bool delete_entry(Id entry_id);
   bool commit_entrystaging();
-  std::vector<ProjectTotal> report_project_totals(const DateRange &date_range);
-  WeeklyTotals report_weekly_totals (const Week &week);
+  std::vector<ProjectTotal> report_project_totals
+    (const time_lib::DateRange &date_range);
+  WeeklyTotals report_weekly_totals (const time_lib::Week &week);
 
 private:
   /** @brief Open the DB handle. */
@@ -90,9 +93,11 @@ private:
   /** @brief Create the SQL table for entrystaging. */
   void create_entrystaging_table();
   /** @brief Sum duration for a given project over a given date range. */
-  Duration report_project_duration (Id project_id, const DateRange &date_range);
+  time_lib::Duration report_project_duration
+    (Id project_id, const time_lib::DateRange &date_range);
   /** @brief Sum duration for a given task over a given date range. */
-  Duration report_task_duration (Id task_id, const DateRange &date_range);
+  time_lib::Duration report_task_duration
+    (Id task_id, const time_lib::DateRange &date_range);
   /** @brief Query template for GenericItems. */
   template <typename T,
             typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>

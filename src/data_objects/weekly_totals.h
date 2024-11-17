@@ -1,7 +1,7 @@
 #ifndef WEEKLY_TOTALS_H
 #define WEEKLY_TOTALS_H
 
-#include "duration.h"
+#include "time_lib/duration.h"
 #include "../ncurses/string_with_face.h"
 #include <array>
 #include <string>
@@ -12,9 +12,9 @@ struct PerTaskTotals {
   /** @brief Name of the task. */
   std::string task_name;
   /** @brief Weekly total of duration worked on this task. */
-  Duration total;
+  time_lib::Duration total;
   /** @brief Daily breakdown of the total. */
-  std::array<Duration, 7> daily_totals;
+  std::array<time_lib::Duration, 7> daily_totals;
 };
 
 /** @brief Report of totals for a given project. */
@@ -22,9 +22,9 @@ struct PerProjectTotals {
   /** @brief Name of the project. */
   std::string project_name;
   /** @brief Weekly total of duration worked for the project. */
-  Duration total;
+  time_lib::Duration total;
   /** @brief Daily breakdown of the total, all tasks included. */
-  std::array<Duration, 7> daily_totals;
+  std::array<time_lib::Duration, 7> daily_totals;
   /** @brief Set of per-task totals. */
   std::vector<PerTaskTotals> task_totals;
 };
@@ -33,9 +33,9 @@ struct PerProjectTotals {
     DB and the UI. */
 struct WeeklyTotals {
   /** @brief Total duration worked during the week, on any task. */
-  Duration total;
+  time_lib::Duration total;
   /** @brief Total duration worked per day of the week, on any task. */
-  std::array<Duration, 7> daily_totals;
+  std::array<time_lib::Duration, 7> daily_totals;
   /** @brief Set of report per project, including task breakdown. */
   std::vector<PerProjectTotals> project_totals;
 

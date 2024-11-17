@@ -1,7 +1,7 @@
 #ifndef DURATION_DISPLAYER_H
 #define DURATION_DISPLAYER_H
 
-#include "data_objects/duration.h"
+#include "time_lib/duration.h"
 
 /** @brief Singleton for formatting duration according to varied formats. */
 class DurationDisplayer {
@@ -12,10 +12,10 @@ public:
   void cycle_format();
   /** @brief Get a string representation of a Duration in the current
              display format. */
-  std::string to_string(const Duration &dur);
+  std::string to_string(const time_lib::Duration &dur);
   /** @brief Get a short string representation of a Duration in the current
              display format. */
-  std::string to_shortstring(const Duration &dur);
+  std::string to_shortstring(const time_lib::Duration &dur);
 
 private:
   enum class DurationFormat { hours, days, seconds };

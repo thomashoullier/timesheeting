@@ -3,14 +3,14 @@
 #ifndef PROJECT_TOTAL_H
 #define PROJECT_TOTAL_H
 
-#include "duration.h"
+#include "time_lib/duration.h"
 #include <string>
 #include <vector>
 
 /** @brief Struct holding a total worked time for a given project. */
 struct ProjectTotal {
   std::string project_name;
-  Duration total;
+  time_lib::Duration total;
 
   std::vector<std::string> to_strings () const;
 };

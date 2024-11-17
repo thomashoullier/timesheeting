@@ -1,8 +1,8 @@
 #include "csv_exporter.h"
-#include "data_objects/date.h"
-#include "data_objects/date_range.h"
+#include "time_lib/date.h"
+#include "time_lib/date_range.h"
 #include "db/db_sqlite.h"
-#include "time_zone.h"
+#include "time_lib/time_zone.h"
 #include "version.h"
 #include <filesystem>
 #include <fstream>
@@ -13,8 +13,8 @@
 CSVExporter::CSVExporter(const std::string &beg_date_str,
                          const std::string &end_date_str,
                          const std::filesystem::path &export_filepath) {
-  Date beg_date(beg_date_str);
-  Date end_date(end_date_str);
+  time_lib::Date beg_date(beg_date_str);
+  time_lib::Date end_date(end_date_str);
 
   // Errors
   if (beg_date > end_date)
@@ -34,10 +34,11 @@ CSVExporter::CSVExporter(const std::string &beg_date_str,
   }
 
   // Write header
-  *export_file << "# Export date: " << Date().to_string() << std::endl
+  *export_file << "# Export date: " << time_lib::Date().to_string() << std::endl
                << "# Export start date: " << beg_date.to_string() << std::endl
                << "# Export stop date: " << end_date.to_string() << std::endl
-               << "# Header timezone: " << TimeZone::get().name() << std::endl
+               << "# Header timezone: " << time_lib::TimeZone::get().name()
+               << std::endl
                << "# timesheeting version: "
                << version::TIMESHEETING_VERSION << std::endl
                << "# timesheeting DB version: "
@@ -48,7 +49,7 @@ CSVExporter::CSVExporter(const std::string &beg_date_str,
   *export_file <<
     "Entry ID, Project ID, Project name, Task ID, Task name, Location ID, "
     "Location name, Start date, Stop date" << std::endl;
-  DateRange period(beg_date, end_date);
+  time_lib::DateRange period(beg_date, end_date);
   auto full_register = db().query_export_entries(period);
   for (const auto &row : full_register) {
     *export_file << row.to_csv() << std::endl;

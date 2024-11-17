@@ -2,7 +2,7 @@
 #define EXPORT_ROW_H
 
 #include "id.h"
-#include "date.h"
+#include "time_lib/date.h"
 #include <string>
 
 /** @brief Struct for holding a row in the entry export registry. */
@@ -14,8 +14,8 @@ struct ExportRow {
   std::string task_name;
   Id location_id;
   std::string location_name;
-  Date start_date;
-  Date stop_date;
+  time_lib::Date start_date;
+  time_lib::Date stop_date;
 
   /** @brief Export the row to a CSV format. */
   std::string to_csv () const;

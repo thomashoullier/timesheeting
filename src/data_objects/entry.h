@@ -1,7 +1,7 @@
 #ifndef ENTRY_H
 #define ENTRY_H
 
-#include "date.h"
+#include "time_lib/date.h"
 #include "id.h"
 
 /** @brief Timesheet entry object. */
@@ -13,9 +13,9 @@ struct Entry {
   /** @brief Task name associated to the entry. */
   std::string task_name;
   /** @brief Start date of the entry. */
-  Date start;
+  time_lib::Date start;
   /** @brief Stop date of the entry. */
-  Date stop;
+  time_lib::Date stop;
   /** @brief Location of the entry. */
   std::string location_name;
 

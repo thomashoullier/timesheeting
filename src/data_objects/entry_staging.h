@@ -4,7 +4,7 @@
 #include <optional>
 #include <string>
 #include <vector>
-#include "date.h"
+#include "time_lib/date.h"
 
 /** @brief Entry as it is being staged.
 
@@ -15,9 +15,9 @@ struct EntryStaging {
   /** @brief Task name associated to the entry in staging. */
   std::optional<std::string> task_name;
   /** @brief Start date of the entry in staging. */
-  std::optional<Date> start;
+  std::optional<time_lib::Date> start;
   /** @brief Stop date of the entry in staging. */
-  std::optional<Date> stop;
+  std::optional<time_lib::Date> stop;
   /** @brief Location of the entry in staging. */
   std::optional<std::string> location_name;
 

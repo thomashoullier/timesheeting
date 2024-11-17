@@ -23,10 +23,18 @@ include_directories(BEFORE /usr/include/tclap)
 
 find_package(rapidfuzz REQUIRED)
 
+# Individual modules/libraries
+file(GLOB_RECURSE TIME_LIB_SRC "${TIMESHEETING_DIR}/libs/time_lib/*.cpp")
+add_library(time_lib STATIC "${TIME_LIB_SRC}")
+target_include_directories(time_lib PUBLIC
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/libs>")
+
 # Main
 add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp"
   "${TIMESHEETING_SRC}")
-target_link_libraries(timesheeting_main ${CURSES_LIBRARIES} ${MENU_LIBRARY}
+target_link_libraries(timesheeting_main
+                      time_lib
+                      ${CURSES_LIBRARIES} ${MENU_LIBRARY}
                       ${SQLite3_LIBRARIES} tomlplusplus::tomlplusplus
                       rapidfuzz::rapidfuzz)
 set_target_properties(timesheeting_main PROPERTIES COMPILE_FLAGS

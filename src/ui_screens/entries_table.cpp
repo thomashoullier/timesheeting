@@ -32,7 +32,7 @@ char EntriesTable::input_loop() {
         rename_item();
         update();
         UpdateManager::get().entries_have_changed();
-      } catch (DateParsingFailure &e) {
+      } catch (time_lib::DateParsingFailure &e) {
         status().print_wait("Failed to parse the date. Do nothing.");
         this->clear();
         this->refresh();
@@ -104,12 +104,12 @@ void EntriesTable::rename_item() {
   } break;
   case EntryField::start: {
     auto new_str = status().get_user_string();
-    Date new_start_date(new_str);
+    time_lib::Date new_start_date(new_str);
     db().edit_entry_start(id, new_start_date);
   } break;
   case EntryField::stop: {
     auto new_str = status().get_user_string();
-    Date new_stop_date(new_str);
+    time_lib::Date new_stop_date(new_str);
     db().edit_entry_stop(id, new_stop_date);
   } break;
   case EntryField::location_name: {

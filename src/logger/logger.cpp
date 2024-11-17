@@ -4,7 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
-#include "../data_objects/date.h"
+#include "time_lib/date.h"
 
 std::string log_level_string (LogLevel level) {
   switch (level) {
@@ -100,7 +100,7 @@ Logger::Logger(const std::filesystem::path &log_file,
 }
 
 std::string Logger::get_timestamp() {
-  Date now;
+  time_lib::Date now;
   return now.to_fullstring();
 }
 

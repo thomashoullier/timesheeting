@@ -22,7 +22,7 @@ void DurationDisplayer::cycle_format() {
   }
 }
 
-std::string DurationDisplayer::to_string(const Duration &dur) {
+std::string DurationDisplayer::to_string(const time_lib::Duration &dur) {
   switch (current_format) {
   case DurationFormat::hours:
     return dur.to_hour_string();
@@ -38,7 +38,7 @@ std::string DurationDisplayer::to_string(const Duration &dur) {
   }
 }
 
-std::string DurationDisplayer::to_shortstring(const Duration &dur) {
+std::string DurationDisplayer::to_shortstring(const time_lib::Duration &dur) {
   switch (current_format) {
   case DurationFormat::hours:
     return dur.to_hour_shortstring();

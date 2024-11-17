@@ -8,7 +8,7 @@ void DaySelector::refresh() {
   BarNCurses::print(day.to_string());
 }
 
-DateRange DaySelector::current_range() const {
+time_lib::DateRange DaySelector::current_range() const {
   return day.to_date_range();
 }
 
