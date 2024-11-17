@@ -1,5 +1,5 @@
 #include "db_sqlite.h"
-#include "db_sqlite_handle.h"
+#include "db_lib/db_sqlite_handle.h"
 #include <cstdint>
 #include <optional>
 #include <string>
@@ -12,8 +12,8 @@ DB_SQLite &DB_SQLite::get(const std::filesystem::path &db_filepath) {
 }
 
 DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
-    : sqlite_db(std::make_shared<DB_SQLite_Handle>(db_file)),
-      statements{init_db()} {
+  : sqlite_db(std::make_shared<db_lib::DB_SQLite_Handle>(db_file)),
+    statements{init_db()} {
   sqlite_db->check_user_version(version::TIMESHEETING_DB_VERSION);
   Logger::get().log("Loaded DB v"
                     + std::to_string(sqlite_db->get_user_version()),
@@ -64,7 +64,7 @@ std::vector<Entry> DB_SQLite::query_entries
   std::vector<Entry> vec;
   while (stmt.step()) {
     auto [id, project_name, task_name, start_unix, stop_unix, location_name] =
-      stmt.get_all<RowId, std::string, std::string, uint64_t, uint64_t,
+      stmt.get_all<db_lib::RowId, std::string, std::string, uint64_t, uint64_t,
                    std::string>();
     time_lib::Date start_date(start_unix);
     time_lib::Date stop_date(stop_unix);
@@ -90,7 +90,7 @@ std::vector<ExportRow> DB_SQLite::query_export_entries
   while (stmt.step()) {
     auto [entry_id, project_id, project_name, task_id, task_name, location_id,
           location_name, start_date_stamp, stop_date_stamp] =
-      stmt.get_all<RowId, RowId, std::string, RowId, std::string, RowId,
+      stmt.get_all<db_lib::RowId, db_lib::RowId, std::string, db_lib::RowId, std::string, db_lib::RowId,
                    std::string, uint64_t, uint64_t>();
     ExportRow r{entry_id, project_id, project_name, task_id, task_name,
                 location_id, location_name, time_lib::Date(start_date_stamp),
@@ -437,7 +437,7 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const time_lib::Week &week) {
   while(stmt_per_project.step()) {
     PerProjectTotals per_project_totals;
     auto [project_id, project_name, seconds] =
-      stmt_per_project.get_all<RowId, std::string, uint64_t>();
+      stmt_per_project.get_all<db_lib::RowId, std::string, uint64_t>();
     per_project_totals.project_name = project_name;
     per_project_totals.total = time_lib::Duration(seconds);
     // Daily totals for the current project (by project_id)
@@ -454,7 +454,7 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const time_lib::Week &week) {
     while (stmt_per_task.step()) {
       PerTaskTotals per_task_totals;
       auto [task_id, task_name, seconds] =
-        stmt_per_task.get_all<RowId, std::string, uint64_t>();
+        stmt_per_task.get_all<db_lib::RowId, std::string, uint64_t>();
       per_task_totals.task_name = task_name;
       per_task_totals.total = time_lib::Duration(seconds);
       // Daily totals for the current task.

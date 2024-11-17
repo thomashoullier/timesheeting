@@ -12,7 +12,7 @@
 #include "time_lib/week.h"
 #include "../data_objects/weekly_totals.h"
 #include "../data_objects/export_row.h"
-#include "db_sqlite_handle.h"
+#include "db_lib/db_sqlite_handle.h"
 #include "statement_set.h"
 #include <filesystem>
 #include <string>
@@ -76,7 +76,7 @@ private:
   /** @brief Initialize the DB and provide the ready statement set. */
   StatementSet init_db();
   /** @brief Low-level handle to the DB. */
-  std::shared_ptr<DB_SQLite_Handle> sqlite_db;
+  std::shared_ptr<db_lib::DB_SQLite_Handle> sqlite_db;
   /** @brief Set of all used SQLite statements. */
   StatementSet statements;
 
@@ -101,14 +101,14 @@ private:
   /** @brief Query template for GenericItems. */
   template <typename T,
             typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>
-  std::vector<T> query_generic_items(Statement &statement);
+  std::vector<T> query_generic_items(db_lib::Statement &statement);
 };
 
 template <typename T, class>
-std::vector<T> DB_SQLite::query_generic_items(Statement &statement) {
+std::vector<T> DB_SQLite::query_generic_items(db_lib::Statement &statement) {
   std::vector<T> items;
   while (statement.step()) {
-    auto [id, name] = statement.get_all<RowId, std::string>();
+    auto [id, name] = statement.get_all<db_lib::RowId, std::string>();
     items.push_back(T{id, name});
   }
   return items;

@@ -1,6 +1,6 @@
 #include "statement_set.h"
 
-StatementSet::StatementSet(std::shared_ptr<DB_SQLite_Handle> db)
+StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)
     : select_projects(db->prepare_statement(
           "SELECT id, name FROM projects ORDER BY name ASC;")),
       select_projects_active(db->prepare_statement(
