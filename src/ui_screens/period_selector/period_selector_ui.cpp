@@ -1,6 +1,6 @@
 #include "period_selector_ui.h"
 #include "period_selector_ncurses.h"
-#include "../../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
 
 PeriodSelectorUI::PeriodSelectorUI ()
@@ -13,7 +13,7 @@ char PeriodSelectorUI::input_loop() {
   while (true) {
     status().print(period_selector.get_current_item_string());
     auto ch = period_selector.get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.left.bound_to(ch)) {
       period_selector.select_left_item();
     } else if (kb.right.bound_to(ch)) {

@@ -1,7 +1,7 @@
 #include "weekly_report_screen.h"
 #include "../db/db_sqlite.h"
 #include "log_lib/logger.h"
-#include "../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 
 WeeklyReportScreen::WeeklyReportScreen()
   : week_selector{},
@@ -10,7 +10,7 @@ WeeklyReportScreen::WeeklyReportScreen()
 char WeeklyReportScreen::input_loop() {
   while (true) {
     auto ch = reg.input_loop();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.previous.bound_to(ch)) {
       week_selector.select_previous_week();
       update();

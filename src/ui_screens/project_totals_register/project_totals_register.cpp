@@ -1,5 +1,5 @@
 #include "project_totals_register.h"
-#include "../../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
 
 ProjectTotalsRegister::ProjectTotalsRegister
@@ -27,7 +27,7 @@ char ProjectTotalsRegister::input_loop() {
   while (true) {
     status().print(this->get_current_item_string());
     auto ch = this->get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.down.bound_to(ch)) {
       this->select_down_item();
     } else if (kb.up.bound_to(ch)) {

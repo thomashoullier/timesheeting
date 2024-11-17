@@ -2,7 +2,7 @@
 #include "entries_table.h"
 #include "stopwatch/stopwatch_ui.h"
 #include "log_lib/logger.h"
-#include "../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 
 EntriesScreen::EntriesScreen()
     : stopwatch_ui(std::make_unique<StopwatchUI>()),
@@ -12,7 +12,7 @@ char EntriesScreen::input_loop() {
   UIComponent *cur_focus{entries_table.get()};
   while (true) {
     auto ch = cur_focus->input_loop();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.subtabs.bound_to(ch)) {
       cur_focus = (cur_focus == stopwatch_ui.get()) ? entries_table.get()
                                                     : stopwatch_ui.get();

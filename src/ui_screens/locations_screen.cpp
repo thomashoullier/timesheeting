@@ -3,7 +3,7 @@
 #include "../db/db_sqlite.h"
 #include "log_lib/logger.h"
 #include "update_manager.h"
-#include "../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 
 LocationsScreen::LocationsScreen()
     : location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
@@ -25,7 +25,7 @@ char LocationsScreen::input_loop() {
   while (true) {
     status().print(location_col->get_current_item_string());
     auto ch = location_col->get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.down.bound_to(ch)) {
       location_col->select_down_item();
     } else if (kb.up.bound_to(ch)) {

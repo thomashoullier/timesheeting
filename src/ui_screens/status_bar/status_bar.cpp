@@ -1,7 +1,7 @@
 #include "status_bar.h"
 #include "suggestion.h"
 #include <algorithm>
-#include "../../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 
 StatusBarNCurses &StatusBarNCurses::get() {
   static StatusBarNCurses instance;
@@ -37,7 +37,7 @@ std::string StatusBarNCurses::get_user_string() {
   bool user_wants_to_input = true;
   while (user_wants_to_input) {
     auto ch = this->get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.validate.bound_to(ch)) {
       user_wants_to_input = false;
     } else if (kb.cancel.bound_to(ch)) {
@@ -68,7 +68,7 @@ std::string StatusBarNCurses::get_user_string_suggestions
   std::string best_match {};
   while (user_wants_to_input) {
     auto ch = this->get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.validate.bound_to(ch)) {
       user_wants_to_input = false;
     } else if (kb.cancel.bound_to(ch)) {

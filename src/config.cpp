@@ -79,9 +79,9 @@ namespace config {
     return strings;
   }
 
-  KeyBindings ConfigLoader::parse_bindings
+  keys::KeyBindings ConfigLoader::parse_bindings
   (const toml::node_view<toml::node> &keys_node) {
-    KeyBindings kb;
+    keys::KeyBindings kb;
     kb.up.primary = parse_key(keys_node["up"]);
     kb.down.primary = parse_key(keys_node["down"]);
     kb.left.primary = parse_key(keys_node["left"]);

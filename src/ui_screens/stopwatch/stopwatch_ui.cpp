@@ -2,7 +2,7 @@
 #include "../../db/db_sqlite.h"
 #include "../status_bar/status_bar.h"
 #include "../update_manager.h"
-#include "../../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 
 StopwatchUI::StopwatchUI() : stopwatch(db().query_entrystaging()) {};
 
@@ -11,7 +11,7 @@ char StopwatchUI::input_loop() {
   while (true) {
     status().print(stopwatch.get_current_item_string());
     auto ch = stopwatch.get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.left.bound_to(ch)) {
       stopwatch.select_left_item();
     } else if (kb.right.bound_to(ch)) {

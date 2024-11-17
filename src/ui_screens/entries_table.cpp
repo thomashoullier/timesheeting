@@ -3,7 +3,7 @@
 #include "status_bar/status_bar.h"
 #include "log_lib/logger.h"
 #include "update_manager.h"
-#include "../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 
 EntriesTable::EntriesTable()
   : day_selector(),
@@ -15,7 +15,7 @@ char EntriesTable::input_loop() {
   while (true) {
     status().print(reg.get_current_item_string());
     auto ch = reg.get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.down.bound_to(ch)) {
       reg.select_down_item();
     } else if (kb.up.bound_to(ch)) {

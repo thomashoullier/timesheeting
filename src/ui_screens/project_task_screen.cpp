@@ -4,7 +4,7 @@
 #include "log_lib/logger.h"
 #include "update_manager.h"
 #include <stdexcept>
-#include "../bound_keys.h"
+#include "ui/keys/bound_keys.h"
 
 ProjectTaskScreen::ProjectTaskScreen()
     : project_col(std::make_unique<Column<Project>>(std::vector<Project>(),
@@ -33,7 +33,7 @@ char ProjectTaskScreen::input_loop() {
   while (true) {
     status().print(cur_col->get_current_item_string());
     auto ch = cur_col->get_input();
-    auto kb = BoundKeys::get().kb;
+    auto kb = keys::BoundKeys::get().kb;
     if (kb.down.bound_to(ch)) {
       cur_col->select_down_item();
       if (cur_col == project_col.get()) {
