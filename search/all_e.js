@@ -1,19 +1,9 @@
 var searchData=
 [
   ['task_5fcol_0',['task_col',['../classProjectTaskScreen.html#a13922cab6e51c02c4dccccf864e1876a',1,'ProjectTaskScreen']]],
-  ['task_5fduration_1',['task_duration',['../classStatementSet.html#a0b96202f9437b64089a60ea573dc4c04',1,'StatementSet']]],
-  ['task_5fname_2',['task_name',['../structPerTaskTotals.html#a8ae17b86b9616433588b723473585b50',1,'PerTaskTotals']]],
-  ['task_5ftotals_3',['task_totals',['../structPerProjectTotals.html#a20d2bd9a0de5be5283ec33bb13f1650a',1,'PerProjectTotals']]],
-  ['to_5fcsv_4',['to_csv',['../structExportRow.html#a07adda0851a362f734166be5c32dcc10',1,'ExportRow']]],
-  ['to_5fshortstrings_5',['to_shortstrings',['../structWeeklyTotals.html#a1300ce946a8f3d2d4d4a0a1f3dbd9341',1,'WeeklyTotals']]],
-  ['to_5fstrings_6',['to_strings',['../structWeeklyTotals.html#a34de4fccb74097b3bb767ed7d1cacacf',1,'WeeklyTotals']]],
-  ['toggle_5factive_5fitem_7',['toggle_active_item',['../classLocationsScreen.html#a3437202b2e741b3bad65ff84e0804261',1,'LocationsScreen::toggle_active_item()'],['../classProjectTaskScreen.html#a6a33ce80858e501f30955170e93599b2',1,'ProjectTaskScreen::toggle_active_item()']]],
-  ['toggle_5farchive_5fvisibility_8',['toggle_archive_visibility',['../classLocationsScreen.html#acbe7ac4d6567de4537a861d1d6b23172',1,'LocationsScreen::toggle_archive_visibility()'],['../classProjectTaskScreen.html#a2ed7b3379fe98ce4c03159ad548cf5bf',1,'ProjectTaskScreen::toggle_archive_visibility()']]],
-  ['toggle_5flocation_5fflag_9',['toggle_location_flag',['../classStatementSet.html#a8839d05dc01c72a50b1c75423db29155',1,'StatementSet']]],
-  ['toggle_5fproject_5fflag_10',['toggle_project_flag',['../classStatementSet.html#af9455aac2dc9cd35399d9ca06735a9eb',1,'StatementSet']]],
-  ['toggle_5ftask_5fflag_11',['toggle_task_flag',['../classStatementSet.html#a8c3187cb6566920698220457a8ed3e6a',1,'StatementSet']]],
-  ['total_12',['total',['../structWeeklyTotals.html#ad21ae69aa199cb5c3368f2494d0689fb',1,'WeeklyTotals::total()'],['../structPerProjectTotals.html#a0d68e91184ec0b2396ae3c1168e8d8f2',1,'PerProjectTotals::total()'],['../structPerTaskTotals.html#a5fd4e712849c91a0c85cc1a423a98c9e',1,'PerTaskTotals::total()']]],
-  ['total_5fbar_13',['total_bar',['../classEntriesTable.html#ad2fffb76190392e9e971e5a6bebbbf20',1,'EntriesTable']]],
-  ['total_5fbar_2eh_14',['total_bar.h',['../total__bar_8h.html',1,'']]],
-  ['totalbar_15',['TotalBar',['../classTotalBar.html',1,'TotalBar'],['../classTotalBar.html#a6a8bf23d746d223556d04591719f40ac',1,'TotalBar::TotalBar()']]]
+  ['toggle_5factive_5fitem_1',['toggle_active_item',['../classLocationsScreen.html#a3437202b2e741b3bad65ff84e0804261',1,'LocationsScreen::toggle_active_item()'],['../classProjectTaskScreen.html#a6a33ce80858e501f30955170e93599b2',1,'ProjectTaskScreen::toggle_active_item()']]],
+  ['toggle_5farchive_5fvisibility_2',['toggle_archive_visibility',['../classLocationsScreen.html#acbe7ac4d6567de4537a861d1d6b23172',1,'LocationsScreen::toggle_archive_visibility()'],['../classProjectTaskScreen.html#a2ed7b3379fe98ce4c03159ad548cf5bf',1,'ProjectTaskScreen::toggle_archive_visibility()']]],
+  ['total_5fbar_3',['total_bar',['../classEntriesTable.html#ad2fffb76190392e9e971e5a6bebbbf20',1,'EntriesTable']]],
+  ['total_5fbar_2eh_4',['total_bar.h',['../total__bar_8h.html',1,'']]],
+  ['totalbar_5',['TotalBar',['../classTotalBar.html',1,'TotalBar'],['../classTotalBar.html#a6a8bf23d746d223556d04591719f40ac',1,'TotalBar::TotalBar()']]]
 ];

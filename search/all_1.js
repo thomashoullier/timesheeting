@@ -11,13 +11,7 @@ var searchData=
   ['column_5fbase_2eh_8',['column_base.h',['../column__base_8h.html',1,'']]],
   ['columnbase_9',['ColumnBase',['../classColumnBase.html',1,'']]],
   ['configloader_10',['ConfigLoader',['../classconfig_1_1ConfigLoader.html',1,'config']]],
-  ['create_5fentries_5fstart_5findex_11',['create_entries_start_index',['../classDB__SQLite.html#a641db1f1a499da5581e73634ea005928',1,'DB_SQLite']]],
-  ['create_5fentries_5ftable_12',['create_entries_table',['../classDB__SQLite.html#a130c13f83de9dc6e6e071df84e6fd93b',1,'DB_SQLite']]],
-  ['create_5fentrystaging_5ftable_13',['create_entrystaging_table',['../classDB__SQLite.html#a8e5bdd16c96fd8f1c88a633700ca3c2c',1,'DB_SQLite']]],
-  ['create_5flocations_5ftable_14',['create_locations_table',['../classDB__SQLite.html#a6300e0c6621be64e06713088c3fff689',1,'DB_SQLite']]],
-  ['create_5fprojects_5ftable_15',['create_projects_table',['../classDB__SQLite.html#a5152b53ae8dd9d5edc54ccc9b9220d28',1,'DB_SQLite']]],
-  ['create_5ftasks_5ftable_16',['create_tasks_table',['../classDB__SQLite.html#a3116dedb5003b1fd6d0c3a8f5af4db90',1,'DB_SQLite']]],
-  ['csvexporter_17',['CSVExporter',['../classCSVExporter.html',1,'CSVExporter'],['../classCSVExporter.html#a141b06dbf247aff0928d8d9f3c26675d',1,'CSVExporter::CSVExporter()']]],
-  ['current_5frange_18',['current_range',['../classDaySelector.html#af79ae5a1cc71da6bfe6674455bd483b4',1,'DaySelector::current_range()'],['../classWeekSelector.html#af047717cf77cc34965999a0bfaae848d',1,'WeekSelector::current_range() const']]],
-  ['current_5fweek_19',['current_week',['../classWeekSelector.html#aa9f61f38339d4fc5502b0ea4ae9d880a',1,'WeekSelector']]]
+  ['csvexporter_11',['CSVExporter',['../classCSVExporter.html',1,'CSVExporter'],['../classCSVExporter.html#a141b06dbf247aff0928d8d9f3c26675d',1,'CSVExporter::CSVExporter()']]],
+  ['current_5frange_12',['current_range',['../classDaySelector.html#af79ae5a1cc71da6bfe6674455bd483b4',1,'DaySelector::current_range()'],['../classWeekSelector.html#af047717cf77cc34965999a0bfaae848d',1,'WeekSelector::current_range() const']]],
+  ['current_5fweek_13',['current_week',['../classWeekSelector.html#aa9f61f38339d4fc5502b0ea4ae9d880a',1,'WeekSelector']]]
 ];

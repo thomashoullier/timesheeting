@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['project_5ftask_5fscreen_2eh_0',['project_task_screen.h',['../project__task__screen_8h.html',1,'']]]
+  ['register_5fncurses_2eh_0',['register_ncurses.h',['../register__ncurses_8h.html',1,'']]]
 ];

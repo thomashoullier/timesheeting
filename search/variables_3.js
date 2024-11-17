@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['insert_5fentrystaging_0',['insert_entrystaging',['../classStatementSet.html#a3e4961bddcb11d07a1d976b28ad97eed',1,'StatementSet']]],
-  ['insert_5flocation_1',['insert_location',['../classStatementSet.html#a63c20f66ceb1f66bf004ea62a948de6f',1,'StatementSet']]],
-  ['insert_5fproject_2',['insert_project',['../classStatementSet.html#a91d659c6981959290a556260507262ed',1,'StatementSet']]],
-  ['insert_5ftask_3',['insert_task',['../classStatementSet.html#a1f0cd1f8566c3b31af1d3dde2f4a8af6',1,'StatementSet']]]
+  ['location_5fcol_0',['location_col',['../classLocationsScreen.html#acdda57c08a45507859a76aff260dd2c3',1,'LocationsScreen']]],
+  ['locations_5fscreen_1',['locations_screen',['../classUI.html#a81892b1b3a69aca9a3ecb81b1bedc9b6',1,'UI::locations_screen()'],['../classUpdateManager.html#a4a0a330e33cf16212e45622df2a7669f',1,'UpdateManager::locations_screen()']]]
 ];

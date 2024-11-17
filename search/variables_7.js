@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['reg_0',['reg',['../classEntriesTable.html#a92a703039818f6756031bc9cb2b7713e',1,'EntriesTable::reg()'],['../classWeeklyReportScreen.html#a946c504d307267b978d475c696d4f0fe',1,'WeeklyReportScreen::reg()']]],
-  ['remove_5fentry_1',['remove_entry',['../classStatementSet.html#ab61ff98f9acac3a6070017035895e97a',1,'StatementSet']]],
-  ['remove_5flocation_2',['remove_location',['../classStatementSet.html#a48b1b96698edc8f6a80618e5f50bb0bd',1,'StatementSet']]],
-  ['remove_5fproject_3',['remove_project',['../classStatementSet.html#a6120e891bfeca8353f070d72bba532b5',1,'StatementSet']]],
-  ['remove_5ftask_4',['remove_task',['../classStatementSet.html#a96763f15bd40d2034b990130f259cdeb',1,'StatementSet']]]
+  ['show_5fonly_5factive_0',['show_only_active',['../classLocationsScreen.html#a530e0563ad04e5e96f5f63a2058dee89',1,'LocationsScreen::show_only_active()'],['../classProjectTaskScreen.html#ad2eb59ea49f8786aaff56d21d6b9bb86',1,'ProjectTaskScreen::show_only_active()']]],
+  ['stopwatch_1',['stopwatch',['../classStopwatchUI.html#af63374d8c7eff44bb3b5375302ef2034',1,'StopwatchUI']]],
+  ['stopwatch_5fui_2',['stopwatch_ui',['../classEntriesScreen.html#a06ab8ff41b146d50ed6f943e7355371f',1,'EntriesScreen']]]
 ];
