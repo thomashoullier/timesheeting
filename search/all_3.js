@@ -7,6 +7,5 @@ var searchData=
   ['entries_5ftable_2eh_4',['entries_table.h',['../entries__table_8h.html',1,'']]],
   ['entriesscreen_5',['EntriesScreen',['../classEntriesScreen.html',1,'EntriesScreen'],['../classEntriesScreen.html#a80d8c952d24b4e6242a74a13fed795fd',1,'EntriesScreen::EntriesScreen()']]],
   ['entriestable_6',['EntriesTable',['../classEntriesTable.html',1,'EntriesTable'],['../classEntriesTable.html#ae10068c0071ce36d977deb118ae3c309',1,'EntriesTable::EntriesTable()']]],
-  ['entry_5fstaging_7',['entry_staging',['../classStopwatchNcurses.html#a3a9871bf9889c53cdb0a16388856b26f',1,'StopwatchNcurses']]],
-  ['expand_5ftilde_8',['expand_tilde',['../classconfig_1_1ConfigLoader.html#a62db837fa8f317a62199cce53f0bf79d',1,'config::ConfigLoader']]]
+  ['entry_5fstaging_7',['entry_staging',['../classStopwatchNcurses.html#a3a9871bf9889c53cdb0a16388856b26f',1,'StopwatchNcurses']]]
 ];

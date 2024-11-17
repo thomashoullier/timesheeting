@@ -1,24 +1,4 @@
 var searchData=
 [
-  ['parse_5fbindings_0',['parse_bindings',['../classconfig_1_1ConfigLoader.html#a31a55774215fbf4b2bac7ebb0d76db99',1,'config::ConfigLoader']]],
-  ['parse_5ffilepath_1',['parse_filepath',['../classconfig_1_1ConfigLoader.html#a7eb1d128d49d3d17b5d82bb27b6e1819',1,'config::ConfigLoader']]],
-  ['parse_5ffloat_2',['parse_float',['../classconfig_1_1ConfigLoader.html#a6f049579dd46f57dcb8f58784d2c7b8c',1,'config::ConfigLoader']]],
-  ['parse_5fkey_3',['parse_key',['../classconfig_1_1ConfigLoader.html#a96229ce61b4d7e9a02d2b4f7248e58ef',1,'config::ConfigLoader']]],
-  ['parse_5fstring_4',['parse_string',['../classconfig_1_1ConfigLoader.html#a04950c23db02bd2d97ea8df79303f096',1,'config::ConfigLoader']]],
-  ['parse_5fstringvec_5',['parse_stringvec',['../classconfig_1_1ConfigLoader.html#aabf58d809a1655e7aaa9f15be6862e33',1,'config::ConfigLoader']]],
-  ['period_6',['period',['../classPeriodSelectorNCurses.html#a3ecd9c57d6207f1d4a7b4ad2f4577ca1',1,'PeriodSelectorNCurses']]],
-  ['period_5fselector_7',['period_selector',['../classPeriodSelectorUI.html#a658cdd400c495e6fdcbd56d0871d6d6e',1,'PeriodSelectorUI']]],
-  ['periodfield_8',['PeriodField',['../classPeriodSelectorNCurses.html#a818afe54e0a2e6ecba66a8d794f73744',1,'PeriodSelectorNCurses']]],
-  ['periodselectorncurses_9',['PeriodSelectorNCurses',['../classPeriodSelectorNCurses.html',1,'PeriodSelectorNCurses'],['../classPeriodSelectorNCurses.html#a1d3c2b305a3b2ca07aa0119fac51e2d6',1,'PeriodSelectorNCurses::PeriodSelectorNCurses()']]],
-  ['periodselectorui_10',['PeriodSelectorUI',['../classPeriodSelectorUI.html',1,'PeriodSelectorUI'],['../classPeriodSelectorUI.html#a98479cf20360f2b8a718d77b4d316dba',1,'PeriodSelectorUI::PeriodSelectorUI()']]],
-  ['print_11',['print',['../classStatusBarNCurses.html#a923297a6713a78610d55df0006a3bbf4',1,'StatusBarNCurses']]],
-  ['print_5fwait_12',['print_wait',['../classStatusBarNCurses.html#aa1bb31e0eeba417c9fa84945e55ef7f7',1,'StatusBarNCurses']]],
-  ['project_5fcol_13',['project_col',['../classProjectTaskScreen.html#ab4e37ae246a5d102e24bc61786fbd6c5',1,'ProjectTaskScreen']]],
-  ['project_5freport_5fscreen_14',['project_report_screen',['../classUI.html#a56b3be91a2af3506a3dc58db2c63119b',1,'UI::project_report_screen()'],['../classUpdateManager.html#ac797c014b7ac73b3f138aac605bdf956',1,'UpdateManager::project_report_screen()']]],
-  ['project_5ftask_5fscreen_2eh_15',['project_task_screen.h',['../project__task__screen_8h.html',1,'']]],
-  ['projectreportscreen_16',['ProjectReportScreen',['../classProjectReportScreen.html',1,'']]],
-  ['projects_5fscreen_17',['projects_screen',['../classUI.html#acae2507c138b68df1b972162aab63dfd',1,'UI::projects_screen()'],['../classUpdateManager.html#a57312a2cad02a0f7a5b1b7929ff2feb8',1,'UpdateManager::projects_screen()']]],
-  ['projects_5ftasks_5fhave_5fchanged_18',['projects_tasks_have_changed',['../classUpdateManager.html#ae247402a813c9ac91aecfa014e883620',1,'UpdateManager']]],
-  ['projecttaskscreen_19',['ProjectTaskScreen',['../classProjectTaskScreen.html',1,'ProjectTaskScreen'],['../classProjectTaskScreen.html#a4702613fc64c6fb251cca49781b9cda0',1,'ProjectTaskScreen::ProjectTaskScreen()']]],
-  ['projecttotalsregister_20',['ProjectTotalsRegister',['../classProjectTotalsRegister.html',1,'ProjectTotalsRegister'],['../classProjectTotalsRegister.html#a30844eae8f28efb5435bfdc8817a4684',1,'ProjectTotalsRegister::ProjectTotalsRegister()']]]
+  ['query_5fconfirmation_0',['query_confirmation',['../classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d',1,'StatusBarNCurses']]]
 ];
