@@ -1,5 +1,5 @@
 #include "entries_table.h"
-#include "../db/db_sqlite.h"
+#include "db/db_sqlite.h"
 #include "status_bar/status_bar.h"
 #include "log_lib/logger.h"
 #include "update_manager.h"
@@ -7,8 +7,8 @@
 
 EntriesTable::EntriesTable()
   : day_selector(),
-    total_bar(db().query_entries_duration(day_selector.current_range())),
-    reg(db().query_entries(day_selector.current_range())) {}
+    total_bar(db::db().query_entries_duration(day_selector.current_range())),
+    reg(db::db().query_entries(day_selector.current_range())) {}
 
 char EntriesTable::input_loop() {
   reg.set_border();
@@ -47,7 +47,7 @@ char EntriesTable::input_loop() {
       day_selector.refresh();
       // TODO: superfluous update?
       total_bar
-        .update(db().query_entries_duration(day_selector.current_range()));
+        .update(db::db().query_entries_duration(day_selector.current_range()));
     } else if (kb.previous.bound_to(ch)) {
       day_selector.select_previous_day();
       auto log_dates = day_selector.current_range().to_string();
@@ -76,10 +76,11 @@ void EntriesTable::clear() {
 }
 
 void EntriesTable::update() {
-  auto entry_items = db().query_entries(day_selector.current_range());
+  auto entry_items = db::db().query_entries(day_selector.current_range());
   reg.set_items(entry_items);
   reg.refresh();
-  total_bar.update(db().query_entries_duration(day_selector.current_range()));
+  total_bar.update(db::db().query_entries_duration
+                   (day_selector.current_range()));
   total_bar.refresh();
 }
 
@@ -89,34 +90,34 @@ void EntriesTable::rename_item() {
   auto field_type = reg.get_field_type();
   switch (field_type) {
   case EntryField::project_name: {
-    auto projects = db().query_projects();
+    auto projects = db::db().query_projects();
     auto project_names = generic_item_names(projects);
     auto new_str = status().get_user_string_suggestions(project_names);
-    db().edit_entry_project(id, new_str);
+    db::db().edit_entry_project(id, new_str);
     break;
   }
   case EntryField::task_name: {
-    auto project_id = db().query_entry_project_id(id);
-    auto tasks = db().query_tasks(project_id);
+    auto project_id = db::db().query_entry_project_id(id);
+    auto tasks = db::db().query_tasks(project_id);
     auto task_names = generic_item_names(tasks);
     auto new_str = status().get_user_string_suggestions(task_names);
-    db().edit_entry_task(id, new_str);
+    db::db().edit_entry_task(id, new_str);
   } break;
   case EntryField::start: {
     auto new_str = status().get_user_string();
     time_lib::Date new_start_date(new_str);
-    db().edit_entry_start(id, new_start_date);
+    db::db().edit_entry_start(id, new_start_date);
   } break;
   case EntryField::stop: {
     auto new_str = status().get_user_string();
     time_lib::Date new_stop_date(new_str);
-    db().edit_entry_stop(id, new_stop_date);
+    db::db().edit_entry_stop(id, new_stop_date);
   } break;
   case EntryField::location_name: {
-    auto locations = db().query_locations();
+    auto locations = db::db().query_locations();
     auto location_names = generic_item_names(locations);
     auto new_str = status().get_user_string_suggestions(location_names);
-    db().edit_entry_location(id, new_str);
+    db::db().edit_entry_location(id, new_str);
   } break;
   default:
     throw std::logic_error(
@@ -130,6 +131,6 @@ void EntriesTable::remove_item() {
     return;
   }
   auto id = reg.get_current_id();
-  db().delete_entry(id);
+  db::db().delete_entry(id);
   update();
 }

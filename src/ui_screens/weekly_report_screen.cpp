@@ -1,11 +1,11 @@
 #include "weekly_report_screen.h"
-#include "../db/db_sqlite.h"
+#include "db/db_sqlite.h"
 #include "log_lib/logger.h"
 #include "ui/keys/bound_keys.h"
 
 WeeklyReportScreen::WeeklyReportScreen()
   : week_selector{},
-    reg(db().report_weekly_totals(week_selector.current_week())) {};
+    reg(db::db().report_weekly_totals(week_selector.current_week())) {};
 
 char WeeklyReportScreen::input_loop() {
   while (true) {
@@ -38,7 +38,8 @@ void WeeklyReportScreen::clear() {
 void WeeklyReportScreen::update() {
   log_lib::logger().log("WeeklyReportScreen update.",
                         log_lib::LogLevel::debug);
-  auto week_report = db().report_weekly_totals(week_selector.current_week());
+  auto week_report =
+    db::db().report_weekly_totals(week_selector.current_week());
   reg.set_items(week_report);
   needs_update = false;
   this->refresh();

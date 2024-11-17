@@ -1,5 +1,5 @@
 #include "cli.h"
-#include "version.h"
+#include "version/version.h"
 
 namespace cli {
   CLIData parse(int argc, const char *const *argv) {

@@ -1,5 +1,6 @@
 #include "statement_set.h"
 
+namespace db {
 StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)
     : select_projects(db->prepare_statement(
           "SELECT id, name FROM projects ORDER BY name ASC;")),
@@ -201,3 +202,4 @@ StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)
          "GROUP BY tasks.name " // TODO: group by id?
          "HAVING SUM(entries.stop - entries.start) > 0;"))
          {}
+}

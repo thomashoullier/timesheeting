@@ -3,7 +3,7 @@
 #include "time_lib/date_range.h"
 #include "db/db_sqlite.h"
 #include "time_lib/time_zone.h"
-#include "version.h"
+#include "version/version.h"
 #include <filesystem>
 #include <fstream>
 #include <memory>
@@ -50,7 +50,7 @@ CSVExporter::CSVExporter(const std::string &beg_date_str,
     "Entry ID, Project ID, Project name, Task ID, Task name, Location ID, "
     "Location name, Start date, Stop date" << std::endl;
   time_lib::DateRange period(beg_date, end_date);
-  auto full_register = db().query_export_entries(period);
+  auto full_register = db::db().query_export_entries(period);
   for (const auto &row : full_register) {
     *export_file << row.to_csv() << std::endl;
   }

@@ -1,6 +1,6 @@
 #include "locations_screen.h"
 #include "status_bar/status_bar.h"
-#include "../db/db_sqlite.h"
+#include "db/db_sqlite.h"
 #include "log_lib/logger.h"
 #include "update_manager.h"
 #include "ui/keys/bound_keys.h"
@@ -59,9 +59,9 @@ char LocationsScreen::input_loop() {
 void LocationsScreen::update_location_col() {
   std::vector<core::Location> location_items;
   if (show_only_active)
-    location_items = db().query_locations_active();
+    location_items = db::db().query_locations_active();
   else
-    location_items = db().query_locations();
+    location_items = db::db().query_locations();
   location_col->set_items(location_items);
   location_col->refresh();
 }
@@ -70,7 +70,7 @@ bool LocationsScreen::add_item() {
   auto new_item_name = status().get_user_string();
   if (new_item_name.empty())
     return true;
-  auto success = db().add_location(new_item_name);
+  auto success = db::db().add_location(new_item_name);
   log_lib::logger().log("Added location: " + new_item_name,
                         log_lib::LogLevel::info);
   update_location_col();
@@ -83,7 +83,7 @@ bool LocationsScreen::rename_item() {
     auto new_item_name = status().get_user_string();
     if (new_item_name.empty())
       return true;
-    auto success = db().edit_location_name(id, new_item_name);
+    auto success = db::db().edit_location_name(id, new_item_name);
     update_location_col();
     return success;
   } catch (ncurses_lib::MenuEmpty &e) {
@@ -99,7 +99,7 @@ void LocationsScreen::remove_item() {
     bool user_conf = status().query_confirmation("Remove item? (Y/N)");
     if (!user_conf)
       return;
-    db().delete_location(id);
+    db::db().delete_location(id);
     update_location_col();
   } catch (ncurses_lib::MenuEmpty &e) {
     return;
@@ -109,7 +109,7 @@ void LocationsScreen::remove_item() {
 void LocationsScreen::toggle_active_item() {
   try {
     auto id = location_col->get_current_id();
-    db().toggle_location_active(id);
+    db::db().toggle_location_active(id);
     update_location_col();
   } catch (ncurses_lib::MenuEmpty &e) {
     return;

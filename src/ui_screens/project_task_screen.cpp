@@ -1,5 +1,5 @@
 #include "project_task_screen.h"
-#include "../db/db_sqlite.h"
+#include "db/db_sqlite.h"
 #include "status_bar/status_bar.h"
 #include "log_lib/logger.h"
 #include "update_manager.h"
@@ -96,9 +96,9 @@ void ProjectTaskScreen::update_task_col() {
     core::Id cur_project = project_col->get_current_id();
     std::vector<core::Task> task_items;
     if (show_only_active)
-      task_items = db().query_tasks_active(cur_project);
+      task_items = db::db().query_tasks_active(cur_project);
     else
-      task_items = db().query_tasks(cur_project);
+      task_items = db::db().query_tasks(cur_project);
     task_col->set_items(task_items);
     task_col->refresh();
   } catch (ncurses_lib::MenuEmpty &e) {
@@ -109,9 +109,9 @@ void ProjectTaskScreen::update_task_col() {
 void ProjectTaskScreen::update_project_col() {
   std::vector<core::Project> project_items;
   if (show_only_active)
-    project_items = db().query_projects_active();
+    project_items = db::db().query_projects_active();
   else
-    project_items = db().query_projects();
+    project_items = db::db().query_projects();
   project_col->set_items(project_items);
   project_col->refresh();
 }
@@ -122,7 +122,7 @@ bool ProjectTaskScreen::add_item(ColumnBase *cur_col) {
   if (new_item_name.empty())
     return true;
   if (cur_col == project_col.get()) {
-    auto success = db().add_project(new_item_name);
+    auto success = db::db().add_project(new_item_name);
     log_lib::logger().log("Added project: " + new_item_name,
                           log_lib::LogLevel::info);
     update_project_col();
@@ -130,7 +130,7 @@ bool ProjectTaskScreen::add_item(ColumnBase *cur_col) {
   } else if (cur_col == task_col.get()) {
     try {
       auto project_id = project_col->get_current_id();
-      auto success = db().add_task(project_id, new_item_name);
+      auto success = db::db().add_task(project_id, new_item_name);
       log_lib::logger().log("Added task: " + new_item_name,
                             log_lib::LogLevel::info);
       update_task_col();
@@ -148,11 +148,11 @@ bool ProjectTaskScreen::rename_item(ColumnBase *cur_col) {
     auto new_item_name = status().get_user_string();
     if (!new_item_name.empty()) {
       if (cur_col == project_col.get()) {
-        auto success = db().edit_project_name(id, new_item_name);
+        auto success = db::db().edit_project_name(id, new_item_name);
         update_project_col();
         return success;
       } else if (cur_col == task_col.get()) {
-        auto success = db().edit_task_name(id, new_item_name);
+        auto success = db::db().edit_task_name(id, new_item_name);
         update_task_col();
         return success;
       }
@@ -172,7 +172,7 @@ bool ProjectTaskScreen::change_task_project(ColumnBase *cur_col) {
     auto id = cur_col->get_current_id();
     auto new_project_name = status().get_user_string();
     if (!new_project_name.empty()) {
-      auto success = db().edit_task_project(id, new_project_name);
+      auto success = db::db().edit_task_project(id, new_project_name);
       update_task_col();
       return success;
     }
@@ -190,10 +190,10 @@ void ProjectTaskScreen::remove_item(ColumnBase *cur_col) {
       return;
     }
     if (cur_col == task_col.get()) {
-      db().delete_task(id);
+      db::db().delete_task(id);
       update_task_col();
     } else if (cur_col == project_col.get()) {
-      db().delete_project(id);
+      db::db().delete_project(id);
       update_project_col();
       update_task_col();
     }
@@ -206,10 +206,10 @@ void ProjectTaskScreen::toggle_active_item(ColumnBase *cur_col) {
   try {
     auto id = cur_col->get_current_id();
     if (cur_col == task_col.get()) {
-      db().toggle_task_active(id);
+      db::db().toggle_task_active(id);
       update_task_col();
     } else if (cur_col == project_col.get()) {
-      db().toggle_project_active(id);
+      db::db().toggle_project_active(id);
       update_project_col();
       update_task_col();
     }

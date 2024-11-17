@@ -7,7 +7,7 @@
 #include "time_lib/time_zone.h"
 #include "ui.h"
 #include "config.h"
-#include "version.h"
+#include "version/version.h"
 
 int main(int argc, const char *const *argv) {
   // CLI
@@ -30,7 +30,7 @@ int main(int argc, const char *const *argv) {
         log_lib::LogLevel::info);
 
   // Initialize the DB.
-  DB_SQLite::get(config.db_filepath);
+  db::DB_SQLite::get(config.db_filepath);
 
   // Initialize the key bindings.
   keys::BoundKeys::get(&config.bindings);
