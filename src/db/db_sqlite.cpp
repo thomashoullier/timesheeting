@@ -416,12 +416,13 @@ time_lib::Duration DB_SQLite::report_task_duration
   return time_lib::Duration(seconds);
 }
 
-WeeklyTotals DB_SQLite::report_weekly_totals(const time_lib::Week &week) {
+core::WeeklyTotals DB_SQLite::report_weekly_totals
+    (const time_lib::Week &week) {
   log_lib::logger().log("report_weekly_totals for week over date range: " +
                         week.to_date_range().start.to_string() + " ; " +
                         week.to_date_range().stop.to_string(),
                         log_lib::LogLevel::debug);
-  WeeklyTotals totals;
+  core::WeeklyTotals totals;
   // Overall weekly total
   totals.total = query_entries_duration(week.to_date_range());
   // Daily totals
@@ -436,7 +437,7 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const time_lib::Week &week) {
   stmt_per_project.bind_all(week.to_date_range().start.to_unix_timestamp(),
                             week.to_date_range().stop.to_unix_timestamp());
   while(stmt_per_project.step()) {
-    PerProjectTotals per_project_totals;
+    core::PerProjectTotals per_project_totals;
     auto [project_id, project_name, seconds] =
       stmt_per_project.get_all<db_lib::RowId, std::string, uint64_t>();
     per_project_totals.project_name = project_name;
@@ -453,7 +454,7 @@ WeeklyTotals DB_SQLite::report_weekly_totals(const time_lib::Week &week) {
                            week.to_date_range().start.to_unix_timestamp(),
                            week.to_date_range().stop.to_unix_timestamp());
     while (stmt_per_task.step()) {
-      PerTaskTotals per_task_totals;
+      core::PerTaskTotals per_task_totals;
       auto [task_id, task_name, seconds] =
         stmt_per_task.get_all<db_lib::RowId, std::string, uint64_t>();
       per_task_totals.task_name = task_name;

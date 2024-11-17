@@ -2,12 +2,12 @@
 #include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
 
-WeeklyReportRegister::WeeklyReportRegister(const WeeklyTotals &totals)
+WeeklyReportRegister::WeeklyReportRegister(const core::WeeklyTotals &totals)
   : MenuNCurses(totals.to_strings(), totals.to_shortstrings(),
                 ncurses_lib::WindowPosition::upper,
                 ncurses_lib::WindowFormat::block, 9) {}
 
-void WeeklyReportRegister::set_items(const WeeklyTotals &totals) {
+void WeeklyReportRegister::set_items(const core::WeeklyTotals &totals) {
   MenuNCurses::set_items(totals.to_strings(), totals.to_shortstrings());
 }
 

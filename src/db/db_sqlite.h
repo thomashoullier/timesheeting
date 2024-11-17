@@ -10,7 +10,7 @@
 #include "core/generic_item.h"
 #include "core/project_total.h"
 #include "time_lib/week.h"
-#include "../data_objects/weekly_totals.h"
+#include "core/weekly_totals.h"
 #include "../data_objects/export_row.h"
 #include "db_lib/db_sqlite_handle.h"
 #include "statement_set.h"
@@ -68,7 +68,7 @@ public:
   bool commit_entrystaging();
   std::vector<core::ProjectTotal> report_project_totals
     (const time_lib::DateRange &date_range);
-  WeeklyTotals report_weekly_totals (const time_lib::Week &week);
+  core::WeeklyTotals report_weekly_totals (const time_lib::Week &week);
 
 private:
   /** @brief Open the DB handle. */
