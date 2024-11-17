@@ -11,7 +11,7 @@
 #include "core/project_total.h"
 #include "time_lib/week.h"
 #include "core/weekly_totals.h"
-#include "../data_objects/export_row.h"
+#include "core/export_row.h"
 #include "db_lib/db_sqlite_handle.h"
 #include "statement_set.h"
 #include <filesystem>
@@ -32,7 +32,7 @@ public:
   std::vector<core::Location> query_locations_active();
   std::vector<core::Entry> query_entries(const time_lib::DateRange &date_range);
   core::Id query_entry_project_id(core::Id entry_id);
-  std::vector<ExportRow> query_export_entries
+  std::vector<core::ExportRow> query_export_entries
     (const time_lib::DateRange &date_range);
   time_lib::Duration query_entries_duration
     (const time_lib::DateRange &date_range);

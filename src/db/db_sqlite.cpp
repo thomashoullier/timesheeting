@@ -82,20 +82,22 @@ core::Id DB_SQLite::query_entry_project_id(core::Id entry_id) {
   return project_id;
 }
 
-std::vector<ExportRow> DB_SQLite::query_export_entries
+std::vector<core::ExportRow> DB_SQLite::query_export_entries
 (const time_lib::DateRange &date_range) {
   auto &stmt = statements.select_export_entries;
   stmt.bind_all(date_range.start.to_unix_timestamp(),
                 date_range.stop.to_unix_timestamp());
-  std::vector<ExportRow> vec;
+  std::vector<core::ExportRow> vec;
   while (stmt.step()) {
     auto [entry_id, project_id, project_name, task_id, task_name, location_id,
           location_name, start_date_stamp, stop_date_stamp] =
-      stmt.get_all<db_lib::RowId, db_lib::RowId, std::string, db_lib::RowId, std::string, db_lib::RowId,
+      stmt.get_all<db_lib::RowId, db_lib::RowId, std::string,
+                   db_lib::RowId, std::string, db_lib::RowId,
                    std::string, uint64_t, uint64_t>();
-    ExportRow r{entry_id, project_id, project_name, task_id, task_name,
-                location_id, location_name, time_lib::Date(start_date_stamp),
-                time_lib::Date(stop_date_stamp)};
+    core::ExportRow r{entry_id, project_id, project_name, task_id, task_name,
+                      location_id, location_name,
+                      time_lib::Date(start_date_stamp),
+                      time_lib::Date(stop_date_stamp)};
     vec.push_back(r);
   }
   return vec;
