@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['genericitem_0',['GenericItem',['../structGenericItem.html',1,'']]]
+  ['registerncurses_0',['RegisterNcurses',['../classRegisterNcurses.html',1,'']]]
 ];

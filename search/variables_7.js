@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['left_0',['left',['../structKeyBindings.html#a0d158a253d1cf116ae396f0c92ecf70d',1,'KeyBindings']]],
-  ['location_5fcol_1',['location_col',['../classLocationsScreen.html#aab902ce049b5f14e76f5c0ad39410067',1,'LocationsScreen']]],
-  ['location_5fname_2',['location_name',['../structEntry.html#a9543ea0daf2271171a9fd1bcb2c1ad66',1,'Entry::location_name()'],['../structEntryStaging.html#aa7c1ccf1ba580180efd161e48c1714a5',1,'EntryStaging::location_name()']]],
-  ['locations_5fscreen_3',['locations_screen',['../structKeyBindings.html#a4090bacfd89935f49633f463ec756afb',1,'KeyBindings::locations_screen()'],['../classUI.html#a81892b1b3a69aca9a3ecb81b1bedc9b6',1,'UI::locations_screen()'],['../classUpdateManager.html#a4a0a330e33cf16212e45622df2a7669f',1,'UpdateManager::locations_screen()']]]
+  ['reg_0',['reg',['../classEntriesTable.html#a92a703039818f6756031bc9cb2b7713e',1,'EntriesTable::reg()'],['../classWeeklyReportScreen.html#a946c504d307267b978d475c696d4f0fe',1,'WeeklyReportScreen::reg()']]],
+  ['remove_5fentry_1',['remove_entry',['../classStatementSet.html#ab61ff98f9acac3a6070017035895e97a',1,'StatementSet']]],
+  ['remove_5flocation_2',['remove_location',['../classStatementSet.html#a48b1b96698edc8f6a80618e5f50bb0bd',1,'StatementSet']]],
+  ['remove_5fproject_3',['remove_project',['../classStatementSet.html#a6120e891bfeca8353f070d72bba532b5',1,'StatementSet']]],
+  ['remove_5ftask_4',['remove_task',['../classStatementSet.html#a96763f15bd40d2034b990130f259cdeb',1,'StatementSet']]]
 ];

@@ -1,6 +1,21 @@
 var searchData=
 [
-  ['menu_0',['menu',['../classMenuNCurses.html#ac95742d2f238fccb36f6ad575d6938cd',1,'MenuNCurses']]],
-  ['menu_5fitems_1',['menu_items',['../classMenuNCurses.html#ad102d4b21f4caacfbccb4310e66bd054',1,'MenuNCurses']]],
-  ['msg_2',['msg',['../classDateParsingFailure.html#ae0609be0e4d5b32ada910048ddaf2545',1,'DateParsingFailure::msg()'],['../classSQLiteConstraintExcept.html#a871d9fbaac6ed756d276e7207bfc8a49',1,'SQLiteConstraintExcept::msg()'],['../classMenuEmpty.html#abbc58cd3081eba6f646f39591d97b691',1,'MenuEmpty::msg()']]]
+  ['select_5fduration_0',['select_duration',['../classStatementSet.html#a8cc53338c85caf297171e408f9453985',1,'StatementSet']]],
+  ['select_5fentries_1',['select_entries',['../classStatementSet.html#ade3270a443a90803297a9d6b60b02eba',1,'StatementSet']]],
+  ['select_5fentry_5fproject_5fid_2',['select_entry_project_id',['../classStatementSet.html#a9a3e071b4de517184af582d6185bf8ac',1,'StatementSet']]],
+  ['select_5fentrystaging_3',['select_entrystaging',['../classStatementSet.html#abcdd49c4b9ac57c54e2e16bfb14abd55',1,'StatementSet']]],
+  ['select_5fentrystaging_5fproject_5fid_4',['select_entrystaging_project_id',['../classStatementSet.html#abea67db1ae2061c0003f41248220de1e',1,'StatementSet']]],
+  ['select_5fexport_5fentries_5',['select_export_entries',['../classStatementSet.html#a4c7390b395567e21f2bacac6b9f9b5d4',1,'StatementSet']]],
+  ['select_5flocations_6',['select_locations',['../classStatementSet.html#a47664d47afc4e069409926c241468a72',1,'StatementSet']]],
+  ['select_5flocations_5factive_7',['select_locations_active',['../classStatementSet.html#a9b01baa1ddc201b4fbb84085b77f7157',1,'StatementSet']]],
+  ['select_5fprojects_8',['select_projects',['../classStatementSet.html#a1d3ba5c08ee5d4834c924ada23b3a5bf',1,'StatementSet']]],
+  ['select_5fprojects_5factive_9',['select_projects_active',['../classStatementSet.html#a64494e5e9995c80a17bb9ff9ef312a84',1,'StatementSet']]],
+  ['select_5ftasks_10',['select_tasks',['../classStatementSet.html#a939127cbe1c81411c49b4575ee0a7af7',1,'StatementSet']]],
+  ['select_5ftasks_5factive_11',['select_tasks_active',['../classStatementSet.html#aefbb21ed42e64a7684cc37d63d8c0dad',1,'StatementSet']]],
+  ['show_5fonly_5factive_12',['show_only_active',['../classLocationsScreen.html#a530e0563ad04e5e96f5f63a2058dee89',1,'LocationsScreen::show_only_active()'],['../classProjectTaskScreen.html#ad2eb59ea49f8786aaff56d21d6b9bb86',1,'ProjectTaskScreen::show_only_active()']]],
+  ['sqlite_5fdb_13',['sqlite_db',['../classDB__SQLite.html#a1613a2e7eec0b9350e85d57d181677db',1,'DB_SQLite']]],
+  ['statements_14',['statements',['../classDB__SQLite.html#a3c56a23b4d44e1d875393a849240aea8',1,'DB_SQLite']]],
+  ['stopwatch_15',['stopwatch',['../classStopwatchUI.html#af63374d8c7eff44bb3b5375302ef2034',1,'StopwatchUI']]],
+  ['stopwatch_5fui_16',['stopwatch_ui',['../classEntriesScreen.html#a06ab8ff41b146d50ed6f943e7355371f',1,'EntriesScreen']]],
+  ['sum_5fduration_5fper_5fproject_17',['sum_duration_per_project',['../classStatementSet.html#a2eb406f633ed6d48a7b3389303d31d86',1,'StatementSet']]]
 ];

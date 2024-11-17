@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['empty_5fstring_0',['empty_string',['../classMenuNCurses.html#a6cdb0ff9d1248542cd1d2b18e923b87f',1,'MenuNCurses']]],
-  ['entries_5fscreen_1',['entries_screen',['../structKeyBindings.html#afeabf1a20f0a936d15dad556f07a824c',1,'KeyBindings::entries_screen()'],['../classUI.html#afe117d2fb1d3d63f8648b99abde840ad',1,'UI::entries_screen()'],['../classUpdateManager.html#aae45fe9489c96ffda5d53184673a342b',1,'UpdateManager::entries_screen()']]],
-  ['entries_5ftable_2',['entries_table',['../classEntriesScreen.html#a6b98503944edc627d80fd298ec424ddd',1,'EntriesScreen']]],
-  ['entry_5fstaging_3',['entry_staging',['../classStopwatchNcurses.html#a0ac946441600c6e7535b328d55973a16',1,'StopwatchNcurses']]]
+  ['insert_5fentrystaging_0',['insert_entrystaging',['../classStatementSet.html#a3e4961bddcb11d07a1d976b28ad97eed',1,'StatementSet']]],
+  ['insert_5flocation_1',['insert_location',['../classStatementSet.html#a63c20f66ceb1f66bf004ea62a948de6f',1,'StatementSet']]],
+  ['insert_5fproject_2',['insert_project',['../classStatementSet.html#a91d659c6981959290a556260507262ed',1,'StatementSet']]],
+  ['insert_5ftask_3',['insert_task',['../classStatementSet.html#a1f0cd1f8566c3b31af1d3dde2f4a8af6',1,'StatementSet']]]
 ];

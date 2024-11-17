@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['id_0',['id',['../structEntry.html#acae03bc40435aa6cce0c87dbc6d07aa4',1,'Entry::id()'],['../structGenericItem.html#a2f417d0fabe992fd739be1422b97b205',1,'GenericItem::id()']]],
-  ['insert_5fentrystaging_1',['insert_entrystaging',['../classStatementSet.html#a17ed781bf4f86b13570c3229e27bca36',1,'StatementSet']]],
-  ['insert_5flocation_2',['insert_location',['../classStatementSet.html#a2551187e8479d54a8be52962757e1f14',1,'StatementSet']]],
-  ['insert_5fproject_3',['insert_project',['../classStatementSet.html#af54475592f711fedc9abeb8a4a07f48d',1,'StatementSet']]],
-  ['insert_5ftask_4',['insert_task',['../classStatementSet.html#a80eecad86d9ad672377318fdfb80e9ac',1,'StatementSet']]],
-  ['item_5fwidth_5',['item_width',['../classMenuNCurses.html#aa0817dcece617b385ec6d7966a4a278a',1,'MenuNCurses']]]
+  ['period_0',['period',['../classPeriodSelectorNCurses.html#a3ecd9c57d6207f1d4a7b4ad2f4577ca1',1,'PeriodSelectorNCurses']]],
+  ['period_5fselector_1',['period_selector',['../classPeriodSelectorUI.html#a658cdd400c495e6fdcbd56d0871d6d6e',1,'PeriodSelectorUI']]],
+  ['project_5fcol_2',['project_col',['../classProjectTaskScreen.html#ab4e37ae246a5d102e24bc61786fbd6c5',1,'ProjectTaskScreen']]],
+  ['project_5fduration_3',['project_duration',['../classStatementSet.html#af79687c2d803d4a22a37e0f7ba923e97',1,'StatementSet']]],
+  ['project_5fname_4',['project_name',['../structPerProjectTotals.html#ab5d1b64562ef2cfc8c9ec35f51087beb',1,'PerProjectTotals']]],
+  ['project_5freport_5fscreen_5',['project_report_screen',['../classUI.html#a56b3be91a2af3506a3dc58db2c63119b',1,'UI::project_report_screen()'],['../classUpdateManager.html#ac797c014b7ac73b3f138aac605bdf956',1,'UpdateManager::project_report_screen()']]],
+  ['project_5ftotals_6',['project_totals',['../structWeeklyTotals.html#ad8a4b0ea6be71beba98a8ccfa1489809',1,'WeeklyTotals']]],
+  ['projects_5fscreen_7',['projects_screen',['../classUI.html#acae2507c138b68df1b972162aab63dfd',1,'UI::projects_screen()'],['../classUpdateManager.html#a57312a2cad02a0f7a5b1b7929ff2feb8',1,'UpdateManager::projects_screen()']]]
 ];
