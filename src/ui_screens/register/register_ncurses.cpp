@@ -2,7 +2,8 @@
 
 RegisterNcurses::RegisterNcurses(const std::vector<core::Entry> &items)
   : MenuNCurses(items_to_string(items), items_to_shortstring(items),
-                WindowPosition::upper, WindowFormat::block, 5),
+                ncurses_lib::WindowPosition::upper,
+                ncurses_lib::WindowFormat::block, 5),
       held_items(items) {}
 
 void RegisterNcurses::set_items(const std::vector<core::Entry> &items) {
@@ -13,7 +14,8 @@ void RegisterNcurses::set_items(const std::vector<core::Entry> &items) {
 
 core::Id RegisterNcurses::get_current_id() {
   if (held_items.empty()) {
-    throw(MenuEmpty("get_current_id(): no items in the register!"));
+    throw(ncurses_lib::MenuEmpty
+          ("get_current_id(): no items in the register!"));
   }
   auto item_index = get_row_index();
   return held_items.at(item_index).id;

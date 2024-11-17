@@ -1,7 +1,8 @@
 #include "week_selector.h"
 
 WeekSelector::WeekSelector()
-    : BarNCurses(WindowPosition::top, WindowFormat::half_line), week{} {}
+  : BarNCurses(ncurses_lib::WindowPosition::top,
+               ncurses_lib::WindowFormat::half_line), week{} {}
 
 time_lib::Week WeekSelector::current_week() const {
   return week;

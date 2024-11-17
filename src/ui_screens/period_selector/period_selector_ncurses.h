@@ -1,11 +1,11 @@
 #ifndef PERIOD_SELECTOR_NCURSES_H
 #define PERIOD_SELECTOR_NCURSES_H
 
-#include "../../ncurses/menu_ncurses.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include "time_lib/date_range.h"
 
 
-class PeriodSelectorNCurses : public MenuNCurses {
+class PeriodSelectorNCurses : public ncurses_lib::MenuNCurses {
 public:
   /** @brief Enum for reporting the field type. */
   enum PeriodField { start = 0, stop = 1 };

@@ -2,7 +2,8 @@
 
 PeriodSelectorNCurses::PeriodSelectorNCurses(const time_lib::DateRange &_period)
   : MenuNCurses(_period.to_string(), _period.to_day_strings(),
-                WindowPosition::lower, WindowFormat::box, 2),
+                ncurses_lib::WindowPosition::lower,
+                ncurses_lib::WindowFormat::box, 2),
     period(_period) {}
 
 PeriodSelectorNCurses::PeriodField PeriodSelectorNCurses::get_field_type() {

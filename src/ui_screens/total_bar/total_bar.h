@@ -5,10 +5,10 @@
 
 #include <string>
 #include "time_lib/duration.h"
-#include "../../ncurses/bar_ncurses.h"
+#include "ncurses_lib/bar_ncurses.h"
 
 /** @brief Bar for displaying a duration. */
-class TotalBar : public BarNCurses {
+class TotalBar : public ncurses_lib::BarNCurses {
 private:
   /** @brief Internal representation of the current duration. */
   // TODO: duration type. Do we even need to hold it?

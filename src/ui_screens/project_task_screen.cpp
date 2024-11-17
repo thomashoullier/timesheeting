@@ -8,9 +8,11 @@
 
 ProjectTaskScreen::ProjectTaskScreen()
   : project_col(std::make_unique<Column<core::Project>>
-                (std::vector<core::Project>(), WindowPosition::left)),
+                (std::vector<core::Project>(),
+                 ncurses_lib::WindowPosition::left)),
     task_col(std::make_unique<Column<core::Task>>
-             (std::vector<core::Task>(), WindowPosition::middle)),
+             (std::vector<core::Task>(),
+              ncurses_lib::WindowPosition::middle)),
       show_only_active(true) {
   // TODO: initialize directly on actual db data.
   update_project_col();
@@ -99,7 +101,7 @@ void ProjectTaskScreen::update_task_col() {
       task_items = db().query_tasks(cur_project);
     task_col->set_items(task_items);
     task_col->refresh();
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     return;
   }
 }
@@ -133,7 +135,7 @@ bool ProjectTaskScreen::add_item(ColumnBase *cur_col) {
                             log_lib::LogLevel::info);
       update_task_col();
       return success;
-    } catch (MenuEmpty &e) {
+    } catch (ncurses_lib::MenuEmpty &e) {
       return true;
     }
   }
@@ -156,7 +158,7 @@ bool ProjectTaskScreen::rename_item(ColumnBase *cur_col) {
       }
     }
     return true;
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     return true;
   }
 }
@@ -175,7 +177,7 @@ bool ProjectTaskScreen::change_task_project(ColumnBase *cur_col) {
       return success;
     }
     return true;
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     return true;
   }
 }
@@ -195,7 +197,7 @@ void ProjectTaskScreen::remove_item(ColumnBase *cur_col) {
       update_project_col();
       update_task_col();
     }
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     return;
   }
 }
@@ -211,7 +213,7 @@ void ProjectTaskScreen::toggle_active_item(ColumnBase *cur_col) {
       update_project_col();
       update_task_col();
     }
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     return;
   }
 }

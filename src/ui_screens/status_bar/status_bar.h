@@ -3,11 +3,11 @@
 #ifndef STATUS_BAR_H
 #define STATUS_BAR_H
 
-#include "../../ncurses/bar_ncurses.h"
+#include "ncurses_lib/bar_ncurses.h"
 #include <vector>
 
 /** @brief Status bar implementation using ncurses. */
-class StatusBarNCurses : public BarNCurses {
+class StatusBarNCurses : public ncurses_lib::BarNCurses {
 public:
   /** @brief Grab the status bar singleton. */
   static StatusBarNCurses& get();

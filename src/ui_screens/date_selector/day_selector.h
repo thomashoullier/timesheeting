@@ -3,10 +3,10 @@
 
 #include "time_lib/date_range.h"
 #include "time_lib/day.h"
-#include "../../ncurses/bar_ncurses.h"
+#include "ncurses_lib/bar_ncurses.h"
 
 /** @brief Bar for selecting a calendar day. */
-class DaySelector : public BarNCurses {
+class DaySelector : public ncurses_lib::BarNCurses {
   // TODO: Factorize with WeekSelector with a template on day/week.
 private:
   /** @brief Internal representation of the day. */

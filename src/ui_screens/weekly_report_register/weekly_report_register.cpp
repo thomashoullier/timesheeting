@@ -4,7 +4,8 @@
 
 WeeklyReportRegister::WeeklyReportRegister(const WeeklyTotals &totals)
   : MenuNCurses(totals.to_strings(), totals.to_shortstrings(),
-                WindowPosition::upper, WindowFormat::block, 9) {}
+                ncurses_lib::WindowPosition::upper,
+                ncurses_lib::WindowFormat::block, 9) {}
 
 void WeeklyReportRegister::set_items(const WeeklyTotals &totals) {
   MenuNCurses::set_items(totals.to_strings(), totals.to_shortstrings());

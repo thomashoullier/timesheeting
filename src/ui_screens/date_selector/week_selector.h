@@ -3,9 +3,9 @@
 
 #include "time_lib/week.h"
 #include "time_lib/date_range.h"
-#include "../../ncurses/bar_ncurses.h"
+#include "ncurses_lib/bar_ncurses.h"
 
-class WeekSelector : public BarNCurses {
+class WeekSelector : public ncurses_lib::BarNCurses {
 private:
   /** @brief Internal representation of current week. */
   time_lib::Week week;

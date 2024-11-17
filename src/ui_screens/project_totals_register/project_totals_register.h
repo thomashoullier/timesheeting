@@ -2,11 +2,11 @@
 #define PROJECT_TOTALS_REGISTER_H
 
 #include "core/project_total.h"
-#include "../../ncurses/menu_ncurses.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include "../ui_component.h"
 
 /** @brief ProjectTotal register implementation in ncurses. */
-class ProjectTotalsRegister : public MenuNCurses,
+class ProjectTotalsRegister : public ncurses_lib::MenuNCurses,
                               public UIComponent {
 public:
   /** @brief Constructor. */

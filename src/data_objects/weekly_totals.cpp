@@ -41,34 +41,34 @@ std::vector<std::string> WeeklyTotals::to_strings () const {
   return strs;
 }
 
-std::vector<StringWithFace> WeeklyTotals::to_shortstrings() const {
-  std::vector<StringWithFace> strs;
+std::vector<ncurses_lib::StringWithFace> WeeklyTotals::to_shortstrings() const {
+  std::vector<ncurses_lib::StringWithFace> strs;
   auto duration_formatter = time_lib::DurationDisplayer::get();
   // Column headers
-  strs.push_back(StringWithFace("Task"));
-  strs.push_back(StringWithFace("Mon"));
-  strs.push_back(StringWithFace("Tue"));
-  strs.push_back(StringWithFace("Wed"));
-  strs.push_back(StringWithFace("Thu"));
-  strs.push_back(StringWithFace("Fri"));
-  strs.push_back(StringWithFace("Sat"));
-  strs.push_back(StringWithFace("Sun"));
-  strs.push_back(StringWithFace("TOTAL"));
+  strs.push_back(ncurses_lib::StringWithFace("Task"));
+  strs.push_back(ncurses_lib::StringWithFace("Mon"));
+  strs.push_back(ncurses_lib::StringWithFace("Tue"));
+  strs.push_back(ncurses_lib::StringWithFace("Wed"));
+  strs.push_back(ncurses_lib::StringWithFace("Thu"));
+  strs.push_back(ncurses_lib::StringWithFace("Fri"));
+  strs.push_back(ncurses_lib::StringWithFace("Sat"));
+  strs.push_back(ncurses_lib::StringWithFace("Sun"));
+  strs.push_back(ncurses_lib::StringWithFace("TOTAL"));
   // Daily totals, all tasks
-  strs.push_back(StringWithFace("ALL"));
+  strs.push_back(ncurses_lib::StringWithFace("ALL"));
   for (auto const &dur : daily_totals) {
     strs.push_back(duration_formatter.to_shortstring(dur));
   }
   strs.push_back(duration_formatter.to_shortstring(total));
   // Per-project totals
   for (auto const &proj : project_totals) {
-    strs.push_back(StringWithFace(proj.project_name, true));
+    strs.push_back(ncurses_lib::StringWithFace(proj.project_name, true));
     for (auto const &daily_dur : proj.daily_totals) {
-      strs.push_back(StringWithFace(duration_formatter.to_shortstring(daily_dur),
-                                    true));
+      strs.push_back(ncurses_lib::StringWithFace
+                     (duration_formatter.to_shortstring(daily_dur), true));
     }
-    strs.push_back(StringWithFace(duration_formatter.to_shortstring(proj.total),
-                                  true));
+    strs.push_back(ncurses_lib::StringWithFace
+                   (duration_formatter.to_shortstring(proj.total), true));
     // Per-task totals
     for (auto const &task : proj.task_totals) {
       strs.push_back(task.task_name);

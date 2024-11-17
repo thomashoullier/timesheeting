@@ -1,11 +1,11 @@
 #ifndef WEEKLY_REPORT_REGISTER_H
 #define WEEKLY_REPORT_REGISTER_H
 
-#include "../../ncurses/menu_ncurses.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include "../ui_component.h"
 #include "../../data_objects/weekly_totals.h"
 
-class WeeklyReportRegister : public MenuNCurses,
+class WeeklyReportRegister : public ncurses_lib::MenuNCurses,
                              public UIComponent {
 public:
   /** @brief Constructor*/

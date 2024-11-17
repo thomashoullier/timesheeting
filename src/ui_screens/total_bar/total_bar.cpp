@@ -2,7 +2,8 @@
 #include "time_lib/duration_displayer.h"
 
 TotalBar::TotalBar (const time_lib::Duration &_duration)
-  : BarNCurses(WindowPosition::top_right, WindowFormat::half_line),
+  : BarNCurses(ncurses_lib::WindowPosition::top_right,
+               ncurses_lib::WindowFormat::half_line),
     duration(_duration),
     display_string(time_lib::DurationDisplayer::get().to_string(_duration)) {}
 

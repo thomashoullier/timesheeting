@@ -5,10 +5,10 @@
 
 #include "../../data_objects/entry_field.h"
 #include "core/entry_staging.h"
-#include "../../ncurses/menu_ncurses.h"
+#include "ncurses_lib/menu_ncurses.h"
 
 /** @brief Ncurses implementation of a stopwatch for staging new entries. */
-class StopwatchNcurses : public MenuNCurses {
+class StopwatchNcurses : public ncurses_lib::MenuNCurses {
 public:
   /** @brief Constructor. */
   StopwatchNcurses(const core::EntryStaging &_entry_staging);

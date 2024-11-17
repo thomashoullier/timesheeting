@@ -5,17 +5,18 @@
 
 #include "column_base.h"
 #include "core/generic_item.h"
-#include "../../ncurses/menu_ncurses.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include <type_traits>
 
 /** @brief Column menu class. Can hold any GenericItem. */
 template <typename T,
           typename = std::enable_if_t<std::is_base_of_v<core::GenericItem, T>>>
-class Column : public ColumnBase, public MenuNCurses {
+class Column : public ColumnBase, public ncurses_lib::MenuNCurses {
 public:
   /** @brief Construct the column with given items and position. */
-  Column(const std::vector<T> &items, WindowPosition winpos)
-    : MenuNCurses(items_to_string(items), winpos, WindowFormat::column, 1),
+  Column(const std::vector<T> &items, ncurses_lib::WindowPosition winpos)
+    : MenuNCurses(items_to_string(items), winpos,
+                  ncurses_lib::WindowFormat::column, 1),
       held_items(items) {};
 
   /** @brief Replace the column items. */
@@ -26,7 +27,8 @@ public:
 
   core::Id get_current_id() override {
     if (held_items.empty()) {
-      throw(MenuEmpty("get_current_id(): no items in the register!"));
+      throw(ncurses_lib::MenuEmpty
+            ("get_current_id(): no items in the register!"));
     }
     auto item_index = get_row_index();
     return held_items.at(item_index).id;

@@ -9,7 +9,8 @@ StatusBarNCurses &StatusBarNCurses::get() {
 }
 
 StatusBarNCurses::StatusBarNCurses()
-    : BarNCurses(WindowPosition::bottom, WindowFormat::line) {}
+  : BarNCurses(ncurses_lib::WindowPosition::bottom,
+               ncurses_lib::WindowFormat::line) {}
 
 void StatusBarNCurses::print(const std::string &msg) { BarNCurses::print(msg); }
 

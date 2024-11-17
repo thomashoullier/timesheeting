@@ -6,14 +6,14 @@
 #include "core/entry.h"
 #include "../../data_objects/entry_field.h"
 #include "core/id.h"
-#include "../../ncurses/menu_ncurses.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include <string>
 #include <vector>
 
 /** @brief Entry register implementation in ncurses.
 
  A register is a menu with row items made of several columns. */
-class RegisterNcurses : public MenuNCurses {
+class RegisterNcurses : public ncurses_lib::MenuNCurses {
 public:
   /** @brief Constructor. */
   RegisterNcurses(const std::vector<core::Entry> &items);

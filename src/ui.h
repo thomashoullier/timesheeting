@@ -3,7 +3,7 @@
 #ifndef UI_H
 #define UI_H
 
-#include "ncurses/ncurses_handle.h"
+#include "ncurses_lib/ncurses_handle.h"
 #include "ui_screens/entries_screen.h"
 #include "ui_screens/locations_screen.h"
 #include "ui_screens/project_report_screen.h"
@@ -21,7 +21,7 @@ public:
 
 private:
   /** @brief Handle to the top ncurses management. */
-  NcursesHandle ncurses_handle;
+  ncurses_lib::NcursesHandle ncurses_handle;
   /** @brief Screen for the project/task definition. */
   std::shared_ptr<ProjectTaskScreen> projects_screen;
   /** @brief Screen for the locations definition. */

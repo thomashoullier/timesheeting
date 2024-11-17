@@ -4,8 +4,8 @@
 
 ProjectTotalsRegister::ProjectTotalsRegister
 (const std::vector<core::ProjectTotal> &totals)
-    : MenuNCurses(items_to_string(totals), WindowPosition::upper,
-                  WindowFormat::block, 2) {}
+  : MenuNCurses(items_to_string(totals), ncurses_lib::WindowPosition::upper,
+                ncurses_lib::WindowFormat::block, 2) {}
 
 std::vector<std::string> ProjectTotalsRegister::items_to_string
     (const std::vector<core::ProjectTotal> &items) {

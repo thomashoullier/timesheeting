@@ -7,7 +7,8 @@
 
 LocationsScreen::LocationsScreen()
   : location_col(std::make_unique<Column<core::Location>>
-                 (std::vector<core::Location>(), WindowPosition::left)),
+                 (std::vector<core::Location>(),
+                  ncurses_lib::WindowPosition::left)),
       show_only_active(true) {
   // TODO: initialize the column directly.
   update_location_col();
@@ -85,7 +86,7 @@ bool LocationsScreen::rename_item() {
     auto success = db().edit_location_name(id, new_item_name);
     update_location_col();
     return success;
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     // TODO: instead of managing this by exception, try to check if the column
     // is empty explicitely.
     return true;
@@ -100,7 +101,7 @@ void LocationsScreen::remove_item() {
       return;
     db().delete_location(id);
     update_location_col();
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     return;
   }
 }
@@ -110,7 +111,7 @@ void LocationsScreen::toggle_active_item() {
     auto id = location_col->get_current_id();
     db().toggle_location_active(id);
     update_location_col();
-  } catch (MenuEmpty &e) {
+  } catch (ncurses_lib::MenuEmpty &e) {
     return;
   }
 }

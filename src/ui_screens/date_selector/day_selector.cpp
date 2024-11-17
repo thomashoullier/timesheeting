@@ -1,7 +1,8 @@
 #include "day_selector.h"
 
 DaySelector::DaySelector()
-    : BarNCurses{WindowPosition::top, WindowFormat::half_line}, day{} {
+  : BarNCurses{ncurses_lib::WindowPosition::top,
+               ncurses_lib::WindowFormat::half_line}, day{} {
 }
 
 void DaySelector::refresh() {
