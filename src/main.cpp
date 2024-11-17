@@ -3,7 +3,7 @@
 #include "csv_exporter.h"
 #include "db/db_sqlite.h"
 #include "duration_displayer.h"
-#include "logger/logger.h"
+#include "log_lib/logger.h"
 #include "time_lib/time_zone.h"
 #include "ui.h"
 #include "config.h"
@@ -22,11 +22,12 @@ int main(int argc, const char *const *argv) {
   time_lib::TimeZone::get(config.timezone);
 
   // Initialize the Logger.
-  Logger::get(config.log_filepath, config.log_levels_to_activate);
-  logger().tick(); // For measuring startup time.
+  log_lib::Logger::get(config.log_filepath, config.log_levels_to_activate);
+  log_lib::logger().tick(); // For measuring startup time.
 
-  Logger::get().log("Launching timesheeting v" + version::TIMESHEETING_VERSION,
-                    LogLevel::info);
+  log_lib::Logger::get().
+    log("Launching timesheeting v" + version::TIMESHEETING_VERSION,
+        log_lib::LogLevel::info);
 
   // Initialize the DB.
   DB_SQLite::get(config.db_filepath);
@@ -49,5 +50,5 @@ int main(int argc, const char *const *argv) {
   UI ui;
   ui.input_loop();
 
-  logger().tock(); // For measuring teardown time.
+  log_lib::logger().tock(); // For measuring teardown time.
 }

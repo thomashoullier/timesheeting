@@ -1,7 +1,7 @@
 #include "entries_table.h"
 #include "../db/db_sqlite.h"
 #include "status_bar/status_bar.h"
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include "update_manager.h"
 #include "../bound_keys.h"
 
@@ -40,9 +40,9 @@ char EntriesTable::input_loop() {
     } else if (kb.next.bound_to(ch)) {
       day_selector.select_next_day();
       auto log_dates = day_selector.current_range().to_string();
-      logger().log("Selected day range: " + log_dates.at(0) + " ; " +
-                   log_dates.at(1),
-                   LogLevel::debug);
+      log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
+                            log_dates.at(1),
+                            log_lib::LogLevel::debug);
       update();
       day_selector.refresh();
       // TODO: superfluous update?
@@ -51,9 +51,9 @@ char EntriesTable::input_loop() {
     } else if (kb.previous.bound_to(ch)) {
       day_selector.select_previous_day();
       auto log_dates = day_selector.current_range().to_string();
-      logger().log("Selected day range: " + log_dates.at(0) + " ; " +
-                   log_dates.at(1),
-                   LogLevel::debug);
+      log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
+                            log_dates.at(1),
+                            log_lib::LogLevel::debug);
       update();
       day_selector.refresh();
     } else {

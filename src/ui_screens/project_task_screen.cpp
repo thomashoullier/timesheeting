@@ -1,7 +1,7 @@
 #include "project_task_screen.h"
 #include "../db/db_sqlite.h"
 #include "status_bar/status_bar.h"
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include "update_manager.h"
 #include <stdexcept>
 #include "../bound_keys.h"
@@ -84,7 +84,7 @@ char ProjectTaskScreen::input_loop() {
 }
 
 void ProjectTaskScreen::update() {
-  logger().log("ProjectTaskScreen update.", LogLevel::debug);
+  log_lib::logger().log("ProjectTaskScreen update.", log_lib::LogLevel::debug);
   update_project_col();
   update_task_col();
 }
@@ -121,14 +121,16 @@ bool ProjectTaskScreen::add_item(ColumnBase *cur_col) {
     return true;
   if (cur_col == project_col.get()) {
     auto success = db().add_project(new_item_name);
-    logger().log("Added project: " + new_item_name, LogLevel::info);
+    log_lib::logger().log("Added project: " + new_item_name,
+                          log_lib::LogLevel::info);
     update_project_col();
     return success;
   } else if (cur_col == task_col.get()) {
     try {
       auto project_id = project_col->get_current_id();
       auto success = db().add_task(project_id, new_item_name);
-      logger().log("Added task: " + new_item_name, LogLevel::info);
+      log_lib::logger().log("Added task: " + new_item_name,
+                            log_lib::LogLevel::info);
       update_task_col();
       return success;
     } catch (MenuEmpty &e) {

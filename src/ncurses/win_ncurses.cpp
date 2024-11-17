@@ -1,5 +1,5 @@
 #include "win_ncurses.h"
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include <stdexcept>
 
 WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)
@@ -8,9 +8,10 @@ WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)
 WinNCurses::~WinNCurses() { destroy_window(); }
 
 char WinNCurses::get_input() {
-  logger().tock();
+  // TODO: decouple from the logger.
+  log_lib::logger().tock();
   auto ch = wgetch(win);
-  logger().tick();
+  log_lib::logger().tick();
   return ch;
 }
 

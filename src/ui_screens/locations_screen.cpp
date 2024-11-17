@@ -1,7 +1,7 @@
 #include "locations_screen.h"
 #include "status_bar/status_bar.h"
 #include "../db/db_sqlite.h"
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include "update_manager.h"
 #include "../bound_keys.h"
 
@@ -16,7 +16,7 @@ LocationsScreen::LocationsScreen()
 void LocationsScreen::refresh() { location_col->refresh(); };
 void LocationsScreen::clear() { location_col->clear(); };
 void LocationsScreen::update() {
-  logger().log("LocationsScreen update.", LogLevel::debug);
+  log_lib::logger().log("LocationsScreen update.", log_lib::LogLevel::debug);
   update_location_col();
 };
 
@@ -70,7 +70,8 @@ bool LocationsScreen::add_item() {
   if (new_item_name.empty())
     return true;
   auto success = db().add_location(new_item_name);
-  logger().log("Added location: " + new_item_name, LogLevel::info);
+  log_lib::logger().log("Added location: " + new_item_name,
+                        log_lib::LogLevel::info);
   update_location_col();
   return success;
 }

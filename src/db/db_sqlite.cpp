@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <optional>
 #include <string>
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include "../version.h"
 
 DB_SQLite &DB_SQLite::get(const std::filesystem::path &db_filepath) {
@@ -15,9 +15,9 @@ DB_SQLite::DB_SQLite(const std::filesystem::path &db_file)
   : sqlite_db(std::make_shared<db_lib::DB_SQLite_Handle>(db_file)),
     statements{init_db()} {
   sqlite_db->check_user_version(version::TIMESHEETING_DB_VERSION);
-  Logger::get().log("Loaded DB v"
+  log_lib::Logger::get().log("Loaded DB v"
                     + std::to_string(sqlite_db->get_user_version()),
-                    LogLevel::info);
+                             log_lib::LogLevel::info);
 }
 
 StatementSet DB_SQLite::init_db() {
@@ -416,10 +416,10 @@ time_lib::Duration DB_SQLite::report_task_duration
 }
 
 WeeklyTotals DB_SQLite::report_weekly_totals(const time_lib::Week &week) {
-  logger().log("report_weekly_totals for week over date range: " +
-               week.to_date_range().start.to_string() + " ; " +
-               week.to_date_range().stop.to_string(),
-               LogLevel::debug);
+  log_lib::logger().log("report_weekly_totals for week over date range: " +
+                        week.to_date_range().start.to_string() + " ; " +
+                        week.to_date_range().stop.to_string(),
+                        log_lib::LogLevel::debug);
   WeeklyTotals totals;
   // Overall weekly total
   totals.total = query_entries_duration(week.to_date_range());

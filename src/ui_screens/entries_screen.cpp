@@ -1,7 +1,7 @@
 #include "entries_screen.h"
 #include "entries_table.h"
 #include "stopwatch/stopwatch_ui.h"
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include "../bound_keys.h"
 
 EntriesScreen::EntriesScreen()
@@ -37,7 +37,8 @@ void EntriesScreen::clear() {
 };
 
 void EntriesScreen::update() {
-  logger().log("EntriesScreen update.", LogLevel::debug);
+  log_lib::logger().log("EntriesScreen update.",
+                        log_lib::LogLevel::debug);
   stopwatch_ui->update();
   entries_table->update();
   needs_update = false;

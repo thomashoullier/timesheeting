@@ -1,6 +1,6 @@
 #include "project_report_screen.h"
 #include "../db/db_sqlite.h"
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include "../bound_keys.h"
 
 ProjectReportScreen::ProjectReportScreen()
@@ -44,7 +44,8 @@ void ProjectReportScreen::clear() {
 }
 
 void ProjectReportScreen::update() {
-  logger().log("ProjectReportScreen update.", LogLevel::debug);
+  log_lib::logger().log("ProjectReportScreen update.",
+                        log_lib::LogLevel::debug);
   period_selector_ui.update();
   auto cur_range = period_selector_ui.get_current_date_range();
   auto overall_duration = db().query_entries_duration(cur_range);

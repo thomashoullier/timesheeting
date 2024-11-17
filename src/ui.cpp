@@ -1,6 +1,6 @@
 #include "ui.h"
 #include "duration_displayer.h"
-#include "logger/logger.h"
+#include "log_lib/logger.h"
 #include <memory>
 #include "ui_screens/update_manager.h"
 #include "bound_keys.h"
@@ -11,7 +11,8 @@ UI::UI()
     entries_screen(std::make_shared<EntriesScreen>()),
     project_report_screen(std::make_shared<ProjectReportScreen>()),
     weekly_report_screen(std::make_shared<WeeklyReportScreen>()) {
-  logger().log("timesheeting UI initialized.", LogLevel::debug);
+  log_lib::logger().log("timesheeting UI initialized.",
+                        log_lib::LogLevel::debug);
   // Initialize the update manager with handle to all the screens.
   UpdateManager::get(projects_screen,
                      locations_screen,

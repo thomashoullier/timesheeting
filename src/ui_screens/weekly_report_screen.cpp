@@ -1,6 +1,6 @@
 #include "weekly_report_screen.h"
 #include "../db/db_sqlite.h"
-#include "../logger/logger.h"
+#include "log_lib/logger.h"
 #include "../bound_keys.h"
 
 WeeklyReportScreen::WeeklyReportScreen()
@@ -36,7 +36,8 @@ void WeeklyReportScreen::clear() {
 }
 
 void WeeklyReportScreen::update() {
-  logger().log("WeeklyReportScreen update.", LogLevel::debug);
+  log_lib::logger().log("WeeklyReportScreen update.",
+                        log_lib::LogLevel::debug);
   auto week_report = db().report_weekly_totals(week_selector.current_week());
   reg.set_items(week_report);
   needs_update = false;
