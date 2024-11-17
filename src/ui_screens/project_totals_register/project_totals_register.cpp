@@ -3,12 +3,12 @@
 #include "../status_bar/status_bar.h"
 
 ProjectTotalsRegister::ProjectTotalsRegister
-    (const std::vector<ProjectTotal> &totals)
+(const std::vector<core::ProjectTotal> &totals)
     : MenuNCurses(items_to_string(totals), WindowPosition::upper,
                   WindowFormat::block, 2) {}
 
-std::vector<std::string>
-ProjectTotalsRegister::items_to_string(const std::vector<ProjectTotal> &items) {
+std::vector<std::string> ProjectTotalsRegister::items_to_string
+    (const std::vector<core::ProjectTotal> &items) {
   std::vector<std::string> display_strings;
   for (const auto &it : items) {
     auto it_strings = it.to_strings();
@@ -18,7 +18,8 @@ ProjectTotalsRegister::items_to_string(const std::vector<ProjectTotal> &items) {
   return display_strings;
 }
 
-void ProjectTotalsRegister::set_items(const std::vector<ProjectTotal> &totals) {
+void ProjectTotalsRegister::set_items
+    (const std::vector<core::ProjectTotal> &totals) {
   MenuNCurses::set_items(items_to_string(totals));
 }
 

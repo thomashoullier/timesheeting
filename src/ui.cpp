@@ -1,5 +1,5 @@
 #include "ui.h"
-#include "duration_displayer.h"
+#include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
 #include <memory>
 #include "ui_screens/update_manager.h"
@@ -43,7 +43,7 @@ char UI::input_loop() {
     } else if (kb.weekly_report_screen.bound_to(ch)) {
       cur_screen = weekly_report_screen;
     } else if (kb.duration_display.bound_to(ch)) {
-      DurationDisplayer::get().cycle_format();
+      time_lib::DurationDisplayer::get().cycle_format();
       UpdateManager::get().duration_display_changed();
     } else {
       return ch;

@@ -5,10 +5,10 @@
 
 #include "time_lib/date_range.h"
 #include "time_lib/duration.h"
-#include "../data_objects/entry.h"
-#include "../data_objects/entry_staging.h"
-#include "../data_objects/generic_item.h"
-#include "../data_objects/project_total.h"
+#include "core/entry.h"
+#include "core/entry_staging.h"
+#include "core/generic_item.h"
+#include "core/project_total.h"
 #include "time_lib/week.h"
 #include "../data_objects/weekly_totals.h"
 #include "../data_objects/export_row.h"
@@ -24,49 +24,49 @@ public:
   /** @brief Grab the DB singleton. */
   static DB_SQLite &get(const std::filesystem::path &db_filepath = "");
 
-  std::vector<Project> query_projects();
-  std::vector<Project> query_projects_active();
-  std::vector<Task> query_tasks(Id project_id);
-  std::vector<Task> query_tasks_active(Id project_id);
-  std::vector<Location> query_locations();
-  std::vector<Location> query_locations_active();
-  std::vector<Entry> query_entries(const time_lib::DateRange &date_range);
-  Id query_entry_project_id(Id entry_id);
+  std::vector<core::Project> query_projects();
+  std::vector<core::Project> query_projects_active();
+  std::vector<core::Task> query_tasks(core::Id project_id);
+  std::vector<core::Task> query_tasks_active(core::Id project_id);
+  std::vector<core::Location> query_locations();
+  std::vector<core::Location> query_locations_active();
+  std::vector<core::Entry> query_entries(const time_lib::DateRange &date_range);
+  core::Id query_entry_project_id(core::Id entry_id);
   std::vector<ExportRow> query_export_entries
     (const time_lib::DateRange &date_range);
   time_lib::Duration query_entries_duration
     (const time_lib::DateRange &date_range);
-  EntryStaging query_entrystaging ();
-  Id query_entrystaging_project_id();
+  core::EntryStaging query_entrystaging ();
+  core::Id query_entrystaging_project_id();
   bool add_project(std::string project_name);
-  bool add_task(Id project_id, std::string task_name);
+  bool add_task(core::Id project_id, std::string task_name);
   bool add_location(const std::string &location_name);
-  bool edit_project_name(Id project_id, std::string new_project_name);
-  bool edit_task_name(Id task_id, std::string new_task_name);
-  bool edit_task_project(Id task_id, std::string project_name);
-  bool edit_location_name(Id location_id,
+  bool edit_project_name(core::Id project_id, std::string new_project_name);
+  bool edit_task_name(core::Id task_id, std::string new_task_name);
+  bool edit_task_project(core::Id task_id, std::string project_name);
+  bool edit_location_name(core::Id location_id,
                           const std::string &new_location_name);
-  bool toggle_location_active(Id location_id);
-  bool toggle_task_active(Id task_id);
-  bool toggle_project_active(Id project_id);
-  bool edit_entry_project(Id entry_id,
+  bool toggle_location_active(core::Id location_id);
+  bool toggle_task_active(core::Id task_id);
+  bool toggle_project_active(core::Id project_id);
+  bool edit_entry_project(core::Id entry_id,
                           const std::string &new_project_name);
-  bool edit_entry_task(Id entry_id, const std::string &new_task_name);
-  bool edit_entry_start(Id entry_id, const time_lib::Date &new_start_date);
-  bool edit_entry_stop(Id entry_id, const time_lib::Date &new_stop_date);
-  bool edit_entry_location(Id entry_id,
+  bool edit_entry_task(core::Id entry_id, const std::string &new_task_name);
+  bool edit_entry_start(core::Id entry_id, const time_lib::Date &new_start_date);
+  bool edit_entry_stop(core::Id entry_id, const time_lib::Date &new_stop_date);
+  bool edit_entry_location(core::Id entry_id,
                            const std::string &new_location_name);
   bool edit_entrystaging_project_name (const std::string &new_project_name);
   bool edit_entrystaging_task_name(const std::string &new_task_name);
   bool edit_entrystaging_start(const time_lib::Date &new_start);
   bool edit_entrystaging_stop(const time_lib::Date &new_stop);
   bool edit_entrystaging_location_name (const std::string &new_location_name);
-  bool delete_task(Id task_id);
-  bool delete_project(Id project_id);
-  bool delete_location (Id location_id);
-  bool delete_entry(Id entry_id);
+  bool delete_task(core::Id task_id);
+  bool delete_project(core::Id project_id);
+  bool delete_location (core::Id location_id);
+  bool delete_entry(core::Id entry_id);
   bool commit_entrystaging();
-  std::vector<ProjectTotal> report_project_totals
+  std::vector<core::ProjectTotal> report_project_totals
     (const time_lib::DateRange &date_range);
   WeeklyTotals report_weekly_totals (const time_lib::Week &week);
 
@@ -94,13 +94,14 @@ private:
   void create_entrystaging_table();
   /** @brief Sum duration for a given project over a given date range. */
   time_lib::Duration report_project_duration
-    (Id project_id, const time_lib::DateRange &date_range);
+    (core::Id project_id, const time_lib::DateRange &date_range);
   /** @brief Sum duration for a given task over a given date range. */
   time_lib::Duration report_task_duration
-    (Id task_id, const time_lib::DateRange &date_range);
+    (core::Id task_id, const time_lib::DateRange &date_range);
   /** @brief Query template for GenericItems. */
   template <typename T,
-            typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>
+            typename = std::enable_if_t<
+              std::is_base_of_v<core::GenericItem, T>>>
   std::vector<T> query_generic_items(db_lib::Statement &statement);
 };
 

@@ -4,12 +4,13 @@
 #define COLUMN_H
 
 #include "column_base.h"
+#include "core/generic_item.h"
 #include "../../ncurses/menu_ncurses.h"
 #include <type_traits>
 
 /** @brief Column menu class. Can hold any GenericItem. */
 template <typename T,
-          typename = std::enable_if_t<std::is_base_of_v<GenericItem, T>>>
+          typename = std::enable_if_t<std::is_base_of_v<core::GenericItem, T>>>
 class Column : public ColumnBase, public MenuNCurses {
 public:
   /** @brief Construct the column with given items and position. */
@@ -23,7 +24,7 @@ public:
     MenuNCurses::set_items(items_to_string(items));
   };
 
-  Id get_current_id() override {
+  core::Id get_current_id() override {
     if (held_items.empty()) {
       throw(MenuEmpty("get_current_id(): no items in the register!"));
     }

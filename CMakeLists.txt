@@ -45,13 +45,19 @@ add_library(keys STATIC "${KEYS_SRC}")
 target_include_directories(keys PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/modules>")
 
+file(GLOB_RECURSE CORE_SRC "${TIMESHEETING_DIR}/modules/core/*.cpp")
+add_library(core STATIC "${CORE_SRC}")
+target_link_libraries(core time_lib)
+target_include_directories(core PUBLIC
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/modules>")
+
 # Main
 file(GLOB_RECURSE TIMESHEETING_SRC "${TIMESHEETING_DIR}/src/*.cpp")
 add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp"
   "${TIMESHEETING_SRC}")
 target_link_libraries(timesheeting_main
                       time_lib db_lib log_lib
-                      keys
+                      keys core
                       ${CURSES_LIBRARIES} ${MENU_LIBRARY}
                       ${SQLite3_LIBRARIES} tomlplusplus::tomlplusplus
                       rapidfuzz::rapidfuzz)

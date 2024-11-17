@@ -18,7 +18,7 @@ public:
 
 private:
   /** @brief Column holding the locations. */
-  std::unique_ptr<Column<Location>> location_col;
+  std::unique_ptr<Column<core::Location>> location_col;
   /** @brief Whether to show only active items. */
   bool show_only_active;
 

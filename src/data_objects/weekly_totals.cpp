@@ -1,11 +1,11 @@
 #include "weekly_totals.h"
-#include "../duration_displayer.h"
+#include "time_lib/duration_displayer.h"
 
 std::vector<std::string> WeeklyTotals::to_strings () const {
   // TODO: have short strings with zeroes and units omitted, and long strings
   //       for status bar display.
   std::vector<std::string> strs;
-  auto duration_formatter = DurationDisplayer::get();
+  auto duration_formatter = time_lib::DurationDisplayer::get();
   // Column headers
   strs.push_back("Project/Task");
   strs.push_back("Monday");
@@ -43,7 +43,7 @@ std::vector<std::string> WeeklyTotals::to_strings () const {
 
 std::vector<StringWithFace> WeeklyTotals::to_shortstrings() const {
   std::vector<StringWithFace> strs;
-  auto duration_formatter = DurationDisplayer::get();
+  auto duration_formatter = time_lib::DurationDisplayer::get();
   // Column headers
   strs.push_back(StringWithFace("Task"));
   strs.push_back(StringWithFace("Mon"));

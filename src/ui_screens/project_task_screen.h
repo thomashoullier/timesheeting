@@ -20,9 +20,9 @@ public:
 
 private:
   /** @brief Column for projects. */
-  std::unique_ptr<Column<Project>> project_col;
+  std::unique_ptr<Column<core::Project>> project_col;
   /** @brief Column for tasks. */
-  std::unique_ptr<Column<Task>> task_col;
+  std::unique_ptr<Column<core::Task>> task_col;
   /** @brief Whether to show only active items. */
   bool show_only_active;
 

@@ -7,10 +7,10 @@
 #include "ui/keys/bound_keys.h"
 
 ProjectTaskScreen::ProjectTaskScreen()
-    : project_col(std::make_unique<Column<Project>>(std::vector<Project>(),
-                                                    WindowPosition::left)),
-      task_col(std::make_unique<Column<Task>>(std::vector<Task>(),
-                                              WindowPosition::middle)),
+  : project_col(std::make_unique<Column<core::Project>>
+                (std::vector<core::Project>(), WindowPosition::left)),
+    task_col(std::make_unique<Column<core::Task>>
+             (std::vector<core::Task>(), WindowPosition::middle)),
       show_only_active(true) {
   // TODO: initialize directly on actual db data.
   update_project_col();
@@ -91,8 +91,8 @@ void ProjectTaskScreen::update() {
 
 void ProjectTaskScreen::update_task_col() {
   try {
-    Id cur_project = project_col->get_current_id();
-    std::vector<Task> task_items;
+    core::Id cur_project = project_col->get_current_id();
+    std::vector<core::Task> task_items;
     if (show_only_active)
       task_items = db().query_tasks_active(cur_project);
     else
@@ -105,7 +105,7 @@ void ProjectTaskScreen::update_task_col() {
 }
 
 void ProjectTaskScreen::update_project_col() {
-  std::vector<Project> project_items;
+  std::vector<core::Project> project_items;
   if (show_only_active)
     project_items = db().query_projects_active();
   else

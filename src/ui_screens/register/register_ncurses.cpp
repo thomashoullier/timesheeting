@@ -1,17 +1,17 @@
 #include "register_ncurses.h"
 
-RegisterNcurses::RegisterNcurses(const std::vector<Entry> &items)
+RegisterNcurses::RegisterNcurses(const std::vector<core::Entry> &items)
   : MenuNCurses(items_to_string(items), items_to_shortstring(items),
                 WindowPosition::upper, WindowFormat::block, 5),
       held_items(items) {}
 
-void RegisterNcurses::set_items(const std::vector<Entry> &items) {
+void RegisterNcurses::set_items(const std::vector<core::Entry> &items) {
   held_items = items;
   MenuNCurses::set_items(items_to_string(items),
                          items_to_shortstring(items));
 }
 
-Id RegisterNcurses::get_current_id() {
+core::Id RegisterNcurses::get_current_id() {
   if (held_items.empty()) {
     throw(MenuEmpty("get_current_id(): no items in the register!"));
   }
@@ -24,7 +24,7 @@ EntryField RegisterNcurses::get_field_type() {
 }
 
 std::vector<std::string>
-RegisterNcurses::items_to_string(const std::vector<Entry> &items) {
+RegisterNcurses::items_to_string(const std::vector<core::Entry> &items) {
   std::vector<std::string> display_strings;
   for (const auto &it : items) {
     auto it_strings = it.to_strings();
@@ -35,7 +35,7 @@ RegisterNcurses::items_to_string(const std::vector<Entry> &items) {
 }
 
 std::vector<std::string>
-RegisterNcurses::items_to_shortstring(const std::vector<Entry> &items) {
+RegisterNcurses::items_to_shortstring(const std::vector<core::Entry> &items) {
   std::vector<std::string> display_strings;
   for (const auto &it : items) {
     auto it_strings = it.to_shortstrings();

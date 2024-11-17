@@ -6,8 +6,8 @@
 #include "ui/keys/bound_keys.h"
 
 LocationsScreen::LocationsScreen()
-    : location_col(std::make_unique<Column<Location>>(std::vector<Location>(),
-                                                      WindowPosition::left)),
+  : location_col(std::make_unique<Column<core::Location>>
+                 (std::vector<core::Location>(), WindowPosition::left)),
       show_only_active(true) {
   // TODO: initialize the column directly.
   update_location_col();
@@ -56,7 +56,7 @@ char LocationsScreen::input_loop() {
 }
 
 void LocationsScreen::update_location_col() {
-  std::vector<Location> location_items;
+  std::vector<core::Location> location_items;
   if (show_only_active)
     location_items = db().query_locations_active();
   else

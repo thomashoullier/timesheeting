@@ -47,7 +47,7 @@ char StopwatchUI::input_loop() {
 void StopwatchUI::refresh() { stopwatch.refresh(); }
 void StopwatchUI::clear() { stopwatch.clear(); }
 void StopwatchUI::update() {
-  EntryStaging entry_staging = db().query_entrystaging();
+  core::EntryStaging entry_staging = db().query_entrystaging();
   stopwatch.set_items(entry_staging);
   stopwatch.refresh();
 }

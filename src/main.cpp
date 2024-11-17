@@ -2,7 +2,7 @@
 #include "cli.h"
 #include "csv_exporter.h"
 #include "db/db_sqlite.h"
-#include "duration_displayer.h"
+#include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
 #include "time_lib/time_zone.h"
 #include "ui.h"
@@ -44,7 +44,7 @@ int main(int argc, const char *const *argv) {
   }
 
   // initialize the DurationDisplayer
-  DurationDisplayer::get(config.hours_per_workday);
+  time_lib::DurationDisplayer::get(config.hours_per_workday);
 
   // Loading the UI and entering input loop.
   UI ui;
