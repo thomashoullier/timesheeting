@@ -10,22 +10,19 @@ set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
 
 # Dependencies
 find_package(Curses REQUIRED)
-include_directories(${CURSES_INCLUDE_DIR})
+include_directories(${CURSES_INCLUDE_DIR}) # TODO: include only in the target
 find_library(MENU_LIBRARY menu)
 
 find_package (SQLite3)
-include_directories(${SQLite3_INCLUDE_DIRS})
+include_directories(${SQLite3_INCLUDE_DIRS}) # TODO: include only in the target
 
 find_package(tomlplusplus REQUIRED)
-
-include_directories(BEFORE /usr/include/tclap)
-
 find_package(rapidfuzz REQUIRED)
 
 # Internal libraries
 file(GLOB_RECURSE TIME_LIB_SRC "${TIMESHEETING_DIR}/libs/time_lib/*.cpp")
 add_library(time_lib STATIC "${TIME_LIB_SRC}")
-target_include_directories(time_lib PUBLIC
+target_include_directories(time_lib PUBLIC # TODO: setting the build interface is useless for libraries with source?
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/libs>")
 
 file(GLOB_RECURSE LOG_LIB_SRC "${TIMESHEETING_DIR}/libs/log_lib/*.cpp")
@@ -79,13 +76,18 @@ file(GLOB_RECURSE EXPORTER_SRC "${TIMESHEETING_DIR}/modules/exporter/*.cpp")
 add_library(exporter STATIC "${EXPORTER_SRC}")
 target_link_libraries(exporter PRIVATE time_lib db version)
 
+file(GLOB_RECURSE CLI_SRC "${TIMESHEETING_DIR}/modules/ui/cli/*.cpp")
+add_library(cli STATIC "${CLI_SRC}")
+target_include_directories(cli PRIVATE /usr/include/tclap)
+target_link_libraries(cli PRIVATE version)
+
 # Main
 file(GLOB_RECURSE TIMESHEETING_SRC "${TIMESHEETING_DIR}/src/*.cpp")
 add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp"
   "${TIMESHEETING_SRC}")
 target_link_libraries(timesheeting_main PRIVATE
                       time_lib log_lib
-                      keys core db config exporter
+                      keys core db config exporter cli
                       rapidfuzz::rapidfuzz)
 set_target_properties(timesheeting_main PROPERTIES COMPILE_FLAGS
   "${CMAKE_CXX_FLAGS} -g -Wall -O2 -Wextra -march=native")

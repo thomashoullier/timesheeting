@@ -1,5 +1,5 @@
 #include "ui/keys/bound_keys.h"
-#include "cli.h"
+#include "ui/cli/cli.h"
 #include "exporter/csv_exporter.h"
 #include "db/db_sqlite.h"
 #include "time_lib/duration_displayer.h"
