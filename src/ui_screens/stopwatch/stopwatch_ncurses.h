@@ -3,7 +3,7 @@
 #ifndef STOPWATCH_NCURSES_H
 #define STOPWATCH_NCURSES_H
 
-#include "../../data_objects/entry_field.h"
+#include "../entry_field.h"
 #include "core/entry_staging.h"
 #include "ncurses_lib/menu_ncurses.h"
 

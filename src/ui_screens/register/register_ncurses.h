@@ -4,7 +4,7 @@
 #define REGISTER_NCURSES_H
 
 #include "core/entry.h"
-#include "../../data_objects/entry_field.h"
+#include "../entry_field.h"
 #include "core/id.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include <string>
