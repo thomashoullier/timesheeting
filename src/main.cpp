@@ -1,6 +1,6 @@
 #include "ui/keys/bound_keys.h"
 #include "cli.h"
-#include "csv_exporter.h"
+#include "exporter/csv_exporter.h"
 #include "db/db_sqlite.h"
 #include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
@@ -38,8 +38,8 @@ int main(int argc, const char *const *argv) {
   // Export to csv
   if (not(cli_data.beg_date.empty()) and not(cli_data.end_date.empty())
       and not(cli_data.export_file.empty())) {
-    CSVExporter(cli_data.beg_date, cli_data.end_date,
-                cli_data.export_file);
+    exporter::CSVExporter(cli_data.beg_date, cli_data.end_date,
+                          cli_data.export_file);
     return 0; // Terminate the program after CSV export.
   }
 

@@ -75,13 +75,17 @@ target_link_libraries(config PRIVATE tomlplusplus::tomlplusplus)
 target_include_directories(config PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/modules>")
 
+file(GLOB_RECURSE EXPORTER_SRC "${TIMESHEETING_DIR}/modules/exporter/*.cpp")
+add_library(exporter STATIC "${EXPORTER_SRC}")
+target_link_libraries(exporter PRIVATE time_lib db version)
+
 # Main
 file(GLOB_RECURSE TIMESHEETING_SRC "${TIMESHEETING_DIR}/src/*.cpp")
 add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp"
   "${TIMESHEETING_SRC}")
 target_link_libraries(timesheeting_main PRIVATE
                       time_lib log_lib
-                      keys core db config
+                      keys core db config exporter
                       rapidfuzz::rapidfuzz)
 set_target_properties(timesheeting_main PROPERTIES COMPILE_FLAGS
   "${CMAKE_CXX_FLAGS} -g -Wall -O2 -Wextra -march=native")
