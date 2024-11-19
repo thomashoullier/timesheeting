@@ -1,18 +1,18 @@
 var searchData=
 [
-  ['period_0',['period',['../classPeriodSelectorNCurses.html#a3ecd9c57d6207f1d4a7b4ad2f4577ca1',1,'PeriodSelectorNCurses']]],
-  ['period_5fselector_1',['period_selector',['../classPeriodSelectorUI.html#a658cdd400c495e6fdcbd56d0871d6d6e',1,'PeriodSelectorUI']]],
-  ['periodfield_2',['PeriodField',['../classPeriodSelectorNCurses.html#a818afe54e0a2e6ecba66a8d794f73744',1,'PeriodSelectorNCurses']]],
-  ['periodselectorncurses_3',['PeriodSelectorNCurses',['../classPeriodSelectorNCurses.html',1,'PeriodSelectorNCurses'],['../classPeriodSelectorNCurses.html#a1d3c2b305a3b2ca07aa0119fac51e2d6',1,'PeriodSelectorNCurses::PeriodSelectorNCurses()']]],
-  ['periodselectorui_4',['PeriodSelectorUI',['../classPeriodSelectorUI.html',1,'PeriodSelectorUI'],['../classPeriodSelectorUI.html#a98479cf20360f2b8a718d77b4d316dba',1,'PeriodSelectorUI::PeriodSelectorUI()']]],
-  ['print_5',['print',['../classStatusBarNCurses.html#a923297a6713a78610d55df0006a3bbf4',1,'StatusBarNCurses']]],
-  ['print_5fwait_6',['print_wait',['../classStatusBarNCurses.html#aa1bb31e0eeba417c9fa84945e55ef7f7',1,'StatusBarNCurses']]],
-  ['project_5fcol_7',['project_col',['../classProjectTaskScreen.html#ab4e37ae246a5d102e24bc61786fbd6c5',1,'ProjectTaskScreen']]],
-  ['project_5freport_5fscreen_8',['project_report_screen',['../classUI.html#a56b3be91a2af3506a3dc58db2c63119b',1,'UI::project_report_screen()'],['../classUpdateManager.html#ac797c014b7ac73b3f138aac605bdf956',1,'UpdateManager::project_report_screen()']]],
+  ['period_0',['period',['../classtui_1_1PeriodSelectorNCurses.html#ae7571ecbb8b8e08565b5cebb5001ec9f',1,'tui::PeriodSelectorNCurses']]],
+  ['period_5fselector_1',['period_selector',['../classtui_1_1PeriodSelectorUI.html#a6fd28011796725d7751f8ffa9859558e',1,'tui::PeriodSelectorUI']]],
+  ['periodfield_2',['PeriodField',['../classtui_1_1PeriodSelectorNCurses.html#a7ba2b677a164220c3b17948355950a51',1,'tui::PeriodSelectorNCurses']]],
+  ['periodselectorncurses_3',['PeriodSelectorNCurses',['../classtui_1_1PeriodSelectorNCurses.html#abe33fb886d5a229b2fa186d9373a9f1c',1,'tui::PeriodSelectorNCurses::PeriodSelectorNCurses()'],['../classtui_1_1PeriodSelectorNCurses.html',1,'tui::PeriodSelectorNCurses']]],
+  ['periodselectorui_4',['PeriodSelectorUI',['../classtui_1_1PeriodSelectorUI.html#a2d264b2dc7228e23fd04634c7a81a9d8',1,'tui::PeriodSelectorUI::PeriodSelectorUI()'],['../classtui_1_1PeriodSelectorUI.html',1,'tui::PeriodSelectorUI']]],
+  ['print_5',['print',['../classtui_1_1StatusBarNCurses.html#a781ebcb0011c68f66cbb0e216621e50b',1,'tui::StatusBarNCurses']]],
+  ['print_5fwait_6',['print_wait',['../classtui_1_1StatusBarNCurses.html#a8ce405031fb1113a596a341282307f87',1,'tui::StatusBarNCurses']]],
+  ['project_5fcol_7',['project_col',['../classtui_1_1ProjectTaskScreen.html#a0f6e7907ab8ed746f4d1a5451b45bbec',1,'tui::ProjectTaskScreen']]],
+  ['project_5freport_5fscreen_8',['project_report_screen',['../classtui_1_1UI.html#abd5e698b07f5de44e003f167004bbcc6',1,'tui::UI::project_report_screen()'],['../classtui_1_1UpdateManager.html#a536de43cd4a46d646df22189d1a49f6f',1,'tui::UpdateManager::project_report_screen()']]],
   ['project_5ftask_5fscreen_2eh_9',['project_task_screen.h',['../project__task__screen_8h.html',1,'']]],
-  ['projectreportscreen_10',['ProjectReportScreen',['../classProjectReportScreen.html',1,'']]],
-  ['projects_5fscreen_11',['projects_screen',['../classUI.html#acae2507c138b68df1b972162aab63dfd',1,'UI::projects_screen()'],['../classUpdateManager.html#a57312a2cad02a0f7a5b1b7929ff2feb8',1,'UpdateManager::projects_screen()']]],
-  ['projects_5ftasks_5fhave_5fchanged_12',['projects_tasks_have_changed',['../classUpdateManager.html#ae247402a813c9ac91aecfa014e883620',1,'UpdateManager']]],
-  ['projecttaskscreen_13',['ProjectTaskScreen',['../classProjectTaskScreen.html',1,'ProjectTaskScreen'],['../classProjectTaskScreen.html#a4702613fc64c6fb251cca49781b9cda0',1,'ProjectTaskScreen::ProjectTaskScreen()']]],
-  ['projecttotalsregister_14',['ProjectTotalsRegister',['../classProjectTotalsRegister.html',1,'ProjectTotalsRegister'],['../classProjectTotalsRegister.html#a30844eae8f28efb5435bfdc8817a4684',1,'ProjectTotalsRegister::ProjectTotalsRegister()']]]
+  ['projectreportscreen_10',['ProjectReportScreen',['../classtui_1_1ProjectReportScreen.html',1,'tui']]],
+  ['projects_5fscreen_11',['projects_screen',['../classtui_1_1UI.html#ae7b84ee54f127f1c0570bcc43b955c10',1,'tui::UI::projects_screen()'],['../classtui_1_1UpdateManager.html#a0c7d39c14493bca21eb6e43b728cd70d',1,'tui::UpdateManager::projects_screen()']]],
+  ['projects_5ftasks_5fhave_5fchanged_12',['projects_tasks_have_changed',['../classtui_1_1UpdateManager.html#aa222d21c192e30710c751e621cc57984',1,'tui::UpdateManager']]],
+  ['projecttaskscreen_13',['ProjectTaskScreen',['../classtui_1_1ProjectTaskScreen.html#a4c5fdea5c7ba4b30133cdee1f21ecd6c',1,'tui::ProjectTaskScreen::ProjectTaskScreen()'],['../classtui_1_1ProjectTaskScreen.html',1,'tui::ProjectTaskScreen']]],
+  ['projecttotalsregister_14',['ProjectTotalsRegister',['../classtui_1_1ProjectTotalsRegister.html#a473052e0b306a5ba31742fb87b0b4790',1,'tui::ProjectTotalsRegister::ProjectTotalsRegister()'],['../classtui_1_1ProjectTotalsRegister.html',1,'tui::ProjectTotalsRegister']]]
 ];

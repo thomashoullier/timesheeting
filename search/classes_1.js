@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dayselector_0',['DaySelector',['../classDaySelector.html',1,'']]]
+  ['dayselector_0',['DaySelector',['../classtui_1_1DaySelector.html',1,'tui']]]
 ];

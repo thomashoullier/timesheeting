@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['period_0',['period',['../classPeriodSelectorNCurses.html#a3ecd9c57d6207f1d4a7b4ad2f4577ca1',1,'PeriodSelectorNCurses']]],
-  ['period_5fselector_1',['period_selector',['../classPeriodSelectorUI.html#a658cdd400c495e6fdcbd56d0871d6d6e',1,'PeriodSelectorUI']]],
-  ['project_5fcol_2',['project_col',['../classProjectTaskScreen.html#ab4e37ae246a5d102e24bc61786fbd6c5',1,'ProjectTaskScreen']]],
-  ['project_5freport_5fscreen_3',['project_report_screen',['../classUI.html#a56b3be91a2af3506a3dc58db2c63119b',1,'UI::project_report_screen()'],['../classUpdateManager.html#ac797c014b7ac73b3f138aac605bdf956',1,'UpdateManager::project_report_screen()']]],
-  ['projects_5fscreen_4',['projects_screen',['../classUI.html#acae2507c138b68df1b972162aab63dfd',1,'UI::projects_screen()'],['../classUpdateManager.html#a57312a2cad02a0f7a5b1b7929ff2feb8',1,'UpdateManager::projects_screen()']]]
+  ['period_0',['period',['../classtui_1_1PeriodSelectorNCurses.html#ae7571ecbb8b8e08565b5cebb5001ec9f',1,'tui::PeriodSelectorNCurses']]],
+  ['period_5fselector_1',['period_selector',['../classtui_1_1PeriodSelectorUI.html#a6fd28011796725d7751f8ffa9859558e',1,'tui::PeriodSelectorUI']]],
+  ['project_5fcol_2',['project_col',['../classtui_1_1ProjectTaskScreen.html#a0f6e7907ab8ed746f4d1a5451b45bbec',1,'tui::ProjectTaskScreen']]],
+  ['project_5freport_5fscreen_3',['project_report_screen',['../classtui_1_1UI.html#abd5e698b07f5de44e003f167004bbcc6',1,'tui::UI::project_report_screen()'],['../classtui_1_1UpdateManager.html#a536de43cd4a46d646df22189d1a49f6f',1,'tui::UpdateManager::project_report_screen()']]],
+  ['projects_5fscreen_4',['projects_screen',['../classtui_1_1UI.html#ae7b84ee54f127f1c0570bcc43b955c10',1,'tui::UI::projects_screen()'],['../classtui_1_1UpdateManager.html#a0c7d39c14493bca21eb6e43b728cd70d',1,'tui::UpdateManager::projects_screen()']]]
 ];

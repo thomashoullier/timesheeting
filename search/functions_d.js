@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['weeklyreportregister_0',['WeeklyReportRegister',['../classWeeklyReportRegister.html#a415bc0d1f6cceae2d28dffbebcae0377',1,'WeeklyReportRegister']]],
-  ['weekselector_1',['WeekSelector',['../classWeekSelector.html#a1aff3d68b4e9da36d077d15ca6955450',1,'WeekSelector']]]
+  ['weeklyreportregister_0',['WeeklyReportRegister',['../classtui_1_1WeeklyReportRegister.html#a698f860daae5500b6e1b5101c2ceb5c1',1,'tui::WeeklyReportRegister']]],
+  ['weekselector_1',['WeekSelector',['../classtui_1_1WeekSelector.html#aaf2fce647dfec275c5d20ba44cad862a',1,'tui::WeekSelector']]]
 ];

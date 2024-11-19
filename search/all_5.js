@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['held_5fitems_0',['held_items',['../classColumn.html#a9f5c3ef92edf21885c339f322f81d7e2',1,'Column::held_items()'],['../classRegisterNcurses.html#ace40d93d671bf2202840f75419867ca0',1,'RegisterNcurses::held_items()']]]
+  ['held_5fitems_0',['held_items',['../classtui_1_1Column.html#a34412f963d7228bbe380cd963e737b79',1,'tui::Column::held_items()'],['../classtui_1_1RegisterNcurses.html#ac2633c08acc26bf7eedf8874e5b35fc0',1,'tui::RegisterNcurses::held_items()']]]
 ];

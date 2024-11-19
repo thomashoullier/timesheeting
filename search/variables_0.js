@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['day_0',['day',['../classDaySelector.html#ab6220337b573be55df3fa9d3bd871932',1,'DaySelector']]],
-  ['day_5fselector_1',['day_selector',['../classEntriesTable.html#ad124a73a019f8428bc64f449f66c18c5',1,'EntriesTable']]],
-  ['display_5fstring_2',['display_string',['../classTotalBar.html#ae4e6ce7884a4b499980401e26d01234b',1,'TotalBar']]],
-  ['duration_3',['duration',['../classTotalBar.html#a22e6778b94d13d693530dd53bea8fdfe',1,'TotalBar']]]
+  ['day_0',['day',['../classtui_1_1DaySelector.html#a1a2f0155cee484fc07abb0197f3b0356',1,'tui::DaySelector']]],
+  ['day_5fselector_1',['day_selector',['../classtui_1_1EntriesTable.html#a19077337648a9d02bad67f5e1b1b8ae0',1,'tui::EntriesTable']]],
+  ['display_5fstring_2',['display_string',['../classtui_1_1TotalBar.html#a332427e49b8c7dfdb44cee074c78f2b1',1,'tui::TotalBar']]],
+  ['duration_3',['duration',['../classtui_1_1TotalBar.html#a8ed940015502a1485697a8da0399afb4',1,'tui::TotalBar']]]
 ];

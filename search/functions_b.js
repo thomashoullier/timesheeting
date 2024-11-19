@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['toggle_5factive_5fitem_0',['toggle_active_item',['../classLocationsScreen.html#a3437202b2e741b3bad65ff84e0804261',1,'LocationsScreen::toggle_active_item()'],['../classProjectTaskScreen.html#a6a33ce80858e501f30955170e93599b2',1,'ProjectTaskScreen::toggle_active_item()']]],
-  ['toggle_5farchive_5fvisibility_1',['toggle_archive_visibility',['../classLocationsScreen.html#acbe7ac4d6567de4537a861d1d6b23172',1,'LocationsScreen::toggle_archive_visibility()'],['../classProjectTaskScreen.html#a2ed7b3379fe98ce4c03159ad548cf5bf',1,'ProjectTaskScreen::toggle_archive_visibility()']]],
-  ['totalbar_2',['TotalBar',['../classTotalBar.html#a6a8bf23d746d223556d04591719f40ac',1,'TotalBar']]]
+  ['toggle_5factive_5fitem_0',['toggle_active_item',['../classtui_1_1LocationsScreen.html#aa1def88957879145197e3047aadd2ebc',1,'tui::LocationsScreen::toggle_active_item()'],['../classtui_1_1ProjectTaskScreen.html#af9a0539e4bb4786b2aa99a6009661977',1,'tui::ProjectTaskScreen::toggle_active_item()']]],
+  ['toggle_5farchive_5fvisibility_1',['toggle_archive_visibility',['../classtui_1_1LocationsScreen.html#a8e39fdeb220873c130bb83eb45a76b90',1,'tui::LocationsScreen::toggle_archive_visibility()'],['../classtui_1_1ProjectTaskScreen.html#ad0077326d23b0af9af069a8cdcb4f9ef',1,'tui::ProjectTaskScreen::toggle_archive_visibility()']]],
+  ['totalbar_2',['TotalBar',['../classtui_1_1TotalBar.html#a44d8b97ce30b69031176bce68553ece8',1,'tui::TotalBar']]]
 ];

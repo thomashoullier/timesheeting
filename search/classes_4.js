@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['periodselectorncurses_0',['PeriodSelectorNCurses',['../classPeriodSelectorNCurses.html',1,'']]],
-  ['periodselectorui_1',['PeriodSelectorUI',['../classPeriodSelectorUI.html',1,'']]],
-  ['projectreportscreen_2',['ProjectReportScreen',['../classProjectReportScreen.html',1,'']]],
-  ['projecttaskscreen_3',['ProjectTaskScreen',['../classProjectTaskScreen.html',1,'']]],
-  ['projecttotalsregister_4',['ProjectTotalsRegister',['../classProjectTotalsRegister.html',1,'']]]
+  ['periodselectorncurses_0',['PeriodSelectorNCurses',['../classtui_1_1PeriodSelectorNCurses.html',1,'tui']]],
+  ['periodselectorui_1',['PeriodSelectorUI',['../classtui_1_1PeriodSelectorUI.html',1,'tui']]],
+  ['projectreportscreen_2',['ProjectReportScreen',['../classtui_1_1ProjectReportScreen.html',1,'tui']]],
+  ['projecttaskscreen_3',['ProjectTaskScreen',['../classtui_1_1ProjectTaskScreen.html',1,'tui']]],
+  ['projecttotalsregister_4',['ProjectTotalsRegister',['../classtui_1_1ProjectTotalsRegister.html',1,'tui']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['locationsscreen_0',['LocationsScreen',['../classLocationsScreen.html',1,'']]]
+  ['locationsscreen_0',['LocationsScreen',['../classtui_1_1LocationsScreen.html',1,'tui']]]
 ];

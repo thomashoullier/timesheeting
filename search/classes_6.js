@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['statusbarncurses_0',['StatusBarNCurses',['../classStatusBarNCurses.html',1,'']]],
-  ['stopwatchncurses_1',['StopwatchNcurses',['../classStopwatchNcurses.html',1,'']]],
-  ['stopwatchui_2',['StopwatchUI',['../classStopwatchUI.html',1,'']]]
+  ['statusbarncurses_0',['StatusBarNCurses',['../classtui_1_1StatusBarNCurses.html',1,'tui']]],
+  ['stopwatchncurses_1',['StopwatchNcurses',['../classtui_1_1StopwatchNcurses.html',1,'tui']]],
+  ['stopwatchui_2',['StopwatchUI',['../classtui_1_1StopwatchUI.html',1,'tui']]]
 ];

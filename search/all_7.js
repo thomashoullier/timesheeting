@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['location_5fcol_0',['location_col',['../classLocationsScreen.html#acdda57c08a45507859a76aff260dd2c3',1,'LocationsScreen']]],
-  ['locations_5fhave_5fchanged_1',['locations_have_changed',['../classUpdateManager.html#adc451e37287d440e5e13bd353e67ded7',1,'UpdateManager']]],
-  ['locations_5fscreen_2',['locations_screen',['../classUI.html#a81892b1b3a69aca9a3ecb81b1bedc9b6',1,'UI::locations_screen()'],['../classUpdateManager.html#a4a0a330e33cf16212e45622df2a7669f',1,'UpdateManager::locations_screen()']]],
-  ['locationsscreen_3',['LocationsScreen',['../classLocationsScreen.html',1,'LocationsScreen'],['../classLocationsScreen.html#a169460ed4bb362787b496e3337508595',1,'LocationsScreen::LocationsScreen()']]]
+  ['location_5fcol_0',['location_col',['../classtui_1_1LocationsScreen.html#a51da69a1ca8e2eba94ddf02a8ea7a54d',1,'tui::LocationsScreen']]],
+  ['locations_5fhave_5fchanged_1',['locations_have_changed',['../classtui_1_1UpdateManager.html#a3592f3e1336e4929b0278d2da2e79306',1,'tui::UpdateManager']]],
+  ['locations_5fscreen_2',['locations_screen',['../classtui_1_1UI.html#a5da326b7b9ec5cf0542099cf10cdcdba',1,'tui::UI::locations_screen()'],['../classtui_1_1UpdateManager.html#a0d503ac11f9f2284568d6c5b9cc5f38a',1,'tui::UpdateManager::locations_screen()']]],
+  ['locationsscreen_3',['LocationsScreen',['../classtui_1_1LocationsScreen.html#aff48c6c3e560ebbe6eed4acf9fd3bd92',1,'tui::LocationsScreen::LocationsScreen()'],['../classtui_1_1LocationsScreen.html',1,'tui::LocationsScreen']]]
 ];

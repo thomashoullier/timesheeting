@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['query_5fconfirmation_0',['query_confirmation',['../classStatusBarNCurses.html#a8326c4fa0134f44510325ef8613ad31d',1,'StatusBarNCurses']]]
+  ['query_5fconfirmation_0',['query_confirmation',['../classtui_1_1StatusBarNCurses.html#abb6337b6ea3be708f271c255d588a8fb',1,'tui::StatusBarNCurses']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['location_5fcol_0',['location_col',['../classLocationsScreen.html#acdda57c08a45507859a76aff260dd2c3',1,'LocationsScreen']]],
-  ['locations_5fscreen_1',['locations_screen',['../classUI.html#a81892b1b3a69aca9a3ecb81b1bedc9b6',1,'UI::locations_screen()'],['../classUpdateManager.html#a4a0a330e33cf16212e45622df2a7669f',1,'UpdateManager::locations_screen()']]]
+  ['location_5fcol_0',['location_col',['../classtui_1_1LocationsScreen.html#a51da69a1ca8e2eba94ddf02a8ea7a54d',1,'tui::LocationsScreen']]],
+  ['locations_5fscreen_1',['locations_screen',['../classtui_1_1UI.html#a5da326b7b9ec5cf0542099cf10cdcdba',1,'tui::UI::locations_screen()'],['../classtui_1_1UpdateManager.html#a0d503ac11f9f2284568d6c5b9cc5f38a',1,'tui::UpdateManager::locations_screen()']]]
 ];

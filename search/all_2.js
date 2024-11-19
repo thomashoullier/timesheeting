@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['day_0',['day',['../classDaySelector.html#ab6220337b573be55df3fa9d3bd871932',1,'DaySelector']]],
-  ['day_5fselector_1',['day_selector',['../classEntriesTable.html#ad124a73a019f8428bc64f449f66c18c5',1,'EntriesTable']]],
-  ['dayselector_2',['DaySelector',['../classDaySelector.html',1,'DaySelector'],['../classDaySelector.html#a78807a3963514c2ccc1ef26fd35ff501',1,'DaySelector::DaySelector()']]],
-  ['display_5fstring_3',['display_string',['../classTotalBar.html#ae4e6ce7884a4b499980401e26d01234b',1,'TotalBar']]],
-  ['duration_4',['duration',['../classTotalBar.html#a22e6778b94d13d693530dd53bea8fdfe',1,'TotalBar']]],
-  ['duration_5fdisplay_5fchanged_5',['duration_display_changed',['../classUpdateManager.html#a023b5a241f82a09a7b0fd016c877ea20',1,'UpdateManager']]]
+  ['day_0',['day',['../classtui_1_1DaySelector.html#a1a2f0155cee484fc07abb0197f3b0356',1,'tui::DaySelector']]],
+  ['day_5fselector_1',['day_selector',['../classtui_1_1EntriesTable.html#a19077337648a9d02bad67f5e1b1b8ae0',1,'tui::EntriesTable']]],
+  ['dayselector_2',['DaySelector',['../classtui_1_1DaySelector.html#ae528531393efb4d1b33303aca9bc14b8',1,'tui::DaySelector::DaySelector()'],['../classtui_1_1DaySelector.html',1,'tui::DaySelector']]],
+  ['display_5fstring_3',['display_string',['../classtui_1_1TotalBar.html#a332427e49b8c7dfdb44cee074c78f2b1',1,'tui::TotalBar']]],
+  ['duration_4',['duration',['../classtui_1_1TotalBar.html#a8ed940015502a1485697a8da0399afb4',1,'tui::TotalBar']]],
+  ['duration_5fdisplay_5fchanged_5',['duration_display_changed',['../classtui_1_1UpdateManager.html#a8b8b6477e7f0d176295db014a9cc995e',1,'tui::UpdateManager']]]
 ];

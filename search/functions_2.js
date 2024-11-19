@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['dayselector_0',['DaySelector',['../classDaySelector.html#a78807a3963514c2ccc1ef26fd35ff501',1,'DaySelector']]],
-  ['duration_5fdisplay_5fchanged_1',['duration_display_changed',['../classUpdateManager.html#a023b5a241f82a09a7b0fd016c877ea20',1,'UpdateManager']]]
+  ['dayselector_0',['DaySelector',['../classtui_1_1DaySelector.html#ae528531393efb4d1b33303aca9bc14b8',1,'tui::DaySelector']]],
+  ['duration_5fdisplay_5fchanged_1',['duration_display_changed',['../classtui_1_1UpdateManager.html#a8b8b6477e7f0d176295db014a9cc995e',1,'tui::UpdateManager']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ncurses_5fhandle_0',['ncurses_handle',['../classUI.html#a188daf8afc98301dbdf2ff6e1f3830fa',1,'UI']]]
+  ['ncurses_5fhandle_0',['ncurses_handle',['../classtui_1_1UI.html#a009a34afa386576d5a36c0455ec38848',1,'tui::UI']]]
 ];
