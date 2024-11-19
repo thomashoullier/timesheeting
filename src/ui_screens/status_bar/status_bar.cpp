@@ -1,5 +1,5 @@
 #include "status_bar.h"
-#include "suggestion.h"
+#include "suggestion/suggestion.h"
 #include <algorithm>
 #include "ui/keys/bound_keys.h"
 

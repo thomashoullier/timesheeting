@@ -40,6 +40,12 @@ target_link_libraries(ncurses_lib PRIVATE log_lib
 target_include_directories(ncurses_lib PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/libs>")
 
+file(GLOB_RECURSE SUGGESTION_SRC "${TIMESHEETING_DIR}/libs/suggestion/*.cpp")
+add_library(suggestion STATIC "${SUGGESTION_SRC}")
+target_link_libraries(suggestion PRIVATE rapidfuzz::rapidfuzz)
+target_include_directories(suggestion PUBLIC
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/libs>")
+
 # Internal modules
 add_library(version INTERFACE)
 target_include_directories(version INTERFACE
@@ -88,6 +94,7 @@ add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp"
 target_link_libraries(timesheeting_main PRIVATE
                       time_lib log_lib
                       keys core db config exporter cli
-                      rapidfuzz::rapidfuzz)
+                      suggestion # TODO move to tui
+                      )
 set_target_properties(timesheeting_main PROPERTIES COMPILE_FLAGS
   "${CMAKE_CXX_FLAGS} -g -Wall -O2 -Wextra -march=native")
