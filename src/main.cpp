@@ -47,8 +47,8 @@ int main(int argc, const char *const *argv) {
   time_lib::DurationDisplayer::get(config.hours_per_workday);
 
   // Loading the UI and entering input loop.
-  UI ui;
-  ui.input_loop();
+  tui::UI tui;
+  tui.input_loop();
 
   log_lib::logger().tock(); // For measuring teardown time.
 }

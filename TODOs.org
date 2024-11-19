@@ -56,6 +56,12 @@ directly in the project readme.
 + We can do a graphviz of all documentation and software. We can show every version
   and the "Applicable documents" links between them.
 
+* Doxygen documentation
+** TODO Add libs and modules to the documentation
+ADDED: [2024-11-19 Tue]
+The libs and modules were extracted from ~src/~, we need to add
+them back to the documentation.
+
 * Software
 ** Bugs
 *** TODO Fix date parsing

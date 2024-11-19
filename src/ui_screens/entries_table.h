@@ -8,29 +8,31 @@
 #include "total_bar/total_bar.h"
 #include "ui_component.h"
 
-/** @brief Class for holding the table of entries for a given day. */
-class EntriesTable : public UIComponent {
-public:
-  /** @brief Constructor. */
-  explicit EntriesTable();
+namespace tui {
+  /** @brief Class for holding the table of entries for a given day. */
+  class EntriesTable : public UIComponent {
+  public:
+    /** @brief Constructor. */
+    explicit EntriesTable();
 
-  char input_loop() override;
-  void refresh() override;
-  void clear() override;
-  void update() override;
+    char input_loop() override;
+    void refresh() override;
+    void clear() override;
+    void update() override;
 
-private:
-  /** @brief Handle to the day selector. */
-  DaySelector day_selector;
-  /** @brief Handle to the total duration display. */
-  TotalBar total_bar;
-  /** @brief Handle to the register of entries. */
-  RegisterNcurses reg;
+  private:
+    /** @brief Handle to the day selector. */
+    DaySelector day_selector;
+    /** @brief Handle to the total duration display. */
+    TotalBar total_bar;
+    /** @brief Handle to the register of entries. */
+    RegisterNcurses reg;
 
-  /** @brief Rename an entry in the register. */
-  void rename_item();
-  /** @brief Remove an entry in the register. */
-  void remove_item();
-};
+    /** @brief Rename an entry in the register. */
+    void rename_item();
+    /** @brief Remove an entry in the register. */
+    void remove_item();
+  };
+} // namespace tui
 
 #endif // ENTRIES_TABLE_H

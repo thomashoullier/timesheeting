@@ -6,19 +6,21 @@
 #include "total_bar/total_bar.h"
 #include "ui_screen.h"
 
-class ProjectReportScreen : public UIScreen {
-public:
-  explicit ProjectReportScreen();
+namespace tui {
+  class ProjectReportScreen : public UIScreen {
+  public:
+    explicit ProjectReportScreen();
 
-  char input_loop() override;
-  void refresh() override;
-  void clear() override;
-  void update() override;
+    char input_loop() override;
+    void refresh() override;
+    void clear() override;
+    void update() override;
 
-private:
-  PeriodSelectorUI period_selector_ui;
-  TotalBar total_bar;
-  ProjectTotalsRegister reg;
-};
+  private:
+    PeriodSelectorUI period_selector_ui;
+    TotalBar total_bar;
+    ProjectTotalsRegister reg;
+  };
+} // namespace tui
 
 #endif // PROJECT_REPORT_SCREEN_H
