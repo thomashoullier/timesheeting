@@ -5,7 +5,7 @@
 #include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
 #include "time_lib/time_zone.h"
-#include "ui.h"
+#include "ui/tui/ui.h"
 #include "config/config.h"
 #include "version/version.h"
 

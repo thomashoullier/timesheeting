@@ -87,14 +87,20 @@ target_link_libraries(cli PRIVATE version)
 target_include_directories(cli PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/modules>")
 
+file(GLOB_RECURSE TUI_SRC "${TIMESHEETING_DIR}/modules/ui/tui/*.cpp")
+add_library(tui STATIC "${TUI_SRC}")
+target_link_libraries(tui PRIVATE ncurses_lib core
+                      suggestion time_lib log_lib
+                      keys db)
+target_include_directories(tui PUBLIC
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/modules>")
+
 # Main
 file(GLOB_RECURSE TIMESHEETING_SRC "${TIMESHEETING_DIR}/src/*.cpp")
 add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp"
   "${TIMESHEETING_SRC}")
 target_link_libraries(timesheeting_main PRIVATE
-                      time_lib log_lib
-                      keys core db config exporter cli
-                      suggestion # TODO move to tui
-                      )
+                      keys cli exporter db time_lib log_lib
+                      config version tui)
 set_target_properties(timesheeting_main PROPERTIES COMPILE_FLAGS
   "${CMAKE_CXX_FLAGS} -g -Wall -O2 -Wextra -march=native")
