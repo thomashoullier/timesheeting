@@ -1,3 +1,5 @@
+/** @file
+ *  @brief LocationsScreen definition. */
 #ifndef LOCATIONS_SCREEN_H
 #define LOCATIONS_SCREEN_H
 

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief Week definition. */
 #ifndef WEEK_H
 #define WEEK_H
 
@@ -5,7 +7,11 @@
 #include "day.h"
 #include <string>
 #include <array>
+
 namespace time_lib {
+  /** @brief A Week is a particular calendar week in time.
+
+   This is not a week number as counted from the beginning of the year. */
   class Week {
   private:
     /** @brief Internal representation: calendar day of first day

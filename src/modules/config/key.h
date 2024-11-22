@@ -4,6 +4,7 @@
 #define KEY_H
 
 namespace config {
+  /** @brief A single key binding. */
   struct Key {
     /** @brief Primary key for binding. */
     char primary = 0;

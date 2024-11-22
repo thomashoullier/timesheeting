@@ -1,3 +1,5 @@
+/** @file
+ *  @brief PeriodSelectorUI definition. */
 #ifndef PERIOD_SELECTOR_UI_H
 #define PERIOD_SELECTOR_UI_H
 
@@ -5,6 +7,8 @@
 #include "../ui_component.h"
 
 namespace tui {
+  /** @brief UIComponent holding a PeriodSelectorNCurses for getting
+             a DateRange from the user. */
   class PeriodSelectorUI : public UIComponent {
   public:
     /** @brief Constructor. */
@@ -14,6 +18,7 @@ namespace tui {
     void clear() override;
     void update() override;
 
+    /** @brief Read the currently inputted DateRange from the UI. */
     time_lib::DateRange get_current_date_range();
 
   private:

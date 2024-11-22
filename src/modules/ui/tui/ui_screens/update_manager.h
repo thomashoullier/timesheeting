@@ -1,3 +1,5 @@
+/** @file
+ *  @brief UpdateManager definition. */
 #ifndef UPDATE_MANAGER_H
 #define UPDATE_MANAGER_H
 

@@ -11,10 +11,13 @@
 #include <vector>
 
 namespace log_lib {
+  /** @brief Categorization for log messages. */
   enum class LogLevel { info, debug, error };
 
   /* TODO: Put these methods inside LogLevel. */
+  /** @brief Convert a LogLevel to its string representation. */
   std::string log_level_string(LogLevel level);
+  /** @brief Get a log level from a string representation. */
   LogLevel log_level_from_string (const std::string &level_str);
 
   /** @brief Logger implementation with a log file.
@@ -23,8 +26,11 @@ namespace log_lib {
   class Logger {
     /** @brief Struct defining the active log levels. */
     struct ActiveLevels {
+      /** @brief Is the 'info' log level active? */
       bool info = false;
+      /** @brief Is the 'debug' log level active? */
       bool debug = false;
+      /** @brief Is the 'error' log level active? */
       bool error = false;
     };
 
@@ -34,8 +40,11 @@ namespace log_lib {
         Initialize on the first call.*/
     static Logger& get(const std::filesystem::path &log_filepath = "",
                        const std::vector<std::string> &levels_to_log = {});
+    /** @brief Emit a log message at the given level. */
     void log (const std::string &message, LogLevel level = LogLevel::info);
+    /** @brief Start a time counter. */
     void tick ();
+    /** @brief Stop the time counter and log the elapsed duration. */
     void tock ();
 
   private:

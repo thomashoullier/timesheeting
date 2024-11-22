@@ -1,3 +1,5 @@
+/** @file
+ *  @brief Suggestion engine utility. */
 #ifndef SUGGESTION_H
 #define SUGGESTION_H
 

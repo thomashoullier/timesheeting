@@ -1,3 +1,5 @@
+/** @file
+ *  @brief ProjectTotalsRegister definition. */
 #ifndef PROJECT_TOTALS_REGISTER_H
 #define PROJECT_TOTALS_REGISTER_H
 

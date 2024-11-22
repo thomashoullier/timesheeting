@@ -43,10 +43,15 @@ namespace db_lib {
     sqlite3_bind_text(stmt, index + 1, str.c_str(), str.size(), SQLITE_STATIC);
   }
 
+  /** @brief Specialization for getting uint64_t. */
   template <> uint64_t Statement::get_column(int icol) {
     return sqlite3_column_int64(stmt, icol);
   }
 
+  /** @brief Specialization for getting std::string.
+
+      In case the column returns a NULL char pointer, then we return
+      an empty string as a default. */
   template <> std::string Statement::get_column(int icol) {
     auto text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, icol));
     return (text == NULL ? std::string{} : text);

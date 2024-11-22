@@ -1,3 +1,5 @@
+/** @file
+ *  @brief WeeklyReportRegister definition. */
 #ifndef WEEKLY_REPORT_REGISTER_H
 #define WEEKLY_REPORT_REGISTER_H
 
@@ -6,6 +8,7 @@
 #include "core/weekly_totals.h"
 
 namespace tui {
+  /** @brief Register for displaying a weekly report of durations worked. */
   class WeeklyReportRegister : public ncurses_lib::MenuNCurses,
                                public UIComponent {
   public:

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief TimeZone definition. */
 #ifndef TIME_ZONE_H
 #define TIME_ZONE_H
 
@@ -8,6 +10,7 @@ namespace time_lib {
   /** @brief Singleton for program-wide timezones. */
   class TimeZone {
   public:
+    /** @brief Grab the singleton. Initialize on first call. */
     static TimeZone& get(const std::string &tz_string = "");
 
     /** @brief Get the current timezone name (TZ string). */
@@ -17,6 +20,7 @@ namespace time_lib {
     const std::chrono::time_zone *zone;
 
   private:
+    /** @brief Singleton constructor. */
     TimeZone(const std::string &tz_string);
   };
 }

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief Entry definition. */
 #ifndef ENTRY_H
 #define ENTRY_H
 

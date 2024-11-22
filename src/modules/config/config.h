@@ -1,3 +1,5 @@
+/** @file
+ *  @brief Managing the configuration loading. */
 #ifndef CONFIG_H
 #define CONFIG_H
 
@@ -8,12 +10,19 @@
 #include "key.h"
 
 namespace config {
+  /** @brief Set of data produced by the ConfigLoader. */
   struct UserConfig {
+    /** @brief Path to the log file. */
     std::filesystem::path log_filepath;
+    /** @brief Path to the DB file. */
     std::filesystem::path db_filepath;
+    /** @brief Set of log levels to activate, by name. */
     std::vector<std::string> log_levels_to_activate;
+    /** @brief Timezone to set in the program, TZ string format. */
     std::string timezone;
+    /** @brief Number of hours in a workday. For displaying durations as days. */
     float hours_per_workday;
+    /** @brief The key bindings to use in the program. */
     KeyBindings bindings;
   };
 

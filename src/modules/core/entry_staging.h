@@ -1,3 +1,5 @@
+/** @file
+ *  @brief EntryStaging definition. */
 #ifndef ENTRY_STAGING_H
 #define ENTRY_STAGING_H
 

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief WeekSelector definition. */
 #ifndef WEEK_SELECTOR_H
 #define WEEK_SELECTOR_H
 
@@ -6,6 +8,7 @@
 #include "ncurses_lib/bar_ncurses.h"
 
 namespace tui {
+  /** @brief UI for specifying a week. */
   class WeekSelector : public ncurses_lib::BarNCurses {
   private:
     /** @brief Internal representation of current week. */

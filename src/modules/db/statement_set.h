@@ -1,3 +1,5 @@
+/** @file
+ *  @brief Defining all repeatedly used DB statements for the program. */
 #ifndef STATEMENT_SET_H
 #define STATEMENT_SET_H
 
@@ -6,6 +8,8 @@
 #include <memory>
 
 namespace db {
+  /** @brief Set of DB statements which will be used repeatedly
+             in the program. */
   class StatementSet {
   public:
     /** @brief Initialize all of the statements. */

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief Statement definition. */
 #ifndef STATEMENT_H
 #define STATEMENT_H
 
@@ -85,14 +87,5 @@ namespace db_lib {
     sqlite3_reset(stmt);
     return results;
   }
-
-
-  /** @brief Specialization for getting uint64_t. */
-  template <> uint64_t Statement::get_column(int icol);
-  /** @brief Specialization for getting std::string.
-
-      In case the column returns a NULL char pointer, then we return
-      an empty string as a default. */
-  template <> std::string Statement::get_column(int icol);
 }
 #endif // STATEMENT_H

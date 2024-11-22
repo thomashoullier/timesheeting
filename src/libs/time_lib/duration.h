@@ -1,3 +1,5 @@
+/** @file
+ *  @brief Duration definition. */
 #ifndef DURATION_H
 #define DURATION_H
 

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief WeeklyTotals definition. */
 #ifndef WEEKLY_TOTALS_H
 #define WEEKLY_TOTALS_H
 

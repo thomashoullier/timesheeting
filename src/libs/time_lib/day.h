@@ -1,3 +1,5 @@
+/** @file
+    @brief Day definition. */
 #ifndef DAY_H
 #define DAY_H
 
@@ -8,6 +10,7 @@ namespace time_lib {
   /** @brief Local calendar day class. */
   class Day {
   private:
+    /** @brief Internal representation of the day. */
     std::chrono::year_month_day ymd;
 
   public:

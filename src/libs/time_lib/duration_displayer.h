@@ -1,3 +1,5 @@
+/** @file
+ *  @brief DurationDisplayer definition. */
 #ifndef DURATION_DISPLAYER_H
 #define DURATION_DISPLAYER_H
 
@@ -7,6 +9,7 @@ namespace time_lib {
   /** @brief Singleton for formatting duration according to varied formats. */
   class DurationDisplayer {
   public:
+    /** @brief Grab the singleton. Initialize on the first call. */
     static DurationDisplayer& get(float hours_per_day = 0.0);
 
     /** @brief Cycle the current display format. */
@@ -19,13 +22,17 @@ namespace time_lib {
     std::string to_shortstring(const time_lib::Duration &dur);
 
   private:
+    /** @brief The accepted formats for duration display. */
     enum class DurationFormat { hours, days, seconds };
 
+    /** @brief The format currently displayed. */
     DurationFormat current_format;
+    /** @brief Parameter for displaying days: how many hours are there
+               in a working day?*/
     float hours_per_day;
 
+    /** @brief Singleton constructor. */
     DurationDisplayer(float hours_per_day);
-
   };
 }
 #endif //DURATION_DISPLAYER_H

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief WeeklyReportScreen definition. */
 #ifndef WEEKLY_REPORT_SCREEN_H
 #define WEEKLY_REPORT_SCREEN_H
 
@@ -6,8 +8,10 @@
 #include "weekly_report_register/weekly_report_register.h"
 
 namespace tui {
+  /** @brief Weekly report UI screen. */
   class WeeklyReportScreen : public UIScreen {
   public:
+    /** @brief Constructor. */
     explicit WeeklyReportScreen();
 
     char input_loop() override;

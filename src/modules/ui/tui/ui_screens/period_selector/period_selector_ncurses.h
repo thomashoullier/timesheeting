@@ -1,3 +1,5 @@
+/** @file
+ *  @brief PeriodSelectorNCurses definition. */
 #ifndef PERIOD_SELECTOR_NCURSES_H
 #define PERIOD_SELECTOR_NCURSES_H
 
@@ -5,6 +7,7 @@
 #include "time_lib/date_range.h"
 
 namespace tui {
+  /** @brief Menu with two cells for specifying a DateRange using the UI. */
   class PeriodSelectorNCurses : public ncurses_lib::MenuNCurses {
   public:
     /** @brief Enum for reporting the field type. */

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief EntryField definition. */
 #ifndef ENTRY_FIELD_H
 #define ENTRY_FIELD_H
 

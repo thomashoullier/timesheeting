@@ -1,3 +1,5 @@
+/** @file
+ *  @brief ProjectReportScreen definition. */
 #ifndef PROJECT_REPORT_SCREEN_H
 #define PROJECT_REPORT_SCREEN_H
 
@@ -7,8 +9,10 @@
 #include "ui_screen.h"
 
 namespace tui {
+  /** @brief The UIScreen presenting the project totals report. */
   class ProjectReportScreen : public UIScreen {
   public:
+    /** @brief Constructor. */
     explicit ProjectReportScreen();
 
     char input_loop() override;
@@ -17,8 +21,11 @@ namespace tui {
     void update() override;
 
   private:
+    /** @brief Selector for the date range to consider. */
     PeriodSelectorUI period_selector_ui;
+    /** @brief Bar for displaying the grand total of duration worked. */
     TotalBar total_bar;
+    /** @brief Register display of totals per project. */
     ProjectTotalsRegister reg;
   };
 } // namespace tui

@@ -1,3 +1,5 @@
+/** @file
+ *  @brief DaySelector definition. */
 #ifndef DAY_SELECTOR_H
 #define DAY_SELECTOR_H
 
