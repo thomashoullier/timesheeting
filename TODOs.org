@@ -57,10 +57,16 @@ directly in the project readme.
   and the "Applicable documents" links between them.
 
 * Doxygen documentation
-** TODO Add libs and modules to the documentation
+** DONE Add libs and modules to the documentation
+CLOSED: [2024-11-22 Fri 20:20]
 ADDED: [2024-11-19 Tue]
 The libs and modules were extracted from ~src/~, we need to add
 them back to the documentation.
+
+** TODO The github doxygen pages do not show anything on the index
+ADDED: [2024-11-22 Fri]
+The deployment is successful and pages are there, but the index.html
+page is completely empty with no links to anything.
 
 * Software
 ** Bugs
