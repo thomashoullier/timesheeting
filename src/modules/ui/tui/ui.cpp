@@ -46,8 +46,8 @@ namespace tui {
       } else if (kb.duration_display.bound_to(ch)) {
         time_lib::DurationDisplayer::get().cycle_format();
         UpdateManager::get().duration_display_changed();
-      } else {
-        return ch;
+      } else if (kb.quit.bound_to(ch)) {
+        return 0; // Return to main
       }
     }
   }

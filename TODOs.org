@@ -164,10 +164,25 @@ Currently the configuration file has two big sections, we need to split
 it to make it clearer.
 - [2024-11-23 Sat] Subdivided the sections into db, time, log, keys
 
-*** TODO Do not reach program termination when hitting an unassigned key
+*** DONE Do not reach program termination when hitting an unassigned key
+CLOSED: [2024-11-23 Sat 20:30]
 ADDED: [2024-11-23 Sat]
 Currently when hitting an unassigned key, the program unwinds until termination.
 Fix it so nothing is done instead.
++ We need to implement a quit key.
++ See what happens when a resizing of the terminal window is done.
+  We may have to catch it and refresh.
+
+*** TODO Do NOTHING when hitting unbound keys
+ADDED: [2024-11-23 Sat]
+Currently the program refreshes or shifts the selection when an
+unbound key is inputted. Change this behavior to doing absolutely
+nothing.
+
+*** TODO Resizing makes some parts of the screen disappear
+When resizing the TUI to a smaller size, then resizing it back to
+its original size, the bottom part of the UI disappears and never
+reappears.
 
 *** TODO Be flexible on the accepted input dates
 ADDED: [2024-11-23 Sat]
@@ -231,6 +246,14 @@ Currently we are doing an else if table, which is suboptimal.
 This should not matter very much of course, but it is
 cleaner to use some kind of hash from dynamic key to an enum of keys,
 and then match the enums in a switch statement.
+
+** Build
+*** TODO Enforce the GCC14 dependency
+ADDED: [2024-11-23 Sat]
+We depend on std::chrono::parse (and other things) being implemented
+by the compiler vendor.
+Can we find a way to signal this dependency in the build system?
+We do not want to forbid other compilers from working either.
 
 ** Features
 *** DEAD Implement a check of the DB when opening

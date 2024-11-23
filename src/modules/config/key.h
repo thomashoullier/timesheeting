@@ -63,6 +63,8 @@ namespace config {
     Key active_visibility;
     /** @brief Change the project a task is assigned to. */
     Key task_project_change;
+    /** @brief Quit the program. */
+    Key quit;
   };
 } // namespace config
 

@@ -108,6 +108,7 @@ namespace config {
     kb.active_visibility.primary = parse_key(keys_node["active_visibility"]);
     kb.task_project_change.primary =
       parse_key(keys_node["task_project_change"]);
+    kb.quit.primary = parse_key(keys_node["quit"]);
     return kb;
   }
 
