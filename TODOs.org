@@ -63,10 +63,13 @@ ADDED: [2024-11-19 Tue]
 The libs and modules were extracted from ~src/~, we need to add
 them back to the documentation.
 
-** TODO The github doxygen pages do not show anything on the index
+** DONE The github doxygen pages do not show anything on the index
+CLOSED: [2024-11-22 Fri 20:41]
 ADDED: [2024-11-22 Fri]
 The deployment is successful and pages are there, but the index.html
 page is completely empty with no links to anything.
+- [2024-11-22 Fri] Fixed by bumping the doxygen version in the github action
+  to use the same one as locally: 1.12.0
 
 * Software
 ** Bugs
@@ -122,14 +125,24 @@ ADDED: [2024-11-16 Sat]
 Currently, when renaming a task in entrystaging, a cancellation will
 empty the project cell. Make it so that it does nothing instead.
 
-*** TODO Suggestion on substrings
+*** DONE Suggestion on substrings
+CLOSED: [2024-11-23 Sat 08:55]
 ADDED: [2024-11-16 Sat]
 The suggestion engine prefers matching "Northern Office" rather than
 "Office". We need to prefer the shorter match.
+- [2024-11-23 Sat] Changed the rapidfuzz metric to CachedTokenSortRatio,
+  which gives better results on preferring a submatch.
+
 *** TODO Toggle archive visibility resets the screen
 ADDED: [2024-11-16 Sat]
 Currently, toggling archive visibility resets the whole screen.
 Make it so the selection stays in place.
+- [2024-11-23 Sat] This is quite hard to do because the whole menu is getting
+  replaced every time. We would have to add the feature on the menu to
+  save the current selection and restore it if possible.
+  This is especially difficult when going from the full view to the
+  active-only view, if the selection was on an archived item.
+  We would have to track the alphabetical order.
 
 ** Refactoring
 *** TODO Refactor MenuNCurses
@@ -204,6 +217,13 @@ CLOSED: [2024-11-16 Sat 15:05]
 ADDED: [2024-11-16 Sat]
 Currently the logs are ambiguous, they show the local time but without
 more indication.
+
+*** TODO Complete the logging messages
+ADDED: [2024-11-23 Sat]
+We are supposed to log every event which changes the DB state at least.
++ Add log messages to cover all DB states changes.
++ Add more information in the log messages: exactly what was changed every time.
+
 *** TODO Clean old log entries
 ADDED: [2024-10-26 Sat]
 + Launch it at startup.
