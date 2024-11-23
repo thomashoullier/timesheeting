@@ -233,14 +233,20 @@ cleaner to use some kind of hash from dynamic key to an enum of keys,
 and then match the enums in a switch statement.
 
 ** Features
-*** TODO Implement a check of the DB when opening
+*** DEAD Implement a check of the DB when opening
+CLOSED: [2024-11-23 Sat 17:10]
 ADDED: [2024-11-16 Sat]
-Check that all tables are indeed present.
-Check the version of the DB.
++ Check that all tables are indeed present.
+  - [2024-11-23 Sat] It is in fact meaningless since we create the tables right
+    when the DB opens anyway.
++ OK Check the version of the DB.
 
-*** TODO Run pragma optimize on closing sqlite
+*** DONE Run pragma optimize on closing sqlite
+CLOSED: [2024-11-23 Sat 17:16]
 ADDED: [2024-09-01 Sun]
 It seems recommended: https://www.sqlite.org/lang_analyze.html
+- [2024-11-23 Sat] ADDED ~PRAGMA optimize;~ when closing the DB handle
+  in db_lib.
 
 *** TODO Consider implementing an undo and redo
 ADDED: [2024-09-03 Tue]
