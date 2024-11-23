@@ -16,7 +16,8 @@ namespace tui {
   class Column : public ColumnBase, public ncurses_lib::MenuNCurses {
   public:
     /** @brief Construct the column with given items and position. */
-    Column(const std::vector<T> &items, ncurses_lib::WindowPosition winpos)
+    explicit Column(const std::vector<T> &items,
+                    ncurses_lib::WindowPosition winpos)
       : MenuNCurses(items_to_string(items), winpos,
                     ncurses_lib::WindowFormat::column, 1),
         held_items(items) {};

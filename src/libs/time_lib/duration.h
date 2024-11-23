@@ -15,9 +15,9 @@ namespace time_lib {
 
   public:
     /** @brief Construct a duration of 0 by default. */
-    Duration();
+    explicit Duration();
     /** @brief Initialize the duration to a number of seconds. */
-    Duration (uint64_t seconds);
+    explicit Duration (uint64_t seconds);
     /** @brief Obtain a displayable representation for the duration in
         hours with 3 decimal places. */
     std::string to_hour_string() const;

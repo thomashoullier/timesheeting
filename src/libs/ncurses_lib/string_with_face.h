@@ -15,7 +15,7 @@ namespace ncurses_lib {
     bool highlight;
 
     /** @brief Constructor. */
-    StringWithFace(const std::string &_str, bool _highlight = false)
+    explicit StringWithFace(const std::string &_str, bool _highlight = false)
       : str(_str), highlight(_highlight) {};
   };
 }

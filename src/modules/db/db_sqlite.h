@@ -116,7 +116,7 @@ namespace db {
 
   private:
     /** @brief Open the DB handle. */
-    DB_SQLite(const std::filesystem::path &db_file);
+    explicit DB_SQLite(const std::filesystem::path &db_file);
     /** @brief Initialize the DB and provide the ready statement set. */
     StatementSet init_db();
     /** @brief Low-level handle to the DB. */

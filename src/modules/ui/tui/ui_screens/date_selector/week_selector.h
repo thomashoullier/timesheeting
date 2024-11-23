@@ -16,7 +16,7 @@ namespace tui {
 
   public:
     /** @brief Initialize the day to the first day of the week in local time. */
-    WeekSelector();
+    explicit WeekSelector();
     /** @brief Return the currently selected week. */
     time_lib::Week current_week() const;
     /** @brief Return the current week as a DateRange. */

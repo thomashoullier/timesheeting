@@ -32,7 +32,7 @@ namespace db_lib {
     /** @brief SQLite statement. */
     sqlite3_stmt *stmt; // TODO: make it private when interface is complete.
     /** @brief Constructor. */
-    Statement(sqlite3_stmt *_stmt);
+    explicit Statement(sqlite3_stmt *_stmt);
     /** @brief Destructor. */
     ~Statement();
 

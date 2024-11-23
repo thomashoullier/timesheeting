@@ -17,7 +17,7 @@ namespace tui {
 
   public:
     /** @brief Initialize the day to the current day in local time. */
-    DaySelector();
+    explicit DaySelector();
     /** @brief Return the currently selected day as a date range with a resolution
         of 1 second. */
     time_lib::DateRange current_range() const;

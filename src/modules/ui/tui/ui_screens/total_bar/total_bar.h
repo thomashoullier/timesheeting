@@ -21,7 +21,7 @@ namespace tui {
 
   public:
     /** @brief Construct the bar and initialize the duration. */
-    TotalBar (const time_lib::Duration &_duration);
+    explicit TotalBar (const time_lib::Duration &_duration);
     /** @brief Update the duration. */
     void update(const time_lib::Duration &_duration);
     /** @brief Refresh the display. */

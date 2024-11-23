@@ -1,4 +1,5 @@
 #include "weekly_totals.h"
+#include "ncurses_lib/string_with_face.h"
 #include "time_lib/duration_displayer.h"
 
 namespace core {
@@ -59,9 +60,11 @@ namespace core {
     // Daily totals, all tasks
     strs.push_back(ncurses_lib::StringWithFace("ALL"));
     for (auto const &dur : daily_totals) {
-      strs.push_back(duration_formatter.to_shortstring(dur));
+      strs.push_back(ncurses_lib::StringWithFace
+                     (duration_formatter.to_shortstring(dur)));
     }
-    strs.push_back(duration_formatter.to_shortstring(total));
+    strs.push_back(ncurses_lib::StringWithFace
+                   (duration_formatter.to_shortstring(total)));
     // Per-project totals
     for (auto const &proj : project_totals) {
       strs.push_back(ncurses_lib::StringWithFace(proj.project_name, true));
@@ -73,11 +76,13 @@ namespace core {
                      (duration_formatter.to_shortstring(proj.total), true));
       // Per-task totals
       for (auto const &task : proj.task_totals) {
-        strs.push_back(task.task_name);
+        strs.push_back(ncurses_lib::StringWithFace(task.task_name));
         for (auto const &daily_dur : task.daily_totals) {
-          strs.push_back(duration_formatter.to_shortstring(daily_dur));
+          strs.push_back(ncurses_lib::StringWithFace
+                         (duration_formatter.to_shortstring(daily_dur)));
         }
-        strs.push_back(duration_formatter.to_shortstring(task.total));
+        strs.push_back(ncurses_lib::StringWithFace
+                       (duration_formatter.to_shortstring(task.total)));
       }
     }
     return strs;

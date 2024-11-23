@@ -182,7 +182,8 @@ We can include the status bar display and basic input_loop navigation directly
 in the MenuNCurses class.
 Add the border highlighting there also.
 
-*** TODO Make constructors explicit
+*** DONE Make constructors explicit
+CLOSED: [2024-11-23 Sat 17:02]
 ADDED: [2024-09-01 Sun]
 Through ignorance on our part, we have neglected to set constructors to explicit
 by default. Fix it.
@@ -192,7 +193,8 @@ ADDED: [2024-09-14 Sat]
 For instance, sqlite uses the type sqlite3_int64, we use uint64_t,
 should we switch?
 
-*** TODO Extract library modules
+*** DONE Extract library modules
+CLOSED: [2024-11-23 Sat 17:02]
 ADDED: [2024-09-22 Sun]
 Extract generic library modules from the existing codebase, to import them
 more easily and test them separately. Only extract the parts which are generic.
@@ -200,7 +202,8 @@ more easily and test them separately. Only extract the parts which are generic.
 + ncurses lib
 + date management objects? (day, week, date, date_range, duration, timezone)
 
-*** TODO Create namespaces for the libs and different parts of the program
+*** DONE Create namespaces for the libs and different parts of the program
+CLOSED: [2024-11-23 Sat 17:02]
 ADDED: [2024-09-22 Sun]
 Currently everything is in the global namespace, which is bad practice.
 

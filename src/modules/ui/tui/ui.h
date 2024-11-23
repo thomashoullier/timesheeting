@@ -16,7 +16,7 @@ namespace tui {
   class UI {
   public:
     /** @brief Construct the timesheeting top-level UI. */
-    UI ();
+    explicit UI ();
     /** @brief Top-level input loop. */
     char input_loop();
 

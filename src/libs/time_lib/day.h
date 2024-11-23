@@ -15,9 +15,9 @@ namespace time_lib {
 
   public:
     /** @brief Initialize to the current day in the current timezone. */
-    Day();
+    explicit Day();
     /** @brief Initialize the day using a year_month_day. */
-    Day(std::chrono::year_month_day _ymd);
+    explicit Day(std::chrono::year_month_day _ymd);
     /** @brief Go to the next day. */
     void next();
     /** @brief Go to the previous day. */

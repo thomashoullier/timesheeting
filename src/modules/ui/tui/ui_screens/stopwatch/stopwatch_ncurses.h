@@ -12,7 +12,7 @@ namespace tui {
   class StopwatchNcurses : public ncurses_lib::MenuNCurses {
   public:
     /** @brief Constructor. */
-    StopwatchNcurses(const core::EntryStaging &_entry_staging);
+    explicit StopwatchNcurses(const core::EntryStaging &_entry_staging);
 
     /** @brief Get the field type for the currently selected field. */
     EntryField get_field_type();

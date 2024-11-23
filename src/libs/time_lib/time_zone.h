@@ -21,7 +21,7 @@ namespace time_lib {
 
   private:
     /** @brief Singleton constructor. */
-    TimeZone(const std::string &tz_string);
+    explicit TimeZone(const std::string &tz_string);
   };
 }
 #endif // TIME_ZONE_H

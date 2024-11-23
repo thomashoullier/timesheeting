@@ -16,18 +16,20 @@ namespace ncurses_lib {
   public:
     /** @brief Construct the menu holding the provided display strings,
         at the given position, with the given format and number of columns. */
-    MenuNCurses(const std::vector<std::string> &items,
-                WindowPosition winpos, WindowFormat winformat,
-                int _ncols);
+    explicit MenuNCurses(const std::vector<std::string> &items,
+                         WindowPosition winpos, WindowFormat winformat,
+                         int _ncols);
     /** @brief Constructor with explicitely provided short display strings. */
-    MenuNCurses(const std::vector<std::string> &items,
-                const std::vector<std::string> &short_items,
-                WindowPosition winpos, WindowFormat winformat, int _ncols);
+    explicit MenuNCurses(const std::vector<std::string> &items,
+                         const std::vector<std::string> &short_items,
+                         WindowPosition winpos, WindowFormat winformat,
+                         int _ncols);
     /** @brief Constructor with explicitely provided short display strings
         with face. */
-    MenuNCurses(const std::vector<std::string> &items,
-                const std::vector<StringWithFace> &short_items,
-                WindowPosition winpos, WindowFormat winformat, int _ncols);
+    explicit MenuNCurses(const std::vector<std::string> &items,
+                         const std::vector<StringWithFace> &short_items,
+                         WindowPosition winpos, WindowFormat winformat,
+                         int _ncols);
     /** @brief Destructor. */
     ~MenuNCurses();
 

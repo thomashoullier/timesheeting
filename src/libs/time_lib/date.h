@@ -23,18 +23,18 @@ namespace time_lib{
     std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp;
 
     /** @brief Construct the date with the now() timepoint. */
-    Date();
+    explicit Date();
     /** @brief Construct the date from a given timepoint. */
-    Date(std::chrono::time_point<std::chrono::system_clock,
-         std::chrono::seconds> _tp);
+    explicit Date(std::chrono::time_point<std::chrono::system_clock,
+                  std::chrono::seconds> _tp);
     /** @brief Construct the date at the given date point shorthand. */
-    Date(DatePoint date_point);
+    explicit Date(DatePoint date_point);
     /** @brief Construct the date from a UNIX timestamp (UTC) in seconds. */
-    Date(uint64_t unix_seconds);
+    explicit Date(uint64_t unix_seconds);
     /** @brief Construct the date from a string in a fixed format:
         "%d%b%Y %H:%M:%S".
         This is the same format as the display string format.*/
-    Date(const std::string &date_str);
+    explicit Date(const std::string &date_str);
 
     /** @brief Convert the internal timepoint to a displayable date string
         in the system's timezone.

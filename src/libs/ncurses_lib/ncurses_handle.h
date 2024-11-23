@@ -10,7 +10,7 @@ namespace ncurses_lib {
   class NcursesHandle {
   public:
     /** @brief Constructor. */
-    NcursesHandle ();
+    explicit NcursesHandle ();
     /** @brief Destructor. */
     ~NcursesHandle ();
   };

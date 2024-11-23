@@ -13,7 +13,8 @@ namespace tui {
                                 public UIComponent {
   public:
     /** @brief Constructor. */
-    ProjectTotalsRegister(const std::vector<core::ProjectTotal> &totals);
+    explicit ProjectTotalsRegister
+    (const std::vector<core::ProjectTotal> &totals);
     /** @brief Replace the totals currently displayed. */
     void set_items(const std::vector<core::ProjectTotal> &totals);
     char input_loop () override;

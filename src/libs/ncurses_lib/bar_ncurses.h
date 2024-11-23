@@ -12,7 +12,7 @@ namespace ncurses_lib {
   class BarNCurses : public WinNCurses {
   public:
     /** @brief Construct a bar at the given position. */
-    BarNCurses(WindowPosition winpos, WindowFormat winformat);
+    explicit BarNCurses(WindowPosition winpos, WindowFormat winformat);
     /** @brief Print a string in the bar. */
     void print(const std::string &msg) const;
     /** @brief Print a string to the right of the bar. */

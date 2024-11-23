@@ -16,7 +16,7 @@ namespace time_lib{
     Date stop;
 
     /** @brief Initialize the date range. */
-    DateRange(const Date &_start, const Date &_stop);
+    explicit DateRange(const Date &_start, const Date &_stop);
 
     /** @brief Get the date range as full strings. */
     std::vector<std::string> to_string() const;

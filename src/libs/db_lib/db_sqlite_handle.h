@@ -20,7 +20,7 @@ namespace db_lib {
   class DB_SQLite_Handle {
   public:
     /** @brief Open or create the DB. */
-    DB_SQLite_Handle (const std::filesystem::path &db_file);
+    explicit DB_SQLite_Handle (const std::filesystem::path &db_file);
     ~DB_SQLite_Handle ();
 
     /** @brief Check or initialize the user_version of the DB. */

@@ -48,11 +48,12 @@ namespace tui {
     std::shared_ptr<WeeklyReportScreen> weekly_report_screen;
 
     /** @brief Constructor with member initialization. */
-    UpdateManager(std::shared_ptr<ProjectTaskScreen> _projects_screen,
-                  std::shared_ptr<LocationsScreen> _locations_screen,
-                  std::shared_ptr<EntriesScreen> _entries_screen,
-                  std::shared_ptr<ProjectReportScreen> _project_report_screen,
-                  std::shared_ptr<WeeklyReportScreen> _weekly_report_screen);
+    explicit UpdateManager
+    (std::shared_ptr<ProjectTaskScreen> _projects_screen,
+     std::shared_ptr<LocationsScreen> _locations_screen,
+     std::shared_ptr<EntriesScreen> _entries_screen,
+     std::shared_ptr<ProjectReportScreen> _project_report_screen,
+     std::shared_ptr<WeeklyReportScreen> _weekly_report_screen);
   };
 } // namespace tui
 

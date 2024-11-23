@@ -14,7 +14,7 @@ namespace tui {
     enum PeriodField { start = 0, stop = 1 };
 
     /** @brief Constructor. */
-    PeriodSelectorNCurses(const time_lib::DateRange &_period);
+    explicit PeriodSelectorNCurses(const time_lib::DateRange &_period);
     /** @brief Get the field type for the currently selected field. */
     PeriodField get_field_type();
     /** @brief Set the period start date. */

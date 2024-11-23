@@ -32,7 +32,7 @@ namespace time_lib {
     float hours_per_day;
 
     /** @brief Singleton constructor. */
-    DurationDisplayer(float hours_per_day);
+    explicit DurationDisplayer(float hours_per_day);
   };
 }
 #endif //DURATION_DISPLAYER_H

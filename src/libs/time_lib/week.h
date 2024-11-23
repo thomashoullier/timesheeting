@@ -21,7 +21,7 @@ namespace time_lib {
   public:
     /** @brief Initialize the week to the current week
         in the current timezone. */
-    Week();
+    explicit Week();
     /** @brief Go to the next week. */
     void next();
     /** @brief Go to the previous week. */

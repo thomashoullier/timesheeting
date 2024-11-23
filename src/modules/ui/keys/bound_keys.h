@@ -18,7 +18,7 @@ namespace keys {
   private:
     /** @brief Initialize the singleton fomr the key bindings read from the
                configuration. */
-    BoundKeys(const config::KeyBindings &_kb);
+    explicit BoundKeys(const config::KeyBindings &_kb);
   };
 }
 #endif // BOUND_KEYS_H

@@ -16,7 +16,7 @@ namespace ncurses_lib {
   class WinNCurses {
   public:
     /** @brief Construct the window with given position and format. */
-    WinNCurses(WindowPosition winpos, WindowFormat winformat);
+    explicit WinNCurses(WindowPosition winpos, WindowFormat winformat);
     ~WinNCurses();
 
     /** @brief Get a character inputted by the user in the current window. */

@@ -58,8 +58,8 @@ namespace log_lib {
     bool counting;
 
     /** @brief Logger constructor using a file. */
-    Logger(const std::filesystem::path &log_file_path,
-           const std::vector<std::string> &levels_to_log);
+    explicit Logger(const std::filesystem::path &log_file_path,
+                    const std::vector<std::string> &levels_to_log);
     /** @brief Get the current date as a timestamp. */
     std::string get_timestamp ();
     /** @brief Is the provided loglevel active? */

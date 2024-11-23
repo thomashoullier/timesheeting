@@ -17,7 +17,7 @@ namespace tui {
   class RegisterNcurses : public ncurses_lib::MenuNCurses {
   public:
     /** @brief Constructor. */
-    RegisterNcurses(const std::vector<core::Entry> &items);
+    explicit RegisterNcurses(const std::vector<core::Entry> &items);
 
     /** @brief Replace the entries held in the register. */
     void set_items(const std::vector<core::Entry> &items);

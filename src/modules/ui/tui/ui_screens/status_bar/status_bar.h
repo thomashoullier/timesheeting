@@ -28,7 +28,7 @@ namespace tui {
 
   private:
     /** @brief Constructor. */
-    StatusBarNCurses();
+    explicit StatusBarNCurses();
     /** @brief Sanitize the strings inputted by the users. */
     std::string sanitize_input(const std::string &input) const;
   };
