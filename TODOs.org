@@ -73,7 +73,8 @@ page is completely empty with no links to anything.
 
 * Software
 ** Bugs
-*** TODO Fix date parsing
+*** DONE Fix date parsing
+CLOSED: [2024-11-23 Sat 16:24]
 ADDED: [2024-08-31 Sat]
 In ~date.h~, constructor from string.
 The date parsing we are doing is wrong. We hardcoded the current dst
@@ -82,6 +83,9 @@ in our location to make it work.
 + We tried howard hinnant date, but encountered a compiling error
   abount uninitialized variables when using parse. This is probably
   related to musl.
+- [2024-11-23 Sat] We waited for gcc14 and used the std::chrono::parse. It works.
+  We have lost the ergonomic flexibility offered by the previous function
+  though.
 
 *** DONE Triggering the "export file already exists exception" leaks memory
 CLOSED: [2024-11-23 Sat 12:01]
@@ -159,6 +163,17 @@ ADDED: [2024-11-23 Sat]
 Currently the configuration file has two big sections, we need to split
 it to make it clearer.
 - [2024-11-23 Sat] Subdivided the sections into db, time, log, keys
+
+*** TODO Do not reach program termination when hitting an unassigned key
+ADDED: [2024-11-23 Sat]
+Currently when hitting an unassigned key, the program unwinds until termination.
+Fix it so nothing is done instead.
+
+*** TODO Be flexible on the accepted input dates
+ADDED: [2024-11-23 Sat]
+Currently the inputted dates must be exactly in the format "23Nov2024 13:25:00".
+Also accept "23Nov2024", "23Nov2024 13", "23Nov2024 13:25" and fill with
+zeroes.
 
 ** Refactoring
 *** TODO Refactor MenuNCurses

@@ -2,7 +2,6 @@
 #include <bits/chrono.h>
 #include <chrono>
 #include <format>
-#include <iomanip>
 #include <sstream>
 #include <stdexcept>
 #include "time_zone.h"
@@ -38,20 +37,15 @@ namespace time_lib{
     : tp(std::chrono::seconds{unix_seconds}) {}
 
   Date::Date(const std::string &date_str) {
-    // TODO: std::chrono::parse is not implemented in gcc 13.3,
-    //       but would be the best solution here.
-    // date_str >> std::chrono::parse("{:%d%b%Y %H:%M:%S}", tp);
-    std::tm tm{};
     std::stringstream ss{date_str};
-    ss >> std::get_time(&tm, "%d%b%Y %H:%M:%S");
+    std::chrono::local_seconds local_tp;
+    ss >> std::chrono::parse("%d%b%Y %H:%M:%S", local_tp);
     if (ss.fail()) {
       throw DateParsingFailure("Failed to parse the inputted date string.");
       return;
     }
-    // TODO: this is a hack, works only for our current timezone.
-    tm.tm_isdst = true;
-    auto tp_parsed = std::chrono::system_clock::from_time_t(std::mktime(&tm));
-    tp = std::chrono::floor<std::chrono::seconds>(tp_parsed);
+    std::chrono::zoned_seconds zoned_sec (TimeZone::get().zone, local_tp);
+    tp = zoned_sec;
   }
 
   std::string Date::to_string() const {
