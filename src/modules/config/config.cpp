@@ -8,12 +8,12 @@ namespace config {
   UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
     auto config_path = expand_tilde(config_file);
     auto config = toml::parse_file(config_path.u8string());
-    auto log_filepath = parse_filepath(config["config"]["log_file"]);
-    auto db_filepath = parse_filepath(config["config"]["db_file"]);
+    auto db_filepath = parse_filepath(config["db"]["file"]);
+    auto timezone = parse_string(config["time"]["timezone"]);
+    auto hours_per_day = parse_float(config["time"]["hours_per_workday"]);
+    auto log_filepath = parse_filepath(config["log"]["file"]);
     auto active_log_levels = parse_stringvec
-      (config["config"]["active_log_levels"]);
-    auto timezone = parse_string(config["config"]["timezone"]);
-    auto hours_per_day = parse_float(config["config"]["hours_per_workday"]);
+      (config["log"]["active_levels"]);
     auto bindings = parse_bindings(config["keys"]);
     return UserConfig(log_filepath,
                       db_filepath,

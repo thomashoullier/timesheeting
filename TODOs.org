@@ -144,6 +144,13 @@ Make it so the selection stays in place.
   active-only view, if the selection was on an archived item.
   We would have to track the alphabetical order.
 
+*** DONE Reorganize the configuration file
+CLOSED: [2024-11-23 Sat 09:20]
+ADDED: [2024-11-23 Sat]
+Currently the configuration file has two big sections, we need to split
+it to make it clearer.
+- [2024-11-23 Sat] Subdivided the sections into db, time, log, keys
+
 ** Refactoring
 *** TODO Refactor MenuNCurses
 ADDED: <2024-09-01 Sun>
@@ -251,3 +258,10 @@ ADDED: [2024-11-10 Sun]
 Note these are optional. Only those which are present in the configuration
 are loaded. The rest are kept to zero.
 
+*** TODO Write the make install script
+ADDED: [2024-11-23 Sat]
+We need the install script for our program.
++ This can probably be done in cmake directly.
++ Actions:
+  + Put the binary at the appropriate place.
+  + Put the config file in dotfiles.

@@ -1,9 +1,14 @@
-[config]
-log_file = "~/.local/timesheeting/timesheeting.log"
-db_file = "~/.local/timesheeting/timesheeting.db"
-active_log_levels = [ "debug", "error", "info" ]
+[db]
+file = "~/.local/timesheeting/timesheeting.db"
+
+[time]
 timezone = "Europe/Paris"
 hours_per_workday = 7.7
+
+[log]
+file = "~/.local/timesheeting/timesheeting.log"
+active_levels = [ "debug", "error", "info" ]
+
 [keys]
 up = "e"
 down = "n"
