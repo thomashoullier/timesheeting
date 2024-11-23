@@ -83,8 +83,17 @@ in our location to make it work.
   abount uninitialized variables when using parse. This is probably
   related to musl.
 
-*** TODO Triggering the "export file already exists exception" leaks memory
+*** DONE Triggering the "export file already exists exception" leaks memory
+CLOSED: [2024-11-23 Sat 12:01]
 ADDED: [2024-11-02 Sat]
+This is fixed by catching the exceptions in main. Uncaught exceptions led
+to destructors not being called.
+
+*** DONE Catch exceptions in main
+CLOSED: [2024-11-23 Sat 12:00]
+ADDED: [2024-11-23 Sat]
+Catch all exceptions in main and have them print their message to cerr.
+- [2024-11-23 Sat] Catching every std::exception in main and printing what().
 
 ** Testing
 *** TODO Put the basic CI in place
