@@ -138,7 +138,7 @@ namespace config {
     }
     if (std::getenv("HOME")) {
       path = std::getenv("HOME");
-      path /= suffix;
+      path /= (".config/" / suffix);
       if (std::filesystem::exists(path))
         return path;
     }
@@ -149,4 +149,4 @@ namespace config {
     }
     throw std::runtime_error("No configuration file was found.");
   }
-  } // namespace config
+} // namespace config
