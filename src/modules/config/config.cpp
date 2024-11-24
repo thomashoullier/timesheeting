@@ -7,6 +7,9 @@
 namespace config {
   UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
     auto config_path = expand_tilde(config_file);
+    if (not(std::filesystem::exists(config_path)))
+      throw std::runtime_error("The configuration file \"" + config_path.string()
+                               + "\" does not exist.");
     auto config = toml::parse_file(config_path.u8string());
     auto db_filepath = parse_filepath(config["db"]["file"]);
     auto timezone = parse_string(config["time"]["timezone"]);

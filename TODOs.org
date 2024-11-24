@@ -262,6 +262,9 @@ There is a generic part to the config file module.
 + Searching for the default location.
 + Expanding tilde.
 
+This will allow us to add logs to the config module which will arise
+out of this, without coupling it to the library.
+
 ** Performance
 *** TODO Remove useless refreshes and updates
 ADDED: [2024-09-27 Fri]
@@ -328,9 +331,12 @@ Start from the top of the log file, parse the date into an internal UTC format,
 compare it with startup time, any line which is older than target gets deleted,
 we stop once we reach the first recent enough entry.
 
-*** TODO Catch the fact that a configuration file does not exist
+*** DONE Catch the fact that a configuration file does not exist
+CLOSED: [2024-11-24 Sun 16:11]
 ADDED: [2024-11-01 Fri]
 We currently get a toml exception which is too cryptic for users.
++ [2024-11-24 Sun] OK we now throw our own exception. It gives a clearer message.
+  It is thrown when providing an inexistent file with the -c flag in the CLI.
 
 *** TODO Bind arrow keys to up/down/left/right
 ADDED: [2024-11-09 Sat]
