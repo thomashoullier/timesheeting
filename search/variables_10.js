@@ -1,18 +1,17 @@
 var searchData=
 [
-  ['up_0',['up',['../structconfig_1_1KeyBindings.html#a576478972a5b418f0fc554baad3261fa',1,'config::KeyBindings']]],
-  ['update_5fentry_5flocation_1',['update_entry_location',['../classdb_1_1StatementSet.html#ad90df936e71abccda63ea515b9d82760',1,'db::StatementSet']]],
-  ['update_5fentry_5fproject_2',['update_entry_project',['../classdb_1_1StatementSet.html#a1f73cd9432314bbe17b7aa108fa3f71c',1,'db::StatementSet']]],
-  ['update_5fentry_5fstart_3',['update_entry_start',['../classdb_1_1StatementSet.html#a898dc92817da9606c72a07174e5b57e7',1,'db::StatementSet']]],
-  ['update_5fentry_5fstop_4',['update_entry_stop',['../classdb_1_1StatementSet.html#a3dcd20fad9e9377cd0e7a40936aecc7e',1,'db::StatementSet']]],
-  ['update_5fentry_5ftask_5',['update_entry_task',['../classdb_1_1StatementSet.html#af4dd50bc6f5a3403bf8af836a25a79e7',1,'db::StatementSet']]],
-  ['update_5fentrystaging_5flocation_6',['update_entrystaging_location',['../classdb_1_1StatementSet.html#af4d96877f39bf3c2bad1ef331277ec07',1,'db::StatementSet']]],
-  ['update_5fentrystaging_5fproject_7',['update_entrystaging_project',['../classdb_1_1StatementSet.html#a9d043150f14d9f4f02580298738c87fb',1,'db::StatementSet']]],
-  ['update_5fentrystaging_5fstart_8',['update_entrystaging_start',['../classdb_1_1StatementSet.html#aaa6de8c3545014a13e240a6694517462',1,'db::StatementSet']]],
-  ['update_5fentrystaging_5fstop_9',['update_entrystaging_stop',['../classdb_1_1StatementSet.html#a41769317a91e689e0a066b08948a5dc7',1,'db::StatementSet']]],
-  ['update_5fentrystaging_5ftask_10',['update_entrystaging_task',['../classdb_1_1StatementSet.html#a52250ac77c40c28d0dca7330b1e1c9a1',1,'db::StatementSet']]],
-  ['update_5flocation_5fname_11',['update_location_name',['../classdb_1_1StatementSet.html#a4524eceb4824e7d3e4084356db09c491',1,'db::StatementSet']]],
-  ['update_5fproject_5fname_12',['update_project_name',['../classdb_1_1StatementSet.html#a489756dc41f03653308514ffd52fa5f2',1,'db::StatementSet']]],
-  ['update_5ftask_5fname_13',['update_task_name',['../classdb_1_1StatementSet.html#a432a0e77699197ebeea98ce389c37f83',1,'db::StatementSet']]],
-  ['update_5ftask_5fproject_14',['update_task_project',['../classdb_1_1StatementSet.html#aa42db5438dcc67240cc43592debd6b12',1,'db::StatementSet']]]
+  ['task_5fcol_0',['task_col',['../classtui_1_1ProjectTaskScreen.html#ad86b9f6052d9cddb74135baee03e7123',1,'tui::ProjectTaskScreen']]],
+  ['task_5fduration_1',['task_duration',['../classdb_1_1StatementSet.html#a8275688b78b1c0035672180cf3c38630',1,'db::StatementSet']]],
+  ['task_5fid_2',['task_id',['../structcore_1_1ExportRow.html#a47b37c157fc31c4e6e0233450eee21e2',1,'core::ExportRow']]],
+  ['task_5fname_3',['task_name',['../structcore_1_1Entry.html#aa798ec63c19af88734e59626c562ccc7',1,'core::Entry::task_name'],['../structcore_1_1EntryStaging.html#ab0af41ec4336b405b2948541ed7bb6db',1,'core::EntryStaging::task_name'],['../structcore_1_1ExportRow.html#a24f836bfcaade680b9cbfb51a8f47ddb',1,'core::ExportRow::task_name'],['../structcore_1_1PerTaskTotals.html#ae83cdea615784a26676a7ad9a78b95fb',1,'core::PerTaskTotals::task_name']]],
+  ['task_5fproject_5fchange_4',['task_project_change',['../structconfig_1_1KeyBindings.html#ae9011be92b5154f658931b24612a228b',1,'config::KeyBindings']]],
+  ['task_5ftotals_5',['task_totals',['../structcore_1_1PerProjectTotals.html#a33d192637d5d6e7e7814affeb4db76dd',1,'core::PerProjectTotals']]],
+  ['tick_5fpoint_6',['tick_point',['../classlog__lib_1_1Logger.html#a41d134ba221737f96c4013d64e710c6f',1,'log_lib::Logger']]],
+  ['timezone_7',['timezone',['../structconfig_1_1UserConfig.html#a285581e3843c4ba70ba8f921ab98ea0b',1,'config::UserConfig']]],
+  ['toggle_5flocation_5fflag_8',['toggle_location_flag',['../classdb_1_1StatementSet.html#aa485e959dcfcee827acfa30acf3b26a2',1,'db::StatementSet']]],
+  ['toggle_5fproject_5fflag_9',['toggle_project_flag',['../classdb_1_1StatementSet.html#aeeb400e16e5073889eee92bc11fdab84',1,'db::StatementSet']]],
+  ['toggle_5ftask_5fflag_10',['toggle_task_flag',['../classdb_1_1StatementSet.html#ad6ebce60325c8db31f49a56d6e544021',1,'db::StatementSet']]],
+  ['total_11',['total',['../structcore_1_1ProjectTotal.html#af9a05814f021518efe7fe5d14683b457',1,'core::ProjectTotal::total'],['../structcore_1_1PerTaskTotals.html#aed2ad56162d2b26d4319024bcce45beb',1,'core::PerTaskTotals::total'],['../structcore_1_1PerProjectTotals.html#a6e770381748de7e3c365cad75f22ea8e',1,'core::PerProjectTotals::total'],['../structcore_1_1WeeklyTotals.html#aa5b06abd103132db45ca354194326ad2',1,'core::WeeklyTotals::total']]],
+  ['total_5fbar_12',['total_bar',['../classtui_1_1EntriesTable.html#a6a41c730e6fd8d404c9f1a7ae17cf088',1,'tui::EntriesTable::total_bar'],['../classtui_1_1ProjectReportScreen.html#a920770a74fd6cc665a74cadd57e1a3f1',1,'tui::ProjectReportScreen::total_bar']]],
+  ['tp_13',['tp',['../classtime__lib_1_1Date.html#a80b5dc034e2471aa5aafff11c0e6b086',1,'time_lib::Date']]]
 ];

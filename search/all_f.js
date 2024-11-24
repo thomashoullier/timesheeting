@@ -14,5 +14,6 @@ var searchData=
   ['query_5fprojects_5factive_11',['query_projects_active',['../classdb_1_1DB__SQLite.html#a5b67b2f456a351abd60e41dd4285c467',1,'db::DB_SQLite']]],
   ['query_5frow_5fof_5fnames_12',['query_row_of_names',['../classdb__lib_1_1DB__SQLite__Handle.html#a99856a925daeb33ada4393c766465685',1,'db_lib::DB_SQLite_Handle']]],
   ['query_5ftasks_13',['query_tasks',['../classdb_1_1DB__SQLite.html#a7ac494a2a531121ac374aca82b1ca0b7',1,'db::DB_SQLite']]],
-  ['query_5ftasks_5factive_14',['query_tasks_active',['../classdb_1_1DB__SQLite.html#a118a266f4f3f237ea67a1f7af6e1a264',1,'db::DB_SQLite']]]
+  ['query_5ftasks_5factive_14',['query_tasks_active',['../classdb_1_1DB__SQLite.html#a118a266f4f3f237ea67a1f7af6e1a264',1,'db::DB_SQLite']]],
+  ['quit_15',['quit',['../structconfig_1_1KeyBindings.html#ae99783c8ccbee665ad632c37ea76b3f2',1,'config::KeyBindings']]]
 ];

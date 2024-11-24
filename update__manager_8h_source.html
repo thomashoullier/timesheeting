@@ -125,17 +125,18 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classtui_1_1UpdateManager.html#a536de43cd4a46d646df22189d1a49f6f">   46</a></span>    std::shared_ptr&lt;ProjectReportScreen&gt; <a class="code hl_variable" href="classtui_1_1UpdateManager.html#a536de43cd4a46d646df22189d1a49f6f">project_report_screen</a>;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classtui_1_1UpdateManager.html#a97c869fc6ba1e054885fcfcdce376c37">   48</a></span>    std::shared_ptr&lt;WeeklyReportScreen&gt; <a class="code hl_variable" href="classtui_1_1UpdateManager.html#a97c869fc6ba1e054885fcfcdce376c37">weekly_report_screen</a>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_function" href="classtui_1_1UpdateManager.html#a82bc1fcb55f0c01b41db7547799367b5">UpdateManager</a>(std::shared_ptr&lt;ProjectTaskScreen&gt; _projects_screen,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                  std::shared_ptr&lt;LocationsScreen&gt; _locations_screen,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                  std::shared_ptr&lt;EntriesScreen&gt; _entries_screen,</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                  std::shared_ptr&lt;ProjectReportScreen&gt; _project_report_screen,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                  std::shared_ptr&lt;WeeklyReportScreen&gt; _weekly_report_screen);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  };</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classtui_1_1UpdateManager.html#a82bc1fcb55f0c01b41db7547799367b5">UpdateManager</a></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    (std::shared_ptr&lt;ProjectTaskScreen&gt; _projects_screen,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>     std::shared_ptr&lt;LocationsScreen&gt; _locations_screen,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>     std::shared_ptr&lt;EntriesScreen&gt; _entries_screen,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>     std::shared_ptr&lt;ProjectReportScreen&gt; _project_report_screen,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>     std::shared_ptr&lt;WeeklyReportScreen&gt; _weekly_report_screen);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  };</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>} <span class="comment">// namespace tui</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>} <span class="comment">// namespace tui</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif </span><span class="comment">// UPDATE_MANAGER_H</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">// UPDATE_MANAGER_H</span></div>
 <div class="ttc" id="aclasstui_1_1UpdateManager_html"><div class="ttname"><a href="classtui_1_1UpdateManager.html">tui::UpdateManager</a></div><div class="ttdoc">Manages the update of UIScreens based on catching changes through a singleton interface and propagate...</div><div class="ttdef"><b>Definition</b> update_manager.h:17</div></div>
 <div class="ttc" id="aclasstui_1_1UpdateManager_html_a0c7d39c14493bca21eb6e43b728cd70d"><div class="ttname"><a href="classtui_1_1UpdateManager.html#a0c7d39c14493bca21eb6e43b728cd70d">tui::UpdateManager::projects_screen</a></div><div class="ttdeci">std::shared_ptr&lt; ProjectTaskScreen &gt; projects_screen</div><div class="ttdoc">Screen for the project/task definition.</div><div class="ttdef"><b>Definition</b> update_manager.h:40</div></div>
 <div class="ttc" id="aclasstui_1_1UpdateManager_html_a0cd238a10693887704ecd1066839132c"><div class="ttname"><a href="classtui_1_1UpdateManager.html#a0cd238a10693887704ecd1066839132c">tui::UpdateManager::get</a></div><div class="ttdeci">static UpdateManager &amp; get(std::shared_ptr&lt; ProjectTaskScreen &gt; _projects_screen=nullptr, std::shared_ptr&lt; LocationsScreen &gt; _locations_screen=nullptr, std::shared_ptr&lt; EntriesScreen &gt; _entries_screen=nullptr, std::shared_ptr&lt; ProjectReportScreen &gt; _project_report_screen=nullptr, std::shared_ptr&lt; WeeklyReportScreen &gt; _weekly_report_screen=nullptr)</div><div class="ttdoc">Grab the update manager singleton interface.</div><div class="ttdef"><b>Definition</b> update_manager.cpp:5</div></div>
