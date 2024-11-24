@@ -338,10 +338,13 @@ ADDED: [2024-11-10 Sun]
 Note these are optional. Only those which are present in the configuration
 are loaded. The rest are kept to zero.
 
-*** TODO Write the make install script
+*** DONE Write the make install script
+CLOSED: [2024-11-24 Sun 14:33]
 ADDED: [2024-11-23 Sat]
 We need the install script for our program.
 + This can probably be done in cmake directly.
 + Actions:
   + Put the binary at the appropriate place.
   + Put the config file in dotfiles.
+- [2024-11-24 Sun] Wrote the installation instructions in CMakeLists.txt, the binary
+  is deployed in `/bin/`, the default configuration file in `/etc/`.

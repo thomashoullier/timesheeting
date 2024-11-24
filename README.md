@@ -25,15 +25,16 @@ A reference configuration is included: [timesheeting.toml](timesheeting.toml).
 ## Build instructions
 ### Software
 #### Example main
-Change to the `build` directory, run cmake and then build the target.
+Change to the `build` directory, run cmake, build and install the target.
 
 ```{shell}
 cd build/
 cmake ..
-make timesheeting_main
+sudo make install
 ```
 
-The result is the executable `build/timesheeting_main`.
+The executable `timesheeting` should be installed in `/bin/`.
+A default configuration file is installed at `/etc/timesheeting.toml`.
 
 ### Documentation
 #### PRJ1-SPE1 timesheeting specification document

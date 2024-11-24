@@ -97,9 +97,14 @@ target_include_directories(tui PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules>")
 
 # Main
-add_executable(timesheeting_main "${TIMESHEETING_DIR}/src/main.cpp")
-target_link_libraries(timesheeting_main PRIVATE
+add_executable(timesheeting "${TIMESHEETING_DIR}/src/main.cpp")
+target_link_libraries(timesheeting PRIVATE
                       keys cli exporter db time_lib log_lib
                       config version tui)
-set_target_properties(timesheeting_main PROPERTIES COMPILE_FLAGS
+set_target_properties(timesheeting PROPERTIES COMPILE_FLAGS
   "${CMAKE_CXX_FLAGS} -g -Wall -O2 -Wextra -march=native")
+
+# Installation
+set(CMAKE_INSTALL_PREFIX /)
+install(TARGETS timesheeting DESTINATION bin)
+install(FILES "${TIMESHEETING_DIR}/timesheeting.toml" DESTINATION etc)
