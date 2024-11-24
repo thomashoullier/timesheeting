@@ -34,6 +34,9 @@ namespace tui {
     /** @brief Weekly report. */
     std::shared_ptr<WeeklyReportScreen> weekly_report_screen;
   };
+
+  /** @brief Signal handler for terminal resizing events. */
+  void resize_handler(int num);
 } // namespace tui
 
 #endif // UI_H

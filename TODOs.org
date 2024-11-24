@@ -188,10 +188,25 @@ Currently the program refreshes or shifts the selection when an
 unbound key is inputted. Change this behavior to doing absolutely
 nothing.
 
-*** TODO Resizing makes some parts of the screen disappear
+*** DONE Resizing makes some parts of the screen disappear
+CLOSED: [2024-11-24 Sun 13:57]
 When resizing the TUI to a smaller size, then resizing it back to
 its original size, the bottom part of the UI disappears and never
 reappears.
++ Be careful to not perform heavy operations when resizing, because
+  user may resize the application as a floating window.
+  For instance it would probably be heavy to destroy and redraw the
+  whole UI.
+- [2024-11-24 Sun] Caught the SIGWINCH ourselves, to prevent ncurses from
+  performing the automatic resizing. The TUI stays functional if the
+  initial size is restored.
+
+*** TODO Handle resizing
+ADDED: [2024-11-24 Sun]
+Handle the dynamic resizing of the TUI.
++ Make use of the full available terminal size.
++ Ensure a minimum size is available, like xx lines per 80 columns.
+  If it is not reached then stop the UI until it becomes big enough.
 
 *** TODO Be flexible on the accepted input dates
 ADDED: [2024-11-23 Sat]

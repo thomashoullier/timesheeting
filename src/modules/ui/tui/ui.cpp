@@ -1,4 +1,5 @@
 #include "ui.h"
+#include <signal.h>
 #include "ncurses_lib/win_ncurses.h"
 #include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
@@ -21,6 +22,8 @@ namespace tui {
                        entries_screen,
                        project_report_screen,
                        weekly_report_screen);
+    // Install the SIGWINCH handler, overriding the default ncurses one
+    signal(SIGWINCH, resize_handler);
   }
 
   int UI::input_loop() {
@@ -54,5 +57,9 @@ namespace tui {
         return 0; // Return to main
       }
     }
+  }
+
+  void resize_handler(int sig) {
+    log_lib::logger().log("SIGWINCH caught.", log_lib::LogLevel::debug);
   }
 } // namespace tui
