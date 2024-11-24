@@ -12,6 +12,9 @@ namespace ncurses_lib {
   /** @brief Selector for the format of the window. */
   enum class WindowFormat { line, half_line, box, block, column };
 
+  /** @brief Character signalling a screen resize happened. */
+  constexpr int screen_resize_event = KEY_RESIZE;
+
   /** @brief Base class for NCurses elements in a window. */
   class WinNCurses {
   public:
@@ -20,7 +23,7 @@ namespace ncurses_lib {
     ~WinNCurses();
 
     /** @brief Get a character inputted by the user in the current window. */
-    char get_input();
+    int get_input();
     /** @brief Refresh the display. */
     void refresh() const;
     /** @brief Clear the display. */

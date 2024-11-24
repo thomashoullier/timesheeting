@@ -9,7 +9,7 @@ namespace tui {
                       (time_lib::Date(time_lib::DatePoint::YearBegin),
                        time_lib::Date())) {}
 
-  char PeriodSelectorUI::input_loop() {
+  int PeriodSelectorUI::input_loop() {
     period_selector.set_border();
     while (true) {
       status().print(period_selector.get_current_item_string());

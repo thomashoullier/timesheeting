@@ -17,7 +17,7 @@ namespace tui {
     void refresh () override;
     void clear () override;
     void update () override;
-    char input_loop () override;
+    int input_loop () override;
 
   private:
     /** @brief Column holding the locations. */

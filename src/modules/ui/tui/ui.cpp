@@ -1,4 +1,5 @@
 #include "ui.h"
+#include "ncurses_lib/win_ncurses.h"
 #include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
 #include <memory>
@@ -22,7 +23,7 @@ namespace tui {
                        weekly_report_screen);
   }
 
-  char UI::input_loop() {
+  int UI::input_loop() {
     std::shared_ptr<UIScreen> cur_screen {projects_screen};
     projects_screen->clear();
     locations_screen->clear();
@@ -46,6 +47,9 @@ namespace tui {
       } else if (kb.duration_display.bound_to(ch)) {
         time_lib::DurationDisplayer::get().cycle_format();
         UpdateManager::get().duration_display_changed();
+      } else if (ch == ncurses_lib::screen_resize_event) {
+        log_lib::logger().log("Screen resize happened.",
+                              log_lib::LogLevel::debug);
       } else if (kb.quit.bound_to(ch)) {
         return 0; // Return to main
       }

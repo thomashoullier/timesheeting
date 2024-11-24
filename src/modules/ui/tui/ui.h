@@ -18,7 +18,7 @@ namespace tui {
     /** @brief Construct the timesheeting top-level UI. */
     explicit UI ();
     /** @brief Top-level input loop. */
-    char input_loop();
+    int input_loop();
 
   private:
     /** @brief Handle to the top ncurses management. */

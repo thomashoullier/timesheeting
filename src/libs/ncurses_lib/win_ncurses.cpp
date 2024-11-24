@@ -8,7 +8,7 @@ namespace ncurses_lib {
 
   WinNCurses::~WinNCurses() { destroy_window(); }
 
-  char WinNCurses::get_input() {
+  int WinNCurses::get_input() {
     // TODO: decouple from the logger.
     log_lib::logger().tock();
     auto ch = wgetch(win);

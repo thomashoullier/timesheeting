@@ -30,7 +30,7 @@ namespace tui {
     task_col->clear();
   }
 
-  char ProjectTaskScreen::input_loop() {
+  int ProjectTaskScreen::input_loop() {
     ColumnBase *cur_col{project_col.get()};
     cur_col->set_border();
     while (true) {

@@ -12,7 +12,7 @@ namespace tui {
     MenuNCurses::set_items(totals.to_strings(), totals.to_shortstrings());
   }
 
-  char WeeklyReportRegister::input_loop() {
+  int WeeklyReportRegister::input_loop() {
     this->set_border();
     while (true) {
       status().print(this->get_current_item_string());

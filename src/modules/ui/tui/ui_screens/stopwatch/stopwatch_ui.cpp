@@ -7,7 +7,7 @@
 namespace tui {
   StopwatchUI::StopwatchUI() : stopwatch(db::db().query_entrystaging()) {};
 
-  char StopwatchUI::input_loop() {
+  int StopwatchUI::input_loop() {
     stopwatch.set_border();
     while (true) {
       status().print(stopwatch.get_current_item_string());

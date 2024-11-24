@@ -8,7 +8,7 @@ namespace tui {
     : week_selector{},
       reg(db::db().report_weekly_totals(week_selector.current_week())) {};
 
-  char WeeklyReportScreen::input_loop() {
+  int WeeklyReportScreen::input_loop() {
     while (true) {
       auto ch = reg.input_loop();
       auto kb = keys::BoundKeys::get().kb;

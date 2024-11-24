@@ -17,7 +17,7 @@ namespace tui {
     (const std::vector<core::ProjectTotal> &totals);
     /** @brief Replace the totals currently displayed. */
     void set_items(const std::vector<core::ProjectTotal> &totals);
-    char input_loop () override;
+    int input_loop () override;
     void refresh() override;
     void clear() override;
     void update() override;

@@ -13,7 +13,7 @@ namespace tui {
   public:
     /** @brief Constructor. */
     explicit PeriodSelectorUI ();
-    char input_loop() override;
+    int input_loop() override;
     void refresh() override;
     void clear() override;
     void update() override;

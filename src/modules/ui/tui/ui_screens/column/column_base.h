@@ -22,7 +22,7 @@ namespace tui {
     /** @brief Select the previous item. */
     virtual void select_up_item() = 0;
     /** @brief Query a user input character and pass it. */
-    virtual char get_input() = 0;
+    virtual int get_input() = 0;
     /** @brief Set the border for highlighting. */
     virtual void set_border() = 0;
     /** @brief Unset the border. */

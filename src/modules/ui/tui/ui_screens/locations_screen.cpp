@@ -22,7 +22,7 @@ namespace tui {
     update_location_col();
   };
 
-  char LocationsScreen::input_loop() {
+  int LocationsScreen::input_loop() {
     location_col->set_border();
     while (true) {
       status().print(location_col->get_current_item_string());

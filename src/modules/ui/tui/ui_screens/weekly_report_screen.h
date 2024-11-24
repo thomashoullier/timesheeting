@@ -14,7 +14,7 @@ namespace tui {
     /** @brief Constructor. */
     explicit WeeklyReportScreen();
 
-    char input_loop() override;
+    int input_loop() override;
     void refresh() override;
     void clear() override;
     void update() override;

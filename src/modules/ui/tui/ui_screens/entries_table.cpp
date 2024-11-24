@@ -11,7 +11,7 @@ namespace tui {
       total_bar(db::db().query_entries_duration(day_selector.current_range())),
       reg(db::db().query_entries(day_selector.current_range())) {}
 
-  char EntriesTable::input_loop() {
+  int EntriesTable::input_loop() {
     reg.set_border();
     while (true) {
       status().print(reg.get_current_item_string());

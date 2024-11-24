@@ -44,7 +44,7 @@ namespace tui {
     void select_down_item() override { MenuNCurses::select_down_item(); };
     void select_up_item() override { MenuNCurses::select_up_item(); };
 
-    char get_input() override { return MenuNCurses::get_input(); };
+    int get_input() override { return MenuNCurses::get_input(); };
 
     void set_border() override {
       MenuNCurses::set_border();

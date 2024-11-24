@@ -12,7 +12,7 @@ namespace tui {
           (db::db().report_project_totals
            (period_selector_ui.get_current_date_range()))) {}
 
-  char ProjectReportScreen::input_loop() {
+  int ProjectReportScreen::input_loop() {
     UIComponent *cur_focus{&period_selector_ui};
     cur_focus = &reg;
     while (true) {

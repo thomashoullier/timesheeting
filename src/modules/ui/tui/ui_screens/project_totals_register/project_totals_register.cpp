@@ -24,7 +24,7 @@ namespace tui {
     MenuNCurses::set_items(items_to_string(totals));
   }
 
-  char ProjectTotalsRegister::input_loop() {
+  int ProjectTotalsRegister::input_loop() {
     this->set_border();
     while (true) {
       status().print(this->get_current_item_string());

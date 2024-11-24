@@ -9,7 +9,7 @@ namespace tui {
     : stopwatch_ui(std::make_unique<StopwatchUI>()),
       entries_table(std::make_unique<EntriesTable>()) {}
 
-  char EntriesScreen::input_loop() {
+  int EntriesScreen::input_loop() {
     UIComponent *cur_focus{entries_table.get()};
     while (true) {
       auto ch = cur_focus->input_loop();

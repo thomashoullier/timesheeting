@@ -99,6 +99,15 @@ ADDED: [2024-11-23 Sat]
 Catch all exceptions in main and have them print their message to cerr.
 - [2024-11-23 Sat] Catching every std::exception in main and printing what().
 
+*** DONE We are using the wrong type for ncurses characters
+CLOSED: [2024-11-24 Sun 10:31]
+ADDED: [2024-11-23 Sat]
+https://linux.die.net/man/3/getch
+getch returns an int and not a char. This does not currently generate
+bugs per se, but this prevents us from catching the KEY_RESIZE.
+- [2024-11-24 Sun] Changed the type from char to int throughout the input loops.
+  We can now catch the KEY_RESIZE events.
+
 ** Testing
 *** TODO Put the basic CI in place
 ADDED: [2024-11-16 Sat]

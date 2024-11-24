@@ -16,7 +16,7 @@ namespace tui {
 
     void refresh () override;
     void clear () override;
-    char input_loop() override;
+    int input_loop() override;
     void update() override;
 
   private:
