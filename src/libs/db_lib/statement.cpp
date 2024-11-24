@@ -48,6 +48,13 @@ namespace db_lib {
     return sqlite3_column_int64(stmt, icol);
   }
 
+  /** @brief Specialization for getting a boolean.
+
+   A boolean in ncurses is actually an INTEGER. */
+  template <> bool Statement::get_column(int icol) {
+    return sqlite3_column_int(stmt, icol);
+  }
+
   /** @brief Specialization for getting std::string.
 
       In case the column returns a NULL char pointer, then we return

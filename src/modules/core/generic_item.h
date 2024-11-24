@@ -15,6 +15,8 @@ namespace core {
     Id id;
     /** @brief Name of the item. */
     std::string name;
+    /** @brief Is the item active? */
+    bool active = true;
   };
 
   /** @brief Specialization of GenericItem into a Project item. */

@@ -3,25 +3,25 @@
 namespace db {
 StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)
     : select_projects(db->prepare_statement(
-          "SELECT id, name FROM projects ORDER BY name ASC;")),
+          "SELECT id, name, active FROM projects ORDER BY name ASC;")),
       select_projects_active(db->prepare_statement(
-          "SELECT id, name FROM projects WHERE active = TRUE "
+          "SELECT id, name, active FROM projects WHERE active = TRUE "
           "ORDER BY name ASC;")),
       select_tasks(db->prepare_statement(
-          "SELECT id, name "
+          "SELECT id, name, active "
           "FROM tasks "
           "WHERE project_id = ? "
           "ORDER BY name ASC;")),
       select_tasks_active(db->prepare_statement(
-          "SELECT id, name "
+          "SELECT id, name, active "
           "FROM tasks "
           "WHERE project_id = ? "
           "AND active = TRUE "
           "ORDER BY name ASC;")),
       select_locations(db->prepare_statement(
-          "SELECT id, name FROM locations ORDER BY name ASC;")),
+          "SELECT id, name, active FROM locations ORDER BY name ASC;")),
       select_locations_active(db->prepare_statement(
-          "SELECT id, name FROM locations "
+          "SELECT id, name, active FROM locations "
           "WHERE active = TRUE ORDER BY name ASC;")),
       select_entries(db->prepare_statement(
           "SELECT e.id, p.name, t.name, e.start, e.stop, l.name "

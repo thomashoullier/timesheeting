@@ -62,7 +62,10 @@ namespace tui {
     std::vector<std::string> items_to_string(const std::vector<T> &items) {
       std::vector<std::string> display_strings;
       for (const auto &it : items) {
-        display_strings.push_back(it.name);
+        if (it.active)
+          display_strings.push_back(it.name);
+        else // Inactive items are put in parentheses.
+          display_strings.push_back("(" + it.name + ")");
       }
       return display_strings;
     };

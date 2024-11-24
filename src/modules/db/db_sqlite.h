@@ -153,8 +153,9 @@ namespace db {
   std::vector<T> DB_SQLite::query_generic_items(db_lib::Statement &statement) {
     std::vector<T> items;
     while (statement.step()) {
-      auto [id, name] = statement.get_all<db_lib::RowId, std::string>();
-      items.push_back(T{id, name});
+      auto [id, name, active] = statement.get_all<db_lib::RowId, std::string,
+                                                  bool>();
+      items.push_back(T{id, name, active});
     }
     return items;
   }
