@@ -39,13 +39,22 @@ namespace time_lib{
   Date::Date(const std::string &date_str) {
     std::stringstream ss{date_str};
     std::chrono::local_seconds local_tp;
-    ss >> std::chrono::parse("%d%b%Y %H:%M:%S", local_tp);
-    if (ss.fail()) {
-      throw DateParsingFailure("Failed to parse the inputted date string.");
-      return;
+    const std::vector<std::string> match_strings
+      {"%d%b%Y %H:%M:%S",
+       "%d%b%Y %H:%M",
+       "%d%b%Y %H",
+       "%d%b%Y"};
+    for (const auto &match_string : match_strings) {
+      ss >> std::chrono::parse(match_string, local_tp);
+      if (ss.good()) {
+        std::chrono::zoned_seconds zoned_sec(TimeZone::get().zone, local_tp);
+        tp = zoned_sec;
+        return;
+      }
+      ss.str(date_str);
+      ss.clear();
     }
-    std::chrono::zoned_seconds zoned_sec (TimeZone::get().zone, local_tp);
-    tp = zoned_sec;
+    throw DateParsingFailure("Failed to parse the inputted date string.");
   }
 
   std::string Date::to_string() const {

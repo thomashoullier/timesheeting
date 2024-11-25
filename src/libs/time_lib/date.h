@@ -31,9 +31,11 @@ namespace time_lib{
     explicit Date(DatePoint date_point);
     /** @brief Construct the date from a UNIX timestamp (UTC) in seconds. */
     explicit Date(uint64_t unix_seconds);
-    /** @brief Construct the date from a string in a fixed format:
-        "%d%b%Y %H:%M:%S".
-        This is the same format as the display string format.*/
+    /** @brief Construct the date from a string in fixed format.
+
+        "%d%b%Y %H:%M:%S" is tried first, then successively smaller
+        matches are tried until "%d%b%Y". Omitted information is
+        replaced with zeroes. */
     explicit Date(const std::string &date_str);
 
     /** @brief Convert the internal timepoint to a displayable date string

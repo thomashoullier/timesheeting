@@ -219,11 +219,18 @@ Handle the dynamic resizing of the TUI.
 + Ensure a minimum size is available, like xx lines per 80 columns.
   If it is not reached then stop the UI until it becomes big enough.
 
-*** TODO Be flexible on the accepted input dates
+*** DONE Be flexible on the accepted input dates
+CLOSED: [2024-11-25 Mon 21:56]
 ADDED: [2024-11-23 Sat]
 Currently the inputted dates must be exactly in the format "23Nov2024 13:25:00".
 Also accept "23Nov2024", "23Nov2024 13", "23Nov2024 13:25" and fill with
 zeroes.
+- [2024-11-25 Mon] OK, we implemented the four variants of date format. It seems
+  to work great.
+
+*** TODO Log the export duration
+ADDED: [2024-11-25 Mon]
+It would be useful to log the time it takes to export the timesheet.
 
 ** Refactoring
 *** TODO Refactor MenuNCurses
