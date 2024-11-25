@@ -113,6 +113,7 @@ bugs per se, but this prevents us from catching the KEY_RESIZE.
 *** TODO Put the basic CI in place
 ADDED: [2024-11-16 Sat]
 Check the build only, at first.
+
 *** TODO Test that all the latex documentation builds
 ADDED: [2024-11-16 Sat]
 Check the latex documentation build.
@@ -264,6 +265,19 @@ There is a generic part to the config file module.
 
 This will allow us to add logs to the config module which will arise
 out of this, without coupling it to the library.
+
+*** TODO Implement a custom ncurses menu
+ADDED: [2024-11-24 Sun]
+Currently, using the ncurses menu library, we cannot put highlight
+and colors on items. Also, we have to destroy and recreate the whole
+menu when we could just redraw some things.
++ Develop on a separate branch, as it is a large task.
++ We can store "MenuItems" which have a string content, a short string
+  content, and appearance attributes.
++ Interface with the existing window class.
++ Menu has to include multi-column. A custom menu is necessary to make
+  columns with variable width.
++ Prepare for dynamic resizing.
 
 ** Performance
 *** TODO Remove useless refreshes and updates

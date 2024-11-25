@@ -1,9 +1,12 @@
 # timesheeting
 `timesheeting` is a timesheet utility project.
 
-The project is just starting.
+The program is mostly usable, although the UI is unpolished.
+It is not finished, see the [TODOs.org](TODOs.org) file for
+checking progress.
 
 ## Project timeline
+* *24Nov2024*: Usage begins (alpha).
 * *16Nov2024*: `PRJ1-SPE1-v1.1` released.
 * *02Nov2024*: `PRJ1-IRS1-v1.1` released.
 * *26Oct2024*: `PRJ1-IRS1-v1.0` released.
