@@ -57,6 +57,11 @@ directly in the project readme.
 + We can do a graphviz of all documentation and software. We can show every version
   and the "Applicable documents" links between them.
 
+** TODO Add a presentation video
+ADDED: [2024-11-26 Tue]
+Record a video for showing the basic operation of the software.
++ We can prepare a transcript and use TTS to generate a voice-over.
+
 * Doxygen documentation
 ** DONE Add libs and modules to the documentation
 CLOSED: [2024-11-22 Fri 20:20]
@@ -117,6 +122,7 @@ Check the build only, at first.
 *** TODO Test that all the latex documentation builds
 ADDED: [2024-11-16 Sat]
 Check the latex documentation build.
+
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]
 We can test the application in an end-to-end fashion with tmux,
@@ -153,8 +159,9 @@ ADDED: [2024-09-02 Mon]
     display.
     - [2024-11-24 Sun] OK we did that.
 
-*** TODO Renaming task empties the project
+*** HOLD Renaming task empties the project
 ADDED: [2024-11-16 Sat]
+WAIT for the custom menu implementation
 Currently, when renaming a task in entrystaging, a cancellation will
 empty the project cell. Make it so that it does nothing instead.
 
@@ -166,8 +173,9 @@ The suggestion engine prefers matching "Northern Office" rather than
 - [2024-11-23 Sat] Changed the rapidfuzz metric to CachedTokenSortRatio,
   which gives better results on preferring a submatch.
 
-*** TODO Toggle archive visibility resets the screen
+*** HOLD Toggle archive visibility resets the screen
 ADDED: [2024-11-16 Sat]
+WAIT for the custom menu implementation
 Currently, toggling archive visibility resets the whole screen.
 Make it so the selection stays in place.
 - [2024-11-23 Sat] This is quite hard to do because the whole menu is getting
@@ -193,8 +201,9 @@ Fix it so nothing is done instead.
 + See what happens when a resizing of the terminal window is done.
   We may have to catch it and refresh.
 
-*** TODO Do NOTHING when hitting unbound keys
+*** HOLD Do NOTHING when hitting unbound keys
 ADDED: [2024-11-23 Sat]
+WAIT for the custom menu implementation
 Currently the program refreshes or shifts the selection when an
 unbound key is inputted. Change this behavior to doing absolutely
 nothing.
@@ -212,8 +221,9 @@ reappears.
   performing the automatic resizing. The TUI stays functional if the
   initial size is restored.
 
-*** TODO Handle resizing
+*** HOLD Handle resizing
 ADDED: [2024-11-24 Sun]
+WAIT for the custom menu implementation
 Handle the dynamic resizing of the TUI.
 + Make use of the full available terminal size.
 + Ensure a minimum size is available, like xx lines per 80 columns.
@@ -232,12 +242,24 @@ zeroes.
 ADDED: [2024-11-25 Mon]
 It would be useful to log the time it takes to export the timesheet.
 
+*** TODO Be able to change the currently selected day from the stopwatch
+ADDED: [2024-11-26 Tue]
+
+*** TODO Consider custom ordering of the hierarchy items
+ADDED: [2024-11-26 Tue]
+This would impact the way they are displayed in the hierarchy screen and also
+which task is selected by default when a project is put in entrystaging.
++ Modifying the whole ordering might be tedious, but the first task to appear may
+  be set to the last one used? We could have a table for tracking this per-project.
+
 ** Refactoring
-*** TODO Refactor MenuNCurses
+*** DEAD Refactor MenuNCurses
+CLOSED: [2024-11-25 Mon 21:59]
 ADDED: <2024-09-01 Sun>
 We can include the status bar display and basic input_loop navigation directly
 in the MenuNCurses class.
 Add the border highlighting there also.
+- [2024-11-25 Mon] We will replace it with a custom menu implementation.
 
 *** DONE Make constructors explicit
 CLOSED: [2024-11-23 Sat 17:02]
@@ -278,6 +300,7 @@ ADDED: [2024-11-24 Sun]
 Currently, using the ncurses menu library, we cannot put highlight
 and colors on items. Also, we have to destroy and recreate the whole
 menu when we could just redraw some things.
++ See whether someone already did this in c++
 + Develop on a separate branch, as it is a large task.
 + We can store "MenuItems" which have a string content, a short string
   content, and appearance attributes.
@@ -287,16 +310,21 @@ menu when we could just redraw some things.
 + Prepare for dynamic resizing.
 
 ** Performance
-*** TODO Remove useless refreshes and updates
+*** HOLD Remove useless refreshes and updates
 ADDED: [2024-09-27 Fri]
+WAIT for the custom menu implementation.
 Monitor closely the refresh() and update() operations and remove the
 useless ones.
 
-*** TODO Export the CSV from the DB line by line instead of in-full
+*** DONE Export the CSV from the DB line by line instead of in-full
+CLOSED: [2024-11-26 Tue 20:16]
 ADDED: [2024-11-02 Sat]
 Our goal is to reduce the memory footprint of the export operation.
 We can do it very easily by having the DB function return
 a std::generator<ExportRow> but we have to wait for GCC14.
+- [2024-11-26 Tue] OK we changed the DB export object from a vector to
+  a generator. We cannot measure any difference in runtime when
+  exporting a small DB with ~50 entries, so no major error is present.
 
 *** TODO Use a hash function to match key bindings dynamically
 ADDED: [2024-11-10 Sun]
@@ -385,3 +413,11 @@ We need the install script for our program.
   + Put the config file in dotfiles.
 - [2024-11-24 Sun] Wrote the installation instructions in CMakeLists.txt, the binary
   is deployed in `/bin/`, the default configuration file in `/etc/`.
+
+*** TODO Consider preventing overlapping entries
+ADDED: [2024-11-25 Mon]
+Overlapping entries have no use-case, do they? Should we forbid
+them at the DB level?
++ It could get annoying when manually entering entries. We would have to
+  type dates to the second.
++ This likely requires a table change, think about migration.

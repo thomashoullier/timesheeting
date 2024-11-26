@@ -85,12 +85,11 @@ namespace db {
     return project_id;
   }
 
-  std::vector<core::ExportRow> DB_SQLite::query_export_entries
+  std::generator<core::ExportRow> DB_SQLite::query_export_entries
   (const time_lib::DateRange &date_range) {
     auto &stmt = statements.select_export_entries;
     stmt.bind_all(date_range.start.to_unix_timestamp(),
                   date_range.stop.to_unix_timestamp());
-    std::vector<core::ExportRow> vec;
     while (stmt.step()) {
       auto [entry_id, project_id, project_name, task_id, task_name, location_id,
             location_name, start_date_stamp, stop_date_stamp] =
@@ -101,9 +100,8 @@ namespace db {
                         location_id, location_name,
                         time_lib::Date(start_date_stamp),
                         time_lib::Date(stop_date_stamp)};
-      vec.push_back(r);
+      co_yield r;
     }
-    return vec;
   }
 
   time_lib::Duration DB_SQLite::query_entries_duration

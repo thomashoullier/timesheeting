@@ -17,6 +17,7 @@
 #include <filesystem>
 #include <string>
 #include <type_traits>
+#include <generator>
 
 namespace db {
   /** @brief DB implementation using SQLite3. */
@@ -43,7 +44,7 @@ namespace db {
     /** @brief Get the project id of a given entry. */
     core::Id query_entry_project_id(core::Id entry_id);
     /** @brief Get the DB export registry of entries over a given date range. */
-    std::vector<core::ExportRow> query_export_entries
+    std::generator<core::ExportRow> query_export_entries
     (const time_lib::DateRange &date_range);
     /** @brief Get the total duration worked on entries in a given date range. */
     time_lib::Duration query_entries_duration

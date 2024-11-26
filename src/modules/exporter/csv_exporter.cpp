@@ -48,7 +48,6 @@ namespace exporter {
                  << std::endl;
 
     // Write body
-    // TODO Call DB line std::generator and write csv body line by line.
     *export_file <<
       "Entry ID, Project ID, Project name, Task ID, Task name, Location ID, "
       "Location name, Start date, Stop date" << std::endl;
