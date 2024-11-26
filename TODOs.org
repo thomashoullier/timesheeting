@@ -238,9 +238,11 @@ zeroes.
 - [2024-11-25 Mon] OK, we implemented the four variants of date format. It seems
   to work great.
 
-*** TODO Log the export duration
+*** DONE Log the export duration
+CLOSED: [2024-11-26 Tue 20:27]
 ADDED: [2024-11-25 Mon]
 It would be useful to log the time it takes to export the timesheet.
+- [2024-11-26 Tue] OK added a tick/tock around the export.
 
 *** TODO Be able to change the currently selected day from the stopwatch
 ADDED: [2024-11-26 Tue]

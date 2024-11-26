@@ -41,8 +41,10 @@ int main(int argc, const char *const *argv) {
     // Export to csv
     if (not(cli_data.beg_date.empty()) and not(cli_data.end_date.empty())
         and not(cli_data.export_file.empty())) {
+      log_lib::logger().tick();
       exporter::CSVExporter(cli_data.beg_date, cli_data.end_date,
                             cli_data.export_file);
+      log_lib::logger().tock();
       return 0; // Terminate the program after CSV export.
     }
 
