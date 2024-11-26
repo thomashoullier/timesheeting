@@ -120,9 +120,8 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Date</b> (uint64_t unix_seconds)</td></tr>
 <tr class="memdesc:ae8a41138484cd904e8ffb783f9b2d7b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a UNIX timestamp (UTC) in seconds. <br /></td></tr>
 <tr class="separator:ae8a41138484cd904e8ffb783f9b2d7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac42a377c179a90ebfe8f008ae5f1a0ea" id="r_ac42a377c179a90ebfe8f008ae5f1a0ea"><td class="memItemLeft" align="right" valign="top"><a id="ac42a377c179a90ebfe8f008ae5f1a0ea" name="ac42a377c179a90ebfe8f008ae5f1a0ea"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Date</b> (const std::string &amp;date_str)</td></tr>
-<tr class="memdesc:ac42a377c179a90ebfe8f008ae5f1a0ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a string in a fixed format: "%d%b%Y %H:%M:%S". This is the same format as the display string format. <br /></td></tr>
+<tr class="memitem:ac42a377c179a90ebfe8f008ae5f1a0ea" id="r_ac42a377c179a90ebfe8f008ae5f1a0ea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac42a377c179a90ebfe8f008ae5f1a0ea">Date</a> (const std::string &amp;date_str)</td></tr>
+<tr class="memdesc:ac42a377c179a90ebfe8f008ae5f1a0ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a string in fixed format.  <br /></td></tr>
 <tr class="separator:ac42a377c179a90ebfe8f008ae5f1a0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e4f9fe1d20a7067f7d438e32e43eeca" id="r_a6e4f9fe1d20a7067f7d438e32e43eeca"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e4f9fe1d20a7067f7d438e32e43eeca">to_string</a> () const</td></tr>
 <tr class="memdesc:a6e4f9fe1d20a7067f7d438e32e43eeca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint to a displayable date string in the system's timezone.  <br /></td></tr>
@@ -164,7 +163,36 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;</b> (<a 
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classtime__lib_1_1Date.html" title="Date object.">Date</a> object. </p>
 <p>The time is internally represented in UTC, and inputted/displayed in the current system's timezone. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac42a377c179a90ebfe8f008ae5f1a0ea" name="ac42a377c179a90ebfe8f008ae5f1a0ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac42a377c179a90ebfe8f008ae5f1a0ea">&#9670;&#160;</a></span>Date()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_lib::Date::Date </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>date_str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct the date from a string in fixed format. </p>
+<p>"%d%b%Y %H:%M:%S" is tried first, then successively smaller matches are tried until "%d%b%Y". Omitted information is replaced with zeroes. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="af4c1bf9752de36b97a890f753c7c6fb0" name="af4c1bf9752de36b97a890f753c7c6fb0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af4c1bf9752de36b97a890f753c7c6fb0">&#9670;&#160;</a></span>to_shortstring()</h2>
 
