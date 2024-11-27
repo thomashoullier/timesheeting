@@ -312,6 +312,15 @@ menu when we could just redraw some things.
   columns with variable width.
 + Prepare for dynamic resizing.
 
+*** TODO Decouple the ncurses_lib from log_lib
+ADDED: [2024-11-27 Wed]
+It makes no sense to have ncurses_lib depend on any logging. It
+makes the library less reusable.
++ The reason they are coupled is because of the input_loop timing.
++ We could add a window class in the tui module which defines
+  an instrumented input_loop on top of the basic input_loop.
+  We likely have to do the same with every window child class.
+
 ** Performance
 *** HOLD Remove useless refreshes and updates
 ADDED: [2024-09-27 Fri]

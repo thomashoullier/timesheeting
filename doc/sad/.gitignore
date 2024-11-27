@@ -22,6 +22,7 @@
 *.ver
 *.lot
 *.sig
+*SAVE-ERROR
 
 svg-inkscape
 auto/
