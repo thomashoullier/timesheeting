@@ -19,8 +19,8 @@ We list the specification items which should be added later.
 + Description or comment associated to hierarchy items.
 
 * System architecture document
-* Subsystem requirements document
-** PRJ1-SRS1
+* System requirements document
+** PRJ1-SRD1
 Details the requirements applicable to subsystems, as described in the SAD.
 + Which day of the week is the first day?
 + First day of the week user configuration?
@@ -42,6 +42,7 @@ justification/tradeoff.
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema
   See https://github.com/o0101/sqlite-schema-diagram
++ Also give the choices to implement the offline subsystems.
 
 * External timesheet format
 * Test plan
