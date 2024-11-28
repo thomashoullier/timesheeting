@@ -272,10 +272,22 @@ ADDED: [2024-09-01 Sun]
 Through ignorance on our part, we have neglected to set constructors to explicit
 by default. Fix it.
 
-*** TODO Make sure the types are coherent
+*** DONE Make sure the types are coherent
+CLOSED: [2024-11-28 Thu 21:21]
 ADDED: [2024-09-14 Sat]
 For instance, sqlite uses the type sqlite3_int64, we use uint64_t,
 should we switch?
+
++ https://www.sqlite.org/c3ref/int64.html This says that sqlite3_int64
+  stores a SIGNED 64bit integer. Thus, we really should not use uint64_t.
++ Create an integer typedef in the db_lib.
++ The ROWID in sqlite3 goes from 1 up to 2**63-1, so uint64_t makes sense,
+  kind of. We will have no problem getting a rowid from sqlite, but may
+  have problem when binding numbers to a statement. Add an exception in
+  the binding code? Can't we use a sqlite3_int64?
+- [2024-11-28 Thu] Added a DBInt type which is a sqlite3_int64. The RowId is
+  also a DBInt, and the Id for hierarchy items is a RowId. In this fashion,
+  the types are coherent.
 
 *** DONE Extract library modules
 CLOSED: [2024-11-23 Sat 17:02]

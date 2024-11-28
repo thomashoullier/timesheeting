@@ -35,7 +35,7 @@ namespace db_lib {
     return check_rc(rc);
   }
 
-  void Statement::bind(int index, uint64_t num) {
+  void Statement::bind(int index, DBInt num) {
     sqlite3_bind_int64(stmt, index + 1, num);
   }
 
@@ -43,8 +43,8 @@ namespace db_lib {
     sqlite3_bind_text(stmt, index + 1, str.c_str(), str.size(), SQLITE_STATIC);
   }
 
-  /** @brief Specialization for getting uint64_t. */
-  template <> uint64_t Statement::get_column(int icol) {
+  /** @brief Specialization for getting an integer. */
+  template <> DBInt Statement::get_column(int icol) {
     return sqlite3_column_int64(stmt, icol);
   }
 

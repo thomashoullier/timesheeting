@@ -6,13 +6,14 @@
 #include <exception>
 #include <filesystem>
 #include <string>
-#include <cstdint>
 #include <vector>
 #include "sqlite3.h"
 
 namespace db_lib {
-  /** @brief C++ representation of a SQLite3 rowid. */
-  typedef uint64_t RowId;
+  /** @brief Type for integers in the DB. */
+  typedef sqlite3_int64 DBInt;
+  /** @brief Type for a DB rowid. */
+  typedef DBInt RowId;
   /** @brief Rows of (RowId, Name) pairs. */
   typedef std::vector<std::pair<RowId, std::string>> NameRows;
 
@@ -20,29 +21,29 @@ namespace db_lib {
   class DB_SQLite_Handle {
   public:
     /** @brief Open or create the DB. */
-    explicit DB_SQLite_Handle (const std::filesystem::path &db_file);
-    ~DB_SQLite_Handle ();
+    explicit DB_SQLite_Handle(const std::filesystem::path &db_file);
+    ~DB_SQLite_Handle();
 
     /** @brief Check or initialize the user_version of the DB. */
     void check_user_version(int user_version);
     /** @brief Get user_version of the DB. */
     int get_user_version() const;
     /** @brief Prepare a SQL statement. */
-    sqlite3_stmt* prepare_statement (const std::string &statement);
+    sqlite3_stmt *prepare_statement(const std::string &statement);
     /** @brief Execute a SQL statement in the DB. */
-    void exec_statement (const std::string &statement);
+    void exec_statement(const std::string &statement);
     /** @brief Step a prepare SQL statement. */
-    void step_statement (sqlite3_stmt *stmt);
+    void step_statement(sqlite3_stmt *stmt);
     /** @brief Return the result of a statement querying a list of rows with
         (rowid, string), in order. */
-    NameRows query_row_of_names (const std::string &statement);
+    NameRows query_row_of_names(const std::string &statement);
 
-  private :
+  private:
     /** @brief Internal pointer to the DB. */
     sqlite3 *db;
     /** @brief Check a SQLite return code and raise exception with message
         in case of reported errors. */
-    void check_rc (int rc, const std::string &msg);
+    void check_rc(int rc, const std::string &msg);
     /** @brief Set the user_version of the DB. */
     void set_user_version(int user_version);
   };

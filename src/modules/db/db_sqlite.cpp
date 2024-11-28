@@ -1,6 +1,5 @@
 #include "db_sqlite.h"
 #include "db_lib/db_sqlite_handle.h"
-#include <cstdint>
 #include <optional>
 #include <string>
 #include "log_lib/logger.h"
@@ -67,7 +66,7 @@ namespace db {
     std::vector<core::Entry> vec;
     while (stmt.step()) {
       auto [id, project_name, task_name, start_unix, stop_unix, location_name] =
-        stmt.get_all<db_lib::RowId, std::string, std::string, uint64_t, uint64_t,
+        stmt.get_all<db_lib::RowId, std::string, std::string, db_lib::DBInt, db_lib::DBInt,
                      std::string>();
       time_lib::Date start_date(start_unix);
       time_lib::Date stop_date(stop_unix);
@@ -81,7 +80,7 @@ namespace db {
   core::Id DB_SQLite::query_entry_project_id(core::Id entry_id) {
     auto &stmt = statements.select_entry_project_id;
     stmt.bind_all(entry_id);
-    auto [project_id] = stmt.single_get_all<uint64_t>();
+    auto [project_id] = stmt.single_get_all<db_lib::DBInt>();
     return project_id;
   }
 
@@ -95,7 +94,7 @@ namespace db {
             location_name, start_date_stamp, stop_date_stamp] =
         stmt.get_all<db_lib::RowId, db_lib::RowId, std::string,
                      db_lib::RowId, std::string, db_lib::RowId,
-                     std::string, uint64_t, uint64_t>();
+                     std::string, db_lib::DBInt, db_lib::DBInt>();
       core::ExportRow r{entry_id, project_id, project_name, task_id, task_name,
                         location_id, location_name,
                         time_lib::Date(start_date_stamp),
@@ -109,7 +108,7 @@ namespace db {
     auto &stmt = statements.select_duration;
     stmt.bind_all(date_range.start.to_unix_timestamp(),
                   date_range.stop.to_unix_timestamp());
-    auto [total_seconds] = stmt.single_get_all<uint64_t>();
+    auto [total_seconds] = stmt.single_get_all<db_lib::DBInt>();
     return time_lib::Duration(total_seconds);
   }
 
@@ -117,7 +116,7 @@ namespace db {
     auto &stmt = statements.select_entrystaging;
     auto [project_name_ret, task_name_ret, start_unix, stop_unix,
           location_name_ret]
-      = stmt.single_get_all<std::string, std::string, uint64_t, uint64_t,
+      = stmt.single_get_all<std::string, std::string, db_lib::DBInt, db_lib::DBInt,
                             std::string>();
     // Replace NULL values with explicit nullopt.
     std::optional<std::string> project_name;
@@ -151,7 +150,7 @@ namespace db {
 
   core::Id DB_SQLite::query_entrystaging_project_id() {
     auto &stmt = statements.select_entrystaging_project_id;
-    auto [project_id] = stmt.single_get_all<uint64_t>();
+    auto [project_id] = stmt.single_get_all<db_lib::DBInt>();
     return project_id;
   }
 
@@ -398,7 +397,7 @@ namespace db {
                   date_range.stop.to_unix_timestamp());
     std::vector<core::ProjectTotal> totals;
     while (stmt.step()) {
-      auto [project_name, seconds] = stmt.get_all<std::string, uint64_t>();
+      auto [project_name, seconds] = stmt.get_all<std::string, db_lib::DBInt>();
       totals.push_back(core::ProjectTotal{project_name,
                                           time_lib::Duration(seconds)});
     }
@@ -411,7 +410,7 @@ namespace db {
     stmt.bind_all(project_id,
                   date_range.start.to_unix_timestamp(),
                   date_range.stop.to_unix_timestamp());
-    auto [seconds] = stmt.single_get_all<uint64_t>();
+    auto [seconds] = stmt.single_get_all<db_lib::DBInt>();
     return time_lib::Duration(seconds);
   }
 
@@ -421,7 +420,7 @@ namespace db {
     stmt.bind_all(task_id,
                   date_range.start.to_unix_timestamp(),
                   date_range.stop.to_unix_timestamp());
-    auto [seconds] = stmt.single_get_all<uint64_t>();
+    auto [seconds] = stmt.single_get_all<db_lib::DBInt>();
     return time_lib::Duration(seconds);
   }
 
@@ -448,7 +447,7 @@ namespace db {
     while(stmt_per_project.step()) {
       core::PerProjectTotals per_project_totals;
       auto [project_id, project_name, seconds] =
-        stmt_per_project.get_all<db_lib::RowId, std::string, uint64_t>();
+        stmt_per_project.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
       per_project_totals.project_name = project_name;
       per_project_totals.total = time_lib::Duration(seconds);
       // Daily totals for the current project (by project_id)
@@ -465,7 +464,7 @@ namespace db {
       while (stmt_per_task.step()) {
         core::PerTaskTotals per_task_totals;
         auto [task_id, task_name, seconds] =
-          stmt_per_task.get_all<db_lib::RowId, std::string, uint64_t>();
+          stmt_per_task.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
         per_task_totals.task_name = task_name;
         per_task_totals.total = time_lib::Duration(seconds);
         // Daily totals for the current task.

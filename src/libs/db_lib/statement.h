@@ -12,8 +12,8 @@ namespace db_lib {
   /** @brief Statement object. */
   class Statement {
   private:
-    /** @brief Bind an uint64_t to a parameter of the statement. */
-    void bind(int index, uint64_t num);
+    /** @brief Bind a DB integer to a parameter of the statement. */
+    void bind(int index, DBInt num);
     /** @brief Bind a string to a parameter of the statement.
 
         Note the string lifetime must be managed at the higher level.

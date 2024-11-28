@@ -3,10 +3,10 @@
 #ifndef ID_H
 #define ID_H
 
-#include <cstdint>
+#include "db_lib/db_sqlite_handle.h"
 
 namespace core {
-  /** @brief Unique id for data items (typically a SQLite rowid). */
-  typedef uint64_t Id;
+  /** @brief Unique id for data items. This is simply the DB row id. */
+  typedef db_lib::RowId Id;
 }
 #endif // ID_H
