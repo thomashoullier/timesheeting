@@ -100,7 +100,6 @@ $(function(){ initResizable(false); });
 <div class="textblock"><code>#include &lt;exception&gt;</code><br />
 <code>#include &lt;filesystem&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;sqlite3.h&quot;</code><br />
 </div>
@@ -117,12 +116,16 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a087b4b1b57070969f08761a69d444009" id="r_a087b4b1b57070969f08761a69d444009"><td class="memItemLeft" align="right" valign="top"><a id="a087b4b1b57070969f08761a69d444009" name="a087b4b1b57070969f08761a69d444009"></a>
-typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>db_lib::RowId</b></td></tr>
-<tr class="memdesc:a087b4b1b57070969f08761a69d444009"><td class="mdescLeft">&#160;</td><td class="mdescRight">C++ representation of a SQLite3 rowid. <br /></td></tr>
-<tr class="separator:a087b4b1b57070969f08761a69d444009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3eeae16b4efc8c995b060d55b4fbf03" id="r_af3eeae16b4efc8c995b060d55b4fbf03"><td class="memItemLeft" align="right" valign="top"><a id="af3eeae16b4efc8c995b060d55b4fbf03" name="af3eeae16b4efc8c995b060d55b4fbf03"></a>
+typedef sqlite3_int64&#160;</td><td class="memItemRight" valign="bottom"><b>db_lib::DBInt</b></td></tr>
+<tr class="memdesc:af3eeae16b4efc8c995b060d55b4fbf03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for integers in the DB. <br /></td></tr>
+<tr class="separator:af3eeae16b4efc8c995b060d55b4fbf03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9204c8a68a01fbbde843bb5cd7da36ff" id="r_a9204c8a68a01fbbde843bb5cd7da36ff"><td class="memItemLeft" align="right" valign="top"><a id="a9204c8a68a01fbbde843bb5cd7da36ff" name="a9204c8a68a01fbbde843bb5cd7da36ff"></a>
+typedef <a class="el" href="#af3eeae16b4efc8c995b060d55b4fbf03">DBInt</a>&#160;</td><td class="memItemRight" valign="bottom"><b>db_lib::RowId</b></td></tr>
+<tr class="memdesc:a9204c8a68a01fbbde843bb5cd7da36ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for a DB rowid. <br /></td></tr>
+<tr class="separator:a9204c8a68a01fbbde843bb5cd7da36ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a544f87411db5fcbf0281cc4c5b50d605" id="r_a544f87411db5fcbf0281cc4c5b50d605"><td class="memItemLeft" align="right" valign="top"><a id="a544f87411db5fcbf0281cc4c5b50d605" name="a544f87411db5fcbf0281cc4c5b50d605"></a>
-typedef std::vector&lt; std::pair&lt; <a class="el" href="#a087b4b1b57070969f08761a69d444009">RowId</a>, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>db_lib::NameRows</b></td></tr>
+typedef std::vector&lt; std::pair&lt; <a class="el" href="#a9204c8a68a01fbbde843bb5cd7da36ff">RowId</a>, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>db_lib::NameRows</b></td></tr>
 <tr class="memdesc:a544f87411db5fcbf0281cc4c5b50d605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rows of (RowId, Name) pairs. <br /></td></tr>
 <tr class="separator:a544f87411db5fcbf0281cc4c5b50d605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>

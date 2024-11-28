@@ -18,5 +18,5 @@ var searchData=
   ['report_5ftask_5fduration_15',['report_task_duration',['../classdb_1_1DB__SQLite.html#a5b16f175c617b0fca58f5af66d1c8db2',1,'db::DB_SQLite']]],
   ['report_5fweekly_5ftotals_16',['report_weekly_totals',['../classdb_1_1DB__SQLite.html#a350155ad36b78f5f73eb294f2662979e',1,'db::DB_SQLite']]],
   ['right_17',['right',['../structconfig_1_1KeyBindings.html#ac3b21d81bdc42927ecac9886b4cc5d5d',1,'config::KeyBindings']]],
-  ['rowid_18',['RowId',['../db__sqlite__handle_8h.html#a087b4b1b57070969f08761a69d444009',1,'db_lib']]]
+  ['rowid_18',['RowId',['../db__sqlite__handle_8h.html#a9204c8a68a01fbbde843bb5cd7da36ff',1,'db_lib']]]
 ];

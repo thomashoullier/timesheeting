@@ -139,11 +139,11 @@ template&lt;class... T, std::size_t... Is&gt; </td></tr>
 <tr class="memitem:a8430816e062e286a93c71555c28d9271"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8430816e062e286a93c71555c28d9271">single_get_all</a> ()</td></tr>
 <tr class="memdesc:a8430816e062e286a93c71555c28d9271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the results of all columns in the case of a single row.  <br /></td></tr>
 <tr class="separator:a8430816e062e286a93c71555c28d9271"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a437050acb91a5b422099f973454e9dd4" id="r_a437050acb91a5b422099f973454e9dd4"><td class="memItemLeft" align="right" valign="top"><a id="a437050acb91a5b422099f973454e9dd4" name="a437050acb91a5b422099f973454e9dd4"></a>
+<tr class="memitem:a0280fa711bff63af118497021632ca90" id="r_a0280fa711bff63af118497021632ca90"><td class="memItemLeft" align="right" valign="top"><a id="a0280fa711bff63af118497021632ca90" name="a0280fa711bff63af118497021632ca90"></a>
 template&lt;&gt; </td></tr>
-<tr class="memitem:a437050acb91a5b422099f973454e9dd4"><td class="memTemplItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get_column</b> (int icol)</td></tr>
-<tr class="memdesc:a437050acb91a5b422099f973454e9dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for getting uint64_t. <br /></td></tr>
-<tr class="separator:a437050acb91a5b422099f973454e9dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0280fa711bff63af118497021632ca90"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="db__sqlite__handle_8h.html#af3eeae16b4efc8c995b060d55b4fbf03">DBInt</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get_column</b> (int icol)</td></tr>
+<tr class="memdesc:a0280fa711bff63af118497021632ca90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for getting an integer. <br /></td></tr>
+<tr class="separator:a0280fa711bff63af118497021632ca90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9778543aecf250f89b14847d36df1a7" id="r_af9778543aecf250f89b14847d36df1a7"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
 <tr class="memitem:af9778543aecf250f89b14847d36df1a7"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af9778543aecf250f89b14847d36df1a7">get_column</a> (int icol)</td></tr>
 <tr class="memdesc:af9778543aecf250f89b14847d36df1a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for getting a boolean.  <br /></td></tr>
@@ -162,10 +162,10 @@ sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><b>stmt</b></t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a27c8d71400c5648733099a9633f31bad" id="r_a27c8d71400c5648733099a9633f31bad"><td class="memItemLeft" align="right" valign="top"><a id="a27c8d71400c5648733099a9633f31bad" name="a27c8d71400c5648733099a9633f31bad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (int index, uint64_t num)</td></tr>
-<tr class="memdesc:a27c8d71400c5648733099a9633f31bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind an uint64_t to a parameter of the statement. <br /></td></tr>
-<tr class="separator:a27c8d71400c5648733099a9633f31bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bcb6c63b67cf5e207d1a64be622dfda" id="r_a8bcb6c63b67cf5e207d1a64be622dfda"><td class="memItemLeft" align="right" valign="top"><a id="a8bcb6c63b67cf5e207d1a64be622dfda" name="a8bcb6c63b67cf5e207d1a64be622dfda"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (int index, <a class="el" href="db__sqlite__handle_8h.html#af3eeae16b4efc8c995b060d55b4fbf03">DBInt</a> num)</td></tr>
+<tr class="memdesc:a8bcb6c63b67cf5e207d1a64be622dfda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a DB integer to a parameter of the statement. <br /></td></tr>
+<tr class="separator:a8bcb6c63b67cf5e207d1a64be622dfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7df54d2e95e327e2208197e715f0941" id="r_ac7df54d2e95e327e2208197e715f0941"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7df54d2e95e327e2208197e715f0941">bind</a> (int index, const std::string &amp;str)</td></tr>
 <tr class="memdesc:ac7df54d2e95e327e2208197e715f0941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a string to a parameter of the statement.  <br /></td></tr>
 <tr class="separator:ac7df54d2e95e327e2208197e715f0941"><td class="memSeparator" colspan="2">&#160;</td></tr>
