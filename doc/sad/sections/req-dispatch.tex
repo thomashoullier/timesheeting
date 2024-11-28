@@ -4,10 +4,12 @@ described in the system architecture (\cref{sec:system-diagram}). This dispatch
 is presented in \cref{tab:req-dispatch}. Some requirements are attributed
 to a \emph{General} system, when they cannot be attributed to a single
 subsystem. This dispatch is not \emph{strict}, it only indicates in which
-subsystem we expect to find the most sub-requirements answering to a given
-top-level project requirement.
+subsystems we expect to find the most requirements answering to a given
+user requirement.
 
-\begin{longtable}{| c | c | c |}
+\begin{longtable}{| p{\dimexpr 0.2\linewidth-2\tabcolsep} |
+                    p{\dimexpr 0.4\linewidth-2\tabcolsep} |
+                    p{\dimexpr 0.4\linewidth-2\tabcolsep} |}
   \caption{\label{tab:req-dispatch} Requirements responsibility dispatch to
     subsystems.} \\ \hline
   \textbf{Req. ID} & \textbf{Req. name} & \textbf{Responsible subsystem} \\ \hline
