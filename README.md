@@ -6,6 +6,7 @@ It is not finished, see the [TODOs.org](TODOs.org) file for
 checking progress.
 
 ## Project timeline
+* *28Nov2024*: `PRJ1-SAD1-v1.1` released.
 * *24Nov2024*: Usage begins (alpha).
 * *16Nov2024*: `PRJ1-SPE1-v1.1` released.
 * *02Nov2024*: `PRJ1-IRS1-v1.1` released.
@@ -15,9 +16,9 @@ checking progress.
 * *20Jan2024*: Project launch.
 
 ## Documentation summary
-* `PRJ1-SPE1-v1.0` timesheeting specification document
-* `PRJ1-IRS1-v1.0` external timesheet format
-* `PRJ1-SAD1-v1.0` timesheeting system architecture document
+* `PRJ1-SPE1-v1.1` timesheeting specification document
+* `PRJ1-IRS1-v1.1` external timesheet format
+* `PRJ1-SAD1-v1.1` timesheeting system architecture document
 * ![Release notes](doc/RELEASE_NOTES.md)
 * [Doxygen](https://thomashoullier.github.io/timesheeting/index.html)
 
