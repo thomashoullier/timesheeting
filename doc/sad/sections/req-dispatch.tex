@@ -3,104 +3,97 @@ We assign responsibility for the requirements in [AD1] to the various subsystems
 described in the system architecture (\cref{sec:system-diagram}). This dispatch
 is presented in \cref{tab:req-dispatch}. Some requirements are attributed
 to a \emph{General} system, when they cannot be attributed to a single
-subsystem.
+subsystem. This dispatch is not \emph{strict}, it only indicates in which
+subsystem we expect to find the most sub-requirements answering to a given
+top-level project requirement.
 
 \begin{longtable}{| c | c | c |}
   \caption{\label{tab:req-dispatch} Requirements responsibility dispatch to
     subsystems.} \\ \hline
   \textbf{Req. ID} & \textbf{Req. name} & \textbf{Responsible subsystem} \\ \hline
-  R-UHI-010 & Adding hierarchy items & GUI, Core logic \\ \hline
-  R-UHI-020 & Removing hierarchy items & GUI, Core logic \\ \hline
-  R-UHI-030 & Editing hierarchy items & GUI, Core logic \\ \hline
-  R-UHI-040 & Restoring deleted hierarchy items & GUI, Core logic \\ \hline
-  R-UHI-050 & Project removal effect & Core logic \\ \hline
-  R-UEI-010 & Adding entries & GUI, Core logic \\ \hline
-  R-UEI-020 & Adding entries through stopwatch & GUI, Core logic \\ \hline
-  R-UEI-030 & Adding entries manually & GUI, Core logic \\ \hline
-  R-UEI-040 & Removing entries & GUI, Core logic \\ \hline
-  R-UEI-050 & Editing entries & GUI, Core logic \\ \hline
-  R-UGL-010 & UI screens breakdown & GUI \\ \hline
-  R-DES-010 & Daily entries & GUI \\ \hline
-  R-DES-020 & Day selection & GUI \\ \hline
-  R-DES-025 & Day selection format & GUI \\ \hline
-  R-DES-030 & Display entries of the day & GUI \\ \hline
-  R-DES-040 & Running daily total & GUI \\ \hline
-  R-STP-010 & Stopwatch in use & GUI \\ \hline
-  R-STP-020 & Running stopwatch time & GUI \\ \hline
-  R-STP-030 & Stopwatch only on current day & Core logic \\ \hline
-  R-ENI-010 & Entry metadata prefill & GUI \\ \hline
-  R-ENI-020 & Entry metadata suggestion & GUI \\ \hline
-  R-ENI-030 & Entry metadata hierarchy search & GUI \\ \hline
-  R-ENI-040 & Entry metadata hierarchy coherence & Core logic \\ \hline
-  R-HIS-010 & Hierarchy items & GUI \\ \hline
-  R-HIS-020 & Hierarchy items display & GUI \\ \hline
-  R-GUI-010 & Keyboard usage & GUI \\ \hline
+  R-UHI-010 & Adding hierarchy items & UI, DB backend \\ \hline
+  R-UHI-020 & Inactivating hierarchy items & UI, DB backend \\ \hline
+  R-UHI-030 & Editing hierarchy items & UI, DB backend \\ \hline
+  R-UHI-040 & Activating hierarchy items & UI, DB backend \\ \hline
+  R-UHI-050 & Project inactivation effect & UI \\ \hline
+  R-UHI-060 & Removing hierarchy items & UI, DB backend \\ \hline
+  R-UEI-010 & Adding entries & UI, DB backend \\ \hline
+  R-UEI-040 & Removing entries & UI, DB backend \\ \hline
+  R-UEI-050 & Editing entries & UI, DB backend \\ \hline
+  R-UGL-010 & UI screens breakdown & UI \\ \hline
+  R-DES-010 & Daily entries & UI \\ \hline
+  R-DES-020 & Day selection & UI \\ \hline
+  R-DES-030 & Display entries of the day & UI \\ \hline
+  R-DES-040 & Running daily total & UI \\ \hline
+  R-ENI-030 & Entry metadata hierarchy search & UI \\ \hline
+  R-ENI-040 & Entry metadata hierarchy coherence & DB backend \\ \hline
+  R-HIS-010 & Hierarchy items & UI \\ \hline
+  R-HIS-020 & Hierarchy items display & UI \\ \hline
+  R-GUI-010 & Keyboard usage & UI \\ \hline
   R-LDC-010 & Entry identification & DB backend \\ \hline
   R-LDC-020 & Entry metadata & DB backend \\ \hline
-  R-LDC-030 & Company identification & DB backend \\ \hline
-  R-LDC-040 & Company metadata & DB backend \\ \hline
   R-LDC-050 & Project identification & DB backend \\ \hline
   R-LDC-060 & Project metadata & DB backend \\ \hline
   R-LDC-070 & Task identification & DB backend \\ \hline
   R-LDC-080 & Task metadata & DB backend \\ \hline
   R-TIM-010 & Time standard & Core logic \\ \hline
   R-TIM-020 & Time reference & Core logic \\ \hline
-  R-TIM-030 & Time zones & Core logic, Settings manager \\ \hline
+  R-TIM-030 & Time zones & Core logic, Configuration manager \\ \hline
   R-TIM-040 & Time resolution & Core logic \\ \hline
   R-SAV-010 & Save & DB backend \\ \hline
-  R-SAV-020 & Transparent save & DB backend \\ \hline
-  R-SAV-030 & Timesheet save resolution & DB backend \\ \hline
-  R-SAV-031 & Hierarchy items save resolution & DB backend \\ \hline
-  R-SAV-040 & Save status & GUI \\ \hline
-  R-SAV-050 & Switch save profile & Settings manager \\ \hline
-  R-SAV-060 & Starting save profile & Settings manager \\ \hline
-  R-BAK-010 & Backup & Backup manager \\ \hline
-  R-BAK-020 & Backup restore & Backup manager \\ \hline
-  R-BAK-030 & Backup completeness & Backup manager \\ \hline
-  R-BAK-040 & Backup conciness & Backup manager \\ \hline
-  R-BAK-050 & Backup timestamp & Backup manager \\ \hline
-  R-BAK-060 & Backup naming & GUI \\ \hline
-  R-BAK-070 & Backup location & GUI \\ \hline
+  R-SAV-020 & Transparent save & UI \\ \hline
+  R-SAV-030 & Timesheet save resolution & UI \\ \hline
+  R-SAV-031 & Hierarchy items save resolution & UI \\ \hline
+  R-SAV-050 & Switch save profile & Configuration manager \\ \hline
+  R-SAV-060 & Starting save profile & Configuration manager \\ \hline
+  R-BAK-010 & Backup & General \\ \hline
+  R-BAK-020 & Backup restore & General \\ \hline
+  R-BAK-030 & Backup completeness & General \\ \hline
+  R-BAK-040 & Backup conciness & General \\ \hline
+  R-BAK-060 & Backup naming & General \\ \hline
+  R-BAK-070 & Backup location & General \\ \hline
   R-DEX-010 & Timesheet export & Exporter \\ \hline
-  R-DEX-020 & Export naming & GUI \\ \hline
-  R-DEX-030 & Export location & GUI \\ \hline
-  R-DEX-040 & Export tool screen & GUI \\ \hline
-  R-DEX-050 & Export time period & GUI, Exporter \\ \hline
+  R-DEX-020 & Export naming & UI \\ \hline
+  R-DEX-030 & Export location & UI \\ \hline
+  R-DEX-050 & Export time period & UI, Exporter \\ \hline
   R-ACC-010 & Single user & Core logic \\ \hline
   R-ACC-020 & Synchronization across systems & General \\ \hline
   R-ACC-030 & Company segregation & Core logic \\ \hline
   R-ACC-040 & Data confidentiality & DB backend \\ \hline
   R-ACC-050 & Offline operation & Core logic \\ \hline
+  R-ACC-060 & Interface language & UI \\ \hline
+  R-ACC-070 & Documentation language & General \\ \hline
+  R-ACC-080 & Offline operation & General \\ \hline
   R-ENV-010 & Target hardware & General \\ \hline
   R-ENV-020 & Target OS & General \\ \hline
   R-ENV-030 & Target OS version & General \\ \hline
-  R-ENV-040 & Target graphical environment & GUI \\ \hline
+  R-ENV-040 & Target graphical environment & UI \\ \hline
   R-PER-010 & Memory footprint & General \\ \hline
-  R-URE-010 & Durations display format & GUI \\ \hline
-  R-RPT-010 & Project totals & GUI \\ \hline
-  R-RPT-020 & Project totals time period & GUI \\ \hline
-  R-RWT-010 & Weekly report & GUI \\ \hline
-  R-RWT-020 & Weekly report daily totals & GUI \\ \hline
-  R-RWT-030 & Weekly report weekly totals & GUI \\ \hline
-  R-RWT-040 & Weekly report running week & GUI \\ \hline
-  R-RWT-050 & Weekly report week selection & GUI \\ \hline
-  R-RWT-070 & Weekly report timesheet export & Exporter \\ \hline
+  R-URE-010 & Durations display format & UI \\ \hline
+  R-URE-020 & Day duration definition & UI \\ \hline
+  R-RPT-010 & Project totals & UI \\ \hline
+  R-RPT-020 & Project totals time period & UI \\ \hline
+  R-RWT-010 & Weekly report & UI \\ \hline
+  R-RWT-020 & Weekly report daily totals & UI \\ \hline
+  R-RWT-030 & Weekly report weekly totals & UI \\ \hline
+  R-RWT-040 & Weekly report running week & UI \\ \hline
+  R-RWT-050 & Weekly report week selection & UI \\ \hline
   R-LOG-010 & User data interaction logging & Logger \\ \hline
   R-LOG-020 & Log file location & Logger \\ \hline
-  R-LOG-030 & Log depth & Logger \\ \hline
+  R-LOG-025 & Log cleanup period & Logger \\ \hline
   R-LOG-040 & Log cleanup & Logger \\ \hline
   R-LOG-050 & Log cleanup schedule & Logger \\ \hline
   R-LOG-060 & Log readability & Logger \\ \hline
   R-LOG-070 & Log accessibility & Logger \\ \hline
-  R-QUA-010 & Version report & GUI \\ \hline
+  R-QUA-010 & Version report & UI \\ \hline
   R-QUA-020 & Save data validation & Core logic \\ \hline
+  R-QUA-025 & Save data action & DB backend \\ \hline
   R-QUA-030 & Release signature & Signature system \\ \hline
   R-QUA-040 & Single repository & Versioning \\ \hline
+  R-QUA-050 & Bug tracker information & General \\ \hline
   R-TES-010 & Automated build test & Automated testing \\ \hline
   R-DOC-010 & Development documentation & General \\ \hline
   R-DOC-020 & User manual & General \\ \hline
-  R-DOC-030 & Keyboard cheatsheet & General \\ \hline
-  R-DOC-040 & Keyboard cheatsheet conciness & General \\ \hline
   R-DOC-050 & Software build instructions & General \\ \hline
   R-DOC-060 & Documentation build instructions & Documentation generator \\ \hline
   R-DOC-070 & Matrix of conformity & General \\ \hline
@@ -111,6 +104,7 @@ subsystem.
   R-REL-040 & Release notes publication & Documentation distribution \\ \hline
   R-REL-050 & Documentation release & Documentation distribution \\ \hline
   R-REL-060 & Build dependencies & Build \\ \hline
+  R-REL-070 & Release format & Build \\ \hline
   R-DEP-010 & Installation script & Build \\ \hline
   R-DEP-020 & Uninstallation script & Build \\ \hline
   R-LIC-010 & Source code license & General \\ \hline

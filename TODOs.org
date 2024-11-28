@@ -17,6 +17,8 @@ We list the specification items which should be added later.
 ** New feature ideas
 + Template list of tasks for new projects.
 + Description or comment associated to hierarchy items.
+** HOLD Erratum v1.1
++ R-UEI-050: typo ~part entries~ -> ~past entries~
 
 * System architecture document
 * System requirements document
