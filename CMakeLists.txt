@@ -59,7 +59,7 @@ target_include_directories(keys PUBLIC
 
 file(GLOB_RECURSE CORE_SRC "${TIMESHEETING_DIR}/src/modules/core/*.cpp")
 add_library(core STATIC "${CORE_SRC}")
-target_link_libraries(core PRIVATE time_lib ncurses_lib)
+target_link_libraries(core PRIVATE time_lib ncurses_lib db_lib)
 target_include_directories(core PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules>")
 

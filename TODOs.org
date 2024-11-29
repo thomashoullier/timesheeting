@@ -303,6 +303,20 @@ CLOSED: [2024-11-23 Sat 17:02]
 ADDED: [2024-09-22 Sun]
 Currently everything is in the global namespace, which is bad practice.
 
+*** TODO Separate the key for committing an entry from entrystaging from the validation key in edit mode
+ADDED: [2024-11-28 Thu]
+Currently the key for committing an entry, and the code for validating in edit mode are the same.
+This should not be the case. Create a separate key for committing entries.
+
+*** TODO Create config file subsection in keys
+ADDED: [2024-11-28 Thu]
+The ~keys~ section of the config file is too big.
+Create subsections for:
++ Navigation
++ Actions
++ Edit mode: cancel and select_suggestion and validate (needs to be separated because we can
+  bind keys twice).
+
 *** TODO Extract a generic library for the config file
 ADDED: [2024-10-13 Sun]
 There is a generic part to the config file module.
@@ -368,6 +382,12 @@ Can we find a way to signal this dependency in the build system?
 We do not want to forbid other compilers from working either.
 
 ** Features
+*** TODO Protect against binding the same key twice to the same mode
+ADDED: [2024-11-28 Thu]
+When loading the keys into BoundKeys, check that keys are not bound twice in the same section.
+Edit mode and the other sections may mix however.
+Stop with an exception if this is the case.
+
 *** DEAD Implement a check of the DB when opening
 CLOSED: [2024-11-23 Sat 17:10]
 ADDED: [2024-11-16 Sat]

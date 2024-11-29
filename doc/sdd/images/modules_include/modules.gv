@@ -25,7 +25,7 @@ digraph modules {
     sqlite -> db_lib
     {log_lib, ncurses} -> ncurses_lib
     rapidfuzz -> suggestion
-    {time_lib, ncurses_lib} -> core
+    {time_lib, ncurses_lib, db_lib} -> core
     {version, db_lib, time_lib, core} -> db
     tomlplusplus -> config
     {time_lib, db, version} -> exporter
