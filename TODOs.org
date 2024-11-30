@@ -258,6 +258,11 @@ which task is selected by default when a project is put in entrystaging.
   be set to the last one used? We could have a table for tracking this per-project.
 
 ** Refactoring
+*** TODO Fix CMakeLists includes
+ADDED: [2024-11-30 Sat]
+We have put ~target_include_directories~ everywhere. This includes everything
+in everything no? Fix it.
+
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]
 ADDED: <2024-09-01 Sun>

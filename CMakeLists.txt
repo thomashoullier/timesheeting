@@ -47,6 +47,11 @@ target_link_libraries(suggestion PRIVATE rapidfuzz::rapidfuzz)
 target_include_directories(suggestion PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs>")
 
+file(GLOB_RECURSE CONFIG_LIB_SRC "${TIMESHEETING_DIR}/src/libs/config_lib/*.cpp")
+add_library(config_lib STATIC "${CONFIG_LIB_SRC}")
+target_include_directories(config_lib PUBLIC
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs>")
+
 # Internal modules
 add_library(version INTERFACE)
 target_include_directories(version INTERFACE
@@ -71,7 +76,7 @@ target_include_directories(db PUBLIC
 
 file(GLOB_RECURSE CONFIG_SRC "${TIMESHEETING_DIR}/src/modules/config/*.cpp")
 add_library(config STATIC "${CONFIG_SRC}")
-target_link_libraries(config PRIVATE tomlplusplus::tomlplusplus)
+target_link_libraries(config PRIVATE config_lib tomlplusplus::tomlplusplus)
 target_include_directories(config PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules>")
 

@@ -42,8 +42,6 @@ namespace config {
     UserConfig load();
 
   private:
-    /** @brief Expand tilde and braces/variables in file paths. */
-    std::filesystem::path expand_tilde(const std::filesystem::path &path);
     /** @brief Parse a string from the configuration.
 
         Empty strings are forbidden and raise an exception. */
@@ -62,8 +60,6 @@ namespace config {
       (const toml::node_view<toml::node> &keys_node);
     /** @brief Parse a key. */
     char parse_key (const toml::node_view<toml::node> &key_node);
-    /** @brief Search for the config file in default locations. */
-    std::filesystem::path find_config_file();
   };
 } // namespace config
 

@@ -1,4 +1,5 @@
 #include "config.h"
+#include "config_lib/config_utils.h"
 #include <cmath>
 #include <filesystem>
 #include <stdexcept>
@@ -6,7 +7,7 @@
 
 namespace config {
   UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
-    auto config_path = expand_tilde(config_file);
+    auto config_path = config_lib::expand_tilde(config_file);
     if (not(std::filesystem::exists(config_path)))
       throw std::runtime_error("The configuration file \"" + config_path.string()
                                + "\" does not exist.");
@@ -27,18 +28,21 @@ namespace config {
   }
 
   UserConfig ConfigLoader::load() {
-    auto config_filepath = find_config_file();
-    return load(config_filepath);
-  }
-
-  std::filesystem::path
-  ConfigLoader::expand_tilde(const std::filesystem::path &path) {
-    std::string str = path;
-    if (str.starts_with("~/")) {
-      std::filesystem::path home_dir = std::getenv("HOME");
-      return home_dir / str.substr(2);
+    std::vector<std::filesystem::path> try_paths;
+    if (std::getenv("XDG_CONFIG_HOME")) {
+      try_paths.push_back(std::getenv("XDG_CONFIG_HOME"));
     }
-    return path;
+    if (std::getenv("HOME")) {
+      try_paths.push_back(std::getenv("HOME"));
+    }
+    try_paths.push_back("/etc/");
+    auto maybe_config_filepath =
+        config_lib::find_file(try_paths, "timesheeting/timesheeting.toml");
+    if (maybe_config_filepath.has_value()) {
+      return load(maybe_config_filepath.value());
+    } else {
+      throw std::runtime_error("No configuration file was found.");
+    }
   }
 
   std::string ConfigLoader::parse_string
@@ -62,7 +66,7 @@ namespace config {
   std::filesystem::path
   ConfigLoader::parse_filepath(const toml::node_view<toml::node> &config_node) {
     std::filesystem::path path = parse_string(config_node);
-    path = expand_tilde(path);
+    path = config_lib::expand_tilde(path);
     if (not std::filesystem::exists(path.parent_path()))
       throw std::runtime_error("Provided filepath does not exist: " +
                                std::string(path.parent_path()));
@@ -125,28 +129,5 @@ namespace config {
       throw std::runtime_error("Invalid string for key binding.");
     char c = str.at(0);
     return c;
-  }
-
-  std::filesystem::path ConfigLoader::find_config_file() {
-    std::filesystem::path path;
-    std::filesystem::path suffix = "timesheeting/timesheeting.toml";
-    if (std::getenv("XDG_CONFIG_HOME")) {
-      path = std::getenv("XDG_CONFIG_HOME");
-      path /= suffix;
-      if (std::filesystem::exists(path))
-        return path;
-    }
-    if (std::getenv("HOME")) {
-      path = std::getenv("HOME");
-      path /= (".config/" / suffix);
-      if (std::filesystem::exists(path))
-        return path;
-    }
-    path = "/etc/";
-    path /= suffix;
-    if (std::filesystem::exists(path)) {
-      return path;
-    }
-    throw std::runtime_error("No configuration file was found.");
   }
 } // namespace config
