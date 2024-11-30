@@ -5,8 +5,8 @@
 
 #include <filesystem>
 #include <string>
-#include <toml++/toml.hpp>
 #include <vector>
+#include "config_lib/toml_loader.h"
 #include "key.h"
 
 namespace config {
@@ -28,7 +28,6 @@ namespace config {
 
   /** @brief Config file loader class. */
   class ConfigLoader {
-    // TODO: Make sure the parsed filepaths actually exist.
   public:
     /** @brief Load the configuration file into an internal representation. */
     UserConfig load(const std::filesystem::path &config_file);
@@ -42,24 +41,12 @@ namespace config {
     UserConfig load();
 
   private:
-    /** @brief Parse a string from the configuration.
-
-        Empty strings are forbidden and raise an exception. */
-    std::string parse_string
-    (const toml::node_view<toml::node> &config_node);
-    /** @brief Parse a float number from the configuration. */
-    float parse_float(const toml::node_view<toml::node> &config_node);
-    /** @brief Parse a filepath from the configuration. */
-    std::filesystem::path parse_filepath(
-        const toml::node_view<toml::node> &config_node);
-    /** @brief Parse a toml array into a string vector. */
-    std::vector<std::string> parse_stringvec(
-        const toml::node_view<toml::node> &config_node);
     /** @brief Parse key bindings. */
     KeyBindings parse_bindings
-      (const toml::node_view<toml::node> &keys_node);
+    (std::shared_ptr<config_lib::TomlLoader> config_loader);
     /** @brief Parse a key. */
-    char parse_key (const toml::node_view<toml::node> &key_node);
+    char parse_key (std::shared_ptr<config_lib::TomlLoader> config_loader,
+                    const std::vector<std::string> &tree_pos);
   };
 } // namespace config
 

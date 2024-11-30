@@ -43,8 +43,15 @@ target_link_libraries(suggestion PRIVATE rapidfuzz::rapidfuzz)
 
 file(GLOB_RECURSE CONFIG_LIB_SRC "${TIMESHEETING_DIR}/src/libs/config_lib/*.cpp")
 add_library(config_lib STATIC "${CONFIG_LIB_SRC}")
+target_link_libraries(config_lib PRIVATE tomlplusplus::tomlplusplus)
 
 # Internal modules
+file(GLOB_RECURSE CONFIG_SRC "${TIMESHEETING_DIR}/src/modules/config/*.cpp")
+add_library(config STATIC "${CONFIG_SRC}")
+target_link_libraries(config PUBLIC config_lib)
+target_include_directories(config PUBLIC
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>")
+
 file(GLOB_RECURSE KEYS_SRC "${TIMESHEETING_DIR}/src/modules/ui/ui/keys/*.cpp")
 add_library(keys STATIC "${KEYS_SRC}")
 target_link_libraries(keys PUBLIC config)
@@ -68,13 +75,6 @@ target_include_directories(db PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/time_lib/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/core/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>")
-
-file(GLOB_RECURSE CONFIG_SRC "${TIMESHEETING_DIR}/src/modules/config/*.cpp")
-add_library(config STATIC "${CONFIG_SRC}")
-target_link_libraries(config PUBLIC config_lib
-                             PRIVATE tomlplusplus::tomlplusplus)
-target_include_directories(config PUBLIC
-  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>")
 
 file(GLOB_RECURSE EXPORTER_SRC "${TIMESHEETING_DIR}/src/modules/exporter/*.cpp")
 add_library(exporter STATIC "${EXPORTER_SRC}")

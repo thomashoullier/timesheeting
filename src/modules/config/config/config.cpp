@@ -1,9 +1,10 @@
 #include "config.h"
 #include "config_lib/config_utils.h"
+#include "config_lib/toml_loader.h"
 #include <cmath>
 #include <filesystem>
+#include <memory>
 #include <stdexcept>
-#include <limits>
 
 namespace config {
   UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {
@@ -11,14 +12,17 @@ namespace config {
     if (not(std::filesystem::exists(config_path)))
       throw std::runtime_error("The configuration file \"" + config_path.string()
                                + "\" does not exist.");
-    auto config = toml::parse_file(config_path.u8string());
-    auto db_filepath = parse_filepath(config["db"]["file"]);
-    auto timezone = parse_string(config["time"]["timezone"]);
-    auto hours_per_day = parse_float(config["time"]["hours_per_workday"]);
-    auto log_filepath = parse_filepath(config["log"]["file"]);
-    auto active_log_levels = parse_stringvec
-      (config["log"]["active_levels"]);
-    auto bindings = parse_bindings(config["keys"]);
+    auto config_loader =
+      std::make_shared<config_lib::TomlLoader>
+      (config_lib::TomlLoader(config_path));
+    auto db_filepath = config_loader->parse_filepath({"db", "file"});
+    auto timezone = config_loader->parse_string({"time", "timezone"});
+    auto hours_per_day =
+      config_loader->parse_float({"time", "hours_per_workday"});
+    auto log_filepath = config_loader->parse_filepath({"log", "file"});
+    auto active_log_levels =
+      config_loader->parse_stringvec({"log", "active_levels"});
+    auto bindings = parse_bindings(config_loader);
     return UserConfig(log_filepath,
                       db_filepath,
                       active_log_levels,
@@ -45,82 +49,50 @@ namespace config {
     }
   }
 
-  std::string ConfigLoader::parse_string
-  (const toml::node_view<toml::node> &config_node) {
-    std::string str = config_node.value_or(std::string{});
-    if (str.empty()) {
-      throw std::runtime_error("String read from the configuration is empty.");
-    }
-    return str;
-  }
-
-  float ConfigLoader::parse_float
-  (const toml::node_view<toml::node> &config_node) {
-    float num = config_node.value_or(std::numeric_limits<float>::quiet_NaN());
-    if (std::isnan(num)) {
-      throw std::runtime_error("Float read from the configuration is empty.");
-    }
-    return num;
-  }
-
-  std::filesystem::path
-  ConfigLoader::parse_filepath(const toml::node_view<toml::node> &config_node) {
-    std::filesystem::path path = parse_string(config_node);
-    path = config_lib::expand_tilde(path);
-    if (not std::filesystem::exists(path.parent_path()))
-      throw std::runtime_error("Provided filepath does not exist: " +
-                               std::string(path.parent_path()));
-    return path;
-  }
-
-  std::vector<std::string> ConfigLoader::parse_stringvec
-  (const toml::node_view<toml::node> &config_node) {
-    std::vector<std::string> strings;
-    config_node.as_array()->for_each([&strings](auto &&el) {
-      if constexpr (toml::is_string<decltype(el)>)
-        strings.push_back(std::string(el));
-      else
-        throw std::runtime_error("Invalid configuration array type: should be"
-                                 " a string.");
-    });
-    return strings;
-  }
-
-  KeyBindings ConfigLoader::parse_bindings
-  (const toml::node_view<toml::node> &keys_node) {
+  KeyBindings ConfigLoader::parse_bindings(
+      std::shared_ptr<config_lib::TomlLoader> config_loader) {
     KeyBindings kb;
-    kb.up.primary = parse_key(keys_node["up"]);
-    kb.down.primary = parse_key(keys_node["down"]);
-    kb.left.primary = parse_key(keys_node["left"]);
-    kb.right.primary = parse_key(keys_node["right"]);
-    kb.subtabs.primary = parse_key(keys_node["subtabs"]);
-    kb.previous.primary = parse_key(keys_node["previous"]);
-    kb.next.primary = parse_key(keys_node["next"]);
-    kb.set_now.primary = parse_key(keys_node["set_now"]);
-    kb.validate.primary = parse_key(keys_node["validate"]);
-    kb.cancel.primary = parse_key(keys_node["cancel"]);
-    kb.select_suggestion.primary = parse_key(keys_node["select_suggestion"]);
-    kb.duration_display.primary = parse_key(keys_node["duration_display"]);
-    kb.entries_screen.primary = parse_key(keys_node["entries_screen"]);
-    kb.projects_screen.primary = parse_key(keys_node["projects_screen"]);
-    kb.locations_screen.primary = parse_key(keys_node["locations_screen"]);
+    kb.up.primary = parse_key(config_loader, {"keys", "up"});
+    kb.down.primary = parse_key(config_loader, {"keys", "down"});
+    kb.left.primary = parse_key(config_loader, {"keys", "left"});
+    kb.right.primary = parse_key(config_loader, {"keys", "right"});
+    kb.subtabs.primary = parse_key(config_loader, {"keys", "subtabs"});
+    kb.previous.primary = parse_key(config_loader, {"keys", "previous"});
+    kb.next.primary = parse_key(config_loader, {"keys", "next"});
+    kb.set_now.primary = parse_key(config_loader, {"keys", "set_now"});
+    kb.validate.primary = parse_key(config_loader, {"keys", "validate"});
+    kb.cancel.primary = parse_key(config_loader, {"keys", "cancel"});
+    kb.select_suggestion.primary =
+      parse_key(config_loader, {"keys", "select_suggestion"});
+    kb.duration_display.primary =
+      parse_key(config_loader, {"keys", "duration_display"});
+    kb.entries_screen.primary =
+      parse_key(config_loader, {"keys", "entries_screen"});
+    kb.projects_screen.primary =
+      parse_key(config_loader, {"keys", "projects_screen"});
+    kb.locations_screen.primary =
+      parse_key(config_loader, {"keys", "locations_screen"});
     kb.project_report_screen.primary =
-      parse_key(keys_node["project_report_screen"]);
+      parse_key(config_loader, {"keys", "project_report_screen"});
     kb.weekly_report_screen.primary =
-      parse_key(keys_node["weekly_report_screen"]);
-    kb.add.primary = parse_key(keys_node["add"]);
-    kb.rename.primary = parse_key(keys_node["rename"]);
-    kb.remove.primary = parse_key(keys_node["remove"]);
-    kb.active_toggle.primary = parse_key(keys_node["active_toggle"]);
-    kb.active_visibility.primary = parse_key(keys_node["active_visibility"]);
+      parse_key(config_loader, {"keys", "weekly_report_screen"});
+    kb.add.primary = parse_key(config_loader, {"keys", "add"});
+    kb.rename.primary = parse_key(config_loader, {"keys", "rename"});
+    kb.remove.primary = parse_key(config_loader, {"keys", "remove"});
+    kb.active_toggle.primary =
+      parse_key(config_loader, {"keys", "active_toggle"});
+    kb.active_visibility.primary =
+      parse_key(config_loader, {"keys", "active_visibility"});
     kb.task_project_change.primary =
-      parse_key(keys_node["task_project_change"]);
-    kb.quit.primary = parse_key(keys_node["quit"]);
+      parse_key(config_loader, {"keys", "task_project_change"});
+    kb.quit.primary = parse_key(config_loader, {"keys", "quit"});
     return kb;
   }
 
-  char ConfigLoader::parse_key (const toml::node_view<toml::node> &keys_node) {
-    auto str = parse_string(keys_node);
+  char ConfigLoader::parse_key
+  (std::shared_ptr<config_lib::TomlLoader> config_loader,
+   const std::vector<std::string> &tree_pos) {
+    auto str = config_loader->parse_string(tree_pos);
     // Parsing special keys
     if (str == "ESCAPE")
       return 27;
