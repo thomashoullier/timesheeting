@@ -13,9 +13,10 @@ var searchData=
   ['get_5ffield_5ftype_10',['get_field_type',['../classtui_1_1PeriodSelectorNCurses.html#a30e3c56ba62ea540ff43a24e5b128548',1,'tui::PeriodSelectorNCurses::get_field_type()'],['../classtui_1_1RegisterNcurses.html#a61ad4227b99a72644f161920a9782a08',1,'tui::RegisterNcurses::get_field_type()'],['../classtui_1_1StopwatchNcurses.html#abae17bb3a841b648a2e075a5dae48781',1,'tui::StopwatchNcurses::get_field_type()']]],
   ['get_5finput_11',['get_input',['../classncurses__lib_1_1WinNCurses.html#a68f9266b5edbc1c43b08c8400e043110',1,'ncurses_lib::WinNCurses::get_input()'],['../classtui_1_1Column.html#ae2377a85929025b881a48fc58d69ac48',1,'tui::Column::get_input()'],['../classtui_1_1ColumnBase.html#a6282c14496e450fc1c2c196da0b64c3a',1,'tui::ColumnBase::get_input()']]],
   ['get_5fitem_5findex_12',['get_item_index',['../classncurses__lib_1_1MenuNCurses.html#a0363c58ad47da02ca23f8b6f4c563cf1',1,'ncurses_lib::MenuNCurses']]],
-  ['get_5frow_5findex_13',['get_row_index',['../classncurses__lib_1_1MenuNCurses.html#a68b9e33a592feb877f981000b7545e29',1,'ncurses_lib::MenuNCurses']]],
-  ['get_5ftimestamp_14',['get_timestamp',['../classlog__lib_1_1Logger.html#af04ada8c3f7e0c38ec1f49b7fae35d99',1,'log_lib::Logger']]],
-  ['get_5fuser_5fstring_15',['get_user_string',['../classtui_1_1StatusBarNCurses.html#a8c4a138d1b8ac49669509bdfd643d2a4',1,'tui::StatusBarNCurses']]],
-  ['get_5fuser_5fstring_5fsuggestions_16',['get_user_string_suggestions',['../classtui_1_1StatusBarNCurses.html#af5987a462e4d13d2bb977c232aa0fd3c',1,'tui::StatusBarNCurses']]],
-  ['get_5fuser_5fversion_17',['get_user_version',['../classdb__lib_1_1DB__SQLite__Handle.html#ad96cd29aaeebd6b3ce81ed345141141a',1,'db_lib::DB_SQLite_Handle']]]
+  ['get_5fnode_13',['get_node',['../classconfig__lib_1_1TomlLoader.html#ac6ba412eca8cbff688150261398e42e5',1,'config_lib::TomlLoader']]],
+  ['get_5frow_5findex_14',['get_row_index',['../classncurses__lib_1_1MenuNCurses.html#a68b9e33a592feb877f981000b7545e29',1,'ncurses_lib::MenuNCurses']]],
+  ['get_5ftimestamp_15',['get_timestamp',['../classlog__lib_1_1Logger.html#af04ada8c3f7e0c38ec1f49b7fae35d99',1,'log_lib::Logger']]],
+  ['get_5fuser_5fstring_16',['get_user_string',['../classtui_1_1StatusBarNCurses.html#a8c4a138d1b8ac49669509bdfd643d2a4',1,'tui::StatusBarNCurses']]],
+  ['get_5fuser_5fstring_5fsuggestions_17',['get_user_string_suggestions',['../classtui_1_1StatusBarNCurses.html#af5987a462e4d13d2bb977c232aa0fd3c',1,'tui::StatusBarNCurses']]],
+  ['get_5fuser_5fversion_18',['get_user_version',['../classdb__lib_1_1DB__SQLite__Handle.html#ad96cd29aaeebd6b3ce81ed345141141a',1,'db_lib::DB_SQLite_Handle']]]
 ];

@@ -34,8 +34,7 @@ var searchData=
   ['error_31',['error',['../structlog__lib_1_1Logger_1_1ActiveLevels.html#aa7ffe888a1c5a805e6360d1d29bcf810',1,'log_lib::Logger::ActiveLevels']]],
   ['exec_5fstatement_32',['exec_statement',['../classdb__lib_1_1DB__SQLite__Handle.html#a70a2cb537d3fd7c39477d5f59c311ae3',1,'db_lib::DB_SQLite_Handle']]],
   ['execute_33',['execute',['../classdb__lib_1_1Statement.html#a2a5a819c7943ae94599705bf7332d55d',1,'db_lib::Statement']]],
-  ['expand_5ftilde_34',['expand_tilde',['../classconfig_1_1ConfigLoader.html#a62db837fa8f317a62199cce53f0bf79d',1,'config::ConfigLoader']]],
-  ['export_5ffile_35',['export_file',['../structcli_1_1CLIData.html#a1f4fc6922856c683c77f00883c80f398',1,'cli::CLIData']]],
-  ['export_5frow_2eh_36',['export_row.h',['../export__row_8h.html',1,'']]],
-  ['exportrow_37',['ExportRow',['../structcore_1_1ExportRow.html',1,'core']]]
+  ['export_5ffile_34',['export_file',['../structcli_1_1CLIData.html#a1f4fc6922856c683c77f00883c80f398',1,'cli::CLIData']]],
+  ['export_5frow_2eh_35',['export_row.h',['../export__row_8h.html',1,'']]],
+  ['exportrow_36',['ExportRow',['../structcore_1_1ExportRow.html',1,'core']]]
 ];

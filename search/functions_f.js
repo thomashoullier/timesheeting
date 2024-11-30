@@ -23,5 +23,6 @@ var searchData=
   ['toggle_5flocation_5factive_20',['toggle_location_active',['../classdb_1_1DB__SQLite.html#a023a7c1c3d228b874eef29052253855d',1,'db::DB_SQLite']]],
   ['toggle_5fproject_5factive_21',['toggle_project_active',['../classdb_1_1DB__SQLite.html#afb95e0b139dccc298447013d7a007a4c',1,'db::DB_SQLite']]],
   ['toggle_5ftask_5factive_22',['toggle_task_active',['../classdb_1_1DB__SQLite.html#a86f270159dbf3ac9040e293c4fd4ce7a',1,'db::DB_SQLite']]],
-  ['totalbar_23',['TotalBar',['../classtui_1_1TotalBar.html#a44d8b97ce30b69031176bce68553ece8',1,'tui::TotalBar']]]
+  ['tomlloader_23',['TomlLoader',['../classconfig__lib_1_1TomlLoader.html#adb440cd9ba35d06b84451a4e362ae761',1,'config_lib::TomlLoader']]],
+  ['totalbar_24',['TotalBar',['../classtui_1_1TotalBar.html#a44d8b97ce30b69031176bce68553ece8',1,'tui::TotalBar']]]
 ];

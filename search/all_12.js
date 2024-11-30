@@ -36,9 +36,11 @@ var searchData=
   ['toggle_5fproject_5fflag_33',['toggle_project_flag',['../classdb_1_1StatementSet.html#aeeb400e16e5073889eee92bc11fdab84',1,'db::StatementSet']]],
   ['toggle_5ftask_5factive_34',['toggle_task_active',['../classdb_1_1DB__SQLite.html#a86f270159dbf3ac9040e293c4fd4ce7a',1,'db::DB_SQLite']]],
   ['toggle_5ftask_5fflag_35',['toggle_task_flag',['../classdb_1_1StatementSet.html#ad6ebce60325c8db31f49a56d6e544021',1,'db::StatementSet']]],
-  ['total_36',['total',['../structcore_1_1ProjectTotal.html#af9a05814f021518efe7fe5d14683b457',1,'core::ProjectTotal::total'],['../structcore_1_1PerTaskTotals.html#aed2ad56162d2b26d4319024bcce45beb',1,'core::PerTaskTotals::total'],['../structcore_1_1PerProjectTotals.html#a6e770381748de7e3c365cad75f22ea8e',1,'core::PerProjectTotals::total'],['../structcore_1_1WeeklyTotals.html#aa5b06abd103132db45ca354194326ad2',1,'core::WeeklyTotals::total']]],
-  ['total_5fbar_37',['total_bar',['../classtui_1_1EntriesTable.html#a6a41c730e6fd8d404c9f1a7ae17cf088',1,'tui::EntriesTable::total_bar'],['../classtui_1_1ProjectReportScreen.html#a920770a74fd6cc665a74cadd57e1a3f1',1,'tui::ProjectReportScreen::total_bar']]],
-  ['total_5fbar_2eh_38',['total_bar.h',['../total__bar_8h.html',1,'']]],
-  ['totalbar_39',['TotalBar',['../classtui_1_1TotalBar.html',1,'tui::TotalBar'],['../classtui_1_1TotalBar.html#a44d8b97ce30b69031176bce68553ece8',1,'tui::TotalBar::TotalBar()']]],
-  ['tp_40',['tp',['../classtime__lib_1_1Date.html#a80b5dc034e2471aa5aafff11c0e6b086',1,'time_lib::Date']]]
+  ['toml_5floader_2eh_36',['toml_loader.h',['../toml__loader_8h.html',1,'']]],
+  ['tomlloader_37',['TomlLoader',['../classconfig__lib_1_1TomlLoader.html',1,'config_lib::TomlLoader'],['../classconfig__lib_1_1TomlLoader.html#adb440cd9ba35d06b84451a4e362ae761',1,'config_lib::TomlLoader::TomlLoader()']]],
+  ['total_38',['total',['../structcore_1_1ProjectTotal.html#af9a05814f021518efe7fe5d14683b457',1,'core::ProjectTotal::total'],['../structcore_1_1PerTaskTotals.html#aed2ad56162d2b26d4319024bcce45beb',1,'core::PerTaskTotals::total'],['../structcore_1_1PerProjectTotals.html#a6e770381748de7e3c365cad75f22ea8e',1,'core::PerProjectTotals::total'],['../structcore_1_1WeeklyTotals.html#aa5b06abd103132db45ca354194326ad2',1,'core::WeeklyTotals::total']]],
+  ['total_5fbar_39',['total_bar',['../classtui_1_1EntriesTable.html#a6a41c730e6fd8d404c9f1a7ae17cf088',1,'tui::EntriesTable::total_bar'],['../classtui_1_1ProjectReportScreen.html#a920770a74fd6cc665a74cadd57e1a3f1',1,'tui::ProjectReportScreen::total_bar']]],
+  ['total_5fbar_2eh_40',['total_bar.h',['../total__bar_8h.html',1,'']]],
+  ['totalbar_41',['TotalBar',['../classtui_1_1TotalBar.html',1,'tui::TotalBar'],['../classtui_1_1TotalBar.html#a44d8b97ce30b69031176bce68553ece8',1,'tui::TotalBar::TotalBar()']]],
+  ['tp_42',['tp',['../classtime__lib_1_1Date.html#a80b5dc034e2471aa5aafff11c0e6b086',1,'time_lib::Date']]]
 ];

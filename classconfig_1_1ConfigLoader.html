@@ -113,37 +113,14 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a62db837fa8f317a62199cce53f0bf79d" id="r_a62db837fa8f317a62199cce53f0bf79d"><td class="memItemLeft" align="right" valign="top"><a id="a62db837fa8f317a62199cce53f0bf79d" name="a62db837fa8f317a62199cce53f0bf79d"></a>
-std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>expand_tilde</b> (const std::filesystem::path &amp;path)</td></tr>
-<tr class="memdesc:a62db837fa8f317a62199cce53f0bf79d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand tilde and braces/variables in file paths. <br /></td></tr>
-<tr class="separator:a62db837fa8f317a62199cce53f0bf79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04950c23db02bd2d97ea8df79303f096" id="r_a04950c23db02bd2d97ea8df79303f096"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04950c23db02bd2d97ea8df79303f096">parse_string</a> (const toml::node_view&lt; toml::node &gt; &amp;config_node)</td></tr>
-<tr class="memdesc:a04950c23db02bd2d97ea8df79303f096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a string from the configuration.  <br /></td></tr>
-<tr class="separator:a04950c23db02bd2d97ea8df79303f096"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f049579dd46f57dcb8f58784d2c7b8c" id="r_a6f049579dd46f57dcb8f58784d2c7b8c"><td class="memItemLeft" align="right" valign="top"><a id="a6f049579dd46f57dcb8f58784d2c7b8c" name="a6f049579dd46f57dcb8f58784d2c7b8c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>parse_float</b> (const toml::node_view&lt; toml::node &gt; &amp;config_node)</td></tr>
-<tr class="memdesc:a6f049579dd46f57dcb8f58784d2c7b8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a float number from the configuration. <br /></td></tr>
-<tr class="separator:a6f049579dd46f57dcb8f58784d2c7b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eb1d128d49d3d17b5d82bb27b6e1819" id="r_a7eb1d128d49d3d17b5d82bb27b6e1819"><td class="memItemLeft" align="right" valign="top"><a id="a7eb1d128d49d3d17b5d82bb27b6e1819" name="a7eb1d128d49d3d17b5d82bb27b6e1819"></a>
-std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>parse_filepath</b> (const toml::node_view&lt; toml::node &gt; &amp;config_node)</td></tr>
-<tr class="memdesc:a7eb1d128d49d3d17b5d82bb27b6e1819"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a filepath from the configuration. <br /></td></tr>
-<tr class="separator:a7eb1d128d49d3d17b5d82bb27b6e1819"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabf58d809a1655e7aaa9f15be6862e33" id="r_aabf58d809a1655e7aaa9f15be6862e33"><td class="memItemLeft" align="right" valign="top"><a id="aabf58d809a1655e7aaa9f15be6862e33" name="aabf58d809a1655e7aaa9f15be6862e33"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parse_stringvec</b> (const toml::node_view&lt; toml::node &gt; &amp;config_node)</td></tr>
-<tr class="memdesc:aabf58d809a1655e7aaa9f15be6862e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a toml array into a string vector. <br /></td></tr>
-<tr class="separator:aabf58d809a1655e7aaa9f15be6862e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a746923db25f31c85ed272d725d53d81f" id="r_a746923db25f31c85ed272d725d53d81f"><td class="memItemLeft" align="right" valign="top"><a id="a746923db25f31c85ed272d725d53d81f" name="a746923db25f31c85ed272d725d53d81f"></a>
-<a class="el" href="structconfig_1_1KeyBindings.html">KeyBindings</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse_bindings</b> (const toml::node_view&lt; toml::node &gt; &amp;keys_node)</td></tr>
-<tr class="memdesc:a746923db25f31c85ed272d725d53d81f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse key bindings. <br /></td></tr>
-<tr class="separator:a746923db25f31c85ed272d725d53d81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96229ce61b4d7e9a02d2b4f7248e58ef" id="r_a96229ce61b4d7e9a02d2b4f7248e58ef"><td class="memItemLeft" align="right" valign="top"><a id="a96229ce61b4d7e9a02d2b4f7248e58ef" name="a96229ce61b4d7e9a02d2b4f7248e58ef"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>parse_key</b> (const toml::node_view&lt; toml::node &gt; &amp;key_node)</td></tr>
-<tr class="memdesc:a96229ce61b4d7e9a02d2b4f7248e58ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a key. <br /></td></tr>
-<tr class="separator:a96229ce61b4d7e9a02d2b4f7248e58ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60d5eb084f3f099783bef3b344a7c31c" id="r_a60d5eb084f3f099783bef3b344a7c31c"><td class="memItemLeft" align="right" valign="top"><a id="a60d5eb084f3f099783bef3b344a7c31c" name="a60d5eb084f3f099783bef3b344a7c31c"></a>
-std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>find_config_file</b> ()</td></tr>
-<tr class="memdesc:a60d5eb084f3f099783bef3b344a7c31c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for the config file in default locations. <br /></td></tr>
-<tr class="separator:a60d5eb084f3f099783bef3b344a7c31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab518e17251c2345d14c2b429d0c4481" id="r_aab518e17251c2345d14c2b429d0c4481"><td class="memItemLeft" align="right" valign="top"><a id="aab518e17251c2345d14c2b429d0c4481" name="aab518e17251c2345d14c2b429d0c4481"></a>
+<a class="el" href="structconfig_1_1KeyBindings.html">KeyBindings</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse_bindings</b> (std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader)</td></tr>
+<tr class="memdesc:aab518e17251c2345d14c2b429d0c4481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse key bindings. <br /></td></tr>
+<tr class="separator:aab518e17251c2345d14c2b429d0c4481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d7a332e594fb8f59c3b5ec44ad3259d" id="r_a3d7a332e594fb8f59c3b5ec44ad3259d"><td class="memItemLeft" align="right" valign="top"><a id="a3d7a332e594fb8f59c3b5ec44ad3259d" name="a3d7a332e594fb8f59c3b5ec44ad3259d"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>parse_key</b> (std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader, const std::vector&lt; std::string &gt; &amp;tree_pos)</td></tr>
+<tr class="memdesc:a3d7a332e594fb8f59c3b5ec44ad3259d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a key. <br /></td></tr>
+<tr class="separator:a3d7a332e594fb8f59c3b5ec44ad3259d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Config file loader class. </p>
@@ -172,37 +149,9 @@ std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>find
 
 </div>
 </div>
-<a id="a04950c23db02bd2d97ea8df79303f096" name="a04950c23db02bd2d97ea8df79303f096"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04950c23db02bd2d97ea8df79303f096">&#9670;&#160;</a></span>parse_string()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string config::ConfigLoader::parse_string </td>
-          <td>(</td>
-          <td class="paramtype">const toml::node_view&lt; toml::node &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>config_node</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Parse a string from the configuration. </p>
-<p>Empty strings are forbidden and raise an exception. </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/modules/config/<a class="el" href="config_8h_source.html">config.h</a></li>
-<li>src/modules/config/<b>config.cpp</b></li>
+<li>src/modules/config/config/<a class="el" href="config_8h_source.html">config.h</a></li>
+<li>src/modules/config/config/<b>config.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

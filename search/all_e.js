@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['parse_5fbindings_0',['parse_bindings',['../classconfig_1_1ConfigLoader.html#a746923db25f31c85ed272d725d53d81f',1,'config::ConfigLoader']]],
-  ['parse_5ffilepath_1',['parse_filepath',['../classconfig_1_1ConfigLoader.html#a7eb1d128d49d3d17b5d82bb27b6e1819',1,'config::ConfigLoader']]],
-  ['parse_5ffloat_2',['parse_float',['../classconfig_1_1ConfigLoader.html#a6f049579dd46f57dcb8f58784d2c7b8c',1,'config::ConfigLoader']]],
-  ['parse_5fkey_3',['parse_key',['../classconfig_1_1ConfigLoader.html#a96229ce61b4d7e9a02d2b4f7248e58ef',1,'config::ConfigLoader']]],
-  ['parse_5fstring_4',['parse_string',['../classconfig_1_1ConfigLoader.html#a04950c23db02bd2d97ea8df79303f096',1,'config::ConfigLoader']]],
-  ['parse_5fstringvec_5',['parse_stringvec',['../classconfig_1_1ConfigLoader.html#aabf58d809a1655e7aaa9f15be6862e33',1,'config::ConfigLoader']]],
+  ['parse_5fbindings_0',['parse_bindings',['../classconfig_1_1ConfigLoader.html#aab518e17251c2345d14c2b429d0c4481',1,'config::ConfigLoader']]],
+  ['parse_5ffilepath_1',['parse_filepath',['../classconfig__lib_1_1TomlLoader.html#a0abdcdae435b17ba35cabbdf8e438846',1,'config_lib::TomlLoader']]],
+  ['parse_5ffloat_2',['parse_float',['../classconfig__lib_1_1TomlLoader.html#ad1d017bce983bd325eff4ba5feb47930',1,'config_lib::TomlLoader']]],
+  ['parse_5fkey_3',['parse_key',['../classconfig_1_1ConfigLoader.html#a3d7a332e594fb8f59c3b5ec44ad3259d',1,'config::ConfigLoader']]],
+  ['parse_5fstring_4',['parse_string',['../classconfig__lib_1_1TomlLoader.html#a133951db59b11129c55e8888ddcb0b72',1,'config_lib::TomlLoader']]],
+  ['parse_5fstringvec_5',['parse_stringvec',['../classconfig__lib_1_1TomlLoader.html#af1d8f5baade0722b582a2eab892f387f',1,'config_lib::TomlLoader']]],
   ['period_6',['period',['../classtui_1_1PeriodSelectorNCurses.html#ae7571ecbb8b8e08565b5cebb5001ec9f',1,'tui::PeriodSelectorNCurses']]],
   ['period_5fselector_7',['period_selector',['../classtui_1_1PeriodSelectorUI.html#a6fd28011796725d7751f8ffa9859558e',1,'tui::PeriodSelectorUI']]],
   ['period_5fselector_5fncurses_2eh_8',['period_selector_ncurses.h',['../period__selector__ncurses_8h.html',1,'']]],

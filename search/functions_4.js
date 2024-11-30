@@ -18,6 +18,5 @@ var searchData=
   ['entriesscreen_15',['EntriesScreen',['../classtui_1_1EntriesScreen.html#aead0b3f61262cafe242038fd3b23e45a',1,'tui::EntriesScreen']]],
   ['entriestable_16',['EntriesTable',['../classtui_1_1EntriesTable.html#a242833451ef5b1915f184f7c8f4db191',1,'tui::EntriesTable']]],
   ['exec_5fstatement_17',['exec_statement',['../classdb__lib_1_1DB__SQLite__Handle.html#a70a2cb537d3fd7c39477d5f59c311ae3',1,'db_lib::DB_SQLite_Handle']]],
-  ['execute_18',['execute',['../classdb__lib_1_1Statement.html#a2a5a819c7943ae94599705bf7332d55d',1,'db_lib::Statement']]],
-  ['expand_5ftilde_19',['expand_tilde',['../classconfig_1_1ConfigLoader.html#a62db837fa8f317a62199cce53f0bf79d',1,'config::ConfigLoader']]]
+  ['execute_18',['execute',['../classdb__lib_1_1Statement.html#a2a5a819c7943ae94599705bf7332d55d',1,'db_lib::Statement']]]
 ];
