@@ -258,10 +258,13 @@ which task is selected by default when a project is put in entrystaging.
   be set to the last one used? We could have a table for tracking this per-project.
 
 ** Refactoring
-*** TODO Fix CMakeLists includes
+*** DONE Fix CMakeLists includes
+CLOSED: [2024-11-30 Sat 14:10]
 ADDED: [2024-11-30 Sat]
 We have put ~target_include_directories~ everywhere. This includes everything
 in everything no? Fix it.
+- [2024-11-30 Sat] OK we divided the libs and modules more strongly. We cannot
+  import something by accident now without it being explicit in the CMakeLists.
 
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]
