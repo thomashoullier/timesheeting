@@ -61,6 +61,7 @@ namespace config {
     kb.next.primary = parse_key(config_loader, {"keys", "next"});
     kb.set_now.primary = parse_key(config_loader, {"keys", "set_now"});
     kb.validate.primary = parse_key(config_loader, {"keys", "validate"});
+    kb.commit_entry.primary = parse_key(config_loader, {"keys", "commit_entry"});
     kb.cancel.primary = parse_key(config_loader, {"keys", "cancel"});
     kb.select_suggestion.primary =
       parse_key(config_loader, {"keys", "select_suggestion"});

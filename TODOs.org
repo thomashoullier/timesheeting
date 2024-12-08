@@ -313,10 +313,13 @@ CLOSED: [2024-11-23 Sat 17:02]
 ADDED: [2024-09-22 Sun]
 Currently everything is in the global namespace, which is bad practice.
 
-*** TODO Separate the key for committing an entry from entrystaging from the validation key in edit mode
+*** DONE Separate the key for committing an entry from entrystaging from the validation key in edit mode
+CLOSED: [2024-12-08 Sun 14:01]
 ADDED: [2024-11-28 Thu]
-Currently the key for committing an entry, and the code for validating in edit mode are the same.
-This should not be the case. Create a separate key for committing entries.
+Currently the key for committing an entry, and the code for validating in edit
+mode are the same. This should not be the case. Create a separate key for
+committing entries.
+- [2024-12-08 Sun] OK, added a dedicated key for committing entries.
 
 *** TODO Create config file subsection in keys
 ADDED: [2024-11-28 Thu]
@@ -480,3 +483,9 @@ them at the DB level?
 + It could get annoying when manually entering entries. We would have to
   type dates to the second.
 + This likely requires a table change, think about migration.
+
+*** TODO Consider fusing tasks together into one task
+ADDED: [2024-12-02 Mon]
++ Would this be permanent? Could we retain the original information?
++ How would this look in export?
++ Do we need meta-tasks?

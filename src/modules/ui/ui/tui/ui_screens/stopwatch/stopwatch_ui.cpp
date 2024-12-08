@@ -30,7 +30,7 @@ namespace tui {
       } else if (kb.set_now.bound_to(ch)) {
         set_current_now();
         update();
-      } else if (kb.validate.bound_to(ch)) {
+      } else if (kb.commit_entry.bound_to(ch)) {
         db::db().commit_entrystaging();
         UpdateManager::get().entries_have_changed();
         time_lib::Date now_start;

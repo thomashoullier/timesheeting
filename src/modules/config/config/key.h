@@ -35,6 +35,8 @@ namespace config {
     Key set_now;
     /** @brief Validate. */
     Key validate;
+    /** @brief Commit an entry from entrystaging to the entries in DB. */
+    Key commit_entry;
     /** @brief Cancel. */
     Key cancel;
     /** @brief Select suggestion. */
