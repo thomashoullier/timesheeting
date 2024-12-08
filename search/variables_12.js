@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['validate_0',['validate',['../structconfig_1_1KeyBindings.html#a062e01f6a8f45a044d68409e1096c776',1,'config::KeyBindings']]]
+  ['validate_0',['validate',['../structconfig_1_1EditModeKeys.html#a5f1bd04e2747b4ff3e221ff916c38869',1,'config::EditModeKeys']]]
 ];

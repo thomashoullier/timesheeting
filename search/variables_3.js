@@ -8,10 +8,10 @@ var searchData=
   ['debug_5',['debug',['../structlog__lib_1_1Logger_1_1ActiveLevels.html#a02fdb04d39766b9d18fc0e740b9931a1',1,'log_lib::Logger::ActiveLevels']]],
   ['display_5fstring_6',['display_string',['../classtui_1_1TotalBar.html#a332427e49b8c7dfdb44cee074c78f2b1',1,'tui::TotalBar']]],
   ['display_5fstrings_7',['display_strings',['../classncurses__lib_1_1MenuNCurses.html#ad86feb96fb177779fad3154d570ac2a5',1,'ncurses_lib::MenuNCurses']]],
-  ['down_8',['down',['../structconfig_1_1KeyBindings.html#a8962e5a58ca25c6d0624f83ce763b675',1,'config::KeyBindings']]],
+  ['down_8',['down',['../structconfig_1_1NavigationKeys.html#af9a4b3237ef6c3dd41bd7da805e7d554',1,'config::NavigationKeys']]],
   ['dur_9',['dur',['../classtime__lib_1_1Duration.html#a5138cc16f99f6fad1a02cf05b71bc8de',1,'time_lib::Duration']]],
   ['duration_10',['duration',['../classtui_1_1TotalBar.html#a8ed940015502a1485697a8da0399afb4',1,'tui::TotalBar']]],
-  ['duration_5fdisplay_11',['duration_display',['../structconfig_1_1KeyBindings.html#ad8b5a19ea2436604b22ab1c9f2247b3d',1,'config::KeyBindings']]],
+  ['duration_5fdisplay_11',['duration_display',['../structconfig_1_1NavigationKeys.html#ac16cb960c5d35c4debbcfdd775451e91',1,'config::NavigationKeys']]],
   ['duration_5fper_5fworked_5fproject_12',['duration_per_worked_project',['../classdb_1_1StatementSet.html#a69cdcfd8c0459e12d979e34247fbd310',1,'db::StatementSet']]],
   ['duration_5fper_5fworked_5ftask_13',['duration_per_worked_task',['../classdb_1_1StatementSet.html#a6a97d7c5a75a4304bb291ea2aeeb3c99',1,'db::StatementSet']]]
 ];

@@ -6,7 +6,7 @@ var searchData=
   ['week_5fselector_3',['week_selector',['../classtui_1_1WeeklyReportScreen.html#afd2dbc75eb80d9fb7cce4eefe895d49c',1,'tui::WeeklyReportScreen']]],
   ['week_5fselector_2eh_4',['week_selector.h',['../week__selector_8h.html',1,'']]],
   ['weekly_5freport_5fregister_2eh_5',['weekly_report_register.h',['../weekly__report__register_8h.html',1,'']]],
-  ['weekly_5freport_5fscreen_6',['weekly_report_screen',['../structconfig_1_1KeyBindings.html#aca5f3895103fbe9de7c6f66035f37e8c',1,'config::KeyBindings::weekly_report_screen'],['../classtui_1_1UI.html#a8361bef50a93f7eb42ecebc002fbfa1e',1,'tui::UI::weekly_report_screen'],['../classtui_1_1UpdateManager.html#a97c869fc6ba1e054885fcfcdce376c37',1,'tui::UpdateManager::weekly_report_screen']]],
+  ['weekly_5freport_5fscreen_6',['weekly_report_screen',['../structconfig_1_1NavigationKeys.html#a2ccd9e3a7557cfbcd9a0fbea25563f8f',1,'config::NavigationKeys::weekly_report_screen'],['../classtui_1_1UI.html#a8361bef50a93f7eb42ecebc002fbfa1e',1,'tui::UI::weekly_report_screen'],['../classtui_1_1UpdateManager.html#a97c869fc6ba1e054885fcfcdce376c37',1,'tui::UpdateManager::weekly_report_screen']]],
   ['weekly_5freport_5fscreen_2eh_7',['weekly_report_screen.h',['../weekly__report__screen_8h.html',1,'']]],
   ['weekly_5ftotals_2eh_8',['weekly_totals.h',['../weekly__totals_8h.html',1,'']]],
   ['weeklyreportregister_9',['WeeklyReportRegister',['../classtui_1_1WeeklyReportRegister.html',1,'tui::WeeklyReportRegister'],['../classtui_1_1WeeklyReportRegister.html#a698f860daae5500b6e1b5101c2ceb5c1',1,'tui::WeeklyReportRegister::WeeklyReportRegister()']]],

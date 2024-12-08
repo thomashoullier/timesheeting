@@ -11,10 +11,10 @@ var searchData=
   ['select_5flocations_5factive_8',['select_locations_active',['../classdb_1_1StatementSet.html#ad5903966c7ce66c76eacff3cb7854a2b',1,'db::StatementSet']]],
   ['select_5fprojects_9',['select_projects',['../classdb_1_1StatementSet.html#a5e4aa98a3e784e4e98b34160f643a187',1,'db::StatementSet']]],
   ['select_5fprojects_5factive_10',['select_projects_active',['../classdb_1_1StatementSet.html#ab82ac10c173b5c7ff7b70eca575d8681',1,'db::StatementSet']]],
-  ['select_5fsuggestion_11',['select_suggestion',['../structconfig_1_1KeyBindings.html#ae4434856bfa00461538f213ef8bd195f',1,'config::KeyBindings']]],
+  ['select_5fsuggestion_11',['select_suggestion',['../structconfig_1_1EditModeKeys.html#a4cee6ad28be612f6382dca2df7ee902a',1,'config::EditModeKeys']]],
   ['select_5ftasks_12',['select_tasks',['../classdb_1_1StatementSet.html#aed058c6ec7fb8526742bd609ad4645ed',1,'db::StatementSet']]],
   ['select_5ftasks_5factive_13',['select_tasks_active',['../classdb_1_1StatementSet.html#a879d4ac548ae49822cf80584df1861a4',1,'db::StatementSet']]],
-  ['set_5fnow_14',['set_now',['../structconfig_1_1KeyBindings.html#ae4c8090e20fbd81abaad34b2b7b36b5c',1,'config::KeyBindings']]],
+  ['set_5fnow_14',['set_now',['../structconfig_1_1ActionsKeys.html#abecb84947d7175eb45463ae2921964ec',1,'config::ActionsKeys']]],
   ['short_5fdisplay_5fstrings_15',['short_display_strings',['../classncurses__lib_1_1MenuNCurses.html#a8fd9d352213f09adb59f9b65f47b6384',1,'ncurses_lib::MenuNCurses']]],
   ['show_5fonly_5factive_16',['show_only_active',['../classtui_1_1LocationsScreen.html#ae35d513a6dc1ad7123207ff4e7024779',1,'tui::LocationsScreen::show_only_active'],['../classtui_1_1ProjectTaskScreen.html#a19bf10066b08ef5f37dc7febf0e17529',1,'tui::ProjectTaskScreen::show_only_active']]],
   ['sqlite_5fdb_17',['sqlite_db',['../classdb_1_1DB__SQLite.html#a713a8e9f153e3738363efccfafea6c89',1,'db::DB_SQLite']]],
@@ -27,6 +27,6 @@ var searchData=
   ['stopwatch_24',['stopwatch',['../classtui_1_1StopwatchUI.html#a981765e515501e7ac562dc3c3f9763ce',1,'tui::StopwatchUI']]],
   ['stopwatch_5fui_25',['stopwatch_ui',['../classtui_1_1EntriesScreen.html#a2343c87f9a3556a0dd9d07beb275a77b',1,'tui::EntriesScreen']]],
   ['str_26',['str',['../classncurses__lib_1_1StringWithFace.html#a43411340eb796a9844621e57795fd36e',1,'ncurses_lib::StringWithFace']]],
-  ['subtabs_27',['subtabs',['../structconfig_1_1KeyBindings.html#a133b72cc275bf1238350d4f5a089b862',1,'config::KeyBindings']]],
+  ['subtabs_27',['subtabs',['../structconfig_1_1NavigationKeys.html#a7f8d2feac2ccb7dd9ab85399e77f194e',1,'config::NavigationKeys']]],
   ['sum_5fduration_5fper_5fproject_28',['sum_duration_per_project',['../classdb_1_1StatementSet.html#a3e947247cd76b7fe41da6ac106400d30',1,'db::StatementSet']]]
 ];

@@ -19,7 +19,7 @@ var searchData=
   ['select_5fprojects_16',['select_projects',['../classdb_1_1StatementSet.html#a5e4aa98a3e784e4e98b34160f643a187',1,'db::StatementSet']]],
   ['select_5fprojects_5factive_17',['select_projects_active',['../classdb_1_1StatementSet.html#ab82ac10c173b5c7ff7b70eca575d8681',1,'db::StatementSet']]],
   ['select_5fright_5fitem_18',['select_right_item',['../classncurses__lib_1_1MenuNCurses.html#a2cd62bc657239819062047b66521eeb5',1,'ncurses_lib::MenuNCurses']]],
-  ['select_5fsuggestion_19',['select_suggestion',['../structconfig_1_1KeyBindings.html#ae4434856bfa00461538f213ef8bd195f',1,'config::KeyBindings']]],
+  ['select_5fsuggestion_19',['select_suggestion',['../structconfig_1_1EditModeKeys.html#a4cee6ad28be612f6382dca2df7ee902a',1,'config::EditModeKeys']]],
   ['select_5ftasks_20',['select_tasks',['../classdb_1_1StatementSet.html#aed058c6ec7fb8526742bd609ad4645ed',1,'db::StatementSet']]],
   ['select_5ftasks_5factive_21',['select_tasks_active',['../classdb_1_1StatementSet.html#a879d4ac548ae49822cf80584df1861a4',1,'db::StatementSet']]],
   ['select_5fup_5fitem_22',['select_up_item',['../classncurses__lib_1_1MenuNCurses.html#a84f1ec3af5392082dbc72badd1ea2932',1,'ncurses_lib::MenuNCurses::select_up_item()'],['../classtui_1_1Column.html#ab49175fc7f686d97a990aceed4de69a5',1,'tui::Column::select_up_item()'],['../classtui_1_1ColumnBase.html#a4fb1de9005a53f62b89745089c0af94f',1,'tui::ColumnBase::select_up_item()']]],
@@ -27,7 +27,7 @@ var searchData=
   ['set_5fcurrent_5fnow_24',['set_current_now',['../classtui_1_1StopwatchUI.html#aa7e69da06b4ee06cacbfe723b68386f4',1,'tui::StopwatchUI']]],
   ['set_5fcursor_5fvisibility_25',['set_cursor_visibility',['../classncurses__lib_1_1BarNCurses.html#ae70f4a23a9a7a90b95f9d1ba250a359a',1,'ncurses_lib::BarNCurses']]],
   ['set_5fitems_26',['set_items',['../classncurses__lib_1_1MenuNCurses.html#ab8315cb19729e3bbc96f005b469dd93c',1,'ncurses_lib::MenuNCurses::set_items(const std::vector&lt; std::string &gt; &amp;items)'],['../classncurses__lib_1_1MenuNCurses.html#a6f6a4590f34fd6220733724993702e91',1,'ncurses_lib::MenuNCurses::set_items(const std::vector&lt; std::string &gt; &amp;items, const std::vector&lt; std::string &gt; &amp;short_items)'],['../classncurses__lib_1_1MenuNCurses.html#a0bd92a7cc03b6aeaa355741ba55d812e',1,'ncurses_lib::MenuNCurses::set_items(const std::vector&lt; std::string &gt; &amp;items, const std::vector&lt; StringWithFace &gt; &amp;short_items)'],['../classtui_1_1Column.html#a8d41cbe9720648cfe106d42aba5867e7',1,'tui::Column::set_items()'],['../classtui_1_1ProjectTotalsRegister.html#a47e7aa054c1d2a89233365cad05b42fa',1,'tui::ProjectTotalsRegister::set_items()'],['../classtui_1_1RegisterNcurses.html#a0f10685c767e5bd4b9ec29b77c96f1b8',1,'tui::RegisterNcurses::set_items()'],['../classtui_1_1StopwatchNcurses.html#a738dae2950ff130640b1837c8f9461e3',1,'tui::StopwatchNcurses::set_items()'],['../classtui_1_1WeeklyReportRegister.html#a0578a8a58ec8dec3a46e85a98bb62af6',1,'tui::WeeklyReportRegister::set_items()']]],
-  ['set_5fnow_27',['set_now',['../structconfig_1_1KeyBindings.html#ae4c8090e20fbd81abaad34b2b7b36b5c',1,'config::KeyBindings']]],
+  ['set_5fnow_27',['set_now',['../structconfig_1_1ActionsKeys.html#abecb84947d7175eb45463ae2921964ec',1,'config::ActionsKeys']]],
   ['set_5fstart_28',['set_start',['../classtui_1_1PeriodSelectorNCurses.html#a8f007890db52c1a36993fa96345ee058',1,'tui::PeriodSelectorNCurses']]],
   ['set_5fstop_29',['set_stop',['../classtui_1_1PeriodSelectorNCurses.html#ae6bc1a514eb669d7975774ae795701e9',1,'tui::PeriodSelectorNCurses']]],
   ['set_5fuser_5fversion_30',['set_user_version',['../classdb__lib_1_1DB__SQLite__Handle.html#a2b2f93838757a104a62500ec00886a3f',1,'db_lib::DB_SQLite_Handle']]],
@@ -60,7 +60,7 @@ var searchData=
   ['str_57',['str',['../classncurses__lib_1_1StringWithFace.html#a43411340eb796a9844621e57795fd36e',1,'ncurses_lib::StringWithFace']]],
   ['string_5fwith_5fface_2eh_58',['string_with_face.h',['../string__with__face_8h.html',1,'']]],
   ['stringwithface_59',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html',1,'ncurses_lib::StringWithFace'],['../classncurses__lib_1_1StringWithFace.html#a904cd4554f1aa2e93006b638b6af7952',1,'ncurses_lib::StringWithFace::StringWithFace()']]],
-  ['subtabs_60',['subtabs',['../structconfig_1_1KeyBindings.html#a133b72cc275bf1238350d4f5a089b862',1,'config::KeyBindings']]],
+  ['subtabs_60',['subtabs',['../structconfig_1_1NavigationKeys.html#a7f8d2feac2ccb7dd9ab85399e77f194e',1,'config::NavigationKeys']]],
   ['suggestion_2eh_61',['suggestion.h',['../suggestion_8h.html',1,'']]],
   ['sum_5fduration_5fper_5fproject_62',['sum_duration_per_project',['../classdb_1_1StatementSet.html#a3e947247cd76b7fe41da6ac106400d30',1,'db::StatementSet']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['up_0',['up',['../structconfig_1_1KeyBindings.html#a576478972a5b418f0fc554baad3261fa',1,'config::KeyBindings']]],
+  ['up_0',['up',['../structconfig_1_1NavigationKeys.html#aedde13a7eb5b36236277d18e6505af32',1,'config::NavigationKeys']]],
   ['update_5fentry_5flocation_1',['update_entry_location',['../classdb_1_1StatementSet.html#ad90df936e71abccda63ea515b9d82760',1,'db::StatementSet']]],
   ['update_5fentry_5fproject_2',['update_entry_project',['../classdb_1_1StatementSet.html#a1f73cd9432314bbe17b7aa108fa3f71c',1,'db::StatementSet']]],
   ['update_5fentry_5fstart_3',['update_entry_start',['../classdb_1_1StatementSet.html#a898dc92817da9606c72a07174e5b57e7',1,'db::StatementSet']]],

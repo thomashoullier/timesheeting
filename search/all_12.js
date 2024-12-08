@@ -5,7 +5,7 @@ var searchData=
   ['task_5fduration_2',['task_duration',['../classdb_1_1StatementSet.html#a8275688b78b1c0035672180cf3c38630',1,'db::StatementSet']]],
   ['task_5fid_3',['task_id',['../structcore_1_1ExportRow.html#a47b37c157fc31c4e6e0233450eee21e2',1,'core::ExportRow']]],
   ['task_5fname_4',['task_name',['../structcore_1_1Entry.html#aa798ec63c19af88734e59626c562ccc7',1,'core::Entry::task_name'],['../structcore_1_1EntryStaging.html#ab0af41ec4336b405b2948541ed7bb6db',1,'core::EntryStaging::task_name'],['../structcore_1_1ExportRow.html#a24f836bfcaade680b9cbfb51a8f47ddb',1,'core::ExportRow::task_name'],['../structcore_1_1PerTaskTotals.html#ae83cdea615784a26676a7ad9a78b95fb',1,'core::PerTaskTotals::task_name']]],
-  ['task_5fproject_5fchange_5',['task_project_change',['../structconfig_1_1KeyBindings.html#ae9011be92b5154f658931b24612a228b',1,'config::KeyBindings']]],
+  ['task_5fproject_5fchange_5',['task_project_change',['../structconfig_1_1ActionsKeys.html#a3e25e3be6d3193ea34a45a9fbc03d18d',1,'config::ActionsKeys']]],
   ['task_5ftotals_6',['task_totals',['../structcore_1_1PerProjectTotals.html#a33d192637d5d6e7e7814affeb4db76dd',1,'core::PerProjectTotals']]],
   ['tick_7',['tick',['../classlog__lib_1_1Logger.html#ad3ea1be7231f0f4f6bf391311f523271',1,'log_lib::Logger']]],
   ['tick_5fpoint_8',['tick_point',['../classlog__lib_1_1Logger.html#a41d134ba221737f96c4013d64e710c6f',1,'log_lib::Logger']]],

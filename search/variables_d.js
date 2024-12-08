@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quit_0',['quit',['../structconfig_1_1KeyBindings.html#ae99783c8ccbee665ad632c37ea76b3f2',1,'config::KeyBindings']]]
+  ['quit_0',['quit',['../structconfig_1_1NavigationKeys.html#a88d67d0f8dad0ee6ed0edb6ce3d3023e',1,'config::NavigationKeys']]]
 ];
