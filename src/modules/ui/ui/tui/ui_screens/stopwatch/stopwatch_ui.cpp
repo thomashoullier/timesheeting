@@ -13,11 +13,11 @@ namespace tui {
       status().print(stopwatch.get_current_item_string());
       auto ch = stopwatch.get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.left.bound_to(ch)) {
+      if (kb.navigation.left.bound_to(ch)) {
         stopwatch.select_left_item();
-      } else if (kb.right.bound_to(ch)) {
+      } else if (kb.navigation.right.bound_to(ch)) {
         stopwatch.select_right_item();
-      } else if (kb.rename.bound_to(ch)) {
+      } else if (kb.actions.rename.bound_to(ch)) {
         try {
           rename_item();
           UpdateManager::get().entries_have_changed();
@@ -27,10 +27,10 @@ namespace tui {
           this->clear();
           this->refresh();
         }
-      } else if (kb.set_now.bound_to(ch)) {
+      } else if (kb.actions.set_now.bound_to(ch)) {
         set_current_now();
         update();
-      } else if (kb.commit_entry.bound_to(ch)) {
+      } else if (kb.actions.commit_entry.bound_to(ch)) {
         db::db().commit_entrystaging();
         UpdateManager::get().entries_have_changed();
         time_lib::Date now_start;

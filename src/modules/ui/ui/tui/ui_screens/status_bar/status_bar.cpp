@@ -42,9 +42,9 @@ namespace tui {
     while (user_wants_to_input) {
       auto ch = this->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.validate.bound_to(ch)) {
+      if (kb.edit_mode.validate.bound_to(ch)) {
         user_wants_to_input = false;
-      } else if (kb.cancel.bound_to(ch)) {
+      } else if (kb.edit_mode.cancel.bound_to(ch)) {
         input_buffer.clear();
         user_wants_to_input = false;
       } else if (ch == 127) { // Backspace
@@ -73,9 +73,9 @@ namespace tui {
     while (user_wants_to_input) {
       auto ch = this->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.validate.bound_to(ch)) {
+      if (kb.edit_mode.validate.bound_to(ch)) {
         user_wants_to_input = false;
-      } else if (kb.cancel.bound_to(ch)) {
+      } else if (kb.edit_mode.cancel.bound_to(ch)) {
         input_buffer.clear();
         user_wants_to_input = false;
       } else if (ch == 127) { // Backspace
@@ -83,7 +83,7 @@ namespace tui {
           input_buffer.pop_back();
           this->remove_char();
         }
-      } else if (kb.select_suggestion.bound_to(ch)){
+      } else if (kb.edit_mode.select_suggestion.bound_to(ch)){
         if (!best_match.empty()) {
           input_buffer = best_match;
           user_wants_to_input = false;

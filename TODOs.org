@@ -321,7 +321,8 @@ mode are the same. This should not be the case. Create a separate key for
 committing entries.
 - [2024-12-08 Sun] OK, added a dedicated key for committing entries.
 
-*** TODO Create config file subsection in keys
+*** DONE Create config file subsection in keys
+CLOSED: [2024-12-08 Sun 15:05]
 ADDED: [2024-11-28 Thu]
 The ~keys~ section of the config file is too big.
 + Create subsections for:
@@ -330,6 +331,8 @@ The ~keys~ section of the config file is too big.
   + Edit mode: cancel and select_suggestion and validate (needs to be separated
     because we can bind keys twice).
 + Also represent these sections internally.
+- [2024-12-08 Sun] OK, modified both the config file and the internal representation
+  for the bindings.
 
 *** DONE Extract a generic library for the config file
 CLOSED: [2024-11-30 Sat 19:54]

@@ -52,52 +52,56 @@ namespace config {
   KeyBindings ConfigLoader::parse_bindings(
       std::shared_ptr<config_lib::TomlLoader> config_loader) {
     KeyBindings kb;
-    kb.up.primary = parse_key(config_loader,
+    kb.navigation.up.primary = parse_key(config_loader,
                               {"keys", "navigation", "up"});
-    kb.down.primary = parse_key(config_loader,
-                                {"keys", "navigation", "down"});
-    kb.left.primary = parse_key(config_loader,
-                                {"keys", "navigation", "left"});
-    kb.right.primary = parse_key(config_loader,
-                                 {"keys", "navigation", "right"});
-    kb.subtabs.primary = parse_key(config_loader,
-                                   {"keys", "navigation", "subtabs"});
-    kb.previous.primary = parse_key(config_loader,
-                                    {"keys", "navigation", "previous"});
-    kb.next.primary = parse_key(config_loader,
-                                {"keys", "navigation", "next"});
-    kb.duration_display.primary =
-      parse_key(config_loader, {"keys", "navigation", "duration_display"});
-    kb.entries_screen.primary =
-      parse_key(config_loader, {"keys", "navigation", "entries_screen"});
-    kb.projects_screen.primary =
-      parse_key(config_loader, {"keys", "navigation", "projects_screen"});
-    kb.locations_screen.primary =
-      parse_key(config_loader, {"keys", "navigation", "locations_screen"});
-    kb.project_report_screen.primary =
-      parse_key(config_loader, {"keys", "navigation", "project_report_screen"});
-    kb.weekly_report_screen.primary =
-      parse_key(config_loader, {"keys", "navigation", "weekly_report_screen"});
-    kb.active_visibility.primary =
-      parse_key(config_loader, {"keys", "navigation", "active_visibility"});
-    kb.quit.primary = parse_key(config_loader, {"keys", "navigation", "quit"});
-    kb.commit_entry.primary =
+    kb.navigation.down.primary =
+        parse_key(config_loader, {"keys", "navigation", "down"});
+    kb.navigation.left.primary =
+        parse_key(config_loader, {"keys", "navigation", "left"});
+    kb.navigation.right.primary =
+        parse_key(config_loader, {"keys", "navigation", "right"});
+    kb.navigation.subtabs.primary =
+        parse_key(config_loader, {"keys", "navigation", "subtabs"});
+    kb.navigation.previous.primary =
+        parse_key(config_loader, {"keys", "navigation", "previous"});
+    kb.navigation.next.primary =
+        parse_key(config_loader, {"keys", "navigation", "next"});
+    kb.navigation.duration_display.primary =
+        parse_key(config_loader, {"keys", "navigation", "duration_display"});
+    kb.navigation.entries_screen.primary =
+        parse_key(config_loader, {"keys", "navigation", "entries_screen"});
+    kb.navigation.projects_screen.primary =
+        parse_key(config_loader, {"keys", "navigation", "projects_screen"});
+    kb.navigation.locations_screen.primary =
+        parse_key(config_loader, {"keys", "navigation", "locations_screen"});
+    kb.navigation.project_report_screen.primary = parse_key(
+        config_loader, {"keys", "navigation", "project_report_screen"});
+    kb.navigation.weekly_report_screen.primary = parse_key(
+        config_loader, {"keys", "navigation", "weekly_report_screen"});
+    kb.navigation.active_visibility.primary =
+        parse_key(config_loader, {"keys", "navigation", "active_visibility"});
+    kb.navigation.quit.primary =
+        parse_key(config_loader, {"keys", "navigation", "quit"});
+    kb.actions.commit_entry.primary =
       parse_key(config_loader, {"keys", "actions", "commit_entry"});
-    kb.set_now.primary =
-      parse_key(config_loader, {"keys", "actions", "set_now"});
-    kb.add.primary = parse_key(config_loader, {"keys", "actions", "add"});
-    kb.rename.primary = parse_key(config_loader, {"keys", "actions", "rename"});
-    kb.remove.primary = parse_key(config_loader, {"keys", "actions", "remove"});
-    kb.active_toggle.primary =
-      parse_key(config_loader, {"keys", "actions", "active_toggle"});
-    kb.task_project_change.primary =
-      parse_key(config_loader, {"keys", "actions", "task_project_change"});
-    kb.validate.primary =
+    kb.actions.set_now.primary =
+        parse_key(config_loader, {"keys", "actions", "set_now"});
+    kb.actions.add.primary =
+        parse_key(config_loader, {"keys", "actions", "add"});
+    kb.actions.rename.primary =
+        parse_key(config_loader, {"keys", "actions", "rename"});
+    kb.actions.remove.primary =
+        parse_key(config_loader, {"keys", "actions", "remove"});
+    kb.actions.active_toggle.primary =
+        parse_key(config_loader, {"keys", "actions", "active_toggle"});
+    kb.actions.task_project_change.primary =
+        parse_key(config_loader, {"keys", "actions", "task_project_change"});
+    kb.edit_mode.validate.primary =
       parse_key(config_loader, {"keys", "edit_mode", "validate"});
-    kb.cancel.primary =
-      parse_key(config_loader, {"keys", "edit_mode", "cancel"});
-    kb.select_suggestion.primary =
-      parse_key(config_loader, {"keys", "edit_mode", "select_suggestion"});
+    kb.edit_mode.cancel.primary =
+        parse_key(config_loader, {"keys", "edit_mode", "cancel"});
+    kb.edit_mode.select_suggestion.primary =
+        parse_key(config_loader, {"keys", "edit_mode", "select_suggestion"});
     return kb;
   }
 

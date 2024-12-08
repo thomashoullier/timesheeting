@@ -18,12 +18,13 @@ namespace tui {
     while (true) {
       auto ch = cur_focus->input_loop();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.subtabs.bound_to(ch)) {
+      if (kb.navigation.subtabs.bound_to(ch)) {
         if (cur_focus == &period_selector_ui)
           cur_focus = &reg;
         else
           cur_focus = &period_selector_ui;
-      } else if (kb.validate.bound_to(ch)) { // Update request is passed
+      } else if (kb.edit_mode.validate.bound_to(ch)) {
+        // Update request is passed
         this->update();
       } else {
         return ch;

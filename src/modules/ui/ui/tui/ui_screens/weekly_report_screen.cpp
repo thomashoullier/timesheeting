@@ -12,10 +12,10 @@ namespace tui {
     while (true) {
       auto ch = reg.input_loop();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.previous.bound_to(ch)) {
+      if (kb.navigation.previous.bound_to(ch)) {
         week_selector.select_previous_week();
         update();
-      } else if (kb.next.bound_to(ch)) {
+      } else if (kb.navigation.next.bound_to(ch)) {
         week_selector.select_next_week();
         update();
       } else {

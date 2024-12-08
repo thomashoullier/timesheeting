@@ -14,11 +14,11 @@ namespace tui {
     while (true) {
       auto ch = cur_focus->input_loop();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.subtabs.bound_to(ch)) {
+      if (kb.navigation.subtabs.bound_to(ch)) {
         cur_focus = (cur_focus == stopwatch_ui.get()) ? entries_table.get()
           : stopwatch_ui.get();
-      } else if (kb.validate.bound_to(ch)) { // Update request is passed
-        entries_table->update();
+      } else if (kb.edit_mode.validate.bound_to(ch)) {
+        entries_table->update(); // Update request is passed
       } else {
         return ch;
       }

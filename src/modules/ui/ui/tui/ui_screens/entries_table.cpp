@@ -17,18 +17,18 @@ namespace tui {
       status().print(reg.get_current_item_string());
       auto ch = reg.get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.down.bound_to(ch)) {
+      if (kb.navigation.down.bound_to(ch)) {
         reg.select_down_item();
-      } else if (kb.up.bound_to(ch)) {
+      } else if (kb.navigation.up.bound_to(ch)) {
         reg.select_up_item();
-      } else if (kb.right.bound_to(ch)) {
+      } else if (kb.navigation.right.bound_to(ch)) {
         reg.select_right_item();
-      } else if (kb.left.bound_to(ch)) {
+      } else if (kb.navigation.left.bound_to(ch)) {
         reg.select_left_item();
-      } else if (kb.remove.bound_to(ch)) {
+      } else if (kb.actions.remove.bound_to(ch)) {
         remove_item();
         UpdateManager::get().entries_have_changed();
-      } else if (kb.rename.bound_to(ch)) {
+      } else if (kb.actions.rename.bound_to(ch)) {
         try {
           rename_item();
           update();
@@ -38,7 +38,7 @@ namespace tui {
           this->clear();
           this->refresh();
         }
-      } else if (kb.next.bound_to(ch)) {
+      } else if (kb.navigation.next.bound_to(ch)) {
         day_selector.select_next_day();
         auto log_dates = day_selector.current_range().to_string();
         log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
@@ -50,7 +50,7 @@ namespace tui {
         total_bar
           .update(db::db()
                   .query_entries_duration(day_selector.current_range()));
-      } else if (kb.previous.bound_to(ch)) {
+      } else if (kb.navigation.previous.bound_to(ch)) {
         day_selector.select_previous_day();
         auto log_dates = day_selector.current_range().to_string();
         log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +

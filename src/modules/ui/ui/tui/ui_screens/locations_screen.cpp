@@ -28,27 +28,27 @@ namespace tui {
       status().print(location_col->get_current_item_string());
       auto ch = location_col->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.down.bound_to(ch)) {
+      if (kb.navigation.down.bound_to(ch)) {
         location_col->select_down_item();
-      } else if (kb.up.bound_to(ch)) {
+      } else if (kb.navigation.up.bound_to(ch)) {
         location_col->select_up_item();
-      } else if (kb.add.bound_to(ch)) {
+      } else if (kb.actions.add.bound_to(ch)) {
         if (not(add_item())) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
         }
-      } else if (kb.rename.bound_to(ch)) {
+      } else if (kb.actions.rename.bound_to(ch)) {
         if (not(rename_item())) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
         }
-      } else if (kb.remove.bound_to(ch)) {
+      } else if (kb.actions.remove.bound_to(ch)) {
         remove_item();
-      } else if (kb.active_toggle.bound_to(ch)) {
+      } else if (kb.actions.active_toggle.bound_to(ch)) {
         toggle_active_item();
-      } else if (kb.active_visibility.bound_to(ch)) {
+      } else if (kb.navigation.active_visibility.bound_to(ch)) {
         toggle_archive_visibility();
       } else {
         location_col->unset_border();

@@ -15,11 +15,11 @@ namespace tui {
       status().print(period_selector.get_current_item_string());
       auto ch = period_selector.get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.left.bound_to(ch)) {
+      if (kb.navigation.left.bound_to(ch)) {
         period_selector.select_left_item();
-      } else if (kb.right.bound_to(ch)) {
+      } else if (kb.navigation.right.bound_to(ch)) {
         period_selector.select_right_item();
-      } else if (kb.rename.bound_to(ch)) {
+      } else if (kb.actions.rename.bound_to(ch)) {
         try {
           rename_item();
           update();

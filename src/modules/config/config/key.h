@@ -15,8 +15,8 @@ namespace config {
     bool bound_to (char c) {return (primary == c) or (alt == c);};
   };
 
-  /** @brief Represents the key bindings in the program. */
-  struct KeyBindings {
+  /** @brief Key bindings in the "navigation" section. */
+  struct NavigationKeys {
     /** @brief Navigate up. */
     Key up;
     /** @brief Navigate down. */
@@ -31,16 +31,6 @@ namespace config {
     Key previous;
     /** @brief Navigate next. */
     Key next;
-    /** @brief Set date to now. */
-    Key set_now;
-    /** @brief Validate. */
-    Key validate;
-    /** @brief Commit an entry from entrystaging to the entries in DB. */
-    Key commit_entry;
-    /** @brief Cancel. */
-    Key cancel;
-    /** @brief Select suggestion. */
-    Key select_suggestion;
     /** @brief Cycle between duration display formats. */
     Key duration_display;
     /** @brief Switch to entries screen. */
@@ -53,6 +43,18 @@ namespace config {
     Key project_report_screen;
     /** @brief Switch to weekly report screen. */
     Key weekly_report_screen;
+    /** @brief Toggle active/inactive objects visibility. */
+    Key active_visibility;
+    /** @brief Quit the program. */
+    Key quit;
+  };
+
+  /** @brief Key bindings in the "actions" section. */
+  struct ActionsKeys {
+    /** @brief Commit an entry from entrystaging to the entries in DB. */
+    Key commit_entry;
+    /** @brief Set date to now. */
+    Key set_now;
     /** @brief Adding objects. */
     Key add;
     /** @brief Renaming objects. */
@@ -61,13 +63,27 @@ namespace config {
     Key remove;
     /** @brief Toggle the active/inactive state of objects. */
     Key active_toggle;
-    /** @brief Toggle active/inactive objects visibility. */
-    Key active_visibility;
     /** @brief Change the project a task is assigned to. */
     Key task_project_change;
-    /** @brief Quit the program. */
-    Key quit;
   };
+
+  /** @brief Key bindings in the "edit_mode" section. */
+  struct EditModeKeys {
+    /** @brief Validate. */
+    Key validate;
+    /** @brief Cancel. */
+    Key cancel;
+    /** @brief Select suggestion. */
+    Key select_suggestion;
+  };
+
+  /** @brief Represents the key bindings in the program. */
+  struct KeyBindings {
+    NavigationKeys navigation;
+    ActionsKeys actions;
+    EditModeKeys edit_mode;
+  };
+
 } // namespace config
 
 #endif // KEY_H

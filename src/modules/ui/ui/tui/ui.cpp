@@ -37,23 +37,23 @@ namespace tui {
       auto ch = cur_screen->input_loop();
       cur_screen->clear();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.entries_screen.bound_to(ch)) {
+      if (kb.navigation.entries_screen.bound_to(ch)) {
         cur_screen = entries_screen;
-      } else if (kb.projects_screen.bound_to(ch)) {
+      } else if (kb.navigation.projects_screen.bound_to(ch)) {
         cur_screen = projects_screen;
-      } else if (kb.locations_screen.bound_to(ch)) {
+      } else if (kb.navigation.locations_screen.bound_to(ch)) {
         cur_screen = locations_screen;
-      } else if (kb.project_report_screen.bound_to(ch)) {
+      } else if (kb.navigation.project_report_screen.bound_to(ch)) {
         cur_screen = project_report_screen;
-      } else if (kb.weekly_report_screen.bound_to(ch)) {
+      } else if (kb.navigation.weekly_report_screen.bound_to(ch)) {
         cur_screen = weekly_report_screen;
-      } else if (kb.duration_display.bound_to(ch)) {
+      } else if (kb.navigation.duration_display.bound_to(ch)) {
         time_lib::DurationDisplayer::get().cycle_format();
         UpdateManager::get().duration_display_changed();
       } else if (ch == ncurses_lib::screen_resize_event) {
         log_lib::logger().log("Screen resize happened.",
                               log_lib::LogLevel::debug);
-      } else if (kb.quit.bound_to(ch)) {
+      } else if (kb.navigation.quit.bound_to(ch)) {
         return 0; // Return to main
       }
     }
