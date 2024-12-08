@@ -1,0 +1,17 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build_gentoo_environment
+  image: docker
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - docker build -t gentoo_environment .
+
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock

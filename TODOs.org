@@ -121,12 +121,17 @@ bugs per se, but this prevents us from catching the KEY_RESIZE.
 *** TODO Put the basic CI in place
 ADDED: [2024-11-16 Sat]
 Check the build only, at first.
++ We need to use a gentoo image, as per the documentation.
+  We probably want ~amd64-nomultilib-openrc~.
++ See how we did it for puzzle_utils.
+  We had a Dockerfile for downloading the dependencies (it was alpine).
 
 *** TODO Test that all the latex documentation builds
 ADDED: [2024-11-16 Sat]
 Check the latex documentation build.
 + It is pretty heavy to put a latex installation on a VM for automated building
   though.
++ See this docker: https://hub.docker.com/r/texlive/texlive/tags
 
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]
@@ -258,6 +263,12 @@ This would impact the way they are displayed in the hierarchy screen and also
 which task is selected by default when a project is put in entrystaging.
 + Modifying the whole ordering might be tedious, but the first task to appear may
   be set to the last one used? We could have a table for tracking this per-project.
+
+*** TODO While in the weekly report, do not reset the cursor position when changing the duration display format
+ADDED: [2024-12-08 Sun]
+Currently the cursor goes back to the top of the screen when the duration
+display format is changed. This is annoying because sometimes we would like
+to see the duration for the currently selected item in multiple formats.
 
 ** Refactoring
 *** DONE Fix CMakeLists includes
@@ -400,10 +411,16 @@ Can we find a way to signal this dependency in the build system?
 We do not want to forbid other compilers from working either.
 
 ** Features
+*** TODO Complete the logging messages
+ADDED: [2024-11-23 Sat]
+We are supposed to log every event which changes the DB state at least.
++ Add log messages to cover all DB states changes.
++ Add more information in the log messages: exactly what was changed every time.
+
 *** TODO Protect against binding the same key twice to the same mode
 ADDED: [2024-11-28 Thu]
-When loading the keys into BoundKeys, check that keys are not bound twice in the same section.
-Edit mode and the other sections may mix however.
+When loading the keys into BoundKeys, check that keys are not bound twice in the
+same section. Edit mode and the other sections may mix however.
 Stop with an exception if this is the case.
 
 *** DEAD Implement a check of the DB when opening
@@ -421,23 +438,11 @@ It seems recommended: https://www.sqlite.org/lang_analyze.html
 - [2024-11-23 Sat] ADDED ~PRAGMA optimize;~ when closing the DB handle
   in db_lib.
 
-*** TODO Consider implementing an undo and redo
-ADDED: [2024-09-03 Tue]
-Perhaps at least the last SQL db action?
-+ It could be easy to implement if it is tied only to the DB and already
-  supported by sqlite3?
-
 *** DONE Use a date format with timezone in logs.
 CLOSED: [2024-11-16 Sat 15:05]
 ADDED: [2024-11-16 Sat]
 Currently the logs are ambiguous, they show the local time but without
 more indication.
-
-*** TODO Complete the logging messages
-ADDED: [2024-11-23 Sat]
-We are supposed to log every event which changes the DB state at least.
-+ Add log messages to cover all DB states changes.
-+ Add more information in the log messages: exactly what was changed every time.
 
 *** TODO Clean old log entries
 ADDED: [2024-10-26 Sat]
@@ -479,6 +484,13 @@ We need the install script for our program.
   + Put the config file in dotfiles.
 - [2024-11-24 Sun] Wrote the installation instructions in CMakeLists.txt, the binary
   is deployed in `/bin/`, the default configuration file in `/etc/`.
+
+** Features under consideration
+*** TODO Consider implementing an undo and redo
+ADDED: [2024-09-03 Tue]
+Perhaps at least the last SQL db action?
++ It could be easy to implement if it is tied only to the DB and already
+  supported by sqlite3?
 
 *** TODO Consider preventing overlapping entries
 ADDED: [2024-11-25 Mon]
