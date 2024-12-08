@@ -324,11 +324,12 @@ committing entries.
 *** TODO Create config file subsection in keys
 ADDED: [2024-11-28 Thu]
 The ~keys~ section of the config file is too big.
-Create subsections for:
-+ Navigation
-+ Actions
-+ Edit mode: cancel and select_suggestion and validate (needs to be separated because we can
-  bind keys twice).
++ Create subsections for:
+  + Navigation
+  + Actions
+  + Edit mode: cancel and select_suggestion and validate (needs to be separated
+    because we can bind keys twice).
++ Also represent these sections internally.
 
 *** DONE Extract a generic library for the config file
 CLOSED: [2024-11-30 Sat 19:54]

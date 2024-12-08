@@ -52,41 +52,52 @@ namespace config {
   KeyBindings ConfigLoader::parse_bindings(
       std::shared_ptr<config_lib::TomlLoader> config_loader) {
     KeyBindings kb;
-    kb.up.primary = parse_key(config_loader, {"keys", "up"});
-    kb.down.primary = parse_key(config_loader, {"keys", "down"});
-    kb.left.primary = parse_key(config_loader, {"keys", "left"});
-    kb.right.primary = parse_key(config_loader, {"keys", "right"});
-    kb.subtabs.primary = parse_key(config_loader, {"keys", "subtabs"});
-    kb.previous.primary = parse_key(config_loader, {"keys", "previous"});
-    kb.next.primary = parse_key(config_loader, {"keys", "next"});
-    kb.set_now.primary = parse_key(config_loader, {"keys", "set_now"});
-    kb.validate.primary = parse_key(config_loader, {"keys", "validate"});
-    kb.commit_entry.primary = parse_key(config_loader, {"keys", "commit_entry"});
-    kb.cancel.primary = parse_key(config_loader, {"keys", "cancel"});
-    kb.select_suggestion.primary =
-      parse_key(config_loader, {"keys", "select_suggestion"});
+    kb.up.primary = parse_key(config_loader,
+                              {"keys", "navigation", "up"});
+    kb.down.primary = parse_key(config_loader,
+                                {"keys", "navigation", "down"});
+    kb.left.primary = parse_key(config_loader,
+                                {"keys", "navigation", "left"});
+    kb.right.primary = parse_key(config_loader,
+                                 {"keys", "navigation", "right"});
+    kb.subtabs.primary = parse_key(config_loader,
+                                   {"keys", "navigation", "subtabs"});
+    kb.previous.primary = parse_key(config_loader,
+                                    {"keys", "navigation", "previous"});
+    kb.next.primary = parse_key(config_loader,
+                                {"keys", "navigation", "next"});
     kb.duration_display.primary =
-      parse_key(config_loader, {"keys", "duration_display"});
+      parse_key(config_loader, {"keys", "navigation", "duration_display"});
     kb.entries_screen.primary =
-      parse_key(config_loader, {"keys", "entries_screen"});
+      parse_key(config_loader, {"keys", "navigation", "entries_screen"});
     kb.projects_screen.primary =
-      parse_key(config_loader, {"keys", "projects_screen"});
+      parse_key(config_loader, {"keys", "navigation", "projects_screen"});
     kb.locations_screen.primary =
-      parse_key(config_loader, {"keys", "locations_screen"});
+      parse_key(config_loader, {"keys", "navigation", "locations_screen"});
     kb.project_report_screen.primary =
-      parse_key(config_loader, {"keys", "project_report_screen"});
+      parse_key(config_loader, {"keys", "navigation", "project_report_screen"});
     kb.weekly_report_screen.primary =
-      parse_key(config_loader, {"keys", "weekly_report_screen"});
-    kb.add.primary = parse_key(config_loader, {"keys", "add"});
-    kb.rename.primary = parse_key(config_loader, {"keys", "rename"});
-    kb.remove.primary = parse_key(config_loader, {"keys", "remove"});
-    kb.active_toggle.primary =
-      parse_key(config_loader, {"keys", "active_toggle"});
+      parse_key(config_loader, {"keys", "navigation", "weekly_report_screen"});
     kb.active_visibility.primary =
-      parse_key(config_loader, {"keys", "active_visibility"});
+      parse_key(config_loader, {"keys", "navigation", "active_visibility"});
+    kb.quit.primary = parse_key(config_loader, {"keys", "navigation", "quit"});
+    kb.commit_entry.primary =
+      parse_key(config_loader, {"keys", "actions", "commit_entry"});
+    kb.set_now.primary =
+      parse_key(config_loader, {"keys", "actions", "set_now"});
+    kb.add.primary = parse_key(config_loader, {"keys", "actions", "add"});
+    kb.rename.primary = parse_key(config_loader, {"keys", "actions", "rename"});
+    kb.remove.primary = parse_key(config_loader, {"keys", "actions", "remove"});
+    kb.active_toggle.primary =
+      parse_key(config_loader, {"keys", "actions", "active_toggle"});
     kb.task_project_change.primary =
-      parse_key(config_loader, {"keys", "task_project_change"});
-    kb.quit.primary = parse_key(config_loader, {"keys", "quit"});
+      parse_key(config_loader, {"keys", "actions", "task_project_change"});
+    kb.validate.primary =
+      parse_key(config_loader, {"keys", "edit_mode", "validate"});
+    kb.cancel.primary =
+      parse_key(config_loader, {"keys", "edit_mode", "cancel"});
+    kb.select_suggestion.primary =
+      parse_key(config_loader, {"keys", "edit_mode", "select_suggestion"});
     return kb;
   }
 
