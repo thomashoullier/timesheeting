@@ -125,6 +125,8 @@ Check the build only, at first.
   We probably want ~amd64-nomultilib-openrc~.
 + See how we did it for puzzle_utils.
   We had a Dockerfile for downloading the dependencies (it was alpine).
++ See https://github.com/rapenne-s/build-gentoo-packages-for-me/blob/main/Dockerfile
+
 
 *** TODO Test that all the latex documentation builds
 ADDED: [2024-11-16 Sat]
