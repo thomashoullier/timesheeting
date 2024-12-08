@@ -80,6 +80,26 @@ page is completely empty with no links to anything.
 - [2024-11-22 Fri] Fixed by bumping the doxygen version in the github action
   to use the same one as locally: 1.12.0
 
+* CI
+*** TODO Put the basic CI in place
+ADDED: [2024-11-16 Sat]
+Check the build only, at first.
++ We need to use a gentoo image, as per the documentation.
+  We probably want ~amd64-nomultilib-openrc~.
++ See how we did it for puzzle_utils.
+  We had a Dockerfile for downloading the dependencies (it was alpine).
++ See https://github.com/rapenne-s/build-gentoo-packages-for-me/blob/main/Dockerfile
++ We encounter a nginx error on our Drone CI related to ~413 Request Entity Too Large~
+  this is likely fixed by setting ~client_max_body_size 0;~ somewhere in the nginx
+  configuration.
+
+*** TODO Test that all the latex documentation builds
+ADDED: [2024-11-16 Sat]
+Check the latex documentation build.
++ It is pretty heavy to put a latex installation on a VM for automated building
+  though.
++ See this docker: https://hub.docker.com/r/texlive/texlive/tags
+
 * Software
 ** Bugs
 *** DONE Fix date parsing
@@ -118,23 +138,6 @@ bugs per se, but this prevents us from catching the KEY_RESIZE.
   We can now catch the KEY_RESIZE events.
 
 ** Testing
-*** TODO Put the basic CI in place
-ADDED: [2024-11-16 Sat]
-Check the build only, at first.
-+ We need to use a gentoo image, as per the documentation.
-  We probably want ~amd64-nomultilib-openrc~.
-+ See how we did it for puzzle_utils.
-  We had a Dockerfile for downloading the dependencies (it was alpine).
-+ See https://github.com/rapenne-s/build-gentoo-packages-for-me/blob/main/Dockerfile
-
-
-*** TODO Test that all the latex documentation builds
-ADDED: [2024-11-16 Sat]
-Check the latex documentation build.
-+ It is pretty heavy to put a latex installation on a VM for automated building
-  though.
-+ See this docker: https://hub.docker.com/r/texlive/texlive/tags
-
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]
 We can test the application in an end-to-end fashion with tmux,
