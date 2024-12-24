@@ -20,7 +20,9 @@ namespace tui {
     void print_wait(const std::string &msg);
     /** @brief Ask for confirmation. */
     bool query_confirmation (const std::string &msg);
-    /** @brief Get a new string from the user. */
+    /** @brief Get a new string from the user.
+
+     Returns an empty string on cancellation. */
     std::string get_user_string();
     /** @brief Get a user string, with suggestions. */
     std::string get_user_string_suggestions

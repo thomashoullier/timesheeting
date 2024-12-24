@@ -60,7 +60,9 @@ namespace tui {
       auto projects = db::db().query_projects_active();
       auto project_names = generic_item_names(projects);
       auto new_str = status().get_user_string_suggestions(project_names);
-      db::db().edit_entrystaging_project_name(new_str);
+      if (!new_str.empty()) {
+        db::db().edit_entrystaging_project_name(new_str);
+      }
     } break;
     case EntryField::task_name: {
       auto current_entry_staging = db::db().query_entrystaging();
@@ -69,24 +71,32 @@ namespace tui {
         auto tasks = db::db().query_tasks_active(project_id);
         auto task_names = generic_item_names(tasks);
         auto new_str = status().get_user_string_suggestions(task_names);
-        db::db().edit_entrystaging_task_name(new_str);
+        if (!new_str.empty()) {
+          db::db().edit_entrystaging_task_name(new_str);
+        }
       }
     } break;
     case EntryField::start: {
       auto new_str = status().get_user_string();
-      time_lib::Date new_start_date(new_str);
-      db::db().edit_entrystaging_start(new_start_date);
+      if (!new_str.empty()) {
+        time_lib::Date new_start_date(new_str);
+        db::db().edit_entrystaging_start(new_start_date);
+      }
     } break;
     case EntryField::stop: {
       auto new_str = status().get_user_string();
-      time_lib::Date new_stop_date(new_str);
-      db::db().edit_entrystaging_stop(new_stop_date);
+      if (!new_str.empty()) {
+        time_lib::Date new_stop_date(new_str);
+        db::db().edit_entrystaging_stop(new_stop_date);
+      }
     } break;
     case EntryField::location_name: {
       auto locations = db::db().query_locations_active();
       auto location_names = generic_item_names(locations);
       auto new_str = status().get_user_string_suggestions(location_names);
-      db::db().edit_entrystaging_location_name(new_str);
+      if (!new_str.empty()) {
+        db::db().edit_entrystaging_location_name(new_str);
+      }
     } break;
     default:
       throw std::logic_error("Don't know what to do for renaming this unknown "

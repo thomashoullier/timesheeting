@@ -137,6 +137,16 @@ bugs per se, but this prevents us from catching the KEY_RESIZE.
 - [2024-11-24 Sun] Changed the type from char to int throughout the input loops.
   We can now catch the KEY_RESIZE events.
 
+*** TODO The date condition for entries is wrong
+ADDED: [2024-12-16 Mon]
+Currently, the stopwatch allows the addition of entries where start = stop.
+We want to avoid this case also because there is a risk of adding two entries by
+double-tapping validate.
++ We can just change the ~CHECK~ condition at the table creation.
++ See also the feature about forbidding overlapping entries.
+- [2024-12-24 Tue] We have confirmed that there is currently nothing in the DB with
+  start >= stop. We have to migrate our DB manually.
+
 ** Testing
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]
@@ -174,11 +184,15 @@ ADDED: [2024-09-02 Mon]
     display.
     - [2024-11-24 Sun] OK we did that.
 
-*** HOLD Renaming task empties the project
+*** DONE Renaming task empties the project
+CLOSED: [2024-12-24 Tue 17:30]
 ADDED: [2024-11-16 Sat]
 WAIT for the custom menu implementation
 Currently, when renaming a task in entrystaging, a cancellation will
 empty the project cell. Make it so that it does nothing instead.
++ Location in the stopwatch does the same.
++ [2024-12-24 Tue] We have fixed the whole stopwatch ui, it now checks for
+  an empty string before trying to do anything.
 
 *** DONE Suggestion on substrings
 CLOSED: [2024-11-23 Sat 08:55]
@@ -510,3 +524,9 @@ ADDED: [2024-12-02 Mon]
 + Would this be permanent? Could we retain the original information?
 + How would this look in export?
 + Do we need meta-tasks?
+
+*** TODO ASCII visualization of the current day filling
+ADDED: [2024-12-09 Mon]
+Visualize how the current day is filled by the tasks inputted.
+We could show overlaps here?
+We could highlight the part of the bar corresponding to the currently selected task.
