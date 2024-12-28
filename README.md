@@ -1,4 +1,6 @@
 # timesheeting
+[![Build Status](https://ci.houllier.net/api/badges/thomashoullier/timesheeting/status.svg)](https://ci.houllier.net/thomashoullier/timesheeting)
+
 `timesheeting` is a timesheet utility project.
 
 The program is mostly usable, although the UI is unpolished.

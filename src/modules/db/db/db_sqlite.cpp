@@ -194,11 +194,11 @@ namespace db {
       "id INTEGER PRIMARY KEY, "
       "task_id INTEGER NOT NULL, "
       "start INTEGER NOT NULL UNIQUE, "
-      "stop INTEGER NOT NULL, "
+      "stop INTEGER NOT NULL UNIQUE, "
       "location_id INTEGER NOT NULL, "
       "FOREIGN KEY (task_id) REFERENCES tasks (id), "
       "FOREIGN KEY (location_id) REFERENCES locations (id), "
-      "CHECK (start <= stop) "
+      "CHECK (start < stop) "
       ");";
     sqlite_db->exec_statement(create_entries_table_st);
   }

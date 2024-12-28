@@ -81,7 +81,8 @@ page is completely empty with no links to anything.
   to use the same one as locally: 1.12.0
 
 * CI
-*** TODO Put the basic CI in place
+*** DONE Put the basic CI in place
+CLOSED: [2024-12-28 Sat 18:48]
 ADDED: [2024-11-16 Sat]
 Check the build only, at first.
 + We need to use a gentoo image, as per the documentation.
@@ -92,6 +93,7 @@ Check the build only, at first.
 + We encounter a nginx error on our Drone CI related to ~413 Request Entity Too Large~
   this is likely fixed by setting ~client_max_body_size 0;~ somewhere in the nginx
   configuration.
+- OK we are testing the build.
 
 *** TODO Test that all the latex documentation builds
 ADDED: [2024-11-16 Sat]
@@ -137,7 +139,8 @@ bugs per se, but this prevents us from catching the KEY_RESIZE.
 - [2024-11-24 Sun] Changed the type from char to int throughout the input loops.
   We can now catch the KEY_RESIZE events.
 
-*** TODO The date condition for entries is wrong
+*** DONE The date condition for entries is wrong
+CLOSED: [2024-12-28 Sat 19:52]
 ADDED: [2024-12-16 Mon]
 Currently, the stopwatch allows the addition of entries where start = stop.
 We want to avoid this case also because there is a risk of adding two entries by
@@ -146,6 +149,10 @@ double-tapping validate.
 + See also the feature about forbidding overlapping entries.
 - [2024-12-24 Tue] We have confirmed that there is currently nothing in the DB with
   start >= stop. We have to migrate our DB manually.
+- [2024-12-28 Sat] We have changed the condition to start > stop. We confirmed that
+  no additions are made when the condition is not met. The change is applicable
+  to the DB v2. We migrated our DB manually by replacing the entries table
+  with the newer one.
 
 ** Testing
 *** TODO End-to-end testing with tmux
@@ -514,6 +521,9 @@ them at the DB level?
 + This likely requires a table change, think about migration.
 + See this answer: https://stackoverflow.com/a/44347885/10376845
   we need to modify the condition, which does not suit us.
+  https://stackoverflow.com/questions/4023160/prevent-inserting-overlapping-date-ranges-using-a-sql-trigger
+  Can we use BETWEEN? -> yes
+  https://stackoverflow.com/questions/9581458/how-can-i-prevent-date-overlaps-in-sql
 + Check that there are no overlaps in our DB first.
 + Print an error in the status bar if the case is encountered.
 

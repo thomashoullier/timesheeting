@@ -9,7 +9,7 @@ namespace version {
   /** @brief Version of the program. */
   static constexpr std::string TIMESHEETING_VERSION {"00.03dev"};
   /** @brief Version of the DB. */
-  static constexpr int TIMESHEETING_DB_VERSION {1};
+  static constexpr int TIMESHEETING_DB_VERSION {2};
 }
 
 #endif // VERSION_H
