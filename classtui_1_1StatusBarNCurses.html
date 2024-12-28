@@ -126,9 +126,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_wait</b> (const
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>query_confirmation</b> (const std::string &amp;msg)</td></tr>
 <tr class="memdesc:abb6337b6ea3be708f271c255d588a8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ask for confirmation. <br /></td></tr>
 <tr class="separator:abb6337b6ea3be708f271c255d588a8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c4a138d1b8ac49669509bdfd643d2a4" id="r_a8c4a138d1b8ac49669509bdfd643d2a4"><td class="memItemLeft" align="right" valign="top"><a id="a8c4a138d1b8ac49669509bdfd643d2a4" name="a8c4a138d1b8ac49669509bdfd643d2a4"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_user_string</b> ()</td></tr>
-<tr class="memdesc:a8c4a138d1b8ac49669509bdfd643d2a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a new string from the user. <br /></td></tr>
+<tr class="memitem:a8c4a138d1b8ac49669509bdfd643d2a4" id="r_a8c4a138d1b8ac49669509bdfd643d2a4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c4a138d1b8ac49669509bdfd643d2a4">get_user_string</a> ()</td></tr>
+<tr class="memdesc:a8c4a138d1b8ac49669509bdfd643d2a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a new string from the user.  <br /></td></tr>
 <tr class="separator:a8c4a138d1b8ac49669509bdfd643d2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5987a462e4d13d2bb977c232aa0fd3c" id="r_af5987a462e4d13d2bb977c232aa0fd3c"><td class="memItemLeft" align="right" valign="top"><a id="af5987a462e4d13d2bb977c232aa0fd3c" name="af5987a462e4d13d2bb977c232aa0fd3c"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_user_string_suggestions</b> (const std::vector&lt; std::string &gt; &amp;suggestions)</td></tr>
@@ -220,7 +219,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy_window</b> ()
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Status bar implementation using ncurses. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8c4a138d1b8ac49669509bdfd643d2a4" name="a8c4a138d1b8ac49669509bdfd643d2a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c4a138d1b8ac49669509bdfd643d2a4">&#9670;&#160;</a></span>get_user_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string tui::StatusBarNCurses::get_user_string </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a new string from the user. </p>
+<p>Returns an empty string on cancellation. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/modules/ui/ui/tui/ui_screens/status_bar/<a class="el" href="status__bar_8h_source.html">status_bar.h</a></li>
 <li>src/modules/ui/ui/tui/ui_screens/status_bar/<b>status_bar.cpp</b></li>
 </ul>
