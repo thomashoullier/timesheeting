@@ -154,6 +154,29 @@ double-tapping validate.
   to the DB v2. We migrated our DB manually by replacing the entries table
   with the newer one.
 
+*** TODO Possible string security problem in ncurses usage
+ADDED: [2024-12-28 Sat]
+The compiler reports the following during build,
+
+```
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp: In member function 'void ncurses_lib::BarNCurses::print(const std::string&) const':
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp:13:12: warning: format not a string literal and no format arguments [-Wformat-security]
+   13 |     wprintw(win, msg.c_str());
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp: In member function 'void ncurses_lib::BarNCurses::print_right(const std::string&) const':
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp:22:12: warning: format not a string literal and no format arguments [-Wformat-security]
+   22 |     wprintw(win, msg.c_str());
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp: In member function 'void ncurses_lib::BarNCurses::print_after_cursor(const std::string&)':
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp:32:12: warning: format not a string literal and no format arguments [-Wformat-security]
+   32 |     wprintw(win, msg.c_str());
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~
+```
+
+This could mean that we are susceptible to problems if the printed message
+has reserved format characters?
+Is there a security risk here?
+
 ** Testing
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]

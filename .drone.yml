@@ -18,6 +18,24 @@ steps:
   - cd build
   - cmake ..
   - make timesheeting
+  depends_on:
+  - build_gentoo_environment
+
+- name: latex_environment
+  image: docker
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - docker build -t latex_environment doc/.
+
+- name: compile_documentation
+  image: latex_environment
+  pull: if-not-exists
+  commands:
+  - echo "Hello"
+  depends_on:
+  - latex_environment
 
 volumes:
 - name: dockersock
