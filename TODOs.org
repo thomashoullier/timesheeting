@@ -504,20 +504,25 @@ We need the install script for our program.
 - [2024-11-24 Sun] Wrote the installation instructions in CMakeLists.txt, the binary
   is deployed in `/bin/`, the default configuration file in `/etc/`.
 
+*** TODO Prevent overlapping entries
+ADDED: [2024-11-25 Mon]
+Overlapping entries have no use-case, do they? Should we forbid
+them at the DB level?
++ It could get annoying when manually entering entries. We would have to
+  type dates to the second.
+  + Not if we allow start(n) >= end(n-1)
++ This likely requires a table change, think about migration.
++ See this answer: https://stackoverflow.com/a/44347885/10376845
+  we need to modify the condition, which does not suit us.
++ Check that there are no overlaps in our DB first.
++ Print an error in the status bar if the case is encountered.
+
 ** Features under consideration
 *** TODO Consider implementing an undo and redo
 ADDED: [2024-09-03 Tue]
 Perhaps at least the last SQL db action?
 + It could be easy to implement if it is tied only to the DB and already
   supported by sqlite3?
-
-*** TODO Consider preventing overlapping entries
-ADDED: [2024-11-25 Mon]
-Overlapping entries have no use-case, do they? Should we forbid
-them at the DB level?
-+ It could get annoying when manually entering entries. We would have to
-  type dates to the second.
-+ This likely requires a table change, think about migration.
 
 *** TODO Consider fusing tasks together into one task
 ADDED: [2024-12-02 Mon]

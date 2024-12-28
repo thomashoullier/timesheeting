@@ -11,6 +11,14 @@ steps:
   commands:
   - docker build -t gentoo_environment .
 
+- name: build
+  image: gentoo_environment
+  pull: if-not-exists
+  commands:
+  - cd build
+  - cmake ..
+  - make timesheeting
+
 volumes:
 - name: dockersock
   host:
