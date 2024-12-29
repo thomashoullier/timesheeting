@@ -15,4 +15,25 @@ input \lstinline{/etc/timesheeting/timesheeting.toml}.
 
 \textit{Tests: } LR-CON-010 -- Tilde expansion utility
 
+\paragraph{LT-CON-030 -- First existing file found}
+Given a directory structure as follows,
+\dirtree{%
+  .1 ...
+  .2 dir1.
+  .3 subdir1.
+  .2 dir2.
+  .3 timesheeting.toml.
+  .2 dir3.
+}
+the \emph{first existing file utility}, when provided with the list of folders
+\lstinline{dir1/subdir1, dir2, dir3} and the suffix
+\lstinline{timesheeting.toml}
+must return the path \lstinline{dir2/timesheeting.toml}.
+
+\textit{Tests: } LR-CON-020 -- First existing file
+
+\paragraph{LT-CON-040 -- First existing file not found}
+
+\textit{Tests: } LR-CON-020 -- First existing file
+
 \subsubsection{Configuration loader}
