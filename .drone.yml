@@ -21,6 +21,34 @@ steps:
   depends_on:
   - build_gentoo_environment
 
+- name: test_environment
+  image: docker
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - docker build -t test_environment test/.
+  depends_on:
+  - build_gentoo_environment
+
+- name: test_build
+  image: test_environment
+  pull: if-not-exists
+  commands:
+  - cd build
+  - cmake -Dbuild_tests=ON ..
+  - make timesheeting_tests
+  depends_on:
+  - test_environment
+
+- name: test_run
+  image: test_environment
+  pull: if-not-exists
+  commands:
+  - ./build/timesheeting_tests
+  depends_on:
+  - test_build
+
 - name: latex_environment
   image: docker
   volumes:
@@ -62,6 +90,15 @@ steps:
   commands:
   - cd doc/srd/
   - latexmk -pdf srd.tex
+  depends_on:
+  - latex_environment
+
+- name: PRJ1-TST1
+  image: latex_environment
+  pull: if-not-exists
+  commands:
+  - cd doc/tst/
+  - latexmk -pdf tst.tex
   depends_on:
   - latex_environment
 

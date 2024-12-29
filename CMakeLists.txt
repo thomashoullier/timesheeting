@@ -6,6 +6,8 @@ set(CMAKE_BUILD_TYPE Release)
 
 set (CMAKE_CXX_FLAGS "-Wall -O2 -Wextra -Wformat=2 -Werror -Wpedantic -march=native")
 
+option(build_tests "Build the test suite" OFF)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For development with CLANGD
 
 set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
@@ -124,3 +126,13 @@ target_include_directories(timesheeting PUBLIC
 set(CMAKE_INSTALL_PREFIX /)
 install(TARGETS timesheeting DESTINATION bin)
 install(FILES "${TIMESHEETING_DIR}/timesheeting.toml" DESTINATION etc)
+
+# Unit tests
+if(build_tests)
+  find_package(Catch2 3 REQUIRED)
+  file(GLOB_RECURSE TEST_SRC "${TIMESHEETING_DIR}/test/*.cpp")
+  add_executable(timesheeting_tests "${TEST_SRC}")
+  target_link_libraries(timesheeting_tests PRIVATE Catch2::Catch2WithMain)
+  target_include_directories(timesheeting_tests PUBLIC
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>")
+endif()
