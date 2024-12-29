@@ -4,6 +4,9 @@ project(timesheeting)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_BUILD_TYPE Release)
 
+# TODO: add -Werror, -Wformat=2
+set (CMAKE_CXX_FLAGS "-Wall -O2 -Wextra -march=native")
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For development with CLANGD
 
 set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
@@ -117,8 +120,6 @@ target_include_directories(timesheeting PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/time_lib/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/config/>")
-set_target_properties(timesheeting PROPERTIES COMPILE_FLAGS
-  "${CMAKE_CXX_FLAGS} -g -Wall -O2 -Wextra -march=native")
 
 # Installation
 set(CMAKE_INSTALL_PREFIX /)

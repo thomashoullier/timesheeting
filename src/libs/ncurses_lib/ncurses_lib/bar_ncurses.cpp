@@ -10,7 +10,7 @@ namespace ncurses_lib {
   void BarNCurses::print(const std::string &msg) const {
     this->clear();
     wmove(win, 0, 0);
-    wprintw(win, msg.c_str());
+    wprintw(win, "%s", msg.c_str());
     this->refresh();
   }
 
@@ -19,7 +19,7 @@ namespace ncurses_lib {
     int str_len = msg.length();
     int max_x = getmaxx(win);
     wmove(win, 0, max_x - str_len);
-    wprintw(win, msg.c_str());
+    wprintw(win, "%s", msg.c_str());
     this->refresh();
   }
 
@@ -29,7 +29,7 @@ namespace ncurses_lib {
     int y, x;
     getyx(win, y, x);
     wmove(win, y, x + 2);
-    wprintw(win, msg.c_str());
+    wprintw(win, "%s", msg.c_str());
     wattroff(win, A_STANDOUT);
     wmove(win, y, x); // Reset cursor position.
   }
