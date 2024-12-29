@@ -1,1 +1,18 @@
 \section{Libraries testing}
+\subsection{config\textunderscore lib}
+\subsubsection{Utilities}
+\paragraph{LT-CON-010 -- Tilde expansion nominal}
+The tilde expansion function shall perform the following application,
+\lstinline{~/.config/timesheeting/timesheeting.toml}
+$\rightarrow$ \lstinline{<home>/timesheeting/timesheeting.toml},
+with \lstinline{<home>} the current \lstinline{$HOME}.
+
+\textit{Tests: } LR-CON-010 -- Tilde expansion utility
+
+\paragraph{LT-CON-020 -- Tilde expansion none}
+The tilde expansion function shall return an identical filepath to the
+input \lstinline{/etc/timesheeting/timesheeting.toml}.
+
+\textit{Tests: } LR-CON-010 -- Tilde expansion utility
+
+\subsubsection{Configuration loader}

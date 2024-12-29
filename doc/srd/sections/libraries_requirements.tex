@@ -1,7 +1,23 @@
 \section{Libraries requirements}
 \subsection{config\textunderscore lib}
-\paragraph{LR-CON-010}
-TODO: uplink
+\subsubsection{Utilities}
+\paragraph{LR-CON-010 -- Tilde expansion utility}
+The config\textunderscore lib shall provide a utility function for tilde
+expansion of filepaths. It replaces eventual leading \lstinline{~/}
+with \lstinline{$HOME} in filepaths. It does nothing on filepaths
+without tilde.
+
+\textit{Uplink: } TODO.
+
+\paragraph{LR-CON-020 -- First existing file}
+The config\textunderscore lib shall provide a utility function, which,
+given a filepath suffix and a list of folders, returns the first found
+existing filepath by trying the suffix over the successive folder
+candidates. It returns nothing if no possible file exists.
+
+\textit{Uplink: } TODO.
+
+\subsubsection{Configuration loader}
 
 \subsection{time\textunderscore lib}
 \paragraph{LR-TIM-010}
