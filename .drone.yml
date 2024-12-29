@@ -33,7 +33,8 @@ steps:
   image: latex_environment
   pull: if-not-exists
   commands:
-  - echo "Hello"
+  - cd doc/spec/
+  - latexmk -pdf spec.tex
   depends_on:
   - latex_environment
 
