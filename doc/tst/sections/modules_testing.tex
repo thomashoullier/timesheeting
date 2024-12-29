@@ -1,0 +1,15 @@
+\section{Modules testing}
+\subsection{version}
+The version module is tested using automated unit tests.
+
+\paragraph{MT-VER-010 -- Program version number}
+We get the current program version number as a \emph{string}.
+We check that its format is compatible with the following \emph{regular
+  expression}: \lstinline{[0123456789]+\.[0123456789]+(?:dev)?}.
+
+\textit{Tests: } MR-VER-010 -- Program version number
+
+\paragraph{MT-VER-020 -- DB version number}
+We get the current DB version as an integer. We test it is greater than zero.
+
+\textit{Tests: } MR-VER-020 -- DB version number

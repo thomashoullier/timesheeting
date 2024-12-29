@@ -1,0 +1,18 @@
+\section{Introduction}
+The test plan contains tests covering the requirements of the program
+subsystems [AD2], as well as end-to-end verification of the program
+behavior [AD1].
+
+The test plan is divided into several sections, in correspondence to the
+program level of abstraction.
+\begin{itemize}
+\item Automated unit testing of libraries,
+\item automated unit testing of modules,
+\item automated end-to-end testing,
+\item manual QA test.
+\end{itemize}
+
+Our approach is to automate most of the testing, and only perform a manual
+test on the \gls{TUI} level, which cannot be easily and fully tested
+automatically. As such, the testing of graphical elements at the unit level
+is not done, it is only done at the end-to-end level.
