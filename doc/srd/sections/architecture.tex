@@ -1,0 +1,44 @@
+\section{Implemented architecture}
+The program is built from \emph{modules}. These modules are themselves supported
+by \emph{libraries}. The modules implement behavior specific to the program
+while the libraries abstract generic behaviors. The libraries may in theory be
+reused in other programs. \cref{fig:arch_modules} is a diagram showing the
+dependency between the different modules and libraries in the program. This
+diagram also shows external dependencies, only for information. A brief
+description of each module and library is given below.
+
+\begin{figure}
+  \includesvg[width=\textwidth]{images/modules_include/modules.svg}
+  \caption{\label{fig:arch_modules} Implemented system architecture diagram.}
+\end{figure}
+
+\subsection{Libraries}
+The following libraries are included in the program,
+\begin{itemize}
+\item \textbf{config\textunderscore lib} loads a configuration file and reads fields
+  from it.
+\item \textbf{time\textunderscore lib} contains objects related to date and
+  time, including durations, timezone management.
+\item \textbf{log\textunderscore lib} provides logging capability of messages to
+  a file.
+\item \textbf{db\textunderscore lib} abstracts the interface to the \gls{DB}, it
+  allows running statements for setting or querying data.
+\item \textbf{ncurses\textunderscore lib} implements some objects on top
+  of ncurses.
+\item \textbf{suggestion} is a text suggestion engine.
+\end{itemize}
+
+\subsection{Modules}
+The following modules are included in the program,
+\begin{itemize}
+\item \textbf{version} configures the version numbers for the program and the
+  \gls{DB}.
+\item \textbf{cli} creates the \gls{CLI} for the program.
+\item \textbf{core} contains data objects specific to the program, to be
+  manipulated across modules.
+\item \textbf{db} is the \gls{DB} interface implementation.
+\item \textbf{keys} manages the key bindings for the \gls{TUI}.
+\item \textbf{tui} creates the \gls{TUI} for the program.
+\item \textbf{exporter} allows the export of timesheet data to an external
+  data format.
+\end{itemize}

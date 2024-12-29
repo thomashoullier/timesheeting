@@ -1,0 +1,53 @@
+\section{Modules requirements}
+\subsection{version}
+The \emph{version} module configures the versions of program components,
+to ensure compatibility between different executables and \gls{DB}.
+
+\paragraph{MR-VER-010 -- Program version number}
+The \emph{version} module shall provide a program version number
+as a string in the following format: \lstinline{x.y},
+with \lstinline{x} the major revision number and \lstinline{y} the
+minor revision number. The major version number and minor version
+number are both integers. Zero is an acceptable version number.
+
+The program version number may be suffixed with \lstinline{dev} to
+indicate an internal development version.
+
+Valid program version number examples are:
+\begin{itemize}
+\item \lstinline{0.5}: for major version 0, minor version 5.
+\item \lstinline{3.1}: for major version 3, minor version 1.
+\item \lstinline{3.1dev}: for a development version after \lstinline{3.1}.
+\end{itemize}
+
+\textit{uplink: } R-REL-010 -- Software version format
+
+\paragraph{MR-VER-020 -- DB version number}
+The \emph{version} module shall provide a \gls{DB} version number as
+a positive integer.
+
+\textit{uplink: } TODO DB module.
+
+\subsection{cli}
+\paragraph{MR-CLI-010}
+TODO: uplink
+
+\subsection{core}
+\paragraph{MR-COR-010}
+TODO: uplink
+
+\subsection{db}
+\paragraph{MR-DBI-010}
+TODO: uplink
+
+\subsection{keys}
+\paragraph{MR-KEY-010}
+TODO: uplink
+
+\subsection{tui}
+\paragraph{MR-TUI-010}
+TODO: uplink
+
+\subsection{exporter}
+\paragraph{MR-EXP-010}
+TODO: uplink

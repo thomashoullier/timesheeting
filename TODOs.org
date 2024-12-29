@@ -31,6 +31,17 @@ Details the requirements applicable to subsystems, as described in the SAD.
 + Default values of entry metadata when left unspecified.
 + Where should the stopwatch be displayed?
 
+*** TODO Move the libs and module graph here
+ADDED: [2024-12-29 Sun]
+We have a diagram in the images for the SDD, move it here.
+Explain the difference between libs and modules.
+
+*** TODO Specify the config_lib
+ADDED: [2024-12-29 Sun]
+
+*** TODO Specify the time_lib
+ADDED: [2024-12-29 Sun]
+
 * System Design document
 ** PRJ1-SDD1
 Proposes the implementations of the subsystems, along with a
@@ -48,10 +59,17 @@ justification/tradeoff.
 
 * External timesheet format
 * Test plan
+** PRJ1-TST1
 Details every tests used to check the software.
 + Include manual GUI tests.
 + Include unit tests of the core logic.
 + Indicate which tests condition the acceptance of a version.
+
+*** TODO Describe the tests for the config_lib
+ADDED: [2024-12-29 Sun]
+
+*** TODO Describe the tests for the time_lib
+ADDED: [2024-12-29 Sun]
 
 * Repository documentation
 ** TODO Add a documentation tree
@@ -95,12 +113,16 @@ Check the build only, at first.
   configuration.
 - OK we are testing the build.
 
-*** TODO Test that all the latex documentation builds
+*** DONE Test that all the latex documentation builds
+CLOSED: [2024-12-29 Sun 11:55]
 ADDED: [2024-11-16 Sat]
 Check the latex documentation build.
 + It is pretty heavy to put a latex installation on a VM for automated building
   though.
 + See this docker: https://hub.docker.com/r/texlive/texlive/tags
+
+*** TODO Add a test coverage report
+ADDED: [2024-12-29 Sun]
 
 * Software
 ** Bugs
@@ -154,7 +176,8 @@ double-tapping validate.
   to the DB v2. We migrated our DB manually by replacing the entries table
   with the newer one.
 
-*** TODO Possible string security problem in ncurses usage
+*** DONE Possible string security problem in ncurses usage
+CLOSED: [2024-12-29 Sun 11:03]
 ADDED: [2024-12-28 Sat]
 The compiler reports the following during build,
 
@@ -178,8 +201,15 @@ has reserved format characters?
 Is there a security risk here?
 + When naming a project as ~Proj%sE~, it is displayed in the bar as
   ~Proj(null)E~. This is pretty bad.
++ We fixed it.
 
 ** Testing
+*** TODO Test the config_lib
+ADDED: [2024-12-29 Sun]
+
+*** TODO Test the time_lib
+ADDED: [2024-12-29 Sun]
+
 *** TODO End-to-end testing with tmux
 ADDED: [2024-08-25 Sun]
 We can test the application in an end-to-end fashion with tmux,

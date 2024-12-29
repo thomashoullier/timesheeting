@@ -5,6 +5,7 @@ digraph modules {
     tomlplusplus [label="tomlplusplus", color="red"]
     rapidfuzz [label="rapidfuzz-cpp", color="red"]
     chrono [label="std::chrono", color="red"]
+    tclap [label="tclap", color="red"]
     time_lib [label="time_lib", color="blue"]
     log_lib [label="log_lib", color="blue"]
     db_lib [label="db_lib", color="blue"]
@@ -31,7 +32,7 @@ digraph modules {
     tomlplusplus -> config_lib
     config_lib -> config
     {time_lib, db, version} -> exporter
-    version -> cli
+    {version, tclap} -> cli
     {ncurses_lib, core, suggestion, time_lib, log_lib, keys, db} -> tui
     //{keys, cli, exporter, db, time_lib, log_lib, config, version, tui} -> main
 }

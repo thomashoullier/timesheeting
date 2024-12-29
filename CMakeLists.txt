@@ -4,7 +4,7 @@ project(timesheeting)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_BUILD_TYPE Release)
 
-set (CMAKE_CXX_FLAGS "-Wall -O2 -Wextra -Wformat=2 -Werror -march=native")
+set (CMAKE_CXX_FLAGS "-Wall -O2 -Wextra -Wformat=2 -Werror -Wpedantic -march=native")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For development with CLANGD
 

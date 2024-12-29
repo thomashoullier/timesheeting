@@ -12,3 +12,6 @@ sub run_makeglossaries {
     system "makeglossaries '$_[0]'";
   };
 }
+
+# Compile dot diagrams
+system("dot -Tsvg images/modules_include/modules.gv > images/modules_include/modules.svg");

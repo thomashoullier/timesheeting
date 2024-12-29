@@ -56,6 +56,15 @@ steps:
   depends_on:
   - latex_environment
 
+- name: PRJ1-SRD1
+  image: latex_environment
+  pull: if-not-exists
+  commands:
+  - cd doc/srd/
+  - latexmk -pdf srd.tex
+  depends_on:
+  - latex_environment
+
 volumes:
 - name: dockersock
   host:
