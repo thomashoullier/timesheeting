@@ -4,6 +4,7 @@
 #include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
 #include <memory>
+#include <string>
 #include "ui_screens/update_manager.h"
 #include "ui/keys/bound_keys.h"
 
@@ -60,6 +61,8 @@ namespace tui {
   }
 
   void resize_handler(int sig) {
-    log_lib::logger().log("SIGWINCH caught.", log_lib::LogLevel::debug);
+    auto sig_str = std::to_string(sig);
+    log_lib::logger().log("SIGWINCH caught: " + sig_str,
+                          log_lib::LogLevel::debug);
   }
 } // namespace tui
