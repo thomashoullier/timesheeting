@@ -29,12 +29,30 @@ steps:
   commands:
   - docker build -t latex_environment doc/.
 
-- name: compile_documentation
+- name: PRJ1-SPE1
   image: latex_environment
   pull: if-not-exists
   commands:
   - cd doc/spec/
   - latexmk -pdf spec.tex
+  depends_on:
+  - latex_environment
+
+- name: PRJ1-SAD1
+  image: latex_environment
+  pull: if-not-exists
+  commands:
+  - cd doc/sad/
+  - latexmk -pdf sad.tex
+  depends_on:
+  - latex_environment
+
+- name: PRJ1-IRS1
+  image: latex_environment
+  pull: if-not-exists
+  commands:
+  - cd doc/irs/
+  - latexmk -pdf irs.tex
   depends_on:
   - latex_environment
 

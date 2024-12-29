@@ -176,6 +176,8 @@ The compiler reports the following during build,
 This could mean that we are susceptible to problems if the printed message
 has reserved format characters?
 Is there a security risk here?
++ When naming a project as ~Proj%sE~, it is displayed in the bar as
+  ~Proj(null)E~. This is pretty bad.
 
 ** Testing
 *** TODO End-to-end testing with tmux
