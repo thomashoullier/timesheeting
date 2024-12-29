@@ -65,6 +65,9 @@ Details every tests used to check the software.
 + Include unit tests of the core logic.
 + Indicate which tests condition the acceptance of a version.
 
+*** TODO Describe the tests for the version module
+ADDED: [2024-12-29 Sun]
+
 *** TODO Describe the tests for the config_lib
 ADDED: [2024-12-29 Sun]
 
