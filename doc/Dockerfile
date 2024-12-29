@@ -1,3 +1,4 @@
 FROM texlive/texlive:latest
-RUN apt install -y inkscape
+RUN apt-get update
+RUN apt-get install -y inkscape
 ENTRYPOINT ["/bin/sh"]
