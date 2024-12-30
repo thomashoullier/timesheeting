@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(timesheeting)
-set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 set(CMAKE_C_COMPILER "/usr/bin/gcc")
+
+project(timesheeting)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_BUILD_TYPE Release)
 
 set (CMAKE_CXX_FLAGS "-Wall -O2 -Wextra -Wformat=2 -Werror -Wpedantic -march=native")
