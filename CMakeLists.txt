@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 project(timesheeting)
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_COMPILER "/usr/bin/gcc")
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 set(CMAKE_C_COMPILER "/usr/bin/gcc")
 set(CMAKE_BUILD_TYPE Release)
 
@@ -134,9 +134,10 @@ if(build_tests)
   find_package(Catch2 3 REQUIRED)
   file(GLOB_RECURSE TEST_SRC "${TIMESHEETING_DIR}/test/*.cpp")
   add_executable(timesheeting_tests "${TEST_SRC}")
-  target_link_libraries(timesheeting_tests PRIVATE Catch2::Catch2WithMain
-                        PUBLIC config_lib)
+  target_link_libraries(timesheeting_tests
+    PRIVATE Catch2::Catch2WithMain
+    PUBLIC config_lib)
   target_include_directories(timesheeting_tests PUBLIC
-    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>"
-    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>")
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>")
 endif()
