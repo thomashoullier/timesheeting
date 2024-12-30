@@ -1,4 +1,5 @@
 #include "config_lib_test.h"
+#include "test_utils/test_utils.h"
 #include <cstdlib>
 #include <filesystem>
 
@@ -16,4 +17,8 @@ TEST_CASE("LT-CON-020 Tilde expansion none", "[config_lib]") {
   const std::filesystem::path in_path{"/etc/timesheeting/timesheeting.toml"};
   const auto out_path = config_lib::expand_tilde(in_path);
   REQUIRE(out_path == in_path);
+}
+
+TEST_CASE("LT-CON-030 First existing file found", "[config_lib]") {
+  auto dir = test_utils::get_new_tempdir("timesheeting_config_lib_test");
 }

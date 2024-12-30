@@ -207,6 +207,9 @@ Is there a security risk here?
 + We fixed it.
 
 ** Testing
+*** TODO Does the Catch2 main catch exceptions?
+ADDED: [2024-12-30 Mon]
+
 *** TODO Test the config_lib
 ADDED: [2024-12-29 Sun]
 

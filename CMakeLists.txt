@@ -131,13 +131,20 @@ install(FILES "${TIMESHEETING_DIR}/timesheeting.toml" DESTINATION etc)
 
 # Unit tests
 if(build_tests)
+  # External dependencies
   find_package(Catch2 3 REQUIRED)
+  # Test libraries
+  file(GLOB_RECURSE TEST_UTILS_SRC
+    "${TIMESHEETING_DIR}/test/test_utils/test_utils/*.cpp")
+  add_library(test_utils STATIC "${TEST_UTILS_SRC}")
+  # Test target
   file(GLOB_RECURSE TEST_SRC "${TIMESHEETING_DIR}/test/*.cpp")
   add_executable(timesheeting_tests "${TEST_SRC}")
   target_link_libraries(timesheeting_tests
     PRIVATE Catch2::Catch2WithMain
-    PUBLIC config_lib)
+    PUBLIC config_lib test_utils)
   target_include_directories(timesheeting_tests PUBLIC
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/test/test_utils/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>")
 endif()
