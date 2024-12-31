@@ -13,6 +13,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For development with CLANGD
 set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
 
 # Dependencies
+set(CURSES_NEED_NCURSES TRUE)
 find_package(Curses REQUIRED)
 find_library(MENU_LIBRARY menu)
 find_package (SQLite3)
