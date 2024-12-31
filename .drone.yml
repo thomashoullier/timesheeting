@@ -17,7 +17,7 @@ steps:
   commands:
   - cd build
   - rm -f CMakeCache.txt
-  - cmake ..
+  - cmake -Dbuild_tests=OFF ..
   - make timesheeting
   depends_on:
   - build_gentoo_environment
