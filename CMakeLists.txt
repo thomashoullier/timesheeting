@@ -13,9 +13,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For development with CLANGD
 set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
 
 # Dependencies
-set(CURSES_NEED_NCURSES TRUE)
-find_package(Curses REQUIRED)
-find_library(MENU_LIBRARY menu)
+
+## Manually set the ncurses libraries
+set(CURSES_LIBRARIES "/usr/lib/libncurses.so;/usr/lib/libtinfo.so")
+set(MENU_LIBRARY "/usr/lib/libmenu.so")
 find_package (SQLite3)
 find_package(tomlplusplus REQUIRED)
 find_package(rapidfuzz REQUIRED)
