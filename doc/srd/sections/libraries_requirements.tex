@@ -42,9 +42,9 @@ The configuration file loader shall allow reading parameters of type
 
 \textit{Uplink: } TODO.
 
-\paragraph{LR-CON-070 -- Filepath non-existent}
-The configuration file loader shall emit an exception if a loaded
-\emph{filepath} does not exist.
+\paragraph{LR-CON-070 -- Filepath parent non-existent}
+The configuration file loader shall emit an exception if the loaded
+\emph{filepath} direct parent does not exist.
 
 \textit{Uplink: } TODO.
 
@@ -55,8 +55,8 @@ The configuration file loader shall allow reading parameters of type
 \textit{Uplink: } TODO.
 
 \paragraph{LR-CON-090 -- Parameter empty case}
-The configuration file loader shall emit an exception if a loaded
-empty is empty, \textit{ie} \lstinline{parameter = }.
+The configuration file loader shall emit an exception if any parameter
+is empty, \textit{ie} \lstinline{parameter = }.
 
 \textit{Uplink: } TODO.
 
@@ -69,6 +69,12 @@ The configuration file loader shall allow reading parameters of type
 \paragraph{LR-CON-110 -- Vector of non-strings case}
 The configuration file loader shall emit an exception if a loaded
 \emph{vector of strings} does not in fact contain strings.
+
+\textit{Uplink: } TODO.
+
+\paragraph{LR-CON-120 -- Configuration file nonexistent}
+The configuration file loader shall emit an exception if it is provided
+a configuration filepath which does not exist.
 
 \textit{Uplink: } TODO.
 

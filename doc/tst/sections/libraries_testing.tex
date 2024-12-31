@@ -59,30 +59,48 @@ empty_string_arg = ""
 [par2]
   [par2.sub1]
   filepath_arg = "~/"
-  filepath_nonexistent_arg = "/dev/null/nonexistent"
+  filepath_nonexistent_arg = "/dev/null/nonexistent/nonexistent"
   [par2.sub2]
   float_arg = 8.3
-  float_empty_arg =
   [par2.sub3]
   vector_strings_arg = [ "hello", "there", "fox", "delta" ]
   vector_nonstrings_arg = [ 31, 1, 43 ]
-                     
 \end{lstlisting} \end{minipage}
 
-\paragraph{LT-CON-050 -- String parameter reading}
+\begin{minipage}{\linewidth}
+  \begin{lstlisting}[caption={TOML test configuration file.},
+                     label={lst:toml_file_empty}]
+[par1]
+string_arg = "Hello there."
+empty_arg = 
+\end{lstlisting} \end{minipage}
+
+\paragraph{LT-CON-050 -- Configuration file loading}
+The configuration loader shall successfully initialize given the filepath
+for \cref{lst:toml_file}.
+
+\textit{Tests: } LR-CON-030 -- Configuration file format
+
+\paragraph{LT-CON-060 -- Configuration file non-existent}
+The configuration loader shall emit an exception when provided the
+filepath \lstinline{/dev/null/nonexistent}.
+
+\textit{Tests: } LR-CON-120 -- Configuration file nonexistent
+
+\paragraph{LT-CON-070 -- String parameter reading}
 Given \cref{lst:toml_file}, the configuration loader shall read the
 \lstinline{par1.string_arg} node as a \emph{string} and return
 \lstinline{"Hello there."}.
 
 \textit{Tests: } LR-CON-040 -- String loading
 
-\paragraph{LT-CON-060 -- String parameter empty}
+\paragraph{LT-CON-080 -- String parameter empty}
 Given \cref{lst:toml_file}, the configuration loader shall read the
 \lstinline{par1.empty_string_arg} node as a \emph{string} and emit an exception.
 
 \textit{Tests: } LR-CON-050 -- String empty case
 
-\paragraph{LT-CON-070 -- Filepath reading}
+\paragraph{LT-CON-090 -- Filepath reading}
 Given \cref{lst:toml_file}, the configuration loader shall read the
 \lstinline{par2.sub1.filepath_arg} node as a \emph{filepath}
 and return \lstinline{$HOME}, set to the current \lstinline{HOME} environment
@@ -90,35 +108,34 @@ variable.
 
 \textit{Tests: } LR-CON-060 -- Filepath loading
 
-\paragraph{LT-CON-080 -- Filepath non-existent}
+\paragraph{LT-CON-100 -- Filepath non-existent}
 Given \cref{lst:toml_file}, the configuration loader shall read the
 \lstinline{par2.sub1.filepath_nonexistent_arg} node as a \emph{filepath}
 and emit an exception.
 
-\textit{Tests: } LR-CON-070 -- Filepath non-existent
+\textit{Tests: } LR-CON-070 -- Filepath parent non-existent
 
-\paragraph{LT-CON-090 -- Float reading}
+\paragraph{LT-CON-110 -- Float reading}
 Given \cref{lst:toml_file}, the configuration loader shall read the
 \lstinline{par2.sub2.float_arg} node as a \emph{float} and return
 \lstinline{8.3}.
 
 \textit{Tests: } LR-CON-080 -- Float loading
 
-\paragraph{LT-CON-100 -- Empty parameter case}
-Given \cref{lst:toml_file}, the configuration loader shall read the
-\lstinline{par2.sub2.float_empty_arg} node as a \emph{float} and emit an
-exception.
+\paragraph{LT-CON-120 -- Empty parameter case}
+Given \cref{lst:toml_file_empty}, the configuration loader shall emit an
+exception upon loading the configuration file.
 
 \textit{Tests: } LR-CON-090 -- Parameter empty case
 
-\paragraph{LT-CON-110 -- Vector of strings reading}
+\paragraph{LT-CON-130 -- Vector of strings reading}
 Given \cref{lst:toml_file}, the configuration loader shall read the
 \lstinline{par2.sub3.vector_strings_arg} node as a \emph{vector of strings}
 and return the vector \lstinline{"hello", "there", "fox", "delta"} in order.
 
 \textit{Tests: } LR-CON-100 -- Vector of strings loading
 
-\paragraph{LT-CON-120 -- Vector of non-strings case}
+\paragraph{LT-CON-140 -- Vector of non-strings case}
 Given \cref{lst:toml_file}, the configuration loader shall read the
 \lstinline{par2.sub3.vector_nonstrings_arg} node as a \emph{vector of strings}
 and emit an exception.
