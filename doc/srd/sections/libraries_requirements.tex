@@ -30,21 +30,45 @@ The configuration file loader shall allow reading parameters of type
 
 \textit{Uplink: } TODO.
 
-\paragraph{LR-CON-050 -- Filepath loading}
+\paragraph{LR-CON-050 -- String empty case}
+The configuration file loader shall emit an exception if a loaded
+\emph{string} is empty (\textit{ie} \lstinline{""}).
+
+\textit{Uplink: } TODO.
+
+\paragraph{LR-CON-060 -- Filepath loading}
 The configuration file loader shall allow reading parameters of type
 \emph{filepath} with automatic tilde expansion.
 
 \textit{Uplink: } TODO.
 
-\paragraph{LR-CON-060 -- Float loading}
+\paragraph{LR-CON-070 -- Filepath non-existent}
+The configuration file loader shall emit an exception if a loaded
+\emph{filepath} does not exist.
+
+\textit{Uplink: } TODO.
+
+\paragraph{LR-CON-080 -- Float loading}
 The configuration file loader shall allow reading parameters of type
 \emph{float}.
 
 \textit{Uplink: } TODO.
 
-\paragraph{LR-CON-070 -- Vector of strings loading}
+\paragraph{LR-CON-090 -- Parameter empty case}
+The configuration file loader shall emit an exception if a loaded
+empty is empty, \textit{ie} \lstinline{parameter = }.
+
+\textit{Uplink: } TODO.
+
+\paragraph{LR-CON-100 -- Vector of strings loading}
 The configuration file loader shall allow reading parameters of type
 \emph{vector of strings}. The order of strings in the vector is preserved.
+
+\textit{Uplink: } TODO.
+
+\paragraph{LR-CON-110 -- Vector of non-strings case}
+The configuration file loader shall emit an exception if a loaded
+\emph{vector of strings} does not in fact contain strings.
 
 \textit{Uplink: } TODO.
 
