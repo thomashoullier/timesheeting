@@ -126,6 +126,8 @@ Check the latex documentation build.
 
 *** TODO Add a test coverage report
 ADDED: [2024-12-29 Sun]
+Use lcov or gcov and upload the report to something publicly browsable which
+gives which parts of the source are covered.
 
 * Software
 ** Bugs

@@ -47,7 +47,7 @@ TEST_CASE("LT-CON-010 Tilde expansion nominal", "[config_lib]") {
   std::filesystem::path ref_path = std::getenv("HOME");
   ref_path /= std::filesystem::path{".config/timesheeting/timesheeting.toml"};
   const auto out_path = config_lib::expand_tilde(in_path);
-  CHECK(std::filesystem::equivalent(out_path, ref_path));
+  CHECK(out_path == ref_path);
 }
 
 TEST_CASE("LT-CON-020 Tilde expansion none", "[config_lib]") {
