@@ -15,9 +15,14 @@ set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
 # Dependencies
 
 ## Manually set the ncurses libraries
-set(CURSES_LIBRARIES "/usr/lib/libncurses.so;/usr/lib/libtinfo.so")
-set(MENU_LIBRARY "/usr/lib/libmenu.so")
-find_package (SQLite3)
+if (EXISTS "/usr/lib/libncurses.so")
+  set(CURSES_LIBRARIES "/usr/lib/libncurses.so;/usr/lib/libtinfo.so")
+  set(MENU_LIBRARY "/usr/lib/libmenu.so")
+else ()
+  set(CURSES_LIBRARIES "/usr/lib64/libncurses.so;/usr/lib64/libtinfo.so")
+  set(MENU_LIBRARY "/usr/lib64/libmenu.so")
+endif()
+find_package (SQLite3 REQUIRED)
 find_package(tomlplusplus REQUIRED)
 find_package(rapidfuzz REQUIRED)
 
