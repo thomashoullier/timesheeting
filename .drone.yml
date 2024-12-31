@@ -16,7 +16,7 @@ steps:
   pull: if-not-exists
   commands:
   - cd build
-  - cmake ..
+  - cmake -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ ..
   - make timesheeting
   depends_on:
   - build_gentoo_environment
@@ -36,7 +36,7 @@ steps:
   pull: if-not-exists
   commands:
   - cd build
-  - cmake -Dbuild_tests=ON ..
+  - cmake -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -Dbuild_tests=ON ..
   - make timesheeting_tests
   depends_on:
   - test_environment
