@@ -66,6 +66,11 @@ steps:
   image: coverage_environment
   pull: if-not-exists
   commands:
+  - rm -rf build_coverage
+  - mkdir -p build_coverage
+  - cd build_coverage
+  - cmake -Dbuild_coverage=ON ..
+  - make timesheeting_coverage_report
   - rm -rf ~/.gnupg
   - mkdir -p ~/.gnupg
   - curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring ~/.gnupg/trustedkeys.gpg --import
@@ -74,11 +79,6 @@ steps:
   - curl -Os https://uploader.codecov.io/latest/alpine/codecov.SHA256SUM.sig
   - gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
   - shasum -a 256 -c codecov.SHA256SUM
-  - rm -rf build_coverage
-  - mkdir -p build_coverage
-  - cd build_coverage
-  - cmake -Dbuild_coverage=ON ..
-  - make timesheeting_coverage_report
   - chmod +x codecov
   - ./codecov -t ${CODECOV_TOKEN} -f timesheeting_coverage_report.info
   depends_on:
