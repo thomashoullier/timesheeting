@@ -71,11 +71,11 @@ steps:
   - cd build_coverage
   - cmake -Dbuild_coverage=ON ..
   - make timesheeting_coverage_report
-  - curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring ~/.gnupg/trustedkeys.kbx --import # One-time step
+  - curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring ~/.gnupg/trustdb.gpg --import # One-time step
   - curl -Os https://uploader.codecov.io/latest/alpine/codecov
   - curl -Os https://uploader.codecov.io/latest/alpine/codecov.SHA256SUM
   - curl -Os https://uploader.codecov.io/latest/alpine/codecov.SHA256SUM.sig
-  - gpgv --keyring ~/.gnupg/trustedkeys.kbx codecov.SHA256SUM.sig codecov.SHA256SUM
+  - gpgv --keyring ~/.gnupg/trustdb.gpg codecov.SHA256SUM.sig codecov.SHA256SUM
   - shasum -a 256 -c codecov.SHA256SUM
   - chmod +x codecov
   - ./codecov -t ${CODECOV_TOKEN} -f timesheeting_coverage_report.info
