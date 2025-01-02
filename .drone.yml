@@ -11,23 +11,16 @@ steps:
   commands:
   - docker build -t gentoo_environment .
 
-- name: cmake
+- name: build
   image: gentoo_environment
   pull: if-not-exists
   commands:
   - rm -rf build/*
   - cd build
-  - cmake -Dbuild_tests=ON -Dbuild_coverage=ON ..
-  depends_on:
-  - build_gentoo_environment
-
-- name: build
-  image: gentoo_environment
-  pull: if-not-exists
-  commands:
+  - cmake ..
   - make timesheeting
   depends_on:
-  - cmake
+  - build_gentoo_environment
 
 - name: test_environment
   image: docker
@@ -43,16 +36,19 @@ steps:
   image: test_environment
   pull: if-not-exists
   commands:
+  - rm -rf build_test
+  - mkdir -p build_test
+  - cd build_test
+  - cmake -Dbuild_tests=ON ..
   - make timesheeting_tests
   depends_on:
   - test_environment
-  - cmake
 
 - name: test_run
   image: test_environment
   pull: if-not-exists
   commands:
-  - ./build/timesheeting_tests
+  - ./build_test/timesheeting_tests
   depends_on:
   - test_build
 
@@ -70,6 +66,10 @@ steps:
   image: coverage_environment
   pull: if-not-exists
   commands:
+  - rm -rf build_coverage
+  - mkdirp -p build_coverage
+  - cd build_coverage
+  - cmake -Dbuild_coverage=ON ..
   - make timesheeting_coverage_report
   - curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
   - curl -Os https://uploader.codecov.io/latest/alpine/codecov
@@ -81,7 +81,6 @@ steps:
   - ./codecov -t ${CODECOV_TOKEN} -f timesheeting_coverage_report.info
   depends_on:
   - coverage_environment
-  - cmake
 
 - name: latex_environment
   image: docker
