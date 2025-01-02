@@ -69,6 +69,14 @@ steps:
   - rm -f CMakeCache.txt
   - cmake -Dbuild_tests=OFF -Dbuild_coverage=ON ..
   - make timesheeting_coverage_report
+  - curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
+  - curl -Os https://uploader.codecov.io/latest/alpine/codecov
+  - curl -Os https://uploader.codecov.io/latest/alpine/codecov.SHA256SUM
+  - curl -Os https://uploader.codecov.io/latest/alpine/codecov.SHA256SUM.sig
+  - gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+  - shasum -a 256 -c codecov.SHA256SUM
+  - chmod +x codecov
+  - ./codecov -t ${CODECOV_TOKEN} -f timesheeting_coverage_report.info
   depends_on:
   - coverage_environment
 
