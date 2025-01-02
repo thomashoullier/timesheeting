@@ -16,8 +16,7 @@ steps:
   pull: if-not-exists
   commands:
   - cd build
-  - rm -f CMakeCache.txt
-  - cmake -Dbuild_tests=OFF ..
+  - cmake -Dbuild_tests=OFF -Dbuild_coverage=OFF ..
   - make timesheeting
   depends_on:
   - build_gentoo_environment
@@ -37,8 +36,7 @@ steps:
   pull: if-not-exists
   commands:
   - cd build
-  - rm -f CMakeCache.txt
-  - cmake -Dbuild_tests=ON ..
+  - cmake -Dbuild_tests=ON -Dbuild_coverage=OFF ..
   - make timesheeting_tests
   depends_on:
   - test_environment
@@ -50,6 +48,26 @@ steps:
   - ./build/timesheeting_tests
   depends_on:
   - test_build
+
+- name: coverage_environment
+  image: docker
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - docker build -t coverage_environment test/coverage.Dockerfile
+  depends_on:
+  - test_environment
+
+- name: run_coverage
+  image: coverage_environment
+  pull: if-not-exists
+  commands:
+  - cd build
+  - cmake -Dbuild_tests=OFF -Dbuild_coverage=ON ..
+  - make timesheeting_coverage_report
+  depends_on:
+  - coverage_environment
 
 - name: latex_environment
   image: docker
