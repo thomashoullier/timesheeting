@@ -57,7 +57,7 @@ steps:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - docker build -t coverage_environment -f coverage.Dockerfile test/.
+  - docker build -t coverage_environment -f test/coverage.Dockerfile .
   depends_on:
   - test_environment
 
