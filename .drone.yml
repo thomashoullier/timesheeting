@@ -16,7 +16,7 @@ steps:
   pull: if-not-exists
   commands:
   - cd build
-  - rm CMakeCache.txt
+  - rm -f CMakeCache.txt
   - cmake -Dbuild_tests=OFF -Dbuild_coverage=OFF ..
   - make timesheeting
   depends_on:
@@ -37,7 +37,7 @@ steps:
   pull: if-not-exists
   commands:
   - cd build
-  - rm CMakeCache.txt
+  - rm -f CMakeCache.txt
   - cmake -Dbuild_tests=ON -Dbuild_coverage=OFF ..
   - make timesheeting_tests
   depends_on:
@@ -66,7 +66,7 @@ steps:
   pull: if-not-exists
   commands:
   - cd build
-  - rm CMakeCache.txt
+  - rm -f CMakeCache.txt
   - cmake -Dbuild_tests=OFF -Dbuild_coverage=ON ..
   - make timesheeting_coverage_report
   depends_on:
