@@ -15,8 +15,8 @@ steps:
   image: gentoo_environment
   pull: if-not-exists
   commands:
+  - rm -rf build/*
   - cd build
-  - rm -f CMakeCache.txt
   - cmake -Dbuild_tests=OFF -Dbuild_coverage=OFF ..
   - make timesheeting
   depends_on:
@@ -36,8 +36,8 @@ steps:
   image: test_environment
   pull: if-not-exists
   commands:
+  - rm -rf build/*
   - cd build
-  - rm -f CMakeCache.txt
   - cmake -Dbuild_tests=ON -Dbuild_coverage=OFF ..
   - make timesheeting_tests
   depends_on:
@@ -65,8 +65,8 @@ steps:
   image: coverage_environment
   pull: if-not-exists
   commands:
+  - rm -rf build/*
   - cd build
-  - rm -f CMakeCache.txt
   - cmake -Dbuild_tests=OFF -Dbuild_coverage=ON ..
   - make timesheeting_coverage_report
   - curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
