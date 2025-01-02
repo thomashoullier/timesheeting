@@ -67,7 +67,7 @@ steps:
   pull: if-not-exists
   commands:
   - rm -rf build_coverage
-  - mkdirp -p build_coverage
+  - mkdir -p build_coverage
   - cd build_coverage
   - cmake -Dbuild_coverage=ON ..
   - make timesheeting_coverage_report
