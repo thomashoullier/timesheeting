@@ -72,7 +72,7 @@ steps:
   - cmake -Dbuild_coverage=ON ..
   - make timesheeting_coverage_report
   - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
-  - coveralls report --repo-token=${CODECOV_TOKEN} timesheeting_coverage_report.info
+  - coveralls report timesheeting_coverage_report.info
   depends_on:
   - coverage_environment
 
