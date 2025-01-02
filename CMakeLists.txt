@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(timesheeting)
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_BUILD_TYPE Release)
 
 set (CMAKE_CXX_FLAGS "-Wall -O2 -Wextra -Wformat=2 -Werror -Wpedantic -march=native")
 
 option(build_tests "Build the test suite" OFF)
+option(build_coverage "Build the test coverage report" OFF)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For development with CLANGD
 
@@ -121,7 +123,7 @@ target_link_libraries(timesheeting PUBLIC
                       keys cli tui exporter db time_lib log_lib
                       config)
 target_include_directories(timesheeting PUBLIC
-  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/version/>"
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/ui/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/exporter/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/db/>"
@@ -134,16 +136,19 @@ set(CMAKE_INSTALL_PREFIX /)
 install(TARGETS timesheeting DESTINATION bin)
 install(FILES "${TIMESHEETING_DIR}/timesheeting.toml" DESTINATION etc)
 
-# Unit tests
-if(build_tests)
+if(build_tests OR build_coverage)
   # External dependencies
   find_package(Catch2 3 REQUIRED)
   # Test libraries
   file(GLOB_RECURSE TEST_UTILS_SRC
     "${TIMESHEETING_DIR}/test/test_utils/test_utils/*.cpp")
   add_library(test_utils STATIC "${TEST_UTILS_SRC}")
-  # Test target
+  # Test source
   file(GLOB_RECURSE TEST_SRC "${TIMESHEETING_DIR}/test/*.cpp")
+endif()
+
+# Unit tests
+if(build_tests)
   add_executable(timesheeting_tests "${TEST_SRC}")
   target_link_libraries(timesheeting_tests
     PRIVATE Catch2::Catch2WithMain
@@ -152,4 +157,32 @@ if(build_tests)
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/test/test_utils/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>")
+endif()
+
+if(build_coverage)
+  include(CodeCoverage)
+  file(GLOB_RECURSE COVERED_SRC_MODULES "${TIMESHEETING_DIR}/src/modules/*")
+  file(GLOB_RECURSE COVERED_SRC_LIBS "${TIMESHEETING_DIR}/src/libs/*")
+  add_executable(timesheeting_coverage
+    "${COVERED_SRC_MODULES}" "${COVERED_SRC_LIBS}" "${TEST_SRC}")
+  target_link_libraries(timesheeting_coverage
+    PRIVATE Catch2::Catch2WithMain
+    PUBLIC test_utils
+    keys cli tui exporter db time_lib log_lib config)
+  target_include_directories(timesheeting_coverage PUBLIC
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/test/test_utils/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/ui/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/exporter/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/db/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/time_lib/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/config/>")
+  set_target_properties(timesheeting_coverage PROPERTIES COMPILE_FLAGS
+    "${CMAKE_CXX_FLAGS} -O0 -fprofile-arcs -ftest-coverage")
+  setup_target_for_coverage_lcov(
+    NAME timesheeting_coverage_report
+    EXECUTABLE timesheeting_coverage
+    BASE_DIRECTORY "${TIMESHEETING_DIR}"
+    EXCLUDE "${TIMESHEETING_DIR}/test/*" "/usr/*")
 endif()
