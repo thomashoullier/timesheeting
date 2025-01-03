@@ -13,3 +13,95 @@ We check that its format is compatible with the following \emph{regular
 We get the current DB version as an integer. We test it is greater than zero.
 
 \textit{Tests: } MR-VER-020 -- DB version number
+
+\subsection{config}
+The following automated unit tests are used for the config module.
+
+\begin{minipage}{\linewidth}
+  \begin{lstlisting}[caption={timesheeting example configuration file},
+                     label={lst:config_file}]
+[db]
+file = "~/.local/timesheeting/timesheeting.db"
+
+[time]
+timezone = "Europe/Paris"
+hours_per_workday = 7.7
+
+[log]
+file = "~/.local/timesheeting/timesheeting.log"
+active_levels = [ "debug", "error", "info" ]
+
+[keys]
+  [keys.navigation]
+  up = "e"
+  down = "n"
+  left = "h"
+  right = "i"
+  subtabs = "\t"
+  previous = ","
+  next = "."
+  duration_display = "d"
+  entries_screen = "1"
+  projects_screen = "2"
+  locations_screen = "3"
+  project_report_screen = "4"
+  weekly_report_screen = "5"
+  active_visibility = "."
+  quit = "q"
+  [keys.actions]
+  commit_entry = "\n"
+  set_now = " "
+  add = "a"
+  rename = "r"
+  remove = "x"
+  active_toggle = "b"
+  task_project_change = "p"
+  [keys.edit_mode]
+  validate = "\n"
+  cancel = "ESCAPE"
+  select_suggestion = "\t"
+\end{lstlisting} \end{minipage}
+
+\paragraph{MT-CON-010 -- Config file loading}
+Given the filepath to a file containing \cref{lst:config_file},
+the \emph{config} module loader shall return the internal configuration
+parameters representation without error.
+
+\textit{Tests: } MR-CON-010 -- Load from path.
+
+\paragraph{MT-CON-020 -- Config file non-existent}
+Given the filepath \lstinline{/dev/null/nonexistent} as the path
+to the configuration file, the \emph{config} module loader shall
+emit an exception.
+
+\textit{Tests: } MR-CON-020 -- Non-existent path.
+
+\paragraph{MT-CON-030 -- Log filepath}
+The configuration parameters loaded from \cref{lst:config_file}
+shall contain a filepath \lstinline{log_filepath}.
+
+\textit{Tests: } MR-CON-050 -- Log filepath
+
+\paragraph{MT-CON-040 -- Log levels}
+The configuration parameters loaded from \cref{lst:config_file}
+shall contain a vector of strings \lstinline{log_levels_to_activate}.
+
+\textit{Tests: } MR-CON-060 -- Log levels
+
+\paragraph{MT-CON-050 -- DB filepath}
+The configuration parameters loaded from \cref{lst:config_file}
+shall contain a filepath \lstinline{db_filepath}.
+
+\textit{Tests: } MR-CON-070 -- DB filepath
+
+\paragraph{MT-CON-060 -- Timezone string}
+The configuration parameters loaded from \cref{lst:config_file}
+shall contain a string \lstinline{timezone}.
+
+\textit{Tests: } MR-CON-080 -- Timezone string
+
+\paragraph{MT-CON-070 -- Duration display days}
+The configuration parameters loaded from \cref{lst:config_file}
+shall contain a float \lstinline{hours_per_workday}.
+
+\textit{Tests: } MR-CON-090 -- Duration display days
