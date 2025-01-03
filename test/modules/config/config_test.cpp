@@ -16,7 +16,7 @@ generate_example_config(const std::filesystem::path &dirpath) {
     "hours_per_workday = 7.7\n"
     "\n"
     "[log]\n"
-    "file = \"~/tmp/timesheeting.log\"\n"
+    "file = \"/tmp/timesheeting.log\"\n"
     "active_levels = [ \"debug\", \"error\", \"info\" ]\n"
     "\n"
     "[keys]\n"
