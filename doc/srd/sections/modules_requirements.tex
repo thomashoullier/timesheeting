@@ -28,6 +28,85 @@ a positive integer.
 
 \textit{uplink: } TODO DB module.
 
+\subsection{config}
+The \emph{config} module loads the configuration file, translates the parameters
+into an internal representation and transmits them to the rest of the program.
+
+\subsubsection{Configuration file loading}
+
+\paragraph{MR-CON-010 -- Load from path}
+The \emph{config} module shall load any compliant user configuration file when
+provided with its path.
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-020 -- Non-existent path}
+The \emph{config} module shall emit an exception when the path provided for the
+configuration file corresponds to a file which does not exist.
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-030 -- Default configuration file locations}
+The \emph{config} module shall provide a default load method which looks
+for the configuration file \lstinline{timesheeting/timesheeting.toml}
+in the following default locations, in order of preference,
+\begin{enumerate}
+  \item \lstinline{$XDG_CONFIG_HOME}
+  \item \lstinline{$HOME/.config/}
+  \item \lstinline{/etc/}
+\end{enumerate}
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-040 -- Default configuration file not found}
+The \emph{config} module default load method shall emit an exception if
+no configuration file was found in any of the default locations.
+
+\textit{uplink: } TODO.
+
+\subsubsection{Logger configuration}
+\paragraph{MR-CON-050 -- Log filepath}
+The \emph{config} module shall load from the configuration file a filepath
+for the log file. This parameter is at the node \lstinline{log.file}.
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-060 -- Log levels}
+The \emph{config} module shall load from the configuration file a vector of
+strings defining the active log levels. This parameter is at the node
+\lstinline{log.active_levels}.
+
+\textit{uplink: } TODO.
+
+\subsubsection{DB configuration}
+\paragraph{MR-CON-070 -- DB filepath}
+The \emph{config} module shall load from the configuration file a filepath
+for the DB file. This parameter is at the node \lstinline{db.file}.
+
+\textit{uplink: } TODO.
+
+\subsubsection{Timezone configuration}
+\paragraph{MR-CON-080 -- Timezone string}
+The \emph{config} module shall load from the configuration file a string
+representing the timezone to use. This parameter is at the node
+\lstinline{time.timezone}.
+
+\textit{uplink: } TODO.
+
+\subsubsection{Duration display configuration}
+\paragraph{MR-CON-090 -- Duration display days}
+THe \emph{config} module shall load from the configuration file a float
+representing the number of hours in a workday for duration display.
+This parameter is at the node \lstinline{time.hours_per_workday}.
+
+\textit{uplink: } TODO.
+
+\subsubsection{Key bindings configuration}
+TODO:
+* Parsing of each key binding (maybe do a table)
+* Parsing primary and secondary
+* Parsing special keys
+
 \subsection{cli}
 \paragraph{MR-CLI-010}
 TODO: uplink
