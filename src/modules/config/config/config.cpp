@@ -37,7 +37,9 @@ namespace config {
       try_paths.push_back(std::getenv("XDG_CONFIG_HOME"));
     }
     if (std::getenv("HOME")) {
-      try_paths.push_back(std::getenv("HOME"));
+      std::filesystem::path temp_path = std::getenv("HOME");
+      temp_path /= ".config";
+      try_paths.push_back(temp_path);
     }
     try_paths.push_back("/etc/");
     auto maybe_config_filepath =
