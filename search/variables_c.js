@@ -4,7 +4,7 @@ var searchData=
   ['period_5fselector_1',['period_selector',['../classtui_1_1PeriodSelectorUI.html#a6fd28011796725d7751f8ffa9859558e',1,'tui::PeriodSelectorUI']]],
   ['period_5fselector_5fui_2',['period_selector_ui',['../classtui_1_1ProjectReportScreen.html#aa3a051e01aeb1ea6f5cccb38f6725880',1,'tui::ProjectReportScreen']]],
   ['previous_3',['previous',['../structconfig_1_1NavigationKeys.html#adc524843661cdc28ef9aa82772243722',1,'config::NavigationKeys']]],
-  ['primary_4',['primary',['../structconfig_1_1Key.html#a4d28af168791521dadec517b23fd6167',1,'config::Key']]],
+  ['primary_4',['primary',['../structconfig_1_1Key.html#a2dd56f5bfcec4917be88c7c0f5fa2ea8',1,'config::Key']]],
   ['project_5fcol_5',['project_col',['../classtui_1_1ProjectTaskScreen.html#a0f6e7907ab8ed746f4d1a5451b45bbec',1,'tui::ProjectTaskScreen']]],
   ['project_5fduration_6',['project_duration',['../classdb_1_1StatementSet.html#a598ccc4ff58ac0a59f54f1eb09b672df',1,'db::StatementSet']]],
   ['project_5fid_7',['project_id',['../structcore_1_1ExportRow.html#a990bc07516386b0f15a2de6a0fcd3f5b',1,'core::ExportRow']]],

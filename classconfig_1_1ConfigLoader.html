@@ -121,10 +121,18 @@ Private Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_key</b> (<a class="el" href="structconfig_1_1Key.html">Key</a> &amp;k, std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader, std::vector&lt; std::string &gt; tree_pos)</td></tr>
 <tr class="memdesc:ac46d7dc94b7be5faac289f2bfb8d533a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a key (primary and alternate bindings). <br /></td></tr>
 <tr class="separator:ac46d7dc94b7be5faac289f2bfb8d533a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d340114e88658f165af0696a4ee51fd" id="r_a5d340114e88658f165af0696a4ee51fd"><td class="memItemLeft" align="right" valign="top"><a id="a5d340114e88658f165af0696a4ee51fd" name="a5d340114e88658f165af0696a4ee51fd"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>parse_binding_string</b> (const std::string &amp;str)</td></tr>
-<tr class="memdesc:a5d340114e88658f165af0696a4ee51fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a string given for a key binding to a character. <br /></td></tr>
-<tr class="separator:a5d340114e88658f165af0696a4ee51fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7aacf8c343aa25f6b78eca9f490881f" id="r_aa7aacf8c343aa25f6b78eca9f490881f"><td class="memItemLeft" align="right" valign="top"><a id="aa7aacf8c343aa25f6b78eca9f490881f" name="aa7aacf8c343aa25f6b78eca9f490881f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>parse_special_string</b> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:aa7aacf8c343aa25f6b78eca9f490881f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a string into a special key binding. <br /></td></tr>
+<tr class="separator:aa7aacf8c343aa25f6b78eca9f490881f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3635b4d1240c7f62119676fa12e0940" id="r_ab3635b4d1240c7f62119676fa12e0940"><td class="memItemLeft" align="right" valign="top"><a id="ab3635b4d1240c7f62119676fa12e0940" name="ab3635b4d1240c7f62119676fa12e0940"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>parse_regular_string</b> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:ab3635b4d1240c7f62119676fa12e0940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a string into a character key binding. <br /></td></tr>
+<tr class="separator:ab3635b4d1240c7f62119676fa12e0940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad39cad873e4ec44b4b50b23f10854187" id="r_ad39cad873e4ec44b4b50b23f10854187"><td class="memItemLeft" align="right" valign="top"><a id="ad39cad873e4ec44b4b50b23f10854187" name="ad39cad873e4ec44b4b50b23f10854187"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>parse_binding_string</b> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:ad39cad873e4ec44b4b50b23f10854187"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a string given for a key binding to a character. <br /></td></tr>
+<tr class="separator:ad39cad873e4ec44b4b50b23f10854187"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Config file loader class. </p>

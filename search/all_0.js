@@ -12,5 +12,5 @@ var searchData=
   ['add_5flocation_9',['add_location',['../classdb_1_1DB__SQLite.html#a4fb1e0bedcaf47650d07cb4de6396de1',1,'db::DB_SQLite']]],
   ['add_5fproject_10',['add_project',['../classdb_1_1DB__SQLite.html#a2c5fac4820f9ccf1ad45748fe82670a2',1,'db::DB_SQLite']]],
   ['add_5ftask_11',['add_task',['../classdb_1_1DB__SQLite.html#acd5220935b7bc6f60f226af252ef974a',1,'db::DB_SQLite']]],
-  ['alt_12',['alt',['../structconfig_1_1Key.html#a18d1ae090bdd8d007ab3674fcdef862a',1,'config::Key']]]
+  ['alt_12',['alt',['../structconfig_1_1Key.html#aadfc799ab04cf7a8d36a25e603461cbd',1,'config::Key']]]
 ];
