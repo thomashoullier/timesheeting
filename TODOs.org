@@ -73,7 +73,8 @@ Record a video for showing the basic operation of the software.
 
 * Doxygen documentation
 * CI
-*** TODO Add a test coverage report
+*** DONE Add a test coverage report
+CLOSED: [2025-01-05 Sun 17:20]
 ADDED: [2024-12-29 Sun]
 Use lcov or gcov and upload the report to something publicly browsable which
 gives which parts of the source are covered.
@@ -213,6 +214,10 @@ ADDED: [2024-11-28 Thu]
 When loading the keys into BoundKeys, check that keys are not bound twice in the
 same section. Edit mode and the other sections may mix however.
 Stop with an exception if this is the case.
++ We have to check navigation+actions together, and edit_mode separately.
++ This takes care of itself if we build a hashmap for the related
+  issue abount mapping keys to an enum, existing keys can be detected as they
+  are added.
 
 *** DEAD Implement a check of the DB when opening
 CLOSED: [2024-11-23 Sat 17:10]
@@ -229,13 +234,15 @@ Start from the top of the log file, parse the date into an internal UTC format,
 compare it with startup time, any line which is older than target gets deleted,
 we stop once we reach the first recent enough entry.
 
-*** TODO Bind arrow keys to up/down/left/right
+*** DONE Bind arrow keys to up/down/left/right
+CLOSED: [2025-01-05 Sun 17:06]
 ADDED: [2024-11-09 Sat]
 Use alternative bindings to bind arrow keys to navigation.
 It does not seem we can escape a character to represent the arrow
 key. We have to use a string to represent it.
 
-*** TODO Implement a set of special keys available for bindings
+*** DONE Implement a set of special keys available for bindings
+CLOSED: [2025-01-05 Sun 17:06]
 ADDED: [2024-11-10 Sun]
 Implement the following special keys:
 + ESCAPE
