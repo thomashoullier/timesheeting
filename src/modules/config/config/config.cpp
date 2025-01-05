@@ -99,14 +99,35 @@ namespace config {
     return kb;
   }
 
-  char ConfigLoader::parse_binding_string(const std::string &str) {
-    // Parsing special keys
-    if (str == "ESCAPE")
+  char ConfigLoader::parse_special_string (const std::string &str) {
+    if (str == "ESCAPE") {
       return 27;
-    // Parsing regular keys
-    if (str.length() != 1)
-      throw std::runtime_error("Invalid string for key binding.");
+    }
+    if (str == "ENTER") {
+      return '\n';
+    }
+    if (str == "SPACE") {
+      return ' ';
+    }
+    if (str == "TAB") {
+      return '\t';
+    }
+    throw std::runtime_error("Invalid special string for key binding.");
+  }
+
+  char ConfigLoader::parse_regular_string (const std::string &str) {
     return str.at(0);
+  }
+
+  char ConfigLoader::parse_binding_string(const std::string &str) {
+    auto len = str.length();
+    if (len == 1) {
+      return parse_regular_string(str);
+    } else if (len > 1) {
+      return parse_special_string(str);
+    } else {
+      throw std::runtime_error("Invalid string for key binding.");
+    }
   }
 
   void

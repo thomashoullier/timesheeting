@@ -237,10 +237,15 @@ key. We have to use a string to represent it.
 
 *** TODO Implement a set of special keys available for bindings
 ADDED: [2024-11-10 Sun]
-Add a set of special keys along with "ESCAPE", such as "ALT", "LSHIFT",
-etc.
+Implement the following special keys:
++ ESCAPE
++ ENTER
++ SPACE
++ TAB
++ UP/RIGHT/DOWN/LEFT
 
-*** TODO Implement the alternative key bindings
+*** DONE Implement the alternative key bindings
+CLOSED: [2025-01-05 Sun 15:15]
 ADDED: [2024-11-10 Sun]
 Note these are optional. Only those which are present in the configuration
 are loaded. The rest are kept to zero.
