@@ -8,5 +8,6 @@ var searchData=
   ['ncurses_5fhandle_2eh_5',['ncurses_handle.h',['../ncurses__handle_8h.html',1,'']]],
   ['ncurseshandle_6',['NcursesHandle',['../classncurses__lib_1_1NcursesHandle.html',1,'ncurses_lib::NcursesHandle'],['../classncurses__lib_1_1NcursesHandle.html#aec4382c1a6d88fd0613a7b1248470445',1,'ncurses_lib::NcursesHandle::NcursesHandle()']]],
   ['needs_5fupdate_7',['needs_update',['../classtui_1_1UIScreen.html#aae0182c7df58b115b86f57db80067d82',1,'tui::UIScreen']]],
-  ['next_8',['next',['../structconfig_1_1NavigationKeys.html#ac1890ff1d9aefde46631545e1b056687',1,'config::NavigationKeys::next'],['../classtime__lib_1_1Day.html#aba3f872ff857b631b6465a6ecd2f2e7e',1,'time_lib::Day::next()'],['../classtime__lib_1_1Week.html#a8dc23c15f18c3ab5e577e716eed76929',1,'time_lib::Week::next()']]]
+  ['next_8',['next',['../structconfig_1_1NavigationKeys.html#ac1890ff1d9aefde46631545e1b056687',1,'config::NavigationKeys::next'],['../classtime__lib_1_1Day.html#aba3f872ff857b631b6465a6ecd2f2e7e',1,'time_lib::Day::next()'],['../classtime__lib_1_1Week.html#a8dc23c15f18c3ab5e577e716eed76929',1,'time_lib::Week::next()']]],
+  ['node_5fexists_9',['node_exists',['../classconfig__lib_1_1TomlLoader.html#aba4fd9406caf7c3cf74ba0833e96bfe6',1,'config_lib::TomlLoader']]]
 ];

@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['parse_5fbindings_0',['parse_bindings',['../classconfig_1_1ConfigLoader.html#aab518e17251c2345d14c2b429d0c4481',1,'config::ConfigLoader']]],
-  ['parse_5ffilepath_1',['parse_filepath',['../classconfig__lib_1_1TomlLoader.html#a0abdcdae435b17ba35cabbdf8e438846',1,'config_lib::TomlLoader']]],
-  ['parse_5ffloat_2',['parse_float',['../classconfig__lib_1_1TomlLoader.html#ad1d017bce983bd325eff4ba5feb47930',1,'config_lib::TomlLoader']]],
-  ['parse_5fkey_3',['parse_key',['../classconfig_1_1ConfigLoader.html#a3d7a332e594fb8f59c3b5ec44ad3259d',1,'config::ConfigLoader']]],
+  ['parse_5fbinding_5fstring_0',['parse_binding_string',['../classconfig_1_1ConfigLoader.html#a5d340114e88658f165af0696a4ee51fd',1,'config::ConfigLoader']]],
+  ['parse_5fbindings_1',['parse_bindings',['../classconfig_1_1ConfigLoader.html#aab518e17251c2345d14c2b429d0c4481',1,'config::ConfigLoader']]],
+  ['parse_5ffilepath_2',['parse_filepath',['../classconfig__lib_1_1TomlLoader.html#a0abdcdae435b17ba35cabbdf8e438846',1,'config_lib::TomlLoader']]],
+  ['parse_5ffloat_3',['parse_float',['../classconfig__lib_1_1TomlLoader.html#ad1d017bce983bd325eff4ba5feb47930',1,'config_lib::TomlLoader']]],
   ['parse_5fstring_4',['parse_string',['../classconfig__lib_1_1TomlLoader.html#a133951db59b11129c55e8888ddcb0b72',1,'config_lib::TomlLoader']]],
   ['parse_5fstringvec_5',['parse_stringvec',['../classconfig__lib_1_1TomlLoader.html#af1d8f5baade0722b582a2eab892f387f',1,'config_lib::TomlLoader']]],
   ['periodselectorncurses_6',['PeriodSelectorNCurses',['../classtui_1_1PeriodSelectorNCurses.html#abe33fb886d5a229b2fa186d9373a9f1c',1,'tui::PeriodSelectorNCurses']]],
