@@ -7,12 +7,12 @@ namespace config {
   /** @brief A single key binding. */
   struct Key {
     /** @brief Primary key for binding. */
-    char primary = 0;
+    int primary = 0;
     /** @brief Alternative key for binding. */
-    char alt = 0;
+    int alt = 0;
 
     /** @brief Is the provided character bound to this key? */
-    bool bound_to (char c) {return (primary == c) or (alt == c);};
+    bool bound_to (int c) {return (primary == c) or (alt == c);};
   };
 
   /** @brief Key bindings in the "navigation" section. */

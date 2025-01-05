@@ -30,7 +30,7 @@ digraph modules {
     {time_lib, ncurses_lib, db_lib} -> core
     {version, db_lib, time_lib, core} -> db
     tomlplusplus -> config_lib
-    config_lib -> config
+    {config_lib, ncurses} -> config
     {time_lib, db, version} -> exporter
     {version, tclap} -> cli
     {ncurses_lib, core, suggestion, time_lib, log_lib, keys, db} -> tui

@@ -1,6 +1,7 @@
 #include "config.h"
 #include "config_lib/config_utils.h"
 #include "config_lib/toml_loader.h"
+#include <ncurses.h>
 #include <cmath>
 #include <filesystem>
 #include <memory>
@@ -99,7 +100,7 @@ namespace config {
     return kb;
   }
 
-  char ConfigLoader::parse_special_string (const std::string &str) {
+  int ConfigLoader::parse_special_string (const std::string &str) {
     if (str == "ESCAPE") {
       return 27;
     }
@@ -112,14 +113,26 @@ namespace config {
     if (str == "TAB") {
       return '\t';
     }
+    if (str == "UP") {
+      return KEY_UP;
+    }
+    if (str == "DOWN") {
+      return KEY_DOWN;
+    }
+    if (str == "LEFT") {
+      return KEY_LEFT;
+    }
+    if (str == "RIGHT") {
+      return KEY_RIGHT;
+    }
     throw std::runtime_error("Invalid special string for key binding.");
   }
 
-  char ConfigLoader::parse_regular_string (const std::string &str) {
+  int ConfigLoader::parse_regular_string (const std::string &str) {
     return str.at(0);
   }
 
-  char ConfigLoader::parse_binding_string(const std::string &str) {
+  int ConfigLoader::parse_binding_string(const std::string &str) {
     auto len = str.length();
     if (len == 1) {
       return parse_regular_string(str);

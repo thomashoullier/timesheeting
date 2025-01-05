@@ -49,11 +49,11 @@ namespace config {
                  std::shared_ptr<config_lib::TomlLoader> config_loader,
                  std::vector<std::string> tree_pos);
     /** @brief Parse a string into a special key binding. */
-    char parse_special_string(const std::string &str);
+    int parse_special_string(const std::string &str);
     /** @brief Parse a string into a character key binding. */
-    char parse_regular_string(const std::string &str);
+    int parse_regular_string(const std::string &str);
     /** @brief Parse a string given for a key binding to a character. */
-    char parse_binding_string(const std::string &str);
+    int parse_binding_string(const std::string &str);
   };
 } // namespace config
 

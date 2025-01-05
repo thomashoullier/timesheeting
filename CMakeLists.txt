@@ -61,7 +61,8 @@ target_link_libraries(config_lib PRIVATE tomlplusplus::tomlplusplus)
 # Internal modules
 file(GLOB_RECURSE CONFIG_SRC "${TIMESHEETING_DIR}/src/modules/config/*.cpp")
 add_library(config STATIC "${CONFIG_SRC}")
-target_link_libraries(config PUBLIC config_lib)
+target_link_libraries(config PUBLIC config_lib
+                             PRIVATE ${CURSES_LIBRARIES})
 target_include_directories(config PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>")
 

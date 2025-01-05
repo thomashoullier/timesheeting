@@ -4,7 +4,9 @@
 
 namespace ncurses_lib {
   WinNCurses::WinNCurses(WindowPosition winpos, WindowFormat winformat)
-    : win(init_window(winpos, winformat)) {}
+    : win(init_window(winpos, winformat)) {
+    keypad(win, true);
+  }
 
   WinNCurses::~WinNCurses() { destroy_window(); }
 
