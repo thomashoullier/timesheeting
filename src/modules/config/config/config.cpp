@@ -54,70 +54,73 @@ namespace config {
   KeyBindings ConfigLoader::parse_bindings(
       std::shared_ptr<config_lib::TomlLoader> config_loader) {
     KeyBindings kb;
-    kb.navigation.up.primary = parse_key(config_loader,
-                              {"keys", "navigation", "up"});
-    kb.navigation.down.primary =
-        parse_key(config_loader, {"keys", "navigation", "down"});
-    kb.navigation.left.primary =
-        parse_key(config_loader, {"keys", "navigation", "left"});
-    kb.navigation.right.primary =
-        parse_key(config_loader, {"keys", "navigation", "right"});
-    kb.navigation.subtabs.primary =
-        parse_key(config_loader, {"keys", "navigation", "subtabs"});
-    kb.navigation.previous.primary =
-        parse_key(config_loader, {"keys", "navigation", "previous"});
-    kb.navigation.next.primary =
-        parse_key(config_loader, {"keys", "navigation", "next"});
-    kb.navigation.duration_display.primary =
-        parse_key(config_loader, {"keys", "navigation", "duration_display"});
-    kb.navigation.entries_screen.primary =
-        parse_key(config_loader, {"keys", "navigation", "entries_screen"});
-    kb.navigation.projects_screen.primary =
-        parse_key(config_loader, {"keys", "navigation", "projects_screen"});
-    kb.navigation.locations_screen.primary =
-        parse_key(config_loader, {"keys", "navigation", "locations_screen"});
-    kb.navigation.project_report_screen.primary = parse_key(
-        config_loader, {"keys", "navigation", "project_report_screen"});
-    kb.navigation.weekly_report_screen.primary = parse_key(
-        config_loader, {"keys", "navigation", "weekly_report_screen"});
-    kb.navigation.active_visibility.primary =
-        parse_key(config_loader, {"keys", "navigation", "active_visibility"});
-    kb.navigation.quit.primary =
-        parse_key(config_loader, {"keys", "navigation", "quit"});
-    kb.actions.commit_entry.primary =
-      parse_key(config_loader, {"keys", "actions", "commit_entry"});
-    kb.actions.set_now.primary =
-        parse_key(config_loader, {"keys", "actions", "set_now"});
-    kb.actions.add.primary =
-        parse_key(config_loader, {"keys", "actions", "add"});
-    kb.actions.rename.primary =
-        parse_key(config_loader, {"keys", "actions", "rename"});
-    kb.actions.remove.primary =
-        parse_key(config_loader, {"keys", "actions", "remove"});
-    kb.actions.active_toggle.primary =
-        parse_key(config_loader, {"keys", "actions", "active_toggle"});
-    kb.actions.task_project_change.primary =
-        parse_key(config_loader, {"keys", "actions", "task_project_change"});
-    kb.edit_mode.validate.primary =
-      parse_key(config_loader, {"keys", "edit_mode", "validate"});
-    kb.edit_mode.cancel.primary =
-        parse_key(config_loader, {"keys", "edit_mode", "cancel"});
-    kb.edit_mode.select_suggestion.primary =
-        parse_key(config_loader, {"keys", "edit_mode", "select_suggestion"});
+    set_key(kb.navigation.up, config_loader, {"keys", "navigation", "up"});
+    set_key(kb.navigation.down, config_loader, {"keys", "navigation", "down"});
+    set_key(kb.navigation.left, config_loader, {"keys", "navigation", "left"});
+    set_key(kb.navigation.right, config_loader, {"keys", "navigation", "right"});
+    set_key(kb.navigation.subtabs, config_loader,
+            {"keys", "navigation", "subtabs"});
+    set_key(kb.navigation.previous, config_loader,
+            {"keys", "navigation", "previous"});
+    set_key(kb.navigation.next, config_loader,
+            {"keys", "navigation", "next"});
+    set_key(kb.navigation.duration_display, config_loader,
+            {"keys", "navigation", "duration_display"});
+    set_key(kb.navigation.entries_screen, config_loader,
+            {"keys", "navigation", "entries_screen"});
+    set_key(kb.navigation.projects_screen, config_loader,
+            {"keys", "navigation", "projects_screen"});
+    set_key(kb.navigation.locations_screen, config_loader,
+            {"keys", "navigation", "locations_screen"});
+    set_key(kb.navigation.project_report_screen, config_loader,
+            {"keys", "navigation", "project_report_screen"});
+    set_key(kb.navigation.weekly_report_screen, config_loader,
+            {"keys", "navigation", "weekly_report_screen"});
+    set_key(kb.navigation.active_visibility, config_loader,
+            {"keys", "navigation", "active_visibility"});
+    set_key(kb.navigation.quit, config_loader,
+            {"keys", "navigation", "quit"});
+    set_key(kb.actions.commit_entry, config_loader,
+            {"keys", "actions", "commit_entry"});
+    set_key(kb.actions.set_now, config_loader, {"keys", "actions", "set_now"});
+    set_key(kb.actions.add, config_loader, {"keys", "actions", "add"});
+    set_key(kb.actions.rename, config_loader, {"keys", "actions", "rename"});
+    set_key(kb.actions.remove, config_loader, {"keys", "actions", "remove"});
+    set_key(kb.actions.active_toggle, config_loader,
+            {"keys", "actions", "active_toggle"});
+    set_key(kb.actions.task_project_change, config_loader,
+            {"keys", "actions", "task_project_change"});
+    set_key(kb.edit_mode.validate, config_loader,
+            {"keys", "edit_mode", "validate"});
+    set_key(kb.edit_mode.cancel, config_loader,
+            {"keys", "edit_mode", "cancel"});
+    set_key(kb.edit_mode.select_suggestion, config_loader,
+            {"keys", "edit_mode", "select_suggestion"});
     return kb;
   }
 
-  char ConfigLoader::parse_key
-  (std::shared_ptr<config_lib::TomlLoader> config_loader,
-   const std::vector<std::string> &tree_pos) {
-    auto str = config_loader->parse_string(tree_pos);
+  char ConfigLoader::parse_binding_string(const std::string &str) {
     // Parsing special keys
     if (str == "ESCAPE")
       return 27;
     // Parsing regular keys
     if (str.length() != 1)
       throw std::runtime_error("Invalid string for key binding.");
-    char c = str.at(0);
-    return c;
+    return str.at(0);
+  }
+
+  void
+  ConfigLoader::set_key(Key &k,
+                        std::shared_ptr<config_lib::TomlLoader> config_loader,
+                        std::vector<std::string> tree_pos) {
+    // Primary binding
+    auto str = config_loader->parse_string(tree_pos);
+    k.primary = parse_binding_string(str);
+    // Alternate binding
+    tree_pos.back() += "_alt";
+    if (config_loader->node_exists(tree_pos)) {
+      str = config_loader->parse_string(tree_pos);
+      k.alt = parse_binding_string(str);
+    }
   }
 } // namespace config

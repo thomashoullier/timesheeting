@@ -29,6 +29,8 @@ namespace config_lib {
     /** @brief Parse a vector of successive strings from the configuration. */
     std::vector<std::string> parse_stringvec
     (const std::vector<std::string> &tree_pos);
+    /** @brief Does a given node exist? */
+    bool node_exists (const std::vector<std::string> &tree_pos);
 
   private:
     /** @brief Internal TOML document representation. */

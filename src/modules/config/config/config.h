@@ -44,9 +44,12 @@ namespace config {
     /** @brief Parse key bindings. */
     KeyBindings parse_bindings
     (std::shared_ptr<config_lib::TomlLoader> config_loader);
-    /** @brief Parse a key. */
-    char parse_key (std::shared_ptr<config_lib::TomlLoader> config_loader,
-                    const std::vector<std::string> &tree_pos);
+    /** @brief Set a key (primary and alternate bindings). */
+    void set_key(Key &k,
+                 std::shared_ptr<config_lib::TomlLoader> config_loader,
+                 std::vector<std::string> tree_pos);
+    /** @brief Parse a string given for a key binding to a character. */
+    char parse_binding_string (const std::string &str);
   };
 } // namespace config
 

@@ -55,6 +55,11 @@ namespace config_lib {
     return strings;
   }
 
+  bool TomlLoader::node_exists (const std::vector<std::string> &tree_pos) {
+    auto node = get_node(tree_pos);
+    return node.is_value();
+  }
+
   toml::node_view<toml::node> TomlLoader::get_node
   (const std::vector<std::string> &tree_pos) {
     if (tree_pos.empty())
