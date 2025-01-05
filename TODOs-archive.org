@@ -25,6 +25,16 @@ CLOSED: [2024-01-23 Tue 20:22]
 + OK Publish as a release on github.
 + OK Publish on personal website.
 
+** DONE Specification items to add in v1.1
+CLOSED: [2024-11-16 Sat 15:59]
+We list the specification items which should be added later.
++ OK What should happen when the software detects that the save data
+  is corrupted using the mechanism specified by R-QUA-020?
++ OK Language of the interface: English.
++ OK Indicate to the user at runtime where to report bugs.
++ OK Specify the format in which the software is released.
+  As source, plus appimage?
+
 * System architecture document
 ** DONE Drafting PRJ1-SAD1-v1.0
 CLOSED: [2024-02-11 Sun 10:50]
@@ -38,6 +48,13 @@ ADDED: [2024-01-24 Wed]
 + See 'embedded database' for the database subsystem.
 + Provide justification for the architecture choice, in particular why
   a web app is not made.
+
+* System requirements document
+*** DONE Move the libs and module graph here
+CLOSED: [2025-01-05 Sun 14:04]
+ADDED: [2024-12-29 Sun]
+We have a diagram in the images for the SDD, move it here.
+Explain the difference between libs and modules.
 
 * External timesheet format
 ** DONE v1.1
@@ -58,7 +75,123 @@ CLOSED: [2024-01-23 Tue 19:59]
 Add to the README a project timeline with the dates of release of the
 documents and software.
 
+* Doxygen documentation
+** DONE Add libs and modules to the documentation
+CLOSED: [2024-11-22 Fri 20:20]
+ADDED: [2024-11-19 Tue]
+The libs and modules were extracted from ~src/~, we need to add
+them back to the documentation.
+
+** DONE The github doxygen pages do not show anything on the index
+CLOSED: [2024-11-22 Fri 20:41]
+ADDED: [2024-11-22 Fri]
+The deployment is successful and pages are there, but the index.html
+page is completely empty with no links to anything.
+- [2024-11-22 Fri] Fixed by bumping the doxygen version in the github action
+  to use the same one as locally: 1.12.0
+
+* CI
+*** DONE Put the basic CI in place
+CLOSED: [2024-12-28 Sat 18:48]
+ADDED: [2024-11-16 Sat]
+Check the build only, at first.
++ We need to use a gentoo image, as per the documentation.
+  We probably want ~amd64-nomultilib-openrc~.
++ See how we did it for puzzle_utils.
+  We had a Dockerfile for downloading the dependencies (it was alpine).
++ See https://github.com/rapenne-s/build-gentoo-packages-for-me/blob/main/Dockerfile
++ We encounter a nginx error on our Drone CI related to ~413 Request Entity Too Large~
+  this is likely fixed by setting ~client_max_body_size 0;~ somewhere in the nginx
+  configuration.
+- OK we are testing the build.
+
+*** DONE Test that all the latex documentation builds
+CLOSED: [2024-12-29 Sun 11:55]
+ADDED: [2024-11-16 Sat]
+Check the latex documentation build.
++ It is pretty heavy to put a latex installation on a VM for automated building
+  though.
++ See this docker: https://hub.docker.com/r/texlive/texlive/tags
+
 * Software
+** Bugs
+*** DONE Fix date parsing
+CLOSED: [2024-11-23 Sat 16:24]
+ADDED: [2024-08-31 Sat]
+In ~date.h~, constructor from string.
+The date parsing we are doing is wrong. We hardcoded the current dst
+in our location to make it work.
++ We could wait for gcc 14 to have the proper C++20 feature to do this.
++ We tried howard hinnant date, but encountered a compiling error
+  abount uninitialized variables when using parse. This is probably
+  related to musl.
+- [2024-11-23 Sat] We waited for gcc14 and used the std::chrono::parse. It works.
+  We have lost the ergonomic flexibility offered by the previous function
+  though.
+
+*** DONE Triggering the "export file already exists exception" leaks memory
+CLOSED: [2024-11-23 Sat 12:01]
+ADDED: [2024-11-02 Sat]
+This is fixed by catching the exceptions in main. Uncaught exceptions led
+to destructors not being called.
+
+*** DONE Catch exceptions in main
+CLOSED: [2024-11-23 Sat 12:00]
+ADDED: [2024-11-23 Sat]
+Catch all exceptions in main and have them print their message to cerr.
+- [2024-11-23 Sat] Catching every std::exception in main and printing what().
+
+*** DONE We are using the wrong type for ncurses characters
+CLOSED: [2024-11-24 Sun 10:31]
+ADDED: [2024-11-23 Sat]
+https://linux.die.net/man/3/getch
+getch returns an int and not a char. This does not currently generate
+bugs per se, but this prevents us from catching the KEY_RESIZE.
+- [2024-11-24 Sun] Changed the type from char to int throughout the input loops.
+  We can now catch the KEY_RESIZE events.
+
+*** DONE The date condition for entries is wrong
+CLOSED: [2024-12-28 Sat 19:52]
+ADDED: [2024-12-16 Mon]
+Currently, the stopwatch allows the addition of entries where start = stop.
+We want to avoid this case also because there is a risk of adding two entries by
+double-tapping validate.
++ We can just change the ~CHECK~ condition at the table creation.
++ See also the feature about forbidding overlapping entries.
+- [2024-12-24 Tue] We have confirmed that there is currently nothing in the DB with
+  start >= stop. We have to migrate our DB manually.
+- [2024-12-28 Sat] We have changed the condition to start > stop. We confirmed that
+  no additions are made when the condition is not met. The change is applicable
+  to the DB v2. We migrated our DB manually by replacing the entries table
+  with the newer one.
+
+*** DONE Possible string security problem in ncurses usage
+CLOSED: [2024-12-29 Sun 11:03]
+ADDED: [2024-12-28 Sat]
+The compiler reports the following during build,
+
+```
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp: In member function 'void ncurses_lib::BarNCurses::print(const std::string&) const':
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp:13:12: warning: format not a string literal and no format arguments [-Wformat-security]
+   13 |     wprintw(win, msg.c_str());
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp: In member function 'void ncurses_lib::BarNCurses::print_right(const std::string&) const':
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp:22:12: warning: format not a string literal and no format arguments [-Wformat-security]
+   22 |     wprintw(win, msg.c_str());
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp: In member function 'void ncurses_lib::BarNCurses::print_after_cursor(const std::string&)':
+/drone/src/src/libs/ncurses_lib/ncurses_lib/bar_ncurses.cpp:32:12: warning: format not a string literal and no format arguments [-Wformat-security]
+   32 |     wprintw(win, msg.c_str());
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~
+```
+
+This could mean that we are susceptible to problems if the printed message
+has reserved format characters?
+Is there a security risk here?
++ When naming a project as ~Proj%sE~, it is displayed in the bar as
+  ~Proj(null)E~. This is pretty bad.
++ We fixed it.
+
 ** DONE Draft the GUI
 CLOSED: [2024-02-18 Sun 17:44]
 Reach a point where every main UI screen is present. Individual dialogs will be
@@ -110,12 +243,185 @@ bar. How do we share a view-only object from the tab to the status bar?
   throughout the object tree towards the "Daily entries" tab and a const
   shared_pointer to the status bar?
 
+** Ergonomy
+*** DONE Enforce a display order for hierarchy items
+CLOSED: [2024-11-16 Sat 13:35]
+ADDED: [2024-09-03 Tue]
+For instance, the queries for the list of tasks return a different
+order depending on active/archived. Enforce a consistent order between
+both. The choice which would make the most sense is to enforce an
+order by Id at the DB level.
+
+*** DONE Mark archived hierarchy items in some way in their own screen
+CLOSED: [2024-11-24 Sun 15:48]
+ADDED: [2024-09-02 Mon]
++ This requires passing the active flag to the UI.
++ We can use string_with_face to do this.
+  - [2024-11-24 Sun] In fact, no. menu items only have one property for items,
+    which is selectable or not. We are using it to make inactive, bold,
+    items in the reports, but this is not applicable for regular lines.
+    We need to implement our own menu library to do this, which is
+    a big endeavour.
+  + An alternative would be to put archived items in parentheses for
+    display.
+    - [2024-11-24 Sun] OK we did that.
+
+*** DONE Renaming task empties the project
+CLOSED: [2024-12-24 Tue 17:30]
+ADDED: [2024-11-16 Sat]
+WAIT for the custom menu implementation
+Currently, when renaming a task in entrystaging, a cancellation will
+empty the project cell. Make it so that it does nothing instead.
++ Location in the stopwatch does the same.
++ [2024-12-24 Tue] We have fixed the whole stopwatch ui, it now checks for
+  an empty string before trying to do anything.
+
+*** DONE Suggestion on substrings
+CLOSED: [2024-11-23 Sat 08:55]
+ADDED: [2024-11-16 Sat]
+The suggestion engine prefers matching "Northern Office" rather than
+"Office". We need to prefer the shorter match.
+- [2024-11-23 Sat] Changed the rapidfuzz metric to CachedTokenSortRatio,
+  which gives better results on preferring a submatch.
+
+*** DONE Reorganize the configuration file
+CLOSED: [2024-11-23 Sat 09:20]
+ADDED: [2024-11-23 Sat]
+Currently the configuration file has two big sections, we need to split
+it to make it clearer.
+- [2024-11-23 Sat] Subdivided the sections into db, time, log, keys
+
+*** DONE Do not reach program termination when hitting an unassigned key
+CLOSED: [2024-11-23 Sat 20:30]
+ADDED: [2024-11-23 Sat]
+Currently when hitting an unassigned key, the program unwinds until termination.
+Fix it so nothing is done instead.
++ We need to implement a quit key.
++ See what happens when a resizing of the terminal window is done.
+  We may have to catch it and refresh.
+
+*** DONE Resizing makes some parts of the screen disappear
+CLOSED: [2024-11-24 Sun 13:57]
+When resizing the TUI to a smaller size, then resizing it back to
+its original size, the bottom part of the UI disappears and never
+reappears.
++ Be careful to not perform heavy operations when resizing, because
+  user may resize the application as a floating window.
+  For instance it would probably be heavy to destroy and redraw the
+  whole UI.
+- [2024-11-24 Sun] Caught the SIGWINCH ourselves, to prevent ncurses from
+  performing the automatic resizing. The TUI stays functional if the
+  initial size is restored.
+
+*** DONE Be flexible on the accepted input dates
+CLOSED: [2024-11-25 Mon 21:56]
+ADDED: [2024-11-23 Sat]
+Currently the inputted dates must be exactly in the format "23Nov2024 13:25:00".
+Also accept "23Nov2024", "23Nov2024 13", "23Nov2024 13:25" and fill with
+zeroes.
+- [2024-11-25 Mon] OK, we implemented the four variants of date format. It seems
+  to work great.
+
+*** DONE Log the export duration
+CLOSED: [2024-11-26 Tue 20:27]
+ADDED: [2024-11-25 Mon]
+It would be useful to log the time it takes to export the timesheet.
+- [2024-11-26 Tue] OK added a tick/tock around the export.
+
+** Refactoring
+*** DONE Fix CMakeLists includes
+CLOSED: [2024-11-30 Sat 14:10]
+ADDED: [2024-11-30 Sat]
+We have put ~target_include_directories~ everywhere. This includes everything
+in everything no? Fix it.
+- [2024-11-30 Sat] OK we divided the libs and modules more strongly. We cannot
+  import something by accident now without it being explicit in the CMakeLists.
+
+*** DONE Make constructors explicit
+CLOSED: [2024-11-23 Sat 17:02]
+ADDED: [2024-09-01 Sun]
+Through ignorance on our part, we have neglected to set constructors to explicit
+by default. Fix it.
+
+*** DONE Make sure the types are coherent
+CLOSED: [2024-11-28 Thu 21:21]
+ADDED: [2024-09-14 Sat]
+For instance, sqlite uses the type sqlite3_int64, we use uint64_t,
+should we switch?
+
++ https://www.sqlite.org/c3ref/int64.html This says that sqlite3_int64
+  stores a SIGNED 64bit integer. Thus, we really should not use uint64_t.
++ Create an integer typedef in the db_lib.
++ The ROWID in sqlite3 goes from 1 up to 2**63-1, so uint64_t makes sense,
+  kind of. We will have no problem getting a rowid from sqlite, but may
+  have problem when binding numbers to a statement. Add an exception in
+  the binding code? Can't we use a sqlite3_int64?
+- [2024-11-28 Thu] Added a DBInt type which is a sqlite3_int64. The RowId is
+  also a DBInt, and the Id for hierarchy items is a RowId. In this fashion,
+  the types are coherent.
+
+*** DONE Extract library modules
+CLOSED: [2024-11-23 Sat 17:02]
+ADDED: [2024-09-22 Sun]
+Extract generic library modules from the existing codebase, to import them
+more easily and test them separately. Only extract the parts which are generic.
++ sqlite lib
++ ncurses lib
++ date management objects? (day, week, date, date_range, duration, timezone)
+
+*** DONE Create namespaces for the libs and different parts of the program
+CLOSED: [2024-11-23 Sat 17:02]
+ADDED: [2024-09-22 Sun]
+Currently everything is in the global namespace, which is bad practice.
+
+*** DONE Separate the key for committing an entry from entrystaging from the validation key in edit mode
+CLOSED: [2024-12-08 Sun 14:01]
+ADDED: [2024-11-28 Thu]
+Currently the key for committing an entry, and the code for validating in edit
+mode are the same. This should not be the case. Create a separate key for
+committing entries.
+- [2024-12-08 Sun] OK, added a dedicated key for committing entries.
+
+*** DONE Create config file subsection in keys
+CLOSED: [2024-12-08 Sun 15:05]
+ADDED: [2024-11-28 Thu]
+The ~keys~ section of the config file is too big.
++ Create subsections for:
+  + Navigation
+  + Actions
+  + Edit mode: cancel and select_suggestion and validate (needs to be separated
+    because we can bind keys twice).
++ Also represent these sections internally.
+- [2024-12-08 Sun] OK, modified both the config file and the internal representation
+  for the bindings.
+
+*** DONE Extract a generic library for the config file
+CLOSED: [2024-11-30 Sat 19:54]
+ADDED: [2024-10-13 Sun]
+There is a generic part to the config file module.
++ Searching for the default location.
++ Expanding tilde.
+
+This will allow us to add logs to the config module which will arise
+out of this, without coupling it to the library.
+
 ** Fixes
 *** DONE Manage more projects and tasks than one page
 CLOSED: [2024-07-28 Sun 10:35]
 ADDED: [2024-07-27 Sat]
 Currently the window goes blank if we add too many projects.
 OK, we implemented this using menu, and ~set_menu_format~.
+
+** Performance
+*** DONE Export the CSV from the DB line by line instead of in-full
+CLOSED: [2024-11-26 Tue 20:16]
+ADDED: [2024-11-02 Sat]
+Our goal is to reduce the memory footprint of the export operation.
+We can do it very easily by having the DB function return
+a std::generator<ExportRow> but we have to wait for GCC14.
+- [2024-11-26 Tue] OK we changed the DB export object from a vector to
+  a generator. We cannot measure any difference in runtime when
+  exporting a small DB with ~50 entries, so no major error is present.
 
 ** Features
 *** DONE Rename tasks
@@ -609,3 +915,34 @@ next to the typed text in highlighted format.
     + OK Setting the stopwatch project.
     + OK Setting the stopwatch task.
     + OK Setting the stopwatch location.
+
+*** DONE Run pragma optimize on closing sqlite
+CLOSED: [2024-11-23 Sat 17:16]
+ADDED: [2024-09-01 Sun]
+It seems recommended: https://www.sqlite.org/lang_analyze.html
+- [2024-11-23 Sat] ADDED ~PRAGMA optimize;~ when closing the DB handle
+  in db_lib.
+
+*** DONE Use a date format with timezone in logs.
+CLOSED: [2024-11-16 Sat 15:05]
+ADDED: [2024-11-16 Sat]
+Currently the logs are ambiguous, they show the local time but without
+more indication.
+
+*** DONE Catch the fact that a configuration file does not exist
+CLOSED: [2024-11-24 Sun 16:11]
+ADDED: [2024-11-01 Fri]
+We currently get a toml exception which is too cryptic for users.
++ [2024-11-24 Sun] OK we now throw our own exception. It gives a clearer message.
+  It is thrown when providing an inexistent file with the -c flag in the CLI.
+
+*** DONE Write the make install script
+CLOSED: [2024-11-24 Sun 14:33]
+ADDED: [2024-11-23 Sat]
+We need the install script for our program.
++ This can probably be done in cmake directly.
++ Actions:
+  + Put the binary at the appropriate place.
+  + Put the config file in dotfiles.
+- [2024-11-24 Sun] Wrote the installation instructions in CMakeLists.txt, the binary
+  is deployed in `/bin/`, the default configuration file in `/etc/`.
