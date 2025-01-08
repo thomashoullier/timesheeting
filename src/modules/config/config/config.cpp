@@ -1,6 +1,8 @@
 #include "config.h"
 #include "config_lib/config_utils.h"
 #include "config_lib/toml_loader.h"
+#include "key.h"
+#include "binding_maps.h"
 #include <ncurses.h>
 #include <cmath>
 #include <filesystem>
@@ -52,52 +54,94 @@ namespace config {
     }
   }
 
-  KeyBindings ConfigLoader::parse_bindings(
+  KeyBindings ConfigLoader::parse_bindings
+  (std::shared_ptr<config_lib::TomlLoader> config_loader) {
+    auto normal_map = parse_normalmode_bindings(config_loader);
+    auto edit_map = parse_editmode_bindings(config_loader);
+    return KeyBindings{normal_map, edit_map};
+  }
+
+  NormalMap ConfigLoader::parse_normalmode_bindings(
       std::shared_ptr<config_lib::TomlLoader> config_loader) {
-    KeyBindings kb;
-    set_key(kb.navigation.up, config_loader, {"keys", "navigation", "up"});
-    set_key(kb.navigation.down, config_loader, {"keys", "navigation", "down"});
-    set_key(kb.navigation.left, config_loader, {"keys", "navigation", "left"});
-    set_key(kb.navigation.right, config_loader, {"keys", "navigation", "right"});
-    set_key(kb.navigation.subtabs, config_loader,
-            {"keys", "navigation", "subtabs"});
-    set_key(kb.navigation.previous, config_loader,
-            {"keys", "navigation", "previous"});
-    set_key(kb.navigation.next, config_loader,
-            {"keys", "navigation", "next"});
-    set_key(kb.navigation.duration_display, config_loader,
-            {"keys", "navigation", "duration_display"});
-    set_key(kb.navigation.entries_screen, config_loader,
-            {"keys", "navigation", "entries_screen"});
-    set_key(kb.navigation.projects_screen, config_loader,
-            {"keys", "navigation", "projects_screen"});
-    set_key(kb.navigation.locations_screen, config_loader,
-            {"keys", "navigation", "locations_screen"});
-    set_key(kb.navigation.project_report_screen, config_loader,
-            {"keys", "navigation", "project_report_screen"});
-    set_key(kb.navigation.weekly_report_screen, config_loader,
-            {"keys", "navigation", "weekly_report_screen"});
-    set_key(kb.navigation.active_visibility, config_loader,
-            {"keys", "navigation", "active_visibility"});
-    set_key(kb.navigation.quit, config_loader,
-            {"keys", "navigation", "quit"});
-    set_key(kb.actions.commit_entry, config_loader,
-            {"keys", "actions", "commit_entry"});
-    set_key(kb.actions.set_now, config_loader, {"keys", "actions", "set_now"});
-    set_key(kb.actions.add, config_loader, {"keys", "actions", "add"});
-    set_key(kb.actions.rename, config_loader, {"keys", "actions", "rename"});
-    set_key(kb.actions.remove, config_loader, {"keys", "actions", "remove"});
-    set_key(kb.actions.active_toggle, config_loader,
-            {"keys", "actions", "active_toggle"});
-    set_key(kb.actions.task_project_change, config_loader,
-            {"keys", "actions", "task_project_change"});
-    set_key(kb.edit_mode.validate, config_loader,
-            {"keys", "edit_mode", "validate"});
-    set_key(kb.edit_mode.cancel, config_loader,
-            {"keys", "edit_mode", "cancel"});
-    set_key(kb.edit_mode.select_suggestion, config_loader,
-            {"keys", "edit_mode", "select_suggestion"});
-    return kb;
+    NormalMap map;
+    set_key(map, config_loader,
+                   {"keys", "navigation", "up"},
+                   NormalActions::up);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "down"},
+                   NormalActions::down);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "left"},
+                   NormalActions::left);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "right"},
+                   NormalActions::right);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "subtabs"},
+                   NormalActions::subtabs);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "previous"},
+                   NormalActions::previous);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "next"},
+                   NormalActions::next);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "duration_display"},
+                   NormalActions::duration_display);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "entries_screen"},
+                   NormalActions::entries_screen);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "projects_screen"},
+                   NormalActions::projects_screen);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "locations_screen"},
+                   NormalActions::locations_screen);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "project_report_screen"},
+                   NormalActions::project_report_screen);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "active_visibility"},
+                   NormalActions::active_visibility);
+    set_key(map, config_loader,
+                   {"keys", "navigation", "quit"},
+                   NormalActions::quit);
+    set_key(map, config_loader,
+                   {"keys", "actions", "commit_entry"},
+                   NormalActions::commit_entry);
+    set_key(map, config_loader,
+                   {"keys", "actions", "set_now"},
+                   NormalActions::set_now);
+    set_key(map, config_loader,
+                   {"keys", "actions", "add"},
+                   NormalActions::add);
+    set_key(map, config_loader,
+                   {"keys", "actions", "rename"},
+                   NormalActions::rename);
+    set_key(map, config_loader,
+                   {"keys", "actions", "remove"},
+                   NormalActions::remove);
+    set_key(map, config_loader, {"keys", "actions", "active_toggle"},
+                   NormalActions::active_toggle);
+    set_key(map, config_loader, {"keys", "actions", "task_project_change"},
+                   NormalActions::task_project_change);
+    return map;
+  }
+
+  EditMap ConfigLoader::parse_editmode_bindings
+    (std::shared_ptr<config_lib::TomlLoader> config_loader) {
+    EditMap map;
+    set_key(map, config_loader,
+            {"keys", "edit_mode", "validate"},
+            EditActions::validate);
+    set_key(map, config_loader,
+            {"keys", "edit_mode", "cancel"},
+            EditActions::cancel);
+    set_key(map, config_loader,
+            {"keys", "edit_mode", "select_suggestion"},
+            EditActions::select_suggestion);
+    map.add_binding(KEY_BACKSPACE, EditActions::backspace);
+    return map;
   }
 
   int ConfigLoader::parse_special_string (const std::string &str) {
@@ -140,21 +184,6 @@ namespace config {
       return parse_special_string(str);
     } else {
       throw std::runtime_error("Invalid string for key binding.");
-    }
-  }
-
-  void
-  ConfigLoader::set_key(Key &k,
-                        std::shared_ptr<config_lib::TomlLoader> config_loader,
-                        std::vector<std::string> tree_pos) {
-    // Primary binding
-    auto str = config_loader->parse_string(tree_pos);
-    k.primary = parse_binding_string(str);
-    // Alternate binding
-    tree_pos.back() += "_alt";
-    if (config_loader->node_exists(tree_pos)) {
-      str = config_loader->parse_string(tree_pos);
-      k.alt = parse_binding_string(str);
     }
   }
 } // namespace config

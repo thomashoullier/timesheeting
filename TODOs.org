@@ -81,6 +81,13 @@ gives which parts of the source are covered.
 
 * Software
 ** Bugs
+*** TODO Escape and keypad cannot be used simultaneously in ncurses
+ADDED: [2025-01-07 Tue]
+The support for keypad we added conflicts with binding the escape key
+in edit mode.
++ One quick fix would be to disable the keypad when entering edit mode,
+  and re-enable it when leaving.
+
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]
@@ -218,6 +225,8 @@ Stop with an exception if this is the case.
 + This takes care of itself if we build a hashmap for the related
   issue abount mapping keys to an enum, existing keys can be detected as they
   are added.
++ We need to include backspace in the map also somehow, since it is matched
+  in the status_bar functions.
 
 *** DEAD Implement a check of the DB when opening
 CLOSED: [2024-11-23 Sat 17:10]

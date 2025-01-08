@@ -8,6 +8,7 @@
 #include <vector>
 #include "config_lib/toml_loader.h"
 #include "key.h"
+#include "binding_maps.h"
 
 namespace config {
   /** @brief Set of data produced by the ConfigLoader. */
@@ -41,13 +42,35 @@ namespace config {
     UserConfig load();
 
   private:
+    /** @brief Parse the normal mode binding/action map. */
+    NormalMap parse_normalmode_bindings
+      (std::shared_ptr<config_lib::TomlLoader> config_loader);
+    /** @brief Parse the edit mode binding/action map. */
+    EditMap parse_editmode_bindings(
+        std::shared_ptr<config_lib::TomlLoader> config_loader);
+    /** @brief Add bindings for a given action in a binding map.
+
+    Takes care of primary and alternate bindings. */
+    template <typename T>
+    void set_key(BindingMap<T> &map,
+                 std::shared_ptr<config_lib::TomlLoader> config_loader,
+                 std::vector<std::string> tree_pos,
+                 T action) {
+      // Primary binding
+      auto str = config_loader->parse_string(tree_pos);
+      int binding = parse_binding_string(str);
+      map.add_binding(binding, action);
+      // Alternate binding
+      tree_pos.back() += "_alt";
+      if (config_loader->node_exists(tree_pos)) {
+        str = config_loader->parse_string(tree_pos);
+        binding = parse_binding_string(str);
+        map.add_binding(binding, action);
+      }
+    };
     /** @brief Parse key bindings. */
     KeyBindings parse_bindings
     (std::shared_ptr<config_lib::TomlLoader> config_loader);
-    /** @brief Set a key (primary and alternate bindings). */
-    void set_key(Key &k,
-                 std::shared_ptr<config_lib::TomlLoader> config_loader,
-                 std::vector<std::string> tree_pos);
     /** @brief Parse a string into a special key binding. */
     int parse_special_string(const std::string &str);
     /** @brief Parse a string into a character key binding. */
