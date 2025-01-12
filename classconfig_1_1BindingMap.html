@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: config::Key Struct Reference</title>
+<title>timesheeting: config::BindingMap&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,46 +83,51 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>config</b></li><li class="navelem"><a class="el" href="structconfig_1_1Key.html">Key</a></li>  </ul>
+<li class="navelem"><b>config</b></li><li class="navelem"><a class="el" href="classconfig_1_1BindingMap.html">BindingMap</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structconfig_1_1Key-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">config::Key Struct Reference</div></div>
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classconfig_1_1BindingMap-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">config::BindingMap&lt; T &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A single key binding.  
+<p>Map from binding to action.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="key_8h_source.html">key.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="binding__maps_8h_source.html">binding_maps.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a59bf56c93e7db4f27ce1fc37d12619ec" id="r_a59bf56c93e7db4f27ce1fc37d12619ec"><td class="memItemLeft" align="right" valign="top"><a id="a59bf56c93e7db4f27ce1fc37d12619ec" name="a59bf56c93e7db4f27ce1fc37d12619ec"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>bound_to</b> (int c)</td></tr>
-<tr class="memdesc:a59bf56c93e7db4f27ce1fc37d12619ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the provided character bound to this key? <br /></td></tr>
-<tr class="separator:a59bf56c93e7db4f27ce1fc37d12619ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac730f5926eb634b31a7c6dc172f52629" id="r_ac730f5926eb634b31a7c6dc172f52629"><td class="memItemLeft" align="right" valign="top"><a id="ac730f5926eb634b31a7c6dc172f52629" name="ac730f5926eb634b31a7c6dc172f52629"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BindingMap</b> ()=default</td></tr>
+<tr class="memdesc:ac730f5926eb634b31a7c6dc172f52629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new map. <br /></td></tr>
+<tr class="separator:ac730f5926eb634b31a7c6dc172f52629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6eb40a29cb3b91935b10bdbd0632894" id="r_ab6eb40a29cb3b91935b10bdbd0632894"><td class="memItemLeft" align="right" valign="top"><a id="ab6eb40a29cb3b91935b10bdbd0632894" name="ab6eb40a29cb3b91935b10bdbd0632894"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>add_binding</b> (int binding, T action)</td></tr>
+<tr class="memdesc:ab6eb40a29cb3b91935b10bdbd0632894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new binding to the map. <br /></td></tr>
+<tr class="separator:ab6eb40a29cb3b91935b10bdbd0632894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32ab20d99689d028469c07736d4214af" id="r_a32ab20d99689d028469c07736d4214af"><td class="memItemLeft" align="right" valign="top"><a id="a32ab20d99689d028469c07736d4214af" name="a32ab20d99689d028469c07736d4214af"></a>
+T&#160;</td><td class="memItemRight" valign="bottom"><b>action_requested</b> (int binding) const</td></tr>
+<tr class="memdesc:a32ab20d99689d028469c07736d4214af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the action corresponding to the key pressed. <br /></td></tr>
+<tr class="separator:a32ab20d99689d028469c07736d4214af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a2dd56f5bfcec4917be88c7c0f5fa2ea8" id="r_a2dd56f5bfcec4917be88c7c0f5fa2ea8"><td class="memItemLeft" align="right" valign="top"><a id="a2dd56f5bfcec4917be88c7c0f5fa2ea8" name="a2dd56f5bfcec4917be88c7c0f5fa2ea8"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>primary</b> = 0</td></tr>
-<tr class="memdesc:a2dd56f5bfcec4917be88c7c0f5fa2ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primary key for binding. <br /></td></tr>
-<tr class="separator:a2dd56f5bfcec4917be88c7c0f5fa2ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadfc799ab04cf7a8d36a25e603461cbd" id="r_aadfc799ab04cf7a8d36a25e603461cbd"><td class="memItemLeft" align="right" valign="top"><a id="aadfc799ab04cf7a8d36a25e603461cbd" name="aadfc799ab04cf7a8d36a25e603461cbd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>alt</b> = 0</td></tr>
-<tr class="memdesc:aadfc799ab04cf7a8d36a25e603461cbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alternative key for binding. <br /></td></tr>
-<tr class="separator:aadfc799ab04cf7a8d36a25e603461cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a11ba939a72ee187b5df8cf889e4dff17" id="r_a11ba939a72ee187b5df8cf889e4dff17"><td class="memItemLeft" align="right" valign="top"><a id="a11ba939a72ee187b5df8cf889e4dff17" name="a11ba939a72ee187b5df8cf889e4dff17"></a>
+std::unordered_map&lt; int, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
+<tr class="memdesc:a11ba939a72ee187b5df8cf889e4dff17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying hashmap representation. <br /></td></tr>
+<tr class="separator:a11ba939a72ee187b5df8cf889e4dff17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A single key binding. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/modules/config/config/<a class="el" href="key_8h_source.html">key.h</a></li>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class config::BindingMap&lt; T &gt;</div><p>Map from binding to action. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/modules/config/config/<a class="el" href="binding__maps_8h_source.html">binding_maps.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

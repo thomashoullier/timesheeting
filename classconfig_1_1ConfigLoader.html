@@ -113,14 +113,22 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:ae8350ac16190547a524243c9929ad810" id="r_ae8350ac16190547a524243c9929ad810"><td class="memItemLeft" align="right" valign="top"><a id="ae8350ac16190547a524243c9929ad810" name="ae8350ac16190547a524243c9929ad810"></a>
+<a class="el" href="classconfig_1_1BindingMap.html">NormalMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse_normalmode_bindings</b> (std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader)</td></tr>
+<tr class="memdesc:ae8350ac16190547a524243c9929ad810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the normal mode binding/action map. <br /></td></tr>
+<tr class="separator:ae8350ac16190547a524243c9929ad810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61d690535778b6ba532eabd746253d3d" id="r_a61d690535778b6ba532eabd746253d3d"><td class="memItemLeft" align="right" valign="top"><a id="a61d690535778b6ba532eabd746253d3d" name="a61d690535778b6ba532eabd746253d3d"></a>
+<a class="el" href="classconfig_1_1BindingMap.html">EditMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse_editmode_bindings</b> (std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader)</td></tr>
+<tr class="memdesc:a61d690535778b6ba532eabd746253d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the edit mode binding/action map. <br /></td></tr>
+<tr class="separator:a61d690535778b6ba532eabd746253d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83912036e5144ca286db0bdd8afb5998" id="r_a83912036e5144ca286db0bdd8afb5998"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a83912036e5144ca286db0bdd8afb5998"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a83912036e5144ca286db0bdd8afb5998">set_key</a> (<a class="el" href="classconfig_1_1BindingMap.html">BindingMap</a>&lt; T &gt; &amp;map, std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader, std::vector&lt; std::string &gt; tree_pos, T action)</td></tr>
+<tr class="memdesc:a83912036e5144ca286db0bdd8afb5998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add bindings for a given action in a binding map.  <br /></td></tr>
+<tr class="separator:a83912036e5144ca286db0bdd8afb5998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab518e17251c2345d14c2b429d0c4481" id="r_aab518e17251c2345d14c2b429d0c4481"><td class="memItemLeft" align="right" valign="top"><a id="aab518e17251c2345d14c2b429d0c4481" name="aab518e17251c2345d14c2b429d0c4481"></a>
 <a class="el" href="structconfig_1_1KeyBindings.html">KeyBindings</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse_bindings</b> (std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader)</td></tr>
 <tr class="memdesc:aab518e17251c2345d14c2b429d0c4481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse key bindings. <br /></td></tr>
 <tr class="separator:aab518e17251c2345d14c2b429d0c4481"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac46d7dc94b7be5faac289f2bfb8d533a" id="r_ac46d7dc94b7be5faac289f2bfb8d533a"><td class="memItemLeft" align="right" valign="top"><a id="ac46d7dc94b7be5faac289f2bfb8d533a" name="ac46d7dc94b7be5faac289f2bfb8d533a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_key</b> (<a class="el" href="structconfig_1_1Key.html">Key</a> &amp;k, std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt; config_loader, std::vector&lt; std::string &gt; tree_pos)</td></tr>
-<tr class="memdesc:ac46d7dc94b7be5faac289f2bfb8d533a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a key (primary and alternate bindings). <br /></td></tr>
-<tr class="separator:ac46d7dc94b7be5faac289f2bfb8d533a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7aacf8c343aa25f6b78eca9f490881f" id="r_aa7aacf8c343aa25f6b78eca9f490881f"><td class="memItemLeft" align="right" valign="top"><a id="aa7aacf8c343aa25f6b78eca9f490881f" name="aa7aacf8c343aa25f6b78eca9f490881f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>parse_special_string</b> (const std::string &amp;str)</td></tr>
 <tr class="memdesc:aa7aacf8c343aa25f6b78eca9f490881f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a string into a special key binding. <br /></td></tr>
@@ -158,6 +166,50 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>parse_binding_string</
 <li>$HOME/.config/</li>
 <li>/etc/ </li>
 </ol>
+
+</div>
+</div>
+<a id="a83912036e5144ca286db0bdd8afb5998" name="a83912036e5144ca286db0bdd8afb5998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83912036e5144ca286db0bdd8afb5998">&#9670;&#160;</a></span>set_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void config::ConfigLoader::set_key </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classconfig_1_1BindingMap.html">BindingMap</a>&lt; T &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>map</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classconfig__lib_1_1TomlLoader.html">config_lib::TomlLoader</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>config_loader</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;</td>          <td class="paramname"><span class="paramname"><em>tree_pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>action</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add bindings for a given action in a binding map. </p>
+<p>Takes care of primary and alternate bindings. </p>
 
 </div>
 </div>

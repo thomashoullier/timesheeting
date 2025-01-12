@@ -127,9 +127,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b9191f8d6c33e34ebee7f7eacc1ee5c" id="r_a8b9191f8d6c33e34ebee7f7eacc1ee5c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b9191f8d6c33e34ebee7f7eacc1ee5c">clear</a> ()=0</td></tr>
 <tr class="memdesc:a8b9191f8d6c33e34ebee7f7eacc1ee5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the component from the display.  <br /></td></tr>
 <tr class="separator:a8b9191f8d6c33e34ebee7f7eacc1ee5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad34af8ac844b78612d70e1a3bf8afaaa" id="r_ad34af8ac844b78612d70e1a3bf8afaaa"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad34af8ac844b78612d70e1a3bf8afaaa">input_loop</a> ()=0</td></tr>
-<tr class="memdesc:ad34af8ac844b78612d70e1a3bf8afaaa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classtui_1_1UI.html" title="Ncurses top-level UI for timesheeting.">UI</a> input loop for the component.  <br /></td></tr>
-<tr class="separator:ad34af8ac844b78612d70e1a3bf8afaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae377ab5c8dff061f26b0682d048437e5" id="r_ae377ab5c8dff061f26b0682d048437e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="key_8h.html#a1299184736a390fc642d1576625ffbe2">config::NormalActions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae377ab5c8dff061f26b0682d048437e5">input_loop</a> ()=0</td></tr>
+<tr class="memdesc:ae377ab5c8dff061f26b0682d048437e5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classtui_1_1UI.html" title="Ncurses top-level UI for timesheeting.">UI</a> input loop for the component.  <br /></td></tr>
+<tr class="separator:ae377ab5c8dff061f26b0682d048437e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac34fe8a9a6971809dfb0474d4c9f5ec3" id="r_ac34fe8a9a6971809dfb0474d4c9f5ec3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac34fe8a9a6971809dfb0474d4c9f5ec3">update</a> ()=0</td></tr>
 <tr class="memdesc:ac34fe8a9a6971809dfb0474d4c9f5ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the state of the component to reflect the latest program state.  <br /></td></tr>
 <tr class="separator:ac34fe8a9a6971809dfb0474d4c9f5ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,8 +166,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad34af8ac844b78612d70e1a3bf8afaaa" name="ad34af8ac844b78612d70e1a3bf8afaaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad34af8ac844b78612d70e1a3bf8afaaa">&#9670;&#160;</a></span>input_loop()</h2>
+<a id="ae377ab5c8dff061f26b0682d048437e5" name="ae377ab5c8dff061f26b0682d048437e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae377ab5c8dff061f26b0682d048437e5">&#9670;&#160;</a></span>input_loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,7 +176,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual int tui::UIComponent::input_loop </td>
+          <td class="memname">virtual <a class="el" href="key_8h.html#a1299184736a390fc642d1576625ffbe2">config::NormalActions</a> tui::UIComponent::input_loop </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -191,7 +191,7 @@ Public Member Functions</h2></td></tr>
 
 <p><a class="el" href="classtui_1_1UI.html" title="Ncurses top-level UI for timesheeting.">UI</a> input loop for the component. </p>
 
-<p>Implemented in <a class="el" href="classtui_1_1EntriesScreen.html#ab1d52d40364e7c4b31b1ee4bb52a36da">tui::EntriesScreen</a>, <a class="el" href="classtui_1_1EntriesTable.html#a329164c8cbb9c385f65a7be39f6b1dfe">tui::EntriesTable</a>, <a class="el" href="classtui_1_1LocationsScreen.html#a4863f5576f3a5da9c006652df28092bf">tui::LocationsScreen</a>, <a class="el" href="classtui_1_1PeriodSelectorUI.html#aeb8051215c685c65e17cbb3e208ea202">tui::PeriodSelectorUI</a>, <a class="el" href="classtui_1_1ProjectReportScreen.html#a52c8f22bf344ddc5e344e5bf1381cba4">tui::ProjectReportScreen</a>, <a class="el" href="classtui_1_1ProjectTaskScreen.html#a9dcc4b97b49058e901b35790cd5d2a28">tui::ProjectTaskScreen</a>, <a class="el" href="classtui_1_1ProjectTotalsRegister.html#a36cce80719fae5d55e6436e0ec0c338a">tui::ProjectTotalsRegister</a>, <a class="el" href="classtui_1_1StopwatchUI.html#a42f5b62c84ced35b786eec9a2c943259">tui::StopwatchUI</a>, <a class="el" href="classtui_1_1WeeklyReportRegister.html#ac94fda74dd1ee47dcec4b570f262daf6">tui::WeeklyReportRegister</a>, and <a class="el" href="classtui_1_1WeeklyReportScreen.html#a780594819104b207f29b443d5ca6d456">tui::WeeklyReportScreen</a>.</p>
+<p>Implemented in <a class="el" href="classtui_1_1EntriesScreen.html#a626a6721295eeddd74d6ec9909e3b6db">tui::EntriesScreen</a>, <a class="el" href="classtui_1_1EntriesTable.html#ac628666f16cd383d9520df0b85ad1ce0">tui::EntriesTable</a>, <a class="el" href="classtui_1_1LocationsScreen.html#a38c9c0512c83ffb05b80b7295bf1834c">tui::LocationsScreen</a>, <a class="el" href="classtui_1_1PeriodSelectorUI.html#ac78468f7d1b4005c8e2c267f9f9aef70">tui::PeriodSelectorUI</a>, <a class="el" href="classtui_1_1ProjectReportScreen.html#a2edb0f376c91be4a1492ccea972d2726">tui::ProjectReportScreen</a>, <a class="el" href="classtui_1_1ProjectTaskScreen.html#a0bbe2df4dca399e3390c4d04342e843d">tui::ProjectTaskScreen</a>, <a class="el" href="classtui_1_1ProjectTotalsRegister.html#ae431d9fbae2bbf966214b9e88f11bd6f">tui::ProjectTotalsRegister</a>, <a class="el" href="classtui_1_1StopwatchUI.html#a89c3c4c2b25079db64c785d9109ca876">tui::StopwatchUI</a>, <a class="el" href="classtui_1_1WeeklyReportRegister.html#ae65eb215d301db58882f2643f5c994cd">tui::WeeklyReportRegister</a>, and <a class="el" href="classtui_1_1WeeklyReportScreen.html#a4a0c7ce9460bcd9e6b7427507ca71eb2">tui::WeeklyReportScreen</a>.</p>
 
 </div>
 </div>
