@@ -3,7 +3,7 @@
 #ifndef BOUND_KEYS_H
 #define BOUND_KEYS_H
 
-#include "config/key.h"
+#include "config/binding_maps.h"
 
 namespace keys {
   /** @brief Singleton to access the key bindings. */

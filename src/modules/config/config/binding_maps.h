@@ -18,7 +18,13 @@ namespace config {
     /** @brief Add a new binding to the map. */
     void add_binding(int binding, T action) { map.insert({binding, action}); };
     /** @brief Retrieve the action corresponding to the key pressed. */
-    T action_requested(int binding) { return map.at(binding); };
+    T action_requested(int binding) const {
+      if (map.contains(binding)) {
+        return map.at(binding);
+      } else {
+        return T::unbound;
+      }
+    };
   };
 
   /** @brief Map for the normal mode. */

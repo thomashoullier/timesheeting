@@ -4,6 +4,7 @@
 #define PROJECT_TASK_TABLE_H
 
 #include "column/column.h"
+#include "config/key.h"
 #include "ui_screen.h"
 #include <memory>
 
@@ -16,7 +17,7 @@ namespace tui {
 
     void refresh () override;
     void clear () override;
-    int input_loop() override;
+    config::NormalActions input_loop() override;
     void update() override;
 
   private:

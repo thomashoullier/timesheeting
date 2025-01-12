@@ -1,4 +1,5 @@
 #include "weekly_report_register.h"
+#include "config/key.h"
 #include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
 
@@ -12,23 +13,29 @@ namespace tui {
     MenuNCurses::set_items(totals.to_strings(), totals.to_shortstrings());
   }
 
-  int WeeklyReportRegister::input_loop() {
+  config::NormalActions WeeklyReportRegister::input_loop() {
     this->set_border();
     while (true) {
       status().print(this->get_current_item_string());
       auto ch = this->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.down.bound_to(ch)) {
+      auto action = kb.normal_mode.action_requested(ch);
+      switch(action) {
+      case config::NormalActions::down:
         this->select_down_item();
-      } else if (kb.navigation.up.bound_to(ch)) {
+        break;
+      case config::NormalActions::up:
         this->select_up_item();
-      } else if (kb.navigation.right.bound_to(ch)) {
+        break;
+      case config::NormalActions::right:
         this->select_right_item();
-      } else if (kb.navigation.left.bound_to(ch)) {
+        break;
+      case config::NormalActions::left:
         this->select_left_item();
-      } else {
+        break;
+      default:
         this->unset_border();
-        return ch;
+        return action;
       }
     }
   }

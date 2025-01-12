@@ -3,6 +3,7 @@
 #ifndef PERIOD_SELECTOR_UI_H
 #define PERIOD_SELECTOR_UI_H
 
+#include "config/key.h"
 #include "period_selector_ncurses.h"
 #include "../ui_component.h"
 
@@ -13,7 +14,7 @@ namespace tui {
   public:
     /** @brief Constructor. */
     explicit PeriodSelectorUI ();
-    int input_loop() override;
+    config::NormalActions input_loop() override;
     void refresh() override;
     void clear() override;
     void update() override;

@@ -1,26 +1,28 @@
 #include "entries_screen.h"
+#include "config/key.h"
 #include "entries_table.h"
 #include "stopwatch/stopwatch_ui.h"
 #include "log_lib/logger.h"
-#include "ui/keys/bound_keys.h"
 
 namespace tui {
   EntriesScreen::EntriesScreen()
     : stopwatch_ui(std::make_unique<StopwatchUI>()),
       entries_table(std::make_unique<EntriesTable>()) {}
 
-  int EntriesScreen::input_loop() {
+  config::NormalActions EntriesScreen::input_loop() {
     UIComponent *cur_focus{entries_table.get()};
     while (true) {
-      auto ch = cur_focus->input_loop();
-      auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.subtabs.bound_to(ch)) {
+      auto action = cur_focus->input_loop();
+      switch (action) {
+      case config::NormalActions::subtabs:
         cur_focus = (cur_focus == stopwatch_ui.get()) ? entries_table.get()
           : stopwatch_ui.get();
-      } else if (kb.edit_mode.validate.bound_to(ch)) {
+        break;
+      case config::NormalActions::commit_entry:
         entries_table->update(); // Update request is passed
-      } else {
-        return ch;
+        break;
+      default:
+        return action;
       }
     }
   }

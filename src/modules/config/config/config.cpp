@@ -101,6 +101,9 @@ namespace config {
                    {"keys", "navigation", "project_report_screen"},
                    NormalActions::project_report_screen);
     set_key(map, config_loader,
+            {"keys", "navigation", "weekly_report_screen"},
+            NormalActions::weekly_report_screen);
+    set_key(map, config_loader,
                    {"keys", "navigation", "active_visibility"},
                    NormalActions::active_visibility);
     set_key(map, config_loader,
@@ -140,7 +143,7 @@ namespace config {
     set_key(map, config_loader,
             {"keys", "edit_mode", "select_suggestion"},
             EditActions::select_suggestion);
-    map.add_binding(KEY_BACKSPACE, EditActions::backspace);
+    map.add_binding(127, EditActions::backspace);
     return map;
   }
 

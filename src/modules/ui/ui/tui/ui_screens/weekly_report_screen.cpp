@@ -1,25 +1,27 @@
 #include "weekly_report_screen.h"
+#include "config/key.h"
 #include "db/db_sqlite.h"
 #include "log_lib/logger.h"
-#include "ui/keys/bound_keys.h"
 
 namespace tui {
   WeeklyReportScreen::WeeklyReportScreen()
     : week_selector{},
       reg(db::db().report_weekly_totals(week_selector.current_week())) {};
 
-  int WeeklyReportScreen::input_loop() {
+  config::NormalActions WeeklyReportScreen::input_loop() {
     while (true) {
-      auto ch = reg.input_loop();
-      auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.previous.bound_to(ch)) {
+      auto action = reg.input_loop();
+      switch(action) {
+      case config::NormalActions::previous:
         week_selector.select_previous_week();
         update();
-      } else if (kb.navigation.next.bound_to(ch)) {
+        break;
+      case config::NormalActions::next:
         week_selector.select_next_week();
         update();
-      } else {
-        return ch;
+        break;
+      default:
+        return action;
       }
     }
   }

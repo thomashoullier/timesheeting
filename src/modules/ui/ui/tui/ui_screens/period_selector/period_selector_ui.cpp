@@ -1,4 +1,5 @@
 #include "period_selector_ui.h"
+#include "config/key.h"
 #include "period_selector_ncurses.h"
 #include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
@@ -9,29 +10,34 @@ namespace tui {
                       (time_lib::Date(time_lib::DatePoint::YearBegin),
                        time_lib::Date())) {}
 
-  int PeriodSelectorUI::input_loop() {
+  config::NormalActions PeriodSelectorUI::input_loop() {
     period_selector.set_border();
     while (true) {
       status().print(period_selector.get_current_item_string());
       auto ch = period_selector.get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.left.bound_to(ch)) {
+      auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
+      switch(action) {
+      case config::NormalActions::left:
         period_selector.select_left_item();
-      } else if (kb.navigation.right.bound_to(ch)) {
+        break;
+      case config::NormalActions::right:
         period_selector.select_right_item();
-      } else if (kb.actions.rename.bound_to(ch)) {
+        break;
+      case config::NormalActions::rename:
         try {
           rename_item();
           update();
-          return '\n'; // Update above too.
+          return action;
         } catch (time_lib::DateParsingFailure &e) {
           status().print_wait("Failed to parse the date. Do nothing.");
           this->clear();
           this->refresh();
         }
-      } else {
+        break;
+      default:
         period_selector.unset_border();
-        return ch;
+        return action;
       }
     }
   }

@@ -1,4 +1,5 @@
 #include "locations_screen.h"
+#include "config/key.h"
 #include "status_bar/status_bar.h"
 #include "db/db_sqlite.h"
 #include "log_lib/logger.h"
@@ -22,37 +23,46 @@ namespace tui {
     update_location_col();
   };
 
-  int LocationsScreen::input_loop() {
+  config::NormalActions LocationsScreen::input_loop() {
     location_col->set_border();
     while (true) {
       status().print(location_col->get_current_item_string());
       auto ch = location_col->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.down.bound_to(ch)) {
+      auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
+      switch (action) {
+      case config::NormalActions::down:
         location_col->select_down_item();
-      } else if (kb.navigation.up.bound_to(ch)) {
+        break;
+      case config::NormalActions::up:
         location_col->select_up_item();
-      } else if (kb.actions.add.bound_to(ch)) {
+        break;
+      case config::NormalActions::add:
         if (not(add_item())) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
         }
-      } else if (kb.actions.rename.bound_to(ch)) {
+        break;
+      case config::NormalActions::rename:
         if (not(rename_item())) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
         }
-      } else if (kb.actions.remove.bound_to(ch)) {
+        break;
+      case config::NormalActions::remove:
         remove_item();
-      } else if (kb.actions.active_toggle.bound_to(ch)) {
+        break;
+      case config::NormalActions::active_toggle:
         toggle_active_item();
-      } else if (kb.navigation.active_visibility.bound_to(ch)) {
+        break;
+      case config::NormalActions::active_visibility:
         toggle_archive_visibility();
-      } else {
+        break;
+      default:
         location_col->unset_border();
-        return ch;
+        return action;
       }
     }
   }

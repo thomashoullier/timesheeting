@@ -4,6 +4,7 @@
 #define LOCATIONS_SCREEN_H
 
 #include "column/column.h"
+#include "config/key.h"
 #include "ui_screen.h"
 #include <memory>
 
@@ -17,7 +18,7 @@ namespace tui {
     void refresh () override;
     void clear () override;
     void update () override;
-    int input_loop () override;
+    config::NormalActions input_loop () override;
 
   private:
     /** @brief Column holding the locations. */

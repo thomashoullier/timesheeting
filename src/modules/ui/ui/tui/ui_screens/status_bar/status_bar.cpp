@@ -1,4 +1,5 @@
 #include "status_bar.h"
+#include "config/key.h"
 #include "suggestion/suggestion.h"
 #include <algorithm>
 #include "ui/keys/bound_keys.h"
@@ -11,7 +12,9 @@ namespace tui {
 
   StatusBarNCurses::StatusBarNCurses()
     : BarNCurses(ncurses_lib::WindowPosition::bottom,
-                 ncurses_lib::WindowFormat::line) {}
+                 ncurses_lib::WindowFormat::line) {
+    keypad(win, false);
+  }
 
   void StatusBarNCurses::print(const std::string &msg) {
     BarNCurses::print(msg);
@@ -42,17 +45,22 @@ namespace tui {
     while (user_wants_to_input) {
       auto ch = this->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.edit_mode.validate.bound_to(ch)) {
+      auto action = kb.edit_mode.action_requested(ch);
+      switch(action) {
+      case config::EditActions::validate:
         user_wants_to_input = false;
-      } else if (kb.edit_mode.cancel.bound_to(ch)) {
+        break;
+      case config::EditActions::cancel:
         input_buffer.clear();
         user_wants_to_input = false;
-      } else if (ch == 127) { // Backspace
+        break;
+      case config::EditActions::backspace:
         if (!input_buffer.empty()) {
           input_buffer.pop_back();
           this->remove_char();
         }
-      } else {
+        break;
+      default:
         if (input_buffer.size() < this->max_size() - 1) {
           input_buffer.push_back(ch);
           this->add_char(ch);
@@ -73,22 +81,28 @@ namespace tui {
     while (user_wants_to_input) {
       auto ch = this->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.edit_mode.validate.bound_to(ch)) {
+      auto action = kb.edit_mode.action_requested(ch);
+      switch(action) {
+      case config::EditActions::validate:
         user_wants_to_input = false;
-      } else if (kb.edit_mode.cancel.bound_to(ch)) {
+        break;
+      case config::EditActions::cancel:
         input_buffer.clear();
         user_wants_to_input = false;
-      } else if (ch == 127) { // Backspace
+        break;
+      case config::EditActions::backspace:
         if (!input_buffer.empty()) {
           input_buffer.pop_back();
           this->remove_char();
         }
-      } else if (kb.edit_mode.select_suggestion.bound_to(ch)){
+        break;
+      case config::EditActions::select_suggestion:
         if (!best_match.empty()) {
           input_buffer = best_match;
           user_wants_to_input = false;
         }
-      } else {
+        break;
+      default:
         if (input_buffer.size() < this->max_size() - 1) {
           input_buffer.push_back(ch);
           this->add_char(ch);

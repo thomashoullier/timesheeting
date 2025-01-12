@@ -29,7 +29,9 @@ enum class NormalActions {
   rename,
   remove,
   active_toggle,
-  task_project_change
+  task_project_change,
+  // Default: unbound
+  unbound
 };
 
 /** @brief Enumeration of the edit-mode actions performed in the software. */
@@ -37,7 +39,9 @@ enum class EditActions {
   backspace, // Special, this is not accessible to bindings.
   validate,
   cancel,
-  select_suggestion
+  select_suggestion,
+  // Default: unbound
+  unbound
 };
 
 } // namespace config

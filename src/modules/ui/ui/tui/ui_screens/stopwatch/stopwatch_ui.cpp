@@ -1,4 +1,5 @@
 #include "stopwatch_ui.h"
+#include "config/key.h"
 #include "db/db_sqlite.h"
 #include "../status_bar/status_bar.h"
 #include "../update_manager.h"
@@ -7,17 +8,21 @@
 namespace tui {
   StopwatchUI::StopwatchUI() : stopwatch(db::db().query_entrystaging()) {};
 
-  int StopwatchUI::input_loop() {
+  config::NormalActions StopwatchUI::input_loop() {
     stopwatch.set_border();
     while (true) {
       status().print(stopwatch.get_current_item_string());
       auto ch = stopwatch.get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.left.bound_to(ch)) {
+      auto action = kb.normal_mode.action_requested(ch);
+      switch(action) {
+      case config::NormalActions::left:
         stopwatch.select_left_item();
-      } else if (kb.navigation.right.bound_to(ch)) {
+        break;
+      case config::NormalActions::right:
         stopwatch.select_right_item();
-      } else if (kb.actions.rename.bound_to(ch)) {
+        break;
+      case config::NormalActions::rename:
         try {
           rename_item();
           UpdateManager::get().entries_have_changed();
@@ -27,20 +32,23 @@ namespace tui {
           this->clear();
           this->refresh();
         }
-      } else if (kb.actions.set_now.bound_to(ch)) {
+        break;
+      case config::NormalActions::set_now:
         set_current_now();
         update();
-      } else if (kb.actions.commit_entry.bound_to(ch)) {
+        break;
+      case config::NormalActions::commit_entry:
+        {
         db::db().commit_entrystaging();
         UpdateManager::get().entries_have_changed();
         time_lib::Date now_start;
         db::db().edit_entrystaging_start(now_start);
         update();
-        // Pass the update along by returning the key above.
-        return ch;
-      } else {
+        }
+        return action; // Pass the update
+      default:
         stopwatch.unset_border();
-        return ch;
+        return action;
       }
     }
   }

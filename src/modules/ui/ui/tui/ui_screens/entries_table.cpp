@@ -1,4 +1,5 @@
 #include "entries_table.h"
+#include "config/key.h"
 #include "db/db_sqlite.h"
 #include "status_bar/status_bar.h"
 #include "log_lib/logger.h"
@@ -11,24 +12,31 @@ namespace tui {
       total_bar(db::db().query_entries_duration(day_selector.current_range())),
       reg(db::db().query_entries(day_selector.current_range())) {}
 
-  int EntriesTable::input_loop() {
+  config::NormalActions EntriesTable::input_loop() {
     reg.set_border();
     while (true) {
       status().print(reg.get_current_item_string());
       auto ch = reg.get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.down.bound_to(ch)) {
+      auto action = kb.normal_mode.action_requested(ch);
+      switch(action) {
+      case config::NormalActions::down:
         reg.select_down_item();
-      } else if (kb.navigation.up.bound_to(ch)) {
+        break;
+      case config::NormalActions::up:
         reg.select_up_item();
-      } else if (kb.navigation.right.bound_to(ch)) {
+        break;
+      case config::NormalActions::right:
         reg.select_right_item();
-      } else if (kb.navigation.left.bound_to(ch)) {
+        break;
+      case config::NormalActions::left:
         reg.select_left_item();
-      } else if (kb.actions.remove.bound_to(ch)) {
+        break;
+      case config::NormalActions::remove:
         remove_item();
         UpdateManager::get().entries_have_changed();
-      } else if (kb.actions.rename.bound_to(ch)) {
+        break;
+      case config::NormalActions::rename:
         try {
           rename_item();
           update();
@@ -38,7 +46,9 @@ namespace tui {
           this->clear();
           this->refresh();
         }
-      } else if (kb.navigation.next.bound_to(ch)) {
+        break;
+      case config::NormalActions::next:
+        {
         day_selector.select_next_day();
         auto log_dates = day_selector.current_range().to_string();
         log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
@@ -50,17 +60,22 @@ namespace tui {
         total_bar
           .update(db::db()
                   .query_entries_duration(day_selector.current_range()));
-      } else if (kb.navigation.previous.bound_to(ch)) {
+        }
+        break;
+      case config::NormalActions::previous:
+        {
         day_selector.select_previous_day();
         auto log_dates = day_selector.current_range().to_string();
         log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
-                              log_dates.at(1),
+                                  log_dates.at(1),
                               log_lib::LogLevel::debug);
         update();
         day_selector.refresh();
-      } else {
+        }
+        break;
+      default:
         reg.unset_border();
-        return ch;
+        return action;
       }
     }
   }

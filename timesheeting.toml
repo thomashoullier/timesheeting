@@ -24,7 +24,7 @@ active_levels = [ "debug", "error", "info" ]
   locations_screen = "3"
   project_report_screen = "4"
   weekly_report_screen = "5"
-  active_visibility = "."
+  active_visibility = "v"
   quit = "q"
   [keys.actions]
   commit_entry = "\n"

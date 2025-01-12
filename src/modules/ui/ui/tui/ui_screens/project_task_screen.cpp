@@ -1,4 +1,5 @@
 #include "project_task_screen.h"
+#include "config/key.h"
 #include "db/db_sqlite.h"
 #include "status_bar/status_bar.h"
 #include "log_lib/logger.h"
@@ -30,58 +31,70 @@ namespace tui {
     task_col->clear();
   }
 
-  int ProjectTaskScreen::input_loop() {
+  config::NormalActions ProjectTaskScreen::input_loop() {
     ColumnBase *cur_col{project_col.get()};
     cur_col->set_border();
     while (true) {
       status().print(cur_col->get_current_item_string());
       auto ch = cur_col->get_input();
       auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.down.bound_to(ch)) {
+      auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
+      switch(action) {
+      case config::NormalActions::down:
         cur_col->select_down_item();
         if (cur_col == project_col.get()) {
           update_task_col();
         }
-      } else if (kb.navigation.up.bound_to(ch)) {
+        break;
+      case config::NormalActions::up:
         cur_col->select_up_item();
         if (cur_col == project_col.get()) {
           update_task_col();
         }
-      } else if (kb.navigation.left.bound_to(ch)) {
+        break;
+      case config::NormalActions::left:
         cur_col->unset_border();
         cur_col = project_col.get();
         cur_col->set_border();
-      } else if (kb.navigation.right.bound_to(ch)) {
+        break;
+      case config::NormalActions::right:
         cur_col->unset_border();
         cur_col = task_col.get();
         cur_col->set_border();
-      } else if (kb.actions.add.bound_to(ch)) {
+        break;
+      case config::NormalActions::add:
         if (not(add_item(cur_col))) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().projects_tasks_have_changed();
         }
-      } else if (kb.actions.rename.bound_to(ch)) {
+        break;
+      case config::NormalActions::rename:
         if (not(rename_item(cur_col))) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().projects_tasks_have_changed();
         }
-      } else if (kb.actions.task_project_change.bound_to(ch)) {
+        break;
+      case config::NormalActions::task_project_change:
         if (not(change_task_project(cur_col))) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().projects_tasks_have_changed();
         }
-      } else if (kb.actions.remove.bound_to(ch)) {
+        break;
+      case config::NormalActions::remove:
         remove_item(cur_col);
-      } else if (kb.actions.active_toggle.bound_to(ch)) {
+        break;
+      case config::NormalActions::active_toggle:
         toggle_active_item(cur_col);
-      } else if (kb.navigation.active_visibility.bound_to(ch)) {
+        break;
+      case config::NormalActions::active_visibility:
         toggle_archive_visibility();
-      } else {
+        break;
+      default:
         cur_col->unset_border();
-        return ch;
+        return action;
       }
     }
   }

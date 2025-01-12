@@ -3,6 +3,7 @@
 #ifndef ENTRIES_TABLE_H
 #define ENTRIES_TABLE_H
 
+#include "config/key.h"
 #include "date_selector/day_selector.h"
 #include "register/register_ncurses.h"
 #include "total_bar/total_bar.h"
@@ -15,7 +16,7 @@ namespace tui {
     /** @brief Constructor. */
     explicit EntriesTable();
 
-    int input_loop() override;
+    config::NormalActions input_loop() override;
     void refresh() override;
     void clear() override;
     void update() override;

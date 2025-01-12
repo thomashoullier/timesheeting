@@ -3,6 +3,7 @@
 #ifndef WEEKLY_REPORT_SCREEN_H
 #define WEEKLY_REPORT_SCREEN_H
 
+#include "config/key.h"
 #include "date_selector/week_selector.h"
 #include "ui_screen.h"
 #include "weekly_report_register/weekly_report_register.h"
@@ -14,7 +15,7 @@ namespace tui {
     /** @brief Constructor. */
     explicit WeeklyReportScreen();
 
-    int input_loop() override;
+    config::NormalActions input_loop() override;
     void refresh() override;
     void clear() override;
     void update() override;

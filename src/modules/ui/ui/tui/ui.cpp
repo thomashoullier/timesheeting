@@ -1,5 +1,6 @@
 #include "ui.h"
 #include <signal.h>
+#include "config/key.h"
 #include "ncurses_lib/win_ncurses.h"
 #include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
@@ -28,34 +29,39 @@ namespace tui {
   }
 
   int UI::input_loop() {
-    std::shared_ptr<UIScreen> cur_screen {projects_screen};
+    std::shared_ptr<UIScreen> cur_screen{projects_screen};
     projects_screen->clear();
     locations_screen->clear();
     entries_screen->clear();
     project_report_screen->clear();
     while (true) {
       cur_screen->refresh();
-      auto ch = cur_screen->input_loop();
+      auto action = cur_screen->input_loop();
       cur_screen->clear();
-      auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.entries_screen.bound_to(ch)) {
+      switch(action) {
+      case config::NormalActions::entries_screen:
         cur_screen = entries_screen;
-      } else if (kb.navigation.projects_screen.bound_to(ch)) {
+        break;
+      case config::NormalActions::projects_screen:
         cur_screen = projects_screen;
-      } else if (kb.navigation.locations_screen.bound_to(ch)) {
+        break;
+      case config::NormalActions::locations_screen:
         cur_screen = locations_screen;
-      } else if (kb.navigation.project_report_screen.bound_to(ch)) {
+        break;
+      case config::NormalActions::project_report_screen:
         cur_screen = project_report_screen;
-      } else if (kb.navigation.weekly_report_screen.bound_to(ch)) {
+        break;
+      case config::NormalActions::weekly_report_screen:
         cur_screen = weekly_report_screen;
-      } else if (kb.navigation.duration_display.bound_to(ch)) {
+        break;
+      case config::NormalActions::duration_display:
         time_lib::DurationDisplayer::get().cycle_format();
         UpdateManager::get().duration_display_changed();
-      } else if (ch == ncurses_lib::screen_resize_event) {
-        log_lib::logger().log("Screen resize happened.",
-                              log_lib::LogLevel::debug);
-      } else if (kb.navigation.quit.bound_to(ch)) {
+        break;
+      case config::NormalActions::quit:
         return 0; // Return to main
+      default: // Do nothing
+        break;
       }
     }
   }

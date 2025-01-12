@@ -3,6 +3,7 @@
 #ifndef PROJECT_TOTALS_REGISTER_H
 #define PROJECT_TOTALS_REGISTER_H
 
+#include "config/key.h"
 #include "core/project_total.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "../ui_component.h"
@@ -17,7 +18,7 @@ namespace tui {
     (const std::vector<core::ProjectTotal> &totals);
     /** @brief Replace the totals currently displayed. */
     void set_items(const std::vector<core::ProjectTotal> &totals);
-    int input_loop () override;
+    config::NormalActions input_loop () override;
     void refresh() override;
     void clear() override;
     void update() override;

@@ -1,7 +1,7 @@
 #include "project_report_screen.h"
+#include "config/key.h"
 #include "db/db_sqlite.h"
 #include "log_lib/logger.h"
-#include "ui/keys/bound_keys.h"
 
 namespace tui {
   ProjectReportScreen::ProjectReportScreen()
@@ -12,22 +12,23 @@ namespace tui {
           (db::db().report_project_totals
            (period_selector_ui.get_current_date_range()))) {}
 
-  int ProjectReportScreen::input_loop() {
+  config::NormalActions ProjectReportScreen::input_loop() {
     UIComponent *cur_focus{&period_selector_ui};
     cur_focus = &reg;
     while (true) {
-      auto ch = cur_focus->input_loop();
-      auto kb = keys::BoundKeys::get().kb;
-      if (kb.navigation.subtabs.bound_to(ch)) {
+      auto action = cur_focus->input_loop();
+      switch(action) {
+      case config::NormalActions::subtabs:
         if (cur_focus == &period_selector_ui)
           cur_focus = &reg;
         else
           cur_focus = &period_selector_ui;
-      } else if (kb.edit_mode.validate.bound_to(ch)) {
-        // Update request is passed
+        break;
+      case config::NormalActions::rename:
         this->update();
-      } else {
-        return ch;
+        break;
+      default:
+        return action;
       }
     }
   }

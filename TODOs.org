@@ -81,12 +81,18 @@ gives which parts of the source are covered.
 
 * Software
 ** Bugs
-*** TODO Escape and keypad cannot be used simultaneously in ncurses
+*** DONE Escape and keypad cannot be used simultaneously in ncurses
+CLOSED: [2025-01-12 Sun 15:47]
 ADDED: [2025-01-07 Tue]
 The support for keypad we added conflicts with binding the escape key
 in edit mode.
 + One quick fix would be to disable the keypad when entering edit mode,
   and re-enable it when leaving.
++ We initialized the status bar so that it does not interpret the keypad
+  keys.
+
+*** TODO Project report total does not update immediately when changing the period
+ADDED: [2025-01-12 Sun]
 
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
@@ -194,12 +200,15 @@ WAIT for the custom menu implementation.
 Monitor closely the refresh() and update() operations and remove the
 useless ones.
 
-*** TODO Use a hash function to match key bindings dynamically
+*** DONE Use a hash function to match key bindings dynamically
+CLOSED: [2025-01-12 Sun 16:03]
 ADDED: [2024-11-10 Sun]
 Currently we are doing an else if table, which is suboptimal.
 This should not matter very much of course, but it is
 cleaner to use some kind of hash from dynamic key to an enum of keys,
 and then match the enums in a switch statement.
+- [2025-01-12 Sun] Implemented key to Actions maps for bindings. The if ladders are
+  replaced with switch statements.
 
 ** Build
 *** TODO Enforce the GCC14 dependency

@@ -3,6 +3,7 @@
 #ifndef ENTRIES_SCREEN_H
 #define ENTRIES_SCREEN_H
 
+#include "config/key.h"
 #include "ui_screen.h"
 #include <memory>
 
@@ -13,7 +14,7 @@ namespace tui {
     /** @brief Constructor. */
     explicit EntriesScreen();
 
-    int input_loop() override;
+    config::NormalActions input_loop() override;
     void refresh() override;
     void clear() override;
     void update() override;

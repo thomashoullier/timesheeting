@@ -4,6 +4,7 @@
 #define STOPWATCH_UI_H
 
 #include "../ui_component.h"
+#include "config/key.h"
 #include "stopwatch_ncurses.h"
 
 namespace tui {
@@ -13,7 +14,7 @@ namespace tui {
     /** @brief Constructor. */
     explicit StopwatchUI ();
 
-    int input_loop() override;
+    config::NormalActions input_loop() override;
     void refresh() override;
     void clear() override;
     void update() override;
