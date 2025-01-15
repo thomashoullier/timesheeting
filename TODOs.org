@@ -219,6 +219,14 @@ Can we find a way to signal this dependency in the build system?
 We do not want to forbid other compilers from working either.
 
 ** Features
+*** DONE Abandon primary/alternative mapping of keys in config
+CLOSED: [2025-01-15 Wed 21:46]
+ADDED: [2025-01-14 Tue]
+Use a list of strings for indicating keys for a given mapping in the config
+file. Add everything to the map when loading. In this fashion we can have as
+many bindings as we want.
+- [2025-01-15 Wed] Implemented this solution.
+
 *** TODO Complete the logging messages
 ADDED: [2024-11-23 Sat]
 We are supposed to log every event which changes the DB state at least.

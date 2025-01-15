@@ -11,30 +11,30 @@ active_levels = [ "debug", "error", "info" ]
 
 [keys]
   [keys.navigation]
-  up = "e"
-  down = "n"
-  left = "h"
-  right = "i"
-  subtabs = "\t"
-  previous = ","
-  next = "."
-  duration_display = "d"
-  entries_screen = "1"
-  projects_screen = "2"
-  locations_screen = "3"
-  project_report_screen = "4"
-  weekly_report_screen = "5"
-  active_visibility = "v"
-  quit = "q"
+  up = ["e", "UP"]
+  down = ["n", "DOWN"]
+  left = ["h", "LEFT"]
+  right = ["i", "RIGHT"]
+  subtabs = ["TAB"]
+  previous = [","]
+  next = ["."]
+  duration_display = ["d"]
+  entries_screen = ["1"]
+  projects_screen = ["2"]
+  locations_screen = ["3"]
+  project_report_screen = ["4"]
+  weekly_report_screen = ["5"]
+  active_visibility = ["v"]
+  quit = ["q"]
   [keys.actions]
-  commit_entry = "\n"
-  set_now = " "
-  add = "a"
-  rename = "r"
-  remove = "x"
-  active_toggle = "b"
-  task_project_change = "p"
+  commit_entry = ["ENTER"]
+  set_now = ["SPACE"]
+  add = ["a"]
+  rename = ["r"]
+  remove = ["x"]
+  active_toggle = ["b"]
+  task_project_change = ["p"]
   [keys.edit_mode]
-  validate = "\n"
-  cancel = "ESCAPE"
-  select_suggestion = "\t"
+  validate = ["ENTER"]
+  cancel = ["ESCAPE"]
+  select_suggestion = ["TAB"]

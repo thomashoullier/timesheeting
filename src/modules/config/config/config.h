@@ -56,15 +56,9 @@ namespace config {
                  std::shared_ptr<config_lib::TomlLoader> config_loader,
                  std::vector<std::string> tree_pos,
                  T action) {
-      // Primary binding
-      auto str = config_loader->parse_string(tree_pos);
-      int binding = parse_binding_string(str);
-      map.add_binding(binding, action);
-      // Alternate binding
-      tree_pos.back() += "_alt";
-      if (config_loader->node_exists(tree_pos)) {
-        str = config_loader->parse_string(tree_pos);
-        binding = parse_binding_string(str);
+      auto keys = config_loader->parse_stringvec(tree_pos);
+      for (const auto &key : keys) {
+        int binding = parse_binding_string(key);
         map.add_binding(binding, action);
       }
     };
