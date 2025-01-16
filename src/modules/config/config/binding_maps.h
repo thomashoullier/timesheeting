@@ -2,6 +2,7 @@
 #define BINDING_MAPS_H
 
 #include "key.h"
+#include <stdexcept>
 #include <unordered_map>
 
 namespace config {
@@ -16,7 +17,13 @@ namespace config {
     BindingMap() = default;
 
     /** @brief Add a new binding to the map. */
-    void add_binding(int binding, T action) { map.insert({binding, action}); };
+    void add_binding(int binding, T action) {
+      if (map.contains(binding)) {
+        throw std::runtime_error("Tried to map an existing binding!");
+      } else {
+        map.insert({binding, action});
+      }
+    };
     /** @brief Retrieve the action corresponding to the key pressed. */
     T action_requested(int binding) const {
       if (map.contains(binding)) {

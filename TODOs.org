@@ -233,7 +233,8 @@ We are supposed to log every event which changes the DB state at least.
 + Add log messages to cover all DB states changes.
 + Add more information in the log messages: exactly what was changed every time.
 
-*** TODO Protect against binding the same key twice to the same mode
+*** DONE Protect against binding the same key twice to the same mode
+CLOSED: [2025-01-16 Thu 20:13]
 ADDED: [2024-11-28 Thu]
 When loading the keys into BoundKeys, check that keys are not bound twice in the
 same section. Edit mode and the other sections may mix however.
@@ -244,6 +245,8 @@ Stop with an exception if this is the case.
   are added.
 + We need to include backspace in the map also somehow, since it is matched
   in the status_bar functions.
+- [2025-01-16 Thu] Added an exception throw in the BindingMap class when
+  we try to map an existing binding.
 
 *** DEAD Implement a check of the DB when opening
 CLOSED: [2024-11-23 Sat 17:10]
