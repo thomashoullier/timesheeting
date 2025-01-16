@@ -102,10 +102,127 @@ This parameter is at the node \lstinline{time.hours_per_workday}.
 \textit{uplink: } TODO.
 
 \subsubsection{Key bindings configuration}
-TODO:
-* Parsing of each key binding (maybe do a table)
-* Parsing primary and secondary
-* Parsing special keys
+The key bindings are loaded into maps from key to action. The maps are,
+\begin{itemize}
+\item The \emph{normal map}, which is the binding map for the normal mode,
+\item The \emph{edit map}, which is the binding map for the edit mode.
+\end{itemize}
+
+The normal mode is the regular mode of operation of the program, entered
+upon program launch. The edit mode is used when typing text.
+For the purpose of organization of the user-facing configuration file,
+the normal mode bindings are separated into the sections \lstinline{navigation}
+and \lstinline{actions}, while the edit mode bindings are under the section
+\lstinline{edit\_mode}.
+
+\paragraph{MR-CON-100 -- Binding list}
+The \emph{config} module shall load bindings from the following nodes,
+organized hierarchically. The top level node is \lstinline{keys}.
+
+The \emph{normal map} bindings are loaded from,
+\begin{itemize}
+\item navigation
+  \begin{itemize}
+  \item up
+  \item down
+  \item left
+  \item right
+  \item subtabs
+  \item previous
+  \item next
+  \item duration\_display
+  \item entries\_screen
+  \item projects\_screen
+  \item locations\_screen
+  \item project\_report\_screen
+  \item weekly\_report\_screen
+  \item active\_visibility
+  \item quit
+  \end{itemize}
+\item actions
+  \begin{itemize}
+  \item commit\_entry
+  \item set\_now
+  \item add
+  \item rename
+  \item remove
+  \item active\_toggle
+  \item task\_project\_change
+  \end{itemize}
+\end{itemize}
+
+The \emph{edit map} bindings are loaded from,
+\begin{itemize}
+\item edit\_mode
+  \begin{itemize}
+  \item validate
+  \item cancel
+  \item select\_suggestion
+  \end{itemize}
+\end{itemize}
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-110 -- Regular keys}
+The \emph{config} module shall allow binding any regular (\textit{ie}
+non-escaped and non-special) character key to any binding action.
+The regular keys are designated by their character in the configuration
+file, \textit{ie} the key \lstinline{e} is designated by the character
+\lstinline{"e"} in the configuration file.
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-120 -- Special keys}
+The \emph{config} module shall allow binding the following special
+keys to any binding action. The special keys are designated by strings.
+\begin{itemize}
+\item \lstinline{ESCAPE}: the escape key.
+\item \lstinline{ENTER}: the enter or \emph{return} key.
+\item \lstinline{SPACE}: the spacebar.
+\item \lstinline{TAB}: the tabulation key.
+\item \lstinline{UP}: the up arrow key.
+\item \lstinline{DOWN}: the down arrow key.
+\item \lstinline{LEFT}: the left arrow key.
+\item \lstinline{RIGHT}: the right arrow key.
+\end{itemize}
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-130 -- Multiple keys for an action}
+The \emph{config} module shall allow binding multiple keys to the
+same action. The keys are specified as a list of strings attached
+to the corresponding action node.
+
+For instance, for binding the keys \lstinline{e} and \lstinline{a}
+to the action with node \lstinline{rename}, the configuration file
+line is: \lstinline{rename = ["e", "a"]}.
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-140 -- Protection against duplicates}
+The \emph{config} module shall emit an exception when the configuration
+file contains duplicate keys bound in the same map (\textit{ie} either
+\emph{normal} or \emph{edit}).
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-150 -- Backspace mapping}
+The \emph{config} module shall map the backspace key to a backspace
+action in the \emph{edit} map. This is done outside of the configuration
+file, it is an implicit binding.
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-160 -- Unbound keys}
+The maps in the \emph{config} module shall return an \emph{unbound}
+action when queried with a key which was not bound during configuration.
+
+\textit{uplink: } TODO.
+
+\paragraph{MR-CON-170 -- Invalid key strings}
+The \emph{config} module shall emit an exception when a key
+string in the configuration file does not map to any regular or \emph{special}
+characters.
 
 \subsection{cli}
 \paragraph{MR-CLI-010}
