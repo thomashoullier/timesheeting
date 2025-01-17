@@ -156,9 +156,13 @@ if(build_tests)
     PUBLIC config_lib test_utils config)
   target_include_directories(timesheeting_tests PUBLIC
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/test/test_utils/>"
-    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/config_lib/>"
-    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/config/>"
-    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>")
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/ui/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/exporter/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/db/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/time_lib/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/config/>")
 endif()
 
 if(build_coverage)

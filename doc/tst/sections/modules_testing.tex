@@ -18,7 +18,7 @@ We get the current DB version as an integer. We test it is greater than zero.
 The following automated unit tests are used for the config module.
 
 \begin{minipage}{\linewidth}
-  \begin{lstlisting}[caption={timesheeting example configuration file},
+  \begin{lstlisting}[caption={timesheeting nominal configuration file},
                      label={lst:config_file}]
 [db]
 file = "/tmp/timesheeting.db"
@@ -33,33 +33,125 @@ active_levels = [ "debug", "error", "info" ]
 
 [keys]
   [keys.navigation]
-  up = "e"
-  down = "n"
-  left = "h"
-  right = "i"
-  subtabs = "\t"
-  previous = ","
-  next = "."
-  duration_display = "d"
-  entries_screen = "1"
-  projects_screen = "2"
-  locations_screen = "3"
-  project_report_screen = "4"
-  weekly_report_screen = "5"
-  active_visibility = "."
-  quit = "q"
+  up = ["e", "UP"]
+  down = ["n", "DOWN"]
+  left = ["h", "LEFT"]
+  right = ["i", "RIGHT"]
+  subtabs = ["TAB"]
+  previous = [","]
+  next = ["."]
+  duration_display = ["d"]
+  entries_screen = ["1"]
+  projects_screen = ["2"]
+  locations_screen = ["3"]
+  project_report_screen = ["4"]
+  weekly_report_screen = ["5"]
+  active_visibility = ["v"]
+  quit = ["q"]
   [keys.actions]
-  commit_entry = "\n"
-  set_now = " "
-  add = "a"
-  rename = "r"
-  remove = "x"
-  active_toggle = "b"
-  task_project_change = "p"
+  commit_entry = ["ENTER"]
+  set_now = ["SPACE"]
+  add = ["a"]
+  rename = ["r"]
+  remove = ["x"]
+  active_toggle = ["b"]
+  task_project_change = ["p"]
   [keys.edit_mode]
-  validate = "\n"
-  cancel = "ESCAPE"
-  select_suggestion = "\t"
+  validate = ["ENTER"]
+  cancel = ["ESCAPE"]
+  select_suggestion = ["TAB"]
+\end{lstlisting} \end{minipage}
+
+\begin{minipage}{\linewidth}
+  \begin{lstlisting}[caption={timesheeting configuration file
+                              with duplicate binding},
+                     label={lst:config_file_duplicate}]
+[db]
+file = "/tmp/timesheeting.db"
+
+[time]
+timezone = "Europe/Paris"
+hours_per_workday = 7.7
+
+[log]
+file = "/tmp/timesheeting.log"
+active_levels = [ "debug", "error", "info" ]
+
+[keys]
+  [keys.navigation]
+  up = ["e", "UP"]
+  down = ["n", "DOWN"]
+  left = ["h", "LEFT"]
+  right = ["i", "RIGHT"]
+  subtabs = ["TAB"]
+  previous = [","]
+  next = ["."]
+  duration_display = ["d"]
+  entries_screen = ["1"]
+  projects_screen = ["2"]
+  locations_screen = ["3"]
+  project_report_screen = ["4"]
+  weekly_report_screen = ["5"]
+  active_visibility = ["v"]
+  quit = ["q"]
+  [keys.actions]
+  commit_entry = ["ENTER"]
+  set_now = ["SPACE"]
+  add = ["a", "v"]
+  rename = ["r"]
+  remove = ["x"]
+  active_toggle = ["b"]
+  task_project_change = ["p"]
+  [keys.edit_mode]
+  validate = ["ENTER"]
+  cancel = ["ESCAPE"]
+  select_suggestion = ["TAB"]
+\end{lstlisting} \end{minipage}
+
+\begin{minipage}{\linewidth}
+  \begin{lstlisting}[caption={timesheeting configuration file with invalid
+                              special key},
+                     label={lst:config_file_invalidstr}]
+[db]
+file = "/tmp/timesheeting.db"
+
+[time]
+timezone = "Europe/Paris"
+hours_per_workday = 7.7
+
+[log]
+file = "/tmp/timesheeting.log"
+active_levels = [ "debug", "error", "info" ]
+
+[keys]
+  [keys.navigation]
+  up = ["e", "UP", "GOOFY"]
+  down = ["n", "DOWN"]
+  left = ["h", "LEFT"]
+  right = ["i", "RIGHT"]
+  subtabs = ["TAB"]
+  previous = [","]
+  next = ["."]
+  duration_display = ["d"]
+  entries_screen = ["1"]
+  projects_screen = ["2"]
+  locations_screen = ["3"]
+  project_report_screen = ["4"]
+  weekly_report_screen = ["5"]
+  active_visibility = ["v"]
+  quit = ["q"]
+  [keys.actions]
+  commit_entry = ["ENTER"]
+  set_now = ["SPACE"]
+  add = ["a"]
+  rename = ["r"]
+  remove = ["x"]
+  active_toggle = ["b"]
+  task_project_change = ["p"]
+  [keys.edit_mode]
+  validate = ["ENTER"]
+  cancel = ["ESCAPE"]
+  select_suggestion = ["TAB"]
 \end{lstlisting} \end{minipage}
 
 \paragraph{MT-CON-010 -- Config file loading}
@@ -105,3 +197,42 @@ The configuration parameters loaded from \cref{lst:config_file}
 shall contain a float \lstinline{hours_per_workday}.
 
 \textit{Tests: } MR-CON-090 -- Duration display days
+
+\paragraph{MT-CON-080 -- Bindings loading}
+The configuration parameters at the node \lstinline{keys} loaded from
+in \cref{lst:config_file} shall be tested for one to one mapping between
+key and action.
+
+\textit{Tests: }
+\begin{itemize}
+\item MR-CON-100 -- Binding list
+\item MR-CON-110 -- Regular keys
+\item MR-CON-120 -- Special keys
+\item MR-CON-130 -- Multiple keys for an action
+\end{itemize}
+
+\paragraph{MT-CON-090 -- Binding duplicate}
+Loading the configuration file \cref{lst:config_file_duplicate} shall
+result in an exception being emitted.
+
+\textit{Tests: } MR-CON-140 -- Protection against duplicates
+
+\paragraph{MT-CON-100 -- Backspace mapping}
+The configuration parameters loaded from \cref{lst:config_file}
+shall include a binding for the backspace key to the \emph{backspace}
+in the \emph{edit map}.
+
+\textit{Tests: } MR-CON-150 -- Backspace mapping
+
+\paragraph{MT-CON-110 -- Unbound mappings}
+From the configuration parameters loaded from \cref{lst:config_file},
+querying the action corresponding to key \lstinline{u} shall return
+\lstinline{unbound} for both the \emph{normal map} and the \emph{edit map}.
+
+\textit{Tests: } MR-CON-160 -- Unbound keys
+
+\paragraph{MT-CON-120 -- Invalid special key}
+Loading the configuration file \cref{lst:config_file_invalidstr} shall
+result in an exception being emitted.
+
+\textit{Tests: } MR-CON-170 -- Invalid key strings
