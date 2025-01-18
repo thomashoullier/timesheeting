@@ -79,7 +79,36 @@ a configuration filepath which does not exist.
 \textit{Uplink: } TODO.
 
 \subsection{time\textunderscore lib}
-\paragraph{LR-TIM-010}
+\subsubsection{time\textunderscore zone}
+The time\textunderscore zone object is a singleton which provides the
+timezone information to the rest of the program.
+
+\paragraph{LR-TMZ-010 -- Time zone initialization}
+The timezone object shall be initialized with a valid TZ identifier string,
+as defined in AD4.
+
+TODO: uplink
+\paragraph{LR-TMZ-020 -- Time zone singleton}
+The timezone object shall be a singleton. It is initialized once and the same
+instance is retrieved through a \lstinline{get} method subsequently.
+TODO: what happens if we try to reinitialize?
+
+TODO: uplink
+\paragraph{LR-TMZ-030 -- Invalid time zone}
+The timezone object shall emit an exception if it is initialized with
+an invalid TZ string (\textit{ie} a string outside of those defined in AD4).
+
+TODO: uplink
+\paragraph{LR-TMZ-040 -- Time zone name}
+The timezone class shall provide a method to retrieve its TZ identifier string.
+
+TODO: uplink
+
+\paragraph{LR-TMZ-050 -- std time\textunderscore zone}
+The timezone class shall provide a method to retrieve the
+\lstinline{std::chrono::time_zone} representation corresponding to the set
+time zone.
+
 TODO: uplink
 
 \subsection{log\textunderscore lib}
