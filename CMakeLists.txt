@@ -153,7 +153,7 @@ if(build_tests)
   add_executable(timesheeting_tests "${TEST_SRC}")
   target_link_libraries(timesheeting_tests
     PRIVATE Catch2::Catch2WithMain
-    PUBLIC config_lib test_utils config)
+    PUBLIC config_lib test_utils config time_lib)
   target_include_directories(timesheeting_tests PUBLIC
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/test/test_utils/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>"

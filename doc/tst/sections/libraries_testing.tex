@@ -141,3 +141,34 @@ Given \cref{lst:toml_file}, the configuration loader shall read the
 and emit an exception.
 
 \textit{Tests: } LR-CON-110 -- Vector of non-strings case
+
+\subsection{time\textunderscore lib}
+\subsubsection{time\textunderscore zone}
+\paragraph{LT-TMZ-010 -- Invalid time zone}
+The time\textunderscore zone object initialization shall be called with
+the identifier string \lstinline{GOOFY} and emit an exception.
+
+\textit{Tests: } LR-TMZ-030 -- Invalid time zone
+
+\paragraph{LT-TMZ-020 -- Time zone initialization}
+The time\textunderscore zone object shall be initialized with the TZ
+identifier string \lstinline{Europe/Paris} without error.
+
+\textit{Tests: } LR-TMZ-010 -- Time zone initialization
+
+\paragraph{LT-TMZ-030 -- Time zone name}
+The time\textunderscore zone singleton initialized in LT-TMZ-020 shall
+be retrieved, its name queried and equal to \lstinline{Europe/Paris}.
+
+\textit{Tests: } LR-TMZ-020 -- Time zone singleton,
+                 LR-TMZ-040 -- Time zone name
+
+\paragraph{LT-TMZ-040 -- std time\textunderscore zone}
+The time\textunderscore zone singleton initialized in LT-TMZ-020 shall
+be retrieved, its \lstinline{std::chrono::time_zone} object retrieved
+and compared with
+\lstinline{std::chrono::get_tzdb().locate_zone("Europe/Paris")}.
+
+
+\textit{Tests: } LR-TMZ-020 -- Time zone singleton,
+                 LR-TMZ-050 -- std time\textunderscore zone
