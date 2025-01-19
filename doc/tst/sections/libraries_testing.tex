@@ -172,3 +172,127 @@ and compared with
 
 \textit{Tests: } LR-TMZ-020 -- Time zone singleton,
                  LR-TMZ-050 -- std time\textunderscore zone
+
+\subsubsection{Date}
+The tests for Date reuse the TimeZone singleton initialized
+in LT-TMZ-020.
+                 
+\paragraph{LT-DAT-010 -- std::time\textunderscore point initialization}
+The Date shall be initialized without error using the time point
+\lstinline{std::chrono::system_clock::now()}.
+
+\textit{Tests: } LR-DAT-020 \lstinline{std::time_point} initialization
+
+\paragraph{LT-DAT-020 -- Date std::time\textunderscore point access}
+The Date initialized in LR-DAT-010 shall be accessed through its
+internal \lstinline{std::chrono::time_point} representation.
+The duration between the initialization time point and the retrieved
+time point shall be at most 1 second.
+
+\textit{Tests: } LR-DAT-075 Date std::time\textunderscore point access,
+LR-DAT-130 Second resolution
+
+\paragraph{LT-DAT-030 -- Current time initialization}
+The Date shall be initialized at the current time without error
+and the duration between the internal \lstinline{std::chrono::time_point}
+and \lstinline{std::chrono::system_clock::now()} shall be at most 1 second.
+
+\textit{Tests: } LR-DAT-010 Current time initialization
+
+\paragraph{LT-DAT-040 -- UNIX timestamp initialization}
+The Date shall be initialized with the UNIX timestamp in seconds
+\lstinline{1737283885} without error.
+
+\textit{Tests: } LR-DAT-040 UNIX timestamp initialization
+
+\paragraph{LT-DAT-050 -- UNIX timestamp output}
+The Date initialized in LR-DAT-040 shall be converted to a UNIX
+timestamp in seconds. The timestamp shall be be equal to \lstinline{1737283885}.
+
+\textit{Tests: } LR-DAT-110 Date output UNIX timestamp
+
+\paragraph{LT-DAT-060 -- Date string initialization}
+The Date shall be initialized with the date string
+\lstinline{19Jan2025 11:51:25} without error, and a UNIX timestamp output
+will be queried, which must be equal to \lstinline{1737283885}.
+This assumes the TimeZone singleton is set to \lstinline{Europe/Paris}.
+
+\textit{Tests: } LR-DAT-050 Date string initialization
+
+\paragraph{LT-DAT-070 -- Date string shortcuts 1}
+The Date shall be initialized with the date string
+\lstinline{19Jan2025 11:51} without error.
+A UNIX timestamp output will be queried, which must be equal to
+\lstinline{1737283860}.
+
+\textit{Tests: } LR-DAT-060 Date string shortcuts
+
+\paragraph{LT-DAT-080 -- Date string shortcuts 2}
+The Date shall be initialized with the date string
+\lstinline{19Jan2025 11} without error.
+A UNIX timestamp output will be queried, which must be equal to
+\lstinline{1737280800}.
+
+\textit{Tests: } LR-DAT-060 Date string shortcuts
+
+\paragraph{LT-DAT-090 -- Date string shortcuts 3}
+The Date shall be initialized with the date string
+\lstinline{19Jan2025} without error.
+A UNIX timestamp output will be queried, which must be equal to
+\lstinline{1737241200}.
+
+\textit{Tests: } LR-DAT-060 Date string shortcuts
+
+\paragraph{LT-DAT-100 -- Date string invalid}
+The Date initialization shall emit an exception when provided
+with the string \lstinline{GOOFY}.
+
+\textit{Tests: } LR-DAT-070 Date string shortcuts
+
+\paragraph{LT-DAT-110 -- Date output string}
+The Date shall be initialized with a UNIX timestamp in seconds
+\lstinline{1737283885}, the output string shall be queried and
+must be equal to \lstinline{19Jan2025 11:51:25}.
+
+\textit{Tests: } LR-DAT-080 Date output string
+
+\paragraph{LT-DAT-120 -- Date output hours/minutes}
+The Date shall be initialized with a UNIX timestamp in seconds
+\lstinline{1737283885}, the output hours/minutes shall be queried
+and must be equal to \lstinline{11:51}.
+
+\textit{Tests: } LR-DAT-090 Date output hours/minutes
+
+\paragraph{LT-DAT-130 -- Date output unambiguous string}
+The Date shall be initialized with a UNIX timestamp in seconds
+\lstinline{1737283885}, the output unambiguous string shall
+be queried and must be equal to \lstinline{19Jan2025 11:51:25 +0100}.
+
+\textit{Tests: } LR-DAT-100 Date output unambiguous string
+
+\paragraph{LT-DAT-140 -- Date output day/month/year}
+The Date shall be initialized with a UNIX timestamp in seconds
+\lstinline{1737283885}, the output day/month/year string shall
+be queried and must be equal to \lstinline{19Jan2025}.
+
+\textit{Tests: } LR-DAT-120 Date output day/month/year
+
+\paragraph{LT-DAT-150 -- Beginning of year}
+The Date shall be initialized using the DatePoint YearBegin without error.
+The day/moth/year string is then queried, it must be equal to
+\lstinline{01JanYYYY} with \lstinline{YYYY} whatever the current year
+currently is in the time zone currently set in TimeZone.
+
+\textit{Tests: } LR-DAT-030 Beginning of year
+
+\paragraph{LT-DAT-160 -- Date comparison}
+Two Date instances shall be initialized, the first with
+UNIX timestamp in seconds \lstinline{1737283885}, the second with
+\lstinline{1737283886}.
+The comparison must show that,
+\begin{itemize}
+\item the first Date is \emph{lesser than} the second Date,
+\item the second Date is \emph{greater than} the first Date.
+\end{itemize}
+
+\textit{Tests: } LR-DAT-140 Date comparison
