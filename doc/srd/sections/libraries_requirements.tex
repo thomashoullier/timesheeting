@@ -85,7 +85,7 @@ timezone information to the rest of the program.
 
 \paragraph{LR-TMZ-010 -- Time zone initialization}
 The timezone object shall be initialized with a valid TZ identifier string,
-as defined in AD4.
+as defined in [AD4].
 
 TODO: uplink
 \paragraph{LR-TMZ-020 -- Time zone singleton}
@@ -95,7 +95,7 @@ instance is retrieved through a \lstinline{get} method subsequently.
 TODO: uplink
 \paragraph{LR-TMZ-030 -- Invalid time zone}
 The timezone object shall emit an exception if it is initialized with
-an invalid TZ string (\textit{ie} a string outside of those defined in AD4).
+an invalid TZ string (\textit{ie} a string outside of those defined in [AD4]).
 
 TODO: uplink
 \paragraph{LR-TMZ-040 -- Time zone name}
@@ -107,6 +107,110 @@ TODO: uplink
 The timezone class shall provide a method to retrieve the
 \lstinline{std::chrono::time_zone} representation corresponding to the set
 time zone.
+
+TODO: uplink
+
+\subsubsection{date}
+A Date is a representation of a time point in UTC using the system clock
+as time reference.
+
+\paragraph{LR-DAT-010 -- Current time initialization}
+The Date shall allow initialization at the current time.
+
+TODO: uplink
+
+\paragraph{LR-DAT-020 -- std::time\textunderscore point initialization}
+The Date shall allow initialization from a \lstinline{std::time_point}.
+
+TODO: uplink
+
+\paragraph{LR-DAT-030 -- Beginning of year}
+The Date shall allow initialization at the beginning of the current year
+in the current time zone (as set in the TimeZone singleton).
+
+TODO: uplink
+
+\paragraph{LR-DAT-040 -- UNIX timestamp initialization}
+The Date shall allow initialization from a UNIX timestamp in seconds.
+
+TODO: uplink
+
+\paragraph{LR-DAT-050 -- Date string initialization}
+The Date shall allow initialization from a string in the format
+\lstinline{%d%b%Y %H:%M:%S}, with format specifiers as defined in [AD5].
+The date initialization uses time zone currently set
+in the TimeZone singleton.
+
+An example of a valid initialization string is \lstinline {19Jan2025 09:41:34}.
+
+TODO: uplink
+
+\paragraph{LR-DAT-060 -- Date string shortcuts}
+The Date shall allow initialization from shortened strings
+with formats,
+\begin{itemize}
+\item \lstinline{%d%b%Y %H:%M}
+\item \lstinline{%d%b%Y %H}
+\item \lstinline{%d%b%Y}
+\end{itemize}
+(with the same set of format specifiers as in LR-DAT-050),
+replacing the omitted items from the full format defined in LR-DAT-050
+by zero values.
+
+Examples of shortened initialization strings and their full equivalent are
+given in \cref{tab:date_shortened}.
+
+\begin{table}
+  \caption{\label{tab:date_shortened}
+    Shortened date initialization string examples}
+  \begin{tabular}{| c | c |} \hline
+    \textbf{Shortened} & \textbf{Full} \\ \hline
+    \texttt{19Jan2025 09:41} & \texttt{19Jan2025 09:41:00} \\ \hline
+    \texttt{19Jan2025 09} & \texttt{19Jan2025 09:00:00} \\ \hline
+    \texttt{19Jan2025} & \texttt{19Jan2025 00:00:00} \\ \hline
+  \end{tabular}\end{table}
+
+TODO: uplink
+
+\paragraph{LR-DAT-070 -- Date string invalid}
+During Date initialization with a date string, an exception shall be
+thrown if an invalid date string is used (\textit{ie} outside of the formats
+specified).
+
+TODO: uplink
+
+\paragraph{LR-DAT-080 -- Date output string}
+The Date shall be convertible to a string in format
+\lstinline{%d%b%Y %H:%M:%S} (see [AD5]) in the current time zone.
+
+TODO: uplink
+\paragraph{LR-DAT-090 -- Date output hours/minutes}
+The Date shall be convertible to a string in format
+\lstinline{%H:%M} (see [AD5]) in the current time zone.
+
+TODO: uplink
+\paragraph{LR-DAT-100 -- Date output unambiguous string}
+The Date shall be convertible to a string in format
+\lstinline{%d%b%Y %H:%M:%S %z} (see [AD5]) in the current time zone.
+
+TODO: uplink
+\paragraph{LR-DAT-110 -- Date output UNIX timestamp}
+The Date shall be convertible to a UNIX timestamp in seconds in \gls{UTC}.
+
+TODO: uplink
+\paragraph{LR-DAT-120 -- Date output day/month/year}
+The Date shall be convertible to a string in format
+\lstinline{%d%b%Y} (see [AD5]) in the current time zone.
+
+TODO: uplink
+\paragraph{LR-DAT-130 -- Second resolution}
+The Date shall represent time points with a resolution of at most 1 second.
+
+TODO: uplink
+
+\paragraph{LR-DAT-140 -- Date comparison}
+The Date class shall provide \emph{lesser than} and \emph{greater than}
+comparison operators.
 
 TODO: uplink
 
