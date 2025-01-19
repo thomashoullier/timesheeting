@@ -18,6 +18,10 @@ namespace time_lib{
       The time is internally represented in UTC, and inputted/displayed in the
       current system's timezone. */
   class Date {
+  private:
+    /** @brief Compute a time_point from a date string. */
+    std::chrono::zoned_seconds time_point_from_str (const std::string &date_str);
+
   public:
     /** @brief Internal time point representation, seconds UTC */
     std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp;

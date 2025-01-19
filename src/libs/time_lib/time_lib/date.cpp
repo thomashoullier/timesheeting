@@ -21,41 +21,37 @@ namespace time_lib{
     case DatePoint::YearBegin: {
       std::chrono::zoned_time current{TimeZone::get().zone,
                                       std::chrono::system_clock::now()};
-      // TODO: this is hacky, is there no better way?
-      std::chrono::zoned_time first_day
-        {TimeZone::get().zone,
-         std::chrono::floor<std::chrono::days>
-         (std::chrono::floor<std::chrono::years>(current.get_local_time()))};
-      tp = first_day.get_sys_time();
+      std::string current_year = std::format("{:%Y}", current);
+      std::string first_day_str = "01Jan" + current_year;
+      tp = time_point_from_str(first_day_str);
     } break;
     default:
-      throw std::logic_error("Unknown date_point.");
+      throw std::logic_error("Unknown DatePoint.");
     }
   }
 
   Date::Date(uint64_t unix_seconds)
     : tp(std::chrono::seconds{unix_seconds}) {}
 
-  Date::Date(const std::string &date_str) {
+  std::chrono::zoned_seconds Date::time_point_from_str
+  (const std::string &date_str) {
     std::stringstream ss{date_str};
     std::chrono::local_seconds local_tp;
-    const std::vector<std::string> match_strings
-      {"%d%b%Y %H:%M:%S",
-       "%d%b%Y %H:%M",
-       "%d%b%Y %H",
-       "%d%b%Y"};
+    const std::vector<std::string> match_strings{
+        "%d%b%Y %H:%M:%S", "%d%b%Y %H:%M", "%d%b%Y %H", "%d%b%Y"};
     for (const auto &match_string : match_strings) {
       ss >> std::chrono::parse(match_string, local_tp);
       if (ss.good()) {
         std::chrono::zoned_seconds zoned_sec(TimeZone::get().zone, local_tp);
-        tp = zoned_sec;
-        return;
+        return zoned_sec;
       }
       ss.str(date_str);
       ss.clear();
     }
     throw DateParsingFailure("Failed to parse the inputted date string.");
   }
+
+  Date::Date(const std::string &date_str) : tp {time_point_from_str(date_str)}{}
 
   std::string Date::to_string() const {
     std::chrono::zoned_seconds local_time{TimeZone::get().zone, tp};

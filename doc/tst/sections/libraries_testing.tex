@@ -184,7 +184,7 @@ The Date shall be initialized without error using the time point
 \textit{Tests: } LR-DAT-020 \lstinline{std::time_point} initialization
 
 \paragraph{LT-DAT-020 -- Date std::time\textunderscore point access}
-The Date initialized in LR-DAT-010 shall be accessed through its
+The Date initialized in LT-DAT-010 shall be accessed through its
 internal \lstinline{std::chrono::time_point} representation.
 The duration between the initialization time point and the retrieved
 time point shall be at most 1 second.
@@ -206,7 +206,7 @@ The Date shall be initialized with the UNIX timestamp in seconds
 \textit{Tests: } LR-DAT-040 UNIX timestamp initialization
 
 \paragraph{LT-DAT-050 -- UNIX timestamp output}
-The Date initialized in LR-DAT-040 shall be converted to a UNIX
+The Date initialized in LT-DAT-040 shall be converted to a UNIX
 timestamp in seconds. The timestamp shall be be equal to \lstinline{1737283885}.
 
 \textit{Tests: } LR-DAT-110 Date output UNIX timestamp
@@ -279,7 +279,7 @@ be queried and must be equal to \lstinline{19Jan2025}.
 
 \paragraph{LT-DAT-150 -- Beginning of year}
 The Date shall be initialized using the DatePoint YearBegin without error.
-The day/moth/year string is then queried, it must be equal to
+The day/month/year string is then queried, it must be equal to
 \lstinline{01JanYYYY} with \lstinline{YYYY} whatever the current year
 currently is in the time zone currently set in TimeZone.
 
