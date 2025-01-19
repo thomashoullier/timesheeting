@@ -1,5 +1,6 @@
 #include "time_lib_test.h"
 #include "time_lib/date.h"
+#include "time_lib/date_range.h"
 #include <catch2/catch_test_macros.hpp>
 #include <chrono>
 #include <cstdint>
@@ -134,5 +135,42 @@ TEST_CASE("Date", "[time_lib]") {
     auto date2 = time_lib::Date{tmstp2};
     CHECK(date1 < date2);
     CHECK(date2 > date1);
+  }
+}
+
+TEST_CASE("DateRange", "[time_lib]") {
+  uint64_t tmstp1{1737283885};
+  uint64_t tmstp2{1737283886};
+  auto start = time_lib::Date{tmstp1};
+  auto stop = time_lib::Date{tmstp2};
+  SECTION("LT-DTR-010 DateRange initialization") {
+    time_lib::DateRange(start, stop);
+    SUCCEED("DateRange initialized without error");
+  }
+  SECTION("LT-DTR-020 DateRange ordering") {
+    CHECK_THROWS(time_lib::DateRange(stop, start));
+  }
+  SECTION("LT-DTR-030 Dates read access") {
+    auto date_range = time_lib::DateRange(start, stop);
+    auto start_stamp = date_range.start.to_unix_timestamp();
+    auto stop_stamp = date_range.stop.to_unix_timestamp();
+    CHECK(start_stamp == tmstp1);
+    CHECK(stop_stamp == tmstp2);
+  }
+  SECTION("LT-DTR-040 DateRange to strings") {
+    auto date_range = time_lib::DateRange(start, stop);
+    auto dr_strings = date_range.to_string();
+    auto ref_start_str = start.to_string();
+    auto ref_stop_str = stop.to_string();
+    CHECK(dr_strings.at(0) == ref_start_str);
+    CHECK(dr_strings.at(1) == ref_stop_str);
+  }
+  SECTION("LT-DTR-050 DateRange to day strings") {
+    auto date_range = time_lib::DateRange(start, stop);
+    auto dr_strings = date_range.to_day_strings();
+    auto ref_start_str = start.get_day_string();
+    auto ref_stop_str = stop.get_day_string();
+    CHECK(dr_strings.at(0) == ref_start_str);
+    CHECK(dr_strings.at(1) == ref_stop_str);
   }
 }

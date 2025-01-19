@@ -1,8 +1,14 @@
 #include "date_range.h"
+#include <stdexcept>
 
 namespace time_lib {
   DateRange::DateRange(const Date &_start, const Date &_stop)
-    : start(_start), stop(_stop) {}
+    : start(_start), stop(_stop) {
+    if (_start > _stop) {
+      throw std::runtime_error("DateRange initialization: start Date is greater "
+                               "than stop Date.");
+    }
+  }
 
   std::vector<std::string> DateRange::to_string() const {
     std::vector<std::string> strings(2);

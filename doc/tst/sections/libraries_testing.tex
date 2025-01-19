@@ -296,3 +296,40 @@ The comparison must show that,
 \end{itemize}
 
 \textit{Tests: } LR-DAT-140 Date comparison
+
+\subsubsection{DateRange}
+\paragraph{LT-DTR-010 -- DateRange initialization}
+Given a start Date initialized to UNIX timestamp \lstinline{1737283885},
+and a stop Date initialized to UNIX timestamp \lstinline{1737283886},
+a DateRange shall be initialized without error.
+
+\textit{Tests: } LR-DTR-010 DateRange initialization
+
+\paragraph{LT-DTR-020 -- DateRange ordering}
+Given the start and stop Dates of LT-DTR-020 in reverse order,
+the DateRange initialization shall emit an exception.
+
+\textit{Tests: } LR-DTR-020 DateRange ordering
+
+\paragraph{LT-DTR-030 -- Dates read access}
+Given the DateRange initialized in LT-DTR-010, the start and stop
+Dates shall be queried and their UNIX timestamp obtained.
+The timestamps shall evaluate to the ones defined in LT-DTR-010.
+
+\textit{Tests: } LR-DTR-030 Dates read access
+
+\paragraph{LT-DTR-040 -- DateRange to strings}
+Given the DateRange initialized in LT-DTR-010, the vector of
+strings from the DateRange shall be queried. Each shall evaluate
+to the same string given by the corresponding method for the start and stop
+Dates (as specified in LR-DAT-080).
+
+\textit{Tests: } LR-DTR-040 DateRange to strings
+
+\paragraph{LT-DTR-050 -- DateRange to day strings}
+Given the DateRange initialized in LT-DTR-010, the vector of
+strings from the DateRange shall be queried. Each shall evaluate
+to the same string given by the corresponding method for the start and stop
+Dates (as specified in LR-DAT-120).
+
+\textit{Tests: } LR-DTR-050 DateRange to day strings
