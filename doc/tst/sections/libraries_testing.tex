@@ -333,3 +333,58 @@ to the same string given by the corresponding method for the start and stop
 Dates (as specified in LR-DAT-120).
 
 \textit{Tests: } LR-DTR-050 DateRange to day strings
+
+\subsubsection{Day}
+\paragraph{LT-DAY-010 -- Day ymd initialization}
+A Day shall be initialized using a \lstinline{std::chrono::year_month_day}
+object set to \lstinline{21Jan2025} without error.
+
+\textit{Tests: } LR-DAY-020 year/month/day initialization
+
+\paragraph{LT-DAY-020 -- DateRange representation}
+Given a Day initialized to \lstinline{21Jan2025}, a valid DateRange
+will be returned without error.
+
+\textit{Tests: } LR-DAY-030 DateRange representation
+
+\paragraph{LT-DAY-030 -- DateRange start and stop Date}
+The DateRange returned by a Day initialized to \lstinline{21Jan2025}
+shall have both:
+\begin{itemize}
+\item a start Date which returns a string equal to
+  \lstinline{21Jan2025 00:00:00},
+\item a stop Date which returns a string equal to
+  \lstinline{22Jan2025 00:00:00}.
+\end{itemize}
+
+\textit{Tests: } LR-DAY-040 DateRange start and stop Date
+
+\paragraph{LT-DAY-040 -- String representation}
+A Day initialized to \lstinline{21Jan2025} shall return a string
+representation equal to \lstinline{21Jan2025 Tue}.
+
+\textit{Tests: } LR-DAY-050 String representation
+
+\paragraph{LT-DAY-050 -- Now initialization}
+A Day will be initialized to now without error. The DateRange will be queried
+from this Day.
+A Date is initialized to now, and its string day/month/year representation
+is stored.
+We check that the day/month/year string appended with \lstinline{" 00:00:00"} is
+equal to the string representation of the DateRange start Date.
+
+\textit{Tests: } LR-DAY-010 Now initialization
+
+\paragraph{LT-DAY-060 -- Next}
+Given a Day initialized to \lstinline{21Jan2025}, the \emph{next} method
+shall be called without error and the string representation for the Day
+shall be equal to \lstinline{22Jan2025 Wed}.
+
+\textit{Tests: } LR-DAY-060 Next and previous
+
+\paragraph{LT-DAY-070 -- Previous}
+Given a Day initialized to \lstinline{21Jan2025}, the \emph{previous} method
+shall be called without error and the string representation for the Day
+shall be equal to \lstinline{20Jan2025 Mon}.
+
+\textit{Tests: } LR-DAY-060 Next and previous

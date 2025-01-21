@@ -249,6 +249,55 @@ as defined in LR-DAT-120.
 
 TODO: uplink
 
+\subsubsection{Day}
+A Day corresponds to a DateRange covering a single calendar day in
+the current TimeZone. A given day starts at midnight and ends at the next
+midnight.
+
+\paragraph{LR-DAY-010 -- Now initialization}
+The default Day initialization shall be to the current calendar day,
+as indicated by the system clock, in the time zone currently set
+in TimeZone.
+
+TODO: uplink
+
+\paragraph{LR-DAY-020 -- year/month/day initialization}
+Day shall allow initialization from a \lstinline{std::chrono::year_month_day}
+object, which represents a calendar day.
+
+TODO: uplink
+
+\paragraph{LR-DAY-030 -- DateRange representation}
+The Day shall be convertible to a corresponding DateRange.
+
+TODO: uplink
+
+\paragraph{LR-DAY-040 -- DateRange start and stop Date}
+The DateRange obtained from a Day shall have a start Date set
+to \lstinline{00:00:00} and stop Date set to \lstinline{00:00:00} of the
+following day, in the currently set time zone and for the currently set calendar
+day.
+
+TODO: uplink
+
+\paragraph{LR-DAY-050 -- String representation}
+The Day shall be convertible to a string representation in format
+\lstinline{%d%b%Y %a} (see [AD5]).
+
+For instance, \lstinline{21Jan2025 Tue} is a valid string representation
+for a Day.
+
+TODO: uplink
+
+\paragraph{LR-DAY-060 -- Next and previous}
+Day shall include methods to select the \emph{next} and \emph{previous} days
+from the currently set calendar day.
+
+For instance, if the current Day is set to \lstinline{21Jan2025}, calling
+\emph{previous} must change the Day to \lstinline{20Jan2025}.
+
+TODO: uplink
+
 \subsection{log\textunderscore lib}
 \paragraph{LR-LOG-010}
 TODO: uplink

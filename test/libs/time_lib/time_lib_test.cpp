@@ -1,6 +1,7 @@
 #include "time_lib_test.h"
 #include "time_lib/date.h"
 #include "time_lib/date_range.h"
+#include "time_lib/day.h"
 #include <catch2/catch_test_macros.hpp>
 #include <chrono>
 #include <cstdint>
@@ -172,5 +173,57 @@ TEST_CASE("DateRange", "[time_lib]") {
     auto ref_stop_str = stop.get_day_string();
     CHECK(dr_strings.at(0) == ref_start_str);
     CHECK(dr_strings.at(1) == ref_stop_str);
+  }
+}
+
+TEST_CASE("Day", "[time_lib]") {
+  std::chrono::year y{2025};
+  std::chrono::month m{std::chrono::January};
+  std::chrono::day d{21};
+  std::chrono::year_month_day ymd(y, m, d);
+  SECTION("LT-DAY-010 Day ymd initialization") {
+    time_lib::Day{ymd};
+    SUCCEED("ymd Day initialized without error");
+  }
+  SECTION("LT-DAY-020 DateRange representation") {
+    auto day = time_lib::Day{ymd};
+    auto dr = day.to_date_range();
+    CHECK(std::is_same<decltype(dr), time_lib::DateRange>());
+  }
+  SECTION("LT-DAY-030 DateRange start and stop Date") {
+    auto day = time_lib::Day{ymd};
+    auto dr = day.to_date_range();
+    auto start_str = dr.start.to_string();
+    CHECK(start_str == "21Jan2025 00:00:00");
+    auto stop_str = dr.stop.to_string();
+    CHECK(stop_str == "22Jan2025 00:00:00");
+  }
+  SECTION("LT-DAY-040 String representation") {
+    auto day = time_lib::Day{ymd};
+    auto str = day.to_string();
+    CHECK(str == "21Jan2025 Tue");
+  }
+  SECTION("LT-DAY-050 Now initialization") {
+    auto day = time_lib::Day{};
+    auto dr = day.to_date_range();
+    auto date_now = time_lib::Date{};
+    auto now_ymd = date_now.get_day_string();
+    auto ymd_start = now_ymd + " 00:00:00";
+    auto dr_start_str = dr.start.to_string();
+    CHECK(dr_start_str == ymd_start);
+  }
+  SECTION("LT-DAY-060 Next") {
+    auto day = time_lib::Day{};
+    day.next();
+    SUCCEED("next() called without error");
+    auto day_str = day.to_string();
+    CHECK(day_str == "22Jan2025 Wed");
+  }
+  SECTION("LT-DAY-070 Previous") {
+    auto day = time_lib::Day{};
+    day.previous();
+    SUCCEED("previous() called without error");
+    auto day_str = day.to_string();
+    CHECK(day_str == "20Jan2025 Mon");
   }
 }
