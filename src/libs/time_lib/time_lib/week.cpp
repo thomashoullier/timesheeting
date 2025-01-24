@@ -1,16 +1,20 @@
 #include "week.h"
 #include "time_zone.h"
+#include <chrono>
 
 namespace time_lib {
-  Week::Week() {
-    Date utc_now{};
-    auto now = TimeZone::get().zone->to_local(utc_now.tp);
+  std::chrono::year_month_day Week::ymd_from_date(const Date &date) {
+    auto now = TimeZone::get().zone->to_local(date.tp);
     auto ld = std::chrono::floor<std::chrono::days>(now);
-    auto cur_day = std::chrono::weekday {ld};
+    auto cur_day = std::chrono::weekday{ld};
     auto gap = cur_day - std::chrono::Monday;
     auto last_monday = ld - gap;
-    ymd = std::chrono::year_month_day{last_monday};
+    return std::chrono::year_month_day{last_monday};
   }
+
+  Week::Week() : ymd{ymd_from_date(Date{})} {}
+
+  Week::Week(const Date &date) : ymd{ymd_from_date(date)} {}
 
   void Week::next() {
     ymd = std::chrono::sys_days{ymd} + std::chrono::weeks{1};

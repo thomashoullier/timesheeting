@@ -2,6 +2,7 @@
 #include "time_lib/date.h"
 #include "time_lib/date_range.h"
 #include "time_lib/day.h"
+#include "time_lib/week.h"
 #include <catch2/catch_test_macros.hpp>
 #include <chrono>
 #include <cstdint>
@@ -213,17 +214,73 @@ TEST_CASE("Day", "[time_lib]") {
     CHECK(dr_start_str == ymd_start);
   }
   SECTION("LT-DAY-060 Next") {
-    auto day = time_lib::Day{};
+    auto day = time_lib::Day{ymd};
     day.next();
     SUCCEED("next() called without error");
     auto day_str = day.to_string();
     CHECK(day_str == "22Jan2025 Wed");
   }
   SECTION("LT-DAY-070 Previous") {
-    auto day = time_lib::Day{};
+    auto day = time_lib::Day{ymd};
     day.previous();
     SUCCEED("previous() called without error");
     auto day_str = day.to_string();
     CHECK(day_str == "20Jan2025 Mon");
+  }
+}
+
+TEST_CASE("Week", "[time_lib]") {
+  const time_lib::Date date = time_lib::Date{"24Jan2025 18:08:30"};
+  SECTION("LT-WEK-010 Date initialization") {
+    time_lib::Week{date};
+    SUCCEED("Week initialized from Date without error.");
+  }
+  SECTION("LT-WEK-020 DateRange conversion") {
+    auto week = time_lib::Week{date};
+    auto dr = week.to_date_range();
+    SUCCEED("DateRange returned without error.");
+    auto start_str = dr.start.to_string();
+    CHECK(start_str == "20Jan2025 00:00:00");
+    auto stop_str = dr.stop.to_string();
+    CHECK(stop_str == "27Jan2025 00:00:00");
+  }
+  SECTION("LT-WEK-030 Now initialization") {
+    time_lib::Week{};
+    SUCCEED("Week initiliazed to now without error.");
+  }
+  SECTION("LT-WEK-040 String representation") {
+    auto week = time_lib::Week{date};
+    auto str = week.to_string();
+    CHECK(str == "20Jan2025 W04");
+  }
+  SECTION("LT-WEK-050 Array of days") {
+    auto week = time_lib::Week{date};
+    auto array = week.days();
+    auto mon = array.at(0).to_string();
+    CHECK(mon == "20Jan2025 Mon");
+    auto tue = array.at(1).to_string();
+    CHECK(tue == "21Jan2025 Tue");
+    auto wed = array.at(2).to_string();
+    CHECK(wed == "22Jan2025 Wed");
+    auto thu = array.at(3).to_string();
+    CHECK(thu == "23Jan2025 Thu");
+    auto fri = array.at(4).to_string();
+    CHECK(fri == "24Jan2025 Fri");
+    auto sat = array.at(5).to_string();
+    CHECK(sat == "25Jan2025 Sat");
+    auto sun = array.at(6).to_string();
+    CHECK(sun == "26Jan2025 Sun");
+  }
+  SECTION("LT-WEK-060 Next") {
+    auto week = time_lib::Week{date};
+    week.next();
+    auto str = week.to_string();
+    CHECK(str == "27Jan2025 W05");
+  }
+  SECTION("LT-WEK-070 Previous") {
+    auto week = time_lib::Week{date};
+    week.previous();
+    auto str = week.to_string();
+    CHECK(str == "13Jan2025 W03");
   }
 }

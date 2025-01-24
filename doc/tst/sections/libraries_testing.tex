@@ -388,3 +388,64 @@ shall be called without error and the string representation for the Day
 shall be equal to \lstinline{20Jan2025 Mon}.
 
 \textit{Tests: } LR-DAY-060 Next and previous
+
+\subsubsection{Week}
+\paragraph{LT-WEK-010 -- Date initialization}
+Given a Date initialized to \lstinline{24Jan2025 18:09:30}, the Week
+shall be initialized without error.
+
+\textit{Tests: } LR-WEK-020 Date initialization
+
+\paragraph{LT-WEK-020 -- DateRange conversion}
+A Week initialized using the Date \lstinline{24Jan2025 18:09:30} shall
+return a DateRange without error with start and stop Dates the string
+representation of which are:
+\begin{itemize}
+\item start: \lstinline{20Jan2025 00:00:00}
+\item stop: \lstinline{27Jan2025 00:00:00}
+\end{itemize}
+
+\textit{Tests: } LR-WEK-020 Date initialization, LR-WEK-030 DateRange conversion
+
+\paragraph{LT-WEK-030 -- Now initialization}
+The Week shall be initialized to the current calendar week without error.
+
+\textit{Tests: } LR-WEK-010 Now initialization
+
+\paragraph{LT-WEK-040 -- String representation}
+A Week initialized using the Date \lstinline{24Jan2025 18:09:30} shall
+return a string representation equal to \lstinline{"20Jan2025 W04"}.
+
+\textit{Tests: } LR-WEK-040 String representation
+
+\paragraph{LT-WEK-050 -- Array of days}
+A week initialized using the Date \lstinline{24Jan2025 18:09:30} shall
+return an array of Days, the string representations of which are,
+in order,
+\begin{enumerate}
+\item \lstinline{"20Jan2025 Mon"}
+\item \lstinline{"21Jan2025 Tue"}
+\item \lstinline{"22Jan2025 Wed"}
+\item \lstinline{"23Jan2025 Thu"}
+\item \lstinline{"24Jan2025 Fri"}
+\item \lstinline{"25Jan2025 Sat"}
+\item \lstinline{"26Jan2025 Sun"}
+\end{enumerate}
+
+\textit{Tests: } LR-WEK-050 Array of days
+
+\paragraph{LT-WEK-060 -- Next}
+Given a Week initialized using the Date \lstinline{24Jan2025 18:09:30},
+the method \emph{next} shall be called without error, and
+the string representation of the Week obtained.
+This string representation must be equal to \lstinline{"27Jan2025 W05"}.
+
+\textit{Tests: } LR-WEK-060 Next and previous
+
+\paragraph{LT-WEK-070 -- Previous}
+Given a Week initialized using the Date \lstinline{24Jan2025 18:09:30},
+the method \emph{previous} shall be called without error, and
+the string representation of the Week obtained.
+This string representation must be equal to \lstinline{"13Jan2025 W03"}.
+
+\textit{Tests: } LR-WEK-060 Next and previous

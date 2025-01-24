@@ -5,6 +5,7 @@
 
 #include "date_range.h"
 #include "day.h"
+#include <chrono>
 #include <string>
 #include <array>
 
@@ -18,10 +19,16 @@ namespace time_lib {
         of the week. */
     std::chrono::year_month_day ymd;
 
+    /** @brief Get the std::chrono::year_month_day for the last monday
+               from a given Date. */
+    std::chrono::year_month_day ymd_from_date (const Date &date);
+
   public:
     /** @brief Initialize the week to the current week
         in the current timezone. */
     explicit Week();
+    /** @brief Initialize the week to the one containing the given Date. */
+    explicit Week(const Date &date);
     /** @brief Go to the next week. */
     void next();
     /** @brief Go to the previous week. */

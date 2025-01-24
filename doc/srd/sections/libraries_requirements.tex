@@ -298,6 +298,50 @@ For instance, if the current Day is set to \lstinline{21Jan2025}, calling
 
 TODO: uplink
 
+\subsubsection{Week}
+A \emph{Week} represents a DateRange from a monday on midnight to midnight of
+the next monday, for a particular calendar week.
+The dates are as currently defined in the TimeZone.
+
+\paragraph{LR-WEK-010 -- Now initialization}
+The Week shall allow initialization at the current calendar week, as defined by
+the system clock.
+
+TODO: uplink
+
+\paragraph{LR-WEK-020 -- Date initialization}
+The Week shall allow initialization to a week containing a given Date.
+
+TODO: uplink
+
+\paragraph{LR-WEK-030 -- DateRange conversion}
+The Week shall be convertible to a DateRange. The start Date of the DateRange
+is set to midnight of the monday of the week currently pointed to, and the
+stop Date is at midnight on the next monday.
+
+TODO: uplink
+
+\paragraph{LR-WEK-040 -- String representation}
+The Week shall be convertible to a string representation in the format
+\lstinline{%d%b%Y W%V} (see [AD5]), with the day string \lstinline{%d%b%Y}
+set to the monday of the week.
+
+For instance, \lstinline{20Jan2025 W04} is a valid string representation.
+
+TODO: uplink
+
+\paragraph{LR-WEK-050 -- Array of days}
+The Week shall be convertible to an array of all the Days contained
+in the week, in order from monday to sunday.
+
+TODO: uplink
+  
+\paragraph{LR-WEK-060 -- Next and previous}
+The Week shall include methods to select the \emph{next} and \emph{previous}
+weeks from the currently set calendar week.
+
+TODO: uplink
+
 \subsection{log\textunderscore lib}
 \paragraph{LR-LOG-010}
 TODO: uplink

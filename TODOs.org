@@ -116,6 +116,8 @@ https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-t
 ADDED: [2024-09-05 Thu]
 We are unsure about whether it does the best thing around DST changes.
 It should get the midnight of the last monday.
+*** TODO Add tests related to DST change across time_lib
+ADDED: [2025-01-22 Wed]
 
 ** Ergonomy
 *** HOLD Toggle archive visibility resets the screen
