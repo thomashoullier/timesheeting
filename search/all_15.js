@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['week_0',['Week',['../classtime__lib_1_1Week.html',1,'time_lib::Week'],['../classtime__lib_1_1Week.html#a2b417e6c3c95d50e26d031a5e21b59eb',1,'time_lib::Week::Week()']]],
+  ['week_0',['Week',['../classtime__lib_1_1Week.html',1,'time_lib::Week'],['../classtime__lib_1_1Week.html#a2b417e6c3c95d50e26d031a5e21b59eb',1,'time_lib::Week::Week()'],['../classtime__lib_1_1Week.html#aabd3a7829f4fb201477e6c33a02b79db',1,'time_lib::Week::Week(const Date &amp;date)']]],
   ['week_1',['week',['../classtui_1_1WeekSelector.html#a6173db95cea4449432ccf2d10f09cdbb',1,'tui::WeekSelector']]],
   ['week_2eh_2',['week.h',['../week_8h.html',1,'']]],
   ['week_5fselector_3',['week_selector',['../classtui_1_1WeeklyReportScreen.html#afd2dbc75eb80d9fb7cce4eefe895d49c',1,'tui::WeeklyReportScreen']]],
