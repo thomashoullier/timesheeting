@@ -2,6 +2,7 @@
 #include "time_lib/date.h"
 #include "time_lib/date_range.h"
 #include "time_lib/day.h"
+#include "time_lib/duration.h"
 #include "time_lib/week.h"
 #include <catch2/catch_test_macros.hpp>
 #include <chrono>
@@ -282,5 +283,83 @@ TEST_CASE("Week", "[time_lib]") {
     week.previous();
     auto str = week.to_string();
     CHECK(str == "13Jan2025 W03");
+  }
+}
+
+TEST_CASE("Duration", "[time_lib]") {
+  uint64_t secs {104592};
+  SECTION("LT-DUR-010 Zero initialization pass") {
+    time_lib::Duration{};
+    SUCCEED("Duration default initialized without error.");
+  }
+  SECTION("LT-DUR-020 Zero initialization seconds string") {
+    auto dur = time_lib::Duration{};
+    auto str = dur.to_second_string();
+    CHECK(str == "0 seconds");
+  }
+  SECTION("LT-DUR-030 Seconds initialization pass") {
+    time_lib::Duration{secs};
+    SUCCEED("Duration initialized from seconds count without error.");
+  }
+  SECTION("LT-DUR-040 Seconds initialization value") {
+    auto dur = time_lib::Duration{secs};
+    auto str = dur.to_second_string();
+    CHECK(str == "104592 seconds");
+  }
+  SECTION("LT-DUR-050 Duration resolution") {
+    auto dur1 = time_lib::Duration{104592};
+    auto str1 = dur1.to_second_string();
+    CHECK(str1 == "104592 seconds");
+    auto dur2 = time_lib::Duration{104593};
+    auto str2 = dur2.to_second_string();
+    CHECK(str2 == "104593 seconds");
+  }
+  SECTION("LT-DUR-060 Hours string") {
+    auto dur = time_lib::Duration{secs};
+    auto str = dur.to_hour_string();
+    CHECK(str == "29.053 hours");
+  }
+  SECTION("LT-DUR-070 Days string") {
+    auto dur = time_lib::Duration{secs};
+    auto str = dur.to_day_string(7.7);
+    CHECK(str == "3.773 days");
+  }
+  SECTION("LT-DUR-080 Seconds short string") {
+    auto dur = time_lib::Duration{secs};
+    auto str = dur.to_second_shortstring();
+    CHECK(str == "104592");
+  }
+  SECTION("LT-DUR-090 Hours short string") {
+    auto dur = time_lib::Duration{secs};
+    auto str = dur.to_hour_shortstring();
+    CHECK(str == "29.053");
+  }
+  SECTION("LT-DUR-100 Days short string") {
+    auto dur = time_lib::Duration{secs};
+    auto str = dur.to_day_shortstring(7.7);
+    CHECK(str == "3.773");
+  }
+  SECTION("LT-DUR-110 Zero second short string") {
+    auto dur = time_lib::Duration{};
+    auto str = dur.to_second_shortstring();
+    CHECK (str == " ");
+  }
+  SECTION("LT-DUR-120 Zero hour short string") {
+    auto dur = time_lib::Duration{};
+    auto str = dur.to_hour_shortstring();
+    CHECK (str == " ");
+  }
+  SECTION("LT-DUR-130 Zero day short string") {
+    auto dur = time_lib::Duration{};
+    auto str = dur.to_day_shortstring(7.7);
+    CHECK (str == " ");
+  }
+  SECTION("LT-DUR-140 Day string invalid hours") {
+    auto dur = time_lib::Duration{secs};
+    CHECK_THROWS(dur.to_day_string(-3));
+  }
+  SECTION("LT-DUR-150 Day short string invalid hours") {
+    auto dur = time_lib::Duration{secs};
+    CHECK_THROWS(dur.to_day_shortstring(-3));
   }
 }

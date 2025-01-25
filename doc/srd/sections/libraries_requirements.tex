@@ -342,6 +342,104 @@ weeks from the currently set calendar week.
 
 TODO: uplink
 
+\subsubsection{Duration}
+A Duration is a length of time. It does not have a particular location
+in terms of date.
+
+\paragraph{LR-DUR-010 -- Zero initialization}
+The Duration shall default initialize to a duration of zero.
+
+TODO: uplink
+\paragraph{LR-DUR-020 -- Seconds initialization}
+The Duration shall allow initialization from a count of seconds.
+
+TODO: uplink
+\paragraph{LR-DUR-030 -- Duration resolution}
+The Duration shall have a resolution of at most one second.
+
+TODO: uplink
+\paragraph{LR-DUR-040 -- Seconds string}
+The Duration shall be convertible to a string in format
+\lstinline{"x seconds"}, with \lstinline{x} the seconds count
+for the duration.
+
+For instance \lstinline{"104592 seconds"} is a valid string.
+
+TODO: uplink
+\paragraph{LR-DUR-050 -- Hours string}
+The Duration shall be convertible to a string in format
+\lstinline{"x hours"}, with \lstinline{x} the hours count
+for the duration at three decimal places of precision.
+
+For instance \lstinline{"29.053 hours"} is a valid string.
+
+TODO: uplink
+\paragraph{LR-DUR-060 -- Days string}
+The Duration shall be convertible to a string in format
+\lstinline{"x days"}, with \lstinline{x} the days count
+for the duration at three decimal places of precision.
+The number of hours in a day must be provided to the
+computation externally.
+
+For instance \lstinline{"3.773 days"} is a valid string.
+
+TODO: uplink
+\paragraph{LR-DUR-070 -- Seconds short string}
+The Duration shall be convertible to a shortened string which
+is the one in LR-DUR-040 without the \lstinline{" seconds"}
+part.
+
+For instance, \lstinline{"104592"} is a valid string.
+
+TODO: uplink
+\paragraph{LR-DUR-080 -- Hours short string}
+The Duration shall be convertible to a shortened string
+which is the one from LR-DUR-050 without the \lstinline{" hours"}
+part.
+
+For instance \lstinline{"29.053"} is a valid string.
+
+TODO: uplink
+\paragraph{LR-DUR-090 -- Days short string}
+The Duration shall be convertible to a shortened string
+which is the one from LR-DUR-060 without the \lstinline{" days"}
+part.
+
+For instance \lstinline{"3.773"} is a valid string.
+
+TODO: uplink
+\paragraph{LR-DUR-100 -- Zero second short string}
+A Duration with a value of 0 shall return a single whitespace
+\lstinline{" "} as a second short string.
+
+TODO: uplink
+\paragraph{LR-DUR-110 -- Zero hour short string}
+A Duration with a value of 0 shall return a single whitespace
+\lstinline{" "} as a hour short string.
+
+TODO: uplink
+\paragraph{LR-DUR-120 -- Zero day short string}
+A Duration with a value of 0 shall return a single whitespace
+\lstinline{" "} as a day short string.
+
+TODO: uplink
+\paragraph{LR-DUR-130 -- Day string invalid hours}
+When given a count of hours in a day which is lesser than or equal to zero,
+the day string method shall throw an exception.
+
+TODO: uplink
+\paragraph{LR-DUR-140 -- Day short string invalid hours}
+When given a count of hours in a day which is lesser than or equal to zero,
+the day short string method shall throw an exception.
+
+TODO: uplink
+\subsubsection{Duration displayer}
+The Duration displayer is a singleton for XXX.
+
+\paragraph{LR-DRD-010 -- }
+
+TODO:uplink
+
 \subsection{log\textunderscore lib}
 \paragraph{LR-LOG-010}
 TODO: uplink

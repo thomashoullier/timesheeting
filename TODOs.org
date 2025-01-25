@@ -322,3 +322,16 @@ ADDED: [2024-12-09 Mon]
 Visualize how the current day is filled by the tasks inputted.
 We could show overlaps here?
 We could highlight the part of the bar corresponding to the currently selected task.
+
+*** TODO Add togglable individual tasks to the project report
+ADDED: [2025-01-24 Fri]
+
+*** TODO Search in menu (like in ncmpcpp)
+ADDED: [2025-01-24 Fri]
+Be able to jump to a given item in a menu through text search.
+
+*** TODO Day/Week/Month/Year for weekly report
+ADDED: [2025-01-24 Fri]
+Make the weekly report screen able to display the same information
+for a given day, week, month or year.
+Add togglable individual tasks too.

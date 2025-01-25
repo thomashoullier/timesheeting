@@ -449,3 +449,99 @@ the string representation of the Week obtained.
 This string representation must be equal to \lstinline{"13Jan2025 W03"}.
 
 \textit{Tests: } LR-WEK-060 Next and previous
+
+\subsubsection{Duration}
+\paragraph{LT-DUR-010 -- Zero initialization pass}
+A Duration shall be default initialized without error.
+
+\textit{Tests: } LR-DUR-010 Zero initialization
+
+\paragraph{LT-DUR-020 -- Zero initialization seconds string}
+A Duration default initialized shall return a seconds string
+equal to \lstinline{"0 seconds"}.
+
+\textit{Tests: } LR-DUR-010 Zero initialization, LR-DUR-040 Seconds string
+
+\paragraph{LT-DUR-030 -- Seconds initialization pass}
+A Duration shall be initialized from the seconds count \lstinline{104592}
+without error.
+
+\textit{Tests: } LR-DUR-020 Seconds initialization
+
+\paragraph{LT-DUR-040 -- Seconds initialization value}
+A Duration initialized from the seconds count \lstinline{104592}
+shall return a seconds string equal to \lstinline{"104592 seconds"}.
+
+\textit{Tests: } LR-DUR-020 Seconds initialization, LR-DUR-040 Seconds string
+
+\paragraph{LT-DUR-050 -- Duration resolution}
+Two Durations initialized respectively to \lstinline{104592} and
+\lstinline{104593} shall return seconds strings equal to
+\lstinline{"104592 seconds"} and \lstinline{"104593 seconds"}.
+
+\textit{Tests: } LR-DUR-030 Duration resolution
+
+\paragraph{LT-DUR-060 -- Hours string}
+A Duration initialized from the seconds count \lstinline{104592}
+shall return a hours string equal to \lstinline{"29.053 hours"}.
+
+\textit{Tests: } LR-DUR-050 Hours string
+
+\paragraph{LT-DUR-070 -- Days string}
+A Duration initialized from the seconds count \lstinline{104592}
+shall return a days string equal to \lstinline{"3.773 days"},
+when provided with the number of hours in a day \lstinline{7.7}.
+
+\textit{Tests: } LR-DUR-060 Days string
+
+\paragraph{LT-DUR-080 -- Seconds short string}
+A Duration initialized from the seconds count \lstinline{104592}
+shall return a seconds short string equal to \lstinline{"104592"}.
+
+\textit{Tests: } LR-DUR-070 Seconds short string
+
+\paragraph{LT-DUR-090 -- Hours short string}
+A Duration initialized from the seconds count \lstinline{104592}
+shall return a hours short string equal to \lstinline{"29.053"}.
+
+\textit{Tests: } LR-DUR-080 Hours short string
+
+\paragraph{LT-DUR-100 -- Days short string}
+A Duration initialized from the seconds count \lstinline{104592}
+shall return a days short string equal to \lstinline{"3.773"},
+when provided with the number of hours in a day \lstinline{7.7}.
+
+\textit{Tests: } LR-DUR-090 Days short string
+
+\paragraph{LT-DUR-110 -- Zero second short string}
+A Duration default initialized to zero shall return a second short
+string equal to \lstinline{" "} (a single whitespace character).
+
+\textit{Tests: } LR-DUR-100 Zero second short string
+
+\paragraph{LT-DUR-120 -- Zero hour short string}
+A Duration default initialized to zero shall return a hour short
+string equal to \lstinline{" "} (a single whitespace character).
+
+\textit{Tests: } LR-DUR-110 Zero hour short string
+
+\paragraph{LT-DUR-130 -- Zero day short string}
+A Duration default initialized to zero shall return a day short
+string equal to \lstinline{" "} (a single whitespace character),
+when provided with the number of hours in a day \lstinline{7.7}.
+
+\textit{Tests: } LR-DUR-120 Zero day short string
+
+\paragraph{LT-DUR-140 -- Day string invalid hours}
+A Duration initialized from the seconds count \lstinline{104592}
+shall emit an exception when a day string is queried with a
+number of hours in a day equal to \lstinline{-3}.
+
+\textit{Tests: } LR-DUR-130 Day string invalid hours
+
+\paragraph{LT-DUR-150 -- Day short string invalid hours}
+A Duration initialized from the seconds count \lstinline{104592}
+shall emit an exception when a day short string is queried with a
+number of hours in a day equal to \lstinline{-3}.
+
+\textit{Tests: } LR-DUR-140 Day short string invalid hours
