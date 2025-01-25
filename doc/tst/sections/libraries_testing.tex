@@ -545,3 +545,80 @@ shall emit an exception when a day short string is queried with a
 number of hours in a day equal to \lstinline{-3}.
 
 \textit{Tests: } LR-DUR-140 Day short string invalid hours
+
+\subsubsection{DurationDisplayer}
+\paragraph{LT-DRD-010 -- DurationDisplayer initialization pass}
+The DurationDisplayer shall be initialized with the number of hours
+\lstinline{7.7} without error.
+
+\textit{Tests: } LR-DRD-010 DurationDisplayer initialization pass.
+
+\paragraph{LT-DRD-020 -- Hours string display}
+Given the DurationDisplayer singleton, and a Duration initialized
+to the seconds count \lstinline{104592}, the DurationDisplayer
+shall return a string representation equal to the one returned
+by the hours string method of the Duration.
+
+\textit{Tests: } LR-DRD-020 DurationDisplayer singleton,
+LR-DRD-030 Display formats, LR-DRD-040 Default format, LR-DRD-060 String
+display.
+
+\paragraph{LT-DRD-030 -- Hours short string display}
+Given the DurationDisplayer singleton, and a Duration initialized
+to the seconds count \lstinline{104592}, the DurationDisplayer
+shall return a short string representation equal to the one
+returned by the hours short string method of the Duration.
+
+\textit{Tests: } LR-DRD-020 DurationDisplayer singleton,
+LR-DRD-030 Display formats, LR-DRD-040 Default format, LR-DRD-070 Short string
+display.
+
+\paragraph{LT-DRD-040 -- Days string display}
+Given the DurationDisplayer singleton, and a Duration initialized
+to the seconds count \lstinline{104592}, the DurationDisplayer
+shall be \emph{cycled} and will return a string representation equal to
+the one returned by the days string method of the Duration when provided
+with a number of hours \lstinline{7.7}.
+
+\textit{Tests: } LR-DRD-020 DurationDisplayer singleton,
+LR-DRD-030 Display formats, LR-DRD-050 Format cycling, LR-DRD-060 String
+display.
+
+\paragraph{LT-DRD-050 -- Days short string display}
+Given the DurationDisplayer singleton, and a Duration initialized
+to the seconds count \lstinline{104592}, the DurationDisplayer
+shall return a short string representation equal to
+the one returned by the days short string method of the Duration when provided
+with a number of hours \lstinline{7.7}.
+
+\textit{Tests: } LR-DRD-020 DurationDisplayer singleton,
+LR-DRD-030 Display formats, LR-DRD-070 Short string
+display.
+
+\paragraph{LT-DRD-060 -- Seconds string display}
+Given the DurationDisplayer singleton, and a Duration initialized
+to the seconds count \lstinline{104592}, the DurationDisplayer
+shall be \emph{cycled} and will return a string representation equal to
+the one returned by the seconds string method of the Duration.
+
+\textit{Tests: } LR-DRD-020 DurationDisplayer singleton,
+LR-DRD-030 Display formats, LR-DRD-050 Format cycling, LR-DRD-060 String
+display.
+
+\paragraph{LT-DRD-070 -- Seconds short string display}
+Given the DurationDisplayer singleton, and a Duration initialized
+to the seconds count \lstinline{104592}, the DurationDisplayer
+shall return a short string representation equal to
+the one returned by the seconds short string method of the Duration.
+
+\textit{Tests: } LR-DRD-020 DurationDisplayer singleton,
+LR-DRD-030 Display formats, LR-DRD-070 Short string
+display.
+
+\paragraph{LT-DRD-080 -- Cycling back to hours}
+The DurationDisplayer current format shall be cycled and
+given a Duration initialized to the seconds count \lstinline{104592},
+it shall return a string representation equal to the one returned
+by the hours string method of the Duration.
+
+\textit{Tests: } LR-DRD-050 Format cycling

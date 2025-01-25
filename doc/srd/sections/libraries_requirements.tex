@@ -434,12 +434,65 @@ the day short string method shall throw an exception.
 
 TODO: uplink
 \subsubsection{Duration displayer}
-The Duration displayer is a singleton for XXX.
+The DurationDisplayer is a singleton for displaying a Duration according
+to a currently selected format.
 
-\paragraph{LR-DRD-010 -- }
+\paragraph{LR-DRD-010 -- DurationDisplayer initialization pass}
+The DurationDisplayer shall be initialized with a number of work hours
+in a day.
 
 TODO:uplink
+\paragraph{LR-DRD-020 -- DurationDisplayer singleton}
+The DurationDisplayer shall be a singleton. It is initialized onec and
+the same instance is retrieved through a \lstinline{get} method
+subsequently.
 
+TODO:uplink
+\paragraph{LR-DRD-030 -- Display formats}
+The DurationDisplayer shall allow selecting the formats: \emph{hours},
+\emph{days}, \emph{seconds}.
+These refer to the second, hour and day strings for Duration.
+
+TODO:uplink
+\paragraph{LR-DRD-040 -- Default format}
+The default format for displaying a Duration upon initialization shall
+be \emph{hours}.
+
+TODO:uplink
+\paragraph{LR-DRD-050 -- Format cycling}
+The currently selected format of the DurationDisplayer shall be selected
+through a \emph{cycle} method.
+
+The cycle between formats is as follows:
+\begin{itemize}
+\item hours $\rightarrow$ days
+\item days $\rightarrow$ seconds
+\item seconds $\rightarrow$ hours
+\end{itemize}
+
+TODO:uplink
+\paragraph{LR-DRD-060 -- String display}
+Given a Duration, the DurationDisplayer shall output a string depending
+on the currently selected format, as follows,
+\begin{itemize}
+\item hours: string from LR-DUR-050,
+\item days: string from LR-DUR-060 with number of hours as initialized in the
+            DurationDisplayer,
+\item seconds: string from LR-DUR-040.
+\end{itemize}
+
+TODO: uplink
+\paragraph{LR-DRD-070 -- Short string display}
+Given a Duration, the DurationDisplayer shall output a short string depending
+on the currently selected format, as follows,
+\begin{itemize}
+\item hours: string from LR-DUR-080,
+\item days: string from LR-DUR-090 with number of hours as initialized in the
+            DurationDisplayer,
+\item seconds: string from LR-DUR-070.
+\end{itemize}
+
+TODO:uplink
 \subsection{log\textunderscore lib}
 \paragraph{LR-LOG-010}
 TODO: uplink

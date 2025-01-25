@@ -3,6 +3,7 @@
 #include "time_lib/date_range.h"
 #include "time_lib/day.h"
 #include "time_lib/duration.h"
+#include "time_lib/duration_displayer.h"
 #include "time_lib/week.h"
 #include <catch2/catch_test_macros.hpp>
 #include <chrono>
@@ -361,5 +362,54 @@ TEST_CASE("Duration", "[time_lib]") {
   SECTION("LT-DUR-150 Day short string invalid hours") {
     auto dur = time_lib::Duration{secs};
     CHECK_THROWS(dur.to_day_shortstring(-3));
+  }
+}
+
+TEST_CASE("DurationDisplayer", "[time_lib]") {
+  auto dur = time_lib::Duration{104592};
+  SECTION("LT-DRD-010 DurationDisplayer initialization pass") {
+    time_lib::DurationDisplayer::get(7.7);
+    SUCCEED("DurationDisplayer initialized without error.");
+  }
+  SECTION("LT-DRD-020 Hours string display") {
+    auto str_ref = dur.to_hour_string();
+    auto str = time_lib::DurationDisplayer::get().to_string(dur);
+    CHECK(str == str_ref);
+  }
+  SECTION("LT-DRD-030 Hours short string display") {
+    auto str_ref = dur.to_hour_shortstring();
+    auto str = time_lib::DurationDisplayer::get().to_shortstring(dur);
+    CHECK(str == str_ref);
+  }
+  SECTION("LT-DRD-040 Days string display") {
+    auto str_ref = dur.to_day_string(7.7);
+    time_lib::DurationDisplayer::get().cycle_format();
+    SUCCEED("DurationDisplayer format cycled without error.");
+    auto str = time_lib::DurationDisplayer::get().to_string(dur);
+    CHECK(str == str_ref);
+  }
+  SECTION("LT-DRD-050 Days short string display") {
+    auto str_ref = dur.to_day_shortstring(7.7);
+    auto str = time_lib::DurationDisplayer::get().to_shortstring(dur);
+    CHECK(str == str_ref);
+  }
+  SECTION("LT-DRD-060 Seconds string display") {
+    auto str_ref = dur.to_second_string();
+    time_lib::DurationDisplayer::get().cycle_format();
+    SUCCEED("DurationDisplayer format cycled without error.");
+    auto str = time_lib::DurationDisplayer::get().to_string(dur);
+    CHECK(str == str_ref);
+  }
+  SECTION("LT-DRD-070 Seconds short string display") {
+    auto str_ref = dur.to_second_shortstring();
+    auto str = time_lib::DurationDisplayer::get().to_shortstring(dur);
+    CHECK(str == str_ref);
+  }
+  SECTION("LT-DRD-080 Cycling back to hours") {
+    auto str_ref = dur.to_hour_string();
+    time_lib::DurationDisplayer::get().cycle_format();
+    SUCCEED("DurationDisplayer format cycled without error.");
+    auto str = time_lib::DurationDisplayer::get().to_string(dur);
+    CHECK(str == str_ref);
   }
 }
