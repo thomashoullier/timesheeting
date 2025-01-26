@@ -325,13 +325,9 @@ We could highlight the part of the bar corresponding to the currently selected t
 
 *** TODO Add togglable individual tasks to the project report
 ADDED: [2025-01-24 Fri]
+We often need the detailed view to see how much time we spent on a given
+task over a particular period.
 
 *** TODO Search in menu (like in ncmpcpp)
 ADDED: [2025-01-24 Fri]
 Be able to jump to a given item in a menu through text search.
-
-*** TODO Day/Week/Month/Year for weekly report
-ADDED: [2025-01-24 Fri]
-Make the weekly report screen able to display the same information
-for a given day, week, month or year.
-Add togglable individual tasks too.

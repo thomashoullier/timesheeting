@@ -25,7 +25,8 @@ int main(int argc, const char *const *argv) {
     time_lib::TimeZone::get(config.timezone);
 
     // Initialize the Logger.
-    log_lib::Logger::get(config.log_filepath, config.log_levels_to_activate);
+    log_lib::Logger::get(config.log_filepath, config.log_levels_to_activate,
+                         config.max_log_age);
     log_lib::logger().tick(); // For measuring startup time.
 
     log_lib::Logger::get().

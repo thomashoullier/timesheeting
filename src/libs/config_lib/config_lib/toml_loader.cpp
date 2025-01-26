@@ -1,6 +1,8 @@
 #include "toml_loader.h"
 #include "config_utils.h"
+#include <cstdint>
 #include <filesystem>
+#include <limits>
 #include <stdexcept>
 
 namespace config_lib {
@@ -30,6 +32,16 @@ namespace config_lib {
       throw std::runtime_error("Provided filepath does not exist: " +
                                std::string(path.parent_path()));
     return path;
+  }
+
+  uint64_t TomlLoader::parse_unsigned (const std::vector<std::string> &tree_pos) {
+    auto node = get_node(tree_pos);
+    uint64_t num = node.value_or(std::numeric_limits<uint64_t>::max());
+    if (num == std::numeric_limits<uint64_t>::max()) {
+      throw std::runtime_error
+        ("Unsigned integer read from the configuration is empty.");
+    }
+    return num;
   }
 
   float TomlLoader::parse_float(const std::vector<std::string> &tree_pos) {

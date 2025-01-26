@@ -33,6 +33,12 @@ namespace time_lib{
   Date::Date(uint64_t unix_seconds)
     : tp(std::chrono::seconds{unix_seconds}) {}
 
+  Date::Date(Date::SecondsAgo, uint64_t seconds_ago) {
+    auto tp_now = std::chrono::system_clock::now();
+    tp = std::chrono::floor<std::chrono::seconds>
+      (tp_now - std::chrono::seconds{seconds_ago});
+  }
+
   std::chrono::zoned_seconds Date::time_point_from_str
   (const std::string &date_str) {
     std::stringstream ss{date_str};
@@ -51,7 +57,15 @@ namespace time_lib{
     throw DateParsingFailure("Failed to parse the inputted date string.");
   }
 
-  Date::Date(const std::string &date_str) : tp {time_point_from_str(date_str)}{}
+  Date::Date(const std::string &date_str) : tp{time_point_from_str(date_str)} {}
+
+  Date::Date(FullString, const std::string &date_fullstr) {
+    std::stringstream ss{date_fullstr};
+    ss >> std::chrono::parse("%d%b%Y %H:%M:%S %z", tp);
+    if (not ss.good()) {
+      throw DateParsingFailure("Failed to parse the inputted date string.");
+    }
+  }
 
   std::string Date::to_string() const {
     std::chrono::zoned_seconds local_time{TimeZone::get().zone, tp};

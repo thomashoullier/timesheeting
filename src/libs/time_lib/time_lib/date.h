@@ -35,12 +35,21 @@ namespace time_lib{
     explicit Date(DatePoint date_point);
     /** @brief Construct the date from a UNIX timestamp (UTC) in seconds. */
     explicit Date(uint64_t unix_seconds);
+    /** @brief Tag for creating a Date from uint64_t. */
+    struct SecondsAgo final {};
+    /** @brief Create a Date at the given amount of seconds ago from now
+               in the past. */
+    explicit Date(SecondsAgo, uint64_t seconds_ago);
     /** @brief Construct the date from a string in fixed format.
 
         "%d%b%Y %H:%M:%S" is tried first, then successively smaller
         matches are tried until "%d%b%Y". Omitted information is
         replaced with zeroes. */
     explicit Date(const std::string &date_str);
+    /** @brief Tag for creating a Date from a string. */
+    struct FullString final {};
+    /** @brief Parse a Date from a fullstring format. */
+    explicit Date(FullString, const std::string &date_fullstr);
 
     /** @brief Convert the internal timepoint to a displayable date string
         in the system's timezone.

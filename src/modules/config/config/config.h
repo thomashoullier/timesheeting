@@ -3,6 +3,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include <cstdint>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -19,6 +20,8 @@ namespace config {
     std::filesystem::path db_filepath;
     /** @brief Set of log levels to activate, by name. */
     std::vector<std::string> log_levels_to_activate;
+    /** @brief Maximum age of the log entries to keep, in seconds. */
+    uint64_t max_log_age;
     /** @brief Timezone to set in the program, TZ string format. */
     std::string timezone;
     /** @brief Number of hours in a workday. For displaying durations as days. */

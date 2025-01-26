@@ -1,10 +1,15 @@
 #include "logger.h"
 #include <chrono>
+#include <cstdint>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
 #include <ratio>
 #include <sstream>
 #include <stdexcept>
 #include <string>
 #include "time_lib/date.h"
+#include "temp_dir.h"
 
 namespace log_lib{
   std::string log_level_string (LogLevel level) {
@@ -36,8 +41,9 @@ namespace log_lib{
   }
 
   Logger &Logger::get(const std::filesystem::path &log_filepath,
-                      const std::vector<std::string> &levels_to_log) {
-    static Logger instance (log_filepath, levels_to_log);
+                      const std::vector<std::string> &levels_to_log,
+                      uint64_t max_log_age) {
+    static Logger instance (log_filepath, levels_to_log, max_log_age);
     return instance;
   }
 
@@ -75,9 +81,13 @@ namespace log_lib{
   }
 
   Logger::Logger(const std::filesystem::path &log_file,
-                 const std::vector<std::string> &levels_to_log)
-    : file(std::make_unique<std::ofstream>(log_file, std::ios::app)),
-      counting(false) {
+                 const std::vector<std::string> &levels_to_log,
+                 uint64_t max_log_age)
+    : counting(false) {
+    // Cleaning up the log file first.
+    remove_old_entries(log_file, max_log_age);
+    file = std::make_unique<std::ofstream>(log_file,
+                                           std::ios::app);
     if (!file->good()) {
       throw std::runtime_error("Log file was not opened correctly.");
     }
@@ -116,6 +126,37 @@ namespace log_lib{
     default:
       throw std::runtime_error("Unknown LogLevel");
     }
+  }
+
+  void Logger::remove_old_entries (const std::filesystem::path &log_file_path,
+                           uint64_t seconds_ago) {
+    if (not(std::filesystem::exists(log_file_path))
+        or std::filesystem::is_empty(log_file_path))
+      return;
+    std::ifstream old_file(log_file_path);
+    if (!old_file.is_open())
+      throw std::runtime_error("Failed to open old log file");
+    auto oldest_date =
+        time_lib::Date{time_lib::Date::SecondsAgo{}, seconds_ago};
+    std::string line;
+    auto temp_dir = TempDir{"timesheeting_log_rotation"};
+    auto new_file_path = temp_dir.dirpath / "timesheeting.log";
+    auto new_file = std::ofstream(new_file_path,
+                                  std::ios::app);
+    if (!new_file.good()) {
+      throw std::runtime_error("New log file was not opened correctly.");
+    }
+    while (std::getline(old_file, line)) {
+      // The date part of the log entry string has fixed length of 24
+      auto date_str = line.substr(0, 24);
+      auto date = time_lib::Date{time_lib::Date::FullString{}, date_str};
+      if (date > oldest_date) {
+        new_file << line << std::endl;
+      }
+    }
+    old_file.close();
+    new_file.close();
+    std::filesystem::rename(new_file_path, log_file_path);
   }
 
   Logger& logger() { return Logger::get(); }
