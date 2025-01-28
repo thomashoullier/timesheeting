@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keybindings_0',['KeyBindings',['../structconfig_1_1KeyBindings.html',1,'config']]]
+  ['genericitem_0',['GenericItem',['../structcore_1_1GenericItem.html',1,'core']]]
 ];

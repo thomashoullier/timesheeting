@@ -6,10 +6,11 @@ var searchData=
   ['db_3',['db',['../classdb__lib_1_1DB__SQLite__Handle.html#a47cf516ff8b860605b7c3cd8b9ff13da',1,'db_lib::DB_SQLite_Handle']]],
   ['db_5ffilepath_4',['db_filepath',['../structconfig_1_1UserConfig.html#af9ca393f034e39e59bc9c7c78c8d6142',1,'config::UserConfig']]],
   ['debug_5',['debug',['../structlog__lib_1_1Logger_1_1ActiveLevels.html#a02fdb04d39766b9d18fc0e740b9931a1',1,'log_lib::Logger::ActiveLevels']]],
-  ['display_5fstring_6',['display_string',['../classtui_1_1TotalBar.html#a332427e49b8c7dfdb44cee074c78f2b1',1,'tui::TotalBar']]],
-  ['display_5fstrings_7',['display_strings',['../classncurses__lib_1_1MenuNCurses.html#ad86feb96fb177779fad3154d570ac2a5',1,'ncurses_lib::MenuNCurses']]],
-  ['dur_8',['dur',['../classtime__lib_1_1Duration.html#a5138cc16f99f6fad1a02cf05b71bc8de',1,'time_lib::Duration']]],
-  ['duration_9',['duration',['../classtui_1_1TotalBar.html#a8ed940015502a1485697a8da0399afb4',1,'tui::TotalBar']]],
-  ['duration_5fper_5fworked_5fproject_10',['duration_per_worked_project',['../classdb_1_1StatementSet.html#a69cdcfd8c0459e12d979e34247fbd310',1,'db::StatementSet']]],
-  ['duration_5fper_5fworked_5ftask_11',['duration_per_worked_task',['../classdb_1_1StatementSet.html#a6a97d7c5a75a4304bb291ea2aeeb3c99',1,'db::StatementSet']]]
+  ['dirpath_6',['dirpath',['../classlog__lib_1_1TempDir.html#a93747b8459ed81d5709873bdc4f58ccb',1,'log_lib::TempDir']]],
+  ['display_5fstring_7',['display_string',['../classtui_1_1TotalBar.html#a332427e49b8c7dfdb44cee074c78f2b1',1,'tui::TotalBar']]],
+  ['display_5fstrings_8',['display_strings',['../classncurses__lib_1_1MenuNCurses.html#ad86feb96fb177779fad3154d570ac2a5',1,'ncurses_lib::MenuNCurses']]],
+  ['dur_9',['dur',['../classtime__lib_1_1Duration.html#a5138cc16f99f6fad1a02cf05b71bc8de',1,'time_lib::Duration']]],
+  ['duration_10',['duration',['../classtui_1_1TotalBar.html#a8ed940015502a1485697a8da0399afb4',1,'tui::TotalBar']]],
+  ['duration_5fper_5fworked_5fproject_11',['duration_per_worked_project',['../classdb_1_1StatementSet.html#a69cdcfd8c0459e12d979e34247fbd310',1,'db::StatementSet']]],
+  ['duration_5fper_5fworked_5ftask_12',['duration_per_worked_task',['../classdb_1_1StatementSet.html#a6a97d7c5a75a4304bb291ea2aeeb3c99',1,'db::StatementSet']]]
 ];

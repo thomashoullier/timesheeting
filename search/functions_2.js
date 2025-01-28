@@ -12,9 +12,10 @@ var searchData=
   ['create_5flocations_5ftable_9',['create_locations_table',['../classdb_1_1DB__SQLite.html#ae9d9889ba1b4834de15ef8b5833fc351',1,'db::DB_SQLite']]],
   ['create_5fprojects_5ftable_10',['create_projects_table',['../classdb_1_1DB__SQLite.html#a0277a37b8cf7f485f49e2ba46818832f',1,'db::DB_SQLite']]],
   ['create_5ftasks_5ftable_11',['create_tasks_table',['../classdb_1_1DB__SQLite.html#a76d23e1918ee91a88a0ff0a05b3c48cd',1,'db::DB_SQLite']]],
-  ['crop_5fpad_5fstr_12',['crop_pad_str',['../classncurses__lib_1_1MenuNCurses.html#a4620bee28ed1aab2c164c2bfbcc9a971',1,'ncurses_lib::MenuNCurses']]],
-  ['csvexporter_13',['CSVExporter',['../classexporter_1_1CSVExporter.html#af9e88cfa2eb793ca801b077c263b8d43',1,'exporter::CSVExporter']]],
-  ['current_5frange_14',['current_range',['../classtui_1_1DaySelector.html#abac432b84907add7d3f13c142d1361d8',1,'tui::DaySelector::current_range()'],['../classtui_1_1WeekSelector.html#ac9dad2fcea795d48232581716874cb32',1,'tui::WeekSelector::current_range() const']]],
-  ['current_5fweek_15',['current_week',['../classtui_1_1WeekSelector.html#a2eb8dfd6a0a40dc7affada437eccb0be',1,'tui::WeekSelector']]],
-  ['cycle_5fformat_16',['cycle_format',['../classtime__lib_1_1DurationDisplayer.html#a590088d01a6e9080951e4f94dfca3078',1,'time_lib::DurationDisplayer']]]
+  ['create_5fuser_5fdirectory_12',['create_user_directory',['../classlog__lib_1_1TempDir.html#a28b61112b54d8078f8e2bda7f764132b',1,'log_lib::TempDir']]],
+  ['crop_5fpad_5fstr_13',['crop_pad_str',['../classncurses__lib_1_1MenuNCurses.html#a4620bee28ed1aab2c164c2bfbcc9a971',1,'ncurses_lib::MenuNCurses']]],
+  ['csvexporter_14',['CSVExporter',['../classexporter_1_1CSVExporter.html#af9e88cfa2eb793ca801b077c263b8d43',1,'exporter::CSVExporter']]],
+  ['current_5frange_15',['current_range',['../classtui_1_1DaySelector.html#abac432b84907add7d3f13c142d1361d8',1,'tui::DaySelector::current_range()'],['../classtui_1_1WeekSelector.html#ac9dad2fcea795d48232581716874cb32',1,'tui::WeekSelector::current_range() const']]],
+  ['current_5fweek_16',['current_week',['../classtui_1_1WeekSelector.html#a2eb8dfd6a0a40dc7affada437eccb0be',1,'tui::WeekSelector']]],
+  ['cycle_5fformat_17',['cycle_format',['../classtime__lib_1_1DurationDisplayer.html#a590088d01a6e9080951e4f94dfca3078',1,'time_lib::DurationDisplayer']]]
 ];

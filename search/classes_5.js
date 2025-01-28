@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['genericitem_0',['GenericItem',['../structcore_1_1GenericItem.html',1,'core']]]
+  ['fullstring_0',['FullString',['../structtime__lib_1_1Date_1_1FullString.html',1,'time_lib::Date']]]
 ];

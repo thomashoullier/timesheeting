@@ -1,7 +1,7 @@
 var searchData=
 [
   ['daily_5ftotals_0',['daily_totals',['../structcore_1_1PerTaskTotals.html#a5d54fa4e208be75309e2b4fc90664837',1,'core::PerTaskTotals::daily_totals'],['../structcore_1_1PerProjectTotals.html#a02514819e66f84d747454097652a1eb7',1,'core::PerProjectTotals::daily_totals'],['../structcore_1_1WeeklyTotals.html#affc1fe340bb26f2d720ce6af15286f18',1,'core::WeeklyTotals::daily_totals']]],
-  ['date_1',['Date',['../classtime__lib_1_1Date.html',1,'time_lib::Date'],['../classtime__lib_1_1Date.html#ac71643594b9cf7611ffeacfb8740c21f',1,'time_lib::Date::Date()'],['../classtime__lib_1_1Date.html#abcceecb250c8bcea2ee7d906a0de78c6',1,'time_lib::Date::Date(std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt; _tp)'],['../classtime__lib_1_1Date.html#a225088ce55ac4bb2828e20986f97bd61',1,'time_lib::Date::Date(DatePoint date_point)'],['../classtime__lib_1_1Date.html#ae8a41138484cd904e8ffb783f9b2d7b6',1,'time_lib::Date::Date(uint64_t unix_seconds)'],['../classtime__lib_1_1Date.html#ac42a377c179a90ebfe8f008ae5f1a0ea',1,'time_lib::Date::Date(const std::string &amp;date_str)']]],
+  ['date_1',['Date',['../classtime__lib_1_1Date.html',1,'time_lib::Date'],['../classtime__lib_1_1Date.html#ac71643594b9cf7611ffeacfb8740c21f',1,'time_lib::Date::Date()'],['../classtime__lib_1_1Date.html#abcceecb250c8bcea2ee7d906a0de78c6',1,'time_lib::Date::Date(std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt; _tp)'],['../classtime__lib_1_1Date.html#a225088ce55ac4bb2828e20986f97bd61',1,'time_lib::Date::Date(DatePoint date_point)'],['../classtime__lib_1_1Date.html#ae8a41138484cd904e8ffb783f9b2d7b6',1,'time_lib::Date::Date(uint64_t unix_seconds)'],['../classtime__lib_1_1Date.html#ac44219c11574df27b0f3608cc83022be',1,'time_lib::Date::Date(SecondsAgo, uint64_t seconds_ago)'],['../classtime__lib_1_1Date.html#ac42a377c179a90ebfe8f008ae5f1a0ea',1,'time_lib::Date::Date(const std::string &amp;date_str)'],['../classtime__lib_1_1Date.html#a61a75a2f768323a21585e9bbd2aa12e4',1,'time_lib::Date::Date(FullString, const std::string &amp;date_fullstr)']]],
   ['date_2eh_2',['date.h',['../date_8h.html',1,'']]],
   ['date_5frange_2eh_3',['date_range.h',['../date__range_8h.html',1,'']]],
   ['dateparsingfailure_4',['DateParsingFailure',['../classtime__lib_1_1DateParsingFailure.html',1,'time_lib::DateParsingFailure'],['../classtime__lib_1_1DateParsingFailure.html#a2de2ac4223d5bac1f105e7efec38bd76',1,'time_lib::DateParsingFailure::DateParsingFailure()']]],
@@ -28,16 +28,17 @@ var searchData=
   ['delete_5ftask_25',['delete_task',['../classdb_1_1DB__SQLite.html#aade162e8ea0fea8efa1a13aa0ae0d89d',1,'db::DB_SQLite']]],
   ['destroy_5fmenu_26',['destroy_menu',['../classncurses__lib_1_1MenuNCurses.html#a44f315144fa064d889d2429c9ef64a6f',1,'ncurses_lib::MenuNCurses']]],
   ['destroy_5fwindow_27',['destroy_window',['../classncurses__lib_1_1WinNCurses.html#aadb8a7cf997af5e6785ff62e79b36844',1,'ncurses_lib::WinNCurses']]],
-  ['display_5fstring_28',['display_string',['../classtui_1_1TotalBar.html#a332427e49b8c7dfdb44cee074c78f2b1',1,'tui::TotalBar']]],
-  ['display_5fstrings_29',['display_strings',['../classncurses__lib_1_1MenuNCurses.html#ad86feb96fb177779fad3154d570ac2a5',1,'ncurses_lib::MenuNCurses']]],
-  ['dur_30',['dur',['../classtime__lib_1_1Duration.html#a5138cc16f99f6fad1a02cf05b71bc8de',1,'time_lib::Duration']]],
-  ['duration_31',['Duration',['../classtime__lib_1_1Duration.html',1,'time_lib::Duration'],['../classtime__lib_1_1Duration.html#a536414dec1ebbc6ff2ed642eb6ed3984',1,'time_lib::Duration::Duration()'],['../classtime__lib_1_1Duration.html#afdf1b4cf7f40d2fea36820c26a91465e',1,'time_lib::Duration::Duration(uint64_t seconds)']]],
-  ['duration_32',['duration',['../classtui_1_1TotalBar.html#a8ed940015502a1485697a8da0399afb4',1,'tui::TotalBar']]],
-  ['duration_2eh_33',['duration.h',['../duration_8h.html',1,'']]],
-  ['duration_5fdisplay_5fchanged_34',['duration_display_changed',['../classtui_1_1UpdateManager.html#a8b8b6477e7f0d176295db014a9cc995e',1,'tui::UpdateManager']]],
-  ['duration_5fdisplayer_2eh_35',['duration_displayer.h',['../duration__displayer_8h.html',1,'']]],
-  ['duration_5fper_5fworked_5fproject_36',['duration_per_worked_project',['../classdb_1_1StatementSet.html#a69cdcfd8c0459e12d979e34247fbd310',1,'db::StatementSet']]],
-  ['duration_5fper_5fworked_5ftask_37',['duration_per_worked_task',['../classdb_1_1StatementSet.html#a6a97d7c5a75a4304bb291ea2aeeb3c99',1,'db::StatementSet']]],
-  ['durationdisplayer_38',['DurationDisplayer',['../classtime__lib_1_1DurationDisplayer.html',1,'time_lib::DurationDisplayer'],['../classtime__lib_1_1DurationDisplayer.html#a5eac654bd047789319502503cfa12da9',1,'time_lib::DurationDisplayer::DurationDisplayer(float hours_per_day)']]],
-  ['durationformat_39',['DurationFormat',['../classtime__lib_1_1DurationDisplayer.html#a0e4b4177f8155f0d28c7ad1ab7946ad1',1,'time_lib::DurationDisplayer']]]
+  ['dirpath_28',['dirpath',['../classlog__lib_1_1TempDir.html#a93747b8459ed81d5709873bdc4f58ccb',1,'log_lib::TempDir']]],
+  ['display_5fstring_29',['display_string',['../classtui_1_1TotalBar.html#a332427e49b8c7dfdb44cee074c78f2b1',1,'tui::TotalBar']]],
+  ['display_5fstrings_30',['display_strings',['../classncurses__lib_1_1MenuNCurses.html#ad86feb96fb177779fad3154d570ac2a5',1,'ncurses_lib::MenuNCurses']]],
+  ['dur_31',['dur',['../classtime__lib_1_1Duration.html#a5138cc16f99f6fad1a02cf05b71bc8de',1,'time_lib::Duration']]],
+  ['duration_32',['Duration',['../classtime__lib_1_1Duration.html',1,'time_lib::Duration'],['../classtime__lib_1_1Duration.html#a536414dec1ebbc6ff2ed642eb6ed3984',1,'time_lib::Duration::Duration()'],['../classtime__lib_1_1Duration.html#afdf1b4cf7f40d2fea36820c26a91465e',1,'time_lib::Duration::Duration(uint64_t seconds)']]],
+  ['duration_33',['duration',['../classtui_1_1TotalBar.html#a8ed940015502a1485697a8da0399afb4',1,'tui::TotalBar']]],
+  ['duration_2eh_34',['duration.h',['../duration_8h.html',1,'']]],
+  ['duration_5fdisplay_5fchanged_35',['duration_display_changed',['../classtui_1_1UpdateManager.html#a8b8b6477e7f0d176295db014a9cc995e',1,'tui::UpdateManager']]],
+  ['duration_5fdisplayer_2eh_36',['duration_displayer.h',['../duration__displayer_8h.html',1,'']]],
+  ['duration_5fper_5fworked_5fproject_37',['duration_per_worked_project',['../classdb_1_1StatementSet.html#a69cdcfd8c0459e12d979e34247fbd310',1,'db::StatementSet']]],
+  ['duration_5fper_5fworked_5ftask_38',['duration_per_worked_task',['../classdb_1_1StatementSet.html#a6a97d7c5a75a4304bb291ea2aeeb3c99',1,'db::StatementSet']]],
+  ['durationdisplayer_39',['DurationDisplayer',['../classtime__lib_1_1DurationDisplayer.html',1,'time_lib::DurationDisplayer'],['../classtime__lib_1_1DurationDisplayer.html#a5eac654bd047789319502503cfa12da9',1,'time_lib::DurationDisplayer::DurationDisplayer(float hours_per_day)']]],
+  ['durationformat_40',['DurationFormat',['../classtime__lib_1_1DurationDisplayer.html#a0e4b4177f8155f0d28c7ad1ab7946ad1',1,'time_lib::DurationDisplayer']]]
 ];
