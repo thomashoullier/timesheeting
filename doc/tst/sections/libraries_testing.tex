@@ -62,6 +62,7 @@ empty_string_arg = ""
   filepath_nonexistent_arg = "/dev/null/nonexistent/nonexistent"
   [par2.sub2]
   float_arg = 8.3
+  unsigned_arg = 1089
   [par2.sub3]
   vector_strings_arg = [ "hello", "there", "fox", "delta" ]
   vector_nonstrings_arg = [ 31, 1, 43 ]
@@ -141,6 +142,13 @@ Given \cref{lst:toml_file}, the configuration loader shall read the
 and emit an exception.
 
 \textit{Tests: } LR-CON-110 -- Vector of non-strings case
+
+\paragraph{LT-CON-150 -- Unsigned integer case}
+Given \cref{lst:toml_file}, the configuration loader shall read
+the \lstinline{par2.sub2.unsigned_arg} node as an
+\lstinline{uint64_t} and return the value \lstinline{1089}.
+
+\textit{Tests: } LR-CON-130 -- Unsigned integer loading
 
 \subsection{time\textunderscore lib}
 \subsubsection{time\textunderscore zone}
@@ -296,6 +304,22 @@ The comparison must show that,
 \end{itemize}
 
 \textit{Tests: } LR-DAT-140 Date comparison
+
+\paragraph{LT-DAT-170 -- Date ago initialization}
+A Date shall be initialized to 20 seconds ago without error.
+A second Date initialized to \emph{now} will be initialized.
+The unix timestamp corresponding to the two Dates will be
+subtracted. The difference must be equal to 20 give or take 1 second.
+
+\textit{Tests: } LR-DAT-150 Date ago initialization
+
+\paragraph{LT-DAT-180 -- Date unambiguous string initialization}
+A Date shall be initialized using the string
+\lstinline{"28Jan2025 19:51:17 +0100"} without error.
+Its UNIX timestamp shall be produced and must be equal to
+\lstinline{1738090277}.
+
+\textit{Tests: } LR-DAT-160 Date unambiguous string initialization
 
 \subsubsection{DateRange}
 \paragraph{LT-DTR-010 -- DateRange initialization}

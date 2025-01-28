@@ -30,6 +30,7 @@ hours_per_workday = 7.7
 [log]
 file = "/tmp/timesheeting.log"
 active_levels = [ "debug", "error", "info" ]
+max_log_age = 604800
 
 [keys]
   [keys.navigation]
@@ -76,6 +77,7 @@ hours_per_workday = 7.7
 [log]
 file = "/tmp/timesheeting.log"
 active_levels = [ "debug", "error", "info" ]
+max_log_age = 604800
 
 [keys]
   [keys.navigation]
@@ -122,6 +124,7 @@ hours_per_workday = 7.7
 [log]
 file = "/tmp/timesheeting.log"
 active_levels = [ "debug", "error", "info" ]
+max_log_age = 604800
 
 [keys]
   [keys.navigation]
@@ -236,3 +239,9 @@ Loading the configuration file \cref{lst:config_file_invalidstr} shall
 result in an exception being emitted.
 
 \textit{Tests: } MR-CON-170 -- Invalid key strings
+
+\paragraph{MT-CON-130 -- Maximum log age}
+The configuration parameters loaded from \cref{lst:config_file}
+shall contain an unsigned integer \lstinline{max_log_age}.
+
+\textit{Tests: } MR-CON-065 -- Maximum log age

@@ -20,6 +20,7 @@ std::filesystem::path generate_test_toml(const std::filesystem::path &dirpath) {
     "  filepath_nonexistent_arg = \"/dev/null/nonexistent/nonexistent\"\n"
     "  [par2.sub2]\n"
     "  float_arg = 8.3\n"
+    "  unsigned_arg = 1089\n"
     "  [par2.sub3]\n"
     "  vector_strings_arg = [ \"hello\", \"there\", \"fox\", \"delta\" ]\n"
     "  vector_nonstrings_arg = [ 31, 1, 43 ]\n";
@@ -132,5 +133,9 @@ TEST_CASE("Configuration loader", "[config_lib]") {
   SECTION("LT-CON-140") {
     CHECK_THROWS
       (conf.parse_stringvec({"par2", "sub3", "vector_nonstrings_arg"}));
+  }
+  SECTION("LT-CON-150") {
+    auto num = conf.parse_unsigned({"par2", "sub2", "unsigned_arg"});
+    CHECK(num == 1089);
   }
 }

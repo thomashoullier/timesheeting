@@ -8,6 +8,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <chrono>
 #include <cstdint>
+#include <cstdlib>
 #include <time_lib/time_zone.h>
 
 TEST_CASE("Time zone singleton", "[time_lib]") {
@@ -139,6 +140,23 @@ TEST_CASE("Date", "[time_lib]") {
     auto date2 = time_lib::Date{tmstp2};
     CHECK(date1 < date2);
     CHECK(date2 > date1);
+  }
+  SECTION("LT-DAT-170 Date ago initialization") {
+    uint64_t seconds {20};
+    auto date = time_lib::Date(time_lib::Date::SecondsAgo{}, seconds);
+    CHECK("Date ago initialized without error.");
+    auto now = time_lib::Date{};
+    auto unix_date = int(date.to_unix_timestamp());
+    auto unix_now = int(now.to_unix_timestamp());
+    auto diff = std::abs(unix_now - unix_date - int(seconds));
+    CHECK(diff <= 1);
+  }
+  SECTION("LT-DAT-180 Date unambiguous string initialization") {
+    const std::string str {"28Jan2025 19:51:17 +0100"};
+    auto date = time_lib::Date(time_lib::Date::FullString{}, str);
+    CHECK("Date initialized from unambiguous string without error.");
+    auto timestamp = date.to_unix_timestamp();
+    CHECK(timestamp == 1738090277);
   }
 }
 

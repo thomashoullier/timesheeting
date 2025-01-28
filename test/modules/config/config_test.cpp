@@ -3,6 +3,7 @@
 #include "test_utils/test_utils.h"
 #include "config/config.h"
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <fstream>
 #include <type_traits>
 #include <ncurses.h>
@@ -20,6 +21,7 @@ generate_example_config(const std::filesystem::path &dirpath) {
     "[log]\n"
     "file = \"/tmp/timesheeting.log\"\n"
     "active_levels = [ \"debug\", \"error\", \"info\" ]\n"
+    "max_log_age = 604800\n"
     "\n"
     "[keys]\n"
     "[keys.navigation]\n"
@@ -70,6 +72,7 @@ generate_example_config_duplicate(const std::filesystem::path &dirpath) {
     "[log]\n"
     "file = \"/tmp/timesheeting.log\"\n"
     "active_levels = [ \"debug\", \"error\", \"info\" ]\n"
+    "max_log_age = 604800\n"
     "\n"
     "[keys]\n"
     "[keys.navigation]\n"
@@ -120,6 +123,7 @@ generate_example_config_invalidstr(const std::filesystem::path &dirpath) {
     "[log]\n"
     "file = \"/tmp/timesheeting.log\"\n"
     "active_levels = [ \"debug\", \"error\", \"info\" ]\n"
+    "max_log_age = 604800\n"
     "\n"
     "[keys]\n"
     "[keys.navigation]\n"
@@ -181,6 +185,10 @@ TEST_CASE("Configuration contents", "[config]") {
   SECTION("MT-CON-040 Log levels") {
     CHECK(std::is_same<decltype(config.log_levels_to_activate),
                        std::vector<std::string>>());
+  }
+  SECTION("MT-CON-130 Maximum log age") {
+    CHECK(std::is_same<decltype(config.max_log_age),
+                       uint64_t>());
   }
   SECTION("MT-CON-050 DB filepath") {
     CHECK(std::is_same<decltype(config.db_filepath), std::filesystem::path>());

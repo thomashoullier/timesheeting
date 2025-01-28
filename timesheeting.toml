@@ -4,11 +4,11 @@ file = "~/.local/timesheeting/timesheeting.db"
 [time]
 timezone = "Europe/Paris"
 hours_per_workday = 7.7
-max_log_age = 604800
 
 [log]
 file = "~/.local/timesheeting/timesheeting.log"
 active_levels = [ "debug", "error", "info" ]
+max_log_age = 604800
 
 [keys]
   [keys.navigation]
