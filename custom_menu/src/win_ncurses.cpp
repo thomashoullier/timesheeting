@@ -21,12 +21,30 @@ namespace ncurses_lib {
     this->refresh();
   }
 
-  WINDOW* WinNCurses::init_window() {
-    int nx {};
-    int ny {};
-    getmaxyx(stdscr, nx, ny);
-    int x {0};
-    int y {0};
-    return newwin(ny-1, nx-1, y, x);
+  unsigned WinNCurses::n_lines() const { return getmaxy(win); }
+
+  void WinNCurses::print_at(const std::string &str, int line) const {
+    clear_line(line);
+    mvwprintw(win, line, 0, "%s", str.c_str());
   }
-}
+
+  void WinNCurses::print_standout_at(const std::string &str, int line) const {
+    wattron(win, A_STANDOUT);
+    print_at(str, line);
+    wattroff(win, A_STANDOUT);
+  }
+
+  void WinNCurses::clear_line(int line) const {
+    wmove(win, line, 0);
+    wclrtoeol(win);
+  }
+
+  WINDOW *WinNCurses::init_window() {
+    int nx{};
+    int ny{};
+    getmaxyx(stdscr, nx, ny);
+    int x{0};
+    int y{0};
+    return newwin(ny - 1, nx - 1, y, x);
+  }
+  } // namespace ncurses_lib
