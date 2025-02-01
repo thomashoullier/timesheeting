@@ -21,10 +21,12 @@ Details the requirements applicable to subsystems, as described in the SAD.
 + Default values of entry metadata when left unspecified.
 + Where should the stopwatch be displayed?
 
-*** TODO Specify the config_lib
+*** DONE Specify the config_lib
+CLOSED: [2025-01-29 Wed 21:24]
 ADDED: [2024-12-29 Sun]
 
-*** TODO Specify the time_lib
+*** DONE Specify the time_lib
+CLOSED: [2025-01-29 Wed 21:24]
 ADDED: [2024-12-29 Sun]
 
 * System Design document
@@ -50,13 +52,16 @@ Details every tests used to check the software.
 + Include unit tests of the core logic.
 + Indicate which tests condition the acceptance of a version.
 
-*** TODO Describe the tests for the version module
+*** DONE Describe the tests for the version module
+CLOSED: [2025-01-29 Wed 21:24]
 ADDED: [2024-12-29 Sun]
 
-*** TODO Describe the tests for the config_lib
+*** DONE Describe the tests for the config_lib
+CLOSED: [2025-01-29 Wed 21:24]
 ADDED: [2024-12-29 Sun]
 
-*** TODO Describe the tests for the time_lib
+*** DONE Describe the tests for the time_lib
+CLOSED: [2025-01-29 Wed 21:24]
 ADDED: [2024-12-29 Sun]
 
 * Repository documentation
@@ -97,11 +102,14 @@ ADDED: [2025-01-12 Sun]
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]
+We are concerned about leaking memory in case tests fail unexpectedly.
 
-*** TODO Test the config_lib
+*** DONE Test the config_lib
+CLOSED: [2025-01-29 Wed 21:23]
 ADDED: [2024-12-29 Sun]
 
-*** TODO Test the time_lib
+*** DONE Test the time_lib
+CLOSED: [2025-01-29 Wed 21:23]
 ADDED: [2024-12-29 Sun]
 
 *** TODO End-to-end testing with tmux
@@ -116,6 +124,7 @@ https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-t
 ADDED: [2024-09-05 Thu]
 We are unsure about whether it does the best thing around DST changes.
 It should get the midnight of the last monday.
+
 *** TODO Add tests related to DST change across time_lib
 ADDED: [2025-01-22 Wed]
 
@@ -258,7 +267,8 @@ ADDED: [2024-11-16 Sat]
     when the DB opens anyway.
 + OK Check the version of the DB.
 
-*** TODO Clean old log entries
+*** DONE Clean old log entries
+CLOSED: [2025-01-29 Wed 21:21]
 ADDED: [2024-10-26 Sat]
 + Launch it at startup.
 Start from the top of the log file, parse the date into an internal UTC format,
