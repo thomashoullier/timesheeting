@@ -183,6 +183,14 @@ Add the border highlighting there also.
 
 *** TODO Implement a custom ncurses menu
 ADDED: [2024-11-24 Sun]
+Objective: Recreate a menu library for ncurses replacing the one
+           provided in ncurses.
+Motivation: The ncurses menu library is missing these features which
+we need:
++ Dynamic resizing, and setting widths and ratios in multiple
+  column menus.
++ Manage the appearance of items (highlight, color, bold, etc.)
+ 
 Currently, using the ncurses menu library, we cannot put highlight
 and colors on items. Also, we have to destroy and recreate the whole
 menu when we could just redraw some things.
