@@ -14,7 +14,7 @@ namespace ncurses_lib {
   class WinNCurses {
   public:
     /** @brief Construct the window with given position and format. */
-    explicit WinNCurses(unsigned _top_pos, unsigned _bottom_pos);
+    explicit WinNCurses(int _top_pos, int _bottom_pos);
     /** @brief Destructor. */
     ~WinNCurses();
 
@@ -26,7 +26,7 @@ namespace ncurses_lib {
     void clear() const;
 
     /** @brief Get the current number of lines in the window (size). */
-    unsigned n_lines() const;
+    int n_lines() const;
     /** @brief Print a string at the given position. */
     void print_at(const std::string &str, int line) const;
     /** @brief Print a string with standout appearance. */
@@ -38,10 +38,10 @@ namespace ncurses_lib {
 
   private:
     /** @brief Position of the top of the window from the top of the screen. */
-    unsigned top_position;
+    int top_position;
     /** @brief Position of the bottom of the window from the bottom
                of the screen. */
-    unsigned bottom_position;
+    int bottom_position;
     /** @brief Get a new ncurses window. */
     WINDOW *init_window();
 

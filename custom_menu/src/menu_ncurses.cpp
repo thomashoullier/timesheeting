@@ -6,19 +6,19 @@
 
 namespace ncurses_lib {
   MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
-                           unsigned _top_pos, unsigned _bottom_pos)
+                           int _top_pos, int _bottom_pos)
     : WinNCurses(_top_pos, _bottom_pos),
       items{_items}, selected_index{0}, scroll_position{0} {}
 
-  unsigned MenuNCurses::n_items() const {
+  int MenuNCurses::n_items() const {
     return items->size();
   }
 
-  unsigned MenuNCurses::cursor_position() const {
+  int MenuNCurses::cursor_position() const {
     return selected_index - scroll_position;
   }
 
-  unsigned MenuNCurses::max_scroll_position() const {
+  int MenuNCurses::max_scroll_position() const {
     int val = n_items() - n_lines();
     if (val <= 0)
       return 0;
@@ -28,7 +28,7 @@ namespace ncurses_lib {
 
   void MenuNCurses::print_items() const {
     auto i_item = scroll_position;
-    for (unsigned i_line = 0 ;
+    for (int i_line = 0 ;
          i_line < n_lines() && i_item < n_items() ;
          ++i_line) {
       if (i_item == selected_index)

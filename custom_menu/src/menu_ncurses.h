@@ -14,16 +14,16 @@ namespace ncurses_lib {
   private:
     std::shared_ptr<std::vector<MenuItem>> items;
     /** @brief Currently selected item index. */
-    unsigned selected_index;
+    int selected_index;
     /** @brief Scroll position. */
-    unsigned scroll_position;
+    int scroll_position;
 
     /** @brief Get the number of items currently held. */
-    unsigned n_items() const;
+    int n_items() const;
     /** @brief Get the cursor position relative to the current window screen. */
-    unsigned cursor_position() const;
+    int cursor_position() const;
     /** @brief Maximum allowable scroll_position value. */
-    unsigned max_scroll_position() const;
+    int max_scroll_position() const;
     /** @brief Scroll the whole screen down by one. */
     void scroll_down();
     /** @brief Scroll the whole screen up by one. */
@@ -31,7 +31,7 @@ namespace ncurses_lib {
 
   public:
     explicit MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
-                         unsigned _top_pos, unsigned _bottom_pos);
+                         int _top_pos, int _bottom_pos);
 
     /**@brief Print all items to screen. */
     void print_items() const;

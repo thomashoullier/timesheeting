@@ -2,7 +2,7 @@
 #include <ncurses.h>
 
 namespace ncurses_lib {
-  WinNCurses::WinNCurses(unsigned _top_pos, unsigned _bottom_pos)
+  WinNCurses::WinNCurses(int _top_pos, int _bottom_pos)
     : top_position{_top_pos}, bottom_position{_bottom_pos}, win(init_window()) {
     keypad(win, true);
   }
@@ -21,7 +21,7 @@ namespace ncurses_lib {
     this->refresh();
   }
 
-  unsigned WinNCurses::n_lines() const { return getmaxy(win); }
+  int WinNCurses::n_lines() const { return getmaxy(win); }
 
   void WinNCurses::print_at(const std::string &str, int line) const {
     clear_line(line);
