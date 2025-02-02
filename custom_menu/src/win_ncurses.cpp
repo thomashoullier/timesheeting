@@ -21,7 +21,7 @@ namespace ncurses_lib {
     this->refresh();
   }
 
-  unsigned WinNCurses::n_lines() const { return getmaxy(win); }
+  unsigned WinNCurses::n_lines() const { return getmaxx(win) + 1; }
 
   void WinNCurses::print_at(const std::string &str, int line) const {
     clear_line(line);
