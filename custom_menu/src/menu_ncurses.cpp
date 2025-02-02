@@ -1,11 +1,14 @@
 #include "menu_ncurses.h"
+#include "win_ncurses.h"
 #include <curses.h>
 #include <iostream>
 #include <ncurses.h>
 
 namespace ncurses_lib {
-  MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items)
-    : items{_items}, selected_index{0}, scroll_position{0} {}
+  MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
+                           unsigned _top_pos, unsigned _bottom_pos)
+    : WinNCurses(_top_pos, _bottom_pos),
+      items{_items}, selected_index{0}, scroll_position{0} {}
 
   unsigned MenuNCurses::n_items() const {
     return items->size();
@@ -15,12 +18,18 @@ namespace ncurses_lib {
     return selected_index - scroll_position;
   }
 
+  unsigned MenuNCurses::max_scroll_position() const {
+    int val = n_items() - n_lines();
+    if (val <= 0)
+      return 0;
+    else
+      return val;
+  }
+
   void MenuNCurses::print_items() const {
-    auto n_window_lines = n_lines();
-    std::cerr << "Max number of window lines: " << n_window_lines << std::endl;
     auto i_item = scroll_position;
     for (unsigned i_line = 0 ;
-         i_line < n_window_lines && i_item < n_items() ;
+         i_line < n_lines() && i_item < n_items() ;
          ++i_line) {
       if (i_item == selected_index)
         print_standout_at(items->at(i_item), i_line);
@@ -68,5 +77,22 @@ namespace ncurses_lib {
         print_standout_at(items->at(selected_index), cursor_position());
       }
     }
+  }
+
+  void MenuNCurses::resize() {
+    clear();
+    WinNCurses::resize();
+    if (cursor_position() >= n_lines())
+      scroll_position = selected_index;
+    if (scroll_position > max_scroll_position())
+      scroll_position = max_scroll_position();
+    print_items();
+    std::cerr << "After resize: "
+              << "selected_index: " << selected_index << ", "
+              << "window n_lines: " << n_lines() << ", "
+              << "cursor_position: " << cursor_position() << ", "
+              << "scroll_position: " << scroll_position << ", "
+              << "max_scroll_position: " << max_scroll_position() << ", "
+              << std::endl;
   }
 }

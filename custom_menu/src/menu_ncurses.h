@@ -22,13 +22,16 @@ namespace ncurses_lib {
     unsigned n_items() const;
     /** @brief Get the cursor position relative to the current window screen. */
     unsigned cursor_position() const;
+    /** @brief Maximum allowable scroll_position value. */
+    unsigned max_scroll_position() const;
     /** @brief Scroll the whole screen down by one. */
     void scroll_down();
     /** @brief Scroll the whole screen up by one. */
     void scroll_up();
 
   public:
-    explicit MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items);
+    explicit MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
+                         unsigned _top_pos, unsigned _bottom_pos);
 
     /**@brief Print all items to screen. */
     void print_items() const;
@@ -36,6 +39,8 @@ namespace ncurses_lib {
     void select_down_item();
     /** @brief Select the item up of the current one. */
     void select_up_item();
+    /** @brief Resize event. */
+    void resize();
   };
 }
 

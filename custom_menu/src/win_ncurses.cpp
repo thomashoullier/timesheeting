@@ -2,8 +2,8 @@
 #include <ncurses.h>
 
 namespace ncurses_lib {
-  WinNCurses::WinNCurses()
-    : win(init_window()) {
+  WinNCurses::WinNCurses(unsigned _top_pos, unsigned _bottom_pos)
+    : top_position{_top_pos}, bottom_position{_bottom_pos}, win(init_window()) {
     keypad(win, true);
   }
 
@@ -21,7 +21,7 @@ namespace ncurses_lib {
     this->refresh();
   }
 
-  unsigned WinNCurses::n_lines() const { return getmaxx(win) + 1; }
+  unsigned WinNCurses::n_lines() const { return getmaxy(win); }
 
   void WinNCurses::print_at(const std::string &str, int line) const {
     clear_line(line);
@@ -42,9 +42,22 @@ namespace ncurses_lib {
   WINDOW *WinNCurses::init_window() {
     int nx{};
     int ny{};
-    getmaxyx(stdscr, nx, ny);
+    getmaxyx(stdscr, ny, nx);
     int x{0};
-    int y{0};
-    return newwin(ny - 1, nx - 1, y, x);
+    int target_lines = ny - bottom_position - top_position;
+    return newwin(target_lines, nx, top_position,
+                  x);
   }
+
+  void WinNCurses::resize() {
+    int nx{};
+    int ny{};
+    getmaxyx(stdscr, ny, nx);
+    int target_lines = ny - bottom_position - top_position;
+    if (target_lines >= 1) {
+      delwin(win);
+      win = newwin(target_lines, nx, top_position, 0);
+    }
+  }
+
   } // namespace ncurses_lib

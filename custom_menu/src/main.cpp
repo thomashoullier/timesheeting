@@ -1,19 +1,21 @@
 #include "menu_ncurses.h"
 #include "ncurses_handle.h"
+#include <iostream>
 #include <memory>
+#include <ncurses.h>
 #include <vector>
 
 int main () {
   auto ncurses_handle = ncurses_lib::NcursesHandle();
 
-  int n_items = 100;
+  int n_items = 50;
   auto items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
   items->reserve(n_items);
   for (int i = 0 ; i < n_items ; ++i) {
     items->push_back("Item" + std::to_string(i));
   }
 
-  auto menu = ncurses_lib::MenuNCurses(items);
+  auto menu = ncurses_lib::MenuNCurses(items, 2, 4);
   menu.print_items();
 
   // Input loop
@@ -27,6 +29,10 @@ int main () {
       break;
     case 'e': // Up
       menu.select_up_item();
+      break;
+    case KEY_RESIZE:
+      std::cerr << "Resize caught." << std::endl;
+      menu.resize();
       break;
     }
   }
