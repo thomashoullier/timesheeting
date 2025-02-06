@@ -7,6 +7,9 @@
 #include <string>
 
 namespace ncurses_lib {
+  /** @brief Horizontal layout of the window. Left side, right sight or full. */
+  enum class WindowHorizontal {left, right, full};
+
   /** @brief Character signalling a screen resize happened. */
   constexpr int screen_resize_event = KEY_RESIZE;
 
@@ -14,7 +17,8 @@ namespace ncurses_lib {
   class WinNCurses {
   public:
     /** @brief Construct the window with given position and format. */
-    explicit WinNCurses(int _top_pos, int _bottom_pos);
+    explicit WinNCurses(int _top_pos, int _bottom_pos,
+                        WindowHorizontal _horizontal_layout);
     /** @brief Destructor. */
     ~WinNCurses();
 
@@ -27,6 +31,8 @@ namespace ncurses_lib {
 
     /** @brief Get the current number of lines in the window (size). */
     int n_lines() const;
+    /** @brief Get the current number of columns in the window (size). */
+    int n_cols() const;
     /** @brief Print a string at the given position. */
     void print_at(const std::string &str, int line) const;
     /** @brief Print a string with standout appearance. */
@@ -42,13 +48,15 @@ namespace ncurses_lib {
     /** @brief Position of the bottom of the window from the bottom
                of the screen. */
     int bottom_position;
+    /** @brief Horizontal layout */
+    WindowHorizontal horizontal_layout;
+
     /** @brief Get a new ncurses window. */
     WINDOW *init_window();
 
   protected:
     /** Ncurses window object. */
     WINDOW *win;
-
   };
 }
 #endif // WIN_NCURSES_H

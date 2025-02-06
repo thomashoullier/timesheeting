@@ -1,5 +1,6 @@
 #include "menu_ncurses.h"
 #include "ncurses_handle.h"
+#include "win_ncurses.h"
 #include <iostream>
 #include <memory>
 #include <ncurses.h>
@@ -14,7 +15,8 @@ int main () {
     items->push_back("Item" + std::to_string(i));
   }
 
-  auto menu = ncurses_lib::MenuNCurses(items, 2, 4);
+  auto menu = ncurses_lib::MenuNCurses(items, 2, 4,
+                                       ncurses_lib::WindowHorizontal::right);
   menu.print_items();
 
   // Input loop

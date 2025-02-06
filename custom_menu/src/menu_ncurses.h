@@ -31,7 +31,8 @@ namespace ncurses_lib {
 
   public:
     explicit MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
-                         int _top_pos, int _bottom_pos);
+                         int _top_pos, int _bottom_pos,
+                         WindowHorizontal _horizontal_layout);
 
     /**@brief Print all items to screen. */
     void print_items() const;

@@ -6,8 +6,9 @@
 
 namespace ncurses_lib {
   MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
-                           int _top_pos, int _bottom_pos)
-    : WinNCurses(_top_pos, _bottom_pos),
+                           int _top_pos, int _bottom_pos,
+                           WindowHorizontal _horizontal_layout)
+    : WinNCurses(_top_pos, _bottom_pos, _horizontal_layout),
       items{_items}, selected_index{0}, scroll_position{0} {}
 
   int MenuNCurses::n_items() const {
@@ -90,6 +91,7 @@ namespace ncurses_lib {
     std::cerr << "After resize: "
               << "selected_index: " << selected_index << ", "
               << "window n_lines: " << n_lines() << ", "
+              << "window n_cols: " << n_cols() << ", "
               << "cursor_position: " << cursor_position() << ", "
               << "scroll_position: " << scroll_position << ", "
               << "max_scroll_position: " << max_scroll_position() << ", "
