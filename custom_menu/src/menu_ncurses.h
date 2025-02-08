@@ -63,6 +63,10 @@ namespace ncurses_lib {
     void select_down_item();
     /** @brief Select the item up of the current one. */
     void select_up_item();
+    /** @brief Select the item right of the current one. */
+    void select_right_item();
+    /** @brief Select the item left of the current one. */
+    void select_left_item();
     /** @brief Resize event. */
     void resize();
   };

@@ -9,7 +9,7 @@
 int main () {
   auto ncurses_handle = ncurses_lib::NcursesHandle();
 
-  int n_items = 100;
+  int n_items = 3*30;
   auto items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
   for (int i = 0 ; i < n_items ; ++i) {
     items->push_back("Item" + std::to_string(i));
@@ -31,6 +31,12 @@ int main () {
       break;
     case 'e': // Up
       menu.select_up_item();
+      break;
+    case 'i': // Right
+      menu.select_right_item();
+      break;
+    case 'h': // Left
+      menu.select_left_item();
       break;
     case KEY_RESIZE:
       std::cerr << "Resize caught." << std::endl;

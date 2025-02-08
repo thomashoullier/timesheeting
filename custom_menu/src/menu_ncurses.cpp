@@ -52,7 +52,7 @@ std::vector<ColumnFormat> MenuNCurses::compute_columns() const {
   }
 
   int MenuNCurses::max_scroll_position() const {
-    int val = (n_items() - n_lines()) / n_item_columns();
+    int val = n_items() / n_item_columns() - n_lines();
     return std::max(0, val);
   }
 
@@ -121,6 +121,30 @@ std::vector<ColumnFormat> MenuNCurses::compute_columns() const {
     }
   }
 
+  void MenuNCurses::select_right_item() {
+    if (selected_index % n_item_columns() + 1 < n_item_columns()) {
+      // Reprint the current item as non-highlighted
+      print_at(items->at(selected_index), cursor_line_position(),
+               cursor_col_position(), cursor_width());
+      ++selected_index;
+      // Reprint the selected item as highlighted.
+      print_standout_at(items->at(selected_index), cursor_line_position(),
+                        cursor_col_position(), cursor_width());
+    }
+  }
+
+  void MenuNCurses::select_left_item() {
+    if (selected_index % n_item_columns() - 1 >= 0) {
+      // Reprint the current item as non-highlighted
+      print_at(items->at(selected_index), cursor_line_position(),
+               cursor_col_position(), cursor_width());
+      --selected_index;
+      // Reprint the selected item as highlighted.
+      print_standout_at(items->at(selected_index), cursor_line_position(),
+                        cursor_col_position(), cursor_width());
+    }
+  }
+
   void MenuNCurses::resize() {
     clear();
     WinNCurses::resize();
@@ -138,4 +162,4 @@ std::vector<ColumnFormat> MenuNCurses::compute_columns() const {
               << "max_scroll_position: " << max_scroll_position() << ", "
               << std::endl;
   }
-  } // namespace ncurses_lib
+} // namespace ncurses_lib
