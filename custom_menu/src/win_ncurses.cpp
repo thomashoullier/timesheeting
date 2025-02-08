@@ -27,20 +27,21 @@ WinNCurses::WinNCurses(int _top_pos, int _bottom_pos,
 
   int WinNCurses::n_cols() const { return getmaxx(win); }
 
-  void WinNCurses::print_at(const std::string &str, int line) const {
-    clear_line(line);
-    mvwprintw(win, line, 0, "%s", str.substr(0, n_cols()).c_str());
+  void WinNCurses::print_at(const std::string &str,
+                            int line, int col_offset, int col_width) const {
+    const std::string eraser(col_width, ' ');
+    mvwprintw(win, line, col_offset, "%s",
+              eraser.c_str());
+    mvwprintw(win, line, col_offset, "%s",
+              str.substr(0, n_cols() - col_offset).c_str());
   }
 
-  void WinNCurses::print_standout_at(const std::string &str, int line) const {
+  void WinNCurses::print_standout_at(const std::string &str,
+                                     int line, int col_offset,
+                                     int col_width) const {
     wattron(win, A_STANDOUT);
-    print_at(str, line);
+    print_at(str, line, col_offset, col_width);
     wattroff(win, A_STANDOUT);
-  }
-
-  void WinNCurses::clear_line(int line) const {
-    wmove(win, line, 0);
-    wclrtoeol(win);
   }
 
   WINDOW *WinNCurses::init_window() {
@@ -75,7 +76,7 @@ WinNCurses::WinNCurses(int _top_pos, int _bottom_pos,
     getmaxyx(stdscr, ny, nx);
     int target_lines = ny - bottom_position - top_position;
     if (target_lines >= 1) {
-      delwin(win); // TODO: is there a way to only resize?
+      delwin(win);
       win = init_window();
     }
   }

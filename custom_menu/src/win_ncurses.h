@@ -34,11 +34,11 @@ namespace ncurses_lib {
     /** @brief Get the current number of columns in the window (size). */
     int n_cols() const;
     /** @brief Print a string at the given position. */
-    void print_at(const std::string &str, int line) const;
+    void print_at(const std::string &str,
+                  int line, int col_offset, int col_width) const;
     /** @brief Print a string with standout appearance. */
-    void print_standout_at(const std::string &str, int line) const;
-    /** @brief Clear a given line. */
-    void clear_line (int line) const;
+    void print_standout_at(const std::string &str,
+                           int line, int col_offset, int col_width) const;
     /** Resize the window according to current terminal size. */
     void resize();
 

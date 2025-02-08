@@ -9,14 +9,15 @@
 int main () {
   auto ncurses_handle = ncurses_lib::NcursesHandle();
 
-  int n_items = 10;
+  int n_items = 100;
   auto items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
   for (int i = 0 ; i < n_items ; ++i) {
     items->push_back("Item" + std::to_string(i));
   }
 
   auto menu = ncurses_lib::MenuNCurses(items, 2, 4,
-                                       ncurses_lib::WindowHorizontal::right);
+                                       ncurses_lib::WindowHorizontal::full,
+                                       {8, 8, 8});
   menu.print_items();
 
   // Input loop
