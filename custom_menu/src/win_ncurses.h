@@ -39,8 +39,12 @@ namespace ncurses_lib {
     /** @brief Print a string with standout appearance. */
     void print_standout_at(const std::string &str,
                            int line, int col_offset, int col_width) const;
-    /** Resize the window according to current terminal size. */
+    /** @brief Resize the window according to current terminal size. */
     void resize();
+    /** @brief Activate the border. */
+    void set_border();
+    /** @biref Deactivate the border. */
+    void unset_border();
 
   private:
     /** @brief Position of the top of the window from the top of the screen. */
@@ -50,9 +54,13 @@ namespace ncurses_lib {
     int bottom_position;
     /** @brief Horizontal layout */
     WindowHorizontal horizontal_layout;
+    /** @brief Border drawing toggle. */
+    bool border_on;
 
     /** @brief Get a new ncurses window. */
     WINDOW *init_window();
+    /** @brief Draw a border at the top of the window. */
+    void draw_border() const;
 
   protected:
     /** Ncurses window object. */
