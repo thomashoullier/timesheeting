@@ -1,6 +1,7 @@
 #include "menu_ncurses.h"
 #include "win_ncurses.h"
 #include <algorithm>
+#include <numeric>
 #include <curses.h>
 #include <iostream>
 #include <ncurses.h>
@@ -18,18 +19,50 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
     return target_column_widths.size();
   }
 
-std::vector<ColumnFormat> MenuNCurses::compute_columns() const {
-  // TODO: manage the 0 case for widths.
-  std::vector<ColumnFormat> cols;
-  int cur_pos{0};
-  int next_pos{0};
-  for (const auto &target_width : target_column_widths) {
-    next_pos += target_width + 1; // Gap of one on the right of columns.
-    cols.push_back({cur_pos, next_pos - cur_pos - 1});
-    cur_pos = next_pos;
+  std::vector<int> MenuNCurses::distribute_column_widths() const {
+    int total_fixed_width = std::accumulate(target_column_widths.begin(),
+                                            target_column_widths.end(),
+                                            0);
+    // Available target writable width for columns set to zero.
+    // We count one unit of gap to the right of each column.
+    int available_width = n_cols() - total_fixed_width - n_item_columns();
+    // Number of columns with variable width
+    int n_var_cols = std::count(target_column_widths.begin(),
+                                target_column_widths.end(),
+                                0);
+    std::vector<int> widths;
+    for (const auto &w : target_column_widths) {
+      if (w != 0) { // Fixed width column.
+        widths.push_back(w);
+      } else { // Variable width column.
+        // Base size for columns.
+        int base_size = available_width / n_var_cols;
+        // Number of columns which need to be assigned +1.
+        int n_larger_cols = available_width % n_var_cols;
+        int var_w = base_size;
+        if (n_larger_cols > 0) {
+          var_w += 1;
+          --n_larger_cols;
+        }
+        widths.push_back(var_w);
+      }
+    }
+    return widths;
   }
-  return cols;
-}
+
+  std::vector<ColumnFormat> MenuNCurses::compute_columns() const {
+    std::vector<ColumnFormat> cols;
+    int cur_pos{0};
+    int next_pos{0};
+    auto distributed_widths = distribute_column_widths();
+    for (const auto &target_width : distributed_widths) {
+      next_pos += target_width + 1; // Gap of one on the right of columns.
+      cols.push_back({std::min(cur_pos, n_cols() - 1),
+                      std::max(0, next_pos - cur_pos - 1)});
+      cur_pos = next_pos;
+    }
+    return cols;
+  }
 
   int MenuNCurses::n_items() const {
     return items->size();

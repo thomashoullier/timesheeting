@@ -16,8 +16,8 @@ int main () {
   }
 
   auto menu = ncurses_lib::MenuNCurses(items, 2, 4,
-                                       ncurses_lib::WindowHorizontal::full,
-                                       {8, 8, 8});
+                                       ncurses_lib::WindowHorizontal::right,
+                                       {0, 10, 0});
   menu.print_items();
 
   // Input loop

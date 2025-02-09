@@ -27,6 +27,8 @@ namespace ncurses_lib {
 
     /** @brief Get the number of item columns. */
     int n_item_columns() const;
+    /** @brief Distribute the target widths among columns. */
+    std::vector<int> distribute_column_widths () const;
     /** @brief Compute the format of columns given the current window width. */
     std::vector<ColumnFormat> compute_columns() const;
     /** @brief Get the number of items currently held. */
