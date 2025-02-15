@@ -7,6 +7,12 @@
 #include <ncurses.h>
 
 namespace ncurses_lib {
+  MenuItem::MenuItem(const std::string &_cell_string,
+                     const std::string &_display_string,
+                     StringFace _face)
+    : cell_string{_cell_string}, display_string{_display_string}, face{_face} {}
+
+
 MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
                          int _top_pos, int _bottom_pos,
                          WindowHorizontal _horizontal_layout,
@@ -97,12 +103,13 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
     int iline = (i_item - start_item) / n_item_columns();
     while (i_item < n_items() && iline < n_lines()) {
       auto col = cols.at(icol);
+      auto item_str = items->at(i_item).cell_string;
       if (i_item == selected_index) {
-        print_standout_at(items->at(i_item).substr(0, col.width), iline,
-                          col.pos, col.width);
+        print_standout_at(item_str.substr(0, col.width), iline,
+                          col.pos, col.width, items->at(i_item).face);
       } else {
-        print_at(items->at(i_item).substr(0, col.width), iline, col.pos,
-                 col.width);
+        print_at(item_str.substr(0, col.width), iline, col.pos,
+                 col.width, items->at(i_item).face);
       }
       ++i_item;
       icol = (i_item - start_item) % n_item_columns();
@@ -127,12 +134,16 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
         scroll_down();
       } else {
         // Reprint the current item as non-highlighted
-        print_at(items->at(selected_index), cursor_line_position(),
-                 cursor_col_position(), cursor_width());
+        print_at(items->at(selected_index).cell_string,
+                 cursor_line_position(),
+                 cursor_col_position(), cursor_width(),
+                 items->at(selected_index).face);
         // Reprint the selected item as highlighted.
         selected_index += n_item_columns();
-        print_standout_at(items->at(selected_index), cursor_line_position(),
-                          cursor_col_position(), cursor_width());
+        print_standout_at(items->at(selected_index).cell_string,
+                          cursor_line_position(), cursor_col_position(),
+                          cursor_width(),
+                          items->at(selected_index).face);
       }
     }
   }
@@ -144,12 +155,16 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
         scroll_up();
       } else {
         // Reprint the current item as non-highlighted
-        print_at(items->at(selected_index), cursor_line_position(),
-                 cursor_col_position(), cursor_width());
+        print_at(items->at(selected_index).cell_string,
+                 cursor_line_position(),
+                 cursor_col_position(), cursor_width(),
+                 items->at(selected_index).face);
         // Reprint the selected item as highlighted.
         selected_index -= n_item_columns();
-        print_standout_at(items->at(selected_index), cursor_line_position(),
-                          cursor_col_position(), cursor_width());
+        print_standout_at(items->at(selected_index).cell_string,
+                          cursor_line_position(), cursor_col_position(),
+                          cursor_width(),
+                          items->at(selected_index).face);
       }
     }
   }
@@ -157,24 +172,31 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
   void MenuNCurses::select_right_item() {
     if (selected_index % n_item_columns() + 1 < n_item_columns()) {
       // Reprint the current item as non-highlighted
-      print_at(items->at(selected_index), cursor_line_position(),
-               cursor_col_position(), cursor_width());
+      print_at(items->at(selected_index).cell_string,
+               cursor_line_position(),
+               cursor_col_position(), cursor_width(),
+               items->at(selected_index).face);
       ++selected_index;
       // Reprint the selected item as highlighted.
-      print_standout_at(items->at(selected_index), cursor_line_position(),
-                        cursor_col_position(), cursor_width());
+      print_standout_at(items->at(selected_index).cell_string,
+                        cursor_line_position(), cursor_col_position(),
+                        cursor_width(), items->at(selected_index).face);
     }
   }
 
   void MenuNCurses::select_left_item() {
     if (selected_index % n_item_columns() - 1 >= 0) {
       // Reprint the current item as non-highlighted
-      print_at(items->at(selected_index), cursor_line_position(),
-               cursor_col_position(), cursor_width());
+      print_at(items->at(selected_index).cell_string,
+               cursor_line_position(),
+               cursor_col_position(), cursor_width(),
+               items->at(selected_index).face);
       --selected_index;
       // Reprint the selected item as highlighted.
-      print_standout_at(items->at(selected_index), cursor_line_position(),
-                        cursor_col_position(), cursor_width());
+      print_standout_at(items->at(selected_index).cell_string,
+                        cursor_line_position(), cursor_col_position(),
+                        cursor_width(),
+                        items->at(selected_index).face);
     }
   }
 

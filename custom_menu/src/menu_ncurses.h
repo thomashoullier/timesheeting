@@ -7,7 +7,20 @@
 #include <memory>
 
 namespace ncurses_lib {
-  typedef std::string MenuItem;
+  struct MenuItem {
+    /** @brief String displayed in the menu itself. Usually short. */
+    std::string cell_string;
+    /** @brief String for display on the status bar when queried. */
+    std::string display_string;
+    /** @brief Appearance of the cell string in the menu. */
+    StringFace face;
+
+    /** @brief MenuItem constructor. */
+    MenuItem(const std::string &_cell_string,
+             const std::string &_display_string,
+             StringFace _face = StringFace::Normal);
+  };
+
   struct ColumnFormat {
     int pos; // Starting position in the window
     int width; // Width which can be used to write things.

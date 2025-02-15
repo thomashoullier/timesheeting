@@ -7,6 +7,12 @@
 #include <string>
 
 namespace ncurses_lib {
+  /** @brief Possible appearances for the display of strings. */
+  enum class StringFace {
+    Normal,
+    Bold
+  };
+
   /** @brief Horizontal layout of the window. Left side, right sight or full. */
   enum class WindowHorizontal {left, right, full};
 
@@ -35,10 +41,12 @@ namespace ncurses_lib {
     int n_cols() const;
     /** @brief Print a string at the given position. */
     void print_at(const std::string &str,
-                  int line, int col_offset, int col_width) const;
+                  int line, int col_offset, int col_width,
+                  StringFace face = StringFace::Normal) const;
     /** @brief Print a string with standout appearance. */
     void print_standout_at(const std::string &str,
-                           int line, int col_offset, int col_width) const;
+                           int line, int col_offset, int col_width,
+                           StringFace face = StringFace::Normal) const;
     /** @brief Resize the window according to current terminal size. */
     void resize();
     /** @brief Activate the border. */

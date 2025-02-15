@@ -1,5 +1,6 @@
 #include "win_ncurses.h"
 #include <ncurses.h>
+#include <stdexcept>
 
 namespace ncurses_lib {
 WinNCurses::WinNCurses(int _top_pos, int _bottom_pos,
@@ -30,20 +31,40 @@ int WinNCurses::n_lines() const { return getmaxy(win) - 1; }
 int WinNCurses::n_cols() const { return getmaxx(win); }
 
 void WinNCurses::print_at(const std::string &str, int line, int col_offset,
-                          int col_width) const {
+                          int col_width,
+                          StringFace face) const {
+  switch(face) {
+  case StringFace::Normal:
+    break;
+  case StringFace::Bold:
+    wattron(win, A_BOLD);
+    break;
+  default:
+    throw std::runtime_error("WinNCurses::print_at: unknown face");
+  }
   const std::string eraser(col_width, ' ');
   // We offset the printing by one since the top line is reserved for
   // a border
   mvwprintw(win, line + 1, col_offset, "%s", eraser.c_str());
   mvwprintw(win, line + 1, col_offset, "%s",
             str.substr(0, n_cols() - col_offset).c_str());
+  switch (face) {
+  case StringFace::Normal:
+    break;
+  case StringFace::Bold:
+    wattroff(win, A_BOLD);
+    break;
+  default:
+    throw std::runtime_error("WinNCurses::print_at: unknown face");
   }
+}
 
   void WinNCurses::print_standout_at(const std::string &str,
                                      int line, int col_offset,
-                                     int col_width) const {
+                                     int col_width,
+                                     StringFace face) const {
     wattron(win, A_STANDOUT);
-    print_at(str, line, col_offset, col_width);
+    print_at(str, line, col_offset, col_width, face);
     wattroff(win, A_STANDOUT);
   }
 

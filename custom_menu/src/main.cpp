@@ -12,7 +12,10 @@ int main () {
   int n_items = 3*30;
   auto items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
   for (int i = 0 ; i < n_items ; ++i) {
-    items->push_back("Item" + std::to_string(i));
+    auto item_str = "Item" + std::to_string(i);
+    auto item = ncurses_lib::MenuItem{item_str, item_str,
+                                      ncurses_lib::StringFace::Bold};
+    items->push_back(item);
   }
 
   auto menu = ncurses_lib::MenuNCurses(items, 2, 4,
