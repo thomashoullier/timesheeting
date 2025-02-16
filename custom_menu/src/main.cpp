@@ -59,6 +59,9 @@ int main () {
         menu.set_items(items);
       }
       break;
+    case 'd': // Get the display string
+      std::cerr << menu.get_current_item_string() <<std::endl;
+      break;
     case KEY_RESIZE:
       std::cerr << "Resize caught." << std::endl;
       menu.resize();

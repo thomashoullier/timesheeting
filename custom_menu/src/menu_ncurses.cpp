@@ -201,6 +201,10 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
     }
   }
 
+  const std::string& MenuNCurses::get_current_item_string() const {
+    return items->at(selected_index).display_string;
+  }
+
   void MenuNCurses::set_items
   (const std::shared_ptr<std::vector<MenuItem>>  _items) {
     items = _items;
