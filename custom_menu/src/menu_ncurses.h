@@ -64,14 +64,12 @@ namespace ncurses_lib {
   public:
     /** @brief Constructor.
 
-     target_column_widths defines the number of desired width of columns.
-     A width of >0 is fixed, the remaining window width is shared equally
-     over the columns of width 0. */
+        target_column_widths defines the number of desired width of columns.
+        A width of >0 is fixed, the remaining window width is shared equally
+        over the columns of width 0. */
     explicit MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
-                         int _top_pos, int _bottom_pos,
-                         WindowHorizontal _horizontal_layout,
+                         WindowPosition _winpos, WindowFormat _winformat,
                          std::vector<int> _target_column_widths);
-
     /**@brief Print all items to screen. */
     void refresh() const;
     /** @brief Select the item down of the current one. */

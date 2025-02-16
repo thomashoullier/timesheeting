@@ -3,6 +3,7 @@
 #ifndef WIN_NCURSES_H
 #define WIN_NCURSES_H
 
+#include <array>
 #include <ncurses.h>
 #include <string>
 
@@ -13,8 +14,11 @@ namespace ncurses_lib {
     Bold
   };
 
-  /** @brief Horizontal layout of the window. Left side, right sight or full. */
-  enum class WindowHorizontal {left, right, full};
+  /** @brief Selector for the position of the window. */
+  enum class WindowPosition { top, top_left, top_right,
+                              upper, lower, bottom, left, middle };
+  /** @brief Selector for the format of the window. */
+  enum class WindowFormat { line, half_line, box, block, column };
 
   /** @brief Character signalling a screen resize happened. */
   constexpr int screen_resize_event = KEY_RESIZE;
@@ -23,8 +27,7 @@ namespace ncurses_lib {
   class WinNCurses {
   public:
     /** @brief Construct the window with given position and format. */
-    explicit WinNCurses(int _top_pos, int _bottom_pos,
-                        WindowHorizontal _horizontal_layout);
+    explicit WinNCurses(WindowPosition _winpos, WindowFormat _winformat);
     /** @brief Destructor. */
     ~WinNCurses();
 
@@ -55,16 +58,17 @@ namespace ncurses_lib {
     void unset_border();
 
   private:
-    /** @brief Position of the top of the window from the top of the screen. */
-    int top_position;
-    /** @brief Position of the bottom of the window from the bottom
-               of the screen. */
-    int bottom_position;
-    /** @brief Horizontal layout */
-    WindowHorizontal horizontal_layout;
+    /** @brief Window position in the standard screen. */
+    WindowPosition winpos;
+    /** @brief Window format. */
+    WindowFormat winformat;
     /** @brief Border drawing toggle. */
     bool border_on;
 
+    /** @brief Compute the window position and dimensions.
+
+        ny, nx, y, x */
+    std::array<int, 4> compute_window_dimensions () const;
     /** @brief Get a new ncurses window. */
     WINDOW *init_window();
     /** @brief Draw a border at the top of the window. */

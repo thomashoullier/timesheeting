@@ -14,12 +14,11 @@ namespace ncurses_lib {
 
 
 MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
-                         int _top_pos, int _bottom_pos,
-                         WindowHorizontal _horizontal_layout,
+                         WindowPosition _winpos, WindowFormat _winformat,
                          std::vector<int> _target_column_widths)
-    : WinNCurses(_top_pos, _bottom_pos, _horizontal_layout),
-      target_column_widths{_target_column_widths}, items{_items},
-      selected_index{0}, scroll_position{0} {}
+  : WinNCurses(_winpos, _winformat),
+    target_column_widths{_target_column_widths}, items{_items},
+    selected_index{0}, scroll_position{0} {}
 
   int MenuNCurses::n_item_columns() const {
     return target_column_widths.size();

@@ -21,8 +21,11 @@ int main () {
     items->push_back(item);
   }
 
-  auto menu = ncurses_lib::MenuNCurses(
-      items, 2, 4, ncurses_lib::WindowHorizontal::full, {0, 10, 0});
+  auto menu = ncurses_lib::MenuNCurses
+    (items,
+     ncurses_lib::WindowPosition::left,
+     ncurses_lib::WindowFormat::block,
+     {0, 10, 0});
   menu.set_border();
   menu.refresh();
 

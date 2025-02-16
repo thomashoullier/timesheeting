@@ -3,10 +3,8 @@
 #include <stdexcept>
 
 namespace ncurses_lib {
-WinNCurses::WinNCurses(int _top_pos, int _bottom_pos,
-                       WindowHorizontal _horizontal_layout)
-    : top_position{_top_pos}, bottom_position{_bottom_pos},
-      horizontal_layout{_horizontal_layout}, border_on{false},
+  WinNCurses::WinNCurses(WindowPosition _winpos, WindowFormat _winformat)
+    : winpos{_winpos}, winformat{_winformat}, border_on{false},
       win(init_window()) {
   keypad(win, true);
   draw_border();
@@ -68,38 +66,92 @@ void WinNCurses::print_at(const std::string &str, int line, int col_offset,
     wattroff(win, A_STANDOUT);
   }
 
-  WINDOW *WinNCurses::init_window() {
-    int nx{};
-    int ny{};
-    getmaxyx(stdscr, ny, nx);
-    // Computing the position and size in the horizontal direction
-    int x{};
-    switch (horizontal_layout) {
-    case WindowHorizontal::full:
+
+  std::array<int, 4> WinNCurses::compute_window_dimensions () const {
+    // Available standard screen dimensions.
+    int max_x{};
+    int max_y{};
+    getmaxyx(stdscr, max_y, max_x);
+    // Compute the window position
+    int y, x;
+    switch (winpos) {
+    case WindowPosition::top:
       x = 0;
+      y = 1;
       break;
-    case WindowHorizontal::right:
-      nx = nx / 2;
-      x = nx;
-      break;
-    case WindowHorizontal::left:
-      if (nx % 2 == 0)
-        nx = nx / 2;
-      else
-        nx = nx / 2 + 1;
+    case WindowPosition::top_left:
       x = 0;
+      y = 1;
       break;
+    case WindowPosition::top_right:
+      x = max_x / 2;
+      y = 1;
+      break;
+    case WindowPosition::bottom:
+      x = 0;
+      y = max_y - 1;
+      break;
+    case WindowPosition::upper:
+      x = 0;
+      y = 2;
+      break;
+    case WindowPosition::lower:
+      x = 0;
+      y = max_y - 4;
+      break;
+    case WindowPosition::left:
+      x = 0;
+      y = 2;
+      break;
+    case WindowPosition::middle:
+      x = max_x / 2;
+      y = 2;
+      break;
+    default:
+      throw std::logic_error("WinNCurses: unknown WindowPosition.");
     }
-    int target_lines = ny - bottom_position - top_position;
-    return newwin(target_lines, nx, top_position, x);
+    int ny, nx;
+    switch(winformat) {
+    case WindowFormat::line:
+      nx = max_x;
+      ny = 1;
+      break;
+    case WindowFormat::box:
+      nx = max_x;
+      ny = 2;
+      break;
+    case WindowFormat::half_line:
+      nx = max_x / 2;
+      ny = 1;
+      break;
+    case WindowFormat::block:
+      nx = max_x;
+      ny = max_y - 6;
+      break;
+    case WindowFormat::column:
+      nx = max_x / 2;
+      // Fix overlap for the left part
+      if (max_x % 2 != 0 && x == 0) {
+        nx = max_x / 2 + 1;
+      }
+      ny = max_y - 6;
+      break;
+    default:
+      throw std::logic_error("WinNCurses: unknown WindowFormat.");
+    }
+    return {ny, nx, y, x};
+  }
+
+  WINDOW *WinNCurses::init_window() {
+    auto dims = compute_window_dimensions();
+    return newwin(dims.at(0), dims.at(1), dims.at(2), dims.at(3));
   }
 
   void WinNCurses::resize() {
-    int nx{};
-    int ny{};
-    getmaxyx(stdscr, ny, nx);
-    int target_lines = ny - bottom_position - top_position;
-    if (target_lines >= 1) {
+    auto dims = compute_window_dimensions();
+    auto ny = dims.at(0);
+    auto nx = dims.at(1);
+    if (ny >= 1 && nx >= 1) {
       delwin(win);
       win = init_window();
       draw_border();
