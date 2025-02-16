@@ -127,6 +127,10 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
     refresh();
   }
 
+  int MenuNCurses::get_item_index() const {
+    return selected_index;
+  }
+
   void MenuNCurses::select_down_item() {
     if (selected_index + n_item_columns() < n_items()) {
       if (cursor_line_position() == n_lines() - 1) {

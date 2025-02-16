@@ -61,6 +61,10 @@ namespace ncurses_lib {
     /** @brief Scroll the whole screen up by one. */
     void scroll_up();
 
+  protected:
+    /** @brief Get the current item index. */
+    int get_item_index() const;
+
   public:
     /** @brief Constructor.
 
@@ -81,11 +85,24 @@ namespace ncurses_lib {
     /** @brief Select the item left of the current one. */
     void select_left_item();
     /** @brief Get the full display string for the current item. */
-    const std::string& get_current_item_string() const;
+    const std::string &get_current_item_string() const;
     /** @brief Set the currently held items. */
-    void set_items(const std::shared_ptr<std::vector<MenuItem>>  _items);
+    void set_items(const std::shared_ptr<std::vector<MenuItem>> _items);
     /** @brief Resize event. */
     void resize();
+  };
+
+  /** @brief Exception when encountering an empty menu. */
+  class MenuEmpty : public std::exception {
+  private:
+    /** @brief Exception message. */
+    std::string msg;
+
+  public:
+    /** @brief Exception constructor. */
+    MenuEmpty (const char* _msg) : msg(_msg) {};
+    /** @brief Mandatory std::exception method. */
+    const char* what() const throw() { return msg.c_str(); };
   };
 }
 
