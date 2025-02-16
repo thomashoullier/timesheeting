@@ -14,15 +14,17 @@ int main () {
   for (int i = 0 ; i < n_items ; ++i) {
     auto item_str = "Item" + std::to_string(i);
     auto item = ncurses_lib::MenuItem{item_str, item_str,
-                                      ncurses_lib::StringFace::Bold};
+                                      ncurses_lib::StringFace::Normal};
+    if (i == 10) {
+      item.face = ncurses_lib::StringFace::Bold;
+    }
     items->push_back(item);
   }
 
-  auto menu = ncurses_lib::MenuNCurses(items, 2, 4,
-                                       ncurses_lib::WindowHorizontal::full,
-                                       {0, 10, 0});
+  auto menu = ncurses_lib::MenuNCurses(
+      items, 2, 4, ncurses_lib::WindowHorizontal::full, {0, 10, 0});
   menu.set_border();
-  menu.print_items();
+  menu.refresh();
 
   // Input loop
   while (true) {
@@ -30,7 +32,7 @@ int main () {
     switch (ch) {
     case 'q':
       return 0; // Quit
-    case 'n': // Down
+    case 'n':   // Down
       menu.select_down_item();
       break;
     case 'e': // Up
@@ -41,6 +43,21 @@ int main () {
       break;
     case 'h': // Left
       menu.select_left_item();
+      break;
+    case 'c': // Change held items
+      {
+        auto items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
+        for (int i = 0; i < n_items; ++i) {
+          auto item_str = "NItem" + std::to_string(i);
+          auto item = ncurses_lib::MenuItem{item_str, item_str,
+                                            ncurses_lib::StringFace::Normal};
+          if (i == 10) {
+            item.face = ncurses_lib::StringFace::Bold;
+          }
+          items->push_back(item);
+        }
+        menu.set_items(items);
+      }
       break;
     case KEY_RESIZE:
       std::cerr << "Resize caught." << std::endl;

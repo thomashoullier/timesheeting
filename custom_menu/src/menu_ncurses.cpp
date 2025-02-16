@@ -95,7 +95,8 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
     return std::max(0, val);
   }
 
-  void MenuNCurses::print_items() const {
+  void MenuNCurses::refresh() const {
+    WinNCurses::refresh();
     auto i_item = n_item_columns() * scroll_position;
     auto start_item = i_item;
     int icol = (i_item - start_item) % n_item_columns();
@@ -119,12 +120,12 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
 
   void MenuNCurses::scroll_down() {
     ++scroll_position;
-    print_items();
+    refresh();
   }
 
   void MenuNCurses::scroll_up() {
     --scroll_position;
-    print_items();
+    refresh();
   }
 
   void MenuNCurses::select_down_item() {
@@ -200,6 +201,12 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
     }
   }
 
+  void MenuNCurses::set_items
+  (const std::shared_ptr<std::vector<MenuItem>>  _items) {
+    items = _items;
+    refresh();
+  }
+
   void MenuNCurses::resize() {
     clear();
     WinNCurses::resize();
@@ -207,7 +214,7 @@ MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
       scroll_position = selected_index / n_item_columns();
     if (scroll_position > max_scroll_position())
       scroll_position = max_scroll_position();
-    print_items();
+    refresh();
     std::cerr << "After resize: "
               << "selected_index: " << selected_index << ", "
               << "window n_lines: " << n_lines() << ", "

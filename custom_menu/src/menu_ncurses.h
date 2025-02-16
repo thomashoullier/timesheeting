@@ -73,7 +73,7 @@ namespace ncurses_lib {
                          std::vector<int> _target_column_widths);
 
     /**@brief Print all items to screen. */
-    void print_items() const;
+    void refresh() const;
     /** @brief Select the item down of the current one. */
     void select_down_item();
     /** @brief Select the item up of the current one. */
@@ -82,6 +82,8 @@ namespace ncurses_lib {
     void select_right_item();
     /** @brief Select the item left of the current one. */
     void select_left_item();
+    /** @brief Set the currently held items. */
+    void set_items(const std::shared_ptr<std::vector<MenuItem>>  _items);
     /** @brief Resize event. */
     void resize();
   };
