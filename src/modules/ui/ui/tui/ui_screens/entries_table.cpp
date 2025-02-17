@@ -5,6 +5,7 @@
 #include "log_lib/logger.h"
 #include "update_manager.h"
 #include "ui/keys/bound_keys.h"
+#include <iostream>
 
 namespace tui {
   EntriesTable::EntriesTable()
@@ -13,12 +14,16 @@ namespace tui {
       reg(db::db().query_entries(day_selector.current_range())) {}
 
   config::NormalActions EntriesTable::input_loop() {
+    std::cerr << "EntriesTable::input_loop() start" << std::endl;
     reg.set_border();
+    std::cerr << "EntriesTable::input_loop() border set" << std::endl;
     while (true) {
       status().print(reg.get_current_item_string());
+      std::cerr << "EntriesTable::input_loop() status printed" << std::endl;
       auto ch = reg.get_input();
       auto kb = keys::BoundKeys::get().kb;
       auto action = kb.normal_mode.action_requested(ch);
+      std::cerr << "EntriesTable::input_loop() switch" << std::endl;
       switch(action) {
       case config::NormalActions::down:
         reg.select_down_item();

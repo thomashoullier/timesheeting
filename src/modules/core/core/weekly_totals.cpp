@@ -1,90 +1,77 @@
 #include "weekly_totals.h"
-#include "ncurses_lib/string_with_face.h"
+#include "ncurses_lib/menu_ncurses.h"
+#include "ncurses_lib/win_ncurses.h"
 #include "time_lib/duration_displayer.h"
+#include <memory>
 
 namespace core {
-  std::vector<std::string> WeeklyTotals::to_strings () const {
-    // TODO: have short strings with zeroes and units omitted, and long strings
-    //       for status bar display.
-    std::vector<std::string> strs;
+  std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
+  WeeklyTotals::to_menu_items() const {
+    auto menu_items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
     auto duration_formatter = time_lib::DurationDisplayer::get();
-    // Column headers
-    strs.push_back("Project/Task");
-    strs.push_back("Monday");
-    strs.push_back("Tuesday");
-    strs.push_back("Wednesday");
-    strs.push_back("Thursday");
-    strs.push_back("Friday");
-    strs.push_back("Saturday");
-    strs.push_back("Sunday");
-    strs.push_back("TOTAL");
+    // Headers
+    menu_items->push_back(ncurses_lib::MenuItem("Task", "Project/Task",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("Mon", "Monday",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("Tue", "Tuesday",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("Wed", "Wednesday",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("Thu", "Thursday",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("Fri", "Friday",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("Sat", "Saturday",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("Sun", "Sunday",
+                                               ncurses_lib::StringFace::Normal));
+    menu_items->push_back(ncurses_lib::MenuItem("TOTAL", "TOTAL",
+                                               ncurses_lib::StringFace::Normal));
     // Daily totals, all tasks
-    strs.push_back("All tasks");
+    menu_items->push_back(ncurses_lib::MenuItem("ALL", "All tasks",
+                                               ncurses_lib::StringFace::Normal));
     for (auto const &dur : daily_totals) {
-      strs.push_back(duration_formatter.to_string(dur));
+      menu_items->push_back(
+          ncurses_lib::MenuItem(duration_formatter.to_shortstring(dur),
+                                duration_formatter.to_string(dur),
+                                ncurses_lib::StringFace::Normal));
     }
-    strs.push_back(duration_formatter.to_string(total));
+    menu_items->push_back(ncurses_lib::MenuItem
+                         (duration_formatter.to_shortstring(total),
+                          duration_formatter.to_string(total),
+                          ncurses_lib::StringFace::Normal));
     // Per-project totals
     for (auto const &proj : project_totals) {
-      strs.push_back(proj.project_name);
+      menu_items->push_back(ncurses_lib::MenuItem
+                           (proj.project_name, proj.project_name,
+                            ncurses_lib::StringFace::Bold));
       for (auto const &daily_dur : proj.daily_totals) {
-        strs.push_back(duration_formatter.to_string(daily_dur));
+        menu_items->push_back(
+            ncurses_lib::MenuItem(duration_formatter.to_shortstring(daily_dur),
+                                  duration_formatter.to_string(daily_dur),
+                                  ncurses_lib::StringFace::Bold));
       }
-      strs.push_back(duration_formatter.to_string(proj.total));
+      menu_items->push_back(
+          ncurses_lib::MenuItem(duration_formatter.to_shortstring(proj.total),
+                                duration_formatter.to_string(proj.total),
+                                ncurses_lib::StringFace::Bold));
       // Per-task totals
       for (auto const &task : proj.task_totals) {
-        strs.push_back(task.task_name);
+        menu_items->push_back(ncurses_lib::MenuItem(
+            task.task_name, task.task_name, ncurses_lib::StringFace::Normal));
         for (auto const &daily_dur : task.daily_totals) {
-          strs.push_back(duration_formatter.to_string(daily_dur));
+          menu_items->push_back(ncurses_lib::MenuItem(
+              duration_formatter.to_shortstring(daily_dur),
+              duration_formatter.to_string(daily_dur),
+              ncurses_lib::StringFace::Normal));
         }
-        strs.push_back(duration_formatter.to_string(task.total));
+        menu_items->push_back(
+            ncurses_lib::MenuItem(duration_formatter.to_shortstring(task.total),
+                                  duration_formatter.to_string(task.total),
+                                  ncurses_lib::StringFace::Normal));
       }
     }
-    return strs;
-  }
-
-  std::vector<ncurses_lib::StringWithFace>
-  WeeklyTotals::to_shortstrings() const {
-    std::vector<ncurses_lib::StringWithFace> strs;
-    auto duration_formatter = time_lib::DurationDisplayer::get();
-    // Column headers
-    strs.push_back(ncurses_lib::StringWithFace("Task"));
-    strs.push_back(ncurses_lib::StringWithFace("Mon"));
-    strs.push_back(ncurses_lib::StringWithFace("Tue"));
-    strs.push_back(ncurses_lib::StringWithFace("Wed"));
-    strs.push_back(ncurses_lib::StringWithFace("Thu"));
-    strs.push_back(ncurses_lib::StringWithFace("Fri"));
-    strs.push_back(ncurses_lib::StringWithFace("Sat"));
-    strs.push_back(ncurses_lib::StringWithFace("Sun"));
-    strs.push_back(ncurses_lib::StringWithFace("TOTAL"));
-    // Daily totals, all tasks
-    strs.push_back(ncurses_lib::StringWithFace("ALL"));
-    for (auto const &dur : daily_totals) {
-      strs.push_back(ncurses_lib::StringWithFace
-                     (duration_formatter.to_shortstring(dur)));
-    }
-    strs.push_back(ncurses_lib::StringWithFace
-                   (duration_formatter.to_shortstring(total)));
-    // Per-project totals
-    for (auto const &proj : project_totals) {
-      strs.push_back(ncurses_lib::StringWithFace(proj.project_name, true));
-      for (auto const &daily_dur : proj.daily_totals) {
-        strs.push_back(ncurses_lib::StringWithFace
-                       (duration_formatter.to_shortstring(daily_dur), true));
-      }
-      strs.push_back(ncurses_lib::StringWithFace
-                     (duration_formatter.to_shortstring(proj.total), true));
-      // Per-task totals
-      for (auto const &task : proj.task_totals) {
-        strs.push_back(ncurses_lib::StringWithFace(task.task_name));
-        for (auto const &daily_dur : task.daily_totals) {
-          strs.push_back(ncurses_lib::StringWithFace
-                         (duration_formatter.to_shortstring(daily_dur)));
-        }
-        strs.push_back(ncurses_lib::StringWithFace
-                       (duration_formatter.to_shortstring(task.total)));
-      }
-    }
-    return strs;
+    return menu_items;
   }
 }

@@ -1,16 +1,19 @@
 #include "weekly_report_register.h"
 #include "config/key.h"
+#include "ncurses_lib/menu_ncurses.h"
+#include "ncurses_lib/win_ncurses.h"
 #include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
 
 namespace tui {
   WeeklyReportRegister::WeeklyReportRegister(const core::WeeklyTotals &totals)
-    : MenuNCurses(totals.to_strings(), totals.to_shortstrings(),
+    : MenuNCurses(totals.to_menu_items(),
                   ncurses_lib::WindowPosition::upper,
-                  ncurses_lib::WindowFormat::block, 9) {}
+                  ncurses_lib::WindowFormat::block,
+                  {0, 0, 0, 0, 0, 0, 0, 0, 0}) {}
 
   void WeeklyReportRegister::set_items(const core::WeeklyTotals &totals) {
-    MenuNCurses::set_items(totals.to_strings(), totals.to_shortstrings());
+    MenuNCurses::set_items(totals.to_menu_items());
   }
 
   config::NormalActions WeeklyReportRegister::input_loop() {

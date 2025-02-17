@@ -1,213 +1,252 @@
 #include "menu_ncurses.h"
-#include "string_with_face.h"
 #include "win_ncurses.h"
+#include <algorithm>
+#include <numeric>
 #include <curses.h>
-#include <menu.h>
-#include <stdexcept>
+#include <iostream>
+#include <ncurses.h>
 
 namespace ncurses_lib {
-  MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
-                           WindowPosition winpos, WindowFormat winformat,
-                           int _ncols)
-    : WinNCurses(winpos, winformat),
-      ncols(_ncols),
-      item_width(getmaxx(win) / ncols - 1),
-      empty_string("") {
-    init_items(items);
-    init_menu();
+  MenuItem::MenuItem(const std::string &_cell_string,
+                     const std::string &_display_string,
+                     StringFace _face)
+    : cell_string{_cell_string}, display_string{_display_string}, face{_face} {}
+
+
+  MenuNCurses::MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
+                           WindowPosition _winpos, WindowFormat _winformat,
+                           std::vector<int> _target_column_widths)
+      : WinNCurses(_winpos, _winformat),
+        target_column_widths{_target_column_widths}, items{_items},
+        selected_index{0}, scroll_position{0} {
   }
 
-  MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
-                           const std::vector<std::string> &short_items,
-                           WindowPosition winpos, WindowFormat winformat,
-                           int _ncols)
-    : WinNCurses(winpos, winformat),
-      ncols(_ncols),
-      item_width(getmaxx(win) / ncols - 1),
-      empty_string("") {
-    init_items(items, short_items);
-    init_menu();
+  int MenuNCurses::n_item_columns() const {
+    return target_column_widths.size();
   }
 
-  MenuNCurses::MenuNCurses(const std::vector<std::string> &items,
-                           const std::vector<StringWithFace> &short_items,
-                           WindowPosition winpos, WindowFormat winformat,
-                           int _ncols)
-    : WinNCurses(winpos, winformat), ncols(_ncols),
-      item_width(getmaxx(win) / ncols - 1), empty_string("") {
-    init_items(items, short_items);
-    init_menu();
+  std::vector<int> MenuNCurses::distribute_column_widths() const {
+    int total_fixed_width = std::accumulate(target_column_widths.begin(),
+                                            target_column_widths.end(),
+                                            0);
+    // Available target writable width for columns set to zero.
+    // We count one unit of gap to the right of each column.
+    int available_width = n_cols() - total_fixed_width - n_item_columns();
+    // Number of columns with variable width
+    int n_var_cols = std::count(target_column_widths.begin(),
+                                target_column_widths.end(),
+                                0);
+    // Number of columns which need to be assigned +1.
+    int n_larger_cols = available_width % n_var_cols;
+    std::vector<int> widths;
+    for (const auto &w : target_column_widths) {
+      if (w != 0) { // Fixed width column.
+        widths.push_back(w);
+      } else { // Variable width column.
+        // Base size for columns.
+        int base_size = available_width / n_var_cols;
+        int var_w = base_size;
+        if (n_larger_cols > 0) {
+          var_w += 1;
+          --n_larger_cols;
+        }
+        widths.push_back(var_w);
+      }
+    }
+    return widths;
   }
 
-  MenuNCurses::~MenuNCurses() { destroy_menu(); }
-
-  void MenuNCurses::select_down_item() {
-    menu_driver(menu, REQ_DOWN_ITEM);
-    if (not(item_opts(current_item(menu)) == O_SELECTABLE))
-      // Skip the non-selectable items.
-      menu_driver(menu, REQ_DOWN_ITEM);
+  std::vector<ColumnFormat> MenuNCurses::compute_columns() const {
+    std::vector<ColumnFormat> cols;
+    int cur_pos{0};
+    int next_pos{0};
+    auto distributed_widths = distribute_column_widths();
+    for (const auto &target_width : distributed_widths) {
+      next_pos += target_width + 1; // Gap of one on the right of columns.
+      cols.push_back({std::min(cur_pos, n_cols() - 1),
+                      std::max(0, next_pos - cur_pos - 1)});
+      cur_pos = next_pos;
+    }
+    return cols;
   }
-  void MenuNCurses::select_up_item() {
-    menu_driver(menu, REQ_UP_ITEM);
-    if (not(item_opts(current_item(menu)) == O_SELECTABLE))
-      // Skip the non-selectable items.
-      menu_driver(menu, REQ_UP_ITEM);
-  }
-  void MenuNCurses::select_right_item() { menu_driver(menu, REQ_RIGHT_ITEM); }
-  void MenuNCurses::select_left_item() { menu_driver(menu, REQ_LEFT_ITEM); }
 
-  void MenuNCurses::refresh() {
-    post_menu(menu);
+  int MenuNCurses::n_items() const {
+    return items->size();
+  }
+
+  int MenuNCurses::cursor_line_position() const {
+    return selected_index / n_item_columns() - scroll_position;
+  }
+
+  int MenuNCurses::cursor_col_position() const {
+    auto cols = compute_columns();
+    int col_index = selected_index % n_item_columns();
+    return cols.at(col_index).pos;
+  }
+
+  int MenuNCurses::cursor_width() const {
+    auto cols = compute_columns();
+    int col_index = selected_index % n_item_columns();
+    return cols.at(col_index).width;
+  }
+
+  int MenuNCurses::max_scroll_position() const {
+    int val = n_items() / n_item_columns() - n_lines();
+    return std::max(0, val);
+  }
+
+  void MenuNCurses::refresh() const {
+    clear();
+    auto i_item = n_item_columns() * scroll_position;
+    auto start_item = i_item;
+    int icol = (i_item - start_item) % n_item_columns();
+    auto cols = compute_columns();
+    int iline = (i_item - start_item) / n_item_columns();
+    while (i_item < n_items() && iline < n_lines()) {
+      auto col = cols.at(icol);
+      auto item_str = items->at(i_item).cell_string;
+      if (i_item == selected_index) {
+        print_standout_at(item_str.substr(0, col.width), iline, col.pos,
+                          col.width, items->at(i_item).face);
+      } else {
+        print_at(item_str.substr(0, col.width), iline, col.pos, col.width,
+                 items->at(i_item).face);
+      }
+      ++i_item;
+      icol = (i_item - start_item) % n_item_columns();
+      iline = (i_item - start_item) / n_item_columns();
+    }
     WinNCurses::refresh();
   }
 
-  void MenuNCurses::clear() {
-    unpost_menu(menu);
-    WinNCurses::clear();
+  void MenuNCurses::scroll_down() {
+    ++scroll_position;
+    refresh();
   }
 
-  void MenuNCurses::set_items(const std::vector<std::string> &items) {
-    destroy_menu();
-    init_items(items);
-    init_menu();
+  void MenuNCurses::scroll_up() {
+    --scroll_position;
+    refresh();
   }
 
-  void MenuNCurses::set_items(const std::vector<std::string> &items,
-                              const std::vector<std::string> &short_items) {
-    destroy_menu();
-    init_items(items, short_items);
-    init_menu();
-  }
-
-  void MenuNCurses::set_items(const std::vector<std::string> &items,
-                              const std::vector<StringWithFace> &short_items) {
-    destroy_menu();
-    init_items(items, short_items);
-    init_menu();
-  }
-
-  void MenuNCurses::set_border() {
-    int width = getmaxx(win);
-    wmove(win, 0, 0);
-    whline(win, '-', width);
-    WinNCurses::refresh();
-  }
-
-  void MenuNCurses::unset_border() {
-    wmove(win, 0, 0);
-    wclrtoeol(win);
-    WinNCurses::refresh();
-  }
-
-  const std::string &MenuNCurses::get_current_item_string() const {
-    if (display_strings.empty())
-      return empty_string;
-    else
-      return display_strings.at(get_item_index());
-  }
-
-  int MenuNCurses::get_item_index() const {
-    return item_index(current_item(menu));
-  }
+  int MenuNCurses::get_item_index() const { return selected_index; }
 
   int MenuNCurses::get_row_index() const {
-    return get_item_index() / ncols; // integer division
+    return get_item_index() / n_item_columns();
   }
 
   int MenuNCurses::get_col_index() const {
-    return get_item_index() % ncols;
+    return get_item_index() % n_item_columns();
   }
 
-  void MenuNCurses::init_menu() {
-    init_menu_window();
-    set_current_item(menu, menu_items.at(0)); // TODO: needed?
+  void MenuNCurses::select_down_item() {
+    if (selected_index + n_item_columns() < n_items()) {
+      if (cursor_line_position() == n_lines() - 1) {
+        selected_index += n_item_columns();
+        scroll_down();
+      } else {
+        // Reprint the current item as non-highlighted
+        print_at(items->at(selected_index).cell_string,
+                 cursor_line_position(),
+                 cursor_col_position(), cursor_width(),
+                 items->at(selected_index).face);
+        // Reprint the selected item as highlighted.
+        selected_index += n_item_columns();
+        print_standout_at(items->at(selected_index).cell_string,
+                          cursor_line_position(), cursor_col_position(),
+                          cursor_width(),
+                          items->at(selected_index).face);
+      }
+    }
   }
 
-  void MenuNCurses::init_items(const std::vector<std::string> &items) {
-    display_strings.resize(items.size());
-    short_display_strings.resize(items.size());
-    menu_items.resize(items.size() + 1);
-    for (std::size_t i = 0; i < items.size(); ++i) {
-      display_strings.at(i) = items.at(i); // Copy
-      short_display_strings.at(i) = crop_pad_str(items.at(i), item_width);
-      menu_items.at(i)= new_item(short_display_strings.at(i).c_str(), NULL);
+  void MenuNCurses::select_up_item() {
+    if (selected_index - n_item_columns() >= 0) {
+      if (cursor_line_position() == 0) {
+        selected_index -= n_item_columns();
+        scroll_up();
+      } else {
+        // Reprint the current item as non-highlighted
+        print_at(items->at(selected_index).cell_string,
+                 cursor_line_position(),
+                 cursor_col_position(), cursor_width(),
+                 items->at(selected_index).face);
+        // Reprint the selected item as highlighted.
+        selected_index -= n_item_columns();
+        print_standout_at(items->at(selected_index).cell_string,
+                          cursor_line_position(), cursor_col_position(),
+                          cursor_width(),
+                          items->at(selected_index).face);
+      }
     }
-    menu_items.back() = NULL;
-    menu = new_menu(menu_items.data());
   }
 
-  void MenuNCurses::init_items(const std::vector<std::string> &items,
-                               const std::vector<std::string> &short_items) {
-    if (items.size() != short_items.size()) {
-      throw std::logic_error
-        ("MenuNCurses::init_items, items and short_items size mismatch");
+  void MenuNCurses::select_right_item() {
+    if (n_items() > 0 &&
+        selected_index % n_item_columns() + 1 < n_item_columns()) {
+      // Reprint the current item as non-highlighted
+      print_at(items->at(selected_index).cell_string,
+               cursor_line_position(),
+               cursor_col_position(), cursor_width(),
+               items->at(selected_index).face);
+      ++selected_index;
+      // Reprint the selected item as highlighted.
+      print_standout_at(items->at(selected_index).cell_string,
+                        cursor_line_position(), cursor_col_position(),
+                        cursor_width(), items->at(selected_index).face);
     }
-    display_strings.resize(items.size());
-    short_display_strings.resize(items.size());
-    menu_items.resize(items.size() + 1);
-    for (std::size_t i = 0; i < items.size(); ++i) {
-      display_strings.at(i) = items.at(i); // Copy
-      short_display_strings.at(i) = crop_pad_str(short_items.at(i), item_width);
-      menu_items.at(i)= new_item(short_display_strings.at(i).c_str(), NULL);
-    }
-    menu_items.back() = NULL;
-    menu = new_menu(menu_items.data());
   }
 
-  void MenuNCurses::init_items(const std::vector<std::string> &items,
-                               const std::vector<StringWithFace> &short_items) {
-    if (items.size() != short_items.size()) {
-      throw std::logic_error
-        ("MenuNCurses::init_items, items and short_items size mismatch");
+  void MenuNCurses::select_left_item() {
+    if (n_items() > 0 &&
+        selected_index % n_item_columns() - 1 >= 0) {
+      // Reprint the current item as non-highlighted
+      print_at(items->at(selected_index).cell_string,
+               cursor_line_position(),
+               cursor_col_position(), cursor_width(),
+               items->at(selected_index).face);
+      --selected_index;
+      // Reprint the selected item as highlighted.
+      print_standout_at(items->at(selected_index).cell_string,
+                        cursor_line_position(), cursor_col_position(),
+                        cursor_width(),
+                        items->at(selected_index).face);
     }
-    display_strings.resize(items.size());
-    short_display_strings.resize(items.size());
-    menu_items.resize(items.size() + 1);
-    for (std::size_t i = 0; i < items.size(); ++i) {
-      display_strings.at(i) = items.at(i); // Copy
-      short_display_strings.at(i) = crop_pad_str(short_items.at(i).str,
-                                                 item_width);
-      menu_items.at(i)= new_item(short_display_strings.at(i).c_str(), NULL);
-      if (short_items.at(i).highlight)
-        item_opts_off(menu_items.at(i), O_SELECTABLE);
-    }
-    menu_items.back() = NULL;
-    menu = new_menu(menu_items.data());
   }
 
-  void MenuNCurses::init_menu_window() {
-    set_menu_win(menu, win);
-    int ny, nx;
-    getmaxyx(win, ny, nx);
-    set_menu_sub(menu, derwin(win, ny-1, nx, 1, 0));
-    set_menu_format(menu, ny - 1, ncols);
-    set_menu_mark(menu, NULL);
-    set_menu_grey(menu, A_BOLD);
+  const std::string& MenuNCurses::get_current_item_string() const {
+    if (items->empty()) {
+      return empty_string;
+    } else {
+      return items->at(selected_index).display_string;
+    }
   }
 
-  void MenuNCurses::destroy_menu() {
-    unpost_menu(menu);
-    free_menu(menu);
-    destroy_window();
-    for (auto &it : menu_items) {
-      free_item(it);
+  void MenuNCurses::set_items
+  (const std::shared_ptr<std::vector<MenuItem>>  _items) {
+    items = _items;
+    // Reset the selected_index if it got out of bounds
+    if (n_items() > 0 && selected_index >= n_items()) {
+      selected_index = n_items() - 1;
     }
-    menu_items.clear();
-    display_strings.clear();
-    short_display_strings.clear();
+    refresh();
   }
 
-  std::string MenuNCurses::crop_pad_str(const std::string &str, int len) {
-    int str_len = str.length();
-    if (str_len == len)
-      return str;
-    if (str_len > len) {
-      return str.substr(0, len);
-    }
-    else {
-      std::string padding(len - str_len, ' ');
-      std::string padded = str + padding;
-      return padded;
-    }
+  void MenuNCurses::resize() {
+    clear();
+    WinNCurses::resize();
+    if (cursor_line_position() >= n_lines())
+      scroll_position = selected_index / n_item_columns();
+    if (scroll_position > max_scroll_position())
+      scroll_position = max_scroll_position();
+    refresh();
+    std::cerr << "After resize: "
+              << "selected_index: " << selected_index << ", "
+              << "window n_lines: " << n_lines() << ", "
+              << "window n_cols: " << n_cols() << ", "
+              << "cursor_position: " << cursor_line_position() << ", "
+              << "scroll_position: " << scroll_position << ", "
+              << "max_scroll_position: " << max_scroll_position() << ", "
+              << std::endl;
   }
-}
+} // namespace ncurses_lib

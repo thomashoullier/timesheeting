@@ -1,4 +1,5 @@
 #include "ui.h"
+#include <iostream>
 #include <signal.h>
 #include "config/key.h"
 #include "ncurses_lib/win_ncurses.h"
@@ -36,7 +37,9 @@ namespace tui {
     project_report_screen->clear();
     while (true) {
       cur_screen->refresh();
+      std::cerr << "UI::input_loop: entering input loop" << std::endl;
       auto action = cur_screen->input_loop();
+      std::cerr << "UI::input_loop: finished input loop" << std::endl;
       cur_screen->clear();
       switch(action) {
       case config::NormalActions::entries_screen:

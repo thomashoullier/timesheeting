@@ -1,16 +1,18 @@
 #include "register_ncurses.h"
+#include "ncurses_lib/menu_ncurses.h"
+#include "ncurses_lib/win_ncurses.h"
+#include <memory>
 
 namespace tui {
   RegisterNcurses::RegisterNcurses(const std::vector<core::Entry> &items)
-    : MenuNCurses(items_to_string(items), items_to_shortstring(items),
+    : MenuNCurses(items_to_menu(items),
                   ncurses_lib::WindowPosition::upper,
-                  ncurses_lib::WindowFormat::block, 5),
+                  ncurses_lib::WindowFormat::block, {0, 0, 0, 0, 0}),
       held_items(items) {}
 
   void RegisterNcurses::set_items(const std::vector<core::Entry> &items) {
     held_items = items;
-    MenuNCurses::set_items(items_to_string(items),
-                           items_to_shortstring(items));
+    MenuNCurses::set_items(items_to_menu(items));
   }
 
   core::Id RegisterNcurses::get_current_id() {
@@ -26,25 +28,17 @@ namespace tui {
     return EntryField(get_col_index());
   }
 
-  std::vector<std::string>
-  RegisterNcurses::items_to_string(const std::vector<core::Entry> &items) {
-    std::vector<std::string> display_strings;
+  std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
+  RegisterNcurses::items_to_menu(const std::vector<core::Entry> &items) {
+    auto menu_items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
     for (const auto &it : items) {
       auto it_strings = it.to_strings();
-      display_strings.insert(display_strings.end(), it_strings.begin(),
-                             it_strings.end());
+      for (const auto &str : it_strings) {
+        menu_items->push_back
+          (ncurses_lib::MenuItem(str, str,
+                                 ncurses_lib::StringFace::Normal));
+      }
     }
-    return display_strings;
-  }
-
-  std::vector<std::string>
-  RegisterNcurses::items_to_shortstring(const std::vector<core::Entry> &items) {
-    std::vector<std::string> display_strings;
-    for (const auto &it : items) {
-      auto it_strings = it.to_shortstrings();
-      display_strings.insert(display_strings.end(), it_strings.begin(),
-                             it_strings.end());
-    }
-    return display_strings;
+    return menu_items;
   }
 } // namespace tui

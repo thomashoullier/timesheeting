@@ -5,6 +5,7 @@
 
 #include "ncurses_lib/menu_ncurses.h"
 #include "time_lib/date_range.h"
+#include <memory>
 
 namespace tui {
   /** @brief Menu with two cells for specifying a DateRange using the UI. */
@@ -29,6 +30,9 @@ namespace tui {
     time_lib::DateRange period;
     /** @brief Update the display from the held period. */
     void update();
+    /** @brief Period to menu items. */
+    std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
+    period_to_menu (time_lib::DateRange period);
   };
 } // namespace tui
 

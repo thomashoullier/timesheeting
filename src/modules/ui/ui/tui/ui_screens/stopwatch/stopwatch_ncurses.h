@@ -22,6 +22,10 @@ namespace tui {
   private:
     /** @brief Entry currently stored in staging. */
     core::EntryStaging entry_staging;
+
+    /** @brief Convert the EntryStaging object to menu items. */
+    std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
+    entrystaging_to_menu(const core::EntryStaging &entry_staging);
   };
 } // namespace tui
 

@@ -1,28 +1,34 @@
 #include "project_totals_register.h"
 #include "config/key.h"
+#include "ncurses_lib/menu_ncurses.h"
+#include "ncurses_lib/win_ncurses.h"
 #include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
+#include <memory>
 
 namespace tui {
   ProjectTotalsRegister::ProjectTotalsRegister
   (const std::vector<core::ProjectTotal> &totals)
-    : MenuNCurses(items_to_string(totals), ncurses_lib::WindowPosition::upper,
-                  ncurses_lib::WindowFormat::block, 2) {}
+    : MenuNCurses(items_to_menu(totals), ncurses_lib::WindowPosition::upper,
+                  ncurses_lib::WindowFormat::block, {0, 0}) {}
 
-  std::vector<std::string> ProjectTotalsRegister::items_to_string
+  std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
+  ProjectTotalsRegister::items_to_menu
   (const std::vector<core::ProjectTotal> &items) {
-    std::vector<std::string> display_strings;
+    auto menu_items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
     for (const auto &it : items) {
       auto it_strings = it.to_strings();
-      display_strings.insert(display_strings.end(), it_strings.begin(),
-                             it_strings.end());
+      menu_items->push_back(ncurses_lib::MenuItem(
+          it_strings.at(0), it_strings.at(0), ncurses_lib::StringFace::Normal));
+      menu_items->push_back(ncurses_lib::MenuItem(
+          it_strings.at(1), it_strings.at(1), ncurses_lib::StringFace::Normal));
     }
-    return display_strings;
+    return menu_items;
   }
 
   void ProjectTotalsRegister::set_items
   (const std::vector<core::ProjectTotal> &totals) {
-    MenuNCurses::set_items(items_to_string(totals));
+    MenuNCurses::set_items(items_to_menu(totals));
   }
 
   config::NormalActions ProjectTotalsRegister::input_loop() {

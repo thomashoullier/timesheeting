@@ -7,6 +7,7 @@
 #include "../entry_field.h"
 #include "core/id.h"
 #include "ncurses_lib/menu_ncurses.h"
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -30,12 +31,9 @@ namespace tui {
     /** @brief Entries stored in the register. */
     std::vector<core::Entry> held_items;
 
-    /** @brief Get display strings from the provided set of items. */
-    std::vector<std::string> items_to_string
-    (const std::vector<core::Entry> &items);
-    /** @brief Get short display strings from the provided set of items. */
-    std::vector<std::string> items_to_shortstring
-    (const std::vector<core::Entry> &items);
+    /** @brief Convert the items to menu items. */
+    std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
+    items_to_menu (const std::vector<core::Entry> &items);
   };
 } // namespace tui
 

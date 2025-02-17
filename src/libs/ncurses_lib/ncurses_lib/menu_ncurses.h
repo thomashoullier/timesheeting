@@ -1,64 +1,67 @@
-/** @file
- * @brief MenuNCurses definition. */
 #ifndef MENU_NCURSES_H
 #define MENU_NCURSES_H
 
 #include "win_ncurses.h"
-#include "string_with_face.h"
-#include <exception>
-#include <menu.h>
-#include <vector>
 #include <string>
+#include <vector>
+#include <memory>
 
 namespace ncurses_lib {
-  /** @brief A ncurses window holding a generic menu. */
-  class MenuNCurses : public WinNCurses {
-  public:
-    /** @brief Construct the menu holding the provided display strings,
-        at the given position, with the given format and number of columns. */
-    explicit MenuNCurses(const std::vector<std::string> &items,
-                         WindowPosition winpos, WindowFormat winformat,
-                         int _ncols);
-    /** @brief Constructor with explicitely provided short display strings. */
-    explicit MenuNCurses(const std::vector<std::string> &items,
-                         const std::vector<std::string> &short_items,
-                         WindowPosition winpos, WindowFormat winformat,
-                         int _ncols);
-    /** @brief Constructor with explicitely provided short display strings
-        with face. */
-    explicit MenuNCurses(const std::vector<std::string> &items,
-                         const std::vector<StringWithFace> &short_items,
-                         WindowPosition winpos, WindowFormat winformat,
-                         int _ncols);
-    /** @brief Destructor. */
-    ~MenuNCurses();
+  struct MenuItem {
+    /** @brief String displayed in the menu itself. Usually short. */
+    std::string cell_string;
+    /** @brief String for display on the status bar when queried. */
+    std::string display_string;
+    /** @brief Appearance of the cell string in the menu. */
+    StringFace face;
 
-    /** @brief Select the item down of the current one. */
-    void select_down_item();
-    /** @brief Select the item up of the current one. */
-    void select_up_item();
-    /** @brief Select the item right of the current one. */
-    void select_right_item();
-    /** @brief Select the item left of the current one. */
-    void select_left_item();
-    /** @brief Refresh the display. */
-    void refresh();
-    /** @brief Clear the display. */
-    void clear();
-    /** @brief Replace the currently held items. */
-    void set_items(const std::vector<std::string> &items);
-    /** @brief Replace the currently held items and short items. */
-    void set_items(const std::vector<std::string> &items,
-                   const std::vector<std::string> &short_items);
-    /** @brief Replace the currently held items and short items with a face. */
-    void set_items(const std::vector<std::string> &items,
-                   const std::vector<StringWithFace> &short_items);
-    /** @brief Get the full display string for the current item. */
-    const std::string& get_current_item_string() const;
-    /** @brief Draw a single border on the menu window. */
-    void set_border();
-    /** @brief Erase the border on the menu window. */
-    void unset_border();
+    /** @brief MenuItem constructor. */
+    MenuItem(const std::string &_cell_string,
+             const std::string &_display_string,
+             StringFace _face = StringFace::Normal);
+  };
+
+  struct ColumnFormat {
+    int pos; // Starting position in the window
+    int width; // Width which can be used to write things.
+  };
+
+  class MenuNCurses : public WinNCurses {
+
+  private:
+    /** @brief Target column widths. */
+    std::vector<int> target_column_widths;
+    /** @brief Held items. */
+    std::shared_ptr<std::vector<MenuItem>> items;
+    /** @brief Currently selected item index. */
+    int selected_index;
+    /** @brief Scroll position. */
+    int scroll_position;
+    /** @brief Empty string when nothing to return by reference. */
+    std::string empty_string = " ";
+
+    /** @brief Get the number of item columns. */
+    int n_item_columns() const;
+    /** @brief Distribute the target widths among columns. */
+    std::vector<int> distribute_column_widths () const;
+    /** @brief Compute the format of columns given the current window width. */
+    std::vector<ColumnFormat> compute_columns() const;
+    /** @brief Get the number of items currently held. */
+    int n_items() const;
+    /** @brief Get the cursor line position relative to the current window
+    screen. */
+    int cursor_line_position() const;
+    /** @brief Get the cursor column position relative to the current window
+               screen. */
+    int cursor_col_position() const;
+    /** @brief Get the width of the currently selected column. */
+    int cursor_width() const;
+    /** @brief Maximum allowable scroll_position value. */
+    int max_scroll_position() const;
+    /** @brief Scroll the whole screen down by one. */
+    void scroll_down();
+    /** @brief Scroll the whole screen up by one. */
+    void scroll_up();
 
   protected:
     /** @brief Get the current item index. */
@@ -68,41 +71,31 @@ namespace ncurses_lib {
     /** @brief Get the current column index. */
     int get_col_index() const;
 
-  private:
-    /** @brief Number of columms in the menu. */
-    int ncols;
-    /** @brief Size of the display cell for each item. */
-    const int item_width;
-    /** @brief ncurses menu object. */
-    MENU *menu;
-    /** @brief ncurses menu items. */
-    std::vector<ITEM *> menu_items;
-    /** @brief Persistent storage for the strings being displayed.
+  public:
+    /** @brief Constructor.
 
-        This is needed by ncurses, otherwise the display points
-        to whatever memory. */
-    std::vector<std::string> display_strings;
-    /** @brief Shortened display strings for display in-menu only. */
-    std::vector<std::string> short_display_strings;
-    /** @brief String displayed for showing empty items. */
-    std::string empty_string;
-
-    /** @brief Constructor helper: initialize the menu. */
-    void init_menu();
-    /** @brief Initialize the menu items. */
-    void init_items(const std::vector<std::string> &items);
-    /** @brief Initialize the menu items and explicit short items. */
-    void init_items(const std::vector<std::string> &items,
-                    const std::vector<std::string> &short_items);
-    /** @brief Initialize the menu items and explicit short items with face. */
-    void init_items(const std::vector<std::string> &items,
-                    const std::vector<StringWithFace> &short_items);
-    /** @brief Initialize the menu UI. */
-    void init_menu_window();
-    /** @brief Destructor helper. Also called on update. */
-    void destroy_menu ();
-    /** @brief Crop or pad a string to match a fixed size. */
-    std::string crop_pad_str (const std::string &str, int len);
+        target_column_widths defines the number of desired width of columns.
+        A width of >0 is fixed, the remaining window width is shared equally
+        over the columns of width 0. */
+    explicit MenuNCurses(const std::shared_ptr<std::vector<MenuItem>> _items,
+                         WindowPosition _winpos, WindowFormat _winformat,
+                         std::vector<int> _target_column_widths);
+    /**@brief Print all items to screen. */
+    void refresh() const;
+    /** @brief Select the item down of the current one. */
+    void select_down_item();
+    /** @brief Select the item up of the current one. */
+    void select_up_item();
+    /** @brief Select the item right of the current one. */
+    void select_right_item();
+    /** @brief Select the item left of the current one. */
+    void select_left_item();
+    /** @brief Get the full display string for the current item. */
+    const std::string &get_current_item_string() const;
+    /** @brief Set the currently held items. */
+    void set_items(const std::shared_ptr<std::vector<MenuItem>> _items);
+    /** @brief Resize event. */
+    void resize();
   };
 
   /** @brief Exception when encountering an empty menu. */
@@ -118,4 +111,6 @@ namespace ncurses_lib {
     const char* what() const throw() { return msg.c_str(); };
   };
 }
+
+
 #endif // MENU_NCURSES_H

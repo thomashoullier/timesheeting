@@ -3,8 +3,8 @@
 #ifndef WEEKLY_TOTALS_H
 #define WEEKLY_TOTALS_H
 
+#include "ncurses_lib/menu_ncurses.h"
 #include "time_lib/duration.h"
-#include "ncurses_lib/string_with_face.h"
 #include <array>
 #include <string>
 #include <vector>
@@ -42,10 +42,7 @@ namespace core {
     /** @brief Set of report per project, including task breakdown. */
     std::vector<PerProjectTotals> project_totals;
 
-    /** @brief Output the weekly totals to a set of strings, in order. */
-    std::vector<std::string> to_strings() const;
-    /** @brief Output the weekly totals to a set of shortstrings, in order. */
-    std::vector<ncurses_lib::StringWithFace> to_shortstrings() const;
+    std::shared_ptr<std::vector<ncurses_lib::MenuItem>> to_menu_items() const;
   };
 }
 #endif // WEEKLY_TOTALS_H

@@ -7,6 +7,7 @@
 #include "ncurses_lib/menu_ncurses.h"
 #include "../ui_component.h"
 #include "core/weekly_totals.h"
+#include <memory>
 
 namespace tui {
   /** @brief Register for displaying a weekly report of durations worked. */

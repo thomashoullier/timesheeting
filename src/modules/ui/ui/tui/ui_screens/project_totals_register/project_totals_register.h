@@ -7,6 +7,7 @@
 #include "core/project_total.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "../ui_component.h"
+#include <memory>
 
 namespace tui {
   /** @brief ProjectTotal register implementation in ncurses. */
@@ -24,8 +25,8 @@ namespace tui {
     void update() override;
 
   private:
-    /** @brief Get display strings from the provided set of items. */
-    std::vector<std::string> items_to_string
+    /** @brief Get the menu items from the provided set of items. */
+    std::shared_ptr<std::vector<ncurses_lib::MenuItem>> items_to_menu
     (const std::vector<core::ProjectTotal> &items);
   };
 } // namespace tui
