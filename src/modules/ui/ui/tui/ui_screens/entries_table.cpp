@@ -5,7 +5,6 @@
 #include "log_lib/logger.h"
 #include "update_manager.h"
 #include "ui/keys/bound_keys.h"
-#include <iostream>
 
 namespace tui {
   EntriesTable::EntriesTable()

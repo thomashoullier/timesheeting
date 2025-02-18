@@ -3,7 +3,6 @@
 #include "entries_table.h"
 #include "stopwatch/stopwatch_ui.h"
 #include "log_lib/logger.h"
-#include <iostream>
 
 namespace tui {
   EntriesScreen::EntriesScreen()

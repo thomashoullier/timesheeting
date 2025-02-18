@@ -1,5 +1,4 @@
 #include "ui.h"
-#include <iostream>
 #include <signal.h>
 #include "config/key.h"
 #include "ncurses_lib/win_ncurses.h"
