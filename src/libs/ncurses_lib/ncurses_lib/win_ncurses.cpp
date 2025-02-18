@@ -14,12 +14,15 @@ namespace ncurses_lib {
 WinNCurses::~WinNCurses() { delwin(win); }
 
 int WinNCurses::get_input() {
-  draw_border();
   auto ch = wgetch(win);
   return ch;
 }
 
-void WinNCurses::refresh() const { wrefresh(win); }
+void WinNCurses::refresh() const {
+  if (border_on)
+    draw_border();
+  wrefresh(win);
+}
 
 void WinNCurses::clear() const {
   werase(win);
@@ -166,17 +169,18 @@ void WinNCurses::print_at(const std::string &str, int line, int col_offset,
       const std::string borderstr(n_cols(), '-');
       mvwprintw(win, 0, 0, "%s", borderstr.c_str());
     }
-    refresh();
   }
 
   void WinNCurses::set_border() {
     border_on = true;
     draw_border();
+    refresh();
   }
 
   void WinNCurses::unset_border() {
     border_on = false;
     draw_border();
+    refresh();
   }
 
 } // namespace ncurses_lib
