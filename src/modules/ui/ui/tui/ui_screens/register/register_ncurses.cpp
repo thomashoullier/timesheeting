@@ -33,9 +33,10 @@ namespace tui {
     auto menu_items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
     for (const auto &it : items) {
       auto it_strings = it.to_strings();
-      for (const auto &str : it_strings) {
+      auto it_cellstrings = it.to_shortstrings();
+      for (std::size_t i = 0 ; i < it_strings.size() ; ++i) {
         menu_items->push_back
-          (ncurses_lib::MenuItem(str, str,
+          (ncurses_lib::MenuItem(it_cellstrings.at(i), it_strings.at(i),
                                  ncurses_lib::StringFace::Normal));
       }
     }
