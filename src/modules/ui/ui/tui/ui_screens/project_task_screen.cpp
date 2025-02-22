@@ -31,6 +31,11 @@ namespace tui {
     task_col->clear();
   }
 
+  void ProjectTaskScreen::resize() {
+    project_col->resize();
+    task_col->resize();
+  }
+
   config::NormalActions ProjectTaskScreen::input_loop() {
     ColumnBase *cur_col{project_col.get()};
     cur_col->set_border();

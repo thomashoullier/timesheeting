@@ -17,6 +17,7 @@ namespace tui {
     config::NormalActions input_loop() override;
     void refresh() override;
     void clear() override;
+    void resize() override;
     void update() override;
 
     /** @brief Read the currently inputted DateRange from the UI. */

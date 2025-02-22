@@ -22,6 +22,7 @@ namespace tui {
     config::NormalActions input_loop () override;
     void refresh() override;
     void clear() override;
+    void resize() override;
     void update() override;
 
   private:

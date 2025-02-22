@@ -92,6 +92,12 @@ namespace tui {
     total_bar.clear();
   }
 
+  void EntriesTable::resize() {
+    day_selector.resize();
+    reg.resize();
+    total_bar.resize();
+  }
+
   void EntriesTable::update() {
     auto entry_items = db::db().query_entries(day_selector.current_range());
     reg.set_items(entry_items);

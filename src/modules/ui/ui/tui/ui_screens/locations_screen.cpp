@@ -18,6 +18,7 @@ namespace tui {
 
   void LocationsScreen::refresh() { location_col->refresh(); };
   void LocationsScreen::clear() { location_col->clear(); };
+  void LocationsScreen::resize() { location_col->resize(); };
   void LocationsScreen::update() {
     log_lib::logger().log("LocationsScreen update.", log_lib::LogLevel::debug);
     update_location_col();

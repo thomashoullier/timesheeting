@@ -38,6 +38,11 @@ namespace tui {
     reg.clear();
   }
 
+  void WeeklyReportScreen::resize() {
+    week_selector.resize();
+    reg.resize();
+  }
+
   void WeeklyReportScreen::update() {
     log_lib::logger().log("WeeklyReportScreen update.",
                           log_lib::LogLevel::debug);

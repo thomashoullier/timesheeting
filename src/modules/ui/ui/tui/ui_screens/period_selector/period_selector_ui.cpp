@@ -44,6 +44,7 @@ namespace tui {
 
   void PeriodSelectorUI::refresh() { period_selector.refresh(); }
   void PeriodSelectorUI::clear() { period_selector.clear(); }
+  void PeriodSelectorUI::resize() { period_selector.resize(); }
   void PeriodSelectorUI::update() { this->refresh(); }
 
   time_lib::DateRange PeriodSelectorUI::get_current_date_range() {

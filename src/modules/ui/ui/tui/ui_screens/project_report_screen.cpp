@@ -47,6 +47,12 @@ namespace tui {
     reg.clear();
   }
 
+  void ProjectReportScreen::resize() {
+    period_selector_ui.resize();
+    total_bar.resize();
+    reg.resize();
+  }
+
   void ProjectReportScreen::update() {
     log_lib::logger().log("ProjectReportScreen update.",
                           log_lib::LogLevel::debug);

@@ -13,6 +13,8 @@ namespace tui {
     virtual void refresh () = 0;
     /** @brief Clear the component from the display. */
     virtual void clear () = 0;
+    /** @brief Resize the component according to current terminal dimensions. */
+    virtual void resize() = 0;
     /** @brief UI input loop for the component. */
     virtual config::NormalActions input_loop () = 0;
     /** @brief Update the state of the component

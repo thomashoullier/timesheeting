@@ -172,6 +172,13 @@ Currently the cursor goes back to the top of the screen when the duration
 display format is changed. This is annoying because sometimes we would like
 to see the duration for the currently selected item in multiple formats.
 
+*** TODO What happens if we resize the terminal while in edit mode?
+ADDED: [2025-02-21 Fri]
+I don't think we account for this case.
++ We must use the UpdateManager to signal to screens that they need to be resized.
+  Install this as a signal handler for resizing. The tricky part is that we need to call
+  the default ncurses handler still, otherwise the resize does not work well.
+
 ** Refactoring
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]

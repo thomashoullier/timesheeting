@@ -9,23 +9,24 @@
 #include "weekly_report_register/weekly_report_register.h"
 
 namespace tui {
-  /** @brief Weekly report UI screen. */
-  class WeeklyReportScreen : public UIScreen {
-  public:
-    /** @brief Constructor. */
-    explicit WeeklyReportScreen();
+/** @brief Weekly report UI screen. */
+class WeeklyReportScreen : public UIScreen {
+public:
+  /** @brief Constructor. */
+  explicit WeeklyReportScreen();
 
-    config::NormalActions input_loop() override;
-    void refresh() override;
-    void clear() override;
-    void update() override;
+  config::NormalActions input_loop() override;
+  void refresh() override;
+  void clear() override;
+  void resize() override;
+  void update() override;
 
-  private:
-    /** @brief Handle to the date range selector. */
-    WeekSelector week_selector;
-    /** @brief Register displaying the weekly totals*/
-    WeeklyReportRegister reg;
-  };
+private:
+  /** @brief Handle to the date range selector. */
+  WeekSelector week_selector;
+  /** @brief Register displaying the weekly totals*/
+  WeeklyReportRegister reg;
+};
 } // namespace tui
 
 #endif // WEEKLY_REPORT_SCREEN_H

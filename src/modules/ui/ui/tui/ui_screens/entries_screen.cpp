@@ -32,12 +32,17 @@ namespace tui {
       update();
     stopwatch_ui->refresh();
     entries_table->refresh();
-  };
+  }
 
   void EntriesScreen::clear() {
     stopwatch_ui->clear();
     entries_table->clear();
-  };
+  }
+
+  void EntriesScreen::resize() {
+    stopwatch_ui->resize();
+    entries_table->resize();
+  }
 
   void EntriesScreen::update() {
     log_lib::logger().log("EntriesScreen update.",

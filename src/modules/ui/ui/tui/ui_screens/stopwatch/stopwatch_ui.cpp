@@ -37,14 +37,13 @@ namespace tui {
         set_current_now();
         update();
         break;
-      case config::NormalActions::commit_entry:
-        {
+      case config::NormalActions::commit_entry: {
         db::db().commit_entrystaging();
         UpdateManager::get().entries_have_changed();
         time_lib::Date now_start;
         db::db().edit_entrystaging_start(now_start);
         update();
-        }
+      }
         return action; // Pass the update
       default:
         stopwatch.unset_border();
@@ -55,6 +54,10 @@ namespace tui {
 
   void StopwatchUI::refresh() { stopwatch.refresh(); }
   void StopwatchUI::clear() { stopwatch.clear(); }
+  void StopwatchUI::resize() {
+    stopwatch.resize();
+    status().resize();
+  }
   void StopwatchUI::update() {
     core::EntryStaging entry_staging = db::db().query_entrystaging();
     stopwatch.set_items(entry_staging);
