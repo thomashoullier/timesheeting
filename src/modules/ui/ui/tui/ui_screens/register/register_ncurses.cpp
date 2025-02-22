@@ -7,7 +7,7 @@ namespace tui {
   RegisterNcurses::RegisterNcurses(const std::vector<core::Entry> &items)
     : MenuNCurses(items_to_menu(items),
                   ncurses_lib::WindowPosition::upper,
-                  ncurses_lib::WindowFormat::block, {0, 0, 0, 0, 0}),
+                  ncurses_lib::WindowFormat::block, {0, 0, 5, 5, 0}),
       held_items(items) {}
 
   void RegisterNcurses::set_items(const std::vector<core::Entry> &items) {

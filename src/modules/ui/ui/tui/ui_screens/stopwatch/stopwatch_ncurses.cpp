@@ -8,7 +8,7 @@ namespace tui {
   StopwatchNcurses::StopwatchNcurses(const core::EntryStaging &_entry_staging)
     : MenuNCurses(entrystaging_to_menu(_entry_staging),
                   ncurses_lib::WindowPosition::lower,
-                  ncurses_lib::WindowFormat::box, {0, 0, 0, 0, 0}),
+                  ncurses_lib::WindowFormat::box, {0, 0, 5, 5, 0}),
       entry_staging(_entry_staging) {}
 
   EntryField StopwatchNcurses::get_field_type() {

@@ -10,7 +10,7 @@ namespace tui {
     : MenuNCurses(totals.to_menu_items(),
                   ncurses_lib::WindowPosition::upper,
                   ncurses_lib::WindowFormat::block,
-                  {0, 0, 0, 0, 0, 0, 0, 0, 0}) {}
+                  {0, 5, 5, 5, 5, 5, 5, 5, 5}) {}
 
   void WeeklyReportRegister::set_items(const core::WeeklyTotals &totals) {
     MenuNCurses::set_items(totals.to_menu_items());
