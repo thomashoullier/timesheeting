@@ -18,5 +18,7 @@ var searchData=
   ['win_5fncurses_2eh_15',['win_ncurses.h',['../win__ncurses_8h.html',1,'']]],
   ['windowformat_16',['WindowFormat',['../win__ncurses_8h.html#ad68630c8e97136a75245903ffef1bf2c',1,'ncurses_lib']]],
   ['windowposition_17',['WindowPosition',['../win__ncurses_8h.html#a900d1780d5a7d91867abfa0522e1998b',1,'ncurses_lib']]],
-  ['winncurses_18',['WinNCurses',['../classncurses__lib_1_1WinNCurses.html',1,'ncurses_lib::WinNCurses'],['../classncurses__lib_1_1WinNCurses.html#ad6db02756719be777ee738d543da2a1c',1,'ncurses_lib::WinNCurses::WinNCurses()']]]
+  ['winformat_18',['winformat',['../classncurses__lib_1_1WinNCurses.html#a6488fbefcd99a95a581c905bcb57369c',1,'ncurses_lib::WinNCurses']]],
+  ['winncurses_19',['WinNCurses',['../classncurses__lib_1_1WinNCurses.html',1,'ncurses_lib::WinNCurses'],['../classncurses__lib_1_1WinNCurses.html#a50cb13df600b13e708eec639ee78522a',1,'ncurses_lib::WinNCurses::WinNCurses(WindowPosition _winpos, WindowFormat _winformat)']]],
+  ['winpos_20',['winpos',['../classncurses__lib_1_1WinNCurses.html#ab147e8db554504aa7fc1d3184d947aa5',1,'ncurses_lib::WinNCurses']]]
 ];

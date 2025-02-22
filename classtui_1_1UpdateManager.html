@@ -91,6 +91,7 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classtui_1_1UpdateManager-members.html">List of all members</a>  </div>
@@ -121,12 +122,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>locations_have_change
 void&#160;</td><td class="memItemRight" valign="bottom"><b>duration_display_changed</b> ()</td></tr>
 <tr class="memdesc:a8b8b6477e7f0d176295db014a9cc995e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal a change in the DurationDisplayer format. <br /></td></tr>
 <tr class="separator:a8b8b6477e7f0d176295db014a9cc995e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45471a7393364bde7e0569cf7a657cb" id="r_af45471a7393364bde7e0569cf7a657cb"><td class="memItemLeft" align="right" valign="top"><a id="af45471a7393364bde7e0569cf7a657cb" name="af45471a7393364bde7e0569cf7a657cb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>terminal_was_resized</b> ()</td></tr>
+<tr class="memdesc:af45471a7393364bde7e0569cf7a657cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal a terminal resize has happened. <br /></td></tr>
+<tr class="separator:af45471a7393364bde7e0569cf7a657cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0cd238a10693887704ecd1066839132c" id="r_a0cd238a10693887704ecd1066839132c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classtui_1_1UpdateManager.html">UpdateManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cd238a10693887704ecd1066839132c">get</a> (std::shared_ptr&lt; <a class="el" href="classtui_1_1ProjectTaskScreen.html">ProjectTaskScreen</a> &gt; _projects_screen=nullptr, std::shared_ptr&lt; <a class="el" href="classtui_1_1LocationsScreen.html">LocationsScreen</a> &gt; _locations_screen=nullptr, std::shared_ptr&lt; <a class="el" href="classtui_1_1EntriesScreen.html">EntriesScreen</a> &gt; _entries_screen=nullptr, std::shared_ptr&lt; <a class="el" href="classtui_1_1ProjectReportScreen.html">ProjectReportScreen</a> &gt; _project_report_screen=nullptr, std::shared_ptr&lt; <a class="el" href="classtui_1_1WeeklyReportScreen.html">WeeklyReportScreen</a> &gt; _weekly_report_screen=nullptr)</td></tr>
 <tr class="memdesc:a0cd238a10693887704ecd1066839132c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grab the update manager singleton interface.  <br /></td></tr>
 <tr class="separator:a0cd238a10693887704ecd1066839132c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:afbc7a407f837e332119fd8f112adc973" id="r_afbc7a407f837e332119fd8f112adc973"><td class="memItemLeft" align="right" valign="top"><a id="afbc7a407f837e332119fd8f112adc973" name="afbc7a407f837e332119fd8f112adc973"></a>
+std::shared_ptr&lt; <a class="el" href="classtui_1_1UIScreen.html">UIScreen</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>current_focus</b></td></tr>
+<tr class="memdesc:afbc7a407f837e332119fd8f112adc973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen which is the current focus. <br /></td></tr>
+<tr class="separator:afbc7a407f837e332119fd8f112adc973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>

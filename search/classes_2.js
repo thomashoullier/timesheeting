@@ -6,6 +6,7 @@ var searchData=
   ['column_3c_20core_3a_3aproject_20_3e_3',['Column&lt; core::Project &gt;',['../classtui_1_1Column.html',1,'tui']]],
   ['column_3c_20core_3a_3atask_20_3e_4',['Column&lt; core::Task &gt;',['../classtui_1_1Column.html',1,'tui']]],
   ['columnbase_5',['ColumnBase',['../classtui_1_1ColumnBase.html',1,'tui']]],
-  ['configloader_6',['ConfigLoader',['../classconfig_1_1ConfigLoader.html',1,'config']]],
-  ['csvexporter_7',['CSVExporter',['../classexporter_1_1CSVExporter.html',1,'exporter']]]
+  ['columnformat_6',['ColumnFormat',['../structncurses__lib_1_1ColumnFormat.html',1,'ncurses_lib']]],
+  ['configloader_7',['ConfigLoader',['../classconfig_1_1ConfigLoader.html',1,'config']]],
+  ['csvexporter_8',['CSVExporter',['../classexporter_1_1CSVExporter.html',1,'exporter']]]
 ];

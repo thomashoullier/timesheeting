@@ -9,6 +9,7 @@ var searchData=
   ['bindingmap_3c_20editactions_20_3e_6',['BindingMap&lt; EditActions &gt;',['../classconfig_1_1BindingMap.html',1,'config']]],
   ['bindingmap_3c_20normalactions_20_3e_7',['BindingMap&lt; NormalActions &gt;',['../classconfig_1_1BindingMap.html',1,'config']]],
   ['bindings_8',['bindings',['../structconfig_1_1UserConfig.html#aa4a9690f771434d088042352c2848d14',1,'config::UserConfig']]],
-  ['bound_5fkeys_2eh_9',['bound_keys.h',['../bound__keys_8h.html',1,'']]],
-  ['boundkeys_10',['BoundKeys',['../classkeys_1_1BoundKeys.html',1,'keys::BoundKeys'],['../classkeys_1_1BoundKeys.html#a9d15190adca446c1d1ce40cf3faeb784',1,'keys::BoundKeys::BoundKeys()']]]
+  ['border_5fon_9',['border_on',['../classncurses__lib_1_1WinNCurses.html#ae9c931dde1b411029eec392c390fb6aa',1,'ncurses_lib::WinNCurses']]],
+  ['bound_5fkeys_2eh_10',['bound_keys.h',['../bound__keys_8h.html',1,'']]],
+  ['boundkeys_11',['BoundKeys',['../classkeys_1_1BoundKeys.html',1,'keys::BoundKeys'],['../classkeys_1_1BoundKeys.html#a9d15190adca446c1d1ce40cf3faeb784',1,'keys::BoundKeys::BoundKeys()']]]
 ];

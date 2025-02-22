@@ -12,8 +12,8 @@ var searchData=
   ['delete_5flocation_9',['delete_location',['../classdb_1_1DB__SQLite.html#a4f4fc68e803a014c36700d2fe68db381',1,'db::DB_SQLite']]],
   ['delete_5fproject_10',['delete_project',['../classdb_1_1DB__SQLite.html#accf69082d70076ece24315caa7d67596',1,'db::DB_SQLite']]],
   ['delete_5ftask_11',['delete_task',['../classdb_1_1DB__SQLite.html#aade162e8ea0fea8efa1a13aa0ae0d89d',1,'db::DB_SQLite']]],
-  ['destroy_5fmenu_12',['destroy_menu',['../classncurses__lib_1_1MenuNCurses.html#a44f315144fa064d889d2429c9ef64a6f',1,'ncurses_lib::MenuNCurses']]],
-  ['destroy_5fwindow_13',['destroy_window',['../classncurses__lib_1_1WinNCurses.html#aadb8a7cf997af5e6785ff62e79b36844',1,'ncurses_lib::WinNCurses']]],
+  ['distribute_5fcolumn_5fwidths_12',['distribute_column_widths',['../classncurses__lib_1_1MenuNCurses.html#a2d155b4ed333c23dfc31bae934c41651',1,'ncurses_lib::MenuNCurses']]],
+  ['draw_5fborder_13',['draw_border',['../classncurses__lib_1_1WinNCurses.html#a5b47ea068fe586741bbfd0a499b848b3',1,'ncurses_lib::WinNCurses']]],
   ['duration_14',['Duration',['../classtime__lib_1_1Duration.html#a536414dec1ebbc6ff2ed642eb6ed3984',1,'time_lib::Duration::Duration()'],['../classtime__lib_1_1Duration.html#afdf1b4cf7f40d2fea36820c26a91465e',1,'time_lib::Duration::Duration(uint64_t seconds)']]],
   ['duration_5fdisplay_5fchanged_15',['duration_display_changed',['../classtui_1_1UpdateManager.html#a8b8b6477e7f0d176295db014a9cc995e',1,'tui::UpdateManager']]],
   ['durationdisplayer_16',['DurationDisplayer',['../classtime__lib_1_1DurationDisplayer.html#a5eac654bd047789319502503cfa12da9',1,'time_lib::DurationDisplayer']]]

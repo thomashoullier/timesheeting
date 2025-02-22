@@ -6,5 +6,5 @@ var searchData=
   ['insert_5flocation_3',['insert_location',['../classdb_1_1StatementSet.html#aca486881f20ddc633ce90eaaf2d7e357',1,'db::StatementSet']]],
   ['insert_5fproject_4',['insert_project',['../classdb_1_1StatementSet.html#a3595328b0631cc21531c63065e7f7c63',1,'db::StatementSet']]],
   ['insert_5ftask_5',['insert_task',['../classdb_1_1StatementSet.html#a557065a793c1ef521d17efb4a52ec69d',1,'db::StatementSet']]],
-  ['item_5fwidth_6',['item_width',['../classncurses__lib_1_1MenuNCurses.html#a3ae4c31008f81d0b3d42c30a99eab305',1,'ncurses_lib::MenuNCurses']]]
+  ['items_6',['items',['../classncurses__lib_1_1MenuNCurses.html#a876da4e2aa410b3cc3fa7cbd90b4c114',1,'ncurses_lib::MenuNCurses']]]
 ];

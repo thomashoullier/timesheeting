@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>timesheeting: core::WeeklyTotals Struct Reference</title>
+<title>timesheeting: ncurses_lib::MenuItem Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,7 +83,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>core</b></li><li class="navelem"><a class="el" href="structcore_1_1WeeklyTotals.html">WeeklyTotals</a></li>  </ul>
+<li class="navelem"><b>ncurses_lib</b></li><li class="navelem"><a class="el" href="structncurses__lib_1_1MenuItem.html">MenuItem</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -91,42 +91,36 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structcore_1_1WeeklyTotals-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">core::WeeklyTotals Struct Reference</div></div>
+<a href="structncurses__lib_1_1MenuItem-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">ncurses_lib::MenuItem Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Struct holding the weekly totals for interface between the DB and the UI.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="weekly__totals_8h_source.html">weekly_totals.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a95819c3f7d5ce7e6f121713e0df95b50" id="r_a95819c3f7d5ce7e6f121713e0df95b50"><td class="memItemLeft" align="right" valign="top"><a id="a95819c3f7d5ce7e6f121713e0df95b50" name="a95819c3f7d5ce7e6f121713e0df95b50"></a>
-std::shared_ptr&lt; std::vector&lt; <a class="el" href="structncurses__lib_1_1MenuItem.html">ncurses_lib::MenuItem</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>to_menu_items</b> () const</td></tr>
-<tr class="separator:a95819c3f7d5ce7e6f121713e0df95b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b9cc2b50a87973cee88e58d59013a69" id="r_a2b9cc2b50a87973cee88e58d59013a69"><td class="memItemLeft" align="right" valign="top"><a id="a2b9cc2b50a87973cee88e58d59013a69" name="a2b9cc2b50a87973cee88e58d59013a69"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MenuItem</b> (const std::string &amp;_cell_string, const std::string &amp;_display_string, <a class="el" href="win__ncurses_8h.html#a3bcf640404b1ab391bd78fac916401c6">StringFace</a> _face=StringFace::Normal)</td></tr>
+<tr class="memdesc:a2b9cc2b50a87973cee88e58d59013a69"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structncurses__lib_1_1MenuItem.html">MenuItem</a> constructor. <br /></td></tr>
+<tr class="separator:a2b9cc2b50a87973cee88e58d59013a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa5b06abd103132db45ca354194326ad2" id="r_aa5b06abd103132db45ca354194326ad2"><td class="memItemLeft" align="right" valign="top"><a id="aa5b06abd103132db45ca354194326ad2" name="aa5b06abd103132db45ca354194326ad2"></a>
-<a class="el" href="classtime__lib_1_1Duration.html">time_lib::Duration</a>&#160;</td><td class="memItemRight" valign="bottom"><b>total</b></td></tr>
-<tr class="memdesc:aa5b06abd103132db45ca354194326ad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total duration worked during the week, on any task. <br /></td></tr>
-<tr class="separator:aa5b06abd103132db45ca354194326ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affc1fe340bb26f2d720ce6af15286f18" id="r_affc1fe340bb26f2d720ce6af15286f18"><td class="memItemLeft" align="right" valign="top"><a id="affc1fe340bb26f2d720ce6af15286f18" name="affc1fe340bb26f2d720ce6af15286f18"></a>
-std::array&lt; <a class="el" href="classtime__lib_1_1Duration.html">time_lib::Duration</a>, 7 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>daily_totals</b></td></tr>
-<tr class="memdesc:affc1fe340bb26f2d720ce6af15286f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total duration worked per day of the week, on any task. <br /></td></tr>
-<tr class="separator:affc1fe340bb26f2d720ce6af15286f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade6699981c8bf5cc80628a09a4ab3f88" id="r_ade6699981c8bf5cc80628a09a4ab3f88"><td class="memItemLeft" align="right" valign="top"><a id="ade6699981c8bf5cc80628a09a4ab3f88" name="ade6699981c8bf5cc80628a09a4ab3f88"></a>
-std::vector&lt; <a class="el" href="structcore_1_1PerProjectTotals.html">PerProjectTotals</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>project_totals</b></td></tr>
-<tr class="memdesc:ade6699981c8bf5cc80628a09a4ab3f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set of report per project, including task breakdown. <br /></td></tr>
-<tr class="separator:ade6699981c8bf5cc80628a09a4ab3f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a1634ab9609298a126b4e7b02734534" id="r_a0a1634ab9609298a126b4e7b02734534"><td class="memItemLeft" align="right" valign="top"><a id="a0a1634ab9609298a126b4e7b02734534" name="a0a1634ab9609298a126b4e7b02734534"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>cell_string</b></td></tr>
+<tr class="memdesc:a0a1634ab9609298a126b4e7b02734534"><td class="mdescLeft">&#160;</td><td class="mdescRight">String displayed in the menu itself. Usually short. <br /></td></tr>
+<tr class="separator:a0a1634ab9609298a126b4e7b02734534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d41f9485324814266936a10a960151" id="r_ae5d41f9485324814266936a10a960151"><td class="memItemLeft" align="right" valign="top"><a id="ae5d41f9485324814266936a10a960151" name="ae5d41f9485324814266936a10a960151"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>display_string</b></td></tr>
+<tr class="memdesc:ae5d41f9485324814266936a10a960151"><td class="mdescLeft">&#160;</td><td class="mdescRight">String for display on the status bar when queried. <br /></td></tr>
+<tr class="separator:ae5d41f9485324814266936a10a960151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e8e505418f1dfeb92958dc9b7e2f959" id="r_a0e8e505418f1dfeb92958dc9b7e2f959"><td class="memItemLeft" align="right" valign="top"><a id="a0e8e505418f1dfeb92958dc9b7e2f959" name="a0e8e505418f1dfeb92958dc9b7e2f959"></a>
+<a class="el" href="win__ncurses_8h.html#a3bcf640404b1ab391bd78fac916401c6">StringFace</a>&#160;</td><td class="memItemRight" valign="bottom"><b>face</b></td></tr>
+<tr class="memdesc:a0e8e505418f1dfeb92958dc9b7e2f959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appearance of the cell string in the menu. <br /></td></tr>
+<tr class="separator:a0e8e505418f1dfeb92958dc9b7e2f959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Struct holding the weekly totals for interface between the DB and the UI. </p>
-</div><hr/>The documentation for this struct was generated from the following files:<ul>
-<li>src/modules/core/core/<a class="el" href="weekly__totals_8h_source.html">weekly_totals.h</a></li>
-<li>src/modules/core/core/<b>weekly_totals.cpp</b></li>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>src/libs/ncurses_lib/ncurses_lib/<a class="el" href="menu__ncurses_8h_source.html">menu_ncurses.h</a></li>
+<li>src/libs/ncurses_lib/ncurses_lib/<b>menu_ncurses.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
