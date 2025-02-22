@@ -129,7 +129,8 @@ It should get the midnight of the last monday.
 ADDED: [2025-01-22 Wed]
 
 ** Ergonomy
-*** HOLD Toggle archive visibility resets the screen
+*** DONE Toggle archive visibility resets the screen
+CLOSED: [2025-02-22 Sat 14:27]
 ADDED: [2024-11-16 Sat]
 WAIT for the custom menu implementation
 Currently, toggling archive visibility resets the whole screen.
@@ -140,6 +141,7 @@ Make it so the selection stays in place.
   This is especially difficult when going from the full view to the
   active-only view, if the selection was on an archived item.
   We would have to track the alphabetical order.
+- [2025-02-22 Sat] Solved by the custom menu implementation.
 
 *** HOLD Do NOTHING when hitting unbound keys
 ADDED: [2024-11-23 Sat]
@@ -148,13 +150,15 @@ Currently the program refreshes or shifts the selection when an
 unbound key is inputted. Change this behavior to doing absolutely
 nothing.
 
-*** HOLD Handle resizing
+*** DONE Handle resizing
+CLOSED: [2025-02-22 Sat 14:29]
 ADDED: [2024-11-24 Sun]
 WAIT for the custom menu implementation
 Handle the dynamic resizing of the TUI.
 + Make use of the full available terminal size.
-+ Ensure a minimum size is available, like xx lines per 80 columns.
++ NOK Ensure a minimum size is available, like xx lines per 80 columns.
   If it is not reached then stop the UI until it becomes big enough.
+- [2025-02-22 Sat] Solved by the custom menu implementation.
 
 *** TODO Be able to change the currently selected day from the stopwatch
 ADDED: [2024-11-26 Tue]
@@ -166,18 +170,24 @@ which task is selected by default when a project is put in entrystaging.
 + Modifying the whole ordering might be tedious, but the first task to appear may
   be set to the last one used? We could have a table for tracking this per-project.
 
-*** TODO While in the weekly report, do not reset the cursor position when changing the duration display format
+*** DONE While in the weekly report, do not reset the cursor position when changing the duration display format
+CLOSED: [2025-02-22 Sat 14:30]
 ADDED: [2024-12-08 Sun]
 Currently the cursor goes back to the top of the screen when the duration
 display format is changed. This is annoying because sometimes we would like
 to see the duration for the currently selected item in multiple formats.
+- [2025-02-22 Sat] Solved by the custom menu implementation.
 
 *** TODO What happens if we resize the terminal while in edit mode?
 ADDED: [2025-02-21 Fri]
 I don't think we account for this case.
-+ We must use the UpdateManager to signal to screens that they need to be resized.
-  Install this as a signal handler for resizing. The tricky part is that we need to call
-  the default ncurses handler still, otherwise the resize does not work well.
+- The display currently glitches out when resizing in edit mode. It goes back
+  to normal when exiting.
+
+*** TODO Display archived items in italics
+ADDED: [2025-02-22 Sat]
+We need to add the italics face to the menu items.
+Display the active items in normal face, and the archived items in italics face.
 
 ** Refactoring
 *** DEAD Refactor MenuNCurses
@@ -188,7 +198,8 @@ in the MenuNCurses class.
 Add the border highlighting there also.
 - [2024-11-25 Mon] We will replace it with a custom menu implementation.
 
-*** TODO Implement a custom ncurses menu
+*** DONE Implement a custom ncurses menu
+CLOSED: [2025-02-22 Sat 14:31]
 ADDED: [2024-11-24 Sun]
 Objective: Recreate a menu library for ncurses replacing the one
            provided in ncurses.
@@ -209,6 +220,7 @@ menu when we could just redraw some things.
 + Menu has to include multi-column. A custom menu is necessary to make
   columns with variable width.
 + Prepare for dynamic resizing.
+- [2025-02-22 Sat] Implemented.
 
 *** TODO Decouple the ncurses_lib from log_lib
 ADDED: [2024-11-27 Wed]
