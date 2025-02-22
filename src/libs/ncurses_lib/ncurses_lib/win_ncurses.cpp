@@ -41,6 +41,9 @@ void WinNCurses::print_at(const std::string &str, int line, int col_offset,
   case StringFace::Bold:
     wattron(win, A_BOLD);
     break;
+  case StringFace::Italic:
+    wattron(win, A_ITALIC);
+    break;
   default:
     throw std::runtime_error("WinNCurses::print_at: unknown face");
   }
@@ -55,6 +58,9 @@ void WinNCurses::print_at(const std::string &str, int line, int col_offset,
     break;
   case StringFace::Bold:
     wattroff(win, A_BOLD);
+    break;
+  case StringFace::Italic:
+    wattroff(win, A_ITALIC);
     break;
   default:
     throw std::runtime_error("WinNCurses::print_at: unknown face");

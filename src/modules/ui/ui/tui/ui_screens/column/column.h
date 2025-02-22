@@ -65,12 +65,12 @@ namespace tui {
     items_to_menu(const std::vector<T> &items) {
       auto menu_items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
       for (const auto &it : items) {
-        if (it.active) // Active items are in bold.
-          menu_items->push_back(ncurses_lib::MenuItem(
-              it.name, it.name, ncurses_lib::StringFace::Bold));
-        else
+        if (it.active)
           menu_items->push_back(ncurses_lib::MenuItem(
               it.name, it.name, ncurses_lib::StringFace::Normal));
+        else // Inactive items in italic
+          menu_items->push_back(ncurses_lib::MenuItem(
+              it.name, it.name, ncurses_lib::StringFace::Italic));
       }
       return menu_items;
     };

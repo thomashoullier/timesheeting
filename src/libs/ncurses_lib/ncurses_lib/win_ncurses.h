@@ -11,7 +11,8 @@ namespace ncurses_lib {
   /** @brief Possible appearances for the display of strings. */
   enum class StringFace {
     Normal,
-    Bold
+    Bold,
+    Italic
   };
 
   /** @brief Selector for the position of the window. */

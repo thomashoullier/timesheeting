@@ -184,10 +184,12 @@ I don't think we account for this case.
 - The display currently glitches out when resizing in edit mode. It goes back
   to normal when exiting.
 
-*** TODO Display archived items in italics
+*** DONE Display archived items in italics
+CLOSED: [2025-02-22 Sat 16:12]
 ADDED: [2025-02-22 Sat]
 We need to add the italics face to the menu items.
 Display the active items in normal face, and the archived items in italics face.
+- [2025-02-22 Sat] Implemented.
 
 ** Refactoring
 *** DEAD Refactor MenuNCurses
