@@ -27,6 +27,8 @@ namespace tui {
   }
 
   void WeeklyReportScreen::refresh() {
+    if (needs_resize)
+      resize();
     if (needs_update)
       update();
     week_selector.refresh();
@@ -39,8 +41,11 @@ namespace tui {
   }
 
   void WeeklyReportScreen::resize() {
+    log_lib::logger().log("WeeklyReportScreen::resize() called.",
+                          log_lib::LogLevel::debug);
     week_selector.resize();
     reg.resize();
+    needs_resize = false;
   }
 
   void WeeklyReportScreen::update() {

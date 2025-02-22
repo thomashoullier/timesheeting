@@ -1,4 +1,5 @@
 #include "ui.h"
+#include <ncurses.h>
 #include <signal.h>
 #include "config/key.h"
 #include "ncurses_lib/win_ncurses.h"
@@ -29,30 +30,30 @@ namespace tui {
   }
 
   int UI::input_loop() {
-    std::shared_ptr<UIScreen> cur_screen{projects_screen};
     projects_screen->clear();
     locations_screen->clear();
     entries_screen->clear();
     project_report_screen->clear();
+    weekly_report_screen->clear();
     while (true) {
-      cur_screen->refresh();
-      auto action = cur_screen->input_loop();
-      cur_screen->clear();
+      UpdateManager::get().current_focus->refresh();
+      auto action = UpdateManager::get().current_focus->input_loop();
+      UpdateManager::get().current_focus->clear();
       switch(action) {
       case config::NormalActions::entries_screen:
-        cur_screen = entries_screen;
+        UpdateManager::get().current_focus = entries_screen;
         break;
       case config::NormalActions::projects_screen:
-        cur_screen = projects_screen;
+        UpdateManager::get().current_focus = projects_screen;
         break;
       case config::NormalActions::locations_screen:
-        cur_screen = locations_screen;
+        UpdateManager::get().current_focus = locations_screen;
         break;
       case config::NormalActions::project_report_screen:
-        cur_screen = project_report_screen;
+        UpdateManager::get().current_focus = project_report_screen;
         break;
       case config::NormalActions::weekly_report_screen:
-        cur_screen = weekly_report_screen;
+        UpdateManager::get().current_focus = weekly_report_screen;
         break;
       case config::NormalActions::duration_display:
         time_lib::DurationDisplayer::get().cycle_format();
@@ -70,5 +71,9 @@ namespace tui {
     auto sig_str = std::to_string(sig);
     log_lib::logger().log("SIGWINCH caught: " + sig_str,
                           log_lib::LogLevel::debug);
+    // TODO: create an abstraction for this. Maybe on the NcursesHandle.
+    endwin();
+    refresh();
+    UpdateManager::get().terminal_was_resized();
   }
 } // namespace tui

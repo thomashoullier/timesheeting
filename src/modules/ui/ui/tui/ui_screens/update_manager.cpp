@@ -1,4 +1,5 @@
 #include "update_manager.h"
+#include "ui/tui/ui_screens/status_bar/status_bar.h"
 #include <stdexcept>
 
 namespace tui {
@@ -25,7 +26,8 @@ namespace tui {
       : projects_screen(_projects_screen), locations_screen(_locations_screen),
         entries_screen(_entries_screen),
         project_report_screen(_project_report_screen),
-        weekly_report_screen(_weekly_report_screen) {
+        weekly_report_screen(_weekly_report_screen),
+        current_focus(_entries_screen) {
     if (_projects_screen == nullptr or _locations_screen == nullptr or
         _entries_screen == nullptr or _project_report_screen == nullptr or
         _weekly_report_screen == nullptr) {
@@ -52,5 +54,15 @@ namespace tui {
     entries_screen->signal_update_need();
     project_report_screen->signal_update_need();
     weekly_report_screen->signal_update_need();
+  }
+
+  void UpdateManager::terminal_was_resized () {
+    projects_screen->signal_resize_need();
+    locations_screen->signal_resize_need();
+    entries_screen->signal_resize_need();
+    project_report_screen->signal_resize_need();
+    weekly_report_screen->signal_resize_need();
+    status().resize();
+    current_focus->refresh();
   }
 } // namespace tui

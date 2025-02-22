@@ -22,6 +22,8 @@ namespace tui {
   }
 
   void ProjectTaskScreen::refresh() {
+    if (needs_resize)
+      resize();
     project_col->refresh();
     task_col->refresh();
   }
@@ -32,8 +34,11 @@ namespace tui {
   }
 
   void ProjectTaskScreen::resize() {
+    log_lib::Logger::get().log("ProjectTaskScreen::resize() called.",
+                               log_lib::LogLevel::debug);
     project_col->resize();
     task_col->resize();
+    needs_resize = false;
   }
 
   config::NormalActions ProjectTaskScreen::input_loop() {

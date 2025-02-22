@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <numeric>
 #include <curses.h>
-#include <iostream>
 #include <ncurses.h>
 
 namespace ncurses_lib {
@@ -240,13 +239,5 @@ namespace ncurses_lib {
     if (scroll_position > max_scroll_position())
       scroll_position = max_scroll_position();
     refresh();
-    std::cerr << "After resize: "
-              << "selected_index: " << selected_index << ", "
-              << "window n_lines: " << n_lines() << ", "
-              << "window n_cols: " << n_cols() << ", "
-              << "cursor_position: " << cursor_line_position() << ", "
-              << "scroll_position: " << scroll_position << ", "
-              << "max_scroll_position: " << max_scroll_position() << ", "
-              << std::endl;
   }
 } // namespace ncurses_lib

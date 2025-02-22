@@ -7,6 +7,7 @@
 #include "locations_screen.h"
 #include "project_report_screen.h"
 #include "project_task_screen.h"
+#include "ui/tui/ui_screens/ui_screen.h"
 #include "weekly_report_screen.h"
 #include <memory>
 
@@ -34,6 +35,8 @@ namespace tui {
     void locations_have_changed ();
     /** @brief Signal a change in the DurationDisplayer format. */
     void duration_display_changed ();
+    /** @brief Signal a terminal resize has happened. */
+    void terminal_was_resized ();
 
   private:
     /** @brief Screen for the project/task definition. */
@@ -46,7 +49,11 @@ namespace tui {
     std::shared_ptr<ProjectReportScreen> project_report_screen;
     /** @brief Weekly report. */
     std::shared_ptr<WeeklyReportScreen> weekly_report_screen;
+  public:
+    /** @brief Screen which is the current focus*/
+    std::shared_ptr<UIScreen> current_focus;
 
+  private:
     /** @brief Constructor with member initialization. */
     explicit UpdateManager
     (std::shared_ptr<ProjectTaskScreen> _projects_screen,

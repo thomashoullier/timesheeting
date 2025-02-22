@@ -16,13 +16,25 @@ namespace tui {
     update_location_col();
   }
 
-  void LocationsScreen::refresh() { location_col->refresh(); };
-  void LocationsScreen::clear() { location_col->clear(); };
-  void LocationsScreen::resize() { location_col->resize(); };
+  void LocationsScreen::refresh() {
+    if (needs_resize)
+      resize();
+    location_col->refresh();
+  }
+
+  void LocationsScreen::clear() { location_col->clear(); }
+
+  void LocationsScreen::resize() {
+    log_lib::logger().log("LocationsScreen::resize() called.",
+                          log_lib::LogLevel::debug);
+    location_col->resize();
+    needs_resize = false;
+  }
+
   void LocationsScreen::update() {
     log_lib::logger().log("LocationsScreen update.", log_lib::LogLevel::debug);
     update_location_col();
-  };
+  }
 
   config::NormalActions LocationsScreen::input_loop() {
     location_col->set_border();

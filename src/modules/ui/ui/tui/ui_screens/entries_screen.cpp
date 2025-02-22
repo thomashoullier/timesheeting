@@ -28,6 +28,8 @@ namespace tui {
   }
 
   void EntriesScreen::refresh() {
+    if (needs_resize)
+      resize();
     if (needs_update)
       update();
     stopwatch_ui->refresh();
@@ -40,8 +42,11 @@ namespace tui {
   }
 
   void EntriesScreen::resize() {
+    log_lib::logger().log("EntriesScreen::resize() called.",
+                          log_lib::LogLevel::debug);
     stopwatch_ui->resize();
     entries_table->resize();
+    needs_resize = false;
   }
 
   void EntriesScreen::update() {

@@ -34,6 +34,8 @@ namespace tui {
   }
 
   void ProjectReportScreen::refresh() {
+    if (needs_resize)
+      resize();
     if (needs_update)
       update();
     period_selector_ui.refresh();
@@ -48,9 +50,12 @@ namespace tui {
   }
 
   void ProjectReportScreen::resize() {
+    log_lib::logger().log("ProjectReportScreen::resize() called.",
+                          log_lib::LogLevel::debug);
     period_selector_ui.resize();
     total_bar.resize();
     reg.resize();
+    needs_resize = false;
   }
 
   void ProjectReportScreen::update() {

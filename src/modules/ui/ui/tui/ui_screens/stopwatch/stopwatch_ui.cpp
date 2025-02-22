@@ -56,7 +56,6 @@ namespace tui {
   void StopwatchUI::clear() { stopwatch.clear(); }
   void StopwatchUI::resize() {
     stopwatch.resize();
-    status().resize();
   }
   void StopwatchUI::update() {
     core::EntryStaging entry_staging = db::db().query_entrystaging();
