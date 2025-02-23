@@ -94,8 +94,6 @@ namespace db {
     db_lib::Statement remove_entry;
     /** @brief db_lib::Statement for committing the entrystaging to entries. */
     db_lib::Statement insert_entrystaging;
-    /** @brief Sum duration per project for a given date range. */
-    db_lib::Statement sum_duration_per_project;
     /** @brief Sum duration for a given project over a given date range. */
     db_lib::Statement project_duration;
     /** @brief Sum duration for a given task over a given date range. */

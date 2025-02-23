@@ -1,4 +1,5 @@
 #include "db_sqlite.h"
+#include "core/project_total.h"
 #include "db_lib/db_sqlite_handle.h"
 #include <optional>
 #include <string>
@@ -392,16 +393,33 @@ namespace db {
 
   std::vector<core::ProjectTotal>
   DB_SQLite::report_project_totals(const time_lib::DateRange &date_range) {
-    auto &stmt = statements.sum_duration_per_project;
-    stmt.bind_all(date_range.start.to_unix_timestamp(),
-                  date_range.stop.to_unix_timestamp());
-    std::vector<core::ProjectTotal> totals;
-    while (stmt.step()) {
-      auto [project_name, seconds] = stmt.get_all<std::string, db_lib::DBInt>();
-      totals.push_back(core::ProjectTotal{project_name,
-                                          time_lib::Duration(seconds)});
+    std::vector<core::ProjectTotal> project_totals;
+    // Per-project loop
+    auto &stmt_per_project = statements.duration_per_worked_project;
+    stmt_per_project.bind_all(date_range.start.to_unix_timestamp(),
+                              date_range.stop.to_unix_timestamp());
+    while(stmt_per_project.step()) {
+      core::ProjectTotal project_total;
+      auto [project_id, project_name, seconds] =
+          stmt_per_project.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
+      project_total.project_name = project_name;
+      project_total.total = time_lib::Duration(seconds);
+      // Per-task loop
+      auto &stmt_per_task = statements.duration_per_worked_task;
+      stmt_per_task.bind_all(project_id,
+                             date_range.start.to_unix_timestamp(),
+                             date_range.stop.to_unix_timestamp());
+      while (stmt_per_task.step()) {
+        core::TaskTotal task_total;
+        auto [task_id, task_name, seconds] =
+          stmt_per_task.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
+        task_total.task_name = task_name;
+        task_total.total = time_lib::Duration(seconds);
+        project_total.task_totals.push_back(task_total);
+      }
+      project_totals.push_back(project_total);
     }
-    return totals;
+    return project_totals;
   }
 
   time_lib::Duration DB_SQLite::report_project_duration

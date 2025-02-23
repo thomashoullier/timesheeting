@@ -160,14 +160,6 @@ StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)
          "INSERT INTO entries (task_id, start, stop, location_id) "
          "SELECT task_id, start, stop, location_id "
          "FROM entrystaging;")),
-      sum_duration_per_project(db->prepare_statement(
-         "SELECT projects.name, SUM(entries.stop - entries.start) "
-         "FROM projects "
-         "INNER JOIN tasks ON projects.id = tasks.project_id "
-         "INNER JOIN entries ON tasks.id = entries.task_id "
-         "WHERE entries.start >= ? "
-         "AND entries.start < ? "
-         "GROUP BY projects.name;")),
       project_duration(db->prepare_statement(
          "SELECT SUM(entries.stop - entries.start) "
          "FROM projects "

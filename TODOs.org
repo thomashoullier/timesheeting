@@ -362,10 +362,12 @@ Visualize how the current day is filled by the tasks inputted.
 We could show overlaps here?
 We could highlight the part of the bar corresponding to the currently selected task.
 
-*** TODO Add togglable individual tasks to the project report
+*** DONE Add individual tasks to the project report
+CLOSED: [2025-02-23 Sun 10:17]
 ADDED: [2025-01-24 Fri]
 We often need the detailed view to see how much time we spent on a given
 task over a particular period.
+- [2025-02-23 Sun] added.
 
 *** TODO Search in menu (like in ncmpcpp)
 ADDED: [2025-01-24 Fri]

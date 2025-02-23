@@ -13,17 +13,16 @@ namespace tui {
                   ncurses_lib::WindowFormat::block, {0, 0}) {}
 
   std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
-  ProjectTotalsRegister::items_to_menu
-  (const std::vector<core::ProjectTotal> &items) {
-    auto menu_items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();
-    for (const auto &it : items) {
-      auto it_strings = it.to_strings();
-      menu_items->push_back(ncurses_lib::MenuItem(
-          it_strings.at(0), it_strings.at(0), ncurses_lib::StringFace::Normal));
-      menu_items->push_back(ncurses_lib::MenuItem(
-          it_strings.at(1), it_strings.at(1), ncurses_lib::StringFace::Normal));
+  ProjectTotalsRegister::items_to_menu(
+      const std::vector<core::ProjectTotal> &items) {
+    std::vector<ncurses_lib::MenuItem> menu_items;
+    for (const auto &project : items) {
+      auto project_menu_items = project.to_menu_items();
+      menu_items.insert(menu_items.end(),
+                        project_menu_items.begin(),
+                        project_menu_items.end());
     }
-    return menu_items;
+    return std::make_shared<std::vector<ncurses_lib::MenuItem>>(menu_items);
   }
 
   void ProjectTotalsRegister::set_items
