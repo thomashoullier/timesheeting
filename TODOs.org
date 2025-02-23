@@ -143,9 +143,8 @@ Make it so the selection stays in place.
   We would have to track the alphabetical order.
 - [2025-02-22 Sat] Solved by the custom menu implementation.
 
-*** HOLD Do NOTHING when hitting unbound keys
+*** TODO Do NOTHING when hitting unbound keys
 ADDED: [2024-11-23 Sat]
-WAIT for the custom menu implementation
 Currently the program refreshes or shifts the selection when an
 unbound key is inputted. Change this behavior to doing absolutely
 nothing.

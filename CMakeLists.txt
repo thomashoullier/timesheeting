@@ -19,10 +19,8 @@ set(TIMESHEETING_DIR "${CMAKE_CURRENT_LIST_DIR}")
 ## Manually set the ncurses libraries
 if (EXISTS "/usr/lib/libncurses.so")
   set(CURSES_LIBRARIES "/usr/lib/libncurses.so;/usr/lib/libtinfo.so")
-  set(MENU_LIBRARY "/usr/lib/libmenu.so")
 else ()
   set(CURSES_LIBRARIES "/usr/lib64/libncurses.so;/usr/lib64/libtinfo.so")
-  set(MENU_LIBRARY "/usr/lib64/libmenu.so")
 endif()
 find_package (SQLite3 REQUIRED)
 find_package(tomlplusplus REQUIRED)
@@ -46,7 +44,7 @@ file(GLOB_RECURSE NCURSES_LIB_SRC
      "${TIMESHEETING_DIR}/src/libs/ncurses_lib/*.cpp")
 add_library(ncurses_lib STATIC "${NCURSES_LIB_SRC}")
 target_link_libraries(ncurses_lib PUBLIC log_lib
-                                  PRIVATE ${CURSES_LIBRARIES} ${MENU_LIBRARY})
+                                  PRIVATE ${CURSES_LIBRARIES})
 target_include_directories(ncurses_lib PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>")
 
