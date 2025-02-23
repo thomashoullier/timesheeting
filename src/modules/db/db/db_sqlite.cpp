@@ -27,6 +27,8 @@ namespace db {
     this->create_locations_table();
     this->create_entries_table();
     this->create_entries_start_index();
+    this->create_entries_update_trigger();
+    this->create_entries_insert_trigger();
     this->create_entrystaging_table();
     return StatementSet(sqlite_db);
   }
@@ -209,6 +211,45 @@ namespace db {
       "CREATE UNIQUE INDEX IF NOT EXISTS idx_entries_start "
       "ON entries (start);";
     sqlite_db->exec_statement(create_entries_start_index_st);
+  }
+
+  void DB_SQLite::create_entries_update_trigger() {
+    std::string create_entries_update_trigger_st =
+      "CREATE TRIGGER IF NOT EXISTS entries_update_trigger "
+      "BEFORE UPDATE "
+      "ON entries "
+      "BEGIN "
+      "SELECT CASE WHEN "
+      "EXISTS("
+      "SELECT * FROM entries "
+      "WHERE NEW.start < entries.stop AND NEW.stop > entries.start "
+      "AND entries.start != OLD.start "
+      "LIMIT 1"
+      ") "
+      "THEN "
+      "RAISE (ABORT, 'Overlapping entry detected.') "
+      "END; " // Case
+      "END;";
+    sqlite_db->exec_statement(create_entries_update_trigger_st);
+  }
+
+  void DB_SQLite::create_entries_insert_trigger() {
+    std::string create_entries_insert_trigger_st =
+      "CREATE TRIGGER IF NOT EXISTS entries_insert_trigger "
+      "BEFORE INSERT "
+      "ON entries "
+      "BEGIN "
+      "SELECT CASE WHEN "
+      "EXISTS("
+      "SELECT * FROM entries "
+      "WHERE NEW.start < entries.stop AND NEW.stop > entries.start "
+      "LIMIT 1"
+      ") "
+      "THEN "
+      "RAISE (ABORT, 'Overlapping entry detected.') "
+      "END; " // Case
+      "END;";
+    sqlite_db->exec_statement(create_entries_insert_trigger_st);
   }
 
   void DB_SQLite::create_entrystaging_table() {

@@ -135,6 +135,10 @@ namespace db {
     void create_entries_table();
     /** @brief Create an index over the start date of entries. */
     void create_entries_start_index();
+    /** @brief Create the update trigger on entries. */
+    void create_entries_update_trigger();
+    /** @brief Create the insert trigger on entries. */
+    void create_entries_insert_trigger();
     /** @brief Create the SQL table for entrystaging. */
     void create_entrystaging_table();
     /** @brief Sum duration for a given project over a given date range. */

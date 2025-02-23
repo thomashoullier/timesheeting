@@ -182,7 +182,7 @@ StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)
          "INNER JOIN entries ON tasks.id = entries.task_id "
          "WHERE entries.start >= ? "
          "AND entries.start < ? "
-         "GROUP BY projects.name " // TODO: group by id rather no?
+         "GROUP BY projects.name "
          "HAVING SUM(entries.stop - entries.start) > 0;")),
       duration_per_worked_task(db->prepare_statement(
          "SELECT tasks.id, tasks.name, SUM(entries.stop - entries.start) "
@@ -191,7 +191,7 @@ StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)
          "WHERE tasks.project_id = ? "
          "AND entries.start >= ? "
          "AND entries.start < ? "
-         "GROUP BY tasks.name " // TODO: group by id?
+         "GROUP BY tasks.name "
          "HAVING SUM(entries.stop - entries.start) > 0;"))
          {}
 }

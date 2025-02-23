@@ -327,7 +327,8 @@ ADDED: [2024-11-10 Sun]
 Note these are optional. Only those which are present in the configuration
 are loaded. The rest are kept to zero.
 
-*** TODO Prevent overlapping entries
+*** DONE Prevent overlapping entries
+CLOSED: [2025-02-23 Sun 14:31]
 ADDED: [2024-11-25 Mon]
 Overlapping entries have no use-case, do they? Should we forbid
 them at the DB level?
@@ -342,6 +343,10 @@ them at the DB level?
   https://stackoverflow.com/questions/9581458/how-can-i-prevent-date-overlaps-in-sql
 + Check that there are no overlaps in our DB first.
 + Print an error in the status bar if the case is encountered.
++ The check must happen whenever we:
+  + Add a new entry
+  + Update the dates of existing entries.
+- [2025-02-23 Sun] Implemented.
 
 ** Features under consideration
 *** TODO Consider implementing an undo and redo
