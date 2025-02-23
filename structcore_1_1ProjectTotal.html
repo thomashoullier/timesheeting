@@ -96,17 +96,17 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Struct holding a total worked time for a given project.  
+<p>Struct holding a total worked time for a given project and the corresponding list of totals for all tasks.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="project__total_8h_source.html">project_total.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a839e5008a381f1ac679e7488b6a6d2c7" id="r_a839e5008a381f1ac679e7488b6a6d2c7"><td class="memItemLeft" align="right" valign="top"><a id="a839e5008a381f1ac679e7488b6a6d2c7" name="a839e5008a381f1ac679e7488b6a6d2c7"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>to_strings</b> () const</td></tr>
-<tr class="memdesc:a839e5008a381f1ac679e7488b6a6d2c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a representation as strings with project name and duration. <br /></td></tr>
-<tr class="separator:a839e5008a381f1ac679e7488b6a6d2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3c3a0b327ddff48d6fecb6d64bb9b02" id="r_ae3c3a0b327ddff48d6fecb6d64bb9b02"><td class="memItemLeft" align="right" valign="top"><a id="ae3c3a0b327ddff48d6fecb6d64bb9b02" name="ae3c3a0b327ddff48d6fecb6d64bb9b02"></a>
+std::vector&lt; <a class="el" href="structncurses__lib_1_1MenuItem.html">ncurses_lib::MenuItem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>to_menu_items</b> () const</td></tr>
+<tr class="memdesc:ae3c3a0b327ddff48d6fecb6d64bb9b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a representation as a list of MenuItem. <br /></td></tr>
+<tr class="separator:ae3c3a0b327ddff48d6fecb6d64bb9b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -118,9 +118,13 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>project_name</
 <a class="el" href="classtime__lib_1_1Duration.html">time_lib::Duration</a>&#160;</td><td class="memItemRight" valign="bottom"><b>total</b></td></tr>
 <tr class="memdesc:af9a05814f021518efe7fe5d14683b457"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Duration worked on the project. <br /></td></tr>
 <tr class="separator:af9a05814f021518efe7fe5d14683b457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47c0aa9fcfad6adc50af431909a24141" id="r_a47c0aa9fcfad6adc50af431909a24141"><td class="memItemLeft" align="right" valign="top"><a id="a47c0aa9fcfad6adc50af431909a24141" name="a47c0aa9fcfad6adc50af431909a24141"></a>
+std::vector&lt; <a class="el" href="structcore_1_1TaskTotal.html">TaskTotal</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>task_totals</b></td></tr>
+<tr class="memdesc:a47c0aa9fcfad6adc50af431909a24141"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of task totals. <br /></td></tr>
+<tr class="separator:a47c0aa9fcfad6adc50af431909a24141"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Struct holding a total worked time for a given project. </p>
+<div class="textblock"><p>Struct holding a total worked time for a given project and the corresponding list of totals for all tasks. </p>
 </div><hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/modules/core/core/<a class="el" href="project__total_8h_source.html">project_total.h</a></li>
 <li>src/modules/core/core/<b>project_total.cpp</b></li>

@@ -25,6 +25,5 @@ var searchData=
   ['stop_5fdate_22',['stop_date',['../structcore_1_1ExportRow.html#a0995b0b8bc42f11b744d71d471998578',1,'core::ExportRow']]],
   ['stopwatch_23',['stopwatch',['../classtui_1_1StopwatchUI.html#a981765e515501e7ac562dc3c3f9763ce',1,'tui::StopwatchUI']]],
   ['stopwatch_5fui_24',['stopwatch_ui',['../classtui_1_1EntriesScreen.html#a2343c87f9a3556a0dd9d07beb275a77b',1,'tui::EntriesScreen']]],
-  ['str_25',['str',['../classncurses__lib_1_1StringWithFace.html#a43411340eb796a9844621e57795fd36e',1,'ncurses_lib::StringWithFace']]],
-  ['sum_5fduration_5fper_5fproject_26',['sum_duration_per_project',['../classdb_1_1StatementSet.html#a3e947247cd76b7fe41da6ac106400d30',1,'db::StatementSet']]]
+  ['str_25',['str',['../classncurses__lib_1_1StringWithFace.html#a43411340eb796a9844621e57795fd36e',1,'ncurses_lib::StringWithFace']]]
 ];

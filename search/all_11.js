@@ -65,6 +65,5 @@ var searchData=
   ['string_5fwith_5fface_2eh_62',['string_with_face.h',['../string__with__face_8h.html',1,'']]],
   ['stringface_63',['StringFace',['../win__ncurses_8h.html#a3bcf640404b1ab391bd78fac916401c6',1,'ncurses_lib']]],
   ['stringwithface_64',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html',1,'ncurses_lib::StringWithFace'],['../classncurses__lib_1_1StringWithFace.html#a904cd4554f1aa2e93006b638b6af7952',1,'ncurses_lib::StringWithFace::StringWithFace()']]],
-  ['suggestion_2eh_65',['suggestion.h',['../suggestion_8h.html',1,'']]],
-  ['sum_5fduration_5fper_5fproject_66',['sum_duration_per_project',['../classdb_1_1StatementSet.html#a3e947247cd76b7fe41da6ac106400d30',1,'db::StatementSet']]]
+  ['suggestion_2eh_65',['suggestion.h',['../suggestion_8h.html',1,'']]]
 ];
