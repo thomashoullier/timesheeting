@@ -99,6 +99,14 @@ in edit mode.
 *** TODO Project report total does not update immediately when changing the period
 ADDED: [2025-01-12 Sun]
 
+*** DONE In stopwatch, the task name cell string goes further than the cell size
+CLOSED: [2025-03-15 Sat 15:03]
+ADDED: [2025-03-03 Mon]
+This happens only when we shift the selection in the menu.
++ This is a bug which appears in all menus in fact.
+- [2025-03-15 Sat] Fixed it by cropping the print string in the window's print
+  method to the size of the column.
+
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]
@@ -189,6 +197,20 @@ ADDED: [2025-02-22 Sat]
 We need to add the italics face to the menu items.
 Display the active items in normal face, and the archived items in italics face.
 - [2025-02-22 Sat] Implemented.
+
+*** TODO Stay in stopwatch or register when resizing from the entries screen.
+ADDED: [2025-02-28 Fri]
+Currently, when the UI is on the entry screen and we resize, the focus shifts to the register
+and does not stay in the stopwatch.
+
+*** TODO Parse hh:mm using the currently selected register day
+ADDED: [2025-02-28 Fri]
+Use the currently selected register day to parse a date string given as just
+"hh", "hh:mm", "hh:mm:ss".
+
+*** TODO Do not update the stopwatch start date when commit fails
+ADDED: [2025-03-05 Wed]
+Currently, when a stopwatch commit is rejected, the start date is updated. Do nothing instead.
 
 ** Refactoring
 *** DEAD Refactor MenuNCurses

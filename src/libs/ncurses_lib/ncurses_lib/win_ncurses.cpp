@@ -52,7 +52,7 @@ void WinNCurses::print_at(const std::string &str, int line, int col_offset,
   // a border
   mvwprintw(win, line + 1, col_offset, "%s", eraser.c_str());
   mvwprintw(win, line + 1, col_offset, "%s",
-            str.substr(0, n_cols() - col_offset).c_str());
+            str.substr(0, col_width).c_str());
   switch (face) {
   case StringFace::Normal:
     break;
