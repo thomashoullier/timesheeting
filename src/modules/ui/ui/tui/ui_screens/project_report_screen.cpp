@@ -65,6 +65,7 @@ namespace tui {
     auto cur_range = period_selector_ui.get_current_date_range();
     auto overall_duration = db::db().query_entries_duration(cur_range);
     total_bar.update(overall_duration);
+    total_bar.refresh();
     reg.set_items(db::db().report_project_totals(cur_range));
     reg.update();
     needs_update = false;

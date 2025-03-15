@@ -96,8 +96,11 @@ in edit mode.
 + We initialized the status bar so that it does not interpret the keypad
   keys.
 
-*** TODO Project report total does not update immediately when changing the period
+*** DONE Project report total does not update immediately when changing the period
+CLOSED: [2025-03-15 Sat 15:22]
 ADDED: [2025-01-12 Sun]
+- [2025-03-15 Sat] Fixed by calling total_bar.refresh()
+  just after updating the period selector.
 
 *** DONE In stopwatch, the task name cell string goes further than the cell size
 CLOSED: [2025-03-15 Sat 15:03]
@@ -156,6 +159,9 @@ ADDED: [2024-11-23 Sat]
 Currently the program refreshes or shifts the selection when an
 unbound key is inputted. Change this behavior to doing absolutely
 nothing.
++ This could be solved by staying within the current input loop
+  whenever an unbound key is inputted. However this does not solve
+  the problem of hitting keys which are bound elsewhere.
 
 *** DONE Handle resizing
 CLOSED: [2025-02-22 Sat 14:29]
