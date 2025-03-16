@@ -29,6 +29,8 @@ namespace tui {
     TotalBar total_bar;
     /** @brief Register display of totals per project. */
     ProjectTotalsRegister reg;
+    /** @brief Current focus (between period selector and register). */
+    UIComponent *cur_focus;
   };
 } // namespace tui
 

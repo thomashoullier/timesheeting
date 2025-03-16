@@ -25,6 +25,8 @@ namespace tui {
     std::unique_ptr<UIComponent> stopwatch_ui;
     /** @brief Handle to the table holding the entries. */
     std::unique_ptr<UIComponent> entries_table;
+    /** @brief Current focus (between stopwatch and entries register). */
+    UIComponent *cur_focus;
   };
 } // namespace tui
 

@@ -10,11 +10,10 @@ namespace tui {
                 (period_selector_ui.get_current_date_range())),
       reg(ProjectTotalsRegister
           (db::db().report_project_totals
-           (period_selector_ui.get_current_date_range()))) {}
+           (period_selector_ui.get_current_date_range()))),
+      cur_focus{&period_selector_ui} {}
 
   config::NormalActions ProjectReportScreen::input_loop() {
-    UIComponent *cur_focus{&period_selector_ui};
-    cur_focus = &reg;
     while (true) {
       auto action = cur_focus->input_loop();
       switch(action) {

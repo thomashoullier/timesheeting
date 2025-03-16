@@ -15,6 +15,7 @@ namespace tui {
       task_col(std::make_unique<Column<core::Task>>
                (std::vector<core::Task>(),
                 ncurses_lib::WindowPosition::middle)),
+      cur_col{project_col.get()},
       show_only_active(true) {
     // TODO: initialize directly on actual db data.
     update_project_col();
@@ -42,7 +43,6 @@ namespace tui {
   }
 
   config::NormalActions ProjectTaskScreen::input_loop() {
-    ColumnBase *cur_col{project_col.get()};
     cur_col->set_border();
     while (true) {
       status().print(cur_col->get_current_item_string());

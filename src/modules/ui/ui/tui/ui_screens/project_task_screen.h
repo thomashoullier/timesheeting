@@ -26,6 +26,8 @@ namespace tui {
     std::unique_ptr<Column<core::Project>> project_col;
     /** @brief Column for tasks. */
     std::unique_ptr<Column<core::Task>> task_col;
+    /** @brief Current column in focus. */
+    ColumnBase *cur_col;
     /** @brief Whether to show only active items. */
     bool show_only_active;
 

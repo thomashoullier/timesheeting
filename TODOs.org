@@ -154,14 +154,28 @@ Make it so the selection stays in place.
   We would have to track the alphabetical order.
 - [2025-02-22 Sat] Solved by the custom menu implementation.
 
-*** TODO Do NOTHING when hitting unbound keys
+*** DONE Do NOTHING when hitting unbound keys
+CLOSED: [2025-03-16 Sun 10:00]
 ADDED: [2024-11-23 Sat]
-Currently the program refreshes or shifts the selection when an
-unbound key is inputted. Change this behavior to doing absolutely
-nothing.
+Currently the program shifts the selection when an
+unbound key is inputted. Change this behavior to doing nothing.
 + This could be solved by staying within the current input loop
   whenever an unbound key is inputted. However this does not solve
   the problem of hitting keys which are bound elsewhere.
++ You can have every level of the input querying chain remember
+  where its focus is.
++ The problem of switching focus is present in:
+  + FIXED. Entries screen (between registry and stopwatch)
+  + FIXED. Project Task screen, between projects and tasks
+  + FIXED. Project report, between report and period selector
+- [2025-03-16 Sun] We solved it by making screens remember their focus.
+  It also solves the problem of keeping focus when changing back and forth
+  between screens.
+
+*** TODO Skip refresh when hitting an unbound key
+ADDED: [2025-03-16 Sun]
+The display refreshes (visible blinking) when we hit an unbound key.
+We should do nothing at all instead.
 
 *** DONE Handle resizing
 CLOSED: [2025-02-22 Sat 14:29]
@@ -204,19 +218,28 @@ We need to add the italics face to the menu items.
 Display the active items in normal face, and the archived items in italics face.
 - [2025-02-22 Sat] Implemented.
 
-*** TODO Stay in stopwatch or register when resizing from the entries screen.
+*** DONE Stay in stopwatch or register when resizing from the entries screen.
+CLOSED: [2025-03-16 Sun 10:03]
 ADDED: [2025-02-28 Fri]
 Currently, when the UI is on the entry screen and we resize, the focus shifts to the register
 and does not stay in the stopwatch.
+- [2025-03-16 Sun] Solved by making each screen remember their focus across
+  input loops.
 
 *** TODO Parse hh:mm using the currently selected register day
 ADDED: [2025-02-28 Fri]
 Use the currently selected register day to parse a date string given as just
 "hh", "hh:mm", "hh:mm:ss".
++ Add a Date method which uses a current day and the string.
+  First try to parse the string without the day, if it fails
+  then add the day in, and it it still fails then fail.
++ Perhaps pass a reference to the day selector to the stopwatch
+  in order to do this.
 
 *** TODO Do not update the stopwatch start date when commit fails
 ADDED: [2025-03-05 Wed]
-Currently, when a stopwatch commit is rejected, the start date is updated. Do nothing instead.
+Currently, when a stopwatch commit is rejected, the start date is updated. Do
+nothing instead.
 
 ** Refactoring
 *** DEAD Refactor MenuNCurses

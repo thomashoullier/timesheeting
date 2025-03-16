@@ -7,10 +7,10 @@
 namespace tui {
   EntriesScreen::EntriesScreen()
     : stopwatch_ui(std::make_unique<StopwatchUI>()),
-      entries_table(std::make_unique<EntriesTable>()) {}
+      entries_table(std::make_unique<EntriesTable>()),
+      cur_focus{entries_table.get()} {}
 
   config::NormalActions EntriesScreen::input_loop() {
-    UIComponent *cur_focus{entries_table.get()};
     while (true) {
       auto action = cur_focus->input_loop();
       switch (action) {
