@@ -241,6 +241,11 @@ ADDED: [2025-03-05 Wed]
 Currently, when a stopwatch commit is rejected, the start date is updated. Do
 nothing instead.
 
+*** TODO Set the stopwatch start date to the previous end date on successful commit
+ADDED: [2025-03-16 Sun]
+This is useful when entering dates manually, we only have to type
+them once in the sequence.
+
 ** Refactoring
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]
