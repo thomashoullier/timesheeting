@@ -35,12 +35,14 @@ var searchData=
   ['create_5fuser_5fdirectory_32',['create_user_directory',['../classlog__lib_1_1TempDir.html#a28b61112b54d8078f8e2bda7f764132b',1,'log_lib::TempDir']]],
   ['csv_5fexporter_2eh_33',['csv_exporter.h',['../csv__exporter_8h.html',1,'']]],
   ['csvexporter_34',['CSVExporter',['../classexporter_1_1CSVExporter.html',1,'exporter::CSVExporter'],['../classexporter_1_1CSVExporter.html#af9e88cfa2eb793ca801b077c263b8d43',1,'exporter::CSVExporter::CSVExporter()']]],
-  ['current_5ffocus_35',['current_focus',['../classtui_1_1UpdateManager.html#afbc7a407f837e332119fd8f112adc973',1,'tui::UpdateManager']]],
-  ['current_5fformat_36',['current_format',['../classtime__lib_1_1DurationDisplayer.html#ac41bf43326c0d62e8a69a5119a353ed5',1,'time_lib::DurationDisplayer']]],
-  ['current_5frange_37',['current_range',['../classtui_1_1DaySelector.html#abac432b84907add7d3f13c142d1361d8',1,'tui::DaySelector::current_range()'],['../classtui_1_1WeekSelector.html#ac9dad2fcea795d48232581716874cb32',1,'tui::WeekSelector::current_range() const']]],
-  ['current_5fweek_38',['current_week',['../classtui_1_1WeekSelector.html#a2eb8dfd6a0a40dc7affada437eccb0be',1,'tui::WeekSelector']]],
-  ['cursor_5fcol_5fposition_39',['cursor_col_position',['../classncurses__lib_1_1MenuNCurses.html#a457bd26b891e2184794d6d7d3169978e',1,'ncurses_lib::MenuNCurses']]],
-  ['cursor_5fline_5fposition_40',['cursor_line_position',['../classncurses__lib_1_1MenuNCurses.html#a37fd1a7a26f943254c91a4a90b18a68c',1,'ncurses_lib::MenuNCurses']]],
-  ['cursor_5fwidth_41',['cursor_width',['../classncurses__lib_1_1MenuNCurses.html#af0413ba5e4d8ea9e092eeb192596e75c',1,'ncurses_lib::MenuNCurses']]],
-  ['cycle_5fformat_42',['cycle_format',['../classtime__lib_1_1DurationDisplayer.html#a590088d01a6e9080951e4f94dfca3078',1,'time_lib::DurationDisplayer']]]
+  ['cur_5fcol_35',['cur_col',['../classtui_1_1ProjectTaskScreen.html#ad7bb5b301c0cba93327dd8283d4243f7',1,'tui::ProjectTaskScreen']]],
+  ['cur_5ffocus_36',['cur_focus',['../classtui_1_1EntriesScreen.html#a5000fbafca67192310a18af39cafbc0b',1,'tui::EntriesScreen::cur_focus'],['../classtui_1_1ProjectReportScreen.html#ad9e3fd9b878b598fe62d586e336df161',1,'tui::ProjectReportScreen::cur_focus']]],
+  ['current_5ffocus_37',['current_focus',['../classtui_1_1UpdateManager.html#afbc7a407f837e332119fd8f112adc973',1,'tui::UpdateManager']]],
+  ['current_5fformat_38',['current_format',['../classtime__lib_1_1DurationDisplayer.html#ac41bf43326c0d62e8a69a5119a353ed5',1,'time_lib::DurationDisplayer']]],
+  ['current_5frange_39',['current_range',['../classtui_1_1DaySelector.html#abac432b84907add7d3f13c142d1361d8',1,'tui::DaySelector::current_range()'],['../classtui_1_1WeekSelector.html#ac9dad2fcea795d48232581716874cb32',1,'tui::WeekSelector::current_range() const']]],
+  ['current_5fweek_40',['current_week',['../classtui_1_1WeekSelector.html#a2eb8dfd6a0a40dc7affada437eccb0be',1,'tui::WeekSelector']]],
+  ['cursor_5fcol_5fposition_41',['cursor_col_position',['../classncurses__lib_1_1MenuNCurses.html#a457bd26b891e2184794d6d7d3169978e',1,'ncurses_lib::MenuNCurses']]],
+  ['cursor_5fline_5fposition_42',['cursor_line_position',['../classncurses__lib_1_1MenuNCurses.html#a37fd1a7a26f943254c91a4a90b18a68c',1,'ncurses_lib::MenuNCurses']]],
+  ['cursor_5fwidth_43',['cursor_width',['../classncurses__lib_1_1MenuNCurses.html#af0413ba5e4d8ea9e092eeb192596e75c',1,'ncurses_lib::MenuNCurses']]],
+  ['cycle_5fformat_44',['cycle_format',['../classtime__lib_1_1DurationDisplayer.html#a590088d01a6e9080951e4f94dfca3078',1,'time_lib::DurationDisplayer']]]
 ];
