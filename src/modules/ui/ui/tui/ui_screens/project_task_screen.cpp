@@ -1,6 +1,7 @@
 #include "project_task_screen.h"
 #include "config/key.h"
 #include "db/db_sqlite.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include "status_bar/status_bar.h"
 #include "log_lib/logger.h"
 #include "update_manager.h"
@@ -50,30 +51,38 @@ namespace tui {
       auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
       switch(action) {
       case config::NormalActions::down:
-        cur_col->select_down_item();
-        if (cur_col == project_col.get()) {
-          update_task_col();
+        if (cur_col->select_down_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          if (cur_col == project_col.get()) {
+            update_task_col();
+          }
+          status().print(cur_col->get_current_item_string());
         }
-        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::up:
-        cur_col->select_up_item();
-        if (cur_col == project_col.get()) {
-          update_task_col();
+        if (cur_col->select_up_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          if (cur_col == project_col.get()) {
+            update_task_col();
+          }
+          status().print(cur_col->get_current_item_string());
         }
-        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::left:
-        cur_col->unset_border();
-        cur_col = project_col.get();
-        cur_col->set_border();
-        status().print(cur_col->get_current_item_string());
+        if (cur_col == task_col.get()) {
+          cur_col->unset_border();
+          cur_col = project_col.get();
+          cur_col->set_border();
+          status().print(cur_col->get_current_item_string());
+        }
         break;
       case config::NormalActions::right:
-        cur_col->unset_border();
-        cur_col = task_col.get();
-        cur_col->set_border();
-        status().print(cur_col->get_current_item_string());
+        if (cur_col == project_col.get()) {
+          cur_col->unset_border();
+          cur_col = task_col.get();
+          cur_col->set_border();
+          status().print(cur_col->get_current_item_string());
+        }
         break;
       case config::NormalActions::add:
         if (not(add_item(cur_col))) {

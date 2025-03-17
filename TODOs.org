@@ -182,6 +182,9 @@ We should do nothing at all instead.
   in the case of hitting direction keys at extremities
   (borders and status bar). We can remove the up/down by getting
   a return code from the menu "select_up_item" method.
+- [2025-03-17 Mon] Removed all useless input-related refreshes
+  in the project/task screen by making the menu return a status
+  code for whether the selection has actually changed.
 
 *** DONE Handle resizing
 CLOSED: [2025-02-22 Sat 14:29]

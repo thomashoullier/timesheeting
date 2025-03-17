@@ -27,7 +27,6 @@ namespace ncurses_lib {
   };
 
   class MenuNCurses : public WinNCurses {
-
   private:
     /** @brief Target column widths. */
     std::vector<int> target_column_widths;
@@ -72,6 +71,10 @@ namespace ncurses_lib {
     int get_col_index() const;
 
   public:
+    /** @brief Return value for item selection:
+               whether the selected item has actually changed or not. */
+    enum class ItemSelectionStatus {same, changed};
+
     /** @brief Constructor.
 
         target_column_widths defines the number of desired width of columns.
@@ -83,9 +86,9 @@ namespace ncurses_lib {
     /**@brief Print all items to screen. */
     void refresh() const;
     /** @brief Select the item down of the current one. */
-    void select_down_item();
+    ItemSelectionStatus select_down_item();
     /** @brief Select the item up of the current one. */
-    void select_up_item();
+    ItemSelectionStatus select_up_item();
     /** @brief Select the item right of the current one. */
     void select_right_item();
     /** @brief Select the item left of the current one. */

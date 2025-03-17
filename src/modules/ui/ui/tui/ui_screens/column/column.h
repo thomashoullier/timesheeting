@@ -43,8 +43,15 @@ namespace tui {
       return MenuNCurses::get_current_item_string();
     };
 
-    void select_down_item() override { MenuNCurses::select_down_item(); };
-    void select_up_item() override { MenuNCurses::select_up_item(); };
+    ncurses_lib::MenuNCurses::ItemSelectionStatus
+    select_down_item() override {
+      return MenuNCurses::select_down_item();
+    };
+
+    ncurses_lib::MenuNCurses::ItemSelectionStatus
+    select_up_item() override {
+      return MenuNCurses::select_up_item();
+    };
 
     int get_input() override { return MenuNCurses::get_input(); };
 

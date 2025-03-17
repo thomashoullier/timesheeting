@@ -4,6 +4,7 @@
 #define COLUMN_BASE_H
 
 #include "core/id.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include <string>
 
 namespace tui {
@@ -18,9 +19,9 @@ namespace tui {
         empty string if no items are selected. */
     virtual std::string get_current_item_string() = 0;
     /** @brief Select the next item. */
-    virtual void select_down_item() = 0;
+    virtual ncurses_lib::MenuNCurses::ItemSelectionStatus select_down_item() = 0;
     /** @brief Select the previous item. */
-    virtual void select_up_item() = 0;
+    virtual ncurses_lib::MenuNCurses::ItemSelectionStatus select_up_item() = 0;
     /** @brief Query a user input character and pass it. */
     virtual int get_input() = 0;
     /** @brief Set the border for highlighting. */

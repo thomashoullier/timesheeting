@@ -138,7 +138,7 @@ namespace ncurses_lib {
     return get_item_index() % n_item_columns();
   }
 
-  void MenuNCurses::select_down_item() {
+  MenuNCurses::ItemSelectionStatus MenuNCurses::select_down_item() {
     if (selected_index + n_item_columns() < n_items()) {
       if (cursor_line_position() == n_lines() - 1) {
         selected_index += n_item_columns();
@@ -156,10 +156,13 @@ namespace ncurses_lib {
                           cursor_width(),
                           items->at(selected_index).face);
       }
+      return MenuNCurses::ItemSelectionStatus::changed;
+    } else {
+      return MenuNCurses::ItemSelectionStatus::same;
     }
   }
 
-  void MenuNCurses::select_up_item() {
+  MenuNCurses::ItemSelectionStatus MenuNCurses::select_up_item() {
     if (selected_index - n_item_columns() >= 0) {
       if (cursor_line_position() == 0) {
         selected_index -= n_item_columns();
@@ -177,7 +180,11 @@ namespace ncurses_lib {
                           cursor_width(),
                           items->at(selected_index).face);
       }
+      return MenuNCurses::ItemSelectionStatus::changed;
+    } else {
+      return MenuNCurses::ItemSelectionStatus::same;
     }
+
   }
 
   void MenuNCurses::select_right_item() {
