@@ -45,7 +45,6 @@ namespace tui {
   config::NormalActions ProjectTaskScreen::input_loop() {
     cur_col->set_border();
     while (true) {
-      status().print(cur_col->get_current_item_string());
       auto ch = cur_col->get_input();
       auto kb = keys::BoundKeys::get().kb;
       auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
@@ -55,28 +54,33 @@ namespace tui {
         if (cur_col == project_col.get()) {
           update_task_col();
         }
+        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::up:
         cur_col->select_up_item();
         if (cur_col == project_col.get()) {
           update_task_col();
         }
+        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::left:
         cur_col->unset_border();
         cur_col = project_col.get();
         cur_col->set_border();
+        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::right:
         cur_col->unset_border();
         cur_col = task_col.get();
         cur_col->set_border();
+        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::add:
         if (not(add_item(cur_col))) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().projects_tasks_have_changed();
+          status().print(cur_col->get_current_item_string());
         }
         break;
       case config::NormalActions::rename:
@@ -84,6 +88,7 @@ namespace tui {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().projects_tasks_have_changed();
+          status().print(cur_col->get_current_item_string());
         }
         break;
       case config::NormalActions::task_project_change:
@@ -91,20 +96,32 @@ namespace tui {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().projects_tasks_have_changed();
+          status().print(cur_col->get_current_item_string());
         }
         break;
       case config::NormalActions::remove:
         remove_item(cur_col);
+        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::active_toggle:
         toggle_active_item(cur_col);
+        status().print(cur_col->get_current_item_string());
         break;
       case config::NormalActions::active_visibility:
         toggle_archive_visibility();
+        status().print(cur_col->get_current_item_string());
         break;
-      default:
+      case config::NormalActions::entries_screen:
+      case config::NormalActions::locations_screen:
+      case config::NormalActions::project_report_screen:
+      case config::NormalActions::weekly_report_screen:
+      case config::NormalActions::duration_display:
+      case config::NormalActions::quit:
         cur_col->unset_border();
         return action;
+        break;
+      default: // Do nothing
+        break;
       }
     }
   }

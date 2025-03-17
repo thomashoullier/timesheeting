@@ -176,6 +176,12 @@ unbound key is inputted. Change this behavior to doing nothing.
 ADDED: [2025-03-16 Sun]
 The display refreshes (visible blinking) when we hit an unbound key.
 We should do nothing at all instead.
+- [2025-03-17 Mon] Handled the project/task screen in an acceptable fashion.
+  We filter for keys which we know will be used in the UI above,
+  and only pass these. There are still unnecessary updates
+  in the case of hitting direction keys at extremities
+  (borders and status bar). We can remove the up/down by getting
+  a return code from the menu "select_up_item" method.
 
 *** DONE Handle resizing
 CLOSED: [2025-02-22 Sat 14:29]
