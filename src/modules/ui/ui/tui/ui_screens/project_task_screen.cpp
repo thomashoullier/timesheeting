@@ -45,6 +45,7 @@ namespace tui {
 
   config::NormalActions ProjectTaskScreen::input_loop() {
     cur_col->set_border();
+    status().print(cur_col->get_current_item_string());
     while (true) {
       auto ch = cur_col->get_input();
       auto kb = keys::BoundKeys::get().kb;

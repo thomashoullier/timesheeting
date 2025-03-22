@@ -1,5 +1,6 @@
 #include "locations_screen.h"
 #include "config/key.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include "status_bar/status_bar.h"
 #include "db/db_sqlite.h"
 #include "log_lib/logger.h"
@@ -38,23 +39,30 @@ namespace tui {
 
   config::NormalActions LocationsScreen::input_loop() {
     location_col->set_border();
+    status().print(location_col->get_current_item_string());
     while (true) {
-      status().print(location_col->get_current_item_string());
       auto ch = location_col->get_input();
       auto kb = keys::BoundKeys::get().kb;
       auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
       switch (action) {
       case config::NormalActions::down:
-        location_col->select_down_item();
+        if (location_col->select_down_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(location_col->get_current_item_string());
+        }
         break;
       case config::NormalActions::up:
-        location_col->select_up_item();
+        if (location_col->select_up_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(location_col->get_current_item_string());
+        }
         break;
       case config::NormalActions::add:
         if (not(add_item())) {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
+          status().print(location_col->get_current_item_string());
         }
         break;
       case config::NormalActions::rename:
@@ -62,20 +70,31 @@ namespace tui {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
+          status().print(location_col->get_current_item_string());
         }
         break;
       case config::NormalActions::remove:
         remove_item();
+        status().print(location_col->get_current_item_string());
         break;
       case config::NormalActions::active_toggle:
         toggle_active_item();
+        status().print(location_col->get_current_item_string());
         break;
       case config::NormalActions::active_visibility:
         toggle_archive_visibility();
+        status().print(location_col->get_current_item_string());
         break;
-      default:
+      case config::NormalActions::projects_screen:
+      case config::NormalActions::entries_screen:
+      case config::NormalActions::project_report_screen:
+      case config::NormalActions::weekly_report_screen:
+      case config::NormalActions::duration_display:
+      case config::NormalActions::quit:
         location_col->unset_border();
         return action;
+      default: // Do nothing
+        break;
       }
     }
   }
