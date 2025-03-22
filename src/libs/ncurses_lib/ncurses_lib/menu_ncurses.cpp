@@ -187,7 +187,7 @@ namespace ncurses_lib {
 
   }
 
-  void MenuNCurses::select_right_item() {
+  MenuNCurses::ItemSelectionStatus MenuNCurses::select_right_item() {
     if (n_items() > 0 &&
         selected_index % n_item_columns() + 1 < n_item_columns()) {
       // Reprint the current item as non-highlighted
@@ -200,23 +200,26 @@ namespace ncurses_lib {
       print_standout_at(items->at(selected_index).cell_string,
                         cursor_line_position(), cursor_col_position(),
                         cursor_width(), items->at(selected_index).face);
+      return MenuNCurses::ItemSelectionStatus::changed;
+    } else {
+      return MenuNCurses::ItemSelectionStatus::same;
     }
   }
 
-  void MenuNCurses::select_left_item() {
-    if (n_items() > 0 &&
-        selected_index % n_item_columns() - 1 >= 0) {
+  MenuNCurses::ItemSelectionStatus MenuNCurses::select_left_item() {
+    if (n_items() > 0 && selected_index % n_item_columns() - 1 >= 0) {
       // Reprint the current item as non-highlighted
-      print_at(items->at(selected_index).cell_string,
-               cursor_line_position(),
+      print_at(items->at(selected_index).cell_string, cursor_line_position(),
                cursor_col_position(), cursor_width(),
                items->at(selected_index).face);
       --selected_index;
       // Reprint the selected item as highlighted.
       print_standout_at(items->at(selected_index).cell_string,
                         cursor_line_position(), cursor_col_position(),
-                        cursor_width(),
-                        items->at(selected_index).face);
+                        cursor_width(), items->at(selected_index).face);
+      return MenuNCurses::ItemSelectionStatus::changed;
+    } else {
+      return MenuNCurses::ItemSelectionStatus::same;
     }
   }
 

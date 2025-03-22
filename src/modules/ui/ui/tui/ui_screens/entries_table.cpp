@@ -1,6 +1,7 @@
 #include "entries_table.h"
 #include "config/key.h"
 #include "db/db_sqlite.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include "status_bar/status_bar.h"
 #include "log_lib/logger.h"
 #include "update_manager.h"
@@ -14,26 +15,39 @@ namespace tui {
 
   config::NormalActions EntriesTable::input_loop() {
     reg.set_border();
+    status().print(reg.get_current_item_string());
     while (true) {
-      status().print(reg.get_current_item_string());
       auto ch = reg.get_input();
       auto kb = keys::BoundKeys::get().kb;
       auto action = kb.normal_mode.action_requested(ch);
-      switch(action) {
+      switch (action) {
       case config::NormalActions::down:
-        reg.select_down_item();
+        if (reg.select_down_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(reg.get_current_item_string());
+        }
         break;
       case config::NormalActions::up:
-        reg.select_up_item();
+        if (reg.select_up_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(reg.get_current_item_string());
+        }
         break;
       case config::NormalActions::right:
-        reg.select_right_item();
+        if (reg.select_right_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(reg.get_current_item_string());
+        }
         break;
       case config::NormalActions::left:
-        reg.select_left_item();
+        if (reg.select_left_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(reg.get_current_item_string());
+        }
         break;
       case config::NormalActions::remove:
         remove_item();
+        status().print(reg.get_current_item_string());
         UpdateManager::get().entries_have_changed();
         break;
       case config::NormalActions::rename:
@@ -46,6 +60,7 @@ namespace tui {
           this->clear();
           this->refresh();
         }
+        status().print(reg.get_current_item_string());
         break;
       case config::NormalActions::next:
         {
@@ -56,14 +71,9 @@ namespace tui {
                               log_lib::LogLevel::debug);
         update();
         day_selector.refresh();
-        // TODO: superfluous update?
-        total_bar
-          .update(db::db()
-                  .query_entries_duration(day_selector.current_range()));
-        }
-        break;
-      case config::NormalActions::previous:
-        {
+        status().print(reg.get_current_item_string());
+      } break;
+      case config::NormalActions::previous: {
         day_selector.select_previous_day();
         auto log_dates = day_selector.current_range().to_string();
         log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
@@ -71,11 +81,20 @@ namespace tui {
                               log_lib::LogLevel::debug);
         update();
         day_selector.refresh();
-        }
-        break;
-      default:
+        status().print(reg.get_current_item_string());
+      } break;
+      case config::NormalActions::subtabs:
+      case config::NormalActions::projects_screen:
+      case config::NormalActions::locations_screen:
+      case config::NormalActions::project_report_screen:
+      case config::NormalActions::weekly_report_screen:
+      case config::NormalActions::duration_display:
+      case config::NormalActions::quit:
         reg.unset_border();
         return action;
+        break;
+      default: // Do nothing
+        break;
       }
     }
   }

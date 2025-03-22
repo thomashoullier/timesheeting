@@ -255,6 +255,17 @@ ADDED: [2025-03-16 Sun]
 This is useful when entering dates manually, we only have to type
 them once in the sequence.
 
+*** TODO Avoid the global refresh when changing the duration display format.
+ADDED: [2025-03-22 Sat]
+Currently the whole screen refreshes whenever we need to change the duration
+display on any screen. Find a way to only refresh what is needed.
+
+*** TODO Only update the current date in the stopwatch when using set_now
+ADDED: [2025-03-22 Sat]
+Currently a global update of the stopwatch is called whenever we
+call set_now. Make it so that only the changed date is updated.
+This is a bit nitpicky.
+
 ** Refactoring
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]

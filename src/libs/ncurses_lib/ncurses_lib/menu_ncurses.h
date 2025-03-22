@@ -90,9 +90,9 @@ namespace ncurses_lib {
     /** @brief Select the item up of the current one. */
     ItemSelectionStatus select_up_item();
     /** @brief Select the item right of the current one. */
-    void select_right_item();
+    ItemSelectionStatus select_right_item();
     /** @brief Select the item left of the current one. */
-    void select_left_item();
+    ItemSelectionStatus select_left_item();
     /** @brief Get the full display string for the current item. */
     const std::string &get_current_item_string() const;
     /** @brief Set the currently held items. */

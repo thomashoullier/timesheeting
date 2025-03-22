@@ -26,8 +26,9 @@ namespace tui {
 
     /** @brief Rename a field in the entry in staging. */
     void rename_item();
-    /** @brief Set the current field, if it is a date, to now(). */
-    void set_current_now ();
+    /** @brief Set the current field, if it is a date, to now().
+        Return true if anything has changed, false otherwise. */
+    bool set_current_now ();
   };
 } // namespace tui
 

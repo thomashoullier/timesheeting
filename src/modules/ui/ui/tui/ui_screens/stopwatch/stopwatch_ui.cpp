@@ -3,6 +3,7 @@
 #include "db/db_sqlite.h"
 #include "../status_bar/status_bar.h"
 #include "../update_manager.h"
+#include "ncurses_lib/menu_ncurses.h"
 #include "ui/keys/bound_keys.h"
 
 namespace tui {
@@ -10,17 +11,23 @@ namespace tui {
 
   config::NormalActions StopwatchUI::input_loop() {
     stopwatch.set_border();
+    status().print(stopwatch.get_current_item_string());
     while (true) {
-      status().print(stopwatch.get_current_item_string());
       auto ch = stopwatch.get_input();
       auto kb = keys::BoundKeys::get().kb;
       auto action = kb.normal_mode.action_requested(ch);
       switch(action) {
       case config::NormalActions::left:
-        stopwatch.select_left_item();
+        if (stopwatch.select_left_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(stopwatch.get_current_item_string());
+        }
         break;
       case config::NormalActions::right:
-        stopwatch.select_right_item();
+        if (stopwatch.select_right_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(stopwatch.get_current_item_string());
+        }
         break;
       case config::NormalActions::rename:
         try {
@@ -32,22 +39,35 @@ namespace tui {
           this->clear();
           this->refresh();
         }
+        status().print(stopwatch.get_current_item_string());
         break;
       case config::NormalActions::set_now:
-        set_current_now();
-        update();
+        if (set_current_now()) {
+          update();
+          status().print(stopwatch.get_current_item_string());
+        }
         break;
-      case config::NormalActions::commit_entry: {
-        db::db().commit_entrystaging();
-        UpdateManager::get().entries_have_changed();
-        time_lib::Date now_start;
-        db::db().edit_entrystaging_start(now_start);
-        update();
-      }
-        return action; // Pass the update
-      default:
+      case config::NormalActions::commit_entry: 
+        if (db::db().commit_entrystaging()) {
+          UpdateManager::get().entries_have_changed();
+          time_lib::Date now_start;
+          db::db().edit_entrystaging_start(now_start);
+          update();
+          return action; // Pass the update
+        }
+        break;
+      case config::NormalActions::subtabs:
+      case config::NormalActions::projects_screen:
+      case config::NormalActions::locations_screen:
+      case config::NormalActions::project_report_screen:
+      case config::NormalActions::weekly_report_screen:
+      case config::NormalActions::duration_display:
+      case config::NormalActions::quit:
         stopwatch.unset_border();
         return action;
+        break;
+      default: // Do nothing
+        break;
       }
     }
   }
@@ -114,19 +134,21 @@ namespace tui {
     }
   }
 
-  void StopwatchUI::set_current_now() {
+  bool StopwatchUI::set_current_now() {
     auto field_type = stopwatch.get_field_type();
     switch (field_type) {
     case EntryField::start: {
       time_lib::Date now_start;
       db::db().edit_entrystaging_start(now_start);
-    } break;
+    }
+      return true;
     case EntryField::stop: {
       time_lib::Date now_stop;
       db::db().edit_entrystaging_stop(now_stop);
-    } break;
+    }
+      return true;
     default:
-      return;
+      return false;
     }
   }
 } // namespace tui
