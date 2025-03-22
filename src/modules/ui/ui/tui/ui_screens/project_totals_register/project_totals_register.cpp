@@ -32,27 +32,48 @@ namespace tui {
 
   config::NormalActions ProjectTotalsRegister::input_loop() {
     this->set_border();
+    status().print(this->get_current_item_string());
     while (true) {
-      status().print(this->get_current_item_string());
       auto ch = this->get_input();
       auto kb = keys::BoundKeys::get().kb;
       auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
       switch(action) {
       case config::NormalActions::down:
-        this->select_down_item();
+        if(this->select_down_item() ==
+           ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(this->get_current_item_string());
+        }
         break;
       case config::NormalActions::up:
-        this->select_up_item();
+        if (this->select_up_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(this->get_current_item_string());
+        }
         break;
       case config::NormalActions::right:
-        this->select_right_item();
+        if (this->select_right_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(this->get_current_item_string());
+        }
         break;
       case config::NormalActions::left:
-        this->select_left_item();
+        if (this->select_left_item() ==
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+          status().print(this->get_current_item_string());
+        }
         break;
-      default:
+      case config::NormalActions::subtabs:
+      case config::NormalActions::entries_screen:
+      case config::NormalActions::projects_screen:
+      case config::NormalActions::locations_screen:
+      case config::NormalActions::weekly_report_screen:
+      case config::NormalActions::duration_display:
+      case config::NormalActions::quit:
         this->unset_border();
         return action;
+        break;
+      default: // Do nothing
+        break;
       }
     }
   }

@@ -32,12 +32,9 @@ namespace tui {
       case config::NormalActions::rename:
         try {
           rename_item();
-          UpdateManager::get().entries_have_changed();
           update();
         } catch (time_lib::DateParsingFailure &e) {
           status().print_wait("Failed to parse the date. Do nothing.");
-          this->clear();
-          this->refresh();
         }
         status().print(stopwatch.get_current_item_string());
         break;
