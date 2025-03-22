@@ -172,7 +172,8 @@ unbound key is inputted. Change this behavior to doing nothing.
   It also solves the problem of keeping focus when changing back and forth
   between screens.
 
-*** TODO Skip refresh when hitting an unbound key
+*** DONE Skip refresh when hitting an unbound key
+CLOSED: [2025-03-22 Sat 20:25]
 ADDED: [2025-03-16 Sun]
 The display refreshes (visible blinking) when we hit an unbound key.
 We should do nothing at all instead.
@@ -185,6 +186,7 @@ We should do nothing at all instead.
 - [2025-03-17 Mon] Removed all useless input-related refreshes
   in the project/task screen by making the menu return a status
   code for whether the selection has actually changed.
+- [2025-03-22 Sat] Removed most of the useless refreshes from all screens.
 
 *** DONE Handle resizing
 CLOSED: [2025-02-22 Sat 14:29]
@@ -245,15 +247,20 @@ Use the currently selected register day to parse a date string given as just
 + Perhaps pass a reference to the day selector to the stopwatch
   in order to do this.
 
-*** TODO Do not update the stopwatch start date when commit fails
+*** DONE Do not update the stopwatch start date when commit fails
+CLOSED: [2025-03-22 Sat 20:26]
 ADDED: [2025-03-05 Wed]
 Currently, when a stopwatch commit is rejected, the start date is updated. Do
 nothing instead.
+- [2025-03-22 Sat] Took care of it when removing useless refreshes.
 
-*** TODO Set the stopwatch start date to the previous end date on successful commit
+*** DONE Set the stopwatch start date to the previous end date on successful commit
+CLOSED: [2025-03-22 Sat 20:37]
 ADDED: [2025-03-16 Sun]
 This is useful when entering dates manually, we only have to type
 them once in the sequence.
+- [2025-03-22 Sat] After committing the stopwatch entry, we query it
+  from the DB and use the last end date as the new start date.
 
 *** TODO Avoid the global refresh when changing the duration display format.
 ADDED: [2025-03-22 Sat]

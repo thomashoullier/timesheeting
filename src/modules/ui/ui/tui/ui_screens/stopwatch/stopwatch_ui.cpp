@@ -47,8 +47,9 @@ namespace tui {
       case config::NormalActions::commit_entry: 
         if (db::db().commit_entrystaging()) {
           UpdateManager::get().entries_have_changed();
-          time_lib::Date now_start;
-          db::db().edit_entrystaging_start(now_start);
+          core::EntryStaging entry_staging = db::db().query_entrystaging();
+          auto new_start = entry_staging.stop.value();
+          db::db().edit_entrystaging_start(new_start);
           update();
           return action; // Pass the update
         }
