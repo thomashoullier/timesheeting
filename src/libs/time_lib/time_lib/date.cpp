@@ -40,7 +40,8 @@ namespace time_lib{
   }
 
   std::chrono::zoned_seconds Date::time_point_from_str
-  (const std::string &date_str) {
+  (const std::string &date_str,
+   const std::string &day_month_year_str) {
     std::stringstream ss{date_str};
     std::chrono::local_seconds local_tp;
     const std::vector<std::string> match_strings{
@@ -54,10 +55,24 @@ namespace time_lib{
       ss.str(date_str);
       ss.clear();
     }
+    if (not day_month_year_str.empty()) {
+      ss.str(day_month_year_str + " " + date_str);
+      for (const auto &match_string : match_strings) {
+        ss >> std::chrono::parse(match_string, local_tp);
+        if (ss.good()) {
+          std::chrono::zoned_seconds zoned_sec(TimeZone::get().zone, local_tp);
+          return zoned_sec;
+        }
+        ss.str(day_month_year_str + " " + date_str);
+        ss.clear();
+      }
+    }
     throw DateParsingFailure("Failed to parse the inputted date string.");
   }
 
-  Date::Date(const std::string &date_str) : tp{time_point_from_str(date_str)} {}
+  Date::Date(const std::string &date_str,
+             const std::string &day_month_year_str)
+    : tp{time_point_from_str(date_str, day_month_year_str)} {}
 
   Date::Date(FullString, const std::string &date_fullstr) {
     std::stringstream ss{date_fullstr};

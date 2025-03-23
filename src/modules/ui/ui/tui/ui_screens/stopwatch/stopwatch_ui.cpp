@@ -7,69 +7,71 @@
 #include "ui/keys/bound_keys.h"
 
 namespace tui {
-  StopwatchUI::StopwatchUI() : stopwatch(db::db().query_entrystaging()) {};
+StopwatchUI::StopwatchUI(std::shared_ptr<DaySelector> _day_selector)
+    : stopwatch(db::db().query_entrystaging()),
+      day_selector{_day_selector} {}
 
-  config::NormalActions StopwatchUI::input_loop() {
-    stopwatch.set_border();
-    status().print(stopwatch.get_current_item_string());
-    while (true) {
-      auto ch = stopwatch.get_input();
-      auto kb = keys::BoundKeys::get().kb;
-      auto action = kb.normal_mode.action_requested(ch);
-      switch(action) {
-      case config::NormalActions::left:
-        if (stopwatch.select_left_item() ==
-            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(stopwatch.get_current_item_string());
-        }
-        break;
-      case config::NormalActions::right:
-        if (stopwatch.select_right_item() ==
-            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(stopwatch.get_current_item_string());
-        }
-        break;
-      case config::NormalActions::rename:
-        try {
-          rename_item();
-          update();
-        } catch (time_lib::DateParsingFailure &e) {
-          status().print_wait("Failed to parse the date. Do nothing.");
-        }
+config::NormalActions StopwatchUI::input_loop() {
+  stopwatch.set_border();
+  status().print(stopwatch.get_current_item_string());
+  while (true) {
+    auto ch = stopwatch.get_input();
+    auto kb = keys::BoundKeys::get().kb;
+    auto action = kb.normal_mode.action_requested(ch);
+    switch (action) {
+    case config::NormalActions::left:
+      if (stopwatch.select_left_item() ==
+          ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
         status().print(stopwatch.get_current_item_string());
-        break;
-      case config::NormalActions::set_now:
-        if (set_current_now()) {
-          update();
-          status().print(stopwatch.get_current_item_string());
-        }
-        break;
-      case config::NormalActions::commit_entry: 
-        if (db::db().commit_entrystaging()) {
-          UpdateManager::get().entries_have_changed();
-          core::EntryStaging entry_staging = db::db().query_entrystaging();
-          auto new_start = entry_staging.stop.value();
-          db::db().edit_entrystaging_start(new_start);
-          update();
-          return action; // Pass the update
-        }
-        break;
-      case config::NormalActions::subtabs:
-      case config::NormalActions::next:
-      case config::NormalActions::previous:
-      case config::NormalActions::projects_screen:
-      case config::NormalActions::locations_screen:
-      case config::NormalActions::project_report_screen:
-      case config::NormalActions::weekly_report_screen:
-      case config::NormalActions::duration_display:
-      case config::NormalActions::quit:
-        stopwatch.unset_border();
-        return action;
-        break;
-      default: // Do nothing
-        break;
       }
+      break;
+    case config::NormalActions::right:
+      if (stopwatch.select_right_item() ==
+          ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
+        status().print(stopwatch.get_current_item_string());
+      }
+      break;
+    case config::NormalActions::rename:
+      try {
+        rename_item();
+        update();
+      } catch (time_lib::DateParsingFailure &e) {
+        status().print_wait("Failed to parse the date. Do nothing.");
+      }
+      status().print(stopwatch.get_current_item_string());
+      break;
+    case config::NormalActions::set_now:
+      if (set_current_now()) {
+        update();
+        status().print(stopwatch.get_current_item_string());
+      }
+      break;
+    case config::NormalActions::commit_entry:
+      if (db::db().commit_entrystaging()) {
+        UpdateManager::get().entries_have_changed();
+        core::EntryStaging entry_staging = db::db().query_entrystaging();
+        auto new_start = entry_staging.stop.value();
+        db::db().edit_entrystaging_start(new_start);
+        update();
+        return action; // Pass the update
+      }
+      break;
+    case config::NormalActions::subtabs:
+    case config::NormalActions::next:
+    case config::NormalActions::previous:
+    case config::NormalActions::projects_screen:
+    case config::NormalActions::locations_screen:
+    case config::NormalActions::project_report_screen:
+    case config::NormalActions::weekly_report_screen:
+    case config::NormalActions::duration_display:
+    case config::NormalActions::quit:
+      stopwatch.unset_border();
+      return action;
+      break;
+    default: // Do nothing
+      break;
     }
+  }
   }
 
   void StopwatchUI::refresh() { stopwatch.refresh(); }
@@ -108,15 +110,19 @@ namespace tui {
     } break;
     case EntryField::start: {
       auto new_str = status().get_user_string();
+      auto current_day_str =
+          day_selector->get_selected_day().to_day_month_year_string();
       if (!new_str.empty()) {
-        time_lib::Date new_start_date(new_str);
+        time_lib::Date new_start_date(new_str, current_day_str);
         db::db().edit_entrystaging_start(new_start_date);
       }
     } break;
     case EntryField::stop: {
       auto new_str = status().get_user_string();
+      auto current_day_str =
+          day_selector->get_selected_day().to_day_month_year_string();
       if (!new_str.empty()) {
-        time_lib::Date new_stop_date(new_str);
+        time_lib::Date new_stop_date(new_str, current_day_str);
         db::db().edit_entrystaging_stop(new_stop_date);
       }
     } break;

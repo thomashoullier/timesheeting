@@ -9,9 +9,9 @@
 
 namespace tui {
   EntriesTable::EntriesTable()
-    : day_selector(),
-      total_bar(db::db().query_entries_duration(day_selector.current_range())),
-      reg(db::db().query_entries(day_selector.current_range())) {}
+    : day_selector(std::make_shared<DaySelector>()),
+      total_bar(db::db().query_entries_duration(day_selector->current_range())),
+      reg(db::db().query_entries(day_selector->current_range())) {}
 
   config::NormalActions EntriesTable::input_loop() {
     reg.set_border();
@@ -82,34 +82,34 @@ namespace tui {
 
   void EntriesTable::refresh() {
     reg.refresh();
-    day_selector.refresh();
+    day_selector->refresh();
     total_bar.refresh();
   }
 
   void EntriesTable::clear() {
-    day_selector.clear();
+    day_selector->clear();
     reg.clear();
     total_bar.clear();
   }
 
   void EntriesTable::resize() {
-    day_selector.resize();
+    day_selector->resize();
     reg.resize();
     total_bar.resize();
   }
 
   void EntriesTable::update() {
-    auto entry_items = db::db().query_entries(day_selector.current_range());
+    auto entry_items = db::db().query_entries(day_selector->current_range());
     reg.set_items(entry_items);
     reg.refresh();
     total_bar.update(db::db().query_entries_duration
-                     (day_selector.current_range()));
+                     (day_selector->current_range()));
     total_bar.refresh();
   }
 
   void EntriesTable::select_next_day() {
-    day_selector.select_next_day();
-    auto log_dates = day_selector.current_range().to_string();
+    day_selector->select_next_day();
+    auto log_dates = day_selector->current_range().to_string();
     log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
                           log_dates.at(1),
                           log_lib::LogLevel::debug);
@@ -118,8 +118,8 @@ namespace tui {
   }
 
   void EntriesTable::select_previous_day() {
-    day_selector.select_previous_day();
-    auto log_dates = day_selector.current_range().to_string();
+    day_selector->select_previous_day();
+    auto log_dates = day_selector->current_range().to_string();
     log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
                           log_dates.at(1),
                           log_lib::LogLevel::debug);

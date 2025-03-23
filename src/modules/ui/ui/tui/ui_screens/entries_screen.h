@@ -22,10 +22,10 @@ namespace tui {
     void update() override;
 
   private:
-    /** @brief Handle to the stopwatch. */
-    std::unique_ptr<UIComponent> stopwatch_ui;
     /** @brief Handle to the table holding the entries. */
     std::unique_ptr<EntriesTable> entries_table;
+    /** @brief Handle to the stopwatch. */
+    std::unique_ptr<UIComponent> stopwatch_ui;
     /** @brief Current focus (between stopwatch and entries register). */
     UIComponent *cur_focus;
   };

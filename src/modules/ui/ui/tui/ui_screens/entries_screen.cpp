@@ -3,34 +3,37 @@
 #include "entries_table.h"
 #include "stopwatch/stopwatch_ui.h"
 #include "log_lib/logger.h"
+#include "ui/tui/ui_screens/date_selector/day_selector.h"
+#include <memory>
 
 namespace tui {
-  EntriesScreen::EntriesScreen()
-    : stopwatch_ui(std::make_unique<StopwatchUI>()),
-      entries_table(std::make_unique<EntriesTable>()),
+EntriesScreen::EntriesScreen()
+    : entries_table(std::make_unique<EntriesTable>()),
+      stopwatch_ui(std::make_unique<StopwatchUI>
+                   (entries_table->day_selector)),
       cur_focus{entries_table.get()} {}
 
-  config::NormalActions EntriesScreen::input_loop() {
-    while (true) {
-      auto action = cur_focus->input_loop();
-      switch (action) {
-      case config::NormalActions::subtabs:
-        cur_focus = (cur_focus == stopwatch_ui.get()) ? entries_table.get()
-                                                      : stopwatch_ui.get();
-        break;
-      case config::NormalActions::next:
-        entries_table->select_next_day();
-        break;
-      case config::NormalActions::previous:
-        entries_table->select_previous_day();
-        break;
-      case config::NormalActions::commit_entry:
-        entries_table->update(); // Update request is passed
-        break;
-      default:
-        return action;
-      }
+config::NormalActions EntriesScreen::input_loop() {
+  while (true) {
+    auto action = cur_focus->input_loop();
+    switch (action) {
+    case config::NormalActions::subtabs:
+      cur_focus = (cur_focus == stopwatch_ui.get()) ? entries_table.get()
+                                                    : stopwatch_ui.get();
+      break;
+    case config::NormalActions::next:
+      entries_table->select_next_day();
+      break;
+    case config::NormalActions::previous:
+      entries_table->select_previous_day();
+      break;
+    case config::NormalActions::commit_entry:
+      entries_table->update(); // Update request is passed
+      break;
+    default:
+      return action;
     }
+  }
   }
 
   void EntriesScreen::refresh() {

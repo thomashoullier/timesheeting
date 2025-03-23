@@ -84,6 +84,10 @@ ADDED: [2024-12-29 Sun]
 Use lcov or gcov and upload the report to something publicly browsable which
 gives which parts of the source are covered.
 
+*** TODO Use a dockerhub account to avoid the image pull limits
+ADDED: [2025-03-23 Sun]
+We can probably get a token and add it in the CI secrets.
+
 * Software
 ** Bugs
 *** DONE Escape and keypad cannot be used simultaneously in ncurses
@@ -239,7 +243,8 @@ and does not stay in the stopwatch.
 - [2025-03-16 Sun] Solved by making each screen remember their focus across
   input loops.
 
-*** TODO Parse hh:mm using the currently selected register day
+*** DONE Parse hh:mm using the currently selected register day
+CLOSED: [2025-03-23 Sun 11:41]
 ADDED: [2025-02-28 Fri]
 Use the currently selected register day to parse a date string given as just
 "hh", "hh:mm", "hh:mm:ss".
@@ -248,6 +253,7 @@ Use the currently selected register day to parse a date string given as just
   then add the day in, and it it still fails then fail.
 + Perhaps pass a reference to the day selector to the stopwatch
   in order to do this.
+- [2025-03-23 Sun] Implemented this. Seems to work well.
 
 *** DONE Do not update the stopwatch start date when commit fails
 CLOSED: [2025-03-22 Sat 20:26]

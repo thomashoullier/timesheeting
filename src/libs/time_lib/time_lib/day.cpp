@@ -37,4 +37,8 @@ namespace time_lib {
   std::string Day::to_string() const {
     return std::format("{:%d%b%Y %a}", ymd);
   }
+
+  std::string Day::to_day_month_year_string() const {
+    return std::format("{:%d%b%Y}", ymd);
+  }
 }

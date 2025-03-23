@@ -13,6 +13,9 @@ namespace tui {
   /** @brief Class for holding the table of entries for a given day. */
   class EntriesTable : public UIComponent {
   public:
+    /** @brief Handle to the day selector. */
+    std::shared_ptr<DaySelector> day_selector;
+
     /** @brief Constructor. */
     explicit EntriesTable();
 
@@ -25,8 +28,6 @@ namespace tui {
     void select_previous_day();
 
   private:
-    /** @brief Handle to the day selector. */
-    DaySelector day_selector;
     /** @brief Handle to the total duration display. */
     TotalBar total_bar;
     /** @brief Handle to the register of entries. */

@@ -23,4 +23,8 @@ namespace tui {
     day.previous();
     this->refresh();
   }
+
+  time_lib::Day DaySelector::get_selected_day() {
+    return day;
+  }
 }

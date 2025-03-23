@@ -6,13 +6,15 @@
 #include "../ui_component.h"
 #include "config/key.h"
 #include "stopwatch_ncurses.h"
+#include "../date_selector/day_selector.h"
+#include <memory>
 
 namespace tui {
   /** @brief High-level UI for the stopwatch. */
   class StopwatchUI : public UIComponent {
   public:
     /** @brief Constructor. */
-    explicit StopwatchUI ();
+    explicit StopwatchUI (std::shared_ptr<DaySelector> _day_selector);
 
     config::NormalActions input_loop() override;
     void refresh() override;
@@ -23,6 +25,9 @@ namespace tui {
   private:
     /** @brief Handle to the low-level stopwatch element. */
     StopwatchNcurses stopwatch;
+    /** @brief Pointer to the day selector of the register.
+        Used to get the currently selected day. */
+    std::shared_ptr<DaySelector> day_selector;
 
     /** @brief Rename a field in the entry in staging. */
     void rename_item();

@@ -26,6 +26,8 @@ namespace time_lib {
     DateRange to_date_range() const;
     /** @brief Return a string representation of the day. */
     std::string to_string() const;
+    /** @brief Return a day-month-year string representation of the day. */
+    std::string to_day_month_year_string() const;
   };
 }
 #endif // DAY_H

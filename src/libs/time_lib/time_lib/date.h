@@ -20,7 +20,9 @@ namespace time_lib{
   class Date {
   private:
     /** @brief Compute a time_point from a date string. */
-    std::chrono::zoned_seconds time_point_from_str (const std::string &date_str);
+    std::chrono::zoned_seconds time_point_from_str
+    (const std::string &date_str,
+     const std::string &day_month_year_str = "");
 
   public:
     /** @brief Internal time point representation, seconds UTC */
@@ -42,10 +44,16 @@ namespace time_lib{
     explicit Date(SecondsAgo, uint64_t seconds_ago);
     /** @brief Construct the date from a string in fixed format.
 
+        Works in two stages:
+        1. First stage:
         "%d%b%Y %H:%M:%S" is tried first, then successively smaller
         matches are tried until "%d%b%Y". Omitted information is
-        replaced with zeroes. */
-    explicit Date(const std::string &date_str);
+        replaced with zeroes.
+        2. Second stage:
+        The day_month_year is prepended to the date_str, and the same
+        sequence of matches is retried. */
+    explicit Date(const std::string &date_str,
+                  const std::string &day_month_year_str = "");
     /** @brief Tag for creating a Date from a string. */
     struct FullString final {};
     /** @brief Parse a Date from a fullstring format. */
