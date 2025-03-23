@@ -55,6 +55,8 @@ namespace tui {
         }
         break;
       case config::NormalActions::subtabs:
+      case config::NormalActions::next:
+      case config::NormalActions::previous:
       case config::NormalActions::projects_screen:
       case config::NormalActions::locations_screen:
       case config::NormalActions::project_report_screen:

@@ -4,6 +4,7 @@
 #define ENTRIES_SCREEN_H
 
 #include "config/key.h"
+#include "ui/tui/ui_screens/entries_table.h"
 #include "ui_screen.h"
 #include <memory>
 
@@ -24,7 +25,7 @@ namespace tui {
     /** @brief Handle to the stopwatch. */
     std::unique_ptr<UIComponent> stopwatch_ui;
     /** @brief Handle to the table holding the entries. */
-    std::unique_ptr<UIComponent> entries_table;
+    std::unique_ptr<EntriesTable> entries_table;
     /** @brief Current focus (between stopwatch and entries register). */
     UIComponent *cur_focus;
   };

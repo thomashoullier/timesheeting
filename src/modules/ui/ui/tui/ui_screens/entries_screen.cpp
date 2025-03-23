@@ -18,6 +18,12 @@ namespace tui {
         cur_focus = (cur_focus == stopwatch_ui.get()) ? entries_table.get()
                                                       : stopwatch_ui.get();
         break;
+      case config::NormalActions::next:
+        entries_table->select_next_day();
+        break;
+      case config::NormalActions::previous:
+        entries_table->select_previous_day();
+        break;
       case config::NormalActions::commit_entry:
         entries_table->update(); // Update request is passed
         break;

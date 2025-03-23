@@ -62,28 +62,9 @@ namespace tui {
         }
         status().print(reg.get_current_item_string());
         break;
-      case config::NormalActions::next:
-        {
-        day_selector.select_next_day();
-        auto log_dates = day_selector.current_range().to_string();
-        log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
-                              log_dates.at(1),
-                              log_lib::LogLevel::debug);
-        update();
-        day_selector.refresh();
-        status().print(reg.get_current_item_string());
-      } break;
-      case config::NormalActions::previous: {
-        day_selector.select_previous_day();
-        auto log_dates = day_selector.current_range().to_string();
-        log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
-                                  log_dates.at(1),
-                              log_lib::LogLevel::debug);
-        update();
-        day_selector.refresh();
-        status().print(reg.get_current_item_string());
-      } break;
       case config::NormalActions::subtabs:
+      case config::NormalActions::next:
+      case config::NormalActions::previous:
       case config::NormalActions::projects_screen:
       case config::NormalActions::locations_screen:
       case config::NormalActions::project_report_screen:
@@ -124,6 +105,26 @@ namespace tui {
     total_bar.update(db::db().query_entries_duration
                      (day_selector.current_range()));
     total_bar.refresh();
+  }
+
+  void EntriesTable::select_next_day() {
+    day_selector.select_next_day();
+    auto log_dates = day_selector.current_range().to_string();
+    log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
+                          log_dates.at(1),
+                          log_lib::LogLevel::debug);
+    update();
+    status().print(reg.get_current_item_string());
+  }
+
+  void EntriesTable::select_previous_day() {
+    day_selector.select_previous_day();
+    auto log_dates = day_selector.current_range().to_string();
+    log_lib::logger().log("Selected day range: " + log_dates.at(0) + " ; " +
+                          log_dates.at(1),
+                          log_lib::LogLevel::debug);
+    update();
+    status().print(reg.get_current_item_string());
   }
 
   void EntriesTable::rename_item() {
