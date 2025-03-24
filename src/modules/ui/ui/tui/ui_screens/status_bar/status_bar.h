@@ -28,7 +28,12 @@ namespace tui {
     std::string get_user_string_suggestions
     (const std::vector<std::string> &suggestions);
 
+    /** @brief Resize the status bar. Leave the edit mode if we were in it. */
+    void resize();
+
   private:
+    /** @brief Controls the switch between normal and edit mode. */
+    bool user_wants_to_input = false;
     /** @brief Constructor. */
     explicit StatusBarNCurses();
     /** @brief Sanitize the strings inputted by the users. */

@@ -1,5 +1,6 @@
 #include "status_bar.h"
 #include "config/key.h"
+#include "ncurses_lib/win_ncurses.h"
 #include "suggestion/suggestion.h"
 #include <algorithm>
 #include "ui/keys/bound_keys.h"
@@ -41,9 +42,13 @@ namespace tui {
     std::string input_buffer{};
     this->prepare_input();
     this->set_cursor_visibility(true);
-    bool user_wants_to_input = true;
+    user_wants_to_input = true;
     while (user_wants_to_input) {
       auto ch = this->get_input();
+      if (ch == ncurses_lib::screen_resize_event) {
+        input_buffer.clear();
+        break;
+      }
       auto kb = keys::BoundKeys::get().kb;
       auto action = kb.edit_mode.action_requested(ch);
       switch(action) {
@@ -76,10 +81,14 @@ namespace tui {
     std::string input_buffer{};
     this->prepare_input();
     this->set_cursor_visibility(true);
-    bool user_wants_to_input = true;
+    user_wants_to_input = true;
     std::string best_match {};
     while (user_wants_to_input) {
       auto ch = this->get_input();
+      if (ch == ncurses_lib::screen_resize_event) {
+        input_buffer.clear();
+        break;
+      }
       auto kb = keys::BoundKeys::get().kb;
       auto action = kb.edit_mode.action_requested(ch);
       switch(action) {
@@ -114,6 +123,12 @@ namespace tui {
     }
     this->set_cursor_visibility(false);
     return sanitize_input(input_buffer);
+  }
+
+  void StatusBarNCurses::resize() {
+    ncurses_lib::WinNCurses::resize();
+    this->set_cursor_visibility(false);
+    user_wants_to_input = false;
   }
 
   std::string StatusBarNCurses::sanitize_input(const std::string &input) const {

@@ -114,6 +114,19 @@ This happens only when we shift the selection in the menu.
 - [2025-03-15 Sat] Fixed it by cropping the print string in the window's print
   method to the size of the column.
 
+*** TODO Input buffer + suggestion on status bar writes past the screen
+ADDED: [2025-03-23 Sun]
+If we input a very long string in the status bar input buffer,
+the eventual suggestion added at the end will be written past the screen,
+which makes the display glitch out.
+
+*** TODO Status bar empties when resizing in normal mode
+ADDED: [2025-03-23 Sun]
+Currently, in the normal mode of any screen, the status bar
+empties completely when we resize the window. It only returns to
+normal after one input loop. Fix it so the status bar stays displayed
+through resizing.
+
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]
@@ -227,6 +240,11 @@ ADDED: [2025-02-21 Fri]
 I don't think we account for this case.
 - The display currently glitches out when resizing in edit mode. It goes back
   to normal when exiting.
+- The resize characters get added to the input buffer, which is wrong.
+- When the input buffer is larger than the window, what do we do?
+  The sane thing to do would be to exit the edit mode when resizing
+  happens in fact.
+- [2025-03-24 Mon] Fixed the issue by quitting edit mode when resizing.
 
 *** DONE Display archived items in italics
 CLOSED: [2025-02-22 Sat 16:12]
