@@ -24,14 +24,16 @@ namespace ncurses_lib {
   }
 
   void BarNCurses::print_after_cursor(const std::string &msg) {
-    wclrtoeol(win); // Clear after the current content.
-    wattron(win, A_STANDOUT);
     int y, x;
     getyx(win, y, x);
-    wmove(win, y, x + 2);
-    wprintw(win, "%s", msg.c_str());
-    wattroff(win, A_STANDOUT);
-    wmove(win, y, x); // Reset cursor position.
+    wclrtoeol(win); // Clear after the current content.
+    if (x + 2 + msg.length() < max_size()) { // Print only if there is room.
+      wattron(win, A_STANDOUT);
+      wmove(win, y, x + 2);
+      wprintw(win, "%s", msg.c_str());
+      wattroff(win, A_STANDOUT);
+      wmove(win, y, x); // Reset cursor position.
+    }
   }
 
   void BarNCurses::set_cursor_visibility(bool visible) {
