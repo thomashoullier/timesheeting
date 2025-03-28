@@ -127,6 +127,30 @@ empties completely when we resize the window. It only returns to
 normal after one input loop. Fix it so the status bar stays displayed
 through resizing.
 
+*** DONE Switching menu while trying to conserve scrolling is wrong
+CLOSED: [2025-03-28 Fri 19:18]
+ADDED: [2025-03-27 Thu]
+We observe a bug when in a long menu: scroll to the bottom and then
+switch to another page with much fewer items. The scolling will not
+reset and the menu will not be displayed correctly.
+We observed the bug on the entries screen and on the weekly report screen.
++ One solution may be to reset the scrolling and cursor position when
+  changing page. Or add a mechanism in the menu itself when changing the
+  elements (although we need to keep the cursor where it is when renaming/
+  adding/deleting). Maybe check if the cursor is on screen, and if not
+  then scroll so that it is.
++ Bug was also found on the project report screen, when switching from
+  a scrolled menu to the bottom to a very short menu, nothing is displayed
+  and we cannot scroll back up.
++ The same problem may exist when displaying/hiding archived items
+  in project/tasks and locations.
++ The problem might exist in the entries/task screen. We should reset
+  the scrolling and cursor whenever we display the tasks for a new project.
+- [2025-03-28 Fri] We added a check and correction of the scrolling position in the
+  set_items() method of the MenuNCurses.
+  We checked the behavior was fixed on the entries screen, the project report
+  screen, and the weekly report screen.
+
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]
@@ -235,7 +259,8 @@ display format is changed. This is annoying because sometimes we would like
 to see the duration for the currently selected item in multiple formats.
 - [2025-02-22 Sat] Solved by the custom menu implementation.
 
-*** TODO What happens if we resize the terminal while in edit mode?
+*** DONE What happens if we resize the terminal while in edit mode?
+CLOSED: [2025-03-24 Mon 20:39]
 ADDED: [2025-02-21 Fri]
 I don't think we account for this case.
 - The display currently glitches out when resizing in edit mode. It goes back

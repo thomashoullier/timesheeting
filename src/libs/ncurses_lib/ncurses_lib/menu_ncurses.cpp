@@ -235,9 +235,10 @@ namespace ncurses_lib {
   (const std::shared_ptr<std::vector<MenuItem>>  _items) {
     items = _items;
     // Reset the selected_index if it got out of bounds
-    if (n_items() > 0 && selected_index >= n_items()) {
+    if (n_items() > 0 && selected_index >= n_items())
       selected_index = n_items() - 1;
-    }
+    if (scroll_position > max_scroll_position())
+      scroll_position = max_scroll_position();
     refresh();
   }
 
