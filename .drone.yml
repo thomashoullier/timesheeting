@@ -105,6 +105,9 @@ steps:
   depends_on:
   - latex_environment
 
+image_pull_secrets:
+- dockerconfig
+
 volumes:
 - name: dockersock
   host:
