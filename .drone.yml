@@ -14,7 +14,7 @@ steps:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
   - docker build -t gentoo_environment .
 
 - name: build
@@ -39,7 +39,7 @@ steps:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
   - docker build -t test_environment test/.
   depends_on:
   - build_gentoo_environment
@@ -66,11 +66,16 @@ steps:
 
 - name: latex_environment
   image: docker
+  environment:
+    DOCKER_USER:
+      from_secret: DOCKER_USER
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
   volumes:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - echo $DOCKER_TOKEN | docker login --username thomashoullier --password-stdin
+  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
   - docker build -t latex_environment doc/.
 
 - name: PRJ1-SPE1
