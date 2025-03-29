@@ -12,5 +12,6 @@ var searchData=
   ['insert_5fproject_9',['insert_project',['../classdb_1_1StatementSet.html#a3595328b0631cc21531c63065e7f7c63',1,'db::StatementSet']]],
   ['insert_5ftask_10',['insert_task',['../classdb_1_1StatementSet.html#a557065a793c1ef521d17efb4a52ec69d',1,'db::StatementSet']]],
   ['items_11',['items',['../classncurses__lib_1_1MenuNCurses.html#a876da4e2aa410b3cc3fa7cbd90b4c114',1,'ncurses_lib::MenuNCurses']]],
-  ['items_5fto_5fmenu_12',['items_to_menu',['../classtui_1_1Column.html#ae13141813eef8487de5e75f057742e7b',1,'tui::Column::items_to_menu()'],['../classtui_1_1ProjectTotalsRegister.html#a82b5746475f1dac97a690543737b62ce',1,'tui::ProjectTotalsRegister::items_to_menu()'],['../classtui_1_1RegisterNcurses.html#ae8195fd894aa25c462f841c8b97971c5',1,'tui::RegisterNcurses::items_to_menu()']]]
+  ['items_5fto_5fmenu_12',['items_to_menu',['../classtui_1_1Column.html#ae13141813eef8487de5e75f057742e7b',1,'tui::Column::items_to_menu()'],['../classtui_1_1ProjectTotalsRegister.html#a82b5746475f1dac97a690543737b62ce',1,'tui::ProjectTotalsRegister::items_to_menu()'],['../classtui_1_1RegisterNcurses.html#ae8195fd894aa25c462f841c8b97971c5',1,'tui::RegisterNcurses::items_to_menu()']]],
+  ['itemselectionstatus_13',['ItemSelectionStatus',['../classncurses__lib_1_1MenuNCurses.html#a04e55ce617f2772ca08cb511ab2bad9b',1,'ncurses_lib::MenuNCurses']]]
 ];

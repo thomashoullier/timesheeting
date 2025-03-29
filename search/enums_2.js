@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_0',['LogLevel',['../namespacelog__lib.html#a55f94eb205e099f8b0764eb5858851d1',1,'log_lib']]]
+  ['itemselectionstatus_0',['ItemSelectionStatus',['../classncurses__lib_1_1MenuNCurses.html#a04e55ce617f2772ca08cb511ab2bad9b',1,'ncurses_lib::MenuNCurses']]]
 ];

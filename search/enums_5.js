@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stringface_0',['StringFace',['../win__ncurses_8h.html#a3bcf640404b1ab391bd78fac916401c6',1,'ncurses_lib']]]
+  ['periodfield_0',['PeriodField',['../classtui_1_1PeriodSelectorNCurses.html#a7ba2b677a164220c3b17948355950a51',1,'tui::PeriodSelectorNCurses']]]
 ];

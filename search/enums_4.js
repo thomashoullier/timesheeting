@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['periodfield_0',['PeriodField',['../classtui_1_1PeriodSelectorNCurses.html#a7ba2b677a164220c3b17948355950a51',1,'tui::PeriodSelectorNCurses']]]
+  ['normalactions_0',['NormalActions',['../key_8h.html#a1299184736a390fc642d1576625ffbe2',1,'config']]]
 ];

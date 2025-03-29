@@ -20,7 +20,7 @@ var searchData=
   ['entries_5fhave_5fchanged_17',['entries_have_changed',['../classtui_1_1UpdateManager.html#ae2e17e1b56e001d1b7ace60d00760c05',1,'tui::UpdateManager']]],
   ['entries_5fscreen_18',['entries_screen',['../classtui_1_1UI.html#af50cd89a9c05a8e4b5b07fdfcd0eec46',1,'tui::UI::entries_screen'],['../classtui_1_1UpdateManager.html#ae03e248adbbff3bca1d97018436def5a',1,'tui::UpdateManager::entries_screen']]],
   ['entries_5fscreen_2eh_19',['entries_screen.h',['../entries__screen_8h.html',1,'']]],
-  ['entries_5ftable_20',['entries_table',['../classtui_1_1EntriesScreen.html#a93675a1ab0b97cd7314ed3d94f17fc0a',1,'tui::EntriesScreen']]],
+  ['entries_5ftable_20',['entries_table',['../classtui_1_1EntriesScreen.html#a767a479599250e1ce89268d2d5b69e33',1,'tui::EntriesScreen']]],
   ['entries_5ftable_2eh_21',['entries_table.h',['../entries__table_8h.html',1,'']]],
   ['entriesscreen_22',['EntriesScreen',['../classtui_1_1EntriesScreen.html',1,'tui::EntriesScreen'],['../classtui_1_1EntriesScreen.html#aead0b3f61262cafe242038fd3b23e45a',1,'tui::EntriesScreen::EntriesScreen()']]],
   ['entriestable_23',['EntriesTable',['../classtui_1_1EntriesTable.html',1,'tui::EntriesTable'],['../classtui_1_1EntriesTable.html#a242833451ef5b1915f184f7c8f4db191',1,'tui::EntriesTable::EntriesTable()']]],

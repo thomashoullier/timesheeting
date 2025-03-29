@@ -89,6 +89,7 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -116,6 +117,14 @@ Inheritance diagram for ncurses_lib::MenuNCurses:</div>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a04e55ce617f2772ca08cb511ab2bad9b" id="r_a04e55ce617f2772ca08cb511ab2bad9b"><td class="memItemLeft" align="right" valign="top"><a id="a04e55ce617f2772ca08cb511ab2bad9b" name="a04e55ce617f2772ca08cb511ab2bad9b"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04e55ce617f2772ca08cb511ab2bad9b">ItemSelectionStatus</a> { <b>same</b>
+, <b>changed</b>
+ }</td></tr>
+<tr class="memdesc:a04e55ce617f2772ca08cb511ab2bad9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return value for item selection: whether the selected item has actually changed or not. <br /></td></tr>
+<tr class="separator:a04e55ce617f2772ca08cb511ab2bad9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a742137ef2659618e124beeaad1a50e1b" id="r_a742137ef2659618e124beeaad1a50e1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a742137ef2659618e124beeaad1a50e1b">MenuNCurses</a> (const std::shared_ptr&lt; std::vector&lt; <a class="el" href="structncurses__lib_1_1MenuItem.html">MenuItem</a> &gt; &gt; _items, <a class="el" href="win__ncurses_8h.html#a900d1780d5a7d91867abfa0522e1998b">WindowPosition</a> _winpos, <a class="el" href="win__ncurses_8h.html#ad68630c8e97136a75245903ffef1bf2c">WindowFormat</a> _winformat, std::vector&lt; int &gt; _target_column_widths)</td></tr>
@@ -125,22 +134,22 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> () const</td></tr>
 <tr class="memdesc:a57047730c432743bd00b89f6ec3dd9c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all items to screen. <br /></td></tr>
 <tr class="separator:a57047730c432743bd00b89f6ec3dd9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a898d7dccb37ac3f58c345cc18cce8552" id="r_a898d7dccb37ac3f58c345cc18cce8552"><td class="memItemLeft" align="right" valign="top"><a id="a898d7dccb37ac3f58c345cc18cce8552" name="a898d7dccb37ac3f58c345cc18cce8552"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_down_item</b> ()</td></tr>
-<tr class="memdesc:a898d7dccb37ac3f58c345cc18cce8552"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item down of the current one. <br /></td></tr>
-<tr class="separator:a898d7dccb37ac3f58c345cc18cce8552"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84f1ec3af5392082dbc72badd1ea2932" id="r_a84f1ec3af5392082dbc72badd1ea2932"><td class="memItemLeft" align="right" valign="top"><a id="a84f1ec3af5392082dbc72badd1ea2932" name="a84f1ec3af5392082dbc72badd1ea2932"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_up_item</b> ()</td></tr>
-<tr class="memdesc:a84f1ec3af5392082dbc72badd1ea2932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item up of the current one. <br /></td></tr>
-<tr class="separator:a84f1ec3af5392082dbc72badd1ea2932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cd62bc657239819062047b66521eeb5" id="r_a2cd62bc657239819062047b66521eeb5"><td class="memItemLeft" align="right" valign="top"><a id="a2cd62bc657239819062047b66521eeb5" name="a2cd62bc657239819062047b66521eeb5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_right_item</b> ()</td></tr>
-<tr class="memdesc:a2cd62bc657239819062047b66521eeb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item right of the current one. <br /></td></tr>
-<tr class="separator:a2cd62bc657239819062047b66521eeb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0404fe67b1e04c3c075f68cf539e7f00" id="r_a0404fe67b1e04c3c075f68cf539e7f00"><td class="memItemLeft" align="right" valign="top"><a id="a0404fe67b1e04c3c075f68cf539e7f00" name="a0404fe67b1e04c3c075f68cf539e7f00"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>select_left_item</b> ()</td></tr>
-<tr class="memdesc:a0404fe67b1e04c3c075f68cf539e7f00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item left of the current one. <br /></td></tr>
-<tr class="separator:a0404fe67b1e04c3c075f68cf539e7f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a6308802c2603ddce52a4de84ed2e44" id="r_a7a6308802c2603ddce52a4de84ed2e44"><td class="memItemLeft" align="right" valign="top"><a id="a7a6308802c2603ddce52a4de84ed2e44" name="a7a6308802c2603ddce52a4de84ed2e44"></a>
+<a class="el" href="#a04e55ce617f2772ca08cb511ab2bad9b">ItemSelectionStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>select_down_item</b> ()</td></tr>
+<tr class="memdesc:a7a6308802c2603ddce52a4de84ed2e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item down of the current one. <br /></td></tr>
+<tr class="separator:a7a6308802c2603ddce52a4de84ed2e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f0b11b3ac63acd34551b644d183ab3" id="r_af2f0b11b3ac63acd34551b644d183ab3"><td class="memItemLeft" align="right" valign="top"><a id="af2f0b11b3ac63acd34551b644d183ab3" name="af2f0b11b3ac63acd34551b644d183ab3"></a>
+<a class="el" href="#a04e55ce617f2772ca08cb511ab2bad9b">ItemSelectionStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>select_up_item</b> ()</td></tr>
+<tr class="memdesc:af2f0b11b3ac63acd34551b644d183ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item up of the current one. <br /></td></tr>
+<tr class="separator:af2f0b11b3ac63acd34551b644d183ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a416dadfe8604b43ed654d57bdc7236e8" id="r_a416dadfe8604b43ed654d57bdc7236e8"><td class="memItemLeft" align="right" valign="top"><a id="a416dadfe8604b43ed654d57bdc7236e8" name="a416dadfe8604b43ed654d57bdc7236e8"></a>
+<a class="el" href="#a04e55ce617f2772ca08cb511ab2bad9b">ItemSelectionStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>select_right_item</b> ()</td></tr>
+<tr class="memdesc:a416dadfe8604b43ed654d57bdc7236e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item right of the current one. <br /></td></tr>
+<tr class="separator:a416dadfe8604b43ed654d57bdc7236e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8942b4060e8fd590f589f6ddd0cdbf14" id="r_a8942b4060e8fd590f589f6ddd0cdbf14"><td class="memItemLeft" align="right" valign="top"><a id="a8942b4060e8fd590f589f6ddd0cdbf14" name="a8942b4060e8fd590f589f6ddd0cdbf14"></a>
+<a class="el" href="#a04e55ce617f2772ca08cb511ab2bad9b">ItemSelectionStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>select_left_item</b> ()</td></tr>
+<tr class="memdesc:a8942b4060e8fd590f589f6ddd0cdbf14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item left of the current one. <br /></td></tr>
+<tr class="separator:a8942b4060e8fd590f589f6ddd0cdbf14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e02a6c2fab4a476a15fc11e41770781" id="r_a2e02a6c2fab4a476a15fc11e41770781"><td class="memItemLeft" align="right" valign="top"><a id="a2e02a6c2fab4a476a15fc11e41770781" name="a2e02a6c2fab4a476a15fc11e41770781"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_current_item_string</b> () const</td></tr>
 <tr class="memdesc:a2e02a6c2fab4a476a15fc11e41770781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the full display string for the current item. <br /></td></tr>

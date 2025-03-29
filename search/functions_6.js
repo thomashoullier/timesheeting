@@ -16,8 +16,9 @@ var searchData=
   ['get_5fnew_5ftempdir_13',['get_new_tempdir',['../classlog__lib_1_1TempDir.html#a35e382c9b4057e7dcea3e017b599cd41',1,'log_lib::TempDir']]],
   ['get_5fnode_14',['get_node',['../classconfig__lib_1_1TomlLoader.html#ac6ba412eca8cbff688150261398e42e5',1,'config_lib::TomlLoader']]],
   ['get_5frow_5findex_15',['get_row_index',['../classncurses__lib_1_1MenuNCurses.html#a68b9e33a592feb877f981000b7545e29',1,'ncurses_lib::MenuNCurses']]],
-  ['get_5ftimestamp_16',['get_timestamp',['../classlog__lib_1_1Logger.html#af04ada8c3f7e0c38ec1f49b7fae35d99',1,'log_lib::Logger']]],
-  ['get_5fuser_5fstring_17',['get_user_string',['../classtui_1_1StatusBarNCurses.html#a8c4a138d1b8ac49669509bdfd643d2a4',1,'tui::StatusBarNCurses']]],
-  ['get_5fuser_5fstring_5fsuggestions_18',['get_user_string_suggestions',['../classtui_1_1StatusBarNCurses.html#af5987a462e4d13d2bb977c232aa0fd3c',1,'tui::StatusBarNCurses']]],
-  ['get_5fuser_5fversion_19',['get_user_version',['../classdb__lib_1_1DB__SQLite__Handle.html#ad96cd29aaeebd6b3ce81ed345141141a',1,'db_lib::DB_SQLite_Handle']]]
+  ['get_5fselected_5fday_16',['get_selected_day',['../classtui_1_1DaySelector.html#a1cc4e80e11e0e35068b85e5915e360d2',1,'tui::DaySelector']]],
+  ['get_5ftimestamp_17',['get_timestamp',['../classlog__lib_1_1Logger.html#af04ada8c3f7e0c38ec1f49b7fae35d99',1,'log_lib::Logger']]],
+  ['get_5fuser_5fstring_18',['get_user_string',['../classtui_1_1StatusBarNCurses.html#a8c4a138d1b8ac49669509bdfd643d2a4',1,'tui::StatusBarNCurses']]],
+  ['get_5fuser_5fstring_5fsuggestions_19',['get_user_string_suggestions',['../classtui_1_1StatusBarNCurses.html#af5987a462e4d13d2bb977c232aa0fd3c',1,'tui::StatusBarNCurses']]],
+  ['get_5fuser_5fversion_20',['get_user_version',['../classdb__lib_1_1DB__SQLite__Handle.html#ad96cd29aaeebd6b3ce81ed345141141a',1,'db_lib::DB_SQLite_Handle']]]
 ];

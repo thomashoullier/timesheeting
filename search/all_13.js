@@ -27,5 +27,6 @@ var searchData=
   ['update_5ftask_5fname_24',['update_task_name',['../classdb_1_1StatementSet.html#a432a0e77699197ebeea98ce389c37f83',1,'db::StatementSet']]],
   ['update_5ftask_5fproject_25',['update_task_project',['../classdb_1_1StatementSet.html#aa42db5438dcc67240cc43592debd6b12',1,'db::StatementSet']]],
   ['updatemanager_26',['UpdateManager',['../classtui_1_1UpdateManager.html',1,'tui::UpdateManager'],['../classtui_1_1UpdateManager.html#a82bc1fcb55f0c01b41db7547799367b5',1,'tui::UpdateManager::UpdateManager()']]],
-  ['userconfig_27',['UserConfig',['../structconfig_1_1UserConfig.html',1,'config']]]
+  ['user_5fwants_5fto_5finput_27',['user_wants_to_input',['../classtui_1_1StatusBarNCurses.html#a599f00edcc9ebc17570eb2762416dc58',1,'tui::StatusBarNCurses']]],
+  ['userconfig_28',['UserConfig',['../structconfig_1_1UserConfig.html',1,'config']]]
 ];

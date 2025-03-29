@@ -13,5 +13,6 @@ var searchData=
   ['update_5flocation_5fname_10',['update_location_name',['../classdb_1_1StatementSet.html#a4524eceb4824e7d3e4084356db09c491',1,'db::StatementSet']]],
   ['update_5fproject_5fname_11',['update_project_name',['../classdb_1_1StatementSet.html#a489756dc41f03653308514ffd52fa5f2',1,'db::StatementSet']]],
   ['update_5ftask_5fname_12',['update_task_name',['../classdb_1_1StatementSet.html#a432a0e77699197ebeea98ce389c37f83',1,'db::StatementSet']]],
-  ['update_5ftask_5fproject_13',['update_task_project',['../classdb_1_1StatementSet.html#aa42db5438dcc67240cc43592debd6b12',1,'db::StatementSet']]]
+  ['update_5ftask_5fproject_13',['update_task_project',['../classdb_1_1StatementSet.html#aa42db5438dcc67240cc43592debd6b12',1,'db::StatementSet']]],
+  ['user_5fwants_5fto_5finput_14',['user_wants_to_input',['../classtui_1_1StatusBarNCurses.html#a599f00edcc9ebc17570eb2762416dc58',1,'tui::StatusBarNCurses']]]
 ];
