@@ -5,11 +5,16 @@ name: default
 steps:
 - name: build_gentoo_environment
   image: docker
+  environment:
+    DOCKER_USER:
+      from_secret: DOCKER_USER
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
   volumes:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - echo $DOCKER_TOKEN | docker login --username thomashoullier --password-stdin
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker build -t gentoo_environment .
 
 - name: build
@@ -25,11 +30,16 @@ steps:
 
 - name: test_environment
   image: docker
+  environment:
+    DOCKER_USER:
+      from_secret: DOCKER_USER
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
   volumes:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - echo $DOCKER_TOKEN | docker login --username thomashoullier --password-stdin
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker build -t test_environment test/.
   depends_on:
   - build_gentoo_environment
