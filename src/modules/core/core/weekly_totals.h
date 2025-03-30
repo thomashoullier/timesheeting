@@ -43,6 +43,14 @@ namespace core {
     std::vector<PerProjectTotals> project_totals;
 
     std::shared_ptr<std::vector<ncurses_lib::MenuItem>> to_menu_items() const;
+
+  private:
+    /** @brief Convert a duration to a menu item in Normal face. */
+    static ncurses_lib::MenuItem
+    duration_to_menu_item(const time_lib::Duration &dur);
+    /** @brief Convert a duration to a menu item in Bold face. */
+    static ncurses_lib::MenuItem
+    duration_to_bold_menu_item(const time_lib::Duration &dur);
   };
 }
 #endif // WEEKLY_TOTALS_H

@@ -109,7 +109,7 @@ namespace ncurses_lib {
 
   public:
     /** @brief Exception constructor. */
-    MenuEmpty (const char* _msg) : msg(_msg) {};
+    explicit MenuEmpty (const char* _msg) : msg(_msg) {};
     /** @brief Mandatory std::exception method. */
     const char* what() const throw() { return msg.c_str(); };
   };

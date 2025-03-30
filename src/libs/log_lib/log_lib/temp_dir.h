@@ -13,7 +13,7 @@ namespace log_lib {
     /** @brief Path to the created directory*/
     std::filesystem::path dirpath;
     /** @brief Return a TempDir named with the given prefix. */
-    TempDir(const std::string &prefix);
+    explicit TempDir(const std::string &prefix);
     /** @brief Auto-delete the directory. */
     ~TempDir();
 

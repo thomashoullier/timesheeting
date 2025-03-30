@@ -13,9 +13,9 @@ namespace log_lib {
   std::filesystem::path TempDir::get_new_tempdir(const std::string &prefix) {
     auto parent = std::filesystem::temp_directory_path();
     std::string dirname = prefix + random_string(6);
-    std::filesystem::path dirpath = parent / dirname;
-    create_user_directory(dirpath);
-    return dirpath;
+    std::filesystem::path tempdir = parent / dirname;
+    create_user_directory(tempdir);
+    return tempdir;
   }
 
   std::string TempDir::random_string(std::size_t length) {

@@ -14,7 +14,7 @@ namespace config_lib {
     /** @brief Initialize the configuration loading.
 
      The tilde in config_file_path is automatically expanded. */
-    TomlLoader(const std::filesystem::path &config_file_path);
+    explicit TomlLoader(const std::filesystem::path &config_file_path);
 
     /** @brief Parse a string from the configuration at a particular location
         in the tree. */

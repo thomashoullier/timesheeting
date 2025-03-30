@@ -57,7 +57,7 @@ namespace db_lib {
 
   public:
     /** @brief Exception constructor. */
-    SQLiteConstraintExcept (const char* _msg) : msg(_msg) {}
+    explicit SQLiteConstraintExcept (const char* _msg) : msg(_msg) {}
     /** @brief Mandatory std::exception method. */
     const char* what() const throw() {
       return msg.c_str();
