@@ -37,9 +37,13 @@ namespace tui {
     update_location_col();
   }
 
+  void LocationsScreen::update_status() {
+    status().print(location_col->get_current_item_string());
+  }
+
   config::NormalActions LocationsScreen::input_loop() {
     location_col->set_border();
-    status().print(location_col->get_current_item_string());
+    update_status();
     while (true) {
       auto ch = location_col->get_input();
       auto kb = keys::BoundKeys::get().kb;
@@ -48,13 +52,13 @@ namespace tui {
       case config::NormalActions::down:
         if (location_col->select_down_item() ==
             ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(location_col->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::up:
         if (location_col->select_up_item() ==
             ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(location_col->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::add:
@@ -62,7 +66,7 @@ namespace tui {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
-          status().print(location_col->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::rename:
@@ -70,20 +74,20 @@ namespace tui {
           status().print_wait("DB logic error! Nothing was done to the DB.");
         } else {
           UpdateManager::get().locations_have_changed();
-          status().print(location_col->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::remove:
         remove_item();
-        status().print(location_col->get_current_item_string());
+        update_status();
         break;
       case config::NormalActions::active_toggle:
         toggle_active_item();
-        status().print(location_col->get_current_item_string());
+        update_status();
         break;
       case config::NormalActions::active_visibility:
         toggle_archive_visibility();
-        status().print(location_col->get_current_item_string());
+        update_status();
         break;
       case config::NormalActions::projects_screen:
       case config::NormalActions::entries_screen:

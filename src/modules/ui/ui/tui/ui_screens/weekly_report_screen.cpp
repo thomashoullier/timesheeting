@@ -57,4 +57,6 @@ namespace tui {
     needs_update = false;
     this->refresh();
   }
+
+  void WeeklyReportScreen::update_status() { reg.update_status(); }
 } // namespace tui

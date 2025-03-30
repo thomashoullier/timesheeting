@@ -19,6 +19,7 @@ namespace tui {
     void clear () override;
     void resize () override;
     void update () override;
+    void update_status() override;
     config::NormalActions input_loop () override;
 
   private:

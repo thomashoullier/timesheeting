@@ -64,5 +64,6 @@ namespace tui {
     weekly_report_screen->signal_resize_need();
     status().resize();
     current_focus->refresh();
+    current_focus->update_status();
   }
 } // namespace tui

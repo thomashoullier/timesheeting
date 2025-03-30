@@ -13,7 +13,7 @@ StopwatchUI::StopwatchUI(std::shared_ptr<DaySelector> _day_selector)
 
 config::NormalActions StopwatchUI::input_loop() {
   stopwatch.set_border();
-  status().print(stopwatch.get_current_item_string());
+  update_status();
   while (true) {
     auto ch = stopwatch.get_input();
     auto kb = keys::BoundKeys::get().kb;
@@ -22,13 +22,13 @@ config::NormalActions StopwatchUI::input_loop() {
     case config::NormalActions::left:
       if (stopwatch.select_left_item() ==
           ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-        status().print(stopwatch.get_current_item_string());
+        update_status();
       }
       break;
     case config::NormalActions::right:
       if (stopwatch.select_right_item() ==
           ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-        status().print(stopwatch.get_current_item_string());
+        update_status();
       }
       break;
     case config::NormalActions::rename:
@@ -38,12 +38,12 @@ config::NormalActions StopwatchUI::input_loop() {
       } catch (time_lib::DateParsingFailure &e) {
         status().print_wait("Failed to parse the date. Do nothing.");
       }
-      status().print(stopwatch.get_current_item_string());
+      update_status();
       break;
     case config::NormalActions::set_now:
       if (set_current_now()) {
         update();
-        status().print(stopwatch.get_current_item_string());
+        update_status();
       }
       break;
     case config::NormalActions::commit_entry:
@@ -72,18 +72,20 @@ config::NormalActions StopwatchUI::input_loop() {
       break;
     }
   }
-  }
+}
 
-  void StopwatchUI::refresh() { stopwatch.refresh(); }
-  void StopwatchUI::clear() { stopwatch.clear(); }
-  void StopwatchUI::resize() {
-    stopwatch.resize();
-  }
-  void StopwatchUI::update() {
-    core::EntryStaging entry_staging = db::db().query_entrystaging();
-    stopwatch.set_items(entry_staging);
-    stopwatch.refresh();
-  }
+void StopwatchUI::refresh() { stopwatch.refresh(); }
+void StopwatchUI::clear() { stopwatch.clear(); }
+void StopwatchUI::resize() { stopwatch.resize(); }
+void StopwatchUI::update() {
+  core::EntryStaging entry_staging = db::db().query_entrystaging();
+  stopwatch.set_items(entry_staging);
+  stopwatch.refresh();
+}
+
+void StopwatchUI::update_status() {
+  status().print(stopwatch.get_current_item_string());
+}
 
   void StopwatchUI::rename_item() {
     auto field_type = stopwatch.get_field_type();

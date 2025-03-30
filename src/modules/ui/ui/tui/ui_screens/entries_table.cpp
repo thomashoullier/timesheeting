@@ -15,7 +15,7 @@ namespace tui {
 
   config::NormalActions EntriesTable::input_loop() {
     reg.set_border();
-    status().print(reg.get_current_item_string());
+    update_status();
     while (true) {
       auto ch = reg.get_input();
       auto kb = keys::BoundKeys::get().kb;
@@ -23,31 +23,27 @@ namespace tui {
       switch (action) {
       case config::NormalActions::down:
         if (reg.select_down_item() ==
-            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(reg.get_current_item_string());
-        }
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed)
+          update_status();
         break;
       case config::NormalActions::up:
         if (reg.select_up_item() ==
-            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(reg.get_current_item_string());
-        }
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed)
+          update_status();
         break;
       case config::NormalActions::right:
         if (reg.select_right_item() ==
-            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(reg.get_current_item_string());
-        }
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed)
+          update_status();
         break;
       case config::NormalActions::left:
         if (reg.select_left_item() ==
-            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(reg.get_current_item_string());
-        }
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed)
+          update_status();
         break;
       case config::NormalActions::remove:
         remove_item();
-        status().print(reg.get_current_item_string());
+        update_status();
         UpdateManager::get().entries_have_changed();
         break;
       case config::NormalActions::rename:
@@ -60,7 +56,7 @@ namespace tui {
           this->clear();
           this->refresh();
         }
-        status().print(reg.get_current_item_string());
+        update_status();
         break;
       case config::NormalActions::subtabs:
       case config::NormalActions::next:
@@ -102,9 +98,13 @@ namespace tui {
     auto entry_items = db::db().query_entries(day_selector->current_range());
     reg.set_items(entry_items);
     reg.refresh();
-    total_bar.update(db::db().query_entries_duration
-                     (day_selector->current_range()));
+    total_bar.update(
+        db::db().query_entries_duration(day_selector->current_range()));
     total_bar.refresh();
+  }
+
+  void EntriesTable::update_status() {
+    status().print(reg.get_current_item_string());
   }
 
   void EntriesTable::select_next_day() {

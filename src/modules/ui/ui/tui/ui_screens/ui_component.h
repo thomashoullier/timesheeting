@@ -20,6 +20,8 @@ namespace tui {
     /** @brief Update the state of the component
         to reflect the latest program state. */
     virtual void update () = 0;
+    /** @brief Update the status bar with respect to current selection. */
+    virtual void update_status() = 0;
   };
 } // namespace tui
 

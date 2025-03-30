@@ -72,6 +72,7 @@ namespace tui {
     log_lib::logger().log("SIGWINCH caught: " + sig_str,
                           log_lib::LogLevel::debug);
     // TODO: create an abstraction for this. Maybe on the NcursesHandle.
+    erase();
     endwin();
     refresh();
     UpdateManager::get().terminal_was_resized();

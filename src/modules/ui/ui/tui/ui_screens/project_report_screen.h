@@ -21,6 +21,7 @@ namespace tui {
     void clear() override;
     void resize() override;
     void update() override;
+    void update_status() override;
 
   private:
     /** @brief Selector for the date range to consider. */

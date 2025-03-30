@@ -24,6 +24,7 @@ namespace tui {
     void clear() override;
     void resize() override;
     void update() override;
+    void update_status() override;
     void select_next_day();
     void select_previous_day();
 

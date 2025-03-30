@@ -64,5 +64,12 @@ config::NormalActions EntriesScreen::input_loop() {
     stopwatch_ui->update();
     entries_table->update();
     needs_update = false;
-  };
+  }
+
+  void EntriesScreen::update_status() {
+    if (cur_focus == entries_table.get())
+      entries_table->update_status();
+    else
+      stopwatch_ui->update_status();
+  }
 } // namespace tui

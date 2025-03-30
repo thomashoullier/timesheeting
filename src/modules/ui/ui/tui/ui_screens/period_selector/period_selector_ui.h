@@ -19,6 +19,7 @@ namespace tui {
     void clear() override;
     void resize() override;
     void update() override;
+    void update_status() override;
 
     /** @brief Read the currently inputted DateRange from the UI. */
     time_lib::DateRange get_current_date_range();

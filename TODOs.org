@@ -84,9 +84,11 @@ ADDED: [2024-12-29 Sun]
 Use lcov or gcov and upload the report to something publicly browsable which
 gives which parts of the source are covered.
 
-*** TODO Use a dockerhub account to avoid the image pull limits
+*** DONE Use a dockerhub account to avoid the image pull limits
+CLOSED: [2025-03-29 Sat 18:12]
 ADDED: [2025-03-23 Sun]
 We can probably get a token and add it in the CI secrets.
+- [2025-03-29 Sat] OK we have a docker username and token in the CI.
 
 *** TODO Add static code analysis to the CI
 ADDED: [2025-03-28 Fri]
@@ -127,12 +129,15 @@ which makes the display glitch out.
 - [2025-03-28 Fri] Added a condition on the print_after_cursor method of
   BarNCurses. We only print the message if it will fit in the bar.
 
-*** TODO Status bar empties when resizing in normal mode
+*** DONE Status bar empties when resizing in normal mode
+CLOSED: [2025-03-30 Sun 14:03]
 ADDED: [2025-03-23 Sun]
 Currently, in the normal mode of any screen, the status bar
 empties completely when we resize the window. It only returns to
 normal after one input loop. Fix it so the status bar stays displayed
 through resizing.
+- [2025-03-30 Sun] Added an update_status() method to UIComponent, it updates what is
+  displayed on the status bar. It is called when resizing on the current screen.
 
 *** DONE Switching menu while trying to conserve scrolling is wrong
 CLOSED: [2025-03-28 Fri 19:18]

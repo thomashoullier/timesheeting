@@ -20,6 +20,7 @@ namespace tui {
     void resize () override;
     config::NormalActions input_loop() override;
     void update() override;
+    void update_status() override;
 
   private:
     /** @brief Column for projects. */

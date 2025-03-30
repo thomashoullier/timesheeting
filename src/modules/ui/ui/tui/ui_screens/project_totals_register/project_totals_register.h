@@ -24,6 +24,7 @@ namespace tui {
     void clear() override;
     void resize() override;
     void update() override;
+    void update_status() override;
 
   private:
     /** @brief Get the menu items from the provided set of items. */

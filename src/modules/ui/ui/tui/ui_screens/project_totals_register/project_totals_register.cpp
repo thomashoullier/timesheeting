@@ -32,7 +32,7 @@ namespace tui {
 
   config::NormalActions ProjectTotalsRegister::input_loop() {
     this->set_border();
-    status().print(this->get_current_item_string());
+    update_status();
     while (true) {
       auto ch = this->get_input();
       auto kb = keys::BoundKeys::get().kb;
@@ -41,25 +41,25 @@ namespace tui {
       case config::NormalActions::down:
         if(this->select_down_item() ==
            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(this->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::up:
         if (this->select_up_item() ==
             ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(this->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::right:
         if (this->select_right_item() ==
             ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(this->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::left:
         if (this->select_left_item() ==
             ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(this->get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::subtabs:
@@ -82,4 +82,8 @@ namespace tui {
   void ProjectTotalsRegister::clear() { MenuNCurses::clear(); }
   void ProjectTotalsRegister::resize() { MenuNCurses::resize(); }
   void ProjectTotalsRegister::update() { this->refresh(); }
+
+  void ProjectTotalsRegister::update_status() {
+    status().print(this->get_current_item_string());
+  }
 } // namespace tui

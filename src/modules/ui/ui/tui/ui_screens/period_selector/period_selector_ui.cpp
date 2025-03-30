@@ -14,7 +14,7 @@ namespace tui {
 
   config::NormalActions PeriodSelectorUI::input_loop() {
     period_selector.set_border();
-    status().print(period_selector.get_current_item_string());
+    update_status();
     while (true) {
       auto ch = period_selector.get_input();
       auto kb = keys::BoundKeys::get().kb;
@@ -22,25 +22,23 @@ namespace tui {
       switch(action) {
       case config::NormalActions::left:
         if(period_selector.select_left_item() ==
-           ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(period_selector.get_current_item_string());
-        }
+           ncurses_lib::MenuNCurses::ItemSelectionStatus::changed)
+          update_status();
         break;
       case config::NormalActions::right:
         if (period_selector.select_right_item() ==
-            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed) {
-          status().print(period_selector.get_current_item_string());
-        }
+            ncurses_lib::MenuNCurses::ItemSelectionStatus::changed)
+          update_status();
         break;
       case config::NormalActions::rename:
         try {
           rename_item();
           update();
-          status().print(period_selector.get_current_item_string());
+          update_status();
           return action;
         } catch (time_lib::DateParsingFailure &e) {
           status().print_wait("Failed to parse the date. Do nothing.");
-          status().print(period_selector.get_current_item_string());
+          update_status();
         }
         break;
       case config::NormalActions::subtabs:
@@ -63,6 +61,10 @@ namespace tui {
   void PeriodSelectorUI::clear() { period_selector.clear(); }
   void PeriodSelectorUI::resize() { period_selector.resize(); }
   void PeriodSelectorUI::update() { this->refresh(); }
+
+  void PeriodSelectorUI::update_status() {
+    status().print(period_selector.get_current_item_string());
+  }
 
   time_lib::DateRange PeriodSelectorUI::get_current_date_range() {
     return period_selector.get_current_date_range();

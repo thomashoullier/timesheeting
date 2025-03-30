@@ -20,6 +20,7 @@ public:
   void clear() override;
   void resize() override;
   void update() override;
+  void update_status() override;
 
 private:
   /** @brief Handle to the date range selector. */

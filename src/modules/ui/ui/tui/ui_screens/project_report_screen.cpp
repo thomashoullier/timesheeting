@@ -69,4 +69,11 @@ namespace tui {
     reg.update();
     needs_update = false;
   }
+
+  void ProjectReportScreen::update_status() {
+    if (cur_focus == &period_selector_ui)
+      period_selector_ui.update_status();
+    else
+      reg.update_status();
+  }
 } // namespace tui
