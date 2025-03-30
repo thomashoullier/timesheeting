@@ -7,7 +7,7 @@
 #include <filesystem>
 #include <string>
 #include <vector>
-#include "sqlite3.h"
+#include <sqlite3.h>
 
 namespace db_lib {
   /** @brief Type for integers in the DB. */

@@ -62,13 +62,8 @@ namespace db_lib {
 
   template <class... T>
   void Statement::bind_all(const T &...values) {
-    // TODO: Use an index_sequence for compile time index, and uniform way
-    //       of doing things.
-    int index = 0;
-    ([&] {
-      bind(index, values);
-      ++index;
-    }(), ...);
+    int index = -1;
+    (bind(++index, values), ...);
   };
 
   template <class... T>
