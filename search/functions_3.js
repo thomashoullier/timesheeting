@@ -16,5 +16,7 @@ var searchData=
   ['draw_5fborder_13',['draw_border',['../classncurses__lib_1_1WinNCurses.html#a5b47ea068fe586741bbfd0a499b848b3',1,'ncurses_lib::WinNCurses']]],
   ['duration_14',['Duration',['../classtime__lib_1_1Duration.html#a536414dec1ebbc6ff2ed642eb6ed3984',1,'time_lib::Duration::Duration()'],['../classtime__lib_1_1Duration.html#afdf1b4cf7f40d2fea36820c26a91465e',1,'time_lib::Duration::Duration(uint64_t seconds)']]],
   ['duration_5fdisplay_5fchanged_15',['duration_display_changed',['../classtui_1_1UpdateManager.html#a8b8b6477e7f0d176295db014a9cc995e',1,'tui::UpdateManager']]],
-  ['durationdisplayer_16',['DurationDisplayer',['../classtime__lib_1_1DurationDisplayer.html#a5eac654bd047789319502503cfa12da9',1,'time_lib::DurationDisplayer']]]
+  ['duration_5fto_5fbold_5fmenu_5fitem_16',['duration_to_bold_menu_item',['../structcore_1_1WeeklyTotals.html#a5028c8f3b01c7d69f30e1a6099e216d8',1,'core::WeeklyTotals']]],
+  ['duration_5fto_5fmenu_5fitem_17',['duration_to_menu_item',['../structcore_1_1WeeklyTotals.html#a2ebbdcadcf31a614e4e8423a0cf30ebd',1,'core::WeeklyTotals']]],
+  ['durationdisplayer_18',['DurationDisplayer',['../classtime__lib_1_1DurationDisplayer.html#a5eac654bd047789319502503cfa12da9',1,'time_lib::DurationDisplayer']]]
 ];

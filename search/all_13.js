@@ -23,10 +23,11 @@ var searchData=
   ['update_5fmanager_2eh_20',['update_manager.h',['../update__manager_8h.html',1,'']]],
   ['update_5fproject_5fcol_21',['update_project_col',['../classtui_1_1ProjectTaskScreen.html#a4b5ccffb9c84fe22574e086ff8642eb9',1,'tui::ProjectTaskScreen']]],
   ['update_5fproject_5fname_22',['update_project_name',['../classdb_1_1StatementSet.html#a489756dc41f03653308514ffd52fa5f2',1,'db::StatementSet']]],
-  ['update_5ftask_5fcol_23',['update_task_col',['../classtui_1_1ProjectTaskScreen.html#a4c88073104de07527783aef1225787d0',1,'tui::ProjectTaskScreen']]],
-  ['update_5ftask_5fname_24',['update_task_name',['../classdb_1_1StatementSet.html#a432a0e77699197ebeea98ce389c37f83',1,'db::StatementSet']]],
-  ['update_5ftask_5fproject_25',['update_task_project',['../classdb_1_1StatementSet.html#aa42db5438dcc67240cc43592debd6b12',1,'db::StatementSet']]],
-  ['updatemanager_26',['UpdateManager',['../classtui_1_1UpdateManager.html',1,'tui::UpdateManager'],['../classtui_1_1UpdateManager.html#a82bc1fcb55f0c01b41db7547799367b5',1,'tui::UpdateManager::UpdateManager()']]],
-  ['user_5fwants_5fto_5finput_27',['user_wants_to_input',['../classtui_1_1StatusBarNCurses.html#a599f00edcc9ebc17570eb2762416dc58',1,'tui::StatusBarNCurses']]],
-  ['userconfig_28',['UserConfig',['../structconfig_1_1UserConfig.html',1,'config']]]
+  ['update_5fstatus_23',['update_status',['../classtui_1_1EntriesScreen.html#a91b125f9dfabcb6cc56a4aabc68c2672',1,'tui::EntriesScreen::update_status()'],['../classtui_1_1EntriesTable.html#a96c0a195ca36fccc4eaec0c68a6ac726',1,'tui::EntriesTable::update_status()'],['../classtui_1_1LocationsScreen.html#a58e871839c81247c36fa9ba8b18d9c56',1,'tui::LocationsScreen::update_status()'],['../classtui_1_1PeriodSelectorUI.html#a7ecf2a3635a67ceff34c72642613001c',1,'tui::PeriodSelectorUI::update_status()'],['../classtui_1_1ProjectReportScreen.html#a26cd36781ea0f3ea3c31d669e95e5463',1,'tui::ProjectReportScreen::update_status()'],['../classtui_1_1ProjectTaskScreen.html#a6ea3f48d8a814a4977e331285d303e90',1,'tui::ProjectTaskScreen::update_status()'],['../classtui_1_1ProjectTotalsRegister.html#a100e9d00c39919aef1583f1c03c9ec12',1,'tui::ProjectTotalsRegister::update_status()'],['../classtui_1_1StopwatchUI.html#a9ad155b60f36a615450fdf9fcc9a5e89',1,'tui::StopwatchUI::update_status()'],['../classtui_1_1UIComponent.html#a4f332db07e7c2fd46bea26395efc3f04',1,'tui::UIComponent::update_status()'],['../classtui_1_1WeeklyReportRegister.html#a369625223d9493660be62465babbe8fd',1,'tui::WeeklyReportRegister::update_status()'],['../classtui_1_1WeeklyReportScreen.html#a14ee61383e1c1de4a777176b361856b9',1,'tui::WeeklyReportScreen::update_status()']]],
+  ['update_5ftask_5fcol_24',['update_task_col',['../classtui_1_1ProjectTaskScreen.html#a4c88073104de07527783aef1225787d0',1,'tui::ProjectTaskScreen']]],
+  ['update_5ftask_5fname_25',['update_task_name',['../classdb_1_1StatementSet.html#a432a0e77699197ebeea98ce389c37f83',1,'db::StatementSet']]],
+  ['update_5ftask_5fproject_26',['update_task_project',['../classdb_1_1StatementSet.html#aa42db5438dcc67240cc43592debd6b12',1,'db::StatementSet']]],
+  ['updatemanager_27',['UpdateManager',['../classtui_1_1UpdateManager.html',1,'tui::UpdateManager'],['../classtui_1_1UpdateManager.html#a82bc1fcb55f0c01b41db7547799367b5',1,'tui::UpdateManager::UpdateManager()']]],
+  ['user_5fwants_5fto_5finput_28',['user_wants_to_input',['../classtui_1_1StatusBarNCurses.html#a599f00edcc9ebc17570eb2762416dc58',1,'tui::StatusBarNCurses']]],
+  ['userconfig_29',['UserConfig',['../structconfig_1_1UserConfig.html',1,'config']]]
 ];

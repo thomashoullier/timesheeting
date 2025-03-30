@@ -38,6 +38,8 @@ var searchData=
   ['duration_5fdisplayer_2eh_35',['duration_displayer.h',['../duration__displayer_8h.html',1,'']]],
   ['duration_5fper_5fworked_5fproject_36',['duration_per_worked_project',['../classdb_1_1StatementSet.html#a69cdcfd8c0459e12d979e34247fbd310',1,'db::StatementSet']]],
   ['duration_5fper_5fworked_5ftask_37',['duration_per_worked_task',['../classdb_1_1StatementSet.html#a6a97d7c5a75a4304bb291ea2aeeb3c99',1,'db::StatementSet']]],
-  ['durationdisplayer_38',['DurationDisplayer',['../classtime__lib_1_1DurationDisplayer.html',1,'time_lib::DurationDisplayer'],['../classtime__lib_1_1DurationDisplayer.html#a5eac654bd047789319502503cfa12da9',1,'time_lib::DurationDisplayer::DurationDisplayer(float hours_per_day)']]],
-  ['durationformat_39',['DurationFormat',['../classtime__lib_1_1DurationDisplayer.html#a0e4b4177f8155f0d28c7ad1ab7946ad1',1,'time_lib::DurationDisplayer']]]
+  ['duration_5fto_5fbold_5fmenu_5fitem_38',['duration_to_bold_menu_item',['../structcore_1_1WeeklyTotals.html#a5028c8f3b01c7d69f30e1a6099e216d8',1,'core::WeeklyTotals']]],
+  ['duration_5fto_5fmenu_5fitem_39',['duration_to_menu_item',['../structcore_1_1WeeklyTotals.html#a2ebbdcadcf31a614e4e8423a0cf30ebd',1,'core::WeeklyTotals']]],
+  ['durationdisplayer_40',['DurationDisplayer',['../classtime__lib_1_1DurationDisplayer.html',1,'time_lib::DurationDisplayer'],['../classtime__lib_1_1DurationDisplayer.html#a5eac654bd047789319502503cfa12da9',1,'time_lib::DurationDisplayer::DurationDisplayer(float hours_per_day)']]],
+  ['durationformat_41',['DurationFormat',['../classtime__lib_1_1DurationDisplayer.html#a0e4b4177f8155f0d28c7ad1ab7946ad1',1,'time_lib::DurationDisplayer']]]
 ];
