@@ -13,7 +13,7 @@ namespace tui {
     display_string = time_lib::DurationDisplayer::get().to_string(_duration);
   }
 
-  void TotalBar::refresh() const {
+  void TotalBar::refresh() {
     BarNCurses::print_right(display_string);
   }
 } // namespace tui

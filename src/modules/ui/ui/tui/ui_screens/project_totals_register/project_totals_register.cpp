@@ -81,7 +81,7 @@ namespace tui {
   void ProjectTotalsRegister::refresh() { MenuNCurses::refresh(); }
   void ProjectTotalsRegister::clear() { MenuNCurses::clear(); }
   void ProjectTotalsRegister::resize() { MenuNCurses::resize(); }
-  void ProjectTotalsRegister::update() { this->refresh(); }
+  void ProjectTotalsRegister::update() { ProjectTotalsRegister::refresh(); }
 
   void ProjectTotalsRegister::update_status() {
     status().print(this->get_current_item_string());

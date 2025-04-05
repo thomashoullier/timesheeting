@@ -15,7 +15,7 @@ namespace tui {
     /** @brief Table constructor. */
     explicit ProjectTaskScreen();
 
-    void refresh () override;
+    void refresh () final;
     void clear () override;
     void resize () override;
     config::NormalActions input_loop() override;

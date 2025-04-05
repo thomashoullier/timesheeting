@@ -84,7 +84,7 @@ namespace ncurses_lib {
                          WindowPosition _winpos, WindowFormat _winformat,
                          std::vector<int> _target_column_widths);
     /**@brief Print all items to screen. */
-    void refresh() const;
+    void refresh() override;
     /** @brief Select the item down of the current one. */
     ItemSelectionStatus select_down_item();
     /** @brief Select the item up of the current one. */

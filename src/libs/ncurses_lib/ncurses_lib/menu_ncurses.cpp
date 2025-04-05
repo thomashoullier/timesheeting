@@ -94,8 +94,8 @@ namespace ncurses_lib {
     return std::max(0, val);
   }
 
-  void MenuNCurses::refresh() const {
-    clear();
+  void MenuNCurses::refresh() {
+    WinNCurses::clear();
     auto i_item = n_item_columns() * scroll_position;
     auto start_item = i_item;
     int icol = (i_item - start_item) % n_item_columns();
@@ -120,12 +120,12 @@ namespace ncurses_lib {
 
   void MenuNCurses::scroll_down() {
     ++scroll_position;
-    refresh();
+    MenuNCurses::refresh();
   }
 
   void MenuNCurses::scroll_up() {
     --scroll_position;
-    refresh();
+    MenuNCurses::refresh();
   }
 
   int MenuNCurses::get_item_index() const { return selected_index; }
@@ -239,7 +239,7 @@ namespace ncurses_lib {
       selected_index = n_items() - 1;
     if (scroll_position > max_scroll_position())
       scroll_position = max_scroll_position();
-    refresh();
+    MenuNCurses::refresh();
   }
 
   void MenuNCurses::resize() {
@@ -249,6 +249,6 @@ namespace ncurses_lib {
       scroll_position = selected_index / n_item_columns();
     if (scroll_position > max_scroll_position())
       scroll_position = max_scroll_position();
-    refresh();
+    MenuNCurses::refresh();
   }
 } // namespace ncurses_lib

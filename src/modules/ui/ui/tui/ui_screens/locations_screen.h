@@ -15,7 +15,7 @@ namespace tui {
     /** @brief Constructor. */
     explicit LocationsScreen();
 
-    void refresh () override;
+    void refresh () final;
     void clear () override;
     void resize () override;
     void update () override;

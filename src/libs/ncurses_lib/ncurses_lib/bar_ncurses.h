@@ -14,9 +14,9 @@ namespace ncurses_lib {
     /** @brief Construct a bar at the given position. */
     explicit BarNCurses(WindowPosition winpos, WindowFormat winformat);
     /** @brief Print a string in the bar. */
-    void print(const std::string &msg) const;
+    void print(const std::string &msg);
     /** @brief Print a string to the right of the bar. */
-    void print_right(const std::string &msg) const;
+    void print_right(const std::string &msg);
     /** @brief Print after the cursor in a different style. */
     void print_after_cursor(const std::string &msg);
 

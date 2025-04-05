@@ -7,20 +7,20 @@ namespace ncurses_lib {
   BarNCurses::BarNCurses(WindowPosition winpos, WindowFormat winformat)
     : WinNCurses(winpos, filter_window_format(winformat)) {}
 
-  void BarNCurses::print(const std::string &msg) const {
-    this->clear();
+  void BarNCurses::print(const std::string &msg) {
+    clear();
     wmove(win, 0, 0);
     wprintw(win, "%s", msg.c_str());
-    this->refresh();
+    BarNCurses::refresh();
   }
 
-  void BarNCurses::print_right(const std::string &msg) const {
-    this->clear();
+  void BarNCurses::print_right(const std::string &msg) {
+    clear();
     int str_len = msg.length();
     int max_x = getmaxx(win);
     wmove(win, 0, max_x - str_len);
     wprintw(win, "%s", msg.c_str());
-    this->refresh();
+    BarNCurses::refresh();
   }
 
   void BarNCurses::print_after_cursor(const std::string &msg) {

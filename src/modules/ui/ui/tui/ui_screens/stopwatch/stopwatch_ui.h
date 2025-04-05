@@ -17,7 +17,7 @@ namespace tui {
     explicit StopwatchUI (std::shared_ptr<DaySelector> _day_selector);
 
     config::NormalActions input_loop() override;
-    void refresh() override;
+    void refresh() final;
     void clear() override;
     void resize() override;
     void update() override;

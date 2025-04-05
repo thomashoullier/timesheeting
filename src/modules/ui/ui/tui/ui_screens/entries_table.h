@@ -20,7 +20,7 @@ namespace tui {
     explicit EntriesTable();
 
     config::NormalActions input_loop() override;
-    void refresh() override;
+    void refresh() final;
     void clear() override;
     void resize() override;
     void update() override;

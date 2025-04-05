@@ -15,12 +15,12 @@ namespace tui {
 
   void WeekSelector::select_next_week() {
     week.next();
-    this->refresh();
+    WeekSelector::refresh();
   }
 
   void WeekSelector::select_previous_week() {
     week.previous();
-    this->refresh();
+    WeekSelector::refresh();
   }
 
   void WeekSelector::refresh() { BarNCurses::print(week.to_string()); }

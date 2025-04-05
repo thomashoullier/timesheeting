@@ -19,7 +19,7 @@ namespace tui {
     /** @brief Replace the totals currently displayed. */
     void set_items(const core::WeeklyTotals &totals);
     config::NormalActions input_loop() override;
-    void refresh() override;
+    void refresh() final;
     void clear() override;
     void resize() override;
     void update() override;

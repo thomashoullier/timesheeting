@@ -26,7 +26,7 @@ namespace tui {
     /** @brief Select the previous week. */
     void select_previous_week();
     /** @brief Update the display. */
-    void refresh();
+    void refresh() final;
   };
 } // namespace tui
 

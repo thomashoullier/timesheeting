@@ -68,7 +68,7 @@ namespace tui {
   void WeeklyReportRegister::refresh() { MenuNCurses::refresh(); }
   void WeeklyReportRegister::clear() { MenuNCurses::clear(); }
   void WeeklyReportRegister::resize() { MenuNCurses::resize(); }
-  void WeeklyReportRegister::update() { this->refresh(); }
+  void WeeklyReportRegister::update() { WeeklyReportRegister::refresh(); }
 
   void WeeklyReportRegister::update_status() {
     status().print(this->get_current_item_string());

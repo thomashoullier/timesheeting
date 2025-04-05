@@ -25,7 +25,7 @@ namespace tui {
     /** @brief Update the duration. */
     void update(const time_lib::Duration &_duration);
     /** @brief Refresh the display. */
-    void refresh() const;
+    void refresh() final;
 
   };
 } // namespace tui

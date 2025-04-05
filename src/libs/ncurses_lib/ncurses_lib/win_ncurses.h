@@ -30,12 +30,12 @@ namespace ncurses_lib {
     /** @brief Construct the window with given position and format. */
     explicit WinNCurses(WindowPosition _winpos, WindowFormat _winformat);
     /** @brief Destructor. */
-    ~WinNCurses();
+    virtual ~WinNCurses();
 
     /** @brief Get a character inputted by the user in the current window. */
     int get_input();
     /** @brief Refresh the display. */
-    void refresh() const;
+    virtual void refresh();
     /** @brief Clear the display. */
     void clear() const;
 

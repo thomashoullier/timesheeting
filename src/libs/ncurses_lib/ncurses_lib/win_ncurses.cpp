@@ -18,7 +18,7 @@ int WinNCurses::get_input() {
   return ch;
 }
 
-void WinNCurses::refresh() const {
+void WinNCurses::refresh() {
   if (border_on)
     draw_border();
   wrefresh(win);
@@ -26,7 +26,7 @@ void WinNCurses::refresh() const {
 
 void WinNCurses::clear() const {
   werase(win);
-  this->refresh();
+  wrefresh(win);
 }
 
 int WinNCurses::n_lines() const { return getmaxy(win) - 1; }
@@ -180,13 +180,13 @@ void WinNCurses::print_at(const std::string &str, int line, int col_offset,
   void WinNCurses::set_border() {
     border_on = true;
     draw_border();
-    refresh();
+    wrefresh(win);
   }
 
   void WinNCurses::unset_border() {
     border_on = false;
     draw_border();
-    refresh();
+    wrefresh(win);
   }
 
 } // namespace ncurses_lib

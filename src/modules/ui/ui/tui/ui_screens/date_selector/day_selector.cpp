@@ -16,12 +16,12 @@ namespace tui {
 
   void DaySelector::select_next_day() {
     day.next();
-    this->refresh();
+    DaySelector::refresh();
   }
 
   void DaySelector::select_previous_day() {
     day.previous();
-    this->refresh();
+    DaySelector::refresh();
   }
 
   time_lib::Day DaySelector::get_selected_day() {
