@@ -32,11 +32,6 @@ namespace db_lib {
     sqlite3_stmt *prepare_statement(const std::string &statement);
     /** @brief Execute a SQL statement in the DB. */
     void exec_statement(const std::string &statement);
-    /** @brief Step a prepare SQL statement. */
-    void step_statement(sqlite3_stmt *stmt);
-    /** @brief Return the result of a statement querying a list of rows with
-        (rowid, string), in order. */
-    NameRows query_row_of_names(const std::string &statement);
 
   private:
     /** @brief Internal pointer to the DB. */

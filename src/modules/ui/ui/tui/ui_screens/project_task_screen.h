@@ -37,7 +37,7 @@ namespace tui {
     /** @brief Update the project column. */
     void update_project_col();
     /** @brief Add an item (project or task). */
-    bool add_item (ColumnBase *cur_col);
+    bool add_item (const ColumnBase *cur_col);
     /** @brief Rename an item. */
     bool rename_item(ColumnBase *cur_col);
     /** @brief Change a task's project. */

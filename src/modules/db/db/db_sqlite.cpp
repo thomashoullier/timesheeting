@@ -441,10 +441,10 @@ namespace db {
                               date_range.stop.to_unix_timestamp());
     while(stmt_per_project.step()) {
       core::ProjectTotal project_total;
-      auto [project_id, project_name, seconds] =
+      auto [project_id, project_name, project_seconds] =
           stmt_per_project.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
       project_total.project_name = project_name;
-      project_total.total = time_lib::Duration(seconds);
+      project_total.total = time_lib::Duration(project_seconds);
       // Per-task loop
       auto &stmt_per_task = statements.duration_per_worked_task;
       stmt_per_task.bind_all(project_id,
@@ -452,10 +452,10 @@ namespace db {
                              date_range.stop.to_unix_timestamp());
       while (stmt_per_task.step()) {
         core::TaskTotal task_total;
-        auto [task_id, task_name, seconds] =
+        auto [task_id, task_name, task_seconds] =
           stmt_per_task.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
         task_total.task_name = task_name;
-        task_total.total = time_lib::Duration(seconds);
+        task_total.total = time_lib::Duration(task_seconds);
         project_total.task_totals.push_back(task_total);
       }
       project_totals.push_back(project_total);
@@ -505,10 +505,10 @@ namespace db {
                               week.to_date_range().stop.to_unix_timestamp());
     while(stmt_per_project.step()) {
       core::PerProjectTotals per_project_totals;
-      auto [project_id, project_name, seconds] =
+      auto [project_id, project_name, project_seconds] =
         stmt_per_project.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
       per_project_totals.project_name = project_name;
-      per_project_totals.total = time_lib::Duration(seconds);
+      per_project_totals.total = time_lib::Duration(project_seconds);
       // Daily totals for the current project (by project_id)
       i = 0;
       for (const auto &day : week.days()) {
@@ -522,10 +522,10 @@ namespace db {
                              week.to_date_range().stop.to_unix_timestamp());
       while (stmt_per_task.step()) {
         core::PerTaskTotals per_task_totals;
-        auto [task_id, task_name, seconds] =
+        auto [task_id, task_name, task_seconds] =
           stmt_per_task.get_all<db_lib::RowId, std::string, db_lib::DBInt>();
         per_task_totals.task_name = task_name;
-        per_task_totals.total = time_lib::Duration(seconds);
+        per_task_totals.total = time_lib::Duration(task_seconds);
         // Daily totals for the current task.
         i = 0;
         for (const auto &day : week.days()) {

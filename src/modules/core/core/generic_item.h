@@ -3,6 +3,8 @@
 #ifndef GENERIC_ITEM_H
 #define GENERIC_ITEM_H
 
+#include <algorithm>
+#include <iterator>
 #include <string>
 #include <type_traits>
 #include <vector>
@@ -33,9 +35,9 @@ namespace core {
   generic_item_names(const std::vector<T> &items) {
     std::vector<std::string> names;
     names.reserve(items.size());
-    for (const auto &it : items) {
-      names.push_back(it.name);
-    }
+    std::transform(items.begin(), items.end(),
+                   std::back_inserter(names),
+                   [](const auto &it) { return it.name; });
     return names;
   };
 }

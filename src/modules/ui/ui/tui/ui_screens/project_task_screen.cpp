@@ -48,7 +48,6 @@ namespace tui {
     update_status();
     while (true) {
       auto ch = cur_col->get_input();
-      auto kb = keys::BoundKeys::get().kb;
       auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
       switch(action) {
       case config::NormalActions::down:
@@ -156,7 +155,7 @@ namespace tui {
         task_items = db::db().query_tasks(cur_project);
       task_col->set_items(task_items);
       task_col->refresh();
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       return;
     }
   }
@@ -171,7 +170,7 @@ namespace tui {
     project_col->refresh();
   }
 
-  bool ProjectTaskScreen::add_item(ColumnBase *cur_col) {
+  bool ProjectTaskScreen::add_item(const ColumnBase *cur_col) {
     // TODO: rewrite, this got ugly.
     auto new_item_name = status().get_user_string();
     if (new_item_name.empty())
@@ -190,7 +189,7 @@ namespace tui {
                               log_lib::LogLevel::info);
         update_task_col();
         return success;
-      } catch (ncurses_lib::MenuEmpty &e) {
+      } catch (const ncurses_lib::MenuEmpty &e) {
         return true;
       }
     }
@@ -213,7 +212,7 @@ namespace tui {
         }
       }
       return true;
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       return true;
     }
   }
@@ -232,7 +231,7 @@ namespace tui {
         return success;
       }
       return true;
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       return true;
     }
   }
@@ -252,7 +251,7 @@ namespace tui {
         update_project_col();
         update_task_col();
       }
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       return;
     }
   }
@@ -268,7 +267,7 @@ namespace tui {
         update_project_col();
         update_task_col();
       }
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       return;
     }
   }

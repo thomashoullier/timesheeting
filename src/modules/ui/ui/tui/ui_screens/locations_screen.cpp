@@ -46,7 +46,6 @@ namespace tui {
     update_status();
     while (true) {
       auto ch = location_col->get_input();
-      auto kb = keys::BoundKeys::get().kb;
       auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
       switch (action) {
       case config::NormalActions::down:
@@ -133,7 +132,7 @@ namespace tui {
       auto success = db::db().edit_location_name(id, new_item_name);
       update_location_col();
       return success;
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       // TODO: instead of managing this by exception, try to check if the column
       // is empty explicitely.
       return true;
@@ -148,7 +147,7 @@ namespace tui {
         return;
       db::db().delete_location(id);
       update_location_col();
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       return;
     }
   }
@@ -158,7 +157,7 @@ namespace tui {
       auto id = location_col->get_current_id();
       db::db().toggle_location_active(id);
       update_location_col();
-    } catch (ncurses_lib::MenuEmpty &e) {
+    } catch (const ncurses_lib::MenuEmpty &e) {
       return;
     }
   }

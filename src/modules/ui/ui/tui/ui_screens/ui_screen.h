@@ -15,7 +15,7 @@ namespace tui {
     bool needs_resize = false;
 
   public:
-    virtual ~UIScreen () = default;
+    virtual ~UIScreen () override = default;
 
     /** @brief Signal to the screen that it needs an update since state
         has changed elsewhere. */

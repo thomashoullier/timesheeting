@@ -17,7 +17,6 @@ namespace tui {
     update_status();
     while (true) {
       auto ch = period_selector.get_input();
-      auto kb = keys::BoundKeys::get().kb;
       auto action = keys::BoundKeys::get().kb.normal_mode.action_requested(ch);
       switch(action) {
       case config::NormalActions::left:

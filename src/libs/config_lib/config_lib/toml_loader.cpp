@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <limits>
+#include <numeric>
 #include <stdexcept>
 
 namespace config_lib {
@@ -67,18 +68,17 @@ namespace config_lib {
     return strings;
   }
 
-  bool TomlLoader::node_exists (const std::vector<std::string> &tree_pos) {
-    auto node = get_node(tree_pos);
-    return node.is_value();
-  }
-
   toml::node_view<toml::node> TomlLoader::get_node
   (const std::vector<std::string> &tree_pos) {
     if (tree_pos.empty())
       throw std::runtime_error("toml_loader::get_node: No nodes specified.");
     toml::node_view<toml::node> node {config};
-    for (const auto &pos : tree_pos)
-      node = node[pos];
+    // Going down the node according to the strings in tree_pos.
+    node = std::accumulate(tree_pos.begin(), tree_pos.end(), node,
+                           [](const toml::node_view<toml::node> _node,
+                              const std::string &_pos) {
+                             return _node[_pos];
+                           });
     return node;
   }
 

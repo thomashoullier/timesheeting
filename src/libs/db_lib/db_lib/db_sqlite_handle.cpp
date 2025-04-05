@@ -72,22 +72,4 @@ namespace db_lib{
     auto rc = sqlite3_exec(db, statement.c_str(), NULL, NULL, NULL);
     check_rc(rc, "Error when executing statement: " + statement);
   }
-
-  void DB_SQLite_Handle::step_statement(sqlite3_stmt *stmt) {
-    auto rc = sqlite3_step(stmt);
-    check_rc(rc, "Error when stepping statment. ");
-  }
-
-  NameRows DB_SQLite_Handle::query_row_of_names(const std::string &statement) {
-    auto stmt = prepare_statement(statement);
-    NameRows rows {};
-    while (sqlite3_step(stmt) == SQLITE_ROW) {
-      RowId id = sqlite3_column_int64(stmt, 0);
-      auto name_internal = sqlite3_column_text(stmt, 1);
-      std::string name = reinterpret_cast<const char*>(name_internal);
-      rows.push_back(std::make_pair(id, name));
-    }
-    sqlite3_finalize(stmt);
-    return rows;
-  }
 } // namespace db_lib
