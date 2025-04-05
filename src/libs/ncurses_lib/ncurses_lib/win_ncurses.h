@@ -52,7 +52,7 @@ namespace ncurses_lib {
                            int line, int col_offset, int col_width,
                            StringFace face = StringFace::Normal) const;
     /** @brief Resize the window according to current terminal size. */
-    void resize();
+    virtual void resize();
     /** @brief Activate the border. */
     void set_border();
     /** @biref Deactivate the border. */

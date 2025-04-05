@@ -378,6 +378,13 @@ makes the library less reusable.
   an instrumented input_loop on top of the basic input_loop.
   We likely have to do the same with every window child class.
 
+*** TODO Put final attributes everywhere on classes and methods
+ADDED: [2025-04-05 Sat]
+This is a safeguard to avoid unintended inheritance.
+*** TODO Common template for week selector and day selector.
+ADDED: [2025-04-05 Sat]
+We can also have a concept of period in the date library for day and week.
+
 ** Performance
 *** HOLD Remove useless refreshes and updates
 ADDED: [2024-09-27 Fri]

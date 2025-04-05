@@ -18,7 +18,7 @@ public:
   config::NormalActions input_loop() override;
   void refresh() final;
   void clear() override;
-  void resize() override;
+  void resize() final;
   void update() override;
   void update_status() override;
 

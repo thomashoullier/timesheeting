@@ -98,7 +98,7 @@ namespace ncurses_lib {
     /** @brief Set the currently held items. */
     void set_items(const std::shared_ptr<std::vector<MenuItem>> _items);
     /** @brief Resize event. */
-    void resize();
+    void resize() override;
   };
 
   /** @brief Exception when encountering an empty menu. */

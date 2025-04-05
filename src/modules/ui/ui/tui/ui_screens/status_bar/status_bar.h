@@ -14,7 +14,7 @@ namespace tui {
     static StatusBarNCurses& get();
 
     /** @brief Print the message in the status bar. */
-    void print(const std::string &msg);
+    void print(const std::string &msg) final;
     /** @brief Print the message in the status bar, and then pause until user
      * input. */
     void print_wait(const std::string &msg);
@@ -29,7 +29,7 @@ namespace tui {
     (const std::vector<std::string> &suggestions);
 
     /** @brief Resize the status bar. Leave the edit mode if we were in it. */
-    void resize();
+    void resize() final;
 
   private:
     /** @brief Controls the switch between normal and edit mode. */
