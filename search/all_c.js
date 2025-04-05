@@ -12,6 +12,5 @@ var searchData=
   ['needs_5fresize_9',['needs_resize',['../classtui_1_1UIScreen.html#a774ec1de2897079e12ad3cec9a7f10d8',1,'tui::UIScreen']]],
   ['needs_5fupdate_10',['needs_update',['../classtui_1_1UIScreen.html#aae0182c7df58b115b86f57db80067d82',1,'tui::UIScreen']]],
   ['next_11',['next',['../classtime__lib_1_1Day.html#aba3f872ff857b631b6465a6ecd2f2e7e',1,'time_lib::Day::next()'],['../classtime__lib_1_1Week.html#a8dc23c15f18c3ab5e577e716eed76929',1,'time_lib::Week::next()']]],
-  ['node_5fexists_12',['node_exists',['../classconfig__lib_1_1TomlLoader.html#aba4fd9406caf7c3cf74ba0833e96bfe6',1,'config_lib::TomlLoader']]],
-  ['normalactions_13',['NormalActions',['../key_8h.html#a1299184736a390fc642d1576625ffbe2',1,'config']]]
+  ['normalactions_12',['NormalActions',['../key_8h.html#a1299184736a390fc642d1576625ffbe2',1,'config']]]
 ];

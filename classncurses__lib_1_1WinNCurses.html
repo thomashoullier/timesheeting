@@ -133,17 +133,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a50cb13df600b13e708eec639ee78522a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the window with given position and format. <br /></td></tr>
 <tr class="separator:a50cb13df600b13e708eec639ee78522a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dee3c97cba505299680ff3c456622e9" id="r_a1dee3c97cba505299680ff3c456622e9"><td class="memItemLeft" align="right" valign="top"><a id="a1dee3c97cba505299680ff3c456622e9" name="a1dee3c97cba505299680ff3c456622e9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>~WinNCurses</b> ()</td></tr>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~WinNCurses</b> ()</td></tr>
 <tr class="memdesc:a1dee3c97cba505299680ff3c456622e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
 <tr class="separator:a1dee3c97cba505299680ff3c456622e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68f9266b5edbc1c43b08c8400e043110" id="r_a68f9266b5edbc1c43b08c8400e043110"><td class="memItemLeft" align="right" valign="top"><a id="a68f9266b5edbc1c43b08c8400e043110" name="a68f9266b5edbc1c43b08c8400e043110"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_input</b> ()</td></tr>
 <tr class="memdesc:a68f9266b5edbc1c43b08c8400e043110"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character inputted by the user in the current window. <br /></td></tr>
 <tr class="separator:a68f9266b5edbc1c43b08c8400e043110"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3990e016291d194bf0a428c815f24f6f" id="r_a3990e016291d194bf0a428c815f24f6f"><td class="memItemLeft" align="right" valign="top"><a id="a3990e016291d194bf0a428c815f24f6f" name="a3990e016291d194bf0a428c815f24f6f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> () const</td></tr>
-<tr class="memdesc:a3990e016291d194bf0a428c815f24f6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the display. <br /></td></tr>
-<tr class="separator:a3990e016291d194bf0a428c815f24f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e63b182f8b9f32a89f5331034f24dc" id="r_a63e63b182f8b9f32a89f5331034f24dc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63e63b182f8b9f32a89f5331034f24dc">refresh</a> ()</td></tr>
+<tr class="memdesc:a63e63b182f8b9f32a89f5331034f24dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the display.  <br /></td></tr>
+<tr class="separator:a63e63b182f8b9f32a89f5331034f24dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a921991d433a24aa2c04c322bf0514d00" id="r_a921991d433a24aa2c04c322bf0514d00"><td class="memItemLeft" align="right" valign="top"><a id="a921991d433a24aa2c04c322bf0514d00" name="a921991d433a24aa2c04c322bf0514d00"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () const</td></tr>
 <tr class="memdesc:a921991d433a24aa2c04c322bf0514d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the display. <br /></td></tr>
@@ -164,9 +163,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_at</b> (const s
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print_standout_at</b> (const std::string &amp;str, int line, int col_offset, int col_width, <a class="el" href="win__ncurses_8h.html#a3bcf640404b1ab391bd78fac916401c6">StringFace</a> face=StringFace::Normal) const</td></tr>
 <tr class="memdesc:ad6480fa0583d7b18cb3a9885355498b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a string with standout appearance. <br /></td></tr>
 <tr class="separator:ad6480fa0583d7b18cb3a9885355498b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf1786cf9f88b4d91c52f896e0bdb6c" id="r_a0bf1786cf9f88b4d91c52f896e0bdb6c"><td class="memItemLeft" align="right" valign="top"><a id="a0bf1786cf9f88b4d91c52f896e0bdb6c" name="a0bf1786cf9f88b4d91c52f896e0bdb6c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resize</b> ()</td></tr>
-<tr class="memdesc:a0bf1786cf9f88b4d91c52f896e0bdb6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize the window according to current terminal size. <br /></td></tr>
+<tr class="memitem:a0bf1786cf9f88b4d91c52f896e0bdb6c" id="r_a0bf1786cf9f88b4d91c52f896e0bdb6c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bf1786cf9f88b4d91c52f896e0bdb6c">resize</a> ()</td></tr>
+<tr class="memdesc:a0bf1786cf9f88b4d91c52f896e0bdb6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize the window according to current terminal size.  <br /></td></tr>
 <tr class="separator:a0bf1786cf9f88b4d91c52f896e0bdb6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226975728a2f36089e6b9191f9a2f5e8" id="r_a226975728a2f36089e6b9191f9a2f5e8"><td class="memItemLeft" align="right" valign="top"><a id="a226975728a2f36089e6b9191f9a2f5e8" name="a226975728a2f36089e6b9191f9a2f5e8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_border</b> ()</td></tr>
@@ -237,6 +235,64 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>border_on</b></td></t
 
 <p>Compute the window position and dimensions. </p>
 <p>ny, nx, y, x </p>
+
+</div>
+</div>
+<a id="a63e63b182f8b9f32a89f5331034f24dc" name="a63e63b182f8b9f32a89f5331034f24dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e63b182f8b9f32a89f5331034f24dc">&#9670;&#160;</a></span>refresh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ncurses_lib::WinNCurses::refresh </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Refresh the display. </p>
+
+<p>Reimplemented in <a class="el" href="classncurses__lib_1_1MenuNCurses.html#a91af94e4ccb6e1cc45e1761acc1d4d4a">ncurses_lib::MenuNCurses</a>, <a class="el" href="classtui_1_1DaySelector.html#ae22c7b37be948b67bf99c9b9012a546a">tui::DaySelector</a>, <a class="el" href="classtui_1_1ProjectTotalsRegister.html#aae7d63d7e4b883209852bdbd05278588">tui::ProjectTotalsRegister</a>, <a class="el" href="classtui_1_1TotalBar.html#a0852b5ce17a1692bf2a4fe6f1220014c">tui::TotalBar</a>, <a class="el" href="classtui_1_1WeeklyReportRegister.html#a801cb833d39c5abee651ee6767bb015d">tui::WeeklyReportRegister</a>, and <a class="el" href="classtui_1_1WeekSelector.html#ae16caee0a1a9c8bb18265a6112303d88">tui::WeekSelector</a>.</p>
+
+</div>
+</div>
+<a id="a0bf1786cf9f88b4d91c52f896e0bdb6c" name="a0bf1786cf9f88b4d91c52f896e0bdb6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bf1786cf9f88b4d91c52f896e0bdb6c">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ncurses_lib::WinNCurses::resize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resize the window according to current terminal size. </p>
+
+<p>Reimplemented in <a class="el" href="classncurses__lib_1_1MenuNCurses.html#a2304cbcf94c4182dd8cbe37f606edf10">ncurses_lib::MenuNCurses</a>, <a class="el" href="classtui_1_1ProjectTotalsRegister.html#a469ee2ba985bc9fa1df59c2a40119278">tui::ProjectTotalsRegister</a>, <a class="el" href="classtui_1_1StatusBarNCurses.html#aab1579d479ed72eea741ebe222a376c2">tui::StatusBarNCurses</a>, and <a class="el" href="classtui_1_1WeeklyReportRegister.html#a949455c76fc4dde29d218b23223c4c20">tui::WeeklyReportRegister</a>.</p>
 
 </div>
 </div>

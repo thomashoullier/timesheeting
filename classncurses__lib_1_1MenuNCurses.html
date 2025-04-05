@@ -130,10 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a742137ef2659618e124beeaad1a50e1b" id="r_a742137ef2659618e124beeaad1a50e1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a742137ef2659618e124beeaad1a50e1b">MenuNCurses</a> (const std::shared_ptr&lt; std::vector&lt; <a class="el" href="structncurses__lib_1_1MenuItem.html">MenuItem</a> &gt; &gt; _items, <a class="el" href="win__ncurses_8h.html#a900d1780d5a7d91867abfa0522e1998b">WindowPosition</a> _winpos, <a class="el" href="win__ncurses_8h.html#ad68630c8e97136a75245903ffef1bf2c">WindowFormat</a> _winformat, std::vector&lt; int &gt; _target_column_widths)</td></tr>
 <tr class="memdesc:a742137ef2659618e124beeaad1a50e1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
 <tr class="separator:a742137ef2659618e124beeaad1a50e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57047730c432743bd00b89f6ec3dd9c9" id="r_a57047730c432743bd00b89f6ec3dd9c9"><td class="memItemLeft" align="right" valign="top"><a id="a57047730c432743bd00b89f6ec3dd9c9" name="a57047730c432743bd00b89f6ec3dd9c9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> () const</td></tr>
-<tr class="memdesc:a57047730c432743bd00b89f6ec3dd9c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all items to screen. <br /></td></tr>
-<tr class="separator:a57047730c432743bd00b89f6ec3dd9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91af94e4ccb6e1cc45e1761acc1d4d4a" id="r_a91af94e4ccb6e1cc45e1761acc1d4d4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91af94e4ccb6e1cc45e1761acc1d4d4a">refresh</a> () override</td></tr>
+<tr class="memdesc:a91af94e4ccb6e1cc45e1761acc1d4d4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all items to screen.  <br /></td></tr>
+<tr class="separator:a91af94e4ccb6e1cc45e1761acc1d4d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a6308802c2603ddce52a4de84ed2e44" id="r_a7a6308802c2603ddce52a4de84ed2e44"><td class="memItemLeft" align="right" valign="top"><a id="a7a6308802c2603ddce52a4de84ed2e44" name="a7a6308802c2603ddce52a4de84ed2e44"></a>
 <a class="el" href="#a04e55ce617f2772ca08cb511ab2bad9b">ItemSelectionStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>select_down_item</b> ()</td></tr>
 <tr class="memdesc:a7a6308802c2603ddce52a4de84ed2e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the item down of the current one. <br /></td></tr>
@@ -158,27 +157,22 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_items</b> (const std::shared_ptr&lt; std::vector&lt; <a class="el" href="structncurses__lib_1_1MenuItem.html">MenuItem</a> &gt; &gt; _items)</td></tr>
 <tr class="memdesc:ae29378de28cefe2a39ebd5cf67ce0ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the currently held items. <br /></td></tr>
 <tr class="separator:ae29378de28cefe2a39ebd5cf67ce0ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91695022f7d7feb8b5a485e102572d3d" id="r_a91695022f7d7feb8b5a485e102572d3d"><td class="memItemLeft" align="right" valign="top"><a id="a91695022f7d7feb8b5a485e102572d3d" name="a91695022f7d7feb8b5a485e102572d3d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resize</b> ()</td></tr>
-<tr class="memdesc:a91695022f7d7feb8b5a485e102572d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize event. <br /></td></tr>
-<tr class="separator:a91695022f7d7feb8b5a485e102572d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2304cbcf94c4182dd8cbe37f606edf10" id="r_a2304cbcf94c4182dd8cbe37f606edf10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2304cbcf94c4182dd8cbe37f606edf10">resize</a> () override</td></tr>
+<tr class="memdesc:a2304cbcf94c4182dd8cbe37f606edf10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize event.  <br /></td></tr>
+<tr class="separator:a2304cbcf94c4182dd8cbe37f606edf10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classncurses__lib_1_1WinNCurses"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classncurses__lib_1_1WinNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classncurses__lib_1_1WinNCurses.html">ncurses_lib::WinNCurses</a></td></tr>
 <tr class="memitem:a50cb13df600b13e708eec639ee78522a inherit pub_methods_classncurses__lib_1_1WinNCurses" id="r_a50cb13df600b13e708eec639ee78522a"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>WinNCurses</b> (<a class="el" href="win__ncurses_8h.html#a900d1780d5a7d91867abfa0522e1998b">WindowPosition</a> _winpos, <a class="el" href="win__ncurses_8h.html#ad68630c8e97136a75245903ffef1bf2c">WindowFormat</a> _winformat)</td></tr>
 <tr class="memdesc:a50cb13df600b13e708eec639ee78522a inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the window with given position and format. <br /></td></tr>
 <tr class="separator:a50cb13df600b13e708eec639ee78522a inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dee3c97cba505299680ff3c456622e9 inherit pub_methods_classncurses__lib_1_1WinNCurses" id="r_a1dee3c97cba505299680ff3c456622e9"><td class="memItemLeft" align="right" valign="top">
-&#160;</td><td class="memItemRight" valign="bottom"><b>~WinNCurses</b> ()</td></tr>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~WinNCurses</b> ()</td></tr>
 <tr class="memdesc:a1dee3c97cba505299680ff3c456622e9 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
 <tr class="separator:a1dee3c97cba505299680ff3c456622e9 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68f9266b5edbc1c43b08c8400e043110 inherit pub_methods_classncurses__lib_1_1WinNCurses" id="r_a68f9266b5edbc1c43b08c8400e043110"><td class="memItemLeft" align="right" valign="top">
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_input</b> ()</td></tr>
 <tr class="memdesc:a68f9266b5edbc1c43b08c8400e043110 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character inputted by the user in the current window. <br /></td></tr>
 <tr class="separator:a68f9266b5edbc1c43b08c8400e043110 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3990e016291d194bf0a428c815f24f6f inherit pub_methods_classncurses__lib_1_1WinNCurses" id="r_a3990e016291d194bf0a428c815f24f6f"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>refresh</b> () const</td></tr>
-<tr class="memdesc:a3990e016291d194bf0a428c815f24f6f inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the display. <br /></td></tr>
-<tr class="separator:a3990e016291d194bf0a428c815f24f6f inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a921991d433a24aa2c04c322bf0514d00 inherit pub_methods_classncurses__lib_1_1WinNCurses" id="r_a921991d433a24aa2c04c322bf0514d00"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () const</td></tr>
 <tr class="memdesc:a921991d433a24aa2c04c322bf0514d00 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the display. <br /></td></tr>
@@ -199,10 +193,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_at</b> (const s
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print_standout_at</b> (const std::string &amp;str, int line, int col_offset, int col_width, <a class="el" href="win__ncurses_8h.html#a3bcf640404b1ab391bd78fac916401c6">StringFace</a> face=StringFace::Normal) const</td></tr>
 <tr class="memdesc:ad6480fa0583d7b18cb3a9885355498b3 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a string with standout appearance. <br /></td></tr>
 <tr class="separator:ad6480fa0583d7b18cb3a9885355498b3 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf1786cf9f88b4d91c52f896e0bdb6c inherit pub_methods_classncurses__lib_1_1WinNCurses" id="r_a0bf1786cf9f88b4d91c52f896e0bdb6c"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resize</b> ()</td></tr>
-<tr class="memdesc:a0bf1786cf9f88b4d91c52f896e0bdb6c inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize the window according to current terminal size. <br /></td></tr>
-<tr class="separator:a0bf1786cf9f88b4d91c52f896e0bdb6c inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226975728a2f36089e6b9191f9a2f5e8 inherit pub_methods_classncurses__lib_1_1WinNCurses" id="r_a226975728a2f36089e6b9191f9a2f5e8"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_border</b> ()</td></tr>
 <tr class="memdesc:a226975728a2f36089e6b9191f9a2f5e8 inherit pub_methods_classncurses__lib_1_1WinNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activate the border. <br /></td></tr>
@@ -337,6 +327,69 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructor. </p>
 <p>target_column_widths defines the number of desired width of columns. A width of &gt;0 is fixed, the remaining window width is shared equally over the columns of width 0. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a91af94e4ccb6e1cc45e1761acc1d4d4a" name="a91af94e4ccb6e1cc45e1761acc1d4d4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91af94e4ccb6e1cc45e1761acc1d4d4a">&#9670;&#160;</a></span>refresh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ncurses_lib::MenuNCurses::refresh </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Print all items to screen. </p>
+
+<p>Reimplemented from <a class="el" href="classncurses__lib_1_1WinNCurses.html#a63e63b182f8b9f32a89f5331034f24dc">ncurses_lib::WinNCurses</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classtui_1_1ProjectTotalsRegister.html#aae7d63d7e4b883209852bdbd05278588">tui::ProjectTotalsRegister</a>, and <a class="el" href="classtui_1_1WeeklyReportRegister.html#a801cb833d39c5abee651ee6767bb015d">tui::WeeklyReportRegister</a>.</p>
+
+</div>
+</div>
+<a id="a2304cbcf94c4182dd8cbe37f606edf10" name="a2304cbcf94c4182dd8cbe37f606edf10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2304cbcf94c4182dd8cbe37f606edf10">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ncurses_lib::MenuNCurses::resize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resize event. </p>
+
+<p>Reimplemented from <a class="el" href="classncurses__lib_1_1WinNCurses.html#a0bf1786cf9f88b4d91c52f896e0bdb6c">ncurses_lib::WinNCurses</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classtui_1_1ProjectTotalsRegister.html#a469ee2ba985bc9fa1df59c2a40119278">tui::ProjectTotalsRegister</a>, and <a class="el" href="classtui_1_1WeeklyReportRegister.html#a949455c76fc4dde29d218b23223c4c20">tui::WeeklyReportRegister</a>.</p>
 
 </div>
 </div>

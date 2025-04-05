@@ -92,7 +92,7 @@ $(function(){ initResizable(false); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classtui_1_1ProjectReportScreen-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">tui::ProjectReportScreen Class Reference</div></div>
+  <div class="headertitle"><div class="title">tui::ProjectReportScreen Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -120,15 +120,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2edb0f376c91be4a1492ccea972d2726" id="r_a2edb0f376c91be4a1492ccea972d2726"><td class="memItemLeft" align="right" valign="top"><a class="el" href="key_8h.html#a1299184736a390fc642d1576625ffbe2">config::NormalActions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2edb0f376c91be4a1492ccea972d2726">input_loop</a> () override</td></tr>
 <tr class="memdesc:a2edb0f376c91be4a1492ccea972d2726"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classtui_1_1UI.html" title="Ncurses top-level UI for timesheeting.">UI</a> input loop for the component.  <br /></td></tr>
 <tr class="separator:a2edb0f376c91be4a1492ccea972d2726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6baa617e3675f2eab473ef4f5112254" id="r_ae6baa617e3675f2eab473ef4f5112254"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6baa617e3675f2eab473ef4f5112254">refresh</a> () override</td></tr>
-<tr class="memdesc:ae6baa617e3675f2eab473ef4f5112254"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the component's display.  <br /></td></tr>
-<tr class="separator:ae6baa617e3675f2eab473ef4f5112254"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7db2d202db5df7342225910de4cb10bb" id="r_a7db2d202db5df7342225910de4cb10bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7db2d202db5df7342225910de4cb10bb">refresh</a> () final</td></tr>
+<tr class="memdesc:a7db2d202db5df7342225910de4cb10bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh the component's display.  <br /></td></tr>
+<tr class="separator:a7db2d202db5df7342225910de4cb10bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cbb2637da21c5a44256bf818b3e1045" id="r_a7cbb2637da21c5a44256bf818b3e1045"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cbb2637da21c5a44256bf818b3e1045">clear</a> () override</td></tr>
 <tr class="memdesc:a7cbb2637da21c5a44256bf818b3e1045"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the component from the display.  <br /></td></tr>
 <tr class="separator:a7cbb2637da21c5a44256bf818b3e1045"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7d6f0584912ff193029f3221381d89e" id="r_ab7d6f0584912ff193029f3221381d89e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7d6f0584912ff193029f3221381d89e">resize</a> () override</td></tr>
-<tr class="memdesc:ab7d6f0584912ff193029f3221381d89e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize the component according to current terminal dimensions.  <br /></td></tr>
-<tr class="separator:ab7d6f0584912ff193029f3221381d89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7ffb4c85fa5656df53c7996823a046" id="r_a5c7ffb4c85fa5656df53c7996823a046"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c7ffb4c85fa5656df53c7996823a046">resize</a> () final</td></tr>
+<tr class="memdesc:a5c7ffb4c85fa5656df53c7996823a046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize the component according to current terminal dimensions.  <br /></td></tr>
+<tr class="separator:a5c7ffb4c85fa5656df53c7996823a046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af22032851c80c3725083fe5d8fa30c95" id="r_af22032851c80c3725083fe5d8fa30c95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af22032851c80c3725083fe5d8fa30c95">update</a> () override</td></tr>
 <tr class="memdesc:af22032851c80c3725083fe5d8fa30c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the state of the component to reflect the latest program state.  <br /></td></tr>
 <tr class="separator:af22032851c80c3725083fe5d8fa30c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,8 +238,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>needs_resize</b> = fa
 
 </div>
 </div>
-<a id="ae6baa617e3675f2eab473ef4f5112254" name="ae6baa617e3675f2eab473ef4f5112254"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6baa617e3675f2eab473ef4f5112254">&#9670;&#160;</a></span>refresh()</h2>
+<a id="a7db2d202db5df7342225910de4cb10bb" name="a7db2d202db5df7342225910de4cb10bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7db2d202db5df7342225910de4cb10bb">&#9670;&#160;</a></span>refresh()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,7 +256,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>needs_resize</b> = fa
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -267,8 +267,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>needs_resize</b> = fa
 
 </div>
 </div>
-<a id="ab7d6f0584912ff193029f3221381d89e" name="ab7d6f0584912ff193029f3221381d89e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7d6f0584912ff193029f3221381d89e">&#9670;&#160;</a></span>resize()</h2>
+<a id="a5c7ffb4c85fa5656df53c7996823a046" name="a5c7ffb4c85fa5656df53c7996823a046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c7ffb4c85fa5656df53c7996823a046">&#9670;&#160;</a></span>resize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -285,7 +285,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>needs_resize</b> = fa
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

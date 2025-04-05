@@ -6,6 +6,5 @@ var searchData=
   ['n_5flines_3',['n_lines',['../classncurses__lib_1_1WinNCurses.html#a667280c43059fc37ab9ba3ae5521e9f3',1,'ncurses_lib::WinNCurses']]],
   ['name_4',['name',['../classtime__lib_1_1TimeZone.html#af4d26d82d77c3529446ae8f142ce7558',1,'time_lib::TimeZone']]],
   ['ncurseshandle_5',['NcursesHandle',['../classncurses__lib_1_1NcursesHandle.html#aec4382c1a6d88fd0613a7b1248470445',1,'ncurses_lib::NcursesHandle']]],
-  ['next_6',['next',['../classtime__lib_1_1Day.html#aba3f872ff857b631b6465a6ecd2f2e7e',1,'time_lib::Day::next()'],['../classtime__lib_1_1Week.html#a8dc23c15f18c3ab5e577e716eed76929',1,'time_lib::Week::next()']]],
-  ['node_5fexists_7',['node_exists',['../classconfig__lib_1_1TomlLoader.html#aba4fd9406caf7c3cf74ba0833e96bfe6',1,'config_lib::TomlLoader']]]
+  ['next_6',['next',['../classtime__lib_1_1Day.html#aba3f872ff857b631b6465a6ecd2f2e7e',1,'time_lib::Day::next()'],['../classtime__lib_1_1Week.html#a8dc23c15f18c3ab5e577e716eed76929',1,'time_lib::Week::next()']]]
 ];

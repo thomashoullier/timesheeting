@@ -27,8 +27,7 @@ var searchData=
   ['statementset_24',['StatementSet',['../classdb_1_1StatementSet.html#a054a6f812438f5ad40120d73cb5b5b83',1,'db::StatementSet']]],
   ['statusbarncurses_25',['StatusBarNCurses',['../classtui_1_1StatusBarNCurses.html#a378b73922533486113b60ad54c20d743',1,'tui::StatusBarNCurses']]],
   ['step_26',['step',['../classdb__lib_1_1Statement.html#a984acce640bfd4a382f79bfadfbd1d87',1,'db_lib::Statement']]],
-  ['step_5fstatement_27',['step_statement',['../classdb__lib_1_1DB__SQLite__Handle.html#a0eda2726b53b32271c20692564509e86',1,'db_lib::DB_SQLite_Handle']]],
-  ['stopwatchncurses_28',['StopwatchNcurses',['../classtui_1_1StopwatchNcurses.html#a370355d6292334e92b9a2e59ad89eb0f',1,'tui::StopwatchNcurses']]],
-  ['stopwatchui_29',['StopwatchUI',['../classtui_1_1StopwatchUI.html#ac62b0ef51a602b1e4684393ca403b6a4',1,'tui::StopwatchUI']]],
-  ['stringwithface_30',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html#a904cd4554f1aa2e93006b638b6af7952',1,'ncurses_lib::StringWithFace']]]
+  ['stopwatchncurses_27',['StopwatchNcurses',['../classtui_1_1StopwatchNcurses.html#a370355d6292334e92b9a2e59ad89eb0f',1,'tui::StopwatchNcurses']]],
+  ['stopwatchui_28',['StopwatchUI',['../classtui_1_1StopwatchUI.html#ac62b0ef51a602b1e4684393ca403b6a4',1,'tui::StopwatchUI']]],
+  ['stringwithface_29',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html#a904cd4554f1aa2e93006b638b6af7952',1,'ncurses_lib::StringWithFace']]]
 ];
