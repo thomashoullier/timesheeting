@@ -15,7 +15,7 @@ namespace tui {
   /** @brief Entry register implementation in ncurses.
 
       A register is a menu with row items made of several columns. */
-  class RegisterNcurses : public ncurses_lib::MenuNCurses {
+  class RegisterNcurses final : public ncurses_lib::MenuNCurses {
   public:
     /** @brief Constructor. */
     explicit RegisterNcurses(const std::vector<core::Entry> &items);

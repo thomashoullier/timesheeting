@@ -9,7 +9,7 @@
 
 namespace tui {
   /** @brief Ncurses implementation of a stopwatch for staging new entries. */
-  class StopwatchNcurses : public ncurses_lib::MenuNCurses {
+  class StopwatchNcurses final : public ncurses_lib::MenuNCurses {
   public:
     /** @brief Constructor. */
     explicit StopwatchNcurses(const core::EntryStaging &_entry_staging);

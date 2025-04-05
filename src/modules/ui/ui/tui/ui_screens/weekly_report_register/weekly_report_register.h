@@ -11,8 +11,8 @@
 
 namespace tui {
   /** @brief Register for displaying a weekly report of durations worked. */
-  class WeeklyReportRegister : public ncurses_lib::MenuNCurses,
-                               public UIComponent {
+  class WeeklyReportRegister final : public ncurses_lib::MenuNCurses,
+                                     public UIComponent {
   public:
     /** @brief Constructor*/
     explicit WeeklyReportRegister(const core::WeeklyTotals &totals);

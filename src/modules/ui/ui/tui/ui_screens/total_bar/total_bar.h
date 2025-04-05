@@ -9,7 +9,7 @@
 
 namespace tui {
   /** @brief Bar for displaying a duration. */
-  class TotalBar : public ncurses_lib::BarNCurses {
+  class TotalBar final : public ncurses_lib::BarNCurses {
   private:
     /** @brief Internal representation of the current duration. */
     // TODO: duration type. Do we even need to hold it?

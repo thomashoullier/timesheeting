@@ -10,7 +10,7 @@
 
 namespace tui {
 /** @brief Weekly report UI screen. */
-class WeeklyReportScreen : public UIScreen {
+class WeeklyReportScreen final : public UIScreen {
 public:
   /** @brief Constructor. */
   explicit WeeklyReportScreen();

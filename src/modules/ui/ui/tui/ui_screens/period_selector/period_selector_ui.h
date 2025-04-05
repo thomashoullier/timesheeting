@@ -10,7 +10,7 @@
 namespace tui {
   /** @brief UIComponent holding a PeriodSelectorNCurses for getting
              a DateRange from the user. */
-  class PeriodSelectorUI : public UIComponent {
+  class PeriodSelectorUI final : public UIComponent {
   public:
     /** @brief Constructor. */
     explicit PeriodSelectorUI ();

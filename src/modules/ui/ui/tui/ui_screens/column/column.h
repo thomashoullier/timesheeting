@@ -15,7 +15,7 @@ namespace tui {
   template <typename T,
             typename = std::enable_if_t<std::is_base_of_v<core::GenericItem,
                                                           T>>>
-  class Column : public ColumnBase, public ncurses_lib::MenuNCurses {
+  class Column final : public ColumnBase, public ncurses_lib::MenuNCurses {
   public:
     /** @brief Construct the column with given items and position. */
     explicit Column(const std::vector<T> &items,

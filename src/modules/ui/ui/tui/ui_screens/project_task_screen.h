@@ -10,7 +10,7 @@
 
 namespace tui {
   /** @brief Projects and tasks UI screen. */
-  class ProjectTaskScreen : public UIScreen {
+  class ProjectTaskScreen final : public UIScreen {
   public:
     /** @brief Table constructor. */
     explicit ProjectTaskScreen();

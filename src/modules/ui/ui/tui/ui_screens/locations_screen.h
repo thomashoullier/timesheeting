@@ -10,7 +10,7 @@
 
 namespace tui {
   /** @brief Locations UI screen. */
-  class LocationsScreen : public UIScreen {
+  class LocationsScreen final : public UIScreen {
   public:
     /** @brief Constructor. */
     explicit LocationsScreen();

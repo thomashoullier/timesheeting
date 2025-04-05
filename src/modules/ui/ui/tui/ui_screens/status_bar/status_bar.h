@@ -8,7 +8,7 @@
 
 namespace tui {
   /** @brief Status bar implementation using ncurses. */
-  class StatusBarNCurses : public ncurses_lib::BarNCurses {
+  class StatusBarNCurses final : public ncurses_lib::BarNCurses {
   public:
     /** @brief Grab the status bar singleton. */
     static StatusBarNCurses& get();

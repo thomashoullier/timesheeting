@@ -11,7 +11,7 @@
 
 namespace tui {
   /** @brief Class for holding the table of entries for a given day. */
-  class EntriesTable : public UIComponent {
+  class EntriesTable final : public UIComponent {
   public:
     /** @brief Handle to the day selector. */
     std::shared_ptr<DaySelector> day_selector;

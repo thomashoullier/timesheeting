@@ -9,7 +9,7 @@
 
 namespace tui {
   /** @brief Menu with two cells for specifying a DateRange using the UI. */
-  class PeriodSelectorNCurses : public ncurses_lib::MenuNCurses {
+  class PeriodSelectorNCurses final : public ncurses_lib::MenuNCurses {
   public:
     /** @brief Enum for reporting the field type. */
     enum PeriodField { start = 0, stop = 1 };

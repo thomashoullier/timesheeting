@@ -9,7 +9,7 @@
 
 namespace tui {
   /** @brief UI for specifying a week. */
-  class WeekSelector : public ncurses_lib::BarNCurses {
+  class WeekSelector final : public ncurses_lib::BarNCurses {
   private:
     /** @brief Internal representation of current week. */
     time_lib::Week week;

@@ -11,7 +11,7 @@
 
 namespace tui {
   /** @brief High-level UI for the stopwatch. */
-  class StopwatchUI : public UIComponent {
+  class StopwatchUI final : public UIComponent {
   public:
     /** @brief Constructor. */
     explicit StopwatchUI (std::shared_ptr<DaySelector> _day_selector);

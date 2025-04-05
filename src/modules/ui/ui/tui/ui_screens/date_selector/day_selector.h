@@ -9,7 +9,7 @@
 
 namespace tui {
   /** @brief Bar for selecting a calendar day. */
-  class DaySelector : public ncurses_lib::BarNCurses {
+  class DaySelector final : public ncurses_lib::BarNCurses {
     // TODO: Factorize with WeekSelector with a template on day/week.
   private:
     /** @brief Internal representation of the day. */

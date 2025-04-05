@@ -11,8 +11,8 @@
 
 namespace tui {
   /** @brief ProjectTotal register implementation in ncurses. */
-  class ProjectTotalsRegister : public ncurses_lib::MenuNCurses,
-                                public UIComponent {
+  class ProjectTotalsRegister final : public ncurses_lib::MenuNCurses,
+                                      public UIComponent {
   public:
     /** @brief Constructor. */
     explicit ProjectTotalsRegister

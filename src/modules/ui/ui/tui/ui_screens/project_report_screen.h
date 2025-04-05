@@ -11,7 +11,7 @@
 
 namespace tui {
   /** @brief The UIScreen presenting the project totals report. */
-  class ProjectReportScreen : public UIScreen {
+  class ProjectReportScreen final : public UIScreen {
   public:
     /** @brief Constructor. */
     explicit ProjectReportScreen();

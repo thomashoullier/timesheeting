@@ -10,7 +10,7 @@
 
 namespace tui {
   /** @brief Entry UI screen. */
-  class EntriesScreen : public UIScreen {
+  class EntriesScreen final : public UIScreen {
   public:
     /** @brief Constructor. */
     explicit EntriesScreen();
