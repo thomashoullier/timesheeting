@@ -44,6 +44,19 @@ steps:
   depends_on:
   - build_gentoo_environment
 
+- name: static_analysis
+  image: test_environment
+  pull: if-not-exists
+  commands:
+  - rm -rf build_analysis
+  - mkdir -p build_analysis
+  - cd build_analysis
+  - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+  - cd ..
+  - cppcheck --project=build_analysis/compile_commands.json --check-level=exhaustive --enable=all --suppress=missingIncludeSystem --std=c++23 -itest/ --error-exit-code=1
+  depends_on:
+  - test_environment
+
 - name: test_build
   image: test_environment
   pull: if-not-exists

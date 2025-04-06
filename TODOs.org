@@ -94,6 +94,10 @@ We can probably get a token and add it in the CI secrets.
 ADDED: [2025-03-28 Fri]
 Run a cppcheck on the whole codebase as part of the CI.
 
+*** TODO Add a check for unused includes
+ADDED: [2025-04-05 Sat]
+See include-what-you-use
+
 * Software
 ** Bugs
 *** DONE Escape and keypad cannot be used simultaneously in ncurses
