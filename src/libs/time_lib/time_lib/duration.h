@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <chrono>
+#include <string>
 
 namespace time_lib {
   /** @brief Duration type*/

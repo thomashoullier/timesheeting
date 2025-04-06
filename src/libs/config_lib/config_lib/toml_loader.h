@@ -5,7 +5,15 @@
 #define TOML_LOADER_H
 
 #include <filesystem>
-#include <toml++/toml.hpp>
+#include <stdint.h>
+#include <string>
+#include <toml++/toml.hpp> // IWYU pragma: keep
+#include <vector>
+// IWYU pragma: no_include <format>
+// IWYU pragma: no_include <toml++/impl/forward_declarations.hpp>
+// IWYU pragma: no_include <toml++/impl/node.hpp>
+// IWYU pragma: no_include <toml++/impl/node_view.hpp>
+// IWYU pragma: no_include <toml++/impl/table.hpp>
 
 namespace config_lib {
   /** @brief TOML configuration file loader. */

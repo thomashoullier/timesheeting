@@ -4,7 +4,9 @@
 #include "win_ncurses.h"
 #include <string>
 #include <vector>
+// IWYU pragma: no_include <format>
 #include <memory>
+#include <exception>
 
 namespace ncurses_lib {
   struct MenuItem {

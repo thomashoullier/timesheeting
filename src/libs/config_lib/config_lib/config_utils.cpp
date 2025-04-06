@@ -1,5 +1,7 @@
 #include "config_utils.h"
 #include <filesystem>
+#include <cstdlib>
+#include <string>
 
 namespace config_lib {
   std::filesystem::path expand_tilde(const std::filesystem::path &path) {

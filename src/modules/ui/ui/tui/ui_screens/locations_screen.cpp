@@ -6,6 +6,11 @@
 #include "log_lib/logger.h"
 #include "update_manager.h"
 #include "ui/keys/bound_keys.h"
+#include <string>
+#include <vector>
+#include "config/binding_maps.h"
+#include "ncurses_lib/win_ncurses.h"
+#include "ui/tui/ui_screens/column/column.h"
 
 namespace tui {
   LocationsScreen::LocationsScreen()

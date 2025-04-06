@@ -3,21 +3,26 @@
 #ifndef DB_SQLITE_H
 #define DB_SQLITE_H
 
-#include "time_lib/date_range.h"
-#include "time_lib/duration.h"
 #include "core/entry.h"
 #include "core/entry_staging.h"
-#include "core/generic_item.h"
-#include "core/project_total.h"
-#include "time_lib/week.h"
-#include "core/weekly_totals.h"
 #include "core/export_row.h"
+#include "core/generic_item.h"
+#include "core/id.h"
+#include "core/project_total.h"
+#include "core/weekly_totals.h"
 #include "db_lib/db_sqlite_handle.h"
+#include "db_lib/statement.h"
 #include "statement_set.h"
+#include "time_lib/date.h"
+#include "time_lib/date_range.h"
+#include "time_lib/duration.h"
+#include "time_lib/week.h"
 #include <filesystem>
+#include <generator>
+#include <memory>
 #include <string>
 #include <type_traits>
-#include <generator>
+#include <vector>
 
 namespace db {
   /** @brief DB implementation using SQLite3. */

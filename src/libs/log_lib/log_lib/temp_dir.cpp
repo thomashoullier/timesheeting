@@ -1,6 +1,6 @@
 #include "temp_dir.h"
-
 #include <random>
+#include <stdexcept>
 
 namespace log_lib {
   TempDir::TempDir(const std::string &prefix) :

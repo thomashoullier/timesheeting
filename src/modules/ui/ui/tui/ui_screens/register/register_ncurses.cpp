@@ -2,6 +2,9 @@
 #include "ncurses_lib/menu_ncurses.h"
 #include "ncurses_lib/win_ncurses.h"
 #include <memory>
+#include <cstddef>
+// IWYU pragma: no_include <string>
+#include "ui/tui/ui_screens/entry_field.h"
 
 namespace tui {
   RegisterNcurses::RegisterNcurses(const std::vector<core::Entry> &items)

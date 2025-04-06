@@ -3,9 +3,9 @@
 #ifndef ENTRIES_SCREEN_H
 #define ENTRIES_SCREEN_H
 
-#include "config/key.h"
 #include "ui/tui/ui_screens/entries_table.h"
 #include "ui_screen.h"
+#include "ui_component.h"
 #include <memory>
 
 namespace tui {

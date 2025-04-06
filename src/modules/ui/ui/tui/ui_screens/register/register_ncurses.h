@@ -8,7 +8,6 @@
 #include "core/id.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include <memory>
-#include <string>
 #include <vector>
 
 namespace tui {

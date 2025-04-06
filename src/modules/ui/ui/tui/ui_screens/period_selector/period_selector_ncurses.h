@@ -4,8 +4,11 @@
 #define PERIOD_SELECTOR_NCURSES_H
 
 #include "ncurses_lib/menu_ncurses.h"
+#include "time_lib/date.h"
 #include "time_lib/date_range.h"
 #include <memory>
+#include <vector>
+// IWYU pragma: no_include <format>
 
 namespace tui {
   /** @brief Menu with two cells for specifying a DateRange using the UI. */

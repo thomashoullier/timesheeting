@@ -5,6 +5,17 @@
 #include "../update_manager.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "ui/keys/bound_keys.h"
+#include <optional>
+#include <stdexcept>
+#include <string>
+#include "config/binding_maps.h"
+#include "core/entry_staging.h"
+#include "core/generic_item.h"
+#include "time_lib/date.h"
+#include "time_lib/day.h"
+#include "ui/tui/ui_screens/date_selector/day_selector.h"
+#include "ui/tui/ui_screens/entry_field.h"
+#include "ui/tui/ui_screens/stopwatch/stopwatch_ncurses.h"
 
 namespace tui {
 StopwatchUI::StopwatchUI(std::shared_ptr<DaySelector> _day_selector)

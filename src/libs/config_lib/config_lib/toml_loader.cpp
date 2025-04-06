@@ -1,10 +1,15 @@
 #include "toml_loader.h"
 #include "config_utils.h"
-#include <cstdint>
+#include <cmath>
 #include <filesystem>
 #include <limits>
 #include <numeric>
 #include <stdexcept>
+#include <toml++/toml.hpp> // IWYU pragma: keep
+// IWYU pragma: no_include <toml++/impl/array.hpp>
+// IWYU pragma: no_include <toml++/impl/parser.hpp>
+// IWYU pragma: no_include <toml++/impl/value.hpp>
+// IWYU pragma: no_include <type_traits>
 
 namespace config_lib {
   TomlLoader::TomlLoader(const std::filesystem::path &config_file_path) {

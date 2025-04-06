@@ -6,6 +6,9 @@
 #include "../entry_field.h"
 #include "core/entry_staging.h"
 #include "ncurses_lib/menu_ncurses.h"
+#include <memory>
+#include <vector>
+// IWYU pragma: no_include <format>
 
 namespace tui {
   /** @brief Ncurses implementation of a stopwatch for staging new entries. */

@@ -1,5 +1,4 @@
 #include "win_ncurses.h"
-#include <iostream>
 #include <ncurses.h>
 #include <stdexcept>
 

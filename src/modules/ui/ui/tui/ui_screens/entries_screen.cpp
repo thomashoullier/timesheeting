@@ -3,8 +3,9 @@
 #include "entries_table.h"
 #include "stopwatch/stopwatch_ui.h"
 #include "log_lib/logger.h"
-#include "ui/tui/ui_screens/date_selector/day_selector.h"
+#include "ui/tui/ui_screens/ui_component.h"
 #include <memory>
+#include <string>
 
 namespace tui {
 EntriesScreen::EntriesScreen()

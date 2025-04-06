@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <string>
 #include <vector>
+#include <utility>
 #include <sqlite3.h>
 
 namespace db_lib {

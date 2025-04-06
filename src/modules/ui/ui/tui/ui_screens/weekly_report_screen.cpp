@@ -2,6 +2,9 @@
 #include "config/key.h"
 #include "db/db_sqlite.h"
 #include "log_lib/logger.h"
+#include <string>
+#include "ui/tui/ui_screens/date_selector/week_selector.h"
+#include "ui/tui/ui_screens/weekly_report_register/weekly_report_register.h"
 
 namespace tui {
   WeeklyReportScreen::WeeklyReportScreen()

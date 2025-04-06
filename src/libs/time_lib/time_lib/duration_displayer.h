@@ -3,6 +3,7 @@
 #ifndef DURATION_DISPLAYER_H
 #define DURATION_DISPLAYER_H
 
+#include <string>
 #include "duration.h"
 
 namespace time_lib {
@@ -16,10 +17,10 @@ namespace time_lib {
     void cycle_format();
     /** @brief Get a string representation of a Duration in the current
         display format. */
-    std::string to_string(const time_lib::Duration &dur);
+    std::string to_string(const Duration &dur);
     /** @brief Get a short string representation of a Duration in the current
         display format. */
-    std::string to_shortstring(const time_lib::Duration &dur);
+    std::string to_shortstring(const Duration &dur);
 
   private:
     /** @brief The accepted formats for duration display. */

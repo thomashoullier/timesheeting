@@ -1,4 +1,11 @@
 #include <rapidfuzz/fuzz.hpp>
+// IWYU pragma: no_include <rapidfuzz/details/Range.hpp>
+// IWYU pragma: no_include <rapidfuzz/details/common_impl.hpp>
+// IWYU pragma: no_include <rapidfuzz/fuzz_impl.hpp>
+// IWYU pragma: no_include <format>
+// IWYU pragma: no_include <iterator>
+#include <vector>
+#include <string>
 
 namespace suggestion{
   std::string best_match(const std::string &query,

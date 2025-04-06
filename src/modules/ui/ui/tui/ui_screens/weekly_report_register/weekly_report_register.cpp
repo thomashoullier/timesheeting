@@ -4,6 +4,8 @@
 #include "ncurses_lib/win_ncurses.h"
 #include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
+#include <vector>
+#include "config/binding_maps.h"
 
 namespace tui {
   WeeklyReportRegister::WeeklyReportRegister(const core::WeeklyTotals &totals)

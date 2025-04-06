@@ -2,7 +2,11 @@
 #include "core/project_total.h"
 #include "db_lib/db_sqlite_handle.h"
 #include <optional>
+#include <array>
+#include <coroutine>
+#include <cstddef>
 #include <string>
+#include "time_lib/day.h"
 #include "log_lib/logger.h"
 #include "version/version.h"
 

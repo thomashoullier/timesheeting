@@ -4,10 +4,12 @@
 #include "key.h"
 #include "binding_maps.h"
 #include <ncurses.h>
-#include <cmath>
 #include <filesystem>
 #include <memory>
 #include <stdexcept>
+#include <cstdlib>
+#include <optional>
+// IWYU pragma: no_include <toml++/impl/table.inl>
 
 namespace config {
   UserConfig ConfigLoader::load(const std::filesystem::path &config_file) {

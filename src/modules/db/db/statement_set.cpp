@@ -1,4 +1,5 @@
 #include "statement_set.h"
+#include <string>
 
 namespace db {
 StatementSet::StatementSet(std::shared_ptr<db_lib::DB_SQLite_Handle> db)

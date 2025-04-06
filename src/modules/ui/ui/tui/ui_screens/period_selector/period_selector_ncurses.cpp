@@ -2,6 +2,7 @@
 #include "ncurses_lib/menu_ncurses.h"
 #include "ncurses_lib/win_ncurses.h"
 #include <memory>
+// IWYU pragma: no_include <string>
 
 namespace tui {
   PeriodSelectorNCurses::PeriodSelectorNCurses

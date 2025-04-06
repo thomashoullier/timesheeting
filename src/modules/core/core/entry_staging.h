@@ -6,6 +6,7 @@
 #include <optional>
 #include <string>
 #include <vector>
+// IWYU pragma: no_include <format>
 #include "time_lib/date.h"
 
 namespace core {

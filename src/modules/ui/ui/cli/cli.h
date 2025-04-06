@@ -3,8 +3,8 @@
 #ifndef CLI_H
 #define CLI_H
 
-#include <tclap/CmdLine.h>
 #include <filesystem>
+#include <string>
 
 namespace cli {
   /** @brief Parsed CLI data. */

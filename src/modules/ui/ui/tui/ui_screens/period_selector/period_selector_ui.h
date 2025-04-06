@@ -3,8 +3,8 @@
 #ifndef PERIOD_SELECTOR_UI_H
 #define PERIOD_SELECTOR_UI_H
 
-#include "config/key.h"
 #include "period_selector_ncurses.h"
+#include "time_lib/date_range.h"
 #include "../ui_component.h"
 
 namespace tui {

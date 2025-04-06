@@ -1,4 +1,5 @@
 #include "duration_displayer.h"
+#include "duration.h"
 #include <stdexcept>
 
 namespace time_lib {

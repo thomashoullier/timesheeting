@@ -5,6 +5,7 @@
 
 #include "date_range.h"
 #include "day.h"
+#include "date.h"
 #include <chrono>
 #include <string>
 #include <array>

@@ -7,6 +7,13 @@
 #include "update_manager.h"
 #include <stdexcept>
 #include "ui/keys/bound_keys.h"
+#include <vector>
+#include <string>
+#include "config/binding_maps.h"
+#include "core/id.h"
+#include "ncurses_lib/win_ncurses.h"
+#include "ui/tui/ui_screens/column/column.h"
+#include "ui/tui/ui_screens/column/column_base.h"
 
 namespace tui {
   ProjectTaskScreen::ProjectTaskScreen()

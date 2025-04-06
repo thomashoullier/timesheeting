@@ -4,7 +4,6 @@
 #define STOPWATCH_UI_H
 
 #include "../ui_component.h"
-#include "config/key.h"
 #include "stopwatch_ncurses.h"
 #include "../date_selector/day_selector.h"
 #include <memory>

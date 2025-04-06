@@ -7,8 +7,9 @@
 #include <filesystem>
 #include <fstream>
 #include <memory>
-#include <ostream>
 #include <stdexcept>
+#include <generator>
+#include "core/export_row.h"
 
 namespace exporter {
   CSVExporter::CSVExporter(const std::string &beg_date_str,

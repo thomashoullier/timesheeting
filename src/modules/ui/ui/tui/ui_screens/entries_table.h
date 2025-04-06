@@ -3,11 +3,11 @@
 #ifndef ENTRIES_TABLE_H
 #define ENTRIES_TABLE_H
 
-#include "config/key.h"
 #include "date_selector/day_selector.h"
 #include "register/register_ncurses.h"
 #include "total_bar/total_bar.h"
 #include "ui_component.h"
+#include <memory>
 
 namespace tui {
   /** @brief Class for holding the table of entries for a given day. */

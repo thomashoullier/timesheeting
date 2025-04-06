@@ -3,6 +3,9 @@
 #include "ncurses_lib/menu_ncurses.h"
 #include "ncurses_lib/win_ncurses.h"
 #include <memory>
+#include <cstddef>
+// IWYU pragma: no_include <string>
+#include "ui/tui/ui_screens/entry_field.h"
 
 namespace tui {
   StopwatchNcurses::StopwatchNcurses(const core::EntryStaging &_entry_staging)

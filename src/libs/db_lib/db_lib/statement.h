@@ -4,8 +4,11 @@
 #define STATEMENT_H
 
 #include "db_sqlite_handle.h"
-#include <stdexcept>
+#include <sqlite3.h>
+#include <cstddef>
+#include <string>
 #include <tuple>
+// IWYU pragma: no_include <variant>
 #include <utility>
 
 namespace db_lib {

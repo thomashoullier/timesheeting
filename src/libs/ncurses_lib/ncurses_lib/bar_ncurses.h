@@ -4,6 +4,7 @@
 #define BAR_NCURSES_H
 
 #include <string>
+#include <cstddef>
 #include "win_ncurses.h"
 
 namespace ncurses_lib {

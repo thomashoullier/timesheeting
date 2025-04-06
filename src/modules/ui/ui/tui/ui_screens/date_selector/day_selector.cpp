@@ -1,4 +1,6 @@
 #include "day_selector.h"
+#include "ncurses_lib/win_ncurses.h"
+// IWYU pragma: no_include <string>
 
 namespace tui {
   DaySelector::DaySelector()

@@ -5,10 +5,10 @@
 
 #include <cstdint>
 #include <filesystem>
+#include <memory>
 #include <string>
 #include <vector>
 #include "config_lib/toml_loader.h"
-#include "key.h"
 #include "binding_maps.h"
 
 namespace config {

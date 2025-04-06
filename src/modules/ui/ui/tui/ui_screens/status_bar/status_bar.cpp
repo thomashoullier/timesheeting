@@ -4,6 +4,10 @@
 #include "suggestion/suggestion.h"
 #include <algorithm>
 #include "ui/keys/bound_keys.h"
+#include <ncurses.h>
+#include <cctype>
+#include "ncurses_lib/bar_ncurses.h"
+#include "config/binding_maps.h"
 
 namespace tui {
   StatusBarNCurses &StatusBarNCurses::get() {

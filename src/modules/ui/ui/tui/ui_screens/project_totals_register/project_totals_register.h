@@ -3,11 +3,12 @@
 #ifndef PROJECT_TOTALS_REGISTER_H
 #define PROJECT_TOTALS_REGISTER_H
 
-#include "config/key.h"
 #include "core/project_total.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "../ui_component.h"
 #include <memory>
+#include <vector>
+// IWYU pragma: no_include <format>
 
 namespace tui {
   /** @brief ProjectTotal register implementation in ncurses. */

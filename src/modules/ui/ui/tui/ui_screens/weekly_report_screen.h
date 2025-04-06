@@ -3,7 +3,6 @@
 #ifndef WEEKLY_REPORT_SCREEN_H
 #define WEEKLY_REPORT_SCREEN_H
 
-#include "config/key.h"
 #include "date_selector/week_selector.h"
 #include "ui_screen.h"
 #include "weekly_report_register/weekly_report_register.h"

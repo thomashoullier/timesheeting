@@ -1,11 +1,22 @@
 #include "entries_table.h"
+#include "config/binding_maps.h"
 #include "config/key.h"
+#include "core/generic_item.h"
 #include "db/db_sqlite.h"
+#include "log_lib/logger.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "status_bar/status_bar.h"
-#include "log_lib/logger.h"
-#include "update_manager.h"
+#include "time_lib/date.h"
+#include "time_lib/date_range.h"
 #include "ui/keys/bound_keys.h"
+#include "ui/tui/ui_screens/date_selector/day_selector.h"
+#include "ui/tui/ui_screens/entry_field.h"
+#include "ui/tui/ui_screens/register/register_ncurses.h"
+#include "ui/tui/ui_screens/total_bar/total_bar.h"
+#include "update_manager.h"
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 namespace tui {
   EntriesTable::EntriesTable()

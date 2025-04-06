@@ -1,10 +1,13 @@
 #include "period_selector_ui.h"
 #include "config/key.h"
 #include "ncurses_lib/menu_ncurses.h"
-#include "ncurses_lib/ncurses_handle.h"
 #include "period_selector_ncurses.h"
 #include "ui/keys/bound_keys.h"
 #include "../status_bar/status_bar.h"
+#include <stdexcept>
+#include <string>
+#include "config/binding_maps.h"
+#include "time_lib/date.h"
 
 namespace tui {
   PeriodSelectorUI::PeriodSelectorUI ()

@@ -4,6 +4,7 @@
 #define DATE_RANGE_H
 
 #include "date.h"
+#include <string>
 #include <vector>
 
 namespace time_lib{

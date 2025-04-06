@@ -1,6 +1,11 @@
 #include "update_manager.h"
 #include "ui/tui/ui_screens/status_bar/status_bar.h"
 #include <stdexcept>
+#include "ui/tui/ui_screens/entries_screen.h"
+#include "ui/tui/ui_screens/locations_screen.h"
+#include "ui/tui/ui_screens/project_report_screen.h"
+#include "ui/tui/ui_screens/project_task_screen.h"
+#include "ui/tui/ui_screens/weekly_report_screen.h"
 
 namespace tui {
   UpdateManager &UpdateManager::get(

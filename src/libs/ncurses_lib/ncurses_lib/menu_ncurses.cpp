@@ -2,8 +2,6 @@
 #include "win_ncurses.h"
 #include <algorithm>
 #include <numeric>
-#include <curses.h>
-#include <ncurses.h>
 
 namespace ncurses_lib {
   MenuItem::MenuItem(const std::string &_cell_string,

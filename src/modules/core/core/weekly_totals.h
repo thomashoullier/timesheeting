@@ -8,6 +8,8 @@
 #include <array>
 #include <string>
 #include <vector>
+#include<memory>
+// IWYU pragma: no_include <format>
 
 namespace core {
   /** @brief Report of totals for a given task. */

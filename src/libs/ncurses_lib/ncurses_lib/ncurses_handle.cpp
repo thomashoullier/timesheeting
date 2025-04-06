@@ -1,5 +1,5 @@
 #include "ncurses_handle.h"
-#include <curses.h>
+#include <ncurses.h>
 
 namespace ncurses_lib {
   NcursesHandle::NcursesHandle() {

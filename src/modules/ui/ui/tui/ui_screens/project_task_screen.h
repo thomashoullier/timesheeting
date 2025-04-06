@@ -4,9 +4,10 @@
 #define PROJECT_TASK_TABLE_H
 
 #include "column/column.h"
-#include "config/key.h"
+#include "column/column_base.h"
 #include "ui_screen.h"
 #include <memory>
+#include "core/generic_item.h"
 
 namespace tui {
   /** @brief Projects and tasks UI screen. */

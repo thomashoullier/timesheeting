@@ -1,5 +1,6 @@
 #include "statement.h"
 #include "db_sqlite_handle.h"
+#include <stdexcept>
 
 namespace db_lib {
   Statement::Statement(sqlite3_stmt *_stmt) : stmt(_stmt) {}

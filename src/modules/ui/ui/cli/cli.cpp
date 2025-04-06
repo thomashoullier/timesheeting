@@ -1,5 +1,7 @@
 #include "cli.h"
 #include "version/version.h"
+#include <tclap/CmdLine.h>
+#include <tclap/ValueArg.h>
 
 namespace cli {
   CLIData parse(int argc, const char *const *argv) {

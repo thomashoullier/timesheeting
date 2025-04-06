@@ -1,5 +1,6 @@
 #include "project_totals_register.h"
 #include "config/key.h"
+#include "config/binding_maps.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "ncurses_lib/win_ncurses.h"
 #include "ui/keys/bound_keys.h"

@@ -2,6 +2,10 @@
 #include "config/key.h"
 #include "db/db_sqlite.h"
 #include "log_lib/logger.h"
+#include <string>
+#include "ui/tui/ui_screens/period_selector/period_selector_ui.h"
+#include "ui/tui/ui_screens/project_totals_register/project_totals_register.h"
+#include "ui/tui/ui_screens/total_bar/total_bar.h"
 
 namespace tui {
   ProjectReportScreen::ProjectReportScreen()

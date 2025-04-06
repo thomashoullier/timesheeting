@@ -4,8 +4,8 @@
 #define LOCATIONS_SCREEN_H
 
 #include "column/column.h"
-#include "config/key.h"
 #include "ui_screen.h"
+#include "core/generic_item.h"
 #include <memory>
 
 namespace tui {

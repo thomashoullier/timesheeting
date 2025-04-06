@@ -5,6 +5,7 @@
 
 #include "ncurses_lib/bar_ncurses.h"
 #include <vector>
+#include <string>
 
 namespace tui {
   /** @brief Status bar implementation using ncurses. */

@@ -7,6 +7,7 @@
 #include "time_lib/duration.h"
 #include <string>
 #include <vector>
+// IWYU pragma: no_include <format>
 
 namespace core {
   /** @brief List of task names and associated durations. */

@@ -3,8 +3,10 @@
 #ifndef ENTRY_H
 #define ENTRY_H
 
-#include "time_lib/date.h"
 #include "id.h"
+#include "time_lib/date.h"
+#include <string>
+#include <vector>
 
 namespace core {
   /** @brief Timesheet entry object. */

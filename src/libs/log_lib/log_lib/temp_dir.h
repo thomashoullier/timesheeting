@@ -3,6 +3,8 @@
 #define TEMP_DIR_H
 
 #include <filesystem>
+#include <cstddef>
+#include <string>
 
 namespace log_lib {
   /** @brief Temporary directory for Logger file rotation.

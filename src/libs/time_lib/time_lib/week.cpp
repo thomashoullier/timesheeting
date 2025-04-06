@@ -1,6 +1,8 @@
 #include "week.h"
 #include "time_zone.h"
 #include <chrono>
+#include <format>
+#include "date.h"
 
 namespace time_lib {
   std::chrono::year_month_day Week::ymd_from_date(const Date &date) {

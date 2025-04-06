@@ -1,4 +1,6 @@
 #include "db_sqlite_handle.h"
+#include <stddef.h>
+#include <stdexcept>
 #include <string>
 
 namespace db_lib{

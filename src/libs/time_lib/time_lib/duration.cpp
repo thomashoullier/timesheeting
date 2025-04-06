@@ -1,6 +1,7 @@
 #include "duration.h"
 #include <sstream>
 #include <stdexcept>
+#include <iomanip>
 
 namespace time_lib {
   Duration::Duration() : dur(std::chrono::seconds(0)) {}

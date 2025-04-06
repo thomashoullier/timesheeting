@@ -2,13 +2,17 @@
 #include <ncurses.h>
 #include <signal.h>
 #include "config/key.h"
-#include "ncurses_lib/win_ncurses.h"
 #include "time_lib/duration_displayer.h"
 #include "log_lib/logger.h"
 #include <memory>
 #include <string>
 #include "ui_screens/update_manager.h"
-#include "ui/keys/bound_keys.h"
+// IWYU pragma: no_include "ui/tui/ui_screens/ui_screen.h"
+#include "ui/tui/ui_screens/entries_screen.h"
+#include "ui/tui/ui_screens/locations_screen.h"
+#include "ui/tui/ui_screens/project_report_screen.h"
+#include "ui/tui/ui_screens/project_task_screen.h"
+#include "ui/tui/ui_screens/weekly_report_screen.h"
 
 namespace tui {
   UI::UI()

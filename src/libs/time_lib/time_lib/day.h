@@ -4,6 +4,7 @@
 #define DAY_H
 
 #include <chrono>
+#include <string>
 #include "date_range.h"
 
 namespace time_lib {

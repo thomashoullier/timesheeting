@@ -10,6 +10,8 @@
 #include "version/version.h"
 #include <exception>
 #include <iostream>
+#include <filesystem>
+#include <string>
 
 int main(int argc, const char *const *argv) {
   try {
