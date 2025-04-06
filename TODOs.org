@@ -438,6 +438,12 @@ and then match the enums in a switch statement.
 - [2025-01-12 Sun] Implemented key to Actions maps for bindings. The if ladders are
   replaced with switch statements.
 
+*** TODO Resize ncurses windows instead of recreating
+ADDED: [2025-04-06 Sun]
+Is there a way to resize the ncurses windows instead of destroying
+and recreating them? We have a relatively high heap usage because of
+this it seems.
+
 ** Build
 *** TODO Enforce the GCC14 dependency
 ADDED: [2024-11-23 Sat]
