@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.31)
 
 project(timesheeting)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
@@ -164,6 +164,8 @@ if(build_tests)
 endif()
 
 if(build_coverage)
+  set(CMAKE_BUILD_TYPE Debug)
+  cmake_policy(SET CMP0175 OLD) # CodeCoverage has missing arguments still.
   include(CodeCoverage)
   file(GLOB_RECURSE COVERED_SRC_MODULES "${TIMESHEETING_DIR}/src/modules/*")
   file(GLOB_RECURSE COVERED_SRC_LIBS "${TIMESHEETING_DIR}/src/libs/*")
