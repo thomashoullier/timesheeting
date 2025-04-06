@@ -41,7 +41,9 @@ namespace config {
 
   /** @brief Represents the key bindings in the program. */
   struct KeyBindings {
+    /** @brief The normal mode key map. */
     NormalMap normal_mode;
+    /** @brief The edit mode key map. */
     EditMap edit_mode;
   };
 

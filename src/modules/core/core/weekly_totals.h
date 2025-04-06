@@ -44,6 +44,7 @@ namespace core {
     /** @brief Set of report per project, including task breakdown. */
     std::vector<PerProjectTotals> project_totals;
 
+    /** @brief Convert the object to menu items. */
     std::shared_ptr<std::vector<ncurses_lib::MenuItem>> to_menu_items() const;
 
   private:

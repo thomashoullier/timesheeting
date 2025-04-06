@@ -12,7 +12,9 @@
 namespace core {
   /** @brief List of task names and associated durations. */
   struct TaskTotal {
+    /** @brief The name of the task. */
     std::string task_name;
+    /** @brief The duration total associated to the task. */
     time_lib::Duration total;
   };
 

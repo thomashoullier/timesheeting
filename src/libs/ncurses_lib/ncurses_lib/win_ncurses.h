@@ -55,7 +55,7 @@ namespace ncurses_lib {
     virtual void resize();
     /** @brief Activate the border. */
     void set_border();
-    /** @biref Deactivate the border. */
+    /** @brief Deactivate the border. */
     void unset_border();
 
   private:

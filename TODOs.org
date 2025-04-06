@@ -101,6 +101,25 @@ ADDED: [2025-04-05 Sat]
 See include-what-you-use
 - [2025-04-06 Sun] Fixed all includes and added to CI.
 
+*** TODO Add IWYU back into the CI
+ADDED: [2025-04-06 Sun]
+It would be nice to have IWYU in the CI.
+But we cannot compile llvm gentoo package on the CI server. It breaks the server.
+Use a binary version or another linux image entirely for this (eg. alpine).
++ Maybe ~emerge --usepkgonly~.
+
+*** TODO Deploy the unit tests coverage to somewhere accessible online
+ADDED: <2025-04-06 Sun>
+We would like to avoid relying on coveralls. Maybe copy the lcov report on
+github pages directly.
+
+*** TODO Use binary gentoo packages as much as possible in the CI
+ADDED: [2025-04-06 Sun]
+The binary packages were not as normalized when we started the project.
+The CI server is weak, and we could benefit from quicker test loops.
+The binary packages should reflect a sensible default, so we see no reason
+not to use them in tests.
+
 * Software
 ** Bugs
 *** DONE Escape and keypad cannot be used simultaneously in ncurses

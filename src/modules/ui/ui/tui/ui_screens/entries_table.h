@@ -25,7 +25,9 @@ namespace tui {
     void resize() final;
     void update() final;
     void update_status() final;
+    /** @brief Switch the display to the next day. */
     void select_next_day();
+    /** @brief Switch the display to the previous day. */
     void select_previous_day();
 
   private:

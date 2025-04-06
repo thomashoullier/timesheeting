@@ -9,6 +9,7 @@
 #include <exception>
 
 namespace ncurses_lib {
+  /** @brief The items held by the menu. */
   struct MenuItem {
     /** @brief String displayed in the menu itself. Usually short. */
     std::string cell_string;
@@ -23,11 +24,15 @@ namespace ncurses_lib {
              StringFace _face = StringFace::Normal);
   };
 
+  /** @brief The position and size of a column relative to the menu window. */
   struct ColumnFormat {
-    int pos; // Starting position in the window
-    int width; // Width which can be used to write things.
+    /** @brief Starting position of the column in the window. */
+    int pos;
+    /** @brief Column width which can be used to write characters. */
+    int width;
   };
 
+  /** @brief A menu implementation (replacing the ncurses menu library). */
   class MenuNCurses : public WinNCurses {
   private:
     /** @brief Target column widths. */
