@@ -90,13 +90,16 @@ ADDED: [2025-03-23 Sun]
 We can probably get a token and add it in the CI secrets.
 - [2025-03-29 Sat] OK we have a docker username and token in the CI.
 
-*** TODO Add static code analysis to the CI
+*** DONE Add static code analysis to the CI
+CLOSED: [2025-04-06 Sun 13:32]
 ADDED: [2025-03-28 Fri]
 Run a cppcheck on the whole codebase as part of the CI.
 
-*** TODO Add a check for unused includes
+*** DONE Add a check for unused includes
+CLOSED: [2025-04-06 Sun 13:32]
 ADDED: [2025-04-05 Sat]
 See include-what-you-use
+- [2025-04-06 Sun] Fixed all includes and added to CI.
 
 * Software
 ** Bugs
@@ -382,15 +385,17 @@ makes the library less reusable.
   an instrumented input_loop on top of the basic input_loop.
   We likely have to do the same with every window child class.
 
-*** TODO Put final attributes everywhere on classes and methods
+*** DONE Put final attributes everywhere on classes and methods
+CLOSED: [2025-04-06 Sun 14:12]
 ADDED: [2025-04-05 Sat]
 This is a safeguard to avoid unintended inheritance.
+
 *** TODO Common template for week selector and day selector.
 ADDED: [2025-04-05 Sat]
 We can also have a concept of period in the date library for day and week.
 
 ** Performance
-*** HOLD Remove useless refreshes and updates
+*** TODO Remove useless refreshes and updates
 ADDED: [2024-09-27 Fri]
 WAIT for the custom menu implementation.
 Monitor closely the refresh() and update() operations and remove the

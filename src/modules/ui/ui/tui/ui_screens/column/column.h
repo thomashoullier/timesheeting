@@ -30,7 +30,7 @@ namespace tui {
       MenuNCurses::set_items(items_to_menu(items));
     };
 
-    core::Id get_current_id() override {
+    core::Id get_current_id() final {
       if (held_items.empty()) {
         throw(ncurses_lib::MenuEmpty
               ("get_current_id(): no items in the register!"));
@@ -39,27 +39,27 @@ namespace tui {
       return held_items.at(item_index).id;
     };
 
-    std::string get_current_item_string() override {
+    std::string get_current_item_string() final {
       return MenuNCurses::get_current_item_string();
     };
 
     ncurses_lib::MenuNCurses::ItemSelectionStatus
-    select_down_item() override {
+    select_down_item() final {
       return MenuNCurses::select_down_item();
     };
 
     ncurses_lib::MenuNCurses::ItemSelectionStatus
-    select_up_item() override {
+    select_up_item() final {
       return MenuNCurses::select_up_item();
     };
 
-    int get_input() override { return MenuNCurses::get_input(); };
+    int get_input() final { return MenuNCurses::get_input(); };
 
-    void set_border() override {
+    void set_border() final {
       MenuNCurses::set_border();
     };
 
-    void unset_border() override {
+    void unset_border() final {
       MenuNCurses::unset_border();
     };
 

@@ -17,11 +17,11 @@ namespace tui {
     explicit ProjectTaskScreen();
 
     void refresh () final;
-    void clear () override;
+    void clear () final;
     void resize () final;
-    config::NormalActions input_loop() override;
-    void update() override;
-    void update_status() override;
+    config::NormalActions input_loop() final;
+    void update() final;
+    void update_status() final;
 
   private:
     /** @brief Column for projects. */

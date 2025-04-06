@@ -20,12 +20,12 @@ namespace tui {
     (const std::vector<core::ProjectTotal> &totals);
     /** @brief Replace the totals currently displayed. */
     void set_items(const std::vector<core::ProjectTotal> &totals);
-    config::NormalActions input_loop () override;
+    config::NormalActions input_loop () final;
     void refresh() final;
-    void clear() override;
+    void clear() final;
     void resize() final;
-    void update() override;
-    void update_status() override;
+    void update() final;
+    void update_status() final;
 
   private:
     /** @brief Get the menu items from the provided set of items. */

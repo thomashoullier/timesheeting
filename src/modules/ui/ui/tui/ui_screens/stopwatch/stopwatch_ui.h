@@ -15,12 +15,12 @@ namespace tui {
     /** @brief Constructor. */
     explicit StopwatchUI (std::shared_ptr<DaySelector> _day_selector);
 
-    config::NormalActions input_loop() override;
+    config::NormalActions input_loop() final;
     void refresh() final;
-    void clear() override;
+    void clear() final;
     void resize() final;
-    void update() override;
-    void update_status() override;
+    void update() final;
+    void update_status() final;
 
   private:
     /** @brief Handle to the low-level stopwatch element. */

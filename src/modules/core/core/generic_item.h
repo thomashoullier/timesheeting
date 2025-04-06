@@ -22,11 +22,11 @@ namespace core {
   };
 
   /** @brief Specialization of GenericItem into a Project item. */
-  struct Project : GenericItem {};
+  struct Project final : GenericItem {};
   /** @brief Specialization of GenericItem into a Task item. */
-  struct Task : GenericItem {};
+  struct Task final : GenericItem {};
   /** @brief Specialization of GenericItem into a Location item. */
-  struct Location : GenericItem {};
+  struct Location final : GenericItem {};
 
   /** @brief Convert a set of generic items into the set of their names. */
   template <typename T,

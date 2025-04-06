@@ -16,12 +16,12 @@ namespace tui {
     /** @brief Constructor. */
     explicit ProjectReportScreen();
 
-    config::NormalActions input_loop() override;
+    config::NormalActions input_loop() final;
     void refresh() final;
-    void clear() override;
+    void clear() final;
     void resize() final;
-    void update() override;
-    void update_status() override;
+    void update() final;
+    void update_status() final;
 
   private:
     /** @brief Selector for the date range to consider. */

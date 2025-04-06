@@ -19,12 +19,12 @@ namespace tui {
     /** @brief Constructor. */
     explicit EntriesTable();
 
-    config::NormalActions input_loop() override;
+    config::NormalActions input_loop() final;
     void refresh() final;
-    void clear() override;
+    void clear() final;
     void resize() final;
-    void update() override;
-    void update_status() override;
+    void update() final;
+    void update_status() final;
     void select_next_day();
     void select_previous_day();
 

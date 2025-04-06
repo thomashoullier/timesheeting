@@ -16,12 +16,12 @@ namespace tui {
     explicit WeeklyReportRegister(const core::WeeklyTotals &totals);
     /** @brief Replace the totals currently displayed. */
     void set_items(const core::WeeklyTotals &totals);
-    config::NormalActions input_loop() override;
+    config::NormalActions input_loop() final;
     void refresh() final;
-    void clear() override;
+    void clear() final;
     void resize() final;
-    void update() override;
-    void update_status() override;
+    void update() final;
+    void update_status() final;
   };
 } // namespace tui
 

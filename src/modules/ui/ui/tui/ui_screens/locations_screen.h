@@ -16,11 +16,11 @@ namespace tui {
     explicit LocationsScreen();
 
     void refresh () final;
-    void clear () override;
+    void clear () final;
     void resize () final;
-    void update () override;
-    void update_status() override;
-    config::NormalActions input_loop () override;
+    void update () final;
+    void update_status() final;
+    config::NormalActions input_loop () final;
 
   private:
     /** @brief Column holding the locations. */
