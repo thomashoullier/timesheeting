@@ -343,6 +343,14 @@ Currently a global update of the stopwatch is called whenever we
 call set_now. Make it so that only the changed date is updated.
 This is a bit nitpicky.
 
+*** TODO Improve the suggestion engine
+ADDED: [2025-04-06 Sun]
+For instance, we want to match:
+  + exact prefix strings first, then
+  + the first match of an exact substring,
+  + then fuzzy.
+Look online to see if there are libraries to do this.
+
 ** Refactoring
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]
