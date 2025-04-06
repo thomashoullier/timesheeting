@@ -133,14 +133,14 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structconfig_1_1KeyBindings.html">   43</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structconfig_1_1KeyBindings.html">KeyBindings</a> {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="classconfig_1_1BindingMap.html">NormalMap</a> normal_mode;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_class" href="classconfig_1_1BindingMap.html">EditMap</a> edit_mode;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  };</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structconfig_1_1KeyBindings.html#a06faa5556a2d146e6db04b868e1a846b">   45</a></span>    <a class="code hl_class" href="classconfig_1_1BindingMap.html">NormalMap</a> <a class="code hl_variable" href="structconfig_1_1KeyBindings.html#a06faa5556a2d146e6db04b868e1a846b">normal_mode</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structconfig_1_1KeyBindings.html#a8ac30944d091ff52059c541db0a6f8c2">   47</a></span>    <a class="code hl_class" href="classconfig_1_1BindingMap.html">EditMap</a> <a class="code hl_variable" href="structconfig_1_1KeyBindings.html#a8ac30944d091ff52059c541db0a6f8c2">edit_mode</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  };</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>} <span class="comment">// namespace config</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif </span><span class="comment">// BINDING_MAPS_H</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>} <span class="comment">// namespace config</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">// BINDING_MAPS_H</span></div>
 <div class="ttc" id="aclassconfig_1_1BindingMap_html"><div class="ttname"><a href="classconfig_1_1BindingMap.html">config::BindingMap</a></div><div class="ttdoc">Map from binding to action.</div><div class="ttdef"><b>Definition</b> binding_maps.h:10</div></div>
 <div class="ttc" id="aclassconfig_1_1BindingMap_html_a11ba939a72ee187b5df8cf889e4dff17"><div class="ttname"><a href="classconfig_1_1BindingMap.html#a11ba939a72ee187b5df8cf889e4dff17">config::BindingMap::map</a></div><div class="ttdeci">std::unordered_map&lt; int, T &gt; map</div><div class="ttdoc">Underlying hashmap representation.</div><div class="ttdef"><b>Definition</b> binding_maps.h:13</div></div>
 <div class="ttc" id="aclassconfig_1_1BindingMap_html_a32ab20d99689d028469c07736d4214af"><div class="ttname"><a href="classconfig_1_1BindingMap.html#a32ab20d99689d028469c07736d4214af">config::BindingMap::action_requested</a></div><div class="ttdeci">T action_requested(int binding) const</div><div class="ttdoc">Retrieve the action corresponding to the key pressed.</div><div class="ttdef"><b>Definition</b> binding_maps.h:28</div></div>
@@ -148,6 +148,8 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclassconfig_1_1BindingMap_html_ac730f5926eb634b31a7c6dc172f52629"><div class="ttname"><a href="classconfig_1_1BindingMap.html#ac730f5926eb634b31a7c6dc172f52629">config::BindingMap::BindingMap</a></div><div class="ttdeci">BindingMap()=default</div><div class="ttdoc">Initialize a new map.</div></div>
 <div class="ttc" id="akey_8h_html"><div class="ttname"><a href="key_8h.html">key.h</a></div><div class="ttdoc">Representations for key bindings.</div></div>
 <div class="ttc" id="astructconfig_1_1KeyBindings_html"><div class="ttname"><a href="structconfig_1_1KeyBindings.html">config::KeyBindings</a></div><div class="ttdoc">Represents the key bindings in the program.</div><div class="ttdef"><b>Definition</b> binding_maps.h:43</div></div>
+<div class="ttc" id="astructconfig_1_1KeyBindings_html_a06faa5556a2d146e6db04b868e1a846b"><div class="ttname"><a href="structconfig_1_1KeyBindings.html#a06faa5556a2d146e6db04b868e1a846b">config::KeyBindings::normal_mode</a></div><div class="ttdeci">NormalMap normal_mode</div><div class="ttdoc">The normal mode key map.</div><div class="ttdef"><b>Definition</b> binding_maps.h:45</div></div>
+<div class="ttc" id="astructconfig_1_1KeyBindings_html_a8ac30944d091ff52059c541db0a6f8c2"><div class="ttname"><a href="structconfig_1_1KeyBindings.html#a8ac30944d091ff52059c541db0a6f8c2">config::KeyBindings::edit_mode</a></div><div class="ttdeci">EditMap edit_mode</div><div class="ttdoc">The edit mode key map.</div><div class="ttdef"><b>Definition</b> binding_maps.h:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

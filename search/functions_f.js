@@ -14,7 +14,7 @@ var searchData=
   ['to_5ffullstring_11',['to_fullstring',['../classtime__lib_1_1Date.html#a5ee14fb20c5bb6364aeb5070dab0b74c',1,'time_lib::Date']]],
   ['to_5fhour_5fshortstring_12',['to_hour_shortstring',['../classtime__lib_1_1Duration.html#a994a30101caa12a40f43d227fd93be6c',1,'time_lib::Duration']]],
   ['to_5fhour_5fstring_13',['to_hour_string',['../classtime__lib_1_1Duration.html#ae3d3ce194ea1df3abd2fdc222a82bdc3',1,'time_lib::Duration']]],
-  ['to_5fmenu_5fitems_14',['to_menu_items',['../structcore_1_1ProjectTotal.html#ae3c3a0b327ddff48d6fecb6d64bb9b02',1,'core::ProjectTotal']]],
+  ['to_5fmenu_5fitems_14',['to_menu_items',['../structcore_1_1ProjectTotal.html#ae3c3a0b327ddff48d6fecb6d64bb9b02',1,'core::ProjectTotal::to_menu_items()'],['../structcore_1_1WeeklyTotals.html#a95819c3f7d5ce7e6f121713e0df95b50',1,'core::WeeklyTotals::to_menu_items()']]],
   ['to_5fsecond_5fshortstring_15',['to_second_shortstring',['../classtime__lib_1_1Duration.html#a788288bd20f6e9c394cdfb7ecadd3b36',1,'time_lib::Duration']]],
   ['to_5fsecond_5fstring_16',['to_second_string',['../classtime__lib_1_1Duration.html#af2c0573a96a14611c23d3c6a37b4cbbf',1,'time_lib::Duration']]],
   ['to_5fshortstring_17',['to_shortstring',['../classtime__lib_1_1Date.html#af4c1bf9752de36b97a890f753c7c6fb0',1,'time_lib::Date::to_shortstring()'],['../classtime__lib_1_1DurationDisplayer.html#acb50d5668cbb1770b746d82cff49fe8d',1,'time_lib::DurationDisplayer::to_shortstring()']]],
