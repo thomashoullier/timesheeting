@@ -370,6 +370,11 @@ For instance, we want to match:
   + then fuzzy.
 Look online to see if there are libraries to do this.
 
+*** TODO Parse hh:mm in the entries register
+ADDED: [2025-04-06 Sun]
+When "renaming" a date in the entries register, use the currently selected day
+to parse hh:mm dates, like what is done in the stopwatch.
+
 ** Refactoring
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]
