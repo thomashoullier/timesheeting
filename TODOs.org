@@ -117,6 +117,10 @@ github pages directly.
   branch?
 + We have to deploy both the doxygen documentation and the lcov report side by
   side. Simply push them to two separate folders seems like it would work.
+  See https://stackoverflow.com/questions/18935539/authenticate-with-github-using-a-token
+  we can add the token in the remote address.
++ We can just pull the existing pages somewhere on the CI docker, copy the new docs into
+  this folder, and commit+push the difference to the gh-pages branch.
 
 *** DONE Use binary gentoo packages as much as possible in the CI
 CLOSED: [2025-04-09 Wed 21:09]
