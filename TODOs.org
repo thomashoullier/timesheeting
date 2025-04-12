@@ -121,6 +121,8 @@ github pages directly.
   we can add the token in the remote address.
 + We can just pull the existing pages somewhere on the CI docker, copy the new docs into
   this folder, and commit+push the difference to the gh-pages branch.
++ We have created a github token for this: ~timesheeting_gh_pages~
++ Remember to manage the case where there is nothing to push maybe (no diff).
 
 *** DONE Use binary gentoo packages as much as possible in the CI
 CLOSED: [2025-04-09 Wed 21:09]
