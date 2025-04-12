@@ -113,12 +113,14 @@ ADDED: <2025-04-06 Sun>
 We would like to avoid relying on coveralls. Maybe copy the lcov report on
 github pages directly.
 
-*** TODO Use binary gentoo packages as much as possible in the CI
+*** DONE Use binary gentoo packages as much as possible in the CI
+CLOSED: [2025-04-09 Wed 21:09]
 ADDED: [2025-04-06 Sun]
 The binary packages were not as normalized when we started the project.
 The CI server is weak, and we could benefit from quicker test loops.
 The binary packages should reflect a sensible default, so we see no reason
 not to use them in tests.
+- [2025-04-09 Wed] We configured the CI to use binary packages whenever available.
 
 * Software
 ** Bugs

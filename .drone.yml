@@ -58,6 +58,19 @@ steps:
   depends_on:
   - test_environment
 
+- name: include_analysis
+  image: test_environment
+  failure: ignore
+  pull: if-not-exists
+  commands:
+  - rm -rf build_include_analysis
+  - mkdir -p build_include_analysis
+  - cd build_include_analysis
+  - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+  - iwyu_tool.py -p . -- -Xiwyu --error -Xiwyu --no_fwd_decls
+  depends_on:
+  - test_environment
+
 - name: test_build
   image: test_environment
   pull: if-not-exists
