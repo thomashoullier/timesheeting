@@ -19,7 +19,7 @@ ergonomy fixes and features were added. The list is detailed below.
   instead of going blank.
 - Fixed the DB condition for start < stop in entries. Every entry must now be
   at least 1 second long.
-- DB version updated to 2.
+- **DB version updated to 2.**
 - Fixed a bug in the default location of configuration file.
 - Added possibility of binding multiple keys to one action.
 - Added detection of duplicate key bindings.
@@ -41,3 +41,55 @@ ergonomy fixes and features were added. The list is detailed below.
   the following are fully specified: `config_lib`, `time_lib`, `version`, `config`.
 - Initiated TST (test plan), the unit tests for the following are fully specified:
   `config_lib`, `time_lib`, `version`, `config`.
+
+## **v0.5**  (22FEB2025)
+This release is solely dedicated to the custom ncurses menu implementation.
+Terminal resize is now handled by the program.
+
+### Software
+- Implemented a custom ncurses menu, replacing the native ncurses menu.h
+  library.
+
+## **v0.6** (23FEB2025)
+Mainly ergonomy improvements.
+
+### Software
+- **DB version incremented from 2 to 3.**
+- Removed a menu.h include leftover.
+- Archived items are now displayed in italic.
+- The DB now forbids the addition of entries with time periods overlapping that
+  of other entries.
+- The project totals report screen now lists all individual tasks instead of
+  just projects.
+
+## **v0.7** (06APR2025)
+
+### Software
+- Fixed display bug for menus with cell item strings bigger than the display
+  size.
+- Fixed total bar update bug in project totals report.
+- Made every UI screen remember their subtab focus between input loops. This
+  fixes the change of focus when hitting unbound keys, and when resizing.
+- Update and refresh loops in the UI slightly improved.
+- The stopwatch entry start is now set to the last stop date upon successful
+  commit.
+- ergonomy: we can now change the selected day in the entries screen from the
+  stopwatch also.
+- ergonomy: stopwatch dates may now be parsed using hh, hh:mm, hh:mm:ss using
+  the currently se lected day.
+- Edit mode is now exited upon terminal resizing.
+- Fixed a scrolling bug in ncurses menu when changing items.
+- Fixed suggestion display going beyond the window width.
+- Fixed display glitch: status bar emptying on resize.
+- Various style and maintainability fixes.
+- Updated the required cmake version.
+
+### Testing
+- Updated codecoverage cmake plugin.
+
+### CI
+- Configured dockerhub tokens to avoid rate limits.
+- Added cppcheck to the CI.
+ 
+### Documentation
+- Small doxygen addition of missing docstrings.

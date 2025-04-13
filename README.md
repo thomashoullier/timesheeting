@@ -22,7 +22,8 @@ checking progress.
 * `PRJ1-IRS1-v1.1` external timesheet format
 * `PRJ1-SAD1-v1.1` timesheeting system architecture document
 * ![Release notes](doc/RELEASE_NOTES.md)
-* [Doxygen](https://thomashoullier.github.io/timesheeting/index.html)
+* [Doxygen](https://thomashoullier.github.io/timesheeting/doxygen/index.html)
+* [Test coverage](https://thomashoullier.github.io/timesheeting/lcov/index.html)
 
 ## Configuration file
 The program is configured using a single TOML file.
@@ -30,7 +31,6 @@ A reference configuration is included: [timesheeting.toml](timesheeting.toml).
 
 ## Build instructions
 ### Software
-#### Example main
 Change to the `build` directory, run cmake, build and install the target.
 
 ```{shell}
@@ -41,6 +41,26 @@ sudo make install
 
 The executable `timesheeting` should be installed in `/bin/`.
 A default configuration file is installed at `/etc/timesheeting.toml`.
+
+### Unit tests
+The unit tests may be run after enabling the corresponding cmake target.
+
+```{shell}
+cd build/
+cmake -Dbuild_tests=ON ..
+make timesheeting_tests
+./timesheeting_tests
+```
+
+The test coverage report is generate using,
+
+```{shell}
+cd build/
+cmake -Dbuild_coverage=ON ..
+make timesheeting_coverage_report
+```
+
+An LCOV html report is generated at `build/timesheeting_coverage_report/`.
 
 ### Documentation
 #### PRJ1-SPE1 timesheeting specification document
@@ -81,12 +101,13 @@ The result is `irs.pdf`
 Build the doxygen pages, while at the project's root,
 
 ```{shell}
+mkdir build_doxygen
 doxygen Doxyfile
 ```
 
 The documentation is produced as html pages to the folder
-`docs/html`. These pages are also deployed to github using
-a github action.
+`build_doxygen/html`. These pages are also deployed to github pages by
+the CI.
 
 ## License
 The software is distributed under the MIT license.

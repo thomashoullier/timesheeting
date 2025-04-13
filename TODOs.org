@@ -110,7 +110,8 @@ Use a binary version or another linux image entirely for this (eg. alpine).
 + Maybe ~emerge --usepkgonly~.
 - [2025-04-12 Sat] Added back in.
 
-*** TODO Deploy the unit tests coverage to somewhere accessible online
+*** DONE Deploy the unit tests coverage to somewhere accessible online
+CLOSED: [2025-04-13 Sun 14:50]
 ADDED: <2025-04-06 Sun>
 We would like to avoid relying on coveralls. Maybe copy the lcov report on
 github pages directly.
