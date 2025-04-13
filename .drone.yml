@@ -139,6 +139,7 @@ steps:
   pull: never
   failure: ignore
   commands:
+  - rm -rf gh_pages
   - git clone --depth 1 --branch gh-pages https://thomashoullier:$GITHUB_PAGES_TOKEN@github.com/thomashoullier/timesheeting.git gh_pages
   - rm -rf gh_pages/*
   - cp -r build_doxygen/html gh_pages/doxygen
@@ -149,7 +150,7 @@ steps:
   - git push origin gh-pages
   environment:
     GITHUB_PAGES_TOKEN:
-      from_secret: GIHUB_PAGES_TOKEN
+      from_secret: GITHUB_PAGES_TOKEN
   depends_on:
   - build_doxygen
   - test_coverage
