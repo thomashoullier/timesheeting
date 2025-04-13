@@ -15,7 +15,7 @@ var searchData=
   ['select_5ftasks_12',['select_tasks',['../classdb_1_1StatementSet.html#aed058c6ec7fb8526742bd609ad4645ed',1,'db::StatementSet']]],
   ['select_5ftasks_5factive_13',['select_tasks_active',['../classdb_1_1StatementSet.html#a879d4ac548ae49822cf80584df1861a4',1,'db::StatementSet']]],
   ['selected_5findex_14',['selected_index',['../classncurses__lib_1_1MenuNCurses.html#af45342d8b2e675de37549ad4d19acb92',1,'ncurses_lib::MenuNCurses']]],
-  ['show_5fonly_5factive_15',['show_only_active',['../classtui_1_1LocationsScreen.html#ae35d513a6dc1ad7123207ff4e7024779',1,'tui::LocationsScreen::show_only_active'],['../classtui_1_1ProjectTaskScreen.html#a19bf10066b08ef5f37dc7febf0e17529',1,'tui::ProjectTaskScreen::show_only_active']]],
+  ['show_5fonly_5factive_15',['show_only_active',['../classtui_1_1ProjectTaskScreen.html#a19bf10066b08ef5f37dc7febf0e17529',1,'tui::ProjectTaskScreen::show_only_active'],['../classtui_1_1LocationsScreen.html#ae35d513a6dc1ad7123207ff4e7024779',1,'tui::LocationsScreen::show_only_active']]],
   ['sqlite_5fdb_16',['sqlite_db',['../classdb_1_1DB__SQLite.html#a713a8e9f153e3738363efccfafea6c89',1,'db::DB_SQLite']]],
   ['start_17',['start',['../classtime__lib_1_1DateRange.html#a428f237caf073fc461ffb6d241dba318',1,'time_lib::DateRange::start'],['../structcore_1_1Entry.html#ad94cdf056510771133f13121781a4722',1,'core::Entry::start'],['../structcore_1_1EntryStaging.html#a91191153f0f115792a99175a5f18297a',1,'core::EntryStaging::start']]],
   ['start_5fdate_18',['start_date',['../structcore_1_1ExportRow.html#a92b62a1c64b9bff332112d24e21643c6',1,'core::ExportRow']]],
