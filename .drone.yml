@@ -146,6 +146,9 @@ steps:
   - git add *
   - git commit -am "CI github pages deployment."
   - git push origin gh-pages
+  environment:
+    GITHUB_PAGES_TOKEN:
+      from_secret: GIHUB_PAGES_TOKEN
   depends_on:
   - build_doxygen
   - test_coverage
