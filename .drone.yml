@@ -134,6 +134,22 @@ steps:
   depends_on:
   - latex_environment
 
+- name: deploy_gh_pages
+  image: latex_environment
+  pull: never
+  failure: ignore
+  - git clone --depth 1 --branch gh-pages https://thomashoullier:$GITHUB_PAGES_TOKEN@github.com/thomashoullier/timesheeting.git gh_pages
+  - rm -rf gh_pages/*
+  - cp -r build_doxygen/html gh_pages/doxygen
+  - cp -r build_coverage/timesheeting_coverage_report/ gh_pages/lcov
+  - cd gh_pages
+  - git add *
+  - git commit -am "CI github pages deployment."
+  - git push origin gh-pages
+  depends_on:
+  - build_doxygen
+  - test_coverage
+
 - name: PRJ1-SPE1
   image: latex_environment
   pull: never
