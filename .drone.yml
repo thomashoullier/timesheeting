@@ -69,7 +69,6 @@ steps:
   - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
   - env-update
   - source /etc/profile
-  - echo $PATH
   - iwyu_tool.py -p . -- -Xiwyu --error -Xiwyu --no_fwd_decls
   depends_on:
   - test_environment

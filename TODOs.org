@@ -205,10 +205,14 @@ We observed the bug on the entries screen and on the weekly report screen.
   We checked the behavior was fixed on the entries screen, the project report
   screen, and the weekly report screen.
 
-*** TODO Do we leak memory when disconnected from the DB?
+*** DONE Do we leak memory when disconnected from the DB?
+CLOSED: [2025-04-13 Sun 15:26]
 ADDED: [2025-04-12 Sat]
 We are trying to run PRAGMA optimize on quitting, but doesn't it interrupt the
 cleanup somehow?
+This problem was recently picked up by cppcheck also.
+- [2025-04-13 Sun] We moved the ~PRAGMA optimize~ from the destructor to the
+  constructor, as it is less risky to have it fail in the constructor.
 
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
@@ -238,6 +242,13 @@ It should get the midnight of the last monday.
 
 *** TODO Add tests related to DST change across time_lib
 ADDED: [2025-01-22 Wed]
+
+*** TODO Test the disconnection of the DB
+ADDED: [2025-04-13 Sun]
+What happens when we disconnect the DB? A DB was opened but the
+file is moved or network connection interrupted for instance.
+The program should throw and terminate.
+Add an explicit test of the behavior at the db_lib level.
 
 ** Ergonomy
 *** DONE Toggle archive visibility resets the screen

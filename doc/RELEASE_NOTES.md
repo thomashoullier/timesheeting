@@ -76,7 +76,7 @@ Mainly ergonomy improvements.
 - ergonomy: we can now change the selected day in the entries screen from the
   stopwatch also.
 - ergonomy: stopwatch dates may now be parsed using hh, hh:mm, hh:mm:ss using
-  the currently se lected day.
+  the currently selected day.
 - Edit mode is now exited upon terminal resizing.
 - Fixed a scrolling bug in ncurses menu when changing items.
 - Fixed suggestion display going beyond the window width.

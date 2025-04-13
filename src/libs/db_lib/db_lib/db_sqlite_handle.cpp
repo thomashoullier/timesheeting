@@ -9,11 +9,10 @@ namespace db_lib{
     check_rc(rc, "Error when opening the database file: "
              + std::string(db_file));
     exec_statement("PRAGMA foreign_keys = ON;");
+    exec_statement("PRAGMA optimize;");
   }
 
-  DB_SQLite_Handle::~DB_SQLite_Handle() {
-    exec_statement("PRAGMA optimize;");
-    sqlite3_close(db); }
+  DB_SQLite_Handle::~DB_SQLite_Handle() { sqlite3_close(db); }
 
   void DB_SQLite_Handle::check_rc(int rc, const std::string &msg) {
     switch (rc) {
