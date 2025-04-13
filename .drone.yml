@@ -19,7 +19,7 @@ steps:
 
 - name: build
   image: gentoo_environment
-  pull: if-not-exists
+  pull: never
   commands:
   - rm -rf build/*
   - cd build
@@ -46,8 +46,8 @@ steps:
 
 - name: static_analysis
   image: test_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - rm -rf build_analysis
   - mkdir -p build_analysis
@@ -60,8 +60,8 @@ steps:
 
 - name: include_analysis
   image: test_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - rm -rf build_include_analysis
   - mkdir -p build_include_analysis
@@ -76,7 +76,7 @@ steps:
 
 - name: test_build
   image: test_environment
-  pull: if-not-exists
+  pull: never
   commands:
   - rm -rf build_test
   - mkdir -p build_test
@@ -88,12 +88,25 @@ steps:
 
 - name: test_run
   image: test_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - ./build_test/timesheeting_tests
   depends_on:
   - test_build
+
+- name: test_coverage
+  image: test_environment
+  pull: never
+  failure: ignore
+  commands:
+  - rm -rf build_coverage
+  - mkdir -p build_coverage
+  - cd build_coverage
+  - cmake -Dbuild_coverage=ON ..
+  - make timesheeting_coverage_report
+  depends_on:
+  - test_run
 
 - name: latex_environment
   image: docker
@@ -110,10 +123,21 @@ steps:
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
   - docker build -t latex_environment doc/.
 
+- name: build_doxygen
+  image: latex_environment
+  pull: never
+  failure: ignore
+  commands:
+  - rm -rf build_doxygen
+  - mkdir -p build_doxygen
+  - doxygen Doxyfile
+  depends_on:
+  - latex_environment
+
 - name: PRJ1-SPE1
   image: latex_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - cd doc/spec/
   - latexmk -pdf spec.tex
@@ -122,8 +146,8 @@ steps:
 
 - name: PRJ1-SAD1
   image: latex_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - cd doc/sad/
   - latexmk -pdf sad.tex
@@ -132,8 +156,8 @@ steps:
 
 - name: PRJ1-IRS1
   image: latex_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - cd doc/irs/
   - latexmk -pdf irs.tex
@@ -142,8 +166,8 @@ steps:
 
 - name: PRJ1-SRD1
   image: latex_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - cd doc/srd/
   - latexmk -pdf srd.tex
@@ -152,8 +176,8 @@ steps:
 
 - name: PRJ1-TST1
   image: latex_environment
+  pull: never
   failure: ignore
-  pull: if-not-exists
   commands:
   - cd doc/tst/
   - latexmk -pdf tst.tex
