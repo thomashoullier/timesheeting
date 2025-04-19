@@ -14,7 +14,7 @@ var searchData=
   ['tick_5fpoint_11',['tick_point',['../classlog__lib_1_1Logger.html#a41d134ba221737f96c4013d64e710c6f',1,'log_lib::Logger']]],
   ['time_5fpoint_5ffrom_5fstr_12',['time_point_from_str',['../classtime__lib_1_1Date.html#a10e4d32ed83466dc19f2158df4531991',1,'time_lib::Date']]],
   ['time_5fzone_2eh_13',['time_zone.h',['../time__zone_8h.html',1,'']]],
-  ['timezone_14',['timezone',['../classtime__lib_1_1TimeZone.html',1,'time_lib::TimeZone'],['../structconfig_1_1UserConfig.html#a285581e3843c4ba70ba8f921ab98ea0b',1,'config::UserConfig::timezone'],['../classtime__lib_1_1TimeZone.html#a7a995081c38fc4bd9abade9c29817849',1,'time_lib::TimeZone::TimeZone()']]],
+  ['timezone_14',['timezone',['../classtime__lib_1_1TimeZone.html',1,'time_lib::TimeZone'],['../classtime__lib_1_1TimeZone.html#a7a995081c38fc4bd9abade9c29817849',1,'time_lib::TimeZone::TimeZone()'],['../structconfig_1_1UserConfig.html#a285581e3843c4ba70ba8f921ab98ea0b',1,'config::UserConfig::timezone']]],
   ['to_5fcsv_15',['to_csv',['../structcore_1_1ExportRow.html#a32157672263bf46fd3cd5d1ca00efd3d',1,'core::ExportRow']]],
   ['to_5fdate_5frange_16',['to_date_range',['../classtime__lib_1_1Day.html#aff378213e4c1ca3b10e18e5168b5c81b',1,'time_lib::Day::to_date_range()'],['../classtime__lib_1_1Week.html#a6a2689a69e7d1bbca8f99fa63491a24b',1,'time_lib::Week::to_date_range()']]],
   ['to_5fday_5fmonth_5fyear_5fstring_17',['to_day_month_year_string',['../classtime__lib_1_1Day.html#acfd71b199021b5edcfa68d02b20bf0a5',1,'time_lib::Day']]],

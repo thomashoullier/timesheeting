@@ -7,5 +7,6 @@ var searchData=
   ['statusbarncurses_4',['StatusBarNCurses',['../classtui_1_1StatusBarNCurses.html',1,'tui']]],
   ['stopwatchncurses_5',['StopwatchNcurses',['../classtui_1_1StopwatchNcurses.html',1,'tui']]],
   ['stopwatchui_6',['StopwatchUI',['../classtui_1_1StopwatchUI.html',1,'tui']]],
-  ['stringwithface_7',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html',1,'ncurses_lib']]]
+  ['stringwithface_7',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html',1,'ncurses_lib']]],
+  ['substringmatcher_8',['SubstringMatcher',['../classsuggestion_1_1SubstringMatcher.html',1,'suggestion']]]
 ];
