@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-19 13:59:56</td>
+            <td class="headerValue">2025-04-19 14:19:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -64,49 +64,51 @@
 <span id="L2"><span class="lineNum">       2</span>              : #include &quot;fuzzy_matcher.h&quot;</span>
 <span id="L3"><span class="lineNum">       3</span>              : #include &quot;substring_matcher.h&quot;</span>
 <span id="L4"><span class="lineNum">       4</span>              : #include &lt;cctype&gt;</span>
-<span id="L5"><span class="lineNum">       5</span>              : #include &lt;optional&gt;</span>
-<span id="L6"><span class="lineNum">       6</span>              : #include &lt;vector&gt;</span>
-<span id="L7"><span class="lineNum">       7</span>              : #include &lt;string&gt;</span>
-<span id="L8"><span class="lineNum">       8</span>              : #include &lt;algorithm&gt;</span>
-<span id="L9"><span class="lineNum">       9</span>              : </span>
-<span id="L10"><span class="lineNum">      10</span>              : namespace suggestion{</span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC tlaBgGNC">          12 :   std::string best_match(const std::string &amp;query,</span></span>
-<span id="L12"><span class="lineNum">      12</span>              :                          const std::vector&lt;std::string&gt; &amp;choices) {</span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">          12 :     if (choices.empty() or query.empty())</span></span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           4 :       return &quot;&quot;;</span></span>
-<span id="L15"><span class="lineNum">      15</span>              :     // Simple substring matcher try.</span>
-<span id="L16"><span class="lineNum">      16</span>              :     auto substring_matcher = SubstringMatcher();</span>
-<span id="L17"><span class="lineNum">      17</span>              :     std::optional&lt;std::size_t&gt; substring_match =</span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          10 :         substring_matcher.match(query, choices);</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          10 :     if (substring_match.has_value()) {</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           5 :       auto ind = substring_match.value();</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           5 :       return choices.at(ind);</span></span>
-<span id="L22"><span class="lineNum">      22</span>              :     }</span>
-<span id="L23"><span class="lineNum">      23</span>              :     // Remove the case from the query and choices</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           5 :     std::string query_nocase = string_tolower(query);</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           5 :     std::vector&lt;std::string&gt; choices_nocase;</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           5 :     choices_nocase.reserve(choices.size());</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           5 :     std::transform(choices.begin(), choices.end(),</span></span>
-<span id="L28"><span class="lineNum">      28</span>              :                    std::back_inserter(choices_nocase),</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">          10 :                    [](const std::string &amp;str) { return string_tolower(str); });</span></span>
-<span id="L30"><span class="lineNum">      30</span>              :     std::optional&lt;std::size_t&gt; substring_match_nocase =</span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           5 :         substring_matcher.match(query_nocase, choices_nocase);</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           5 :     if (substring_match_nocase.has_value()) {</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           2 :       auto ind = substring_match_nocase.value();</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           2 :       return choices.at(ind);</span></span>
-<span id="L35"><span class="lineNum">      35</span>              :     }</span>
-<span id="L36"><span class="lineNum">      36</span>              :     // Else, fuzzy match.</span>
-<span id="L37"><span class="lineNum">      37</span>              :     auto fuzzy_matcher = FuzzyMatcher();</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           3 :     return fuzzy_matcher.match(query, choices);</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           5 :   }</span></span>
-<span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          15 :   std::string string_tolower(const std::string &amp;str) {</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          15 :     std::string lower_str = str;</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          15 :     std::transform(str.begin(), str.end(), lower_str.begin(),</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         110 :                    [](unsigned char c) { return std::tolower(c); });</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          15 :     return lower_str;</span></span>
-<span id="L46"><span class="lineNum">      46</span>              :   }</span>
-<span id="L47"><span class="lineNum">      47</span>              : }</span>
+<span id="L5"><span class="lineNum">       5</span>              : #include &lt;cstddef&gt;</span>
+<span id="L6"><span class="lineNum">       6</span>              : #include &lt;iterator&gt;</span>
+<span id="L7"><span class="lineNum">       7</span>              : #include &lt;optional&gt;</span>
+<span id="L8"><span class="lineNum">       8</span>              : #include &lt;vector&gt;</span>
+<span id="L9"><span class="lineNum">       9</span>              : #include &lt;string&gt;</span>
+<span id="L10"><span class="lineNum">      10</span>              : #include &lt;algorithm&gt;</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : namespace suggestion{</span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC tlaBgGNC">          12 :   std::string best_match(const std::string &amp;query,</span></span>
+<span id="L14"><span class="lineNum">      14</span>              :                          const std::vector&lt;std::string&gt; &amp;choices) {</span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">          12 :     if (choices.empty() or query.empty())</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           4 :       return &quot;&quot;;</span></span>
+<span id="L17"><span class="lineNum">      17</span>              :     // Simple substring matcher try.</span>
+<span id="L18"><span class="lineNum">      18</span>              :     auto substring_matcher = SubstringMatcher();</span>
+<span id="L19"><span class="lineNum">      19</span>              :     std::optional&lt;std::size_t&gt; substring_match =</span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          10 :         substring_matcher.match(query, choices);</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          10 :     if (substring_match.has_value()) {</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           5 :       auto ind = substring_match.value();</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           5 :       return choices.at(ind);</span></span>
+<span id="L24"><span class="lineNum">      24</span>              :     }</span>
+<span id="L25"><span class="lineNum">      25</span>              :     // Remove the case from the query and choices</span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           5 :     std::string query_nocase = string_tolower(query);</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           5 :     std::vector&lt;std::string&gt; choices_nocase;</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           5 :     choices_nocase.reserve(choices.size());</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           5 :     std::transform(choices.begin(), choices.end(),</span></span>
+<span id="L30"><span class="lineNum">      30</span>              :                    std::back_inserter(choices_nocase),</span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          10 :                    [](const std::string &amp;str) { return string_tolower(str); });</span></span>
+<span id="L32"><span class="lineNum">      32</span>              :     std::optional&lt;std::size_t&gt; substring_match_nocase =</span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           5 :         substring_matcher.match(query_nocase, choices_nocase);</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           5 :     if (substring_match_nocase.has_value()) {</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           2 :       auto ind = substring_match_nocase.value();</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           2 :       return choices.at(ind);</span></span>
+<span id="L37"><span class="lineNum">      37</span>              :     }</span>
+<span id="L38"><span class="lineNum">      38</span>              :     // Else, fuzzy match.</span>
+<span id="L39"><span class="lineNum">      39</span>              :     auto fuzzy_matcher = FuzzyMatcher();</span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           3 :     return fuzzy_matcher.match(query, choices);</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           5 :   }</span></span>
+<span id="L42"><span class="lineNum">      42</span>              : </span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          15 :   std::string string_tolower(const std::string &amp;str) {</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">          15 :     std::string lower_str = str;</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          15 :     std::transform(str.begin(), str.end(), lower_str.begin(),</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         110 :                    [](unsigned char c) { return std::tolower(c); });</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          15 :     return lower_str;</span></span>
+<span id="L48"><span class="lineNum">      48</span>              :   }</span>
+<span id="L49"><span class="lineNum">      49</span>              : }</span>
         </pre>
               </td>
             </tr>
