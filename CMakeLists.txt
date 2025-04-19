@@ -151,7 +151,7 @@ if(build_tests)
   add_executable(timesheeting_tests "${TEST_SRC}")
   target_link_libraries(timesheeting_tests
     PRIVATE Catch2::Catch2WithMain
-    PUBLIC config_lib test_utils config time_lib)
+    PUBLIC config_lib test_utils config time_lib suggestion)
   target_include_directories(timesheeting_tests PUBLIC
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/test/test_utils/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>"
@@ -159,6 +159,7 @@ if(build_tests)
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/exporter/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/db/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/time_lib/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/suggestion/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/config/>")
 endif()
@@ -182,6 +183,7 @@ if(build_coverage)
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/exporter/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/db/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/time_lib/>"
+    "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/suggestion/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/config/>")
   set_target_properties(timesheeting_coverage PROPERTIES COMPILE_FLAGS

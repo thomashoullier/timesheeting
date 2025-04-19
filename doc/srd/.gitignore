@@ -22,7 +22,6 @@
 *.ver
 *.lot
 *.sig
-*.bcf-SAVE-ERROR
 
 svg-inkscape
 auto/

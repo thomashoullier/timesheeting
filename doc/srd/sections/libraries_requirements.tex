@@ -524,5 +524,119 @@ TODO: uplink
 TODO: uplink
 
 \subsection{suggestion\textunderscore lib}
+The suggestion library provides a heuristic for selecting a suggestion
+based on a set of unique strings and a query string. The suggestion
+must feel natural to the user, this is achieved by combining three
+elementary heuristics in a cascade:
+\begin{enumerate}
+\item Substring matching,
+\item Substring matching ignoring case,
+\item Fuzzy matching.
+\end{enumerate}
+
 \paragraph{LR-SUG-010}
+Given a set of unique strings to pick from, and a query string,
+the suggestion matcher shall return the string chosen from the set
+by the following heuristics,
+\begin{enumerate}
+\item The string returned by the substring matcher, if any,
+\item Otherwise, the string returned by the substring matcher
+      with case ignored in all strings, if any,
+\item Otherwise, the string returned by the fuzzy matcher,
+\item Otherwise, the empty string is returned.
+\end{enumerate}
+TODO: uplink
+
+\paragraph{LR-SUG-020}
+Given an empty set of strings to pick from, and a query string,
+the suggestion matcher shall return the empty string.
+TODO: uplink
+
+\paragraph{LR-SUG-030}
+Given an empty query string and any set of strings to pick from,
+the suggestion matcher shall return the empty string.
+TODO: uplink
+
+\paragraph{LR-SUG-040}
+The suggestion matcher shall work nominally for strings containing
+any of the characters in the C++ \emph{basic character set} as
+defined in [AD6].
+TODO: uplink
+
+\paragraph{LR-SUG-050}
+Ignoring the case when using the substring matcher shall apply
+to alphabet letters only. The other characters are treated
+in the same fashion whether case is ignored or not.
+TODO: uplink
+
+\subsubsection{Substring matcher}
+\paragraph{LR-SUG-060}
+Given a set of unique strings to pick from, and a query string,
+the substring matcher shall return a string containing the
+exact query string as a substring.
+
+For instance, the substring \lstinline{ana} is found in
+the string \lstinline{banana}.
+TODO: uplink
+
+\paragraph{LR-SUG-070}
+In case multiple strings are found with the method described
+in LR-SUG-060, a string containing the earliest occurence
+of the substring shall be returned.
+
+For instance, given the set \lstinline{bbanana, banana}, and the
+query substring \lstinline{ana}, the string \lstinline{banana}
+must be returned since it contains the substring at the earliest
+position.
+TODO: uplink
+
+\paragraph{LR-SUG-080}
+In case multiple strings are found with the method described
+in LR-SUG-070, a string among the shortest shall be returned.
+
+For instance, given the set \lstinline{banana, bananana}, and
+the query substring \lstinline{ana}, the string \lstinline{banana}
+must be returned.
+TODO: uplink
+
+\paragraph{LR-SUG-090}
+In case multiple strings are found with the method described
+in LR-SUG-080, the string which comes first in alphabetical order
+(extended to an arbitrary ordering for characters outside of letters)
+shall be returned. Note that since the items in the string set are unique,
+this guarantees only at most one string matches.
+
+For instance, given the set \lstinline{banana, banane}, and the query
+substring \lstinline{ana}, the string \lstinline{banana} must be
+returned.
+TODO: uplink
+
+\subsubsection{Fuzzy matcher}
+The fuzzy matcher is less strictly specified than the other matchers. However,
+some important properties must be met.
+
+\paragraph{LR-SUG-100}
+The fuzzy matcher shall ensure out of order queries are still matched.
+
+For instance, given the set \lstinline{"The brown fox", "jumps over the fence"},
+and the query \lstinline{"fence over jumps"}, the fuzzy matcher must
+return \lstinline{"jumps over the fence"}.
+TODO: uplink
+
+\paragraph{LR-SUG-110}
+The fuzzy matcher shall exhibit the fuzzy property. It must match
+items despite small typos and change of case
+which forbid exact matches.
+
+For instance, given the set \lstinline{Jupiter, Saturn}, and the
+query string \lstinline{juppiter}, it must return \lstinline{Jupiter}.
+TODO: uplink
+
+\paragraph{LR-SUG-120}
+The fuzzy matcher shall not return a match if the query string
+has no character in common with any of the strings in the search
+set.
+
+For instance, given the set \lstinline{banana, fox} and the query
+string \lstinline{yyy}, the fuzzy matcher must match nothing.
 TODO: uplink

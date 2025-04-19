@@ -481,6 +481,12 @@ Is there a way to resize the ncurses windows instead of destroying
 and recreating them? We have a relatively high heap usage because of
 this it seems.
 
+*** TODO Suggestion: the substring matchers are inefficient
+ADDED: [2025-04-19 Sat]
+There are a lot of memory allocations being done in the substring
+matcher and case converter. There is probably a more efficient way to
+do all this.
+
 ** Build
 *** TODO Enforce the GCC14 dependency
 ADDED: [2024-11-23 Sat]

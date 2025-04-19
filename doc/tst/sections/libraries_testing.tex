@@ -646,3 +646,87 @@ it shall return a string representation equal to the one returned
 by the hours string method of the Duration.
 
 \textit{Tests: } LR-DRD-050 Format cycling
+
+\subsection{suggestion\textunderscore lib}
+\paragraph{LT-SUG-010 -- Empty set of choice strings}
+Given the query string \lstinline{fox} and the empty set for strings
+to choose from, the suggestion matcher shall return the empty string.
+
+\textit{Tests: } LR-SUG-020
+
+\paragraph{LT-SUG-020 -- Empty query string}
+Given an empty string as query and the set of strings to choose
+from \lstinline{banana, fox}, the suggestion matcher shall
+return the empty string.
+
+\textit{Tests: } LR-SUG-030
+
+\subsubsection{Prefix matching}
+\paragraph{LT-SUG-030 -- Prefix match with case}
+Given the query \lstinline{Bana} and the set of strings to choose
+from \lstinline{Banana, Fox}, the suggestion matcher shall
+return the string \lstinline{Banana}.
+
+\textit{Tests: } LR-SUG-060
+
+\paragraph{LT-SUG-040 -- Prefix match without case}
+Given the query \lstinline{fo} and the set of strings to choose from
+\lstinline{Banana, Fox}, the suggestion matcher shall return
+the string \lstinline{Fox}.
+
+\textit{Tests: } LR-SUG-010
+
+\subsubsection{Substring matching}
+\paragraph{LT-SUG-050 -- Base substring case}
+Given the query \lstinline{ana} and the set of strings
+\lstinline{banana}, the suggestion matcher shall return the
+string \lstinline{banana}.
+
+\textit{Tests: } LR-SUG-060
+
+\paragraph{LT-SUG-060 -- Earliest substring}
+Given the query \lstinline{ana} and the set \lstinline{bbanana, banana},
+the suggestion matcher shall return the string \lstinline{banana}.
+
+\textit{Tests: } LR-SUG-070
+
+\paragraph{LT-SUG-070 -- Shortest substring}
+Given the query \lstinline{ana} and the set \lstinline{banana, bananana},
+the suggestion matcher shall return the string \lstinline{banana}.
+
+\textit{Tests: } LR-SUG-080
+
+\paragraph{LT-SUG-080 -- First alphabetical substring}
+Given the query \lstinline{ana} and the set \lstinline{banana, banane},
+the suggestion matcher shall return the string \lstinline{banana}.
+
+\textit{Tests: } LR-SUG-090
+
+\subsubsection{Fuzzy matching}
+\paragraph{LT-SUG-090 -- Out of order}
+Given the query \lstinline{fence over jumps} and the set
+\lstinline{"The brown fox", "jumps over the fence"}, the suggestion
+matcher shall return \lstinline{"jumps over the fence"}.
+
+\textit{Tests: } LR-SUG-100
+
+\paragraph{LT-SUG-100 -- Small typo}
+Given the query \lstinline{juppiter} and the set
+\lstinline{Jupiter, Saturn}, the suggestion matcher shall return
+\lstinline{Jupiter}.
+
+\textit{Tests: } LR-SUG-110
+
+\paragraph{LT-SUG-110 -- No match}
+Given the query \lstinline{yyy} and the set
+\lstinline{banana, fox}, the suggestion matcher shall return the
+empty string.
+
+\textit{Tests: } LR-SUG-120, LR-SUG-010
+
+\paragraph{LT-SUG-120 -- Non-letters}
+Given the query \lstinline{bana} and the set
+\lstinline{%/.$BAnafu, Fox}, the suggestion matcher shall return
+the string \lstinline{%/.$BAnafu}.
+
+\textit{Tests: } LR-SUG-040, LR-SUG-050
