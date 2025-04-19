@@ -5,6 +5,8 @@
 #include <vector>
 #include <algorithm>
 #include <optional>
+#include <compare>
+#include <utility>
 
 namespace suggestion {
   std::optional<std::size_t> SubstringMatcher::match
@@ -62,8 +64,8 @@ namespace suggestion {
                    [&choices](std::size_t i) {
                      return std::make_pair(i, choices.at(i)); });
     std::sort(sorted_strings.begin(), sorted_strings.end(),
-              [](std::pair<std::size_t, std::string> &p1,
-                 std::pair<std::size_t, std::string> &p2) {
+              [](const std::pair<std::size_t, std::string> &p1,
+                 const std::pair<std::size_t, std::string> &p2) {
                 return p1.second < p2.second;});
     return sorted_strings.front().first;
   }

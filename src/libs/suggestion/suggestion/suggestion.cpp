@@ -2,6 +2,8 @@
 #include "fuzzy_matcher.h"
 #include "substring_matcher.h"
 #include <cctype>
+#include <cstddef>
+#include <iterator>
 #include <optional>
 #include <vector>
 #include <string>
