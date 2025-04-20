@@ -15,12 +15,14 @@ namespace db_lib {
   /** @brief Statement object. */
   class Statement {
   private:
+    /** @brief SQLite statement. */
+    sqlite3_stmt *stmt;
+
     /** @brief Bind a DB integer to a parameter of the statement. */
     void bind(int index, DBInt num);
     /** @brief Bind a string to a parameter of the statement.
 
-        Note the string lifetime must be managed at the higher level.
-    */
+        Note the string lifetime must be managed at the higher level. */
     void bind(int index, const std::string &str);
     /** @brief Retrieve a result from the current row in a given column. */
     template <typename T> T get_column(int icol);
@@ -30,10 +32,12 @@ namespace db_lib {
         a constraint violation or otherwise expected failure, throw if the code
         is unexpected. */
     bool check_rc(int rc);
+    /** @brief Helper for get_all(). Associates arguments with their
+        index.*/
+    template <class... T, std::size_t... Is>
+    std::tuple<T...> get_all_helper(std::index_sequence<Is...>);
 
   public:
-    /** @brief SQLite statement. */
-    sqlite3_stmt *stmt; // TODO: make it private when interface is complete.
     /** @brief Constructor. */
     explicit Statement(sqlite3_stmt *_stmt);
     /** @brief Destructor. */
@@ -49,18 +53,12 @@ namespace db_lib {
     /** @brief Bind all arguments to the statement. */
     template <class... T> void bind_all(const T &...values);
     /** @brief Get the results of all columns. */
-    template <class... T>
-    std::tuple<T...> get_all();
-    /** @brief Helper for get_all(). Associates arguments with their
-        index.*/
-    template <class... T, std::size_t... Is>
-    std::tuple<T...> get_all_helper(std::index_sequence<Is...>);
+    template <class... T> std::tuple<T...> get_all();
     /** @brief Get the results of all columns in the case of a single row.
 
         Step, get the results, and then reset.
         Return the default tuple values in case no data is available. */
-    template <class... T>
-    std::tuple<T...> single_get_all();
+    template <class... T> std::tuple<T...> single_get_all();
   };
 
   template <class... T>

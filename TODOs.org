@@ -136,6 +136,13 @@ The binary packages should reflect a sensible default, so we see no reason
 not to use them in tests.
 - [2025-04-09 Wed] We configured the CI to use binary packages whenever available.
 
+*** TODO Add a check for memory leak when running the unit tests
+ADDED: [2025-04-20 Sun]
+The unit tests are supposed to trigger every exception etc., so
+it is a good place to check for memory leaks.
+Simply run the tests with valgrind on top, and figure out how to
+return a valgrind error if some memory was leaked.
+
 * Software
 ** Bugs
 *** DONE Escape and keypad cannot be used simultaneously in ncurses
@@ -457,6 +464,14 @@ This is a safeguard to avoid unintended inheritance.
 *** TODO Common template for week selector and day selector.
 ADDED: [2025-04-05 Sat]
 We can also have a concept of period in the date library for day and week.
+
+*** TODO Add a handle to the DB in Statement
+ADDED: [2025-04-20 Sun]
+Two problems are solved by this:
++ The db_lib is used in a leaky way currently in statement_set.
++ The Statement must sometimes check for error codes in the DB,
+  eg. for an out-of-memory error on sqlite3_column_text(),
+  but currently does not have a handle to it.
 
 ** Performance
 *** TODO Remove useless refreshes and updates

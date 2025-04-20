@@ -516,8 +516,54 @@ TODO:uplink
 TODO: uplink
 
 \subsection{db\textunderscore lib}
-\paragraph{LR-DBL-010}
-TODO: uplink
+The db\textunderscore lib contains a handle to a \gls{DB}, and a statement
+wrapper.
+
+\subsubsection{DB handle}
+\paragraph{LR-DBL-010 DB handle constructor}
+The DB handle shall initialize a connection to a DB when provided
+with a filepath to either,
+\begin{enumerate}
+\item a new file in an existing directory,
+\item an existing DB file.
+\end{enumerate}
+
+\paragraph{LR-DBL-020 DB handle non-existing folder}
+The DB handle constructor shall throw an exception when provided with a filepath
+to a non-existent folder.
+
+\paragraph{LR-DBL-030 DB handle invalid file}
+The DB handle constructor shall throw an exception when provided with a
+file which is not a valid DB file, eg a completely unrelated text file.
+
+\paragraph{LR-DBL-040 check DB user version}
+The DB handle shall provide a method to check the user version of the DB,
+\begin{enumerate}
+\item an exception is thrown in case of version mismatch,
+\item the version is initialized to the provided number if it was not
+      initialized.
+\end{enumerate}
+
+\paragraph{LR-DBL-050 get DB user version}
+The DB handle shall provide a method to get the user version of the DB.
+
+\paragraph{LR-DBL-060 execute statement}
+The DB handle shall provide a method to execute a raw statement, provided
+as a string, on an open DB.
+
+\paragraph{LR-DBL-070 execute statement exceptions}
+The DB handle shall throw an exception in case a non-nominal statement
+execution return code is encountered when executing a statement (LR-DBL-060).
+
+\paragraph{LR-DBL-080 prepare statement}
+The DB handle shall provide a method to prepare a raw statement, provided
+as a string, on an open DB.
+
+\paragraph{LR-DBL-090 prepare statement exceptions}
+The DB handle shall throw an exception in case an error is encountered when
+preparing a raw statement (LR-DBL-100).
+
+\subsubsection{Statement wrapper}
 
 \subsection{ncurses\textunderscore lib}
 \paragraph{LR-NCU-010}

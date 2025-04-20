@@ -647,6 +647,88 @@ by the hours string method of the Duration.
 
 \textit{Tests: } LR-DRD-050 Format cycling
 
+\subsection{db\textunderscore lib}
+\subsubsection{DB handle}
+\paragraph{LT-DBL-010 -- Opening new DB}
+The DB handle shall be used to open a new DB file in an existing
+folder without error.
+
+\textit{Tests: } LR-DBL-010
+
+\paragraph{LT-DBL-020 -- Set user version}
+The DB opened in LT-DBL-010 shall be initialized to version 3.
+
+\textit{Tests: } LR-DBL-040
+
+\paragraph{LT-DBL-030 -- Saving the DB}
+The DB modified in LT-DBL-020 shall be saved and closed without error.
+
+\textit{Tests: } LR-DBL-010
+
+\paragraph{LT-DBL-040 -- Opening existing DB}
+The DB handle shall be used to re-open the DB saved in LT-DBL-030
+without error.
+
+\textit{Tests: } LR-DBL-010
+
+\paragraph{LT-DBL-050 -- User version check}
+The DB re-opened in LT-DBL-040 shall be checked for user version 3
+without error.
+
+\textit{Tests: } LR-DBL-040
+
+\paragraph{LT-DBL-060 -- User version check exception}
+The DB re-opened in LT-DBL-040 shall be checked for user version 2
+with an exception thrown due to version mismatch.
+
+\textit{Tests: } LR-DBL-040
+
+\paragraph{LT-DBL-070 -- User version get}
+The DB re-opened in LT-DBL-040 shall be used to retrieve its user
+version. The user version must be equal to 3.
+
+\textit{Tests: } LR-DBL-050
+
+\paragraph{LT-DBL-080 -- Opening DB in non-existent folder}
+The DB handle shall throw an exception when used to open
+a DB in \lstinline{tmpdir/non_existent/test_db.db}.
+
+\textit{Tests: } LR-DBL-020
+
+\paragraph{LT-DBL-090 -- Opening an invalid DB file}
+The DB handle shall throw an exception when used to open a DB
+given a text file named \lstinline{test_db.txt} containing
+the string \lstinline{Hello}.
+
+\textit{Tests: } LR-DBL-030
+
+\paragraph{LT-DBL-100 -- Executing a valid statement}
+The statement \lstinline{PRAGMA user_version = 4;} shall be executed
+on an open DB. The user version must then be retrieved and be equal
+to 4.
+
+\textit{Tests: } LR-DBL-060
+
+\paragraph{LT-DBL-110 -- Executing an invalid statement}
+The statement \lstinline{PRAGMA user_version = ;} shall be executed and must
+raise an exception.
+
+\textit{Tests: } LR-DBL-070
+
+\paragraph{LT-DBL-120 -- Preparing a valid statement}
+The statement \lstinline{PRAGMA user_version;} shall be prepared
+without error.
+
+\textit{Tests: } LR-DBL-080
+
+\paragraph{LT-DBL-130 -- Preparing an invalid statement}
+The statement \lstinline{NOTASTATEMENT;} preparation shall
+throw an exception.
+
+\textit{Tests: } LR-DBL-090
+
+\subsubsection{Statement wrapper}
+
 \subsection{suggestion\textunderscore lib}
 \paragraph{LT-SUG-010 -- Empty set of choice strings}
 Given the query string \lstinline{fox} and the empty set for strings

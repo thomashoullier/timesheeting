@@ -18,11 +18,6 @@ namespace db_lib{
     switch (rc) {
     case SQLITE_OK:
       return;
-    case SQLITE_DONE: // Emitted when a step is finished.
-      return;
-    case SQLITE_CONSTRAINT:
-      throw SQLiteConstraintExcept(msg.c_str());
-      break;
     default:
       throw std::runtime_error(msg + "\n" +
                                "SQLite error code: " + std::to_string(rc));
@@ -62,7 +57,6 @@ namespace db_lib{
   sqlite3_stmt *DB_SQLite_Handle::prepare_statement
     (const std::string &statement) {
     sqlite3_stmt *stmt;
-    //auto rc = sqlite3_prepare_v2(db, statement.c_str(), -1, &stmt, NULL);
     auto rc = sqlite3_prepare_v3(db, statement.c_str(), statement.size(),
                                  SQLITE_PREPARE_PERSISTENT, &stmt, NULL);
     check_rc(rc, "Could not prepare SQL statement: " + statement);
