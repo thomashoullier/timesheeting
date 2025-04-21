@@ -1,5 +1,5 @@
 #include "statement.h"
-#include "db_sqlite_handle.h"
+#include "db_types.h"
 #include <stdexcept>
 #include <string>
 

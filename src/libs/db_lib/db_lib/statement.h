@@ -3,7 +3,7 @@
 #ifndef STATEMENT_H
 #define STATEMENT_H
 
-#include "db_sqlite_handle.h"
+#include "db_types.h"
 #include <sqlite3.h>
 #include <cstddef>
 #include <string>
@@ -65,7 +65,7 @@ namespace db_lib {
   void Statement::bind_all(const T &...values) {
     int index = -1;
     (bind(++index, values), ...);
-  };
+  }
 
   template <class... T>
   std::tuple<T...> Statement::get_all() {

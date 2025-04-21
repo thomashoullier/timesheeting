@@ -472,6 +472,17 @@ Two problems are solved by this:
 + The Statement must sometimes check for error codes in the DB,
   eg. for an out-of-memory error on sqlite3_column_text(),
   but currently does not have a handle to it.
+Maybe solve this by tying the statements to the DB handle. We add
+the statements to the DB handle. In this fashion the statements are
+always destroyed before the DB and we can safely share a db pointer
+for error checking in the statements.
++ Make a DBConnection object which only opens and destroys the db.
+  The DBConnection is created as a shared ptr by DBHandle.
++ The DBConnection is shared to the DBHandle and Statements.
++ DBHandle returns full Statement with a prepare method,
+  it shares the DBConnection to the Statement when creating it.
++ In this fashion, the DBConnection always exists as long as DBHandle
+  or Statements exist, and it is cleaned up when they are destroyed.
 
 ** Performance
 *** TODO Remove useless refreshes and updates

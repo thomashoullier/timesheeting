@@ -3,22 +3,17 @@
 #ifndef DB_SQLITE_HANDLE_H
 #define DB_SQLITE_HANDLE_H
 
+#include "db_sqlite_connection.h"
 #include <filesystem>
 #include <string>
 #include <sqlite3.h>
 
 namespace db_lib {
-  /** @brief Type for integers in the DB. */
-  typedef sqlite3_int64 DBInt;
-  /** @brief Type for a DB rowid. */
-  typedef DBInt RowId;
-
   /** @brief Low-level SQLite wrapper handle and utility class. */
   class DB_SQLite_Handle {
   public:
     /** @brief Open or create the DB. */
     explicit DB_SQLite_Handle(const std::filesystem::path &db_file);
-    ~DB_SQLite_Handle();
 
     /** @brief Check or initialize the user_version of the DB. */
     void check_user_version(int user_version);
@@ -30,8 +25,10 @@ namespace db_lib {
     void exec_statement(const std::string &statement);
 
   private:
-    /** @brief Internal pointer to the DB. */
-    sqlite3 *db;
+    /** @brief Pointer to the DB connection. Shared with statements prepared
+        by this handle. */
+    std::shared_ptr<DB_SQLite_Connection> db;
+
     /** @brief Check a SQLite return code and raise exception with message
         in case of reported errors. */
     void check_rc(int rc, const std::string &msg);
