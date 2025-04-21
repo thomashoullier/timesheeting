@@ -75,8 +75,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classdb__lib_1_1Statement-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">db_lib::Statement Class Reference</div></div>
 </div><!--header-->
@@ -115,18 +115,13 @@ template&lt;class... T&gt; </td></tr>
 <tr class="memitem:a0805449fa87f1b4731faa0fb8414c26f"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get_all</b> ()</td></tr>
 <tr class="memdesc:a0805449fa87f1b4731faa0fb8414c26f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the results of all columns. <br /></td></tr>
 <tr class="separator:a0805449fa87f1b4731faa0fb8414c26f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaec24fac808b70f5b9522ee2b72b76a" id="r_acaec24fac808b70f5b9522ee2b72b76a"><td class="memTemplParams" colspan="2"><a id="acaec24fac808b70f5b9522ee2b72b76a" name="acaec24fac808b70f5b9522ee2b72b76a"></a>
-template&lt;class... T, std::size_t... Is&gt; </td></tr>
-<tr class="memitem:acaec24fac808b70f5b9522ee2b72b76a"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get_all_helper</b> (std::index_sequence&lt; Is... &gt;)</td></tr>
-<tr class="memdesc:acaec24fac808b70f5b9522ee2b72b76a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for <a class="el" href="classdb__lib_1_1Statement.html#a0805449fa87f1b4731faa0fb8414c26f" title="Get the results of all columns.">get_all()</a>. Associates arguments with their index. <br /></td></tr>
-<tr class="separator:acaec24fac808b70f5b9522ee2b72b76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8430816e062e286a93c71555c28d9271" id="r_a8430816e062e286a93c71555c28d9271"><td class="memTemplParams" colspan="2">template&lt;class... T&gt; </td></tr>
 <tr class="memitem:a8430816e062e286a93c71555c28d9271"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classdb__lib_1_1Statement.html#a8430816e062e286a93c71555c28d9271">single_get_all</a> ()</td></tr>
 <tr class="memdesc:a8430816e062e286a93c71555c28d9271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the results of all columns in the case of a single row.  <br /></td></tr>
 <tr class="separator:a8430816e062e286a93c71555c28d9271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0280fa711bff63af118497021632ca90" id="r_a0280fa711bff63af118497021632ca90"><td class="memItemLeft" align="right" valign="top"><a id="a0280fa711bff63af118497021632ca90" name="a0280fa711bff63af118497021632ca90"></a>
 template&lt;&gt; </td></tr>
-<tr class="memitem:a0280fa711bff63af118497021632ca90"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="db__sqlite__handle_8h.html#af3eeae16b4efc8c995b060d55b4fbf03">DBInt</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get_column</b> (int icol)</td></tr>
+<tr class="memitem:a0280fa711bff63af118497021632ca90"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="db__types_8h.html#af3eeae16b4efc8c995b060d55b4fbf03">DBInt</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get_column</b> (int icol)</td></tr>
 <tr class="memdesc:a0280fa711bff63af118497021632ca90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for getting an integer. <br /></td></tr>
 <tr class="separator:a0280fa711bff63af118497021632ca90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9778543aecf250f89b14847d36df1a7" id="r_af9778543aecf250f89b14847d36df1a7"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
@@ -138,17 +133,10 @@ template&lt;&gt; </td></tr>
 <tr class="memdesc:afca3e042d17d1eb54f76cf6feb49acb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for getting std::string.  <br /></td></tr>
 <tr class="separator:afca3e042d17d1eb54f76cf6feb49acb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ab5b7f716433e5c0f137674888abbe5b6" id="r_ab5b7f716433e5c0f137674888abbe5b6"><td class="memItemLeft" align="right" valign="top"><a id="ab5b7f716433e5c0f137674888abbe5b6" name="ab5b7f716433e5c0f137674888abbe5b6"></a>
-sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><b>stmt</b></td></tr>
-<tr class="memdesc:ab5b7f716433e5c0f137674888abbe5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">SQLite statement. <br /></td></tr>
-<tr class="separator:ab5b7f716433e5c0f137674888abbe5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8bcb6c63b67cf5e207d1a64be622dfda" id="r_a8bcb6c63b67cf5e207d1a64be622dfda"><td class="memItemLeft" align="right" valign="top"><a id="a8bcb6c63b67cf5e207d1a64be622dfda" name="a8bcb6c63b67cf5e207d1a64be622dfda"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (int index, <a class="el" href="db__sqlite__handle_8h.html#af3eeae16b4efc8c995b060d55b4fbf03">DBInt</a> num)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (int index, <a class="el" href="db__types_8h.html#af3eeae16b4efc8c995b060d55b4fbf03">DBInt</a> num)</td></tr>
 <tr class="memdesc:a8bcb6c63b67cf5e207d1a64be622dfda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind a DB integer to a parameter of the statement. <br /></td></tr>
 <tr class="separator:a8bcb6c63b67cf5e207d1a64be622dfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7df54d2e95e327e2208197e715f0941" id="r_ac7df54d2e95e327e2208197e715f0941"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdb__lib_1_1Statement.html#ac7df54d2e95e327e2208197e715f0941">bind</a> (int index, const std::string &amp;str)</td></tr>
@@ -162,6 +150,18 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a55a621f72a73b7f5073935bdf3419e0c" id="r_a55a621f72a73b7f5073935bdf3419e0c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdb__lib_1_1Statement.html#a55a621f72a73b7f5073935bdf3419e0c">check_rc</a> (int rc)</td></tr>
 <tr class="memdesc:a55a621f72a73b7f5073935bdf3419e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the error code of the statement.  <br /></td></tr>
 <tr class="separator:a55a621f72a73b7f5073935bdf3419e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaec24fac808b70f5b9522ee2b72b76a" id="r_acaec24fac808b70f5b9522ee2b72b76a"><td class="memTemplParams" colspan="2"><a id="acaec24fac808b70f5b9522ee2b72b76a" name="acaec24fac808b70f5b9522ee2b72b76a"></a>
+template&lt;class... T, std::size_t... Is&gt; </td></tr>
+<tr class="memitem:acaec24fac808b70f5b9522ee2b72b76a"><td class="memTemplItemLeft" align="right" valign="top">std::tuple&lt; T... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get_all_helper</b> (std::index_sequence&lt; Is... &gt;)</td></tr>
+<tr class="memdesc:acaec24fac808b70f5b9522ee2b72b76a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for <a class="el" href="classdb__lib_1_1Statement.html#a0805449fa87f1b4731faa0fb8414c26f" title="Get the results of all columns.">get_all()</a>. Associates arguments with their index. <br /></td></tr>
+<tr class="separator:acaec24fac808b70f5b9522ee2b72b76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab5b7f716433e5c0f137674888abbe5b6" id="r_ab5b7f716433e5c0f137674888abbe5b6"><td class="memItemLeft" align="right" valign="top"><a id="ab5b7f716433e5c0f137674888abbe5b6" name="ab5b7f716433e5c0f137674888abbe5b6"></a>
+sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><b>stmt</b></td></tr>
+<tr class="memdesc:ab5b7f716433e5c0f137674888abbe5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">SQLite statement. <br /></td></tr>
+<tr class="separator:ab5b7f716433e5c0f137674888abbe5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classdb__lib_1_1Statement.html" title="Statement object.">Statement</a> object. </p>

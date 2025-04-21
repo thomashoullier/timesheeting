@@ -12,13 +12,13 @@ var searchData=
   ['weeklyreportscreen_9',['weeklyreportscreen',['../classtui_1_1WeeklyReportScreen.html',1,'tui::WeeklyReportScreen'],['../classtui_1_1WeeklyReportScreen.html#af5381857cd238c731e3e1c9def5b1b7d',1,'tui::WeeklyReportScreen::WeeklyReportScreen()']]],
   ['weeklytotals_10',['WeeklyTotals',['../structcore_1_1WeeklyTotals.html',1,'core']]],
   ['weekselector_11',['weekselector',['../classtui_1_1WeekSelector.html',1,'tui::WeekSelector'],['../classtui_1_1WeekSelector.html#aaf2fce647dfec275c5d20ba44cad862a',1,'tui::WeekSelector::WeekSelector()']]],
-  ['what_12',['what',['../classdb__lib_1_1SQLiteConstraintExcept.html#aca733e3ee95e6796273fced206a6d729',1,'db_lib::SQLiteConstraintExcept::what()'],['../classncurses__lib_1_1MenuEmpty.html#a03e281b75ca79d182aada1b4e36701e3',1,'ncurses_lib::MenuEmpty::what()'],['../classtime__lib_1_1DateParsingFailure.html#a87626d3f67674efdda42daf6a765ca30',1,'time_lib::DateParsingFailure::what()']]],
+  ['what_12',['what',['../classncurses__lib_1_1MenuEmpty.html#a03e281b75ca79d182aada1b4e36701e3',1,'ncurses_lib::MenuEmpty::what()'],['../classtime__lib_1_1DateParsingFailure.html#a87626d3f67674efdda42daf6a765ca30',1,'time_lib::DateParsingFailure::what()']]],
   ['width_13',['width',['../structncurses__lib_1_1ColumnFormat.html#a34da432e1b621668d46bf6fd507eba39',1,'ncurses_lib::ColumnFormat']]],
   ['win_14',['win',['../classncurses__lib_1_1WinNCurses.html#af96e2558b00bf36cb896ae2610926688',1,'ncurses_lib::WinNCurses']]],
   ['win_5fncurses_2eh_15',['win_ncurses.h',['../win__ncurses_8h.html',1,'']]],
   ['windowformat_16',['WindowFormat',['../win__ncurses_8h.html#ad68630c8e97136a75245903ffef1bf2c',1,'ncurses_lib']]],
   ['windowposition_17',['WindowPosition',['../win__ncurses_8h.html#a900d1780d5a7d91867abfa0522e1998b',1,'ncurses_lib']]],
   ['winformat_18',['winformat',['../classncurses__lib_1_1WinNCurses.html#a6488fbefcd99a95a581c905bcb57369c',1,'ncurses_lib::WinNCurses']]],
-  ['winncurses_19',['winncurses',['../classncurses__lib_1_1WinNCurses.html#a50cb13df600b13e708eec639ee78522a',1,'ncurses_lib::WinNCurses::WinNCurses()'],['../classncurses__lib_1_1WinNCurses.html',1,'ncurses_lib::WinNCurses']]],
+  ['winncurses_19',['winncurses',['../classncurses__lib_1_1WinNCurses.html',1,'ncurses_lib::WinNCurses'],['../classncurses__lib_1_1WinNCurses.html#a50cb13df600b13e708eec639ee78522a',1,'ncurses_lib::WinNCurses::WinNCurses(WindowPosition _winpos, WindowFormat _winformat)']]],
   ['winpos_20',['winpos',['../classncurses__lib_1_1WinNCurses.html#ab147e8db554504aa7fc1d3184d947aa5',1,'ncurses_lib::WinNCurses']]]
 ];

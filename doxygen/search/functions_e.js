@@ -15,7 +15,7 @@ var searchData=
   ['set_5fborder_12',['set_border',['../classncurses__lib_1_1WinNCurses.html#a226975728a2f36089e6b9191f9a2f5e8',1,'ncurses_lib::WinNCurses::set_border()'],['../classtui_1_1Column.html#a191abdeb5df79276b9da4f267e60ff2f',1,'tui::Column::set_border()'],['../classtui_1_1ColumnBase.html#afa8f9c453407cb797d59057e12c58f97',1,'tui::ColumnBase::set_border()']]],
   ['set_5fcurrent_5fnow_13',['set_current_now',['../classtui_1_1StopwatchUI.html#a865ebcadcabfa69b08000e11301f8551',1,'tui::StopwatchUI']]],
   ['set_5fcursor_5fvisibility_14',['set_cursor_visibility',['../classncurses__lib_1_1BarNCurses.html#ae70f4a23a9a7a90b95f9d1ba250a359a',1,'ncurses_lib::BarNCurses']]],
-  ['set_5fitems_15',['set_items',['../classtui_1_1Column.html#a8d41cbe9720648cfe106d42aba5867e7',1,'tui::Column::set_items()'],['../classtui_1_1ProjectTotalsRegister.html#a47e7aa054c1d2a89233365cad05b42fa',1,'tui::ProjectTotalsRegister::set_items()'],['../classtui_1_1RegisterNcurses.html#a0f10685c767e5bd4b9ec29b77c96f1b8',1,'tui::RegisterNcurses::set_items()'],['../classtui_1_1StopwatchNcurses.html#a738dae2950ff130640b1837c8f9461e3',1,'tui::StopwatchNcurses::set_items()'],['../classtui_1_1WeeklyReportRegister.html#a0578a8a58ec8dec3a46e85a98bb62af6',1,'tui::WeeklyReportRegister::set_items()'],['../classncurses__lib_1_1MenuNCurses.html#ae29378de28cefe2a39ebd5cf67ce0ab7',1,'ncurses_lib::MenuNCurses::set_items()']]],
+  ['set_5fitems_15',['set_items',['../classncurses__lib_1_1MenuNCurses.html#ae29378de28cefe2a39ebd5cf67ce0ab7',1,'ncurses_lib::MenuNCurses::set_items()'],['../classtui_1_1Column.html#a8d41cbe9720648cfe106d42aba5867e7',1,'tui::Column::set_items()'],['../classtui_1_1ProjectTotalsRegister.html#a47e7aa054c1d2a89233365cad05b42fa',1,'tui::ProjectTotalsRegister::set_items()'],['../classtui_1_1RegisterNcurses.html#a0f10685c767e5bd4b9ec29b77c96f1b8',1,'tui::RegisterNcurses::set_items()'],['../classtui_1_1StopwatchNcurses.html#a738dae2950ff130640b1837c8f9461e3',1,'tui::StopwatchNcurses::set_items()'],['../classtui_1_1WeeklyReportRegister.html#a0578a8a58ec8dec3a46e85a98bb62af6',1,'tui::WeeklyReportRegister::set_items()']]],
   ['set_5fkey_16',['set_key',['../classconfig_1_1ConfigLoader.html#a83912036e5144ca286db0bdd8afb5998',1,'config::ConfigLoader']]],
   ['set_5fstart_17',['set_start',['../classtui_1_1PeriodSelectorNCurses.html#a8f007890db52c1a36993fa96345ee058',1,'tui::PeriodSelectorNCurses']]],
   ['set_5fstop_18',['set_stop',['../classtui_1_1PeriodSelectorNCurses.html#ae6bc1a514eb669d7975774ae795701e9',1,'tui::PeriodSelectorNCurses']]],
@@ -23,12 +23,11 @@ var searchData=
   ['signal_5fresize_5fneed_20',['signal_resize_need',['../classtui_1_1UIScreen.html#a850d8f4110625aa86a2c7c99713a97e6',1,'tui::UIScreen']]],
   ['signal_5fupdate_5fneed_21',['signal_update_need',['../classtui_1_1UIScreen.html#ade4bee8423ccd33c2ff031482cdeee7f',1,'tui::UIScreen']]],
   ['single_5fget_5fall_22',['single_get_all',['../classdb__lib_1_1Statement.html#a8430816e062e286a93c71555c28d9271',1,'db_lib::Statement']]],
-  ['sqliteconstraintexcept_23',['SQLiteConstraintExcept',['../classdb__lib_1_1SQLiteConstraintExcept.html#ac3563f5b2b65d26213b3b5fc1653c02e',1,'db_lib::SQLiteConstraintExcept']]],
-  ['statement_24',['Statement',['../classdb__lib_1_1Statement.html#aa80a9d20229743e704b79dd48c5dc99e',1,'db_lib::Statement']]],
-  ['statementset_25',['StatementSet',['../classdb_1_1StatementSet.html#a054a6f812438f5ad40120d73cb5b5b83',1,'db::StatementSet']]],
-  ['statusbarncurses_26',['StatusBarNCurses',['../classtui_1_1StatusBarNCurses.html#a378b73922533486113b60ad54c20d743',1,'tui::StatusBarNCurses']]],
-  ['step_27',['step',['../classdb__lib_1_1Statement.html#a984acce640bfd4a382f79bfadfbd1d87',1,'db_lib::Statement']]],
-  ['stopwatchncurses_28',['StopwatchNcurses',['../classtui_1_1StopwatchNcurses.html#a370355d6292334e92b9a2e59ad89eb0f',1,'tui::StopwatchNcurses']]],
-  ['stopwatchui_29',['StopwatchUI',['../classtui_1_1StopwatchUI.html#ac62b0ef51a602b1e4684393ca403b6a4',1,'tui::StopwatchUI']]],
-  ['stringwithface_30',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html#a904cd4554f1aa2e93006b638b6af7952',1,'ncurses_lib::StringWithFace']]]
+  ['statement_23',['Statement',['../classdb__lib_1_1Statement.html#aa80a9d20229743e704b79dd48c5dc99e',1,'db_lib::Statement']]],
+  ['statementset_24',['StatementSet',['../classdb_1_1StatementSet.html#a054a6f812438f5ad40120d73cb5b5b83',1,'db::StatementSet']]],
+  ['statusbarncurses_25',['StatusBarNCurses',['../classtui_1_1StatusBarNCurses.html#a378b73922533486113b60ad54c20d743',1,'tui::StatusBarNCurses']]],
+  ['step_26',['step',['../classdb__lib_1_1Statement.html#a984acce640bfd4a382f79bfadfbd1d87',1,'db_lib::Statement']]],
+  ['stopwatchncurses_27',['StopwatchNcurses',['../classtui_1_1StopwatchNcurses.html#a370355d6292334e92b9a2e59ad89eb0f',1,'tui::StopwatchNcurses']]],
+  ['stopwatchui_28',['StopwatchUI',['../classtui_1_1StopwatchUI.html#ac62b0ef51a602b1e4684393ca403b6a4',1,'tui::StopwatchUI']]],
+  ['stringwithface_29',['StringWithFace',['../classncurses__lib_1_1StringWithFace.html#a904cd4554f1aa2e93006b638b6af7952',1,'ncurses_lib::StringWithFace']]]
 ];

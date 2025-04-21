@@ -8,5 +8,5 @@ var searchData=
   ['menuempty_5',['menuempty',['../classncurses__lib_1_1MenuEmpty.html',1,'ncurses_lib::MenuEmpty'],['../classncurses__lib_1_1MenuEmpty.html#a929fb3734949064728d80f00440a3896',1,'ncurses_lib::MenuEmpty::MenuEmpty()']]],
   ['menuitem_6',['menuitem',['../structncurses__lib_1_1MenuItem.html',1,'ncurses_lib::MenuItem'],['../structncurses__lib_1_1MenuItem.html#a2b9cc2b50a87973cee88e58d59013a69',1,'ncurses_lib::MenuItem::MenuItem()']]],
   ['menuncurses_7',['menuncurses',['../classncurses__lib_1_1MenuNCurses.html',1,'ncurses_lib::MenuNCurses'],['../classncurses__lib_1_1MenuNCurses.html#a742137ef2659618e124beeaad1a50e1b',1,'ncurses_lib::MenuNCurses::MenuNCurses()']]],
-  ['msg_8',['msg',['../classdb__lib_1_1SQLiteConstraintExcept.html#aeea66350ec9b3302dfeb1ee544a9a307',1,'db_lib::SQLiteConstraintExcept::msg'],['../classncurses__lib_1_1MenuEmpty.html#af07af6995f5229c8342fe46a97d216a5',1,'ncurses_lib::MenuEmpty::msg'],['../classtime__lib_1_1DateParsingFailure.html#a73342139a8d0111660a4318a6dc2dbec',1,'time_lib::DateParsingFailure::msg']]]
+  ['msg_8',['msg',['../classncurses__lib_1_1MenuEmpty.html#af07af6995f5229c8342fe46a97d216a5',1,'ncurses_lib::MenuEmpty::msg'],['../classtime__lib_1_1DateParsingFailure.html#a73342139a8d0111660a4318a6dc2dbec',1,'time_lib::DateParsingFailure::msg']]]
 ];
