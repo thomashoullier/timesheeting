@@ -465,7 +465,8 @@ This is a safeguard to avoid unintended inheritance.
 ADDED: [2025-04-05 Sat]
 We can also have a concept of period in the date library for day and week.
 
-*** TODO Add a handle to the DB in Statement
+*** DONE Add a handle to the DB in Statement
+CLOSED: [2025-04-21 Mon 14:39]
 ADDED: [2025-04-20 Sun]
 Two problems are solved by this:
 + The db_lib is used in a leaky way currently in statement_set.
@@ -483,6 +484,7 @@ for error checking in the statements.
   it shares the DBConnection to the Statement when creating it.
 + In this fashion, the DBConnection always exists as long as DBHandle
   or Statements exist, and it is cleaned up when they are destroyed.
+- [2025-04-21 Mon] Implemented.
 
 ** Performance
 *** TODO Remove useless refreshes and updates
@@ -512,6 +514,13 @@ ADDED: [2025-04-19 Sat]
 There are a lot of memory allocations being done in the substring
 matcher and case converter. There is probably a more efficient way to
 do all this.
+
+*** TODO Reduce the size of the binary
+ADDED: [2025-04-21 Mon]
+The binary for the program sometimes reaches almost 20MB.
+This is too big, it should be well below 5MB.
+Perhaps our CMake compilation of individual libraries is at fault.
+We should probably link everything together.
 
 ** Build
 *** TODO Enforce the GCC14 dependency

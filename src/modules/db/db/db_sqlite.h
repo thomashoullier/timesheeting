@@ -10,6 +10,7 @@
 #include "core/id.h"
 #include "core/project_total.h"
 #include "core/weekly_totals.h"
+#include "db_lib/db_types.h"
 #include "db_lib/db_sqlite_handle.h"
 #include "db_lib/statement.h"
 #include "statement_set.h"

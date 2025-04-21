@@ -4,7 +4,9 @@
 #define DB_SQLITE_HANDLE_H
 
 #include "db_sqlite_connection.h"
+#include "statement.h"
 #include <filesystem>
+#include <memory>
 #include <string>
 #include <sqlite3.h>
 
@@ -20,7 +22,7 @@ namespace db_lib {
     /** @brief Get user_version of the DB. */
     int get_user_version() const;
     /** @brief Prepare a SQL statement. */
-    sqlite3_stmt *prepare_statement(const std::string &statement);
+    Statement prepare_statement(const std::string &statement);
     /** @brief Execute a SQL statement in the DB. */
     void exec_statement(const std::string &statement);
 

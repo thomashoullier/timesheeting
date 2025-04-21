@@ -1,10 +1,14 @@
 #include "statement.h"
 #include "db_types.h"
+#include "db_sqlite_connection.h"
 #include <stdexcept>
 #include <string>
 
 namespace db_lib {
-  Statement::Statement(sqlite3_stmt *_stmt) : stmt(_stmt) {}
+  Statement::Statement(sqlite3_stmt *_stmt,
+                       std::shared_ptr<DB_SQLite_Connection> _db)
+    : db {_db},
+      stmt(_stmt) {}
 
   Statement::~Statement() { sqlite3_finalize(stmt); }
 
@@ -19,8 +23,8 @@ namespace db_lib {
     case SQLITE_CONSTRAINT:
       return false;
     default:
-      throw std::runtime_error
-        ("Unexpected SQLite return code: " + std::to_string(rc));
+      throw std::runtime_error("Unexpected SQLite return code: " +
+                               std::to_string(rc));
     }
   }
 
@@ -115,8 +119,10 @@ namespace db_lib {
       throw std::runtime_error("Tried to get a SQLITE_TEXT but got a "
                                "type code: " + std::to_string(column_type));
     auto text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, icol));
-    // TODO: check for possible out-of-memory error with sqlite3_errcode()
-    //       Requires handle to the DB.
+    // NOTE: Check for possible out-of-memory error upon call to
+    // sqlite3_column_text.
+    auto rc = sqlite3_errcode(db->db);
+    check_rc(rc);
     return text;
   }
 }

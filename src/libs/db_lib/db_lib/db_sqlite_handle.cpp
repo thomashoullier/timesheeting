@@ -1,5 +1,6 @@
 #include "db_sqlite_handle.h"
 #include "db_sqlite_connection.h"
+#include "statement.h"
 #include <memory>
 #include <stddef.h>
 #include <stdexcept>
@@ -52,13 +53,13 @@ namespace db_lib{
     return user_version;
   }
 
-  sqlite3_stmt *DB_SQLite_Handle::prepare_statement
+  Statement DB_SQLite_Handle::prepare_statement
     (const std::string &statement) {
     sqlite3_stmt *stmt;
     auto rc = sqlite3_prepare_v3(db->db, statement.c_str(), statement.size(),
                                  SQLITE_PREPARE_PERSISTENT, &stmt, NULL);
     check_rc(rc, "Could not prepare SQL statement: " + statement);
-    return stmt;
+    return Statement(stmt, db);
   }
 
   void DB_SQLite_Handle::exec_statement(const std::string &statement) {

@@ -3,7 +3,9 @@
 #ifndef STATEMENT_H
 #define STATEMENT_H
 
+#include "db_sqlite_connection.h"
 #include "db_types.h"
+#include <memory>
 #include <sqlite3.h>
 #include <cstddef>
 #include <string>
@@ -15,6 +17,8 @@ namespace db_lib {
   /** @brief Statement object. */
   class Statement {
   private:
+    /** @brief Pointer to the DB the statement was prepared in. */
+    std::shared_ptr<DB_SQLite_Connection> db;
     /** @brief SQLite statement. */
     sqlite3_stmt *stmt;
 
@@ -39,7 +43,8 @@ namespace db_lib {
 
   public:
     /** @brief Constructor. */
-    explicit Statement(sqlite3_stmt *_stmt);
+    explicit Statement(sqlite3_stmt *_stmt,
+                       std::shared_ptr<DB_SQLite_Connection> _db);
     /** @brief Destructor. */
     ~Statement();
 
