@@ -189,7 +189,7 @@ if(build_coverage)
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/config/>")
   set_target_properties(timesheeting_coverage PROPERTIES COMPILE_FLAGS
-    "${CMAKE_CXX_FLAGS} -O0 -fprofile-arcs -ftest-coverage")
+    "${CMAKE_CXX_FLAGS} -O0 -fprofile-arcs -ftest-coverage -fno-default-inline -fno-elide-constructors")
   setup_target_for_coverage_lcov(
     NAME timesheeting_coverage_report
     EXECUTABLE timesheeting_coverage

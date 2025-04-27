@@ -8,6 +8,7 @@ namespace db_lib {
   (const std::filesystem::path &db_file) {
     auto rc = sqlite3_open(db_file.c_str(), &db);
     if (rc != SQLITE_OK) {
+      sqlite3_close(db);
       throw std::runtime_error
         ("DB_SQLite_Connection, error when opening the DB file " +
          std::string(db_file) + " error code: " + std::to_string(rc));

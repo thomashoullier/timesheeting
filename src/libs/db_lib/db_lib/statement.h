@@ -26,7 +26,8 @@ namespace db_lib {
     void bind(int index, DBInt num);
     /** @brief Bind a string to a parameter of the statement.
 
-        Note the string lifetime must be managed at the higher level. */
+        Note the string lifetime must be managed at the higher level.
+        A string literal is not a valid input. */
     void bind(int index, const std::string &str);
     /** @brief Retrieve a result from the current row in a given column. */
     template <typename T> T get_column(int icol);

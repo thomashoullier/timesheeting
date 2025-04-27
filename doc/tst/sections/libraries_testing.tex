@@ -728,6 +728,227 @@ throw an exception.
 \textit{Tests: } LR-DBL-090
 
 \subsubsection{Statement wrapper}
+The tests described hereafter use a common DB, on which tests are
+executed sequentially.
+
+\paragraph{LT-DBL-140 -- Executing statement}
+The statement
+\lstinline{CREATE TABLE contacts (contact_id INTEGER PRIMARY KEY, name TEXT NOT NULL, active BOOLEAN CHECK (active IN (0,1)), address TEXT, department INTEGER, available BOOLEAN);}
+shall be executed successfully and return the value true.
+
+\textit{Tests: } LR-DBL-100, LR-DBL-120
+
+\paragraph{LT-DBL-150 -- Executing invalid statement}
+The statement from LT-DBL-140 shall be retried, and throw an exception
+this time.
+
+\textit{Tests: } LR-DBL-110
+
+\paragraph{LT-DBL-160 -- Repeat statement execution}
+The statement \lstinline{INSERT INTO contacts (name) VALUES('John');}
+shall be executed twice successfully, returning true each time.
+
+\textit{Tests: } LR-DBL-100, LR-DBL-120
+
+\paragraph{LT-DBL-170 -- Statement execution constraint violation}
+The statement \lstinline{INSERT INTO contacts (name) VALUES(NULL);}
+shall be executed and return false.
+
+\textit{Tests: } LR-DBL-120
+
+\paragraph{LT-DBL-180 -- Statement stepping}
+The statement \lstinline{SELECT name FROM contacts;} shall be
+stepped successfully and return true.
+
+\textit{Tests: } LR-DBL-130, LR-DBL-150
+
+\paragraph{LT-DBL-190 -- Statement stepping second}
+The statement \lstinline{SELECT name FROM contacts;} shall
+be stepped successfully a second time and return true.
+
+\textit{Tests: } LR-DBL-130, LR-DBL-150
+
+\paragraph{LT-DBL-200 -- Statement stepping no more rows}
+The statement \lstinline{SELECT name FROM contacts;} shall
+be stepped a third time and return false.
+
+\textit{Tests: } LR-DBL-130, LR-DBL-150
+
+\paragraph{LT-DBL-210 -- Statement stepping reset}
+The statement \lstinline{SELECT name FROM contacts;} shall
+be stepped a fourth time and return true.
+
+\textit{Tests: } LR-DBL-160
+
+\paragraph{LT-DBL-220 -- Statement stepping invalid}
+The statement \lstinline{INSERT INTO contacts (contact_id, name) VALUES('John', 'John');}
+shall throw an exception when stepped.
+
+\textit{Tests: } LR-DBL-140
+
+\paragraph{LT-DBL-230 -- Statement binding integer}
+The integer \lstinline{1} shall be bound without error to the statement
+\lstinline{SELECT name FROM contacts WHERE contact_id = ?;}.
+
+\textit{Tests: } LR-DBL-170
+
+\paragraph{LT-DBL-240 -- Statement binding string}
+The string \lstinline{John} shall be bound without error to the statement
+\lstinline{SELECT contact_id FROM contacts WHERE name = ? LIMIT 1;}.
+
+\textit{Tests: } LR-DBL-170
+
+\paragraph{LT-DBL-250 -- Binding too many parameters}
+The strings \lstinline{John, Melissa} shall be bound to the statement
+\lstinline{SELECT contact_id FROM contacts WHERE name = ? LIMIT 1;},
+throwing an exception.
+
+\textit{Tests: } LR-DBL-200
+
+\paragraph{LT-DBL-260 -- Statement return boolean}
+Given a \lstinline{contacts} table (LT-DBL-140)
+with rows
+\begin{itemize}
+\item \lstinline{1 | John | 1},
+\item \lstinline{2 | Melissa | 0},
+\item \lstinline{3 | Luke | 1}.
+\end{itemize}
+the statement \lstinline{SELECT active FROM contacts WHERE name = ? LIMIT 1;}
+with string parameter bound to \lstinline{John} shall be stepped and
+a boolean return value shall be queried. The result must be equal to true.
+
+\textit{Tests: } LR-DBL-180
+
+\paragraph{LT-DBL-270 -- Statement return integer}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT contact_id FROM contacts WHERE name = ? LIMIT 1;}
+with string parameter bound to \lstinline{Melissa} shall be stepped
+and an integer return value shall be queried. The result must be
+equal to \lstinline{2}.
+
+\textit{Tests: } LR-DBL-180
+
+\paragraph{LT-DBL-280 -- Statement return string}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT name FROM contacts WHERE contact_id = ?;}
+with parameter bound to \lstinline{1} shall be stepped and
+a string shall be queried. The result must be equal to \lstinline{John}.
+
+\textit{Tests: } LR-DBL-180
+
+\paragraph{LT-DBL-290 -- Statement return shortcut}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT contact_id, name FROM contacts WHERE contact_id = ?;}
+with parameter bound to \lstinline{2} shall be given to the
+shortcut get method. The results must be equal to \lstinline{2, Melissa}.
+
+\textit{Tests: } LR-DBL-190
+
+\paragraph{LT-DBL-300 -- Statement return shortcut reset}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT contact_id, name FROM contacts WHERE contact_id = ?;}
+with parameter bound to \lstinline{2} shall be given to the
+shortcut get method. The shortcut shall be run twice.
+The results must be equal to \lstinline{2, Melissa} each time.
+
+\textit{Tests: } LR-DBL-190
+
+\paragraph{LT-DBL-310 -- Statement column return wrong number of strings}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT name FROM contacts WHERE contact_id = ?;}
+with parameter bound to \lstinline{1} shall be stepped,
+and two strings asked for as results, triggering an exception.
+
+\textit{Tests: } LR-DBL-210
+
+\paragraph{LT-DBL-320 -- Statement column return wrong number of booleans}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT active FROM contacts WHERE contact_id = ?;}
+with parameter bound to \lstinline{1} shall be stepped,
+and two booleans asked for as results, triggering an exception.
+
+\textit{Tests: } LR-DBL-210
+
+\paragraph{LT-DBL-330 -- Statement column return wrong number of integers}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT contact_id FROM contacts WHERE name = ?;}
+with parameter bound to \lstinline{John} shall be stepped,
+and two integers asked for as results, triggering an exception.
+
+\textit{Tests: } LR-DBL-210
+
+\paragraph{LT-DBL-340 -- Statement column return wrong type integer}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT name FROM contacts WHERE contact_id = ?;}
+with parameter bound to \lstinline{1} shall be stepped,
+and an integer asked for as result, triggering an exception.
+
+\textit{Tests: } LR-DBL-220
+
+\paragraph{LT-DBL-350 -- Statement column return wrong type boolean}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT name FROM contacts WHERE contact_id = ?;}
+with parameter bound to \lstinline{1} shall be stepped,
+and a boolean asked for as result, triggering an exception.
+
+\textit{Tests: } LR-DBL-220
+
+\paragraph{LT-DBL-360 -- Statement column return wrong type string}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT contact_id FROM contacts WHERE name = ?;}
+with parameter bound to \lstinline{John} shall be stepped,
+and a string asked for as result, triggering an exception.
+
+\textit{Tests: } LR-DBL-220
+
+\paragraph{LT-DBL-370 -- Statement column return no rows}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement
+\lstinline{SELECT contact_id FROM contacts WHERE name = ?;}
+with parameter bound to \lstinline{Arnold} shall be stepped,
+and an exception shall be thrown when a return value of each of
+the following types shall be queried.
+\begin{enumerate}
+\item Boolean,
+\item Integer,
+\item String.
+\end{enumerate}
+
+\textit{Tests: } LR-DBL-230
+
+\paragraph{LT-DBL-380 -- Statement column return null boolean}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement \lstinline{SELECT available FROM contacts where contact_id = 1;}
+shall be stepped, and the return value queried. The result must be equal to
+false.
+
+\textit{Tests: } LR-DBL-240
+
+\paragraph{LT-DBL-390 -- Statement column return null integer}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement \lstinline{SELECT department FROM contacts where contact_id = 1;}
+shall be stepped, and the return value queried. The result must be equal to
+0.
+
+\textit{Tests: } LR-DBL-240
+
+\paragraph{LT-DBL-400 -- Statement column return null string}
+Given the previous \lstinline{contacts} table with the previous rows,
+the statement \lstinline{SELECT address FROM contacts where contact_id = 1;}
+shall be stepped, and the return value queried. The result must be equal to
+the empty string.
+
+\textit{Tests: } LR-DBL-240
 
 \subsection{suggestion\textunderscore lib}
 \paragraph{LT-SUG-010 -- Empty set of choice strings}

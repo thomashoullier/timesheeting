@@ -401,7 +401,8 @@ Currently a global update of the stopwatch is called whenever we
 call set_now. Make it so that only the changed date is updated.
 This is a bit nitpicky.
 
-*** TODO Improve the suggestion engine
+*** DONE Improve the suggestion engine
+CLOSED: [2025-04-25 Fri 14:48]
 ADDED: [2025-04-06 Sun]
 For instance, we want to match:
   + exact prefix strings first, then

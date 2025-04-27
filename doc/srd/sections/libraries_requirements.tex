@@ -556,14 +556,80 @@ The DB handle shall throw an exception in case a non-nominal statement
 execution return code is encountered when executing a statement (LR-DBL-060).
 
 \paragraph{LR-DBL-080 prepare statement}
-The DB handle shall provide a method to prepare a raw statement, provided
+The DB handle shall provide a method to prepare a statement, provided
 as a string, on an open DB.
 
 \paragraph{LR-DBL-090 prepare statement exceptions}
 The DB handle shall throw an exception in case an error is encountered when
-preparing a raw statement (LR-DBL-100).
+preparing a statement (LR-DBL-080).
 
 \subsubsection{Statement wrapper}
+\paragraph{LR-DBL-100 Execute statement}
+A statement shall allow simple execution (single step statement). If needed, the
+statement must allow repeated execution.
+
+\paragraph{LR-DBL-110 Execute invalid statement}
+Executing an invalid statement shall raise an exception.
+
+\paragraph{LR-DBL-120 Statement execution return value}
+The statement execution shall return true on successful execution, and
+false if the execution would have violated a database constraint, and thus
+failed.
+
+\paragraph{LR-DBL-130 Statement step}
+A statement shall allow a step execution (single step in a multi-step
+statement).
+
+\paragraph{LR-DBL-140 Statement step invalid}
+Stepping an invalid statement shall raise an exception.
+
+\paragraph{LR-DBL-150 Statement step return value}
+The stepping of a statement shall return true as long as results
+are available for retrieval in the statement, and false when results
+are no longer available.
+
+\paragraph{LR-DBL-160 Statement step reset}
+The stepping of a statement shall perform an automatic reset when
+the end of available results is reached.
+
+\paragraph{LR-DBL-170 Statement parameters binding}
+The statements shall allow binding positional parameters of type
+integer and string.
+
+\paragraph{LR-DBL-180 Statement column return}
+The statements shall allow retrieval of result columns from rows.
+The results may be of type boolean, integer or string.
+
+\paragraph{LR-DBL-190 Statement return shortcut}
+Statements shall allow a shortcut operation which, in order, steps
+the statement, retrieves all the result columns of the first returned
+row, and then reset the statement.
+
+\paragraph{LR-DBL-200 Statement binding too many parameters}
+Statement parameter binding shall throw an exception if
+too many parameters are given.
+
+\paragraph{LR-DBL-210 Statement column return wrong number}
+The statement column retrieval shall throw an exception if too many
+columns are asked for.
+
+\paragraph{LR-DBL-220 Statement column return wrong type}
+The statement column retrieval shall throw an exception if the
+queried type does not match the returned type.
+
+\paragraph{LR-DBL-230 Statement column return no rows}
+The statement column retrieval shall throw an exception if
+there are no rows to give as result.
+
+\paragraph{LR-DBL-240 Statement column return null}
+The statement column retrieval shall return the following
+default values for each queried type in case the DB returns
+NULL as a result.
+\begin{enumerate}
+\item Boolean: false,
+\item Integer: 0,
+\item String: the empty string \lstinline{""}.
+\end{enumerate}
 
 \subsection{ncurses\textunderscore lib}
 \paragraph{LR-NCU-010}
