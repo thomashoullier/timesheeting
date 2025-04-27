@@ -89,10 +89,10 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa80a9d20229743e704b79dd48c5dc99e" id="r_aa80a9d20229743e704b79dd48c5dc99e"><td class="memItemLeft" align="right" valign="top"><a id="aa80a9d20229743e704b79dd48c5dc99e" name="aa80a9d20229743e704b79dd48c5dc99e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Statement</b> (sqlite3_stmt *_stmt)</td></tr>
-<tr class="memdesc:aa80a9d20229743e704b79dd48c5dc99e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
-<tr class="separator:aa80a9d20229743e704b79dd48c5dc99e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78830bc62df64dff6632b074d7234ddb" id="r_a78830bc62df64dff6632b074d7234ddb"><td class="memItemLeft" align="right" valign="top"><a id="a78830bc62df64dff6632b074d7234ddb" name="a78830bc62df64dff6632b074d7234ddb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Statement</b> (sqlite3_stmt *_stmt, std::shared_ptr&lt; <a class="el" href="classdb__lib_1_1DB__SQLite__Connection.html">DB_SQLite_Connection</a> &gt; _db)</td></tr>
+<tr class="memdesc:a78830bc62df64dff6632b074d7234ddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
+<tr class="separator:a78830bc62df64dff6632b074d7234ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a059ea60915742e5c770a784733c28d06" id="r_a059ea60915742e5c770a784733c28d06"><td class="memItemLeft" align="right" valign="top"><a id="a059ea60915742e5c770a784733c28d06" name="a059ea60915742e5c770a784733c28d06"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Statement</b> ()</td></tr>
 <tr class="memdesc:a059ea60915742e5c770a784733c28d06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
@@ -158,6 +158,10 @@ template&lt;class... T, std::size_t... Is&gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:ab6b2cb3d670ca1fe406e2f1eb8cc47f3" id="r_ab6b2cb3d670ca1fe406e2f1eb8cc47f3"><td class="memItemLeft" align="right" valign="top"><a id="ab6b2cb3d670ca1fe406e2f1eb8cc47f3" name="ab6b2cb3d670ca1fe406e2f1eb8cc47f3"></a>
+std::shared_ptr&lt; <a class="el" href="classdb__lib_1_1DB__SQLite__Connection.html">DB_SQLite_Connection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>db</b></td></tr>
+<tr class="memdesc:ab6b2cb3d670ca1fe406e2f1eb8cc47f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the DB the statement was prepared in. <br /></td></tr>
+<tr class="separator:ab6b2cb3d670ca1fe406e2f1eb8cc47f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5b7f716433e5c0f137674888abbe5b6" id="r_ab5b7f716433e5c0f137674888abbe5b6"><td class="memItemLeft" align="right" valign="top"><a id="ab5b7f716433e5c0f137674888abbe5b6" name="ab5b7f716433e5c0f137674888abbe5b6"></a>
 sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><b>stmt</b></td></tr>
 <tr class="memdesc:ab5b7f716433e5c0f137674888abbe5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">SQLite statement. <br /></td></tr>
@@ -201,7 +205,7 @@ sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><b>stmt</b></t
 </div><div class="memdoc">
 
 <p>Bind a string to a parameter of the statement. </p>
-<p>Note the string lifetime must be managed at the higher level. </p>
+<p>Note the string lifetime must be managed at the higher level. A string literal is not a valid input. </p>
 
 </div>
 </div>

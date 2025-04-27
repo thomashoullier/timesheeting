@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-21 12:51:33</td>
+            <td class="headerValue">2025-04-27 12:27:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -85,7 +85,7 @@
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           1 :                                       std::chrono::system_clock::now()};</span></span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           1 :       std::string current_year = std::format(&quot;{:%Y}&quot;, current);</span></span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :       std::string first_day_str = &quot;01Jan&quot; + current_year;</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           1 :       tp = time_point_from_str(first_day_str);</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :       tp = time_point_from_str(first_day_str);</span></span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :     } break;</span></span>
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC tlaBgUNC">           0 :     default:</span></span>
 <span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :       throw std::logic_error(&quot;Unknown DatePoint.&quot;);</span></span>

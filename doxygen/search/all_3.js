@@ -13,7 +13,7 @@ var searchData=
   ['day_5fselector_2eh_10',['day_selector.h',['../day__selector_8h.html',1,'']]],
   ['days_11',['days',['../classtime__lib_1_1Week.html#add48dffb11197212ea6c7f2242dfc173',1,'time_lib::Week']]],
   ['dayselector_12',['dayselector',['../classtui_1_1DaySelector.html#ae528531393efb4d1b33303aca9bc14b8',1,'tui::DaySelector::DaySelector()'],['../classtui_1_1DaySelector.html',1,'tui::DaySelector']]],
-  ['db_13',['db',['../classdb__lib_1_1DB__SQLite__Handle.html#ac42f96c05633460be6a1d1a3033f24a8',1,'db_lib::DB_SQLite_Handle::db'],['../classdb__lib_1_1DB__SQLite__Connection.html#af314ae1f51795a7f6e32c36dfd91fc7f',1,'db_lib::DB_SQLite_Connection::db']]],
+  ['db_13',['db',['../classdb__lib_1_1Statement.html#ab6b2cb3d670ca1fe406e2f1eb8cc47f3',1,'db_lib::Statement::db'],['../classdb__lib_1_1DB__SQLite__Connection.html#af314ae1f51795a7f6e32c36dfd91fc7f',1,'db_lib::DB_SQLite_Connection::db'],['../classdb__lib_1_1DB__SQLite__Handle.html#ac42f96c05633460be6a1d1a3033f24a8',1,'db_lib::DB_SQLite_Handle::db']]],
   ['db_5ffilepath_14',['db_filepath',['../structconfig_1_1UserConfig.html#af9ca393f034e39e59bc9c7c78c8d6142',1,'config::UserConfig']]],
   ['db_5fsqlite_15',['db_sqlite',['../classdb_1_1DB__SQLite.html',1,'db::DB_SQLite'],['../classdb_1_1DB__SQLite.html#a5c3641568603c87c96f57cb90a765206',1,'db::DB_SQLite::DB_SQLite()']]],
   ['db_5fsqlite_2eh_16',['db_sqlite.h',['../db__sqlite_8h.html',1,'']]],

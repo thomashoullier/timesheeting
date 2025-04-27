@@ -23,7 +23,7 @@ var searchData=
   ['signal_5fresize_5fneed_20',['signal_resize_need',['../classtui_1_1UIScreen.html#a850d8f4110625aa86a2c7c99713a97e6',1,'tui::UIScreen']]],
   ['signal_5fupdate_5fneed_21',['signal_update_need',['../classtui_1_1UIScreen.html#ade4bee8423ccd33c2ff031482cdeee7f',1,'tui::UIScreen']]],
   ['single_5fget_5fall_22',['single_get_all',['../classdb__lib_1_1Statement.html#a8430816e062e286a93c71555c28d9271',1,'db_lib::Statement']]],
-  ['statement_23',['Statement',['../classdb__lib_1_1Statement.html#aa80a9d20229743e704b79dd48c5dc99e',1,'db_lib::Statement']]],
+  ['statement_23',['Statement',['../classdb__lib_1_1Statement.html#a78830bc62df64dff6632b074d7234ddb',1,'db_lib::Statement']]],
   ['statementset_24',['StatementSet',['../classdb_1_1StatementSet.html#a054a6f812438f5ad40120d73cb5b5b83',1,'db::StatementSet']]],
   ['statusbarncurses_25',['StatusBarNCurses',['../classtui_1_1StatusBarNCurses.html#a378b73922533486113b60ad54c20d743',1,'tui::StatusBarNCurses']]],
   ['step_26',['step',['../classdb__lib_1_1Statement.html#a984acce640bfd4a382f79bfadfbd1d87',1,'db_lib::Statement']]],
