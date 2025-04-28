@@ -236,9 +236,209 @@ characters.
 TODO: uplink
 
 \subsection{core}
-\paragraph{MR-COR-010}
+The \emph{core} module contains several objects used throughout the program.
+
+\paragraph{MR-COR-010 -- Generic item}
+The items Project, Task and Location shall all be represented as objects with
+the following attributes,
+\begin{enumerate}
+\item id,
+\item name,
+\item active (boolean flag to indicate whether the item is active or not).
+\end{enumerate}
 TODO: uplink
 
+\paragraph{MR-COR-020 -- Vector of generic item names}
+A vector of generic items shall be convertible to vector of their names,
+in order.
+
+\paragraph{MR-COR-030 -- Entry}
+Entries shall be represented as objects with the following attributes,
+\begin{enumerate}
+\item id,
+\item project name,
+\item task name,
+\item start date,
+\item stop date,
+\item location name.
+\end{enumerate}
+
+\paragraph{MR-COR-040 -- Entry to strings}
+Entries shall be convertible to a vector of strings for display.
+These strings are, in order,
+\begin{enumerate}
+\item project name,
+\item task name,
+\item start date display string (long format),
+\item stop date display string (long format),
+\item location name.
+\end{enumerate}
+
+\paragraph{MR-COR-050 -- Entry to short strings}
+Entries shall be convertible to a vector of strings with the same composition
+as in MR-COR-040, except the dates are outputted in short format.
+
+\paragraph{MR-COR-060 -- Entry staging}
+The entry staging state shall be represented as an object with the following
+attributes,
+\begin{enumerate}
+\item project name,
+\item task name,
+\item start date,
+\item stop date,
+\item location name.
+\end{enumerate}
+
+These attributes are optional, meaning they may hold a value or not.
+
+\paragraph{MR-COR-070 -- Entry staging to strings}
+The entry staging object shall be convertible to a vector of string
+representations of its attributes, in order, with the dates in
+long format. Attributes which do not hold values are converted to a
+single whitespace character.
+
+\paragraph{MR-COR-080 -- Entry staging to short strings}
+The entry staging object shall be convertible to the same vector
+of strings as specified in MR-COR-070 except with the dates in short
+format.
+
+\paragraph{MR-COR-090 -- Export row}
+Export rows (for CSV file export) shall be represented as an object
+with the following attributes,
+\begin{enumerate}
+\item entry id,
+\item project id,
+\item project name,
+\item task id,
+\item task name,
+\item location id,
+\item location name,
+\item start date,
+\item stop date.
+\end{enumerate}
+
+\paragraph{MR-COR-100 -- Export csv string}
+Export rows shall be convertible to a string representation with
+comma-separated attributes. The dates are converted to unix timestamps.
+
+\paragraph{MR-COR-110 -- Project total}
+Project total (report of time worked per task) shall be represented
+as objects with the following attributes,
+\begin{enumerate}
+\item project name,
+\item total (Duration),
+\item vector of task totals.
+\end{enumerate}
+
+Each task total has the following attributes,
+\begin{enumerate}
+\item task name,
+\item total (Duration).
+\end{enumerate}
+
+\paragraph{MR-COR-120 -- Project total to menu items}
+Project total objects shall be convertible to menu items for the TUI,
+indicating,
+\begin{enumerate}
+\item The string to display in the cell,
+\item The string to display in the status bar,
+\item The string face to use (bold, italics etc.).
+\end{enumerate}
+
+The menu items are ordered in a nested fashion, with tasks grouped per
+project, and the overall project total displayed first in bold.
+The menu items are in lexicographic order.
+
+An example of menu items as displayed is shown in
+\cref{tab:project_total_menu_items}.
+
+\begin{table} \caption{\label{tab:project_total_menu_items} Menu items for
+    project total.}
+  \begin{tabular}{| c | c |} \hline
+    \textbf{Project1} & \textbf{13.202 hours} \\ \hline
+    Task1 & 1.202 hours \\ \hline
+    Task2 & 3.000 hours \\ \hline
+    Task3 & 9.000 hours \\ \hline
+    \textbf{Project2} & \textbf{3.300 hours} \\ \hline
+    Task4 & 3.300 hours \\ \hline
+  \end{tabular}
+\end{table}
+
+\paragraph{MR-COR-130 -- Weekly totals}
+Weekly totals (report of time worked per task in a week) shall be represented
+as objects with the following attributes,
+\begin{enumerate}
+\item total duration worked in the week,
+\item total duration worked per day in the week,
+\item vector of per project totals.
+\end{enumerate}
+
+Note a week has seven days and starts on monday.
+
+Each per project total has the following attributes,
+\begin{enumerate}
+\item project name,
+\item total duration worked on the project in the week,
+\item total duration worked on the project per day,
+\item vector of per task totals.
+\end{enumerate}
+
+Each per task total has the following attributes,
+\begin{enumerate}
+\item task name,
+\item total duration worked on the task in the week,
+\item total duration worked on the task per day.
+\end{enumerate}
+
+\paragraph{MR-COR-140 -- Weekly totals to menu items}
+Weekly total objects shall be convertible to menu items for the TUI,
+indicating,
+\begin{enumerate}
+\item The string to display in the cell,
+\item The string to display in the status bar,
+\item The string face to use (bold, italics etc.).
+\end{enumerate}
+
+The menu items are in lexicographic order. A column header
+precedes the actual data. The menu items are, in order,
+\begin{enumerate}
+\item A header line indicating the columns
+  \lstinline{Task, Mon, Tue, Wed, Thu, Fri, Sat, Sun, TOTAL} in normal face.
+\item An all-tasks line, indicating the weekly total and daily breakdown of
+  the total.
+\item Per-project breakdown of weekly totals, with the project total first
+  in bold face, following by all individual tasks in normal face.
+\end{enumerate}
+
+An example of menu items as displayed is shown in
+\cref{tab:weekly_total_menu_items}.
+
+\begin{table} \caption{\label{tab:weekly_total_menu_items} Menu items for
+    weekly total.}
+  \begin{tabular}{| c | c | c | c | c | c | c | c | c |} \hline
+    Task & Mon & Tue & Wed & Thu & Fri & Sat & Sun & TOTAL \\ \hline
+    ALL & 13.108 & 7.138 & 4.114 & 9.807
+        & 12.498 & 12.386 & 12.039 & 71.090 \\ \hline
+    \textbf{Project1} & \textbf{13.108} & \textbf{2.138} & \textbf{2.000}
+                      & \textbf{4.807} & \textbf{6.000} & \textbf{7.386}
+                      & \textbf{7.039} & \textbf{42.478} \\ \hline
+    Task1 & 3.108 & 1.138 & 1.000
+          & 2.807 & 3.000 & 2.386
+          & 2.039 & 15.478 \\ \hline
+    Task2 & 5.000 & 0.500 & 0.400
+          & 0.500 & 2.000 & 2.500
+          & 3.000 & 13.900 \\ \hline
+    Task3 & 5.000 & 0.500 & 0.600
+          & 1.500 & 1.000 & 2.500
+          & 2.000 & 13.100 \\ \hline
+    \textbf{Project2} & & \textbf{5.000} & \textbf{2.114}
+                      & \textbf{5.000} & \textbf{6.498} & \textbf{5.000}
+                      & \textbf{5.000} & \textbf{28.612} \\ \hline
+    Task4 & & 5.000 & 2.114
+          & 5.000 & 6.498 & 5.000
+          & 5.000 & 28.612 \\ \hline
+  \end{tabular}
+\end{table}
 \subsection{db}
 \paragraph{MR-DBI-010}
 TODO: uplink

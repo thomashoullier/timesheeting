@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdexcept>
 #include <string>
+#include <sqlite3.h>
 
 namespace db_lib{
   DB_SQLite_Handle::DB_SQLite_Handle(const std::filesystem::path &db_file) :

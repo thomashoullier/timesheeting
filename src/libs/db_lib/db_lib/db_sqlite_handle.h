@@ -8,7 +8,6 @@
 #include <filesystem>
 #include <memory>
 #include <string>
-#include <sqlite3.h>
 
 namespace db_lib {
   /** @brief Low-level SQLite wrapper handle and utility class. */
