@@ -37,6 +37,9 @@ int main(int argc, const char *const *argv) {
 
     // Initialize the DB.
     db::DB_SQLite::get(config.db_filepath);
+    log_lib::logger().log("Loaded DB v" +
+                          std::to_string(db::db().get_user_version()),
+                          log_lib::LogLevel::info);
 
     // Initialize the key bindings.
     keys::BoundKeys::get(&config.bindings);

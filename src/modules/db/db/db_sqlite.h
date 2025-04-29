@@ -32,6 +32,11 @@ namespace db {
     /** @brief Grab the DB singleton. */
     static DB_SQLite &get(const std::filesystem::path &db_filepath = "");
 
+    /** @brief Get the user version of the loaded DB.
+
+     For logging purposes mainly. */
+    int get_user_version() const;
+
     /** @brief Get the list of projects. */
     std::vector<core::Project> query_projects();
     /** @brief Get the list of active projects. */

@@ -7,7 +7,6 @@
 #include <cstddef>
 #include <string>
 #include "time_lib/day.h"
-#include "log_lib/logger.h"
 #include "version/version.h"
 
 namespace db {
@@ -20,9 +19,10 @@ namespace db {
     : sqlite_db(std::make_shared<db_lib::DB_SQLite_Handle>(db_file)),
       statements{init_db()} {
     sqlite_db->check_user_version(version::TIMESHEETING_DB_VERSION);
-    log_lib::Logger::get().log("Loaded DB v"
-                               + std::to_string(sqlite_db->get_user_version()),
-                               log_lib::LogLevel::info);
+  }
+
+  int DB_SQLite::get_user_version() const {
+    return sqlite_db->get_user_version();
   }
 
   StatementSet DB_SQLite::init_db() {
@@ -489,10 +489,6 @@ namespace db {
 
   core::WeeklyTotals DB_SQLite::report_weekly_totals
   (const time_lib::Week &week) {
-    log_lib::logger().log("report_weekly_totals for week over date range: " +
-                          week.to_date_range().start.to_string() + " ; " +
-                          week.to_date_range().stop.to_string(),
-                          log_lib::LogLevel::debug);
     core::WeeklyTotals totals;
     // Overall weekly total
     totals.total = query_entries_duration(week.to_date_range());
