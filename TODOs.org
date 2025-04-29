@@ -29,6 +29,11 @@ ADDED: [2024-12-29 Sun]
 CLOSED: [2025-01-29 Wed 21:24]
 ADDED: [2024-12-29 Sun]
 
+*** TODO Specify the TUI
++ Propose very abstract drawings for the UI screens.
++ Draw a diagram of which user interaction is available on which screen.
+  Give which UI element is displayed first on startup.
+
 * System Design document
 ** PRJ1-SDD1
 Proposes the implementations of the subsystems, along with a
@@ -37,7 +42,6 @@ justification/tradeoff.
   + List the license of all the tools being used.
 + Draw a diagram of the software class hierarchy
   (application->topwindow->tabs->etc.).
-+ Propose very abstract drawings for the UI screens.
 + Detail every possible user interaction and how it propagates through
   subsystems. This defines some of the required interfaces between subsystems.
 + Detail the database schema

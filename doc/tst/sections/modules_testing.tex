@@ -245,3 +245,158 @@ The configuration parameters loaded from \cref{lst:config_file}
 shall contain an unsigned integer \lstinline{max_log_age}.
 
 \textit{Tests: } MR-CON-065 -- Maximum log age
+
+\subsection{core}
+\paragraph{MT-COR-010 -- Project generic item}
+A generic item of type \lstinline{Project} shall be instantiated without
+error with id 4, name \lstinline{project1}, and active flag set to true.
+The id, name and active flag shall be retrieved and be found equal to
+their input values.
+
+\textit{Tests: } MR-COR-010 -- Generic item
+
+\paragraph{MT-COR-020 -- Task generic item}
+A generic item of type \lstinline{Task} shall be instantiated without
+error with id 2, name \lstinline{task1}, and active flag set to false.
+The id, name and active flag shall be retrieved and be found equal to
+their input values.
+
+\textit{Tests: } MR-COR-010 -- Generic item
+
+\paragraph{MT-COR-030 -- Location generic item}
+A generic item of type \lstinline{Location} shall be instantiated without
+error with id 3, name \lstinline{location1}, and active flag set to true.
+The id, name and active flag shall be retrieved and be found equal to
+their input values.
+
+\textit{Tests: } MR-COR-010 -- Generic item
+
+\paragraph{MT-COR-040 -- Vector of generic item names}
+A vector of 3 generic items of type \lstinline{Location} is created,
+with the following id, name and activity flags:
+\lstinline{1, location1, true}, \lstinline{2, location2, true},
+\lstinline{3, location3, true}.
+It shall be converted to a vector of the item names.
+The result vector must be equal to \lstinline{location1, location2, location3}.
+
+\textit{Tests: } MR-COR-020 -- Vector of generic item names
+
+\paragraph{MT-COR-050 -- Entry object}
+An Entry with id 5, project name \lstinline{project1}, task name
+\lstinline{task1}, start date instantiated from UNIX timestamp
+\lstinline{1745837288}, stop date from UNIX timestamp
+\lstinline{1745838288} and location name \lstinline{location1}
+shall be instantiated without error.
+Each attribute shall be queried and found equal to the input.
+The dates are compared using a conversion to UNIX timestamp.
+
+\textit{Tests: } MR-COR-030 -- Entry
+
+\paragraph{MT-COR-060 -- Entry to strings}
+The entry from MT-COR-050 shall be converted to a vector of strings.
+This vector must be equal to
+\lstinline{project1, task1, start date display string in long format, stop date
+  display string in long format, location1},
+with the date strings equal to what is returned by the method for long
+display format.
+
+\textit{Tests: } MR-COR-040 -- Entry to strings
+
+\paragraph{MT-COR-070 -- Entry to short strings}
+The entry from MT-COR-060 shall be converted to a vector of short strings.
+The result shall be equal to that in MT-COR-070, except the date display
+strings must be in short format.
+
+\textit{Tests: } MR-COR-050 -- Entry to short strings
+
+\paragraph{MT-COR-080 -- Entry staging with values}
+An entry staging object with project name \lstinline{project1},
+task name \lstinline{task1}, start date instantiated from UNIX timestamp
+\lstinline{1745837288}, stop date from UNIX timestamp
+\lstinline{1745838288} and location name \lstinline{location1}
+shall be instantiated without error.
+Each attribute shall be queried and found equal to the input.
+The dates are compared using a conversion to UNIX timestamp.
+
+\textit{Tests: } MR-COR-060 -- Entry staging
+
+\paragraph{MT-COR-090 -- Entry staging without values}
+An entry staging with every attribute as a nullopt shall be instantiated
+without error.
+
+\textit{Tests: } MR-COR-070 -- Entry staging
+
+\paragraph{MT-COR-100 -- Entry staging with values to strings}
+The entry staging object from MT-COR-080 shall be converted to
+a vector of string representations. The resulting vector shall be
+found equal to the inputs, with dates in long display format.
+
+\textit{Tests: } MR-COR-070 -- Entry staging to strings
+
+\paragraph{MT-COR-110 -- Entry staging without values to strings}
+The entry staging object from MT-COR-090 shall be converted to
+a vector of string representations. The result vector shall
+contain 5 strings with a single whitespace.
+
+\textit{Tests: } MR-COR-070 -- Entry staging to strings
+
+\paragraph{MT-COR-120 -- Entry staging with values to short strings}
+The entry staging object from MT-COR-080 shall be converted to
+a vector of short string representations. The resulting vector shall be
+found equal to the inputs, with dates in short display format.
+
+\textit{Tests: } MR-COR-080 -- Entry staging to short strings
+
+\paragraph{MT-COR-130 -- Entry staging without values to short strings}
+The entry staging object from MT-COR-090 shall be converted to
+a vector of short string representations. The result vector shall
+contain 5 strings with a single whitespace.
+
+\textit{Tests: } MR-COR-080 -- Entry staging to short strings
+
+\paragraph{MT-COR-140 -- Export row}
+An export row shall be instantiated without error with the following
+attributes: entry_id 4, project id 15, project name \lstinline{project15},
+task id 1, task name \lstinline{task33}, location id 4, location name
+\lstinline{location44}, start date initialized to UNIX timestamp
+\lstinline{1745837288}, stop date initialized to UNIX timestamp
+\lstinline{1745838288}.
+Each attribute will be queried and be found equal to its input value.
+
+\textit{Tests: } MR-COR-090 -- Export row
+
+\paragraph{MT-COR-150 -- Export row csv string}
+The export row object from MT-COR-140 shall be converted to csv string
+format. This string shall be equal to
+\lstinline{4, 15, project15, 1, task33, 4, location44, 1745837288, 1745838288}.
+
+\textit{Tests: } MR-COR-100 -- Export csv string
+
+\paragraph{MR-COR-160 -- Project total instantiation}
+The project total object shown as example in MR-COR-120 shall
+be instantiated without error.
+
+\textit{Tests: } MR-COR-110 Project total
+
+\paragraph{MR-COR-170 -- Project total to menu items}
+The project total object shown as example in MR-COR-120 shall
+be converted to menu items without error.
+The number of menu items shall be 8.
+Their cell string and display strings shall be found equal
+to either the project and task names, or the duration in
+and string format. The face of the first two items shall
+be bold, the face of the 6 next items shall be normal.
+
+\textit{Tests: } MR-COR-120 Project total to menu items.
+
+\paragraph{MR-COR-180 -- Weekly totals instantiation}
+The weekly totals shown as example in MR-COR-140 shall be
+instantiated without error.
+
+\textit{Tests: } MR-COR-130 Weekly totals
+
+\paragraph{MR-COR-190 -- Weekly totals to menu items}
+The weekly totals shown as example in MR-COR-140 shall be converted to menu
+items without error. The number of menu items shall be 72.
+
+\textit{Tests: } MR-COR-140 Weekly totals to menu items.
