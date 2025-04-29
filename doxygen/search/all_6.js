@@ -22,5 +22,5 @@ var searchData=
   ['get_5ftimestamp_19',['get_timestamp',['../classlog__lib_1_1Logger.html#af04ada8c3f7e0c38ec1f49b7fae35d99',1,'log_lib::Logger']]],
   ['get_5fuser_5fstring_20',['get_user_string',['../classtui_1_1StatusBarNCurses.html#a8c4a138d1b8ac49669509bdfd643d2a4',1,'tui::StatusBarNCurses']]],
   ['get_5fuser_5fstring_5fsuggestions_21',['get_user_string_suggestions',['../classtui_1_1StatusBarNCurses.html#af5987a462e4d13d2bb977c232aa0fd3c',1,'tui::StatusBarNCurses']]],
-  ['get_5fuser_5fversion_22',['get_user_version',['../classdb__lib_1_1DB__SQLite__Handle.html#ad96cd29aaeebd6b3ce81ed345141141a',1,'db_lib::DB_SQLite_Handle']]]
+  ['get_5fuser_5fversion_22',['get_user_version',['../classdb__lib_1_1DB__SQLite__Handle.html#ad96cd29aaeebd6b3ce81ed345141141a',1,'db_lib::DB_SQLite_Handle::get_user_version()'],['../classdb_1_1DB__SQLite.html#af550930972108ae85dac4656bb7c57f5',1,'db::DB_SQLite::get_user_version()']]]
 ];

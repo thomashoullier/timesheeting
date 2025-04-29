@@ -32,16 +32,16 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">314</td>
+            <td class="headerCovTableEntry">311</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-29 12:49:42</td>
+            <td class="headerValue">2025-04-29 16:10:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntry">54</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
                   <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -69,23 +69,23 @@
 <span id="L7"><span class="lineNum">       7</span>              : #include &lt;cstddef&gt;</span>
 <span id="L8"><span class="lineNum">       8</span>              : #include &lt;string&gt;</span>
 <span id="L9"><span class="lineNum">       9</span>              : #include &quot;time_lib/day.h&quot;</span>
-<span id="L10"><span class="lineNum">      10</span>              : #include &quot;log_lib/logger.h&quot;</span>
-<span id="L11"><span class="lineNum">      11</span>              : #include &quot;version/version.h&quot;</span>
-<span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span>              : namespace db {</span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC tlaBgUNC">           0 :   DB_SQLite &amp;DB_SQLite::get(const std::filesystem::path &amp;db_filepath) {</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :     static DB_SQLite instance (db_filepath);</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :     return instance;</span></span>
-<span id="L17"><span class="lineNum">      17</span>              :   }</span>
-<span id="L18"><span class="lineNum">      18</span>              : </span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :   DB_SQLite::DB_SQLite(const std::filesystem::path &amp;db_file)</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaUNC">           0 :     : sqlite_db(std::make_shared&lt;db_lib::DB_SQLite_Handle&gt;(db_file)),</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :       statements{init_db()} {</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :     sqlite_db-&gt;check_user_version(version::TIMESHEETING_DB_VERSION);</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :     log_lib::Logger::get().log(&quot;Loaded DB v&quot;</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :                                + std::to_string(sqlite_db-&gt;get_user_version()),</span></span>
-<span id="L25"><span class="lineNum">      25</span>              :                                log_lib::LogLevel::info);</span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L10"><span class="lineNum">      10</span>              : #include &quot;version/version.h&quot;</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : namespace db {</span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaUNC tlaBgUNC">           0 :   DB_SQLite &amp;DB_SQLite::get(const std::filesystem::path &amp;db_filepath) {</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC">           0 :     static DB_SQLite instance (db_filepath);</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :     return instance;</span></span>
+<span id="L16"><span class="lineNum">      16</span>              :   }</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :   DB_SQLite::DB_SQLite(const std::filesystem::path &amp;db_file)</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :     : sqlite_db(std::make_shared&lt;db_lib::DB_SQLite_Handle&gt;(db_file)),</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaUNC">           0 :       statements{init_db()} {</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :     sqlite_db-&gt;check_user_version(version::TIMESHEETING_DB_VERSION);</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L23"><span class="lineNum">      23</span>              : </span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :   int DB_SQLite::get_user_version() const {</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :     return sqlite_db-&gt;get_user_version();</span></span>
+<span id="L26"><span class="lineNum">      26</span>              :   }</span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :   StatementSet DB_SQLite::init_db() {</span></span>
 <span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :     this-&gt;create_projects_table();</span></span>
@@ -551,63 +551,59 @@
 <span id="L489"><span class="lineNum">     489</span>              : </span>
 <span id="L490"><span class="lineNum">     490</span> <span class="tlaUNC">           0 :   core::WeeklyTotals DB_SQLite::report_weekly_totals</span></span>
 <span id="L491"><span class="lineNum">     491</span>              :   (const time_lib::Week &amp;week) {</span>
-<span id="L492"><span class="lineNum">     492</span> <span class="tlaUNC">           0 :     log_lib::logger().log(&quot;report_weekly_totals for week over date range: &quot; +</span></span>
-<span id="L493"><span class="lineNum">     493</span> <span class="tlaUNC">           0 :                           week.to_date_range().start.to_string() + &quot; ; &quot; +</span></span>
-<span id="L494"><span class="lineNum">     494</span> <span class="tlaUNC">           0 :                           week.to_date_range().stop.to_string(),</span></span>
-<span id="L495"><span class="lineNum">     495</span>              :                           log_lib::LogLevel::debug);</span>
-<span id="L496"><span class="lineNum">     496</span> <span class="tlaUNC">           0 :     core::WeeklyTotals totals;</span></span>
-<span id="L497"><span class="lineNum">     497</span>              :     // Overall weekly total</span>
-<span id="L498"><span class="lineNum">     498</span> <span class="tlaUNC">           0 :     totals.total = query_entries_duration(week.to_date_range());</span></span>
-<span id="L499"><span class="lineNum">     499</span>              :     // Daily totals</span>
-<span id="L500"><span class="lineNum">     500</span>              :     // TODO: find a way to avoid the explicit i.</span>
-<span id="L501"><span class="lineNum">     501</span> <span class="tlaUNC">           0 :     std::size_t i = 0;</span></span>
-<span id="L502"><span class="lineNum">     502</span> <span class="tlaUNC">           0 :     for (const auto &amp;day : week.days()) {</span></span>
-<span id="L503"><span class="lineNum">     503</span> <span class="tlaUNC">           0 :       totals.daily_totals.at(i) = query_entries_duration(day.to_date_range());</span></span>
-<span id="L504"><span class="lineNum">     504</span> <span class="tlaUNC">           0 :       ++i;</span></span>
-<span id="L505"><span class="lineNum">     505</span>              :     }</span>
-<span id="L506"><span class="lineNum">     506</span>              :     // Per-project totals</span>
-<span id="L507"><span class="lineNum">     507</span> <span class="tlaUNC">           0 :     auto &amp;stmt_per_project = statements.duration_per_worked_project;</span></span>
-<span id="L508"><span class="lineNum">     508</span> <span class="tlaUNC">           0 :     stmt_per_project.bind_all(week.to_date_range().start.to_unix_timestamp(),</span></span>
-<span id="L509"><span class="lineNum">     509</span> <span class="tlaUNC">           0 :                               week.to_date_range().stop.to_unix_timestamp());</span></span>
-<span id="L510"><span class="lineNum">     510</span> <span class="tlaUNC">           0 :     while(stmt_per_project.step()) {</span></span>
-<span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :       core::PerProjectTotals per_project_totals;</span></span>
-<span id="L512"><span class="lineNum">     512</span> <span class="tlaUNC">           0 :       auto [project_id, project_name, project_seconds] =</span></span>
-<span id="L513"><span class="lineNum">     513</span> <span class="tlaUNC">           0 :         stmt_per_project.get_all&lt;db_lib::RowId, std::string, db_lib::DBInt&gt;();</span></span>
-<span id="L514"><span class="lineNum">     514</span> <span class="tlaUNC">           0 :       per_project_totals.project_name = project_name;</span></span>
-<span id="L515"><span class="lineNum">     515</span> <span class="tlaUNC">           0 :       per_project_totals.total = time_lib::Duration(project_seconds);</span></span>
-<span id="L516"><span class="lineNum">     516</span>              :       // Daily totals for the current project (by project_id)</span>
-<span id="L517"><span class="lineNum">     517</span> <span class="tlaUNC">           0 :       i = 0;</span></span>
-<span id="L518"><span class="lineNum">     518</span> <span class="tlaUNC">           0 :       for (const auto &amp;day : week.days()) {</span></span>
-<span id="L519"><span class="lineNum">     519</span> <span class="tlaUNC">           0 :         per_project_totals.daily_totals.at(i) =</span></span>
-<span id="L520"><span class="lineNum">     520</span> <span class="tlaUNC">           0 :           report_project_duration(project_id, day.to_date_range());</span></span>
-<span id="L521"><span class="lineNum">     521</span> <span class="tlaUNC">           0 :         ++i;</span></span>
-<span id="L522"><span class="lineNum">     522</span>              :       }</span>
-<span id="L523"><span class="lineNum">     523</span> <span class="tlaUNC">           0 :       auto &amp;stmt_per_task = statements.duration_per_worked_task;</span></span>
-<span id="L524"><span class="lineNum">     524</span> <span class="tlaUNC">           0 :       stmt_per_task.bind_all(project_id,</span></span>
-<span id="L525"><span class="lineNum">     525</span> <span class="tlaUNC">           0 :                              week.to_date_range().start.to_unix_timestamp(),</span></span>
-<span id="L526"><span class="lineNum">     526</span> <span class="tlaUNC">           0 :                              week.to_date_range().stop.to_unix_timestamp());</span></span>
-<span id="L527"><span class="lineNum">     527</span> <span class="tlaUNC">           0 :       while (stmt_per_task.step()) {</span></span>
-<span id="L528"><span class="lineNum">     528</span> <span class="tlaUNC">           0 :         core::PerTaskTotals per_task_totals;</span></span>
-<span id="L529"><span class="lineNum">     529</span> <span class="tlaUNC">           0 :         auto [task_id, task_name, task_seconds] =</span></span>
-<span id="L530"><span class="lineNum">     530</span> <span class="tlaUNC">           0 :           stmt_per_task.get_all&lt;db_lib::RowId, std::string, db_lib::DBInt&gt;();</span></span>
-<span id="L531"><span class="lineNum">     531</span> <span class="tlaUNC">           0 :         per_task_totals.task_name = task_name;</span></span>
-<span id="L532"><span class="lineNum">     532</span> <span class="tlaUNC">           0 :         per_task_totals.total = time_lib::Duration(task_seconds);</span></span>
-<span id="L533"><span class="lineNum">     533</span>              :         // Daily totals for the current task.</span>
-<span id="L534"><span class="lineNum">     534</span> <span class="tlaUNC">           0 :         i = 0;</span></span>
-<span id="L535"><span class="lineNum">     535</span> <span class="tlaUNC">           0 :         for (const auto &amp;day : week.days()) {</span></span>
-<span id="L536"><span class="lineNum">     536</span> <span class="tlaUNC">           0 :           per_task_totals.daily_totals.at(i) =</span></span>
-<span id="L537"><span class="lineNum">     537</span> <span class="tlaUNC">           0 :             report_task_duration(task_id, day.to_date_range());</span></span>
-<span id="L538"><span class="lineNum">     538</span> <span class="tlaUNC">           0 :           ++i;</span></span>
-<span id="L539"><span class="lineNum">     539</span>              :         }</span>
-<span id="L540"><span class="lineNum">     540</span> <span class="tlaUNC">           0 :         per_project_totals.task_totals.push_back(per_task_totals);</span></span>
-<span id="L541"><span class="lineNum">     541</span> <span class="tlaUNC">           0 :       }</span></span>
-<span id="L542"><span class="lineNum">     542</span> <span class="tlaUNC">           0 :       totals.project_totals.push_back(per_project_totals);</span></span>
-<span id="L543"><span class="lineNum">     543</span> <span class="tlaUNC">           0 :     }</span></span>
-<span id="L544"><span class="lineNum">     544</span> <span class="tlaUNC">           0 :     return totals;</span></span>
-<span id="L545"><span class="lineNum">     545</span> <span class="tlaUNC">           0 :   }</span></span>
-<span id="L546"><span class="lineNum">     546</span>              : </span>
-<span id="L547"><span class="lineNum">     547</span> <span class="tlaUNC">           0 :   DB_SQLite&amp; db() { return DB_SQLite::get(); }</span></span>
-<span id="L548"><span class="lineNum">     548</span>              : }</span>
+<span id="L492"><span class="lineNum">     492</span> <span class="tlaUNC">           0 :     core::WeeklyTotals totals;</span></span>
+<span id="L493"><span class="lineNum">     493</span>              :     // Overall weekly total</span>
+<span id="L494"><span class="lineNum">     494</span> <span class="tlaUNC">           0 :     totals.total = query_entries_duration(week.to_date_range());</span></span>
+<span id="L495"><span class="lineNum">     495</span>              :     // Daily totals</span>
+<span id="L496"><span class="lineNum">     496</span>              :     // TODO: find a way to avoid the explicit i.</span>
+<span id="L497"><span class="lineNum">     497</span> <span class="tlaUNC">           0 :     std::size_t i = 0;</span></span>
+<span id="L498"><span class="lineNum">     498</span> <span class="tlaUNC">           0 :     for (const auto &amp;day : week.days()) {</span></span>
+<span id="L499"><span class="lineNum">     499</span> <span class="tlaUNC">           0 :       totals.daily_totals.at(i) = query_entries_duration(day.to_date_range());</span></span>
+<span id="L500"><span class="lineNum">     500</span> <span class="tlaUNC">           0 :       ++i;</span></span>
+<span id="L501"><span class="lineNum">     501</span>              :     }</span>
+<span id="L502"><span class="lineNum">     502</span>              :     // Per-project totals</span>
+<span id="L503"><span class="lineNum">     503</span> <span class="tlaUNC">           0 :     auto &amp;stmt_per_project = statements.duration_per_worked_project;</span></span>
+<span id="L504"><span class="lineNum">     504</span> <span class="tlaUNC">           0 :     stmt_per_project.bind_all(week.to_date_range().start.to_unix_timestamp(),</span></span>
+<span id="L505"><span class="lineNum">     505</span> <span class="tlaUNC">           0 :                               week.to_date_range().stop.to_unix_timestamp());</span></span>
+<span id="L506"><span class="lineNum">     506</span> <span class="tlaUNC">           0 :     while(stmt_per_project.step()) {</span></span>
+<span id="L507"><span class="lineNum">     507</span> <span class="tlaUNC">           0 :       core::PerProjectTotals per_project_totals;</span></span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaUNC">           0 :       auto [project_id, project_name, project_seconds] =</span></span>
+<span id="L509"><span class="lineNum">     509</span> <span class="tlaUNC">           0 :         stmt_per_project.get_all&lt;db_lib::RowId, std::string, db_lib::DBInt&gt;();</span></span>
+<span id="L510"><span class="lineNum">     510</span> <span class="tlaUNC">           0 :       per_project_totals.project_name = project_name;</span></span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :       per_project_totals.total = time_lib::Duration(project_seconds);</span></span>
+<span id="L512"><span class="lineNum">     512</span>              :       // Daily totals for the current project (by project_id)</span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaUNC">           0 :       i = 0;</span></span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaUNC">           0 :       for (const auto &amp;day : week.days()) {</span></span>
+<span id="L515"><span class="lineNum">     515</span> <span class="tlaUNC">           0 :         per_project_totals.daily_totals.at(i) =</span></span>
+<span id="L516"><span class="lineNum">     516</span> <span class="tlaUNC">           0 :           report_project_duration(project_id, day.to_date_range());</span></span>
+<span id="L517"><span class="lineNum">     517</span> <span class="tlaUNC">           0 :         ++i;</span></span>
+<span id="L518"><span class="lineNum">     518</span>              :       }</span>
+<span id="L519"><span class="lineNum">     519</span> <span class="tlaUNC">           0 :       auto &amp;stmt_per_task = statements.duration_per_worked_task;</span></span>
+<span id="L520"><span class="lineNum">     520</span> <span class="tlaUNC">           0 :       stmt_per_task.bind_all(project_id,</span></span>
+<span id="L521"><span class="lineNum">     521</span> <span class="tlaUNC">           0 :                              week.to_date_range().start.to_unix_timestamp(),</span></span>
+<span id="L522"><span class="lineNum">     522</span> <span class="tlaUNC">           0 :                              week.to_date_range().stop.to_unix_timestamp());</span></span>
+<span id="L523"><span class="lineNum">     523</span> <span class="tlaUNC">           0 :       while (stmt_per_task.step()) {</span></span>
+<span id="L524"><span class="lineNum">     524</span> <span class="tlaUNC">           0 :         core::PerTaskTotals per_task_totals;</span></span>
+<span id="L525"><span class="lineNum">     525</span> <span class="tlaUNC">           0 :         auto [task_id, task_name, task_seconds] =</span></span>
+<span id="L526"><span class="lineNum">     526</span> <span class="tlaUNC">           0 :           stmt_per_task.get_all&lt;db_lib::RowId, std::string, db_lib::DBInt&gt;();</span></span>
+<span id="L527"><span class="lineNum">     527</span> <span class="tlaUNC">           0 :         per_task_totals.task_name = task_name;</span></span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaUNC">           0 :         per_task_totals.total = time_lib::Duration(task_seconds);</span></span>
+<span id="L529"><span class="lineNum">     529</span>              :         // Daily totals for the current task.</span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaUNC">           0 :         i = 0;</span></span>
+<span id="L531"><span class="lineNum">     531</span> <span class="tlaUNC">           0 :         for (const auto &amp;day : week.days()) {</span></span>
+<span id="L532"><span class="lineNum">     532</span> <span class="tlaUNC">           0 :           per_task_totals.daily_totals.at(i) =</span></span>
+<span id="L533"><span class="lineNum">     533</span> <span class="tlaUNC">           0 :             report_task_duration(task_id, day.to_date_range());</span></span>
+<span id="L534"><span class="lineNum">     534</span> <span class="tlaUNC">           0 :           ++i;</span></span>
+<span id="L535"><span class="lineNum">     535</span>              :         }</span>
+<span id="L536"><span class="lineNum">     536</span> <span class="tlaUNC">           0 :         per_project_totals.task_totals.push_back(per_task_totals);</span></span>
+<span id="L537"><span class="lineNum">     537</span> <span class="tlaUNC">           0 :       }</span></span>
+<span id="L538"><span class="lineNum">     538</span> <span class="tlaUNC">           0 :       totals.project_totals.push_back(per_project_totals);</span></span>
+<span id="L539"><span class="lineNum">     539</span> <span class="tlaUNC">           0 :     }</span></span>
+<span id="L540"><span class="lineNum">     540</span> <span class="tlaUNC">           0 :     return totals;</span></span>
+<span id="L541"><span class="lineNum">     541</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L542"><span class="lineNum">     542</span>              : </span>
+<span id="L543"><span class="lineNum">     543</span> <span class="tlaUNC">           0 :   DB_SQLite&amp; db() { return DB_SQLite::get(); }</span></span>
+<span id="L544"><span class="lineNum">     544</span>              : }</span>
         </pre>
               </td>
             </tr>
