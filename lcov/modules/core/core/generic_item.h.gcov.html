@@ -31,18 +31,18 @@
             <td class="headerValue">timesheeting_coverage_report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">7</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-27 12:27:48</td>
+            <td class="headerValue">2025-04-29 12:49:42</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryLo">33.3&nbsp;%</td>
             <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
                   <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -94,14 +94,14 @@
 <span id="L32"><span class="lineNum">      32</span>              :   template &lt;typename T,</span>
 <span id="L33"><span class="lineNum">      33</span>              :             typename = std::enable_if_t&lt;std::is_base_of_v&lt;GenericItem, T&gt;&gt;&gt;</span>
 <span id="L34"><span class="lineNum">      34</span>              :   std::vector&lt;std::string&gt;</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC tlaBgUNC">           0 :   generic_item_names(const std::vector&lt;T&gt; &amp;items) {</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :     std::vector&lt;std::string&gt; names;</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :     names.reserve(items.size());</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :     std::transform(items.begin(), items.end(),</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC tlaBgGNC">           1 :   generic_item_names(const std::vector&lt;T&gt; &amp;items) {</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :     std::vector&lt;std::string&gt; names;</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           1 :     names.reserve(items.size());</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :     std::transform(items.begin(), items.end(),</span></span>
 <span id="L39"><span class="lineNum">      39</span>              :                    std::back_inserter(names),</span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :                    [](const auto &amp;it) { return it.name; });</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :     return names;</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :   };</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           3 :                    [](const auto &amp;it) { return it.name; });</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           2 :     return names;</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           1 :   };</span></span>
 <span id="L43"><span class="lineNum">      43</span>              : }</span>
 <span id="L44"><span class="lineNum">      44</span>              : #endif // GENERIC_ITEM_H</span>
         </pre>

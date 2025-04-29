@@ -31,18 +31,18 @@
             <td class="headerValue">timesheeting_coverage_report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">18</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-04-27 12:27:48</td>
+            <td class="headerValue">2025-04-29 12:49:42</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
                   <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -63,25 +63,25 @@
 <span id="L1"><span class="lineNum">       1</span>              : #include &quot;entry.h&quot;</span>
 <span id="L2"><span class="lineNum">       2</span>              : </span>
 <span id="L3"><span class="lineNum">       3</span>              : namespace core {</span>
-<span id="L4"><span class="lineNum">       4</span> <span class="tlaUNC tlaBgUNC">           0 :   std::vector&lt;std::string&gt; Entry::to_strings() const {</span></span>
-<span id="L5"><span class="lineNum">       5</span> <span class="tlaUNC">           0 :     std::vector&lt;std::string&gt; display_strings(5);</span></span>
-<span id="L6"><span class="lineNum">       6</span> <span class="tlaUNC">           0 :     display_strings.at(0) = project_name;</span></span>
-<span id="L7"><span class="lineNum">       7</span> <span class="tlaUNC">           0 :     display_strings.at(1) = task_name;</span></span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaUNC">           0 :     display_strings.at(2) = start.to_string();</span></span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaUNC">           0 :     display_strings.at(3) = stop.to_string();</span></span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaUNC">           0 :     display_strings.at(4) = location_name;</span></span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaUNC">           0 :     return display_strings;</span></span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L4"><span class="lineNum">       4</span> <span class="tlaGNC tlaBgGNC">           1 :   std::vector&lt;std::string&gt; Entry::to_strings() const {</span></span>
+<span id="L5"><span class="lineNum">       5</span> <span class="tlaGNC">           1 :     std::vector&lt;std::string&gt; display_strings(5);</span></span>
+<span id="L6"><span class="lineNum">       6</span> <span class="tlaGNC">           1 :     display_strings.at(0) = project_name;</span></span>
+<span id="L7"><span class="lineNum">       7</span> <span class="tlaGNC">           1 :     display_strings.at(1) = task_name;</span></span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">           1 :     display_strings.at(2) = start.to_string();</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">           1 :     display_strings.at(3) = stop.to_string();</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">           1 :     display_strings.at(4) = location_name;</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           2 :     return display_strings;</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           1 :   }</span></span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC">           0 :   std::vector&lt;std::string&gt; Entry::to_shortstrings() const {</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :     std::vector&lt;std::string&gt; display_strings(5);</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :     display_strings.at(0) = project_name;</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :     display_strings.at(1) = task_name;</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :     display_strings.at(2) = start.to_shortstring();</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :     display_strings.at(3) = stop.to_shortstring();</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaUNC">           0 :     display_strings.at(4) = location_name;</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :     return display_strings;</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           1 :   std::vector&lt;std::string&gt; Entry::to_shortstrings() const {</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           1 :     std::vector&lt;std::string&gt; display_strings(5);</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :     display_strings.at(0) = project_name;</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           1 :     display_strings.at(1) = task_name;</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :     display_strings.at(2) = start.to_shortstring();</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :     display_strings.at(3) = stop.to_shortstring();</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           1 :     display_strings.at(4) = location_name;</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           2 :     return display_strings;</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           1 :   }</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : }</span>
         </pre>
               </td>
