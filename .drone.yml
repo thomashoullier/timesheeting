@@ -94,6 +94,15 @@ steps:
   depends_on:
   - test_build
 
+- name: test_memleaks
+  image: test_environment
+  pull: never
+  failure: ignore
+  commands:
+  - valgrind --leak-check=full --error-exitcode=1 ./build_test/timesheeting_tests
+  depends_on:
+  - test_run
+
 - name: test_coverage
   image: test_environment
   pull: never

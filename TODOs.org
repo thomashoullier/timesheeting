@@ -245,6 +245,14 @@ sending characters to the application for performing a planned test scenario.
 Do we need to pace the inputs somehow, in any case a sufficient time between
 inputs should do.
 https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-testing-an-ncurses-application
++ We tested the method. It seems to work great. We can pilot a tmux session
+  from a script and run timesheeting.
++ We can setup a compilation target with profiling etc. enabled and run
+  a coverage report on it by launching tmux on it.
++ We can reach most of the TUI lines of code in this fashion, and check
+  the state of the DB at the end.
++ We can report the coverage separately from the unit tests. And also
+  maybe combine the reports into one to show overall test coverage.
 
 *** TODO Check the WeekBegin date around DST changes
 ADDED: [2024-09-05 Thu]
