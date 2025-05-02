@@ -438,8 +438,303 @@ An example of menu items as displayed is shown in
   \end{tabular}
 \end{table}
 \subsection{db}
-\paragraph{MR-DBI-010}
+The DB module contains a singleton which interacts with the \gls{DB}.
+It is the unique point of direct interaction with the DB in the program,
+either in read or write.
+
+\paragraph{MR-DBI-010 -- DB loading}
+The DB object shall be loaded using a filepath to the \gls{DB} file.
 TODO: uplink
+
+\paragraph{MR-DBI-020 -- DB get user version}
+The DB object shall allow retrieving the user version number of the
+loaded DB.
+
+\subsubsection{DB tables}
+\paragraph{MR-DBI-030 -- Projects table}
+The \gls{DB} shall contain a \emph{projects} table with the following columns,
+\begin{enumerate}
+\item id,
+\item name,
+\item active (boolean flag).
+\end{enumerate}
+
+\paragraph{MR-DBI-040 -- Unique project names}
+The \emph{projects} table shall only allow unique names.
+
+\paragraph{MR-DBI-050 -- Tasks table}
+The \gls{DB} shall contain a \emph{tasks} table with the following columns,
+\begin{enumerate}
+\item id,
+\item name,
+\item project\textunderscore id (id from the \emph{projects} table),
+\item active (boolean flag).
+\end{enumerate}
+
+\paragraph{MR-DBI-060 -- Unique task names per project}
+The \emph{tasks} table shall only allow unique names per project.
+Two tasks are allowed to have the same name if they are in different
+projects.
+
+\paragraph{MR-DBI-070 -- Project's tasks deletion}
+Upon deletion of a project, all its corresponding tasks must also
+be deleted.
+Note deletion is only possible if no task in the project is present
+in entries.
+
+\paragraph{MR-DBI-080 -- Locations table}
+The \gls{DB} shall contain a \emph{locations} table with the following columns,
+\begin{enumerate}
+\item id,
+\item name,
+\item active (boolean flag).
+\end{enumerate}
+
+\paragraph{MR-DBI-090 -- Unique location names}
+The \emph{locations} table shall only allow unique names.
+
+\paragraph{MR-DBI-100 -- Entries table}
+The \gls{DB} shall contain an \emph{entries} table with the following columns,
+\begin{enumerate}
+\item id,
+\item task\textunderscore id (id from the \emph{tasks} table),
+\item start (start date UTC UNIX timestamp),
+\item stop (stop date UTC UNIX timestamp),
+\item location\textunderscore id (id from the \emph{locations} table).
+\end{enumerate}
+
+\paragraph{MR-DBI-110 -- Entries locking hierarchy items removal}
+The \emph{locations} and \emph{tasks} referenced to in \emph{entries} shall be
+locked for removal, along with their corresponding project. \emph{Locations},
+\emph{tasks} and \emph{projects} may only be removed once no part of
+\emph{entries} references them.
+
+\paragraph{MR-DBI-120 -- Entries start stop ordering}
+The \emph{entries} table shall only allow \emph{start} and \emph{stop}
+values for which $start < stop$.
+
+\paragraph{MR-DBI-130 -- Entries non-overlapping dates}
+The \emph{entries} table shall only allow items with non-overlapping
+\emph{start} and \emph{stop} dates.
+
+\paragraph{MR-DBI-140 -- Entry staging table}
+The \gls{DB} shall contain an \emph{entrystaging} table with the following
+columns,
+\begin{enumerate}
+\item task\textunderscore id (id from the \emph{tasks} table),
+\item start,
+\item stop,
+\item location\textunderscore id (id from the \emph{locations} table).
+\end{enumerate}
+
+Note the \emph{entrystaging} table only ever has one row.
+
+\subsubsection{Hierarchy items}
+\paragraph{MR-DBI-150 -- Inserting projects}
+The \gls{DB} shall allow inserting new \emph{projects}, identified by a name
+string. The operation must return true for success and false in case
+a constraint was violated.
+
+\paragraph{MR-DBI-160 -- Projects active default}
+The newly inserted projects shall be active by default.
+
+\paragraph{MR-DBI-170 -- Inserting tasks}
+The \gls{DB} shall allow inserting new \emph{tasks}, identified by the parent
+project id, and a name string. The operation must return true for success
+and false in case a constraint was violated.
+
+\paragraph{MR-DBI-180 -- Tasks active default}
+The newly inserted tasks shall be active by default.
+
+\paragraph{MR-DBI-190 -- Inserting locations}
+The \gls{DB} shall allow inserting new \emph{locations}, identified by a name
+string. The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-200 -- Locations active default}
+The newly inserted locations shall be active by default.
+
+\paragraph{MR-DBI-210 -- Project name edit}
+The \gls{DB} shall allow editing the name of existing \emph{projects}.
+The projects are identified by their id. The operation must return true for
+success and false in case a constraint was violated.
+
+\paragraph{MR-DBI-220 -- Task name edit}
+The \gls{DB} shall allow editing the name of existing \emph{tasks}.
+The tasks are identified by their id. The operation must return true for success
+and false in case a constraint was violated.
+
+\paragraph{MR-DBI-230 -- Task project edit}
+The \gls{DB} shall allow editing the project id of existing \emph{tasks}.
+The tasks are identified by their id, and projects by their name.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-240 -- Location name edit}
+The \gls{DB} shall allow editing the name of existing \emph{locations}.
+The locations are identified by their id.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-250 -- Toggle project active}
+The \gls{DB} shall allow toggling the active status of existing \emph{projects}.
+The projects are identified by their id.
+
+\paragraph{MR-DBI-260 -- Toggle task active}
+The \gls{DB} shall allow toggling the active status of existing \emph{tasks}.
+The tasks are identified by their id.
+
+\paragraph{MR-DBI-270 -- Toggle location active}
+The \gls{DB} shall allow toggling the active status of existing \emph{locations}.
+The locations are identified by their id.
+
+\paragraph{MR-DBI-280 -- Query projects}
+The \gls{DB} shall allow querying the list of existing \emph{projects}.
+The result is in alphabetical order.
+
+\paragraph{MR-DBI-290 -- Query active projects}
+The \gls{DB} shall allow querying the list of active \emph{projects}.
+The result is in alphabetical order.
+
+\paragraph{MR-DBI-300 -- Query tasks of project}
+The \gls{DB} shall allow querying the list of existing \emph{tasks}
+for a given project id.
+The result is in alphabetical order.
+
+\paragraph{MR-DBI-310 -- Query active tasks of project}
+The \gls{DB} shall allow querying the list of active \emph{tasks}
+for a given project id.
+The result is in alphabetical order.
+
+\paragraph{MR-DBI-320 -- Query locations}
+The \gls{DB} shall allow querying the list of existing \emph{locations}.
+The result is in alphabetical order.
+
+\paragraph{MR-DBI-330 -- Query active locations}
+The \gls{DB} shall allow querying the list of active \emph{locations}.
+The result is in alphabetical order.
+
+\paragraph{MR-DBI-340 -- Delete projects}
+The \gls{DB} shall allow the deletion of existing \emph{projects},
+identified by their id.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-350 -- Delete tasks}
+The \gls{DB} shall allow the deletion of existing \emph{tasks},
+identified by their id.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-360 -- Delete locations}
+The \gls{DB} shall allow the deletion of existing \emph{locations},
+identified by their id.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\subsubsection{Entry staging}
+\paragraph{MR-DBI-370 -- Entry staging project name}
+The \gls{DB} shall allow editing the \emph{entrystaging} project name.
+Only active projects may be set.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-380 -- Entry staging task name}
+The \gls{DB} shall allow editing the \emph{entrystaging} task name.
+Only active tasks may be set.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-390 -- Entry staging start}
+The \gls{DB} shall allow editing the \emph{entrystaging} start \emph{date}.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-400 -- Entry staging stop}
+The \gls{DB} shall allow editing the \emph{entrystaping} stop \emph{date}.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-410 -- Entry staging location}
+The \gls{DB} shall allow editing the \emph{entrystaging} location name.
+Only active locations may be set.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-420 -- Entry staging commit}
+The \gls{DB} shall allow committing the \emph{entrystaging} to an
+\emph{entries} item.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-430 -- Entry staging query}
+The \gls{DB} shall allow the retrieval of the current \emph{entrystaging} item.
+
+\paragraph{MR-DBI-440 -- Entry staging project id}
+The \gls{DB} shall allow the retrieval of the current \emph{entrystaging}
+project id.
+
+\subsubsection{Entries}
+\paragraph{MR-DBI-450 -- Entry project edit}
+The \gls{DB} shall allow the editing of existing \emph{entries} project
+by name.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-460 -- Entry task edit}
+The \gls{DB} shall allow the editing of existing \emph{entries} task
+by name.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-470 -- Entry start edit}
+The \gls{DB} shall allow the editing of existing \emph{entries} start
+\emph{date}.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-480 -- Entry stop edit}
+The \gls{DB} shall allow the editing of existing \emph{entries} stop
+\emph{date}.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-490 -- Entry location edit}
+The \gls{DB} shall allow the editing of existing \emph{entries} location
+by name.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-500 -- Entries query}
+The \gls{DB} shall allow the retrieval of the list of existing \emph{entries}
+in a given \emph{date range}. The entries shall be returned in
+increasing order of start date.
+
+\paragraph{MR-DBI-510 -- Entry project id query}
+The \gls{DB} shall allow the retrieval of the project id associated to
+a given item in \emph{entries}, identified by id.
+
+\paragraph{MR-DBI-520 -- Delete entry}
+The \gls{DB} shall allow the deletion of existing \emph{entries}, by id.
+The operation must return true for success and false in case a
+constraint was violated.
+
+\paragraph{MR-DBI-530 -- Entries duration over date range}
+The \gls{DB} shall allow the retrieval of the total \emph{duration} worked
+on \emph{entries} in a given \emph{date range}.
+
+\subsubsection{Reports}
+\paragraph{MR-DBI-540 -- Entries export}
+The \gls{DB} shall allow the export of entries to \emph{export row} format,
+over a given \emph{date range}.
+
+\paragraph{MR-DBI-550 -- Project total}
+The \gls{DB} shall allow the generation of a \emph{project total} report
+over a given \emph{date range}.
+
+\paragraph{MR-DBI-560 -- Weekly totals}
+The \gls{DB} shall allow the generation of a \emph{weekly totals} report
+over a given \emph{week}.
 
 \subsection{keys}
 \paragraph{MR-KEY-010}

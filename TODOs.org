@@ -140,12 +140,17 @@ The binary packages should reflect a sensible default, so we see no reason
 not to use them in tests.
 - [2025-04-09 Wed] We configured the CI to use binary packages whenever available.
 
-*** TODO Add a check for memory leak when running the unit tests
+*** DONE Add a check for memory leak when running the unit tests
+CLOSED: [2025-05-02 Fri 09:18]
 ADDED: [2025-04-20 Sun]
 The unit tests are supposed to trigger every exception etc., so
 it is a good place to check for memory leaks.
 Simply run the tests with valgrind on top, and figure out how to
 return a valgrind error if some memory was leaked.
+
+*** TODO Doxygen treat non-documented code as error
+ADDED: [2025-04-29 Tue]
+Report a failed CI step if doxygen finds undocumented code.
 
 * Software
 ** Bugs
@@ -225,6 +230,20 @@ This problem was recently picked up by cppcheck also.
 - [2025-04-13 Sun] We moved the ~PRAGMA optimize~ from the destructor to the
   constructor, as it is less risky to have it fail in the constructor.
 
+*** TODO Remove dangerous singleton methods
+ADDED: [2025-05-01 Thu]
+See the answer here: https://stackoverflow.com/a/1008289/10376845
+We have many singletons without these methods removed, resulting in possible
+misuse.
+
+*** TODO Forbid date instantiation which is not representable by a UNIX timestamp
+ADDED: [2025-05-01 Thu]
+Currently we can instantiate dates which end up as underflow in the DB,
+this is very bad. Add a condition for only representing dates between
+1970 and ~2100.
+Either throw an exception or clip dates. Be careful this must apply
+to dates obtained by shifting existing dates.
+
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]
@@ -253,6 +272,9 @@ https://stackoverflow.com/questions/74661549/fake-mock-background-terminal-for-t
   the state of the DB at the end.
 + We can report the coverage separately from the unit tests. And also
   maybe combine the reports into one to show overall test coverage.
+  Merging two lcov reports is mentioned here:
+  https://stackoverflow.com/questions/60544108/merge-lcov-results-in-one-report-and-keep-the-test-ids-testing-each-line
+
 
 *** TODO Check the WeekBegin date around DST changes
 ADDED: [2024-09-05 Thu]
@@ -534,6 +556,11 @@ The binary for the program sometimes reaches almost 20MB.
 This is too big, it should be well below 5MB.
 Perhaps our CMake compilation of individual libraries is at fault.
 We should probably link everything together.
+Perhaps use shared libraries instead of statically linking everything?
++ It turns out that with the cmake options set to compile only the
+  main target, the binary is not that big. It is activating the
+  test coverage which bloats the main binary. This is a misconfiguration of
+  cmake on our part.
 
 ** Build
 *** TODO Enforce the GCC14 dependency
@@ -662,3 +689,36 @@ task over a particular period.
 *** TODO Search in menu (like in ncmpcpp)
 ADDED: [2025-01-24 Fri]
 Be able to jump to a given item in a menu through text search.
+
+*** TODO Report durations of entries overlapping the period of query
+Report the real duration of entries over the query period,
+and not just the sum of the duration of entries for which the start
+date falls in the period.
+
+*** TODO Lock the committing of entries from entry staging to the current day
+ADDED: [2025-05-02 Fri]
+Only allow the committing of entries from the stopwatch to the currently
+selected day in the entries register. This is locked by start date only.
+
+*** TODO Lock the editing of entry start date to currently selected day
+ADDED: [2025-05-02 Fri]
+Only allow setting a start date which is on the currently selected day
+in the entry register.
+
+*** TODO Entries screen: go to specific day
+ADDED: [2025-05-01 Thu]
+Add a binding for going to a specific day by typing it a date contained in it.
+
+*** TODO Weekly screen: go to specific week
+ADDED: [2025-05-01 Thu]
+Add a binding for going to specific week by typing a date contained in it.
+
+*** TODO Entries screen: go to next/previous days containing something
+ADDED: [2025-05-01 Thu]
+Add a binding for going to next or previous day containing any entry.
+Stay on first or last once reached.
+
+*** TODO Weekly screen: go to next/previous week containing something
+ADDED: [2025-05-01 Thu]
+Add a binding for going to next or previous week containing any entry.
+Stay on first or last once reached.

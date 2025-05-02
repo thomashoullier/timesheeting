@@ -371,13 +371,13 @@ format. This string shall be equal to
 
 \textit{Tests: } MR-COR-100 -- Export csv string
 
-\paragraph{MR-COR-160 -- Project total instantiation}
+\paragraph{MT-COR-160 -- Project total instantiation}
 The project total object shown as example in MR-COR-120 shall
 be instantiated without error.
 
 \textit{Tests: } MR-COR-110 Project total
 
-\paragraph{MR-COR-170 -- Project total to menu items}
+\paragraph{MT-COR-170 -- Project total to menu items}
 The project total object shown as example in MR-COR-120 shall
 be converted to menu items without error.
 The number of menu items shall be 8.
@@ -388,14 +388,529 @@ be bold, the face of the 6 next items shall be normal.
 
 \textit{Tests: } MR-COR-120 Project total to menu items.
 
-\paragraph{MR-COR-180 -- Weekly totals instantiation}
+\paragraph{MT-COR-180 -- Weekly totals instantiation}
 The weekly totals shown as example in MR-COR-140 shall be
 instantiated without error.
 
-\textit{Tests: } MR-COR-130 Weekly totals
+\textit{Tests: } MR-COR-130 Weekly totals.
 
-\paragraph{MR-COR-190 -- Weekly totals to menu items}
+\paragraph{MT-COR-190 -- Weekly totals to menu items}
 The weekly totals shown as example in MR-COR-140 shall be converted to menu
 items without error. The number of menu items shall be 72.
 
 \textit{Tests: } MR-COR-140 Weekly totals to menu items.
+
+\subsection{db}
+The \gls{DB} being a singleton, care is taken to make each test
+executable while sharing a single DB. The tests must nonetheless
+be run in sequence.
+
+\paragraph{MT-DBI-010 -- DB singleton grab}
+The DB singleton shall be initialized to a valid temporary file
+and grabbed without error.
+
+\textit{Tests: } MR-DBI-010 DB loading.
+
+\paragraph{MT-DBI-020 -- DB get user version}
+The DB user version shall be retrieved and found equal to the version
+given by the version module.
+
+\textit{Tests: } MR-DBI-020 DB get user version.
+
+\paragraph{MT-DBI-030 -- Projects addition, querying and deletion}
+A project named \lstinline{project_MT-DBI-030} shall be added without
+error, returning true.
+The list of projects shall then be queried, and only one
+project returned, with its name equal to the input project name.
+Finally, the id of the project shall be retrieved, and used to
+delete the project from the \gls{DB} without error, returning true.
+The projects list shall be queried again and found empty.
+
+\textit{Tests: } MR-DBI-150, MR-DBI-280, MR-DBI-340.
+
+\paragraph{MT-DBI-040 -- Locations addition, querying and deletion}
+A location named \lstinline{location_MT-DBI-040} shall be added without
+error, returning true.
+The list of locations shall then be queried, and only one
+location returned, with its name equal to the input location name.
+Finally, the id of the location shall be retrieved, and used to
+delete the location from the \gls{DB} without error, returning true.
+The locations list shall be queried again and found empty.
+
+\textit{Tests: } MR-DBI-190, MR-DBI-320, MR-DBI-360.
+
+\paragraph{MT-DBI-050 -- Tasks addition, querying and deletion}
+A parent project named \lstinline{project_MT-DBI-050} shall be
+added.
+A task named \lstinline{task_MT-DBI-050} shall be added without
+error, returning true.
+The list of tasks for the parent project shall then be queried, and only one
+task returned, with its name equal to the input task name.
+Finally, the id of the task shall be retrieved, and used to
+delete the task from the \gls{DB} without error, returning true.
+The tasks list shall be queried again and found empty.
+The parent project is finally deleted.
+
+\textit{Tests: } MR-DBI-170, MR-DBI-300, MR-DBI-350.
+
+\paragraph{MT-DBI-060 -- Unique project names}
+A project named \lstinline{project_MT-DBI-060} shall be added.
+The same project name shall be tried for addition, the operation
+must return false.
+The list of projects shall be queried and found to contain only
+one element.
+Finally, the added project shall be deleted.
+
+\textit{Tests: } MR-DBI-040 Unique project names.
+
+\paragraph{MT-DBI-070 -- Unique location names}
+A location named \lstinline{location_MT-DBI-070} shall be added.
+The same location name shall be tried for addition, the
+operation must return false.
+The list of locations shall be queried and found to contain only
+one element.
+Finally, the added location shall be deleted.
+
+\textit{Tests: } MR-DBI-090 Unique location names.
+
+\paragraph{MT-DBI-080 -- Unique task names}
+Two parent projects named \lstinline{project1_MT-DBI-080}
+and \lstinline{project2_MT-DBI-080} shall be added.
+A task named \lstinline{task_MT-DBI-080} shall be added
+to \lstinline{project1_MT-DBI-080}.
+The same task name shall be retried for addition on the same
+project, the operation must return false.
+The list of tasks for this project shall be queried and found
+to contain only one element.
+Next, the same task name shall be used for addition
+to the other project \lstinline{project2_MT-DBI-080}
+without error, the operation must return true.
+Finally, both tasks shall be deleted, followed by the deletion
+of both parent projects.
+
+\textit{Tests: } MR-DBI-060 Unique task names per project.
+
+\paragraph{MT-DBI-090 -- Project's tasks deletion}
+A parent project named \lstinline{project_MT-DBI-090}
+shall be added.
+A task named \lstinline{task_MT-DBI-090} shall be added to it.
+The parent project shall be deleted without error.
+The list of tasks for the former project id shall be queried
+and found empty, and idem for the list of projects.
+
+\textit{Tests: } MR-DBI-070 Project's task deletion.
+
+\paragraph{MT-DBI-100 -- Projects active default}
+A project named \lstinline{project_MT-DBI-100} shall be added.
+The list of projects shall be queried, the project retrieved.
+The project active flag must be true.
+Finally the project is removed.
+
+\textit{Tests: } MR-DBI-160 Projects active default
+
+\paragraph{MT-DBI-110 -- Locations active default}
+A location named \lstinline{location_MT-DBI-110} shall be added.
+The list of locations shall be queried, the location retrieved.
+The location active flag must be true.
+Finally the location is removed.
+
+\textit{Tests: } MR-DBI-200 Locations active default
+
+\paragraph{MT-DBI-120 -- Tasks active default}
+A parent project named \lstinline{project_MT-DBI-120} shall
+be added. A task named \lstinline{task_MT-DBI-120} shall be added
+to it.
+The list of tasks for the project shall be queried and the only
+task retrieved. The task active flag must be true.
+Finally, the task and project are removed.
+
+\textit{Tests: } MR-DBI-180 Tasks active default.
+
+\paragraph{MT-DBI-130 -- Query projects ordering}
+Two projects, named \lstinline{projectB_MT-DBI-130}
+and \lstinline{projectA_MT-DBI-130} shall be added
+(purposefully in reverse alphabetical order).
+The list of projects shall be queried, the first
+project name shall be equal to the A project,
+the second project name shall be equal to the B project.
+Finally, both projects shall be deleted.
+
+\textit{Tests: } MR-DBI-280 Query projects.
+
+\paragraph{MT-DBI-140 -- Query locations ordering}
+Two locations, named \lstinline{locationB_MT-DBI-130}
+and \lstinline{locationA_MT-DBI-130} shall be added
+(purposefully in reverse alphabetical order).
+The list of locations shall be queried, the first
+location name shall be equal to the A location,
+the second location name shall be equal to the B location.
+Finally, both locations shall be deleted.
+
+\textit{Tests: } MR-DBI-320 Query locations.
+
+\paragraph{MT-DBI-150 -- Query tasks ordering}
+A parent project named \lstinline{project_MT-DBI-150}
+shall be added.
+Two tasks named \lstinline{taskB_MT-DBI-150} and \lstinline{taskA_MT-DBI-150}
+shall be added (purposefully in reverse alphabetical order) to it.
+The list of tasks for the parent project shall be queried.
+The first task name shall be equal to the A task, the second task name
+shall be equal to the B task.
+Finally both tasks and the project shall be deleted.
+
+\textit{Tests: } MR-DBI-300 Query tasks of project.
+
+\paragraph{MT-DBI-160 -- Toggle project active}
+A project named \lstinline{project_MT-DBI-160} shall be added.
+The project list shall be queried and the project retrieved.
+Its active flag must be equal to true.
+Then, the project's active flag shall be toggled without error.
+The project shall be re-queried and its active flag found to be false.
+The project's active flag shall be toggled again without error.
+The project shall be re-queried and its active flag found to be true.
+Finally, the project shall be deleted.
+
+\textit{Tests: } MR-DBI-250 Toggle project active.
+
+\paragraph{MT-DBI-170 -- Toggle location active}
+A location named \lstinline{location_MT-DBI-170} shall be added.
+The location list shall be queried and the location retrieved.
+Its active flag must be equal to true.
+Then, the location's active flag shall be toggled without error.
+The location shall be re-queried and its active flag found to be false.
+The location's active flag shall be toggled again without error.
+The location shall be re-queried and its active flag found to be true.
+Finally, the location shall be deleted.
+
+\textit{Tests: } MR-DBI-270 Toggle location active.
+
+\paragraph{MT-DBI-180 -- Toggle task active}
+A parent project named \lstinline{project_MT-DBI-180} shall be added.
+A task named \lstinline{task_MT-DBI-180} shall be added to it.
+The task list for the parent project shall be queried, the task retrieved.
+The task active flag must be equal to true.
+The task active flag shall be toggled without error.
+The task shall be re-queried and its active flag found to be false.
+The task active flag shall be toggled without error.
+The task shall be re-queried and its active flag found to be true.
+Finally, the task and project shall be deleted.
+
+\textit{Tests: } MR-DBI-260 Toggle task active.
+
+\paragraph{MT-DBI-190 -- Query active projects}
+Two projects, named \lstinline{project_active_MT-DBI-190}
+and \lstinline{project_inactive_MT-DBI-190} shall be added.
+The second project active flag shall be toggled.
+The list of active projects shall be queried.
+The list shall be found to contain only one item.
+This item shall have a name equal to the input above.
+Finally the two projects shall be removed.
+
+\textit{Tests: } MR-DBI-290 Query active projects.
+
+\paragraph{MT-DBI-200 -- Query active locations}
+Two locations, named \lstinline{location_active_MT-DBI-190}
+and \lstinline{location_inactive_MT-DBI-190} shall be added.
+The second location active flag shall be toggled.
+The list of active locations shall be queried.
+The list shall be found to contain only one item.
+This item shall have a name equal to the input above.
+Finally the two locations shall be removed.
+
+\textit{Tests: } MR-DBI-330 Query active locations.
+
+\paragraph{MT-DBI-210 -- Query active tasks}
+A parent project named \lstinline{project_MT-DBI-210}
+shall be added.
+Two tasks named \lstinline{task_active_MT-DBI-210}
+and \lstinline{task_inactive_MT-DBI-210} shall be added
+to it.
+The second task's active flag shall be toggled.
+The lsit of tasks shall be queried. The list shall be found to
+contain only one item. This item shall have a name equal
+to the input above.
+Finally, the tasks and project shall be removed.
+
+\textit{Tests: } MR-DBI-310 Query active tasks of project.
+
+\paragraph{MT-DBI-220 -- Query active projects ordering}
+Two projects, named \lstinline{projectB_MT-DBI-220}
+and \lstinline{projectA_MT-DBI-220} shall be added
+(purposefully in reverse alphabetical order).
+The list of active projects shall be queried, the first
+project name shall be equal to the A project,
+the second project name shall be equal to the B project.
+Finally, both projects shall be deleted.
+
+\textit{Tests: } MR-DBI-290 Query active projects.
+
+\paragraph{MT-DBI-230 -- Query active locations ordering}
+Two locations, named \lstinline{locationB_MT-DBI-230}
+and \lstinline{locationA_MT-DBI-230} shall be added
+(purposefully in reverse alphabetical order).
+The list of active locations shall be queried, the first
+location name shall be equal to the A location,
+the second location name shall be equal to the B location.
+Finally, both locations shall be deleted.
+
+\textit{Tests: } MR-DBI-330 Query active locations.
+
+\paragraph{MT-DBI-240 -- Query active tasks ordering}
+A parent project named \lstinline{project_MT-DBI-240} shall be added.
+Two tasks named \lstinline{taskB_MT-DBI-240} and \lstinline{taskA_MT-DBI-240}
+shall be added (purposefully in reverse alphabetical order) to it.
+The list of active tasks for the parent project shall be queried.
+The first task name shall be equal to the A task, the second task name
+shall be equal to the B task.
+Finally both tasks and the project shall be deleted.
+
+\textit{Tests: } MR-DBI-310 Query active tasks of project.
+
+\paragraph{MT-DBI-250 -- Project name edit}
+A project named \lstinline{project_MT-DBI-250} shall be added.
+Then, the name of this project shall be edited to \lstinline{new_MT-DBI-250}
+without error, returning true.
+The list of projects shall be queried. The list must contain only one item.
+This item's name must be equal to the new name.
+Finally, the project shall be deleted.
+
+\textit{Tests: } MR-DBI-210 Project name edit
+
+\paragraph{MT-DBI-260 -- Project name edit unique}
+Two projects, named \lstinline{projectA_MT-DBI-260} and
+\lstinline{projectB_MT-DBI-260} shall be added.
+The renaming of projectA to projectB shall be tried, the operation
+returning false.
+The list of projects shall be queried. The list must contain two items.
+Each project name must be as inputted.
+Finally, both projects shall be deleted.
+
+\textit{Tests: } MR-DBI-210 Project name edit, MR-DBI-040 Unique project names.
+
+\paragraph{MT-DBI-270 -- Location name edit}
+A location named \lstinline{location_MT-DBI-270} shall be added.
+Then, the name of this location shall be edited to \lstinline{new_MT-DBI-270}
+without error, returning true.
+The list of locations shall be queried. The list must contain only one item.
+This item's name must be equal to the new name.
+Finally, the location shall be deleted.
+
+\textit{Tests: } MR-DBI-240 Location name edit
+
+\paragraph{MT-DBI-280 -- Location name edit unique}
+Two locations, named \lstinline{locationA_MT-DBI-280} and
+\lstinline{locationB_MT-DBI-280} shall be added.
+The renaming of locationA to locationB shall be tried, the operation
+returning false.
+The list of locations shall be queried. The list must contain two items.
+Each location name must be as inputted.
+Finally, both locations shall be deleted.
+
+\textit{Tests: } MR-DBI-240 Location name edit, MR-DBI-090 Unique location
+names.
+
+\paragraph{MT-DBI-290 -- Task name edit}
+A parent project named \lstinline{project_MT-DBI-290} shall be added.
+A task named \lstinline{task_MT-DBI-290} shall be added.
+Then, the name of this task shall be edited to \lstinline{new_MT-DBI-290}
+without error, returning true.
+The list of tasks shall be queried. The list must contain only one item.
+This item's name must be equal to the new name.
+Finally, the task and project shall be deleted.
+
+\textit{Tests: } MR-DBI-220 Task name edit.
+
+\paragraph{MT-DBI-300 -- Task name edit unique}
+A parent project named \lstinline{project_MT-DBI-300} shall be added.
+Two tasks, named \lstinline{taskA_MT-DBI-300} and \lstinline{taskB_MT-DBI-300}
+shall be added.
+The renaming of taskA to taskB shall be tried, the operation returning false.
+The list of tasks shall be queried. The list must contain two items.
+Each task name must be as inputted.
+Finally, both tasks and the parent project shall be deleted.
+
+\textit{Tests: } MR-DBI-220 Task name edit, MR-DBI-060 Unique task names per
+project.
+
+\paragraph{MT-DBI-310 -- Task project edit}
+Two parent projects, named \lstinline{projectA_MT-DBI-310} and
+\lstinline{projectB_MT-DBI-310} shall be added.
+A task named \lstinline{task_MT-DBI-310} shall be added to projectA.
+The task shall then be edited to be affixed to projectB instead,
+without error, the operation returning true.
+The tasks of projectA shall be queried, and found to be empty.
+The tasks of projectB shall be queried, one item shall be found,
+its name shall be equal to the input task name.
+Finally, the task and the two projects shall be removed.
+
+\textit{Tests: } MR-DBI-230 Task project edit.
+
+\paragraph{MT-DBI-320 -- Task project edit unique}
+Two parent projects, named \lstinline{projectA_MT-DBI-320} and
+\lstinline{projectB_MT-DBI-320} shall be added.
+A task shall be added in each, each named the same, \lstinline{task_MT-DBI-320}.
+A move of the task from projectA to projectB shall be tried, the operation
+returning false.
+The tasks for each project shall be queried, one item shall be found in each.
+Finally, the task and the two projects shall be removed.
+
+\textit{Tests: } MR-DBI-230 Task project edit, MR-DBI-060 Unique task names
+per project.
+
+\paragraph{MT-DBI-330 -- Task project edit nonexistent}
+Two parent projects, named \lstinline{projectA_MT-DBI-330} and
+\lstinline{projectB_MT-DBI-330} shall be added.
+A task named \lstinline{task_MT-DBI-330} shall be added to projectA.
+The move of the task from projectA to a project named
+\lstinline{nonexistent_project} shall be tried, the operation returning false.
+The list of tasks of projectA shall be queried, and found to contain
+one item with name equal to the input.
+Finally, the task and the two projects shall be removed.
+
+\textit{Tests: } MR-DBI-230 Task project edit.
+
+\paragraph{MT-DBI-340 -- Entry staging empty at first}
+The initial entry staging shall be queried.
+Every field is checked and must be empty.
+
+\textit{Tests: } MR-DBI-430 Entry staging query.
+
+\paragraph{MT-DBI-350 -- Entries empty at first}
+The initial entries shall be queried in the date range
+from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889}. The result must
+be empty.
+
+\textit{Tests: } MR-DBI-500 Entries query
+
+\paragraph{MT-DBI-360 -- Entry staging project name}
+A project named \lstinline{project_MT-DBI-360} shall be added.
+A task named \lstinline{task_MT-DBI-360} shall be added to it.
+The entry staging project name shall be set to the above project name.
+The entry staging shall be queried, the project name field shall
+be found to contain a value equal to the project name.
+The project shall not be removed, as it will be reused by subsequent tests.
+
+\textit{Tests: } MR-DBI-370 Entry staging project name.
+
+\paragraph{MT-DBI-370 -- Entry staging task auto-fill}
+The entry staging shall be queried. The task field shall be found
+to contain a value equal to the task name of the previous test.
+
+\textit{Tests: } MR-DBI-370 Entry staging project name.
+
+\paragraph{MT-DBI-380 -- Entry staging non-existent project name}
+The entry staging project name shall be edited to
+\lstinline{nonexistent_project}, the operation returning true.
+The entry staging shall be queried, the project and task fields
+must be empty.
+
+\textit{Tests: } MR-DBI-370 Entry staging project name.
+
+\paragraph{MT-DBI-390 -- Entry staging active projects}
+A project named \lstinline{project_MT-DBI-390} shall be added.
+A task named \lstinline{task_MT-DBI-390} shall be added to it.
+The project shall be set to inactive.
+The entrystaging project shall be set to this project name,
+returning true.
+The entrystaging shall be queried, the project and task names
+must not hold values.
+Finally, the project is deleted from the DB.
+
+\textit{Tests: } MR-DBI-370 Entry staging project name.
+
+\paragraph{MT-DBI-400 -- Entry staging task name without project}
+The entry staging project name shall be checked, it must be empty.
+The entry staging task name shall be set to the existing
+\lstinline{task_MT-DBI-360}, the operation returning true.
+The entry staging shall be queried, the project and task names
+must be empty.
+
+\textit{Tests: } MR-DBI-380 Entry staging task name.
+
+\paragraph{MT-DBI-410 -- Entry staging task name}
+A second task named \lstinline{task_MT-DBI-410}
+shall be added to the existing project \lstinline{project_MT-DBI-360}.
+The entry staging project name shall be set to this project.
+Then, the entry staging task name shall be set to the new task
+without error, the operation returning true.
+The entry staging shall be queried, and the project and task
+names must be found equal to the ones mentioned above.
+
+\textit{Tests: } MR-DBI-380 Entry staging task name.
+
+\paragraph{MT-DBI-420 -- Entry staging task name active}
+A third task named \lstinline{task_MT-DBI-420}
+shall be added to the existing project \lstinline{project_MT-DBI-360}.
+This task shall be set to inactive.
+The entry staging project name shall be set to the above project.
+The entry staging task name shall be set to the new inactive task,
+the operation returning true.
+The entry staging shall be queried, the project and task names
+must be found empty.
+
+\textit{Tests: } MR-DBI-380 Entry staging task name.
+
+\paragraph{MT-DBI-430 -- Entry staging task name non-existent}
+The entry staging project name shall be set to the existing
+project \lstinline{project_MT-DBI-360}.
+The entry staging task name shall be set to the non-existent task
+name \lstinline{nonexistent_task}, the operation returning true.
+The entry staging shall be queried, the project and task names
+must be empty.
+
+\textit{Tests: } MR-DBI-380 Entry staging task name.
+
+\paragraph{MT-DBI-440 -- Entry staging location name}
+A location named \lstinline{location_MT-DBI-440} shall be added.
+The entry staging location name shall be set to this location
+name without error, the operation returning true.
+The entry staging shall be queried, the location name must
+hold a value and be equal to the input name.
+The location shall be kept for subsequent tests.
+
+\textit{Tests: } MR-DBI-410 Entry staging location name.
+
+\paragraph{MT-DBI-450 -- Entry staging location name active}
+A location named \lstinline{location_MT-DBI-450} shall
+be added and set to inactive.
+The entry staging location name shall be set to this location
+name, the operation returning true.
+The entry staging shall be queried, the location name must be empty.
+The location shall be kept for subsequent tests.
+
+\textit{Tests: } MR-DBI-410 Entry staging location name.
+
+\paragraph{MT-DBI-460 -- Entry staging location name non-existent}
+The entry staging location name shall be set to
+the non-existent location name \lstinline{nonexistent_location},
+the operation returning true.
+The entry staging shall be queried, the location name must be empty.
+
+\textit{Tests: } MR-DBI-410 Entry staging location name.
+
+\paragraph{MT-DBI-470 -- Entry staging start date}
+Given the start date initialized to UTC UNIX timestamp
+\lstinline{1745818889}, the entry staging start date shall be
+set to this date without error, the operation returning true.
+The entry staging shall be queried, the start date must hold
+a value equal to the input.
+
+\textit{Tests: } MR-DBI-390 Entry staging start.
+
+\paragraph{MT-DBI-480 -- Entry staging stop date}
+Given the stop date initialized to UTC UNIX timestamp
+\lstinline{1745819889}, the entry staging stop date shall be
+set to this date without error, the operation returning true.
+The entry staging shall be queried, the stop date must hold
+a value equal to the input.
+
+\textit{Tests: } MR-DBI-400 Entry staging stop.
+
+\paragraph{MT-DBI-490 -- Entry staging project id}
+TODO: maybe modify the requirement and implementation so that
+an optional is returned here.
+
+\paragraph{MT-DBI-500 -- Entry staging project id no project}
+
+\paragraph{MT-DBI-510 -- Entry staging set project which has no tasks}
