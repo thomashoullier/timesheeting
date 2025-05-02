@@ -244,6 +244,11 @@ this is very bad. Add a condition for only representing dates between
 Either throw an exception or clip dates. Be careful this must apply
 to dates obtained by shifting existing dates.
 
+*** TODO When trying to rename in an empty entries register, exception is thrown
+ADDED: [2025-05-02 Fri]
+It is not very elegant to close the program when the renaming binding
+is pressed in an empty entry register.
+
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]

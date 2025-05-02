@@ -24,6 +24,7 @@
 #include <string>
 #include <type_traits>
 #include <vector>
+#include <optional>
 
 namespace db {
   /** @brief DB implementation using SQLite3. */
@@ -63,7 +64,7 @@ namespace db {
     /** @brief Get the current entry staging state. */
     core::EntryStaging query_entrystaging ();
     /** @brief Get the project id of the project currently in entry staging. */
-    core::Id query_entrystaging_project_id();
+    std::optional<core::Id> query_entrystaging_project_id();
     /** @brief Add a project to the DB. */
     bool add_project(std::string project_name);
     /** @brief Add a task to the DB. */

@@ -672,7 +672,8 @@ The \gls{DB} shall allow the retrieval of the current \emph{entrystaging} item.
 
 \paragraph{MR-DBI-440 -- Entry staging project id}
 The \gls{DB} shall allow the retrieval of the current \emph{entrystaging}
-project id.
+project id. The return value is optional, as there is no value to
+return in the case where no project/task is set in the entry staging.
 
 \subsubsection{Entries}
 \paragraph{MR-DBI-450 -- Entry project edit}

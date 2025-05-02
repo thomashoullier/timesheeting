@@ -155,10 +155,13 @@ namespace db {
                               location_name};
   }
 
-  core::Id DB_SQLite::query_entrystaging_project_id() {
+  std::optional<core::Id> DB_SQLite::query_entrystaging_project_id() {
     auto &stmt = statements.select_entrystaging_project_id;
     auto [project_id] = stmt.single_get_all<db_lib::DBInt>();
-    return project_id;
+    std::optional<core::Id> return_id {};
+    if (project_id != 0)
+      return_id = project_id;
+    return return_id;
   }
 
   void DB_SQLite::create_projects_table() {

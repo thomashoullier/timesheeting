@@ -5,6 +5,7 @@
 #include "../update_manager.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "ui/keys/bound_keys.h"
+#include <exception>
 #include <optional>
 #include <stdexcept>
 #include <string>
@@ -113,7 +114,10 @@ void StopwatchUI::update_status() {
       auto current_entry_staging = db::db().query_entrystaging();
       if(current_entry_staging.project_name.has_value()) {
         auto project_id = db::db().query_entrystaging_project_id();
-        auto tasks = db::db().query_tasks_active(project_id);
+        if (not project_id.has_value())
+          throw std::runtime_error
+            ("StopwatchUI::rename_item: project_id optional holds no value.");
+        auto tasks = db::db().query_tasks_active(project_id.value());
         auto task_names = generic_item_names(tasks);
         auto new_str = status().get_user_string_suggestions(task_names);
         if (!new_str.empty()) {
