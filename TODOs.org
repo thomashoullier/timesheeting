@@ -243,6 +243,10 @@ this is very bad. Add a condition for only representing dates between
 1970 and ~2100.
 Either throw an exception or clip dates. Be careful this must apply
 to dates obtained by shifting existing dates.
++ The right solution is probably to define a min and max date in UNIX
+  format. Then throw an exception when trying to convert dates to UNIX
+  if it goes outside the valid range. We can define a range between
+  1970 (timestamp 0) and 2100 for example.
 
 *** TODO When trying to rename in an empty entries register, exception is thrown
 ADDED: [2025-05-02 Fri]

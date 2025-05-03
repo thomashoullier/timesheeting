@@ -2,6 +2,7 @@
 #include "test_utils/test_utils.h"
 #include "db/db_sqlite.h"
 #include "time_lib/date.h"
+#include "time_lib/duration.h"
 #include "version/version.h"
 
 static auto db_test_folder = test_utils::TempDir("timesheeting_db_test");
@@ -593,5 +594,220 @@ TEST_CASE("DB module") {
     CHECK(entry_staging.stop.has_value());
     CHECK(entry_staging.stop.value().to_unix_timestamp() ==
           stop_date.to_unix_timestamp());
+  }
+  SECTION("MT-DBI-490 Entry staging project id") {
+    const std::string project_name{"project_MT-DBI-360"};
+    CHECK(db::db().edit_entrystaging_project_name(project_name));
+    auto entry_staging = db::db().query_entrystaging();
+    CHECK(entry_staging.project_name.has_value());
+    CHECK(entry_staging.task_name.has_value());
+    auto staged_project_id = db::db().query_entrystaging_project_id();
+    SUCCEED("Entry stagin project id queried without error.");
+    CHECK(staged_project_id.has_value());
+    auto projects = db::db().query_projects();
+    core::Id ref_project_id{};
+    for (const auto &project : projects) {
+      if (project.name == project_name) {
+        ref_project_id = project.id;
+      }
+    }
+    CHECK(ref_project_id == staged_project_id.value());
+  }
+  SECTION("MT-DBI-500 Entry staging project id no project") {
+    db::db().edit_entrystaging_project_name("nonexistint_project");
+    auto entry_staging = db::db().query_entrystaging();
+    CHECK_FALSE(entry_staging.project_name.has_value());
+    CHECK_FALSE(entry_staging.task_name.has_value());
+    auto staged_project_id = db::db().query_entrystaging_project_id();
+    SUCCEED("Entry stagin project id queried without error.");
+    CHECK_FALSE(staged_project_id.has_value());
+  }
+  SECTION("MT-DBI-510 Entry staging set project which has no tasks") {
+    const std::string project_name{"project_MT-DBI-510"};
+    CHECK(db::db().add_project(project_name));
+    CHECK(db::db().edit_entrystaging_project_name(project_name));
+    auto entry_staging = db::db().query_entrystaging();
+    CHECK_FALSE(entry_staging.project_name.has_value());
+    CHECK_FALSE(entry_staging.task_name.has_value());
+  }
+  SECTION("MT-DBI-520 Committing wrong date order") {
+    const std::string project_name{"project_MT-DBI-360"};
+    const std::string task_name{"task_MT-DBI-410"};
+    const std::string location_name{"location_MT-DBI-440"};
+    const time_lib::Date start_date{1745819989};
+    const time_lib::Date stop_date{1745819889};
+    CHECK(db::db().edit_entrystaging_project_name(project_name));
+    CHECK(db::db().edit_entrystaging_task_name(task_name));
+    CHECK(db::db().edit_entrystaging_location_name(location_name));
+    CHECK(db::db().edit_entrystaging_start(start_date));
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range {start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.empty());
+  }
+  SECTION("MT-DBI-530 Committing zero duration entry") {
+    auto entry_staging = db::db().query_entrystaging();
+    CHECK(entry_staging.start.has_value());
+    const time_lib::Date stop_date = entry_staging.start.value();
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range {start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.empty());
+  }
+  SECTION("MT-DBI-540 Committing missing task") {
+    const time_lib::Date start_date{1745819889};
+    const time_lib::Date stop_date{1745819989};
+    CHECK(db::db().edit_entrystaging_start(start_date));
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK(db::db().edit_entrystaging_task_name("nonexistent_task"));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.empty());
+    const std::string project_name{"project_MT-DBI-360"};
+    const std::string task_name{"task_MT-DBI-410"};
+    CHECK(db::db().edit_entrystaging_project_name(project_name));
+    CHECK(db::db().edit_entrystaging_task_name(task_name));
+  }
+  SECTION("MT-DBI-550 Committing missing location") {
+    CHECK(db::db().edit_entrystaging_location_name("nonexistent_location"));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.empty());
+    const std::string location_name{"location_MT-DBI-440"};
+    CHECK(db::db().edit_entrystaging_location_name(location_name));
+  }
+  SECTION("MT-DBI-560 Committing valid entry") {
+    CHECK(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 1);
+    auto entry = entries.front();
+    const std::string project_name{"project_MT-DBI-360"};
+    const std::string task_name{"task_MT-DBI-410"};
+    const std::string location_name{"location_MT-DBI-440"};
+    const time_lib::Date start_date{1745819889};
+    const time_lib::Date stop_date{1745819989};
+    CHECK(entry.project_name == project_name);
+    CHECK(entry.task_name == task_name);
+    CHECK(entry.start.to_unix_timestamp() == start_date.to_unix_timestamp());
+    CHECK(entry.stop.to_unix_timestamp() == stop_date.to_unix_timestamp());
+    CHECK(entry.location_name == location_name);
+  }
+  SECTION("MT-DBI-570 Overlapping entry with stop") {
+    const time_lib::Date start_date{1745819789};
+    const time_lib::Date stop_date{1745819890};
+    CHECK(db::db().edit_entrystaging_start(start_date));
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 1);
+  }
+  SECTION("MT-DBI-580 Overlapping entry with start") {
+    const time_lib::Date start_date{1745819890};
+    const time_lib::Date stop_date{1745819990};
+    CHECK(db::db().edit_entrystaging_start(start_date));
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 1);
+  }
+  SECTION("MT-DBI-590 Overlapping entry, both dates inside") {
+    const time_lib::Date start_date{1745819890};
+    const time_lib::Date stop_date{1745819895};
+    CHECK(db::db().edit_entrystaging_start(start_date));
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 1);
+  }
+  SECTION("MT-DBI-600 Overlapping entry, both dates on either side") {
+    const time_lib::Date start_date{1745819800};
+    const time_lib::Date stop_date{1745819999};
+    CHECK(db::db().edit_entrystaging_start(start_date));
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK_FALSE(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 1);
+  }
+  SECTION("MT-DBI-610 Valid second entry immediately following") {
+    const time_lib::Date start_date{1745819989};
+    const time_lib::Date stop_date{1745819999};
+    CHECK(db::db().edit_entrystaging_start(start_date));
+    CHECK(db::db().edit_entrystaging_stop(stop_date));
+    CHECK(db::db().commit_entrystaging());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+  }
+  SECTION("MT-DBI-620 Entry project id query") {
+    auto reference_project_id = db::db().query_entrystaging_project_id();
+    CHECK(reference_project_id.has_value());
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK_FALSE(entries.empty());
+    auto entry_id = entries.front().id;
+    auto test_id = db::db().query_entry_project_id(entry_id);
+    CHECK(test_id == reference_project_id.value());
+  }
+  SECTION("MT-DBI-630 Entries duration over date range") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries_duration = db::db().query_entries_duration(date_range);
+    SUCCEED("Entries duration queried without error.");
+    time_lib::Duration reference_duration {110};
+    CHECK(entries_duration.to_second_shortstring() ==
+          reference_duration.to_second_shortstring());
+  }
+  SECTION("MT-DBI-640 Entries duration over date range, zero duration") {
+    time_lib::Date start_range{1735817889};
+    time_lib::Date stop_range{1736249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries_duration = db::db().query_entries_duration(date_range);
+    SUCCEED("Entries duration queried without error.");
+    time_lib::Duration reference_duration {0};
+    CHECK(entries_duration.to_second_shortstring() ==
+          reference_duration.to_second_shortstring());
+  }
+  SECTION("MT-DBI-650 Delete entry") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    CHECK(db::db().delete_entry(entry_id));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 1);
   }
 }

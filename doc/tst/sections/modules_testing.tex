@@ -908,7 +908,257 @@ a value equal to the input.
 \textit{Tests: } MR-DBI-400 Entry staging stop.
 
 \paragraph{MT-DBI-490 -- Entry staging project id}
+The existing project named \lstinline{project_MT-DBI-360} shall
+be set in the entry staging.
+The entry staging project id shall be queried.
+For comparison, the list of projects in the DB shall be queried
+separately and the id for the relevant project found.
+The two id must match.
+
+\textit{Tests: } MR-DBI-440 Entry staging project id.
 
 \paragraph{MT-DBI-500 -- Entry staging project id no project}
+The entry staging project and task fields shall be emptied
+by trying to set the project name to \lstinline{nonexistent_project}.
+The entry staging shall be queried and the project and task fields found
+to be empty.
+The entry staging project id shall be queried. The id value must be
+empty.
+
+\textit{Tests: } MR-DBI-440 Entry staging project id.
 
 \paragraph{MT-DBI-510 -- Entry staging set project which has no tasks}
+A project named \lstinline{project_MT-DBI-510} shall be added.
+The entry staging project name shall be set to this name, the operation
+returning true.
+The entry staging shall be queried, the project and task fields must
+be empty.
+
+\textit{Tests: } MR-DBI-370 Entry staging project name.
+
+\paragraph{MT-DBI-520 -- Committing wrong date order}
+The entry staging project shall be set to the existing project named
+\lstinline{project_MT-DBI-360}. The entry staging task shall be
+set to the existing task named \lstinline{task_MT-DBI-410}.
+The entry staging location shall be set to the existing
+location named \lstinline{location_MT-DBI-440}.
+The entry staging start date shall be set to UNIX UTC timestamp
+\lstinline{1745819989} and the stop date to
+\lstinline{1745819889}, which is in the wrong order.
+The entry staging commit shall be tried, the operation returning
+false.
+The entries over the date range from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889} shall be queried. The result must
+be empty.
+
+\textit{Tests: } MR-DBI-120 Entries start stop ordering.
+
+\paragraph{MT-DBI-530 -- Committing zero duration entry}
+Keeping the entry staging settings from MT-DBI-520,
+the entry staging stop date shall be set to the same value as
+the entry staging start date.
+The entry staging commit shall be tried, the operation returning false.
+The entries over the date range from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889} shall be queried. The result must
+be empty.
+
+\textit{Tests: } MR-DBI-120 Entries start stop ordering.
+
+\paragraph{MT-DBI-540 -- Committing missing task}
+Keeping the previous settings,
+the entry staging start date shall be set to UNIX UTC timestamp
+\lstinline{1745819889} and the stop date to
+\lstinline{1745819989}, which is in the right order.
+The entry staging task shall be emptied by setting it to
+the name \lstinline{nonexistent_task}.
+The entry staging commit shall be tried, the operation returning false.
+The entries over the date range from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889} shall be queried. The result must
+be empty. Finally, the entry staging project and task are set back to the valid
+\lstinline{project_MT-DBI-360} and \lstinline{task_MT-DBI-410}.
+
+\textit{Tests: } MR-DBI-420 Entry staging commit.
+
+\paragraph{MT-DBI-550 -- Committing missing location}
+Keeping the previous settings,
+the entry staging location shall be emptied by setting it to the name
+\lstinline{nonexistent_location}.
+The entry staging commit shall be tried, the operation returning false.
+The entries over the date range from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889} shall be queried. The result must
+be empty. Finally, the entry staging location shall be set back to the valid
+\lstinline{location_MT-DBI-440}.
+
+\textit{Tests: } MR-DBI-420 Entry staging commit.
+
+\paragraph{MT-DBI-560 -- Committing valid entry}
+Keeping the previous valid parameters,
+the entry staging commit shall be executed, the operation returning true.
+The entries over the date range from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889}. The result must contain
+exactly one item.
+The entry fields shall all be checked and must be found equal to the
+values inputted in entry staging.
+
+\textit{Tests: } MR-DBI-420 Entry staging commit.
+
+\paragraph{MT-DBI-570 -- Overlapping entry with stop}
+Keeping the previous parameters, the entry staging start and stop dates
+shall be set to UTC UNIX timestamps \lstinline{1745819789} and
+\lstinline{1745819890} respectively, meaning the entry starts before
+the existing entry and its stop date impinges on the existing period.
+The entry staging commit shall be executed, the operation returning false.
+The entries over the date range from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889} shall be queried. The result must
+contain exactly one item.
+
+\textit{Tests: } MR-DBI-130 Entries non-overlapping dates.
+
+\paragraph{MT-DBI-580 -- Overlapping entry with start}
+Keeping the previous parameters, the entry staging start and stop dates
+shall be set to UTC UNIX timestamps \lstinline{1745819890} and
+\lstinline{1745819990} respectively, meaning the entry starts after
+the existing entry and its start date impinges on the existing period.
+The entry staging commit shall be executed, the operation returning false.
+The entries over the date range from UNIX UTC timestamp \lstinline{1745817889}
+to UNIX UTC timestamp \lstinline{1746249889} shall be queried. The result must
+contain exactly one item.
+
+\textit{Tests: } MR-DBI-130 Entries non-overlapping dates.
+
+\paragraph{MT-DBI-590 -- Overlapping entry, both dates inside}
+Keeping the previous parameters, the entry staging start and stop dates shall be
+set to UTC UNIX timestamps \lstinline{1745819890} and \lstinline{1745819895}
+respectively, meaning the entry is contained inside the existing entry. The
+entry staging commit shall be executed, the operation returning false. The
+entries over the date range from UNIX UTC timestamp \lstinline{1745817889} to
+UNIX UTC timestamp \lstinline{1746249889} shall be queried. The result must
+contain exactly one item.
+
+\textit{Tests: } MR-DBI-130 Entries non-overlapping dates.
+
+\paragraph{MT-DBI-600 -- Overlapping entry, both dates on either side}
+Keeping the previous parameters, the entry staging start and stop dates shall be
+set to UTC UNIX timestamps \lstinline{1745819800} and \lstinline{1745819999}
+respectively, meaning the existing entry is contained inside the candidate
+entry. The entry staging commit shall be executed, the operation returning
+false. The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The result must contain exactly one item.
+
+\textit{Tests: } MR-DBI-130 Entries non-overlapping dates.
+
+\paragraph{MT-DBI-610 -- Valid second entry immediately following}
+Keeping the previous parameters, the entry staging start and stop dates
+shall be set to UTC UNIX timestamps \lstinline{1745819989} and
+\lstinline{1745819999}. This new entry is placed just after the existing entry.
+The entry staging commit shall be executed, the operation returning true.
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The result must contain exactly two items.
+
+\textit{Tests: } MR-DBI-420 Entry staging commit.
+
+\paragraph{MT-DBI-620 -- Entry project id query}
+The id of the project currently held in entry staging shall be queried for
+reference.
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The id of the first entry shall be used
+to query the corresponding project id through the function under
+test.
+This id and the reference id taken from the entry staging must match.
+
+\textit{Tests: } MR-DBI-510 Entry project id query.
+
+\paragraph{MT-DBI-630 -- Entries duration over date range}
+The duration of entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried without error.
+The result must be equal to a Duration equivalent to 110 seconds
+exactly.
+
+\textit{Tests: } MR-DBI-530 Entries duration over date range.
+
+\paragraph{MT-DBI-640 -- Entries duration over date range, zero duration}
+The duration of entries over the date range from UNIX UTC timestamp
+\lstinline{1735817889} to UNIX UTC timestamp \lstinline{1736249889}
+shall be queried without error.
+The result must be equal to a Duration equivalent to 0 seconds
+exactly.
+
+\textit{Tests: } MR-DBI-530 Entries duration over date range.
+
+\paragraph{MT-DBI-650 -- Delete entry}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The id of the first entry in the list shall
+be obtained. This entry shall be deleted without error, the operation
+returning true. The list of entries over the above date range
+shall be queried again, the result must contain exactly one item.
+
+\textit{Tests: } MR-DBI-520 Delete entry.
+
+\paragraph{MT-DBI-660 -- Entry project edit auto-fill}
+
+\textit{Tests: } MR-DBI-450 Entry project edit.
+
+\paragraph{MT-DBI-670 -- Entry project edit no tasks}
+
+\textit{Tests: } MR-DBI-450 Entry project edit.
+
+\paragraph{MT-DBI-680 -- Entry project edit non-existent}
+
+\textit{Tests: } MR-DBI-450 Entry project edit.
+
+\paragraph{MT-DBI-690 -- Entry task edit}
+
+\textit{Tests: } MR-DBI-460 Entry task edit.
+
+\paragraph{MT-DBI-700 -- Entry task edit non-existent}
+
+\textit{Tests: } MR-DBI-460 Entry task edit.
+
+\paragraph{MT-DBI-710 -- Entry location edit}
+
+\textit{Tests: } MR-DBI-490 Entry location edit.
+
+\paragraph{MT-DBI-720 -- Entry location edit non-existent}
+
+\textit{Tests: } MR-DBI-490 Entry location edit.
+
+\paragraph{MT-DBI-730 -- Entry start edit}
+
+\textit{Tests: } MR-DBI-470 Entry start edit.
+
+\paragraph{MT-DBI-740 -- Entry start edit, wrong order}
+
+\textit{Tests: } MR-DBI-470 Entry start edit.
+
+\paragraph{MT-DBI-750 -- Entry start edit, overlapping}
+
+\textit{Tests: } MR-DBI-470 Entry start edit.
+
+\paragraph{MT-DBI-760 -- Entry stop edit}
+
+\textit{Tests: } MR-DBI-480 Entry stop edit.
+
+\paragraph{MT-DBI-770 -- Entry stop edit, wrong order}
+
+\textit{Tests: } MR-DBI-480 Entry stop edit.
+
+\paragraph{MT-DBI-780 -- Entry stop edit, overlapping}
+
+\textit{Tests: } MR-DBI-480 Entry stop edit.
+
+\paragraph{MT-DBI-790 -- Locked project removal}
+
+\textit{Tests: } MR-DBI-110 Entries locking hierarchy items removal.
+
+\paragraph{MT-DBI-800 -- Locked task removal}
+
+\textit{Tests: } MR-DBI-110 Entries locking hierarchy items removal.
+
+\paragraph{MT-DBI-810 -- Locked location removal}
+
+\textit{Tests: } MR-DBI-110 Entries locking hierarchy items removal.
