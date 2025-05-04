@@ -5,9 +5,7 @@
 #include "../update_manager.h"
 #include "ncurses_lib/menu_ncurses.h"
 #include "ui/keys/bound_keys.h"
-#include <exception>
 #include <optional>
-#include <stdexcept>
 #include <string>
 #include "config/binding_maps.h"
 #include "core/entry_staging.h"

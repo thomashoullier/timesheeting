@@ -300,6 +300,13 @@ file is moved or network connection interrupted for instance.
 The program should throw and terminate.
 Add an explicit test of the behavior at the db_lib level.
 
+*** TODO Replace the CodeCoverage cmake module with a script
+ADDED: [2025-05-04 Sun]
+The CodeCoverage module is an unnecessary complication.
+We can prepare a cmake target for tests and run lcov directly
+from a shell script. This would allow us to add options to lcov,
+which we cannot easily do with the cmake module.
+
 ** Ergonomy
 *** DONE Toggle archive visibility resets the screen
 CLOSED: [2025-02-22 Sat 14:27]

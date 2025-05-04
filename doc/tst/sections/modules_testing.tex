@@ -1089,76 +1089,240 @@ exactly.
 
 \textit{Tests: } MR-DBI-530 Entries duration over date range.
 
+\paragraph{MT-DBI-645 -- Entries query ordering}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The result must contain exactly two items.
+The start dates of the first and second entries shall be compared,
+the first returned entry must have a start date anterior to
+the start date of the second returned entry.
+
+\textit{Tests: } MR-DBI-500 Entries query.
+
 \paragraph{MT-DBI-650 -- Delete entry}
 The entries over the date range from UNIX UTC timestamp
 \lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
-shall be queried. The id of the first entry in the list shall
+shall be queried. The id of the last entry in the list shall
 be obtained. This entry shall be deleted without error, the operation
 returning true. The list of entries over the above date range
 shall be queried again, the result must contain exactly one item.
+Finally, the entry is added back.
 
 \textit{Tests: } MR-DBI-520 Delete entry.
 
-\paragraph{MT-DBI-660 -- Entry project edit auto-fill}
+\paragraph{MT-DBI-660 -- Entry project edit}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+Its project shall be edited to the existing project
+named \lstinline{project_MT-DBI-390}, without error, the operation
+returning true.
+The entries shall be re-queried, and the project name found
+equal to the input.
+
+\textit{Tests: } MR-DBI-450 Entry project edit.
+
+\paragraph{MT-DBI-665 -- Entry project edit auto-fill}
+Given the newly modified entry from the above test MT-DBI-660,
+the task name shall be checked and found equal to
+\lstinline{task_MT-DBI-390}.
 
 \textit{Tests: } MR-DBI-450 Entry project edit.
 
 \paragraph{MT-DBI-670 -- Entry project edit no tasks}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+Its project shall be edited to the existing project
+named \lstinline{project_MT-DBI-510}, which has no tasks,
+the operation returning false.
+The entries shall be re-queried, and the project name shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-450 Entry project edit.
 
 \paragraph{MT-DBI-680 -- Entry project edit non-existent}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+Its project shall be edited to the project name \lstinline{nonexistent_project},
+the operation returning false.
+The entries shall be re-queried, and the project name shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-450 Entry project edit.
 
 \paragraph{MT-DBI-690 -- Entry task edit}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The project name shall be edited to the existing project name
+\lstinline{project_MT-DBI-360}.
+The task name shall then be edited to \lstinline{task_MT-DBI-410}
+without error, the operation returning true.
+The entries shall be re-queried, and the task name shall be found
+equal to the input.
 
 \textit{Tests: } MR-DBI-460 Entry task edit.
 
 \paragraph{MT-DBI-700 -- Entry task edit non-existent}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The task name shall be edited to \lstinline{nonexistent_task},
+the operation returning false.
+The entries shall be re-queried, and the task name shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-460 Entry task edit.
 
 \paragraph{MT-DBI-710 -- Entry location edit}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The location name shall be edited to the existing
+\lstinline{location_MT-DBI-450}, the operation returning true.
+The entries shall be re-queried, and the location name shall be
+found equal to the input.
 
 \textit{Tests: } MR-DBI-490 Entry location edit.
 
 \paragraph{MT-DBI-720 -- Entry location edit non-existent}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The location name shall be edited to \lstinline{nonexistent_location},
+the operation returning false.
+The entries shall be re-queried, and the location name shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-490 Entry location edit.
 
 \paragraph{MT-DBI-730 -- Entry start edit}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The entry's start date shall be modified to \lstinline{1745819888}
+without error, the operation returning true.
+The entries shall be re-queried, and the start date shall be
+found equal to the input.
 
 \textit{Tests: } MR-DBI-470 Entry start edit.
 
 \paragraph{MT-DBI-740 -- Entry start edit, wrong order}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The \emph{second} entry is taken.
+The entry's start date shall be modified to \lstinline{1755819999},
+the operation returning false.
+The entries shall be re-queried, and the start date shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-470 Entry start edit.
 
 \paragraph{MT-DBI-750 -- Entry start edit, overlapping}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The second entry is taken.
+The entry's start date shall be modified to \lstinline{1745819988},
+the operation returning false.
+The entries shall be re-queried, and the start date shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-470 Entry start edit.
 
 \paragraph{MT-DBI-760 -- Entry stop edit}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The second entry is taken.
+The entry's stop date shall be modified to \lstinline{1745819998},
+the operation returning true.
+The entries shall be re-queried, and the stop date shall be
+found equal to the input.
 
 \textit{Tests: } MR-DBI-480 Entry stop edit.
 
 \paragraph{MT-DBI-770 -- Entry stop edit, wrong order}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The \emph{first} entry is taken.
+The entry's stop date shall be modified to \lstinline{1744817889},
+the operation returning false.
+The entries shall be re-queried, and the stop date shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-480 Entry stop edit.
 
 \paragraph{MT-DBI-780 -- Entry stop edit, overlapping}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The entry's stop date shall be modified to \lstinline{1746819889},
+the operation returning false.
+The entries shall be re-queried, and the stop date shall be
+found equal to what it was at the beginning of the test.
 
 \textit{Tests: } MR-DBI-480 Entry stop edit.
 
 \paragraph{MT-DBI-790 -- Locked project removal}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The project id of the first entry shall be retrieved.
+The number of DB projects shall be saved for reference.
+The removal of this project from the DB shall be tried, the operation
+returning false. The DB projects shall be re-queried and found to still
+contain the same number of projects.
 
 \textit{Tests: } MR-DBI-110 Entries locking hierarchy items removal.
 
 \paragraph{MT-DBI-800 -- Locked task removal}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The task name of the first entry shall be retrieved.
+Then, the list of DB tasks for the entry's project shall be retrieved, and the
+task id shall be obtained.
+The removal of this task from the DB shall be tried, the operation
+returning false. The DB tasks shall be re-queried and found to still
+contain the task in question.
 
 \textit{Tests: } MR-DBI-110 Entries locking hierarchy items removal.
 
 \paragraph{MT-DBI-810 -- Locked location removal}
+The entries over the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889}
+shall be queried. The first entry is taken.
+The location name of the first entry shall be retrieved.
+Then, the list of DB locations shall be retrieved, and the location
+id of the location with the name from the entry shall be obtained.
+The number of locations in the DB shall be saved for reference.
+The removal of this location from the DB shall be tried, the operation
+returning false. The DB locations shall be re-queried and found to still
+contain the same number of locations.
 
 \textit{Tests: } MR-DBI-110 Entries locking hierarchy items removal.
+
+\paragraph{MT-DBI-820 -- Entries export}
+
+\textit{Tests: } MR-DBI-540 Entries export
+
+\paragraph{MT-DBI-830 -- Entries export, empty}
+
+\textit{Tests: } MR-DBI-540 Entries export
+
+\paragraph{MT-DBI-840 -- Project total report}
+
+\textit{Tests: } MR-DBI-550 Project total
+
+\paragraph{MT-DBI-850 -- Project total report, empty}
+
+\textit{Tests: } MR-DBI-550 Project total
+
+\paragraph{MT-DBI-860 -- Weekly totals report}
+
+\textit{Tests: } MR-DBI-560 Weekly totals
+
+\paragraph{MT-DBI-870 -- Weekly totals report, empty}
+
+\textit{Tests: } MR-DBI-560 Weekly totals

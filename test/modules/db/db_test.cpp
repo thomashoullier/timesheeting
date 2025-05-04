@@ -4,6 +4,7 @@
 #include "time_lib/date.h"
 #include "time_lib/duration.h"
 #include "version/version.h"
+#include <stdexcept>
 
 static auto db_test_folder = test_utils::TempDir("timesheeting_db_test");
 static auto db_test_filepath = db_test_folder.dirpath / "db_test.db";
@@ -799,15 +800,270 @@ TEST_CASE("DB module") {
     CHECK(entries_duration.to_second_shortstring() ==
           reference_duration.to_second_shortstring());
   }
+  SECTION("MT-DBI-645 Entries query ordering") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto first_date = entries.at(0).start;
+    auto second_date = entries.at(1).start;
+    CHECK(first_date.to_unix_timestamp() < second_date.to_unix_timestamp());
+  }
   SECTION("MT-DBI-650 Delete entry") {
     time_lib::Date start_range{1745817889};
     time_lib::Date stop_range{1746249889};
     time_lib::DateRange date_range{start_range, stop_range};
     auto entries = db::db().query_entries(date_range);
     CHECK(entries.size() == 2);
-    auto entry_id = entries.front().id;
+    auto entry_id = entries.back().id;
     CHECK(db::db().delete_entry(entry_id));
     entries = db::db().query_entries(date_range);
     CHECK(entries.size() == 1);
+    CHECK(db::db().commit_entrystaging());
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+  }
+  SECTION("MT-DBI-660 Entry project edit") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    const std::string new_project_name{"project_MT-DBI-390"};
+    CHECK(db::db().edit_entry_project(entry_id, new_project_name));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().project_name == new_project_name);
+  }
+  SECTION("MT-DBI-665 Entry project edit auto-fill") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    const std::string reference_task_name{"task_MT-DBI-390"};
+    CHECK(entries.front().task_name == reference_task_name);
+  }
+  SECTION("MT-DBI-670 Entry project edit no tasks") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    const std::string reference_project_name = entries.front().project_name;
+    const std::string new_project_name{"project_MT-DBI-510"};
+    CHECK_FALSE(db::db().edit_entry_project(entry_id, new_project_name));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().project_name == reference_project_name);
+  }
+  SECTION("MT-DBI-680 Entry project edit non-existent") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    const std::string reference_project_name = entries.front().project_name;
+    const std::string new_project_name{"nonexistent_project"};
+    CHECK_FALSE(db::db().edit_entry_project(entry_id, new_project_name));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().project_name == reference_project_name);
+  }
+  SECTION("MT-DBI-690 Entry task edit") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    const std::string new_project_name{"project_MT-DBI-360"};
+    const std::string new_task_name{"task_MT-DBI-360"};
+    CHECK(db::db().edit_entry_project(entry_id, new_project_name));
+    CHECK(db::db().edit_entry_task(entry_id, new_task_name));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().task_name == new_task_name);
+  }
+  SECTION("MT-DBI-700 Entry task edit non-existent") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    const std::string reference_task_name = entries.front().task_name;
+    const std::string new_task_name{"nonexistent_task"};
+    CHECK_FALSE(db::db().edit_entry_task(entry_id, new_task_name));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().task_name == reference_task_name);
+  }
+  SECTION("MT-DBI-710 Entry location edit") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    const std::string new_location_name{"location_MT-DBI-450"};
+    CHECK(db::db().edit_entry_location(entry_id, new_location_name));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().location_name == new_location_name);
+  }
+  SECTION("MT-DBI-720 Entry location edit non-existent") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    const std::string reference_location_name = entries.front().location_name;
+    auto entry_id = entries.front().id;
+    const std::string new_location_name{"nonexistent_location"};
+    CHECK_FALSE(db::db().edit_entry_location(entry_id, new_location_name));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().location_name == reference_location_name);
+  }
+  SECTION("MT-DBI-730 Entry start edit") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    time_lib::Date new_start_date{1745819888};
+    CHECK(db::db().edit_entry_start(entry_id, new_start_date));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().start.to_unix_timestamp() ==
+          new_start_date.to_unix_timestamp());
+  }
+  SECTION("MT-DBI-740 Entry start edit, wrong order") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.at(1).id;
+    time_lib::Date reference_start_date = entries.at(1).start;
+    time_lib::Date new_start_date{1755819999};
+    CHECK_FALSE(db::db().edit_entry_start(entry_id, new_start_date));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.at(1).start.to_unix_timestamp() ==
+          reference_start_date.to_unix_timestamp());
+  }
+  SECTION("MT-DBI-750 Entry start edit, overlapping") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.at(1).id;
+    time_lib::Date reference_start_date = entries.at(1).start;
+    time_lib::Date new_start_date{1746249891};
+    CHECK_FALSE(db::db().edit_entry_start(entry_id, new_start_date));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.at(1).start.to_unix_timestamp() ==
+          reference_start_date.to_unix_timestamp());
+  }
+  SECTION("MT-DBI-760 Entry stop edit") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.at(1).id;
+    time_lib::Date new_stop_date{1745819998};
+    CHECK(db::db().edit_entry_stop(entry_id, new_stop_date));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.at(1).stop.to_unix_timestamp() ==
+          new_stop_date.to_unix_timestamp());
+  }
+  SECTION("MT-DBI-770 Entry stop edit, wrong order") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    time_lib::Date reference_stop_date = entries.front().stop;
+    time_lib::Date new_stop_date{1744817889};
+    CHECK_FALSE(db::db().edit_entry_stop(entry_id, new_stop_date));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().stop.to_unix_timestamp() ==
+          reference_stop_date.to_unix_timestamp());
+  }
+  SECTION("MT-DBI-780 Entry stop edit, overlapping") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    time_lib::Date reference_stop_date = entries.front().stop;
+    time_lib::Date new_stop_date{1746819889};
+    CHECK_FALSE(db::db().edit_entry_stop(entry_id, new_stop_date));
+    entries = db::db().query_entries(date_range);
+    CHECK(entries.front().stop.to_unix_timestamp() ==
+          reference_stop_date.to_unix_timestamp());
+  }
+  SECTION("MT-DBI-790 Locked project removal") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    auto project_id = db::db().query_entry_project_id(entry_id);
+    auto projects = db::db().query_projects();
+    auto reference_nprojects = projects.size();
+    CHECK_FALSE(db::db().delete_project(project_id));
+    projects = db::db().query_projects();
+    CHECK(projects.size() == reference_nprojects);
+  }
+  SECTION("MT-DBI-800 Locked task removal") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto entry_id = entries.front().id;
+    auto project_id = db::db().query_entry_project_id(entry_id);
+    auto task_name = entries.front().task_name;
+    auto tasks = db::db().query_tasks(project_id);
+    auto reference_ntasks = tasks.size();
+    core::Id task_id{};
+    for (const auto &cur_task : tasks) {
+      if (cur_task.name == task_name) {
+        task_id = cur_task.id;
+        break;
+      }
+    }
+    if (task_id == core::Id{})
+      throw std::runtime_error("Task id not found.");
+    CHECK_FALSE(db::db().delete_task(task_id));
+    tasks = db::db().query_tasks(project_id);
+    CHECK(tasks.size() == reference_ntasks);
+  }
+  SECTION("MT-DBI-810 Locked location removal") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto location_name = entries.front().location_name;
+    auto locations = db::db().query_locations();
+    CHECK_FALSE(locations.empty());
+    auto reference_nlocations = locations.size();
+    core::Id location_id{};
+    for (const auto &cur_location : locations) {
+      if (cur_location.name == location_name) {
+        location_id = cur_location.id;
+        break;
+      }
+    }
+    if (location_id == core::Id{})
+      throw std::runtime_error("Location id not found.");
+    CHECK_FALSE(db::db().delete_location(location_id));
+    locations = db::db().query_locations();
+    CHECK(locations.size() == reference_nlocations);
   }
 }
