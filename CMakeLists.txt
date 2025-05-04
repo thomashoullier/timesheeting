@@ -195,5 +195,6 @@ if(build_coverage)
     NAME timesheeting_coverage_report
     EXECUTABLE timesheeting_coverage
     BASE_DIRECTORY "${TIMESHEETING_DIR}"
+    LCOV_ARGS "--ignore-errors=inconsistent"
     EXCLUDE "${TIMESHEETING_DIR}/test/*" "/usr/*")
 endif()
