@@ -7,6 +7,7 @@
 #include "ui/keys/bound_keys.h"
 #include <optional>
 #include <string>
+#include <stdexcept>
 #include "config/binding_maps.h"
 #include "core/entry_staging.h"
 #include "core/generic_item.h"
