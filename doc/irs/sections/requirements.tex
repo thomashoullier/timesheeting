@@ -76,14 +76,14 @@ be written in the header.
 
 \paragraph{IRS1-HED-080 -- Program version string}
 The program version (R-REL-010 [AD1]) shall be indicated by a string
-\lstinline{XX.YY}. With,
+\lstinline{X.Y}. With,
 \begin{itemize}
-\item \lstinline{XX}: The major program version (\textit{eg} \lstinline{03}),
-\item \lstinline{YY}: The minor program version (\textit{eg} \lstinline{26}).
+\item \lstinline{X}: The major program version (\textit{eg} \lstinline{3}),
+\item \lstinline{Y}: The minor program version (\textit{eg} \lstinline{26}).
 \end{itemize}
 
 A dot character separates the major version and minor version.
-Note the program version string has a fixed size.
+Note the major and minor program version strings have a variable size.
 
 \paragraph{IRS1-HED-085 -- Database version string}
 The program \gls{DB} version shall be indicated by an integer string
@@ -157,7 +157,7 @@ and the program version string (IRS1-HED-080).
 
 An example line is,
 \begin{lstlisting}[numbers=none]
-  # timesheeting version: 03.26
+  # timesheeting version: 3.26
 \end{lstlisting}
 
 \paragraph{IRS1-HED-150 -- Header ordering}

@@ -49,6 +49,16 @@ justification/tradeoff.
 + Also give the choices to implement the offline subsystems.
 
 * External timesheet format
+** TODO Update program version format
+ADDED: [2025-05-05 Mon]
+We decided on a format ~0.8~ which has no fixed size. We need
+to update IRS1-HED-080 and IRS1-HED-140, and the example at the end.
+
+** TODO Remove timezone header line
+ADDED: [2025-05-05 Mon]
+Use full date with time zone information just as in the logger
+for export date, export start date and export stop date.
+
 * Test plan
 ** PRJ1-TST1
 Details every tests used to check the software.
