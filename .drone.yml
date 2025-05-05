@@ -54,7 +54,7 @@ steps:
   - cd build_analysis
   - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
   - cd ..
-  - cppcheck --project=build_analysis/compile_commands.json --check-level=exhaustive --enable=all --suppress=missingIncludeSystem --std=c++23 -itest/ --error-exitcode=1
+  - cppcheck --project=build_analysis/compile_commands.json --check-level=exhaustive --enable=all --suppress=missingIncludeSystem --std=c++23 --inline-suppr -itest/ --error-exitcode=1
   depends_on:
   - test_environment
 
