@@ -748,5 +748,15 @@ TODO: uplink
 TODO: uplink
 
 \subsection{exporter}
-\paragraph{MR-EXP-010}
-TODO: uplink
+\paragraph{MR-EXP-010 -- Export file}
+The exporter module shall produce an export file compliant with [AD7],
+given a set of entry \emph{export rows} in a given \emph{date range},
+and the filepath to the target export file.
+
+\paragraph{MR-EXP-020 -- Export file directory exception}
+If a directory is provided to the exporter module instead of a filepath,
+then an exception shall be thrown.
+
+\paragraph{MR-EXP-030 -- Export file exists exception}
+If the filepath provided to the exporter module corresponds to
+a file which already exists, then an exception shall be thrown.

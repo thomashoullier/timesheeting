@@ -546,10 +546,13 @@ Keeping the same tests, there is a lot of room to factorize them
 with the Catch2 SECTION feature. Currently the tests are needlessly
 long.
 
-*** TODO Decouple exporter module from DB
+*** DONE Decouple exporter module from DB
+CLOSED: [2025-05-05 Mon 14:36]
 ADDED: [2025-05-05 Mon]
 We can remove the exporter dependency on the DB module.
 We can take a set/generator of core::ExportRow as input.
++ We have changed the interface of the module, and removed the DB module
+  from the linking of the exporter module.
 
 ** Performance
 *** TODO Remove useless refreshes and updates
@@ -591,6 +594,12 @@ Perhaps use shared libraries instead of statically linking everything?
   main target, the binary is not that big. It is activating the
   test coverage which bloats the main binary. This is a misconfiguration of
   cmake on our part.
+
+*** TODO Exporter module: avoid std::endl
+ADDED: [2025-05-05 Mon]
+std::endl flushes the buffer every time.
+I think we are calling it too often currently, which may slow
+the export in the case of large volumes.
 
 ** Build
 *** TODO Enforce the GCC14 dependency

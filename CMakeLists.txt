@@ -89,10 +89,10 @@ target_include_directories(db PUBLIC
 
 file(GLOB_RECURSE EXPORTER_SRC "${TIMESHEETING_DIR}/src/modules/exporter/*.cpp")
 add_library(exporter STATIC "${EXPORTER_SRC}")
-target_link_libraries(exporter PUBLIC time_lib db)
+target_link_libraries(exporter PUBLIC time_lib core)
 target_include_directories(exporter PUBLIC
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/time_lib/>"
-  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/db/>"
+  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/core/>"
   "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>")
 
 file(GLOB_RECURSE CLI_SRC "${TIMESHEETING_DIR}/src/modules/ui/ui/cli/*.cpp")

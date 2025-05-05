@@ -1,3 +1,5 @@
+#include "time_lib/date.h"
+#include "time_lib/date_range.h"
 #include "ui/keys/bound_keys.h"
 #include "ui/cli/cli.h"
 #include "exporter/csv_exporter.h"
@@ -48,7 +50,12 @@ int main(int argc, const char *const *argv) {
     if (not(cli_data.beg_date.empty()) and not(cli_data.end_date.empty())
         and not(cli_data.export_file.empty())) {
       log_lib::logger().tick();
-      exporter::CSVExporter(cli_data.beg_date, cli_data.end_date,
+      time_lib::Date export_start {cli_data.beg_date};
+      time_lib::Date export_stop{cli_data.end_date};
+      time_lib::DateRange export_date_range {export_start, export_stop};
+      auto export_rows = db::db().query_export_entries(export_date_range);
+      exporter::CSVExporter(export_date_range,
+                            export_rows,
                             cli_data.export_file);
       log_lib::logger().tock();
       return 0; // Terminate the program after CSV export.
