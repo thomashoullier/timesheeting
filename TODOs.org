@@ -540,6 +540,12 @@ for error checking in the statements.
   or Statements exist, and it is cleaned up when they are destroyed.
 - [2025-04-21 Mon] Implemented.
 
+*** TODO Factorize the DB tests
+ADDED: [2025-05-05 Mon]
+Keeping the same tests, there is a lot of room to factorize them
+with the Catch2 SECTION feature. Currently the tests are needlessly
+long.
+
 ** Performance
 *** TODO Remove useless refreshes and updates
 ADDED: [2024-09-27 Fri]

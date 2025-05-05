@@ -1304,25 +1304,51 @@ contain the same number of locations.
 \textit{Tests: } MR-DBI-110 Entries locking hierarchy items removal.
 
 \paragraph{MT-DBI-820 -- Entries export}
+The entries in the date range from UNIX UTC timestamp \lstinline{1745817889} to
+UNIX UTC timestamp \lstinline{1746249889} shall be exported to export rows. The
+number of rows must be exactly two.
+The entries over the same date range shall be queried for reference. The row
+fields for entry id, project name, task name, location name, start date and stop
+date must be found equal between the export rows and the entries list.
 
 \textit{Tests: } MR-DBI-540 Entries export
 
 \paragraph{MT-DBI-830 -- Entries export, empty}
+The entries in the date range from UNIX UTC timestamp
+\lstinline{1735817889} to UNIX UTC timestamp \lstinline{1736249889}
+shall be exported to export rows without error. The set of rows must be empty.
 
 \textit{Tests: } MR-DBI-540 Entries export
 
 \paragraph{MT-DBI-840 -- Project total report}
+The project total in the date range from UNIX UTC timestamp
+\lstinline{1745817889} to UNIX UTC timestamp \lstinline{1746249889} shall be
+generated without error.
+The entries shall be queried over the same date range for reference.
+The project names, task names, and durations must match.
 
 \textit{Tests: } MR-DBI-550 Project total
 
 \paragraph{MT-DBI-850 -- Project total report, empty}
+The project total in the date range from UNIX UTC timestamp
+\lstinline{1735817889} to UNIX UTC timestamp \lstinline{1736249889}
+shall be generated without error. The result must be empty.
 
 \textit{Tests: } MR-DBI-550 Project total
 
 \paragraph{MT-DBI-860 -- Weekly totals report}
+The entries in the date range from UNIX UTC timestamp \lstinline{1745817889} to
+UNIX UTC timestamp \lstinline{1746249889} shall be retrieved.
+A \emph{week} shall be initialized from the start date of the first entry.
+A weekly totals report shall be generated without error.
+The value of every field in the report shall be checked, based on the data
+present in entries.
 
 \textit{Tests: } MR-DBI-560 Weekly totals
 
 \paragraph{MT-DBI-870 -- Weekly totals report, empty}
+A week shall be initialized from the UNIX UTC timestamp
+\lstinline{1735817889}. A weekly totals report shall be generated without error.
+The result must be empty.
 
 \textit{Tests: } MR-DBI-560 Weekly totals

@@ -1,4 +1,5 @@
 #include "db_test.h"
+#include "core/export_row.h"
 #include "test_utils/test_utils.h"
 #include "db/db_sqlite.h"
 #include "time_lib/date.h"
@@ -1065,5 +1066,189 @@ TEST_CASE("DB module") {
     CHECK_FALSE(db::db().delete_location(location_id));
     locations = db::db().query_locations();
     CHECK(locations.size() == reference_nlocations);
+  }
+  SECTION("MT-DBI-820 Entries export") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto rows = db::db().query_export_entries(date_range);
+    SUCCEED("Entries export rows obtained without error.");
+    std::vector<core::ExportRow> rows_vec;
+    for (const auto &row : rows) {
+      rows_vec.push_back(row);
+    }
+    CHECK(rows_vec.size() == 2);
+    int matched_entries = 0;
+    for (const auto &entry : entries) {
+      auto cur_id = entry.id;
+      for (const auto &row : rows_vec) {
+        if (row.entry_id == cur_id) {
+          ++matched_entries;
+          CHECK(row.project_name == entry.project_name);
+          CHECK(row.task_name == entry.task_name);
+          CHECK(row.location_name == entry.location_name);
+          CHECK(row.start_date.to_unix_timestamp() ==
+                entry.start.to_unix_timestamp());
+          CHECK(row.stop_date.to_unix_timestamp() ==
+                entry.stop.to_unix_timestamp());
+        }
+      }
+    }
+    CHECK(matched_entries == 2);
+  }
+  SECTION("MT-DBI-830 Entries export, empty") {
+    time_lib::Date start_range{1735817889};
+    time_lib::Date stop_range{1736249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 0);
+    auto rows = db::db().query_export_entries(date_range);
+    SUCCEED("Empty entries export rows obtained without error.");
+    int nrows {0};
+    for (const auto &el : rows) {
+      (void)el;
+      ++nrows;
+    }
+    CHECK(nrows == 0);
+  }
+  SECTION("MT-DBI-840 Project total report") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    auto project_total = db::db().report_project_totals(date_range);
+    SUCCEED("Project total report obtained without error.");
+    CHECK(project_total.size() == 1);
+    auto first_project = project_total.front();
+    CHECK(first_project.project_name == entries.front().project_name);
+    CHECK(first_project.total.to_second_string() ==
+          time_lib::Duration{110}.to_second_string());
+    CHECK(first_project.task_totals.size() == 2);
+    CHECK(first_project.task_totals.front().task_name ==
+          entries.front().task_name);
+    CHECK(first_project.task_totals.front().total.to_second_string() ==
+          time_lib::Duration{101}.to_second_string());
+    CHECK(first_project.task_totals.at(1).task_name == entries.at(1).task_name);
+    CHECK(first_project.task_totals.at(1).total.to_second_string() ==
+          time_lib::Duration{9}.to_second_string());
+  }
+  SECTION("MT-DBI-850 Project total report empty") {
+    time_lib::Date start_range{1735817889};
+    time_lib::Date stop_range{1736249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 0);
+    auto project_total = db::db().report_project_totals(date_range);
+    SUCCEED("Empty project total report obtained without error.");
+    CHECK(project_total.empty());
+  }
+  SECTION("MT-DBI-860 Weekly totals report") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto entries = db::db().query_entries(date_range);
+    CHECK(entries.size() == 2);
+    time_lib::Date week_date{entries.front().start};
+    time_lib::Week week{week_date};
+    auto weekly_totals = db::db().report_weekly_totals(week);
+    SUCCEED("Weekly totals report obtained without error.");
+    CHECK(weekly_totals.total.to_second_string() ==
+          time_lib::Duration{110}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(0).to_second_string() ==
+          time_lib::Duration{110}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(1).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(2).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(3).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(4).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(5).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(6).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.project_totals.size() == 1);
+    auto project_total = weekly_totals.project_totals.front();
+    CHECK(project_total.project_name == entries.front().project_name);
+    CHECK(project_total.total.to_second_string() ==
+          time_lib::Duration{110}.to_second_string());
+    CHECK(project_total.daily_totals.at(0).to_second_string() ==
+          time_lib::Duration{110}.to_second_string());
+    CHECK(project_total.daily_totals.at(1).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(project_total.daily_totals.at(2).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(project_total.daily_totals.at(3).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(project_total.daily_totals.at(4).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(project_total.daily_totals.at(5).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(project_total.daily_totals.at(6).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(project_total.task_totals.size() == 2);
+    auto task1_total = project_total.task_totals.at(0);
+    CHECK(task1_total.task_name == "task_MT-DBI-360");
+    CHECK(task1_total.total.to_second_string() ==
+          time_lib::Duration{101}.to_second_string());
+    CHECK(task1_total.daily_totals.at(0).to_second_string() ==
+          time_lib::Duration{101}.to_second_string());
+    CHECK(task1_total.daily_totals.at(1).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task1_total.daily_totals.at(2).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task1_total.daily_totals.at(3).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task1_total.daily_totals.at(4).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task1_total.daily_totals.at(5).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task1_total.daily_totals.at(6).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    auto task2_total = project_total.task_totals.at(1);
+    CHECK(task2_total.task_name == "task_MT-DBI-410");
+    CHECK(task2_total.total.to_second_string() ==
+          time_lib::Duration{9}.to_second_string());
+    CHECK(task2_total.daily_totals.at(0).to_second_string() ==
+          time_lib::Duration{9}.to_second_string());
+    CHECK(task2_total.daily_totals.at(1).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task2_total.daily_totals.at(2).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task2_total.daily_totals.at(3).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task2_total.daily_totals.at(4).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task2_total.daily_totals.at(5).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(task2_total.daily_totals.at(6).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+  }
+  SECTION("MT-DBI-870 Weekly totals report, empty") {
+    time_lib::Date week_date{1735817889};
+    time_lib::Week week{week_date};
+    auto weekly_totals = db::db().report_weekly_totals(week);
+    SUCCEED("Empty weekly totals report generated without error.");
+    CHECK(weekly_totals.total.to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(0).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(1).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(2).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(3).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(4).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(5).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.daily_totals.at(6).to_second_string() ==
+          time_lib::Duration{0}.to_second_string());
+    CHECK(weekly_totals.project_totals.empty());
   }
 }
