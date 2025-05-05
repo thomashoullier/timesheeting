@@ -546,6 +546,11 @@ Keeping the same tests, there is a lot of room to factorize them
 with the Catch2 SECTION feature. Currently the tests are needlessly
 long.
 
+*** TODO Decouple exporter module from DB
+ADDED: [2025-05-05 Mon]
+We can remove the exporter dependency on the DB module.
+We can take a set/generator of core::ExportRow as input.
+
 ** Performance
 *** TODO Remove useless refreshes and updates
 ADDED: [2024-09-27 Fri]

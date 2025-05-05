@@ -1311,14 +1311,20 @@ The entries over the same date range shall be queried for reference. The row
 fields for entry id, project name, task name, location name, start date and stop
 date must be found equal between the export rows and the entries list.
 
-\textit{Tests: } MR-DBI-540 Entries export
+\textit{Tests: } MR-DBI-540 Entries export.
+
+\paragraph{MT-DBI-825 -- Entries export ordering}
+The entries export rows obtained in MT-DBI-820 shall be found to
+be in increasing order of start date.
+
+\textit{Tests: } MR-DBI-540 Entries export.
 
 \paragraph{MT-DBI-830 -- Entries export, empty}
 The entries in the date range from UNIX UTC timestamp
 \lstinline{1735817889} to UNIX UTC timestamp \lstinline{1736249889}
 shall be exported to export rows without error. The set of rows must be empty.
 
-\textit{Tests: } MR-DBI-540 Entries export
+\textit{Tests: } MR-DBI-540 Entries export.
 
 \paragraph{MT-DBI-840 -- Project total report}
 The project total in the date range from UNIX UTC timestamp

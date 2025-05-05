@@ -1098,6 +1098,18 @@ TEST_CASE("DB module") {
     }
     CHECK(matched_entries == 2);
   }
+  SECTION("MT-DBI-825 Entries export ordering") {
+    time_lib::Date start_range{1745817889};
+    time_lib::Date stop_range{1746249889};
+    time_lib::DateRange date_range{start_range, stop_range};
+    auto rows = db::db().query_export_entries(date_range);
+    std::vector<core::ExportRow> rows_vec;
+    for (const auto &row : rows) {
+      rows_vec.push_back(row);
+    }
+    CHECK(rows_vec.size() == 2);
+    CHECK(rows_vec.at(0).start_date < rows_vec.at(1).start_date);
+  }
   SECTION("MT-DBI-830 Entries export, empty") {
     time_lib::Date start_range{1735817889};
     time_lib::Date stop_range{1736249889};
