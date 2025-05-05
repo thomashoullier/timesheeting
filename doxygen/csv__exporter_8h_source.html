@@ -87,22 +87,31 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="export__row_8h.html">core/export_row.h</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="date__range_8h.html">time_lib/date_range.h</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;generator&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span>exporter {</div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classexporter_1_1CSVExporter.html">   13</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classexporter_1_1CSVExporter.html">CSVExporter</a> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classexporter_1_1CSVExporter.html">CSVExporter</a>(<span class="keyword">const</span> <a class="code hl_class" href="classtime__lib_1_1DateRange.html">time_lib::DateRange</a> &amp;date_range,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                         std::generator&lt;core::ExportRow&gt; &amp;rows,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                         <span class="keyword">const</span> std::filesystem::path &amp;export_filepath);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  };</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;generator&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span>exporter {</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classexporter_1_1CSVExporter.html">   15</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classexporter_1_1CSVExporter.html">CSVExporter</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classexporter_1_1CSVExporter.html">CSVExporter</a>(<span class="keyword">const</span> <a class="code hl_class" href="classtime__lib_1_1DateRange.html">time_lib::DateRange</a> &amp;date_range,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                         std::generator&lt;core::ExportRow&gt; &amp;rows,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                         <span class="keyword">const</span> std::filesystem::path &amp;export_filepath);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classexporter_1_1CSVExporter.html#a65abf4a0a5345905b91a52c2a662596d">write_header</a>(std::unique_ptr&lt;std::ofstream&gt; <span class="keyword">const</span> &amp;export_file,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                      <span class="keyword">const</span> <a class="code hl_class" href="classtime__lib_1_1DateRange.html">time_lib::DateRange</a> &amp;date_range);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classexporter_1_1CSVExporter.html#a4fd2cade3476f13f175c5dd26d73b6f6">write_body</a>(std::unique_ptr&lt;std::ofstream&gt; <span class="keyword">const</span> &amp;export_file,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    std::generator&lt;core::ExportRow&gt; &amp;rows);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  };</div>
 </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>} <span class="comment">// namespace exporter</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif </span><span class="comment">// CSV_EXPORTER_H</span></div>
-<div class="ttc" id="aclassexporter_1_1CSVExporter_html"><div class="ttname"><a href="classexporter_1_1CSVExporter.html">exporter::CSVExporter</a></div><div class="ttdoc">Exporter of DB data to a CSV file.</div><div class="ttdef"><b>Definition</b> csv_exporter.h:13</div></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>} <span class="comment">// namespace exporter</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif </span><span class="comment">// CSV_EXPORTER_H</span></div>
+<div class="ttc" id="aclassexporter_1_1CSVExporter_html"><div class="ttname"><a href="classexporter_1_1CSVExporter.html">exporter::CSVExporter</a></div><div class="ttdoc">Exporter of DB data to a CSV file.</div><div class="ttdef"><b>Definition</b> csv_exporter.h:15</div></div>
+<div class="ttc" id="aclassexporter_1_1CSVExporter_html_a4fd2cade3476f13f175c5dd26d73b6f6"><div class="ttname"><a href="classexporter_1_1CSVExporter.html#a4fd2cade3476f13f175c5dd26d73b6f6">exporter::CSVExporter::write_body</a></div><div class="ttdeci">void write_body(std::unique_ptr&lt; std::ofstream &gt; const &amp;export_file, std::generator&lt; core::ExportRow &gt; &amp;rows)</div><div class="ttdoc">Write the body part of the export file.</div><div class="ttdef"><b>Definition</b> csv_exporter.cpp:47</div></div>
+<div class="ttc" id="aclassexporter_1_1CSVExporter_html_a65abf4a0a5345905b91a52c2a662596d"><div class="ttname"><a href="classexporter_1_1CSVExporter.html#a65abf4a0a5345905b91a52c2a662596d">exporter::CSVExporter::write_header</a></div><div class="ttdeci">void write_header(std::unique_ptr&lt; std::ofstream &gt; const &amp;export_file, const time_lib::DateRange &amp;date_range)</div><div class="ttdoc">Write the header part of the export file.</div><div class="ttdef"><b>Definition</b> csv_exporter.cpp:32</div></div>
 <div class="ttc" id="aclasstime__lib_1_1DateRange_html"><div class="ttname"><a href="classtime__lib_1_1DateRange.html">time_lib::DateRange</a></div><div class="ttdoc">Class for representing a range between a start and stop dates .</div><div class="ttdef"><b>Definition</b> date_range.h:12</div></div>
 <div class="ttc" id="adate__range_8h_html"><div class="ttname"><a href="date__range_8h.html">date_range.h</a></div><div class="ttdoc">Date range definition.</div></div>
 <div class="ttc" id="aexport__row_8h_html"><div class="ttname"><a href="export__row_8h.html">export_row.h</a></div><div class="ttdoc">ExportRow definition.</div></div>

@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classexporter_1_1CSVExporter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">exporter::CSVExporter Class Reference</div></div>
 </div><!--header-->
@@ -91,6 +92,17 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>CSVExporter</b> (const <a class="el" href="classtime__lib_1_1DateRange.html">time_lib::DateRange</a> &amp;date_range, std::generator&lt; <a class="el" href="structcore_1_1ExportRow.html">core::ExportRow</a> &gt; &amp;rows, const std::filesystem::path &amp;export_filepath)</td></tr>
 <tr class="memdesc:a9ec5fd505037124e233e3d501f006228"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export DB entries data for the given time period to a CSV file. <br /></td></tr>
 <tr class="separator:a9ec5fd505037124e233e3d501f006228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a65abf4a0a5345905b91a52c2a662596d" id="r_a65abf4a0a5345905b91a52c2a662596d"><td class="memItemLeft" align="right" valign="top"><a id="a65abf4a0a5345905b91a52c2a662596d" name="a65abf4a0a5345905b91a52c2a662596d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>write_header</b> (std::unique_ptr&lt; std::ofstream &gt; const &amp;export_file, const <a class="el" href="classtime__lib_1_1DateRange.html">time_lib::DateRange</a> &amp;date_range)</td></tr>
+<tr class="memdesc:a65abf4a0a5345905b91a52c2a662596d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the header part of the export file. <br /></td></tr>
+<tr class="separator:a65abf4a0a5345905b91a52c2a662596d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd2cade3476f13f175c5dd26d73b6f6" id="r_a4fd2cade3476f13f175c5dd26d73b6f6"><td class="memItemLeft" align="right" valign="top"><a id="a4fd2cade3476f13f175c5dd26d73b6f6" name="a4fd2cade3476f13f175c5dd26d73b6f6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>write_body</b> (std::unique_ptr&lt; std::ofstream &gt; const &amp;export_file, std::generator&lt; <a class="el" href="structcore_1_1ExportRow.html">core::ExportRow</a> &gt; &amp;rows)</td></tr>
+<tr class="memdesc:a4fd2cade3476f13f175c5dd26d73b6f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the body part of the export file. <br /></td></tr>
+<tr class="separator:a4fd2cade3476f13f175c5dd26d73b6f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Exporter of DB data to a CSV file. </p>

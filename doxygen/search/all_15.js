@@ -19,6 +19,8 @@ var searchData=
   ['windowformat_16',['WindowFormat',['../win__ncurses_8h.html#ad68630c8e97136a75245903ffef1bf2c',1,'ncurses_lib']]],
   ['windowposition_17',['WindowPosition',['../win__ncurses_8h.html#a900d1780d5a7d91867abfa0522e1998b',1,'ncurses_lib']]],
   ['winformat_18',['winformat',['../classncurses__lib_1_1WinNCurses.html#a6488fbefcd99a95a581c905bcb57369c',1,'ncurses_lib::WinNCurses']]],
-  ['winncurses_19',['winncurses',['../classncurses__lib_1_1WinNCurses.html',1,'ncurses_lib::WinNCurses'],['../classncurses__lib_1_1WinNCurses.html#a50cb13df600b13e708eec639ee78522a',1,'ncurses_lib::WinNCurses::WinNCurses(WindowPosition _winpos, WindowFormat _winformat)']]],
-  ['winpos_20',['winpos',['../classncurses__lib_1_1WinNCurses.html#ab147e8db554504aa7fc1d3184d947aa5',1,'ncurses_lib::WinNCurses']]]
+  ['winncurses_19',['winncurses',['../classncurses__lib_1_1WinNCurses.html#a50cb13df600b13e708eec639ee78522a',1,'ncurses_lib::WinNCurses::WinNCurses()'],['../classncurses__lib_1_1WinNCurses.html',1,'ncurses_lib::WinNCurses']]],
+  ['winpos_20',['winpos',['../classncurses__lib_1_1WinNCurses.html#ab147e8db554504aa7fc1d3184d947aa5',1,'ncurses_lib::WinNCurses']]],
+  ['write_5fbody_21',['write_body',['../classexporter_1_1CSVExporter.html#a4fd2cade3476f13f175c5dd26d73b6f6',1,'exporter::CSVExporter']]],
+  ['write_5fheader_22',['write_header',['../classexporter_1_1CSVExporter.html#a65abf4a0a5345905b91a52c2a662596d',1,'exporter::CSVExporter']]]
 ];
