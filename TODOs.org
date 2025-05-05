@@ -49,15 +49,22 @@ justification/tradeoff.
 + Also give the choices to implement the offline subsystems.
 
 * External timesheet format
-** TODO Update program version format
+** DONE Update program version format
+CLOSED: [2025-05-05 Mon 19:21]
 ADDED: [2025-05-05 Mon]
 We decided on a format ~0.8~ which has no fixed size. We need
 to update IRS1-HED-080 and IRS1-HED-140, and the example at the end.
 
-** TODO Remove timezone header line
+** DONE Make dates timezone unambiguous.
+CLOSED: [2025-05-05 Mon 19:51]
 ADDED: [2025-05-05 Mon]
 Use full date with time zone information just as in the logger
 for export date, export start date and export stop date.
++ We decided to keep the timezone header line, as it gives more
+  data than just parsing the dates in the header: it gives information
+  about which timezone the export period is meant to be expressed in.
+  In particular, giving only the dates could be perplexing if there
+  is DST changes.
 
 * Test plan
 ** PRJ1-TST1

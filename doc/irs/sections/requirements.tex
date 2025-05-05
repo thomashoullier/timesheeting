@@ -91,7 +91,7 @@ of variable length. An example is \lstinline{23}.
 
 \paragraph{IRS1-HED-090 -- Header date format}
 The dates in the header shall conform to the format
-\lstinline{DDMMMYYYY HH:MM:SS}.
+\lstinline{DDMMMYYYY HH:MM:SS ZZZZZ}.
 Where,
 \begin{itemize}
 \item \lstinline{DD} is the number of the day of the month
@@ -100,15 +100,16 @@ Where,
   capitalized and remaining letters in lower case (\textit{eg} \lstinline{Oct}),
 \item \lstinline{YYYY} is the year number (\textit{eg} \lstinline{2024}),
 \item \lstinline{HH} is the hours number (\textit{eg} \lstinline{07}),
-\item \lstinline{MM} is the minutes number (\textit{eg} \lstinline{39})
+\item \lstinline{MM} is the minutes number (\textit{eg} \lstinline{39}),
+\item \lstinline{ZZZZZ} is the timezone offset from \gls{UTC}.
 \end{itemize}
 
 A \lstinline{:} separator is present between hours and minutes, and between
-minutes and seconds.
+minutes and seconds. The timezone offset is prefixed by a \lstinline{+} sign
+or a \lstinline{-} sign.
 
 Note the corresponding \lstinline{strftime} \cite{cpp:strftime} format string
-for the date format is \lstinline{%d%b%Y %H:%M:%S}. Note the date is always
-represented with a fixed number of characters.
+for the date format is \lstinline{%d%b%Y %H:%M:%S %z}.
 
 \paragraph{IRS1-HED-100 -- Export date format}
 The export date shall be written on a single text line beginning with
@@ -117,7 +118,7 @@ formatted according to IRS1-HED-090.
 
 An example line is,
 \begin{lstlisting}[numbers=none]
-  # Export date: 26Oct2024 14:52:28
+  # Export date: 26Oct2024 14:52:28 +0200
 \end{lstlisting}
 
 \paragraph{IRS1-HED-110 -- Period start date format}
@@ -127,7 +128,7 @@ start date formatted according to IRS1-HED-090.
 
 An example line is,
 \begin{lstlisting}[numbers=none]
-  # Export start date: 01Jan2024 00:00:00
+  # Export start date: 01Jan2024 00:00:00 +0100
 \end{lstlisting}
 
 \paragraph{IRS1-HED-120 -- Period stop date format}
@@ -137,7 +138,7 @@ stop date formatted according to IRS1-HED-090.
 
 An example line is,
 \begin{lstlisting}[numbers=none]
-  # Export stop date: 31Dec2024 23:59:59
+  # Export stop date: 31Dec2024 23:59:59 +0100
 \end{lstlisting}
 
 \paragraph{IRS1-HED-130 -- Header timezone format}
