@@ -34,7 +34,7 @@ var searchData=
   ['create_5ftasks_5ftable_31',['create_tasks_table',['../classdb_1_1DB__SQLite.html#a76d23e1918ee91a88a0ff0a05b3c48cd',1,'db::DB_SQLite']]],
   ['create_5fuser_5fdirectory_32',['create_user_directory',['../classlog__lib_1_1TempDir.html#a28b61112b54d8078f8e2bda7f764132b',1,'log_lib::TempDir']]],
   ['csv_5fexporter_2eh_33',['csv_exporter.h',['../csv__exporter_8h.html',1,'']]],
-  ['csvexporter_34',['csvexporter',['../classexporter_1_1CSVExporter.html#af9e88cfa2eb793ca801b077c263b8d43',1,'exporter::CSVExporter::CSVExporter()'],['../classexporter_1_1CSVExporter.html',1,'exporter::CSVExporter']]],
+  ['csvexporter_34',['csvexporter',['../classexporter_1_1CSVExporter.html#a9ec5fd505037124e233e3d501f006228',1,'exporter::CSVExporter::CSVExporter()'],['../classexporter_1_1CSVExporter.html',1,'exporter::CSVExporter']]],
   ['cur_5fcol_35',['cur_col',['../classtui_1_1ProjectTaskScreen.html#ad7bb5b301c0cba93327dd8283d4243f7',1,'tui::ProjectTaskScreen']]],
   ['cur_5ffocus_36',['cur_focus',['../classtui_1_1EntriesScreen.html#a5000fbafca67192310a18af39cafbc0b',1,'tui::EntriesScreen::cur_focus'],['../classtui_1_1ProjectReportScreen.html#ad9e3fd9b878b598fe62d586e336df161',1,'tui::ProjectReportScreen::cur_focus']]],
   ['current_5ffocus_37',['current_focus',['../classtui_1_1UpdateManager.html#afbc7a407f837e332119fd8f112adc973',1,'tui::UpdateManager']]],

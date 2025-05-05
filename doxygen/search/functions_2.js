@@ -17,7 +17,7 @@ var searchData=
   ['create_5fprojects_5ftable_14',['create_projects_table',['../classdb_1_1DB__SQLite.html#a0277a37b8cf7f485f49e2ba46818832f',1,'db::DB_SQLite']]],
   ['create_5ftasks_5ftable_15',['create_tasks_table',['../classdb_1_1DB__SQLite.html#a76d23e1918ee91a88a0ff0a05b3c48cd',1,'db::DB_SQLite']]],
   ['create_5fuser_5fdirectory_16',['create_user_directory',['../classlog__lib_1_1TempDir.html#a28b61112b54d8078f8e2bda7f764132b',1,'log_lib::TempDir']]],
-  ['csvexporter_17',['CSVExporter',['../classexporter_1_1CSVExporter.html#af9e88cfa2eb793ca801b077c263b8d43',1,'exporter::CSVExporter']]],
+  ['csvexporter_17',['CSVExporter',['../classexporter_1_1CSVExporter.html#a9ec5fd505037124e233e3d501f006228',1,'exporter::CSVExporter']]],
   ['current_5frange_18',['current_range',['../classtui_1_1DaySelector.html#abac432b84907add7d3f13c142d1361d8',1,'tui::DaySelector::current_range()'],['../classtui_1_1WeekSelector.html#ac9dad2fcea795d48232581716874cb32',1,'tui::WeekSelector::current_range() const']]],
   ['current_5fweek_19',['current_week',['../classtui_1_1WeekSelector.html#a2eb8dfd6a0a40dc7affada437eccb0be',1,'tui::WeekSelector']]],
   ['cursor_5fcol_5fposition_20',['cursor_col_position',['../classncurses__lib_1_1MenuNCurses.html#a457bd26b891e2184794d6d7d3169978e',1,'ncurses_lib::MenuNCurses']]],

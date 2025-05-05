@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-05 09:24:36</td>
+            <td class="headerValue">2025-05-05 12:45:18</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -130,19 +130,19 @@
 <span id="L68"><span class="lineNum">      68</span>              :   };</span>
 <span id="L69"><span class="lineNum">      69</span>              : </span>
 <span id="L70"><span class="lineNum">      70</span>              :   template &lt;class... T&gt;</span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         359 :   void Statement::bind_all(const T &amp;...values) {</span></span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         359 :     int index = -1;</span></span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">         359 :     (bind(++index, values), ...);</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         358 :   }</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         360 :   void Statement::bind_all(const T &amp;...values) {</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         360 :     int index = -1;</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">         360 :     (bind(++index, values), ...);</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         359 :   }</span></span>
 <span id="L75"><span class="lineNum">      75</span>              : </span>
 <span id="L76"><span class="lineNum">      76</span>              :   template &lt;class... T&gt;</span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         287 :   std::tuple&lt;T...&gt; Statement::get_all() {</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         287 :     return get_all_helper&lt;T...&gt;(std::index_sequence_for&lt;T...&gt;{});</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         289 :   std::tuple&lt;T...&gt; Statement::get_all() {</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         289 :     return get_all_helper&lt;T...&gt;(std::index_sequence_for&lt;T...&gt;{});</span></span>
 <span id="L79"><span class="lineNum">      79</span>              :   }</span>
 <span id="L80"><span class="lineNum">      80</span>              : </span>
 <span id="L81"><span class="lineNum">      81</span>              :   template &lt;class... T, std::size_t... Is&gt;</span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">         287 :   std::tuple&lt;T...&gt; Statement::get_all_helper(std::index_sequence&lt;Is...&gt;) {</span></span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         287 :     return std::make_tuple(get_column&lt;T&gt;(Is)...);</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">         289 :   std::tuple&lt;T...&gt; Statement::get_all_helper(std::index_sequence&lt;Is...&gt;) {</span></span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">         289 :     return std::make_tuple(get_column&lt;T&gt;(Is)...);</span></span>
 <span id="L84"><span class="lineNum">      84</span>              :   }</span>
 <span id="L85"><span class="lineNum">      85</span>              : </span>
 <span id="L86"><span class="lineNum">      86</span>              :   template &lt;class... T&gt;</span>
