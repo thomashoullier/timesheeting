@@ -31,10 +31,11 @@ CSVExporter::CSVExporter(const time_lib::DateRange &date_range,
 
 void CSVExporter::write_header(std::unique_ptr<std::ofstream> const &export_file,
                                const time_lib::DateRange &date_range) {
-  *export_file << "# Export date: " << time_lib::Date().to_string() << std::endl
-               << "# Export start date: " << date_range.start.to_string()
+  *export_file << "# Export date: " << time_lib::Date().to_fullstring()
                << std::endl
-               << "# Export stop date: " << date_range.stop.to_string()
+               << "# Export start date: " << date_range.start.to_fullstring()
+               << std::endl
+               << "# Export stop date: " << date_range.stop.to_fullstring()
                << std::endl
                << "# Header timezone: " << time_lib::TimeZone::get().name()
                << std::endl
