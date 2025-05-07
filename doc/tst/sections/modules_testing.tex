@@ -1358,3 +1358,81 @@ A week shall be initialized from the UNIX UTC timestamp
 The result must be empty.
 
 \textit{Tests: } MR-DBI-560 Weekly totals
+
+\subsection{Exporter}
+The exporter module is tested by the following test cases.
+We mainly test the adherence to [AD3].
+The DB module is not used for testing, as the exporter module
+is decoupled from it.
+We refer to a \emph{default dataset}, which corresponds to
+the export rows set, date range and timezone from the example
+file in [AD3].
+
+\paragraph{MT-EXP-010 -- Export file directory exception}
+Using the \emph{default dataset}, and an export filepath target
+set to a bare temporary directory, the export operation
+must throw an exception.
+
+\textit{Tests: } MR-EXP-020 Export file directory exception.
+
+\paragraph{MT-EXP-020 -- Export file exists exception}
+Using the \emph{default dataset}, and an export filepath target
+set to an existing empty text file \lstinline{empty.csv} in a temporary
+directory, the export operation must throw an exception.
+
+\textit{Tests: } MR-EXP-030 Export file exists exception.
+
+\paragraph{MT-EXP-030 -- Export file nonexistent path exception}
+Using the \emph{default dataset}, and an export filepath target
+set to a non-existent path in a temporary directory
+\lstinline{tempdir/nonexistent/export.csv} in a temporary
+directory, the export operation must throw an exception.
+
+\textit{Tests: } MR-EXP-040 Export file non-existent path exception.
+
+\paragraph{MT-EXP-040 -- Export file csv extension exception}
+Using the \emph{default dataset}, and an export filepath target
+set to the file \lstinline{tempdir/export.txt} in a valid
+temporary directory, the export operation must throw an exception.
+
+\textit{Tests: } IRS1-GEN-020 File extension
+
+\paragraph{MT-EXP-050 -- Export file}
+Using the \emph{default dataset}, and an export filepath
+target set to the file \lstinline{tempdir/export.csv} in a valid
+temporary directory, the export operation must be executed
+without error. The file must exist as a result. The file must
+be of non-zero size as a result.
+This valid file is refered to as \emph{the file} in subsequent tests,
+and is assumed to exist.
+
+\textit{Tests: } MR-EXP-010 Export file.
+
+\paragraph{MT-EXP-060 -- Export file UTF-8}
+TODO: Do not use the BOM, as it is not recommended to have it nowadays.
+So how do we test we are in UTF-8?
+Load the first characters in UTF-8 and check them?
+
+\textit{Test: } IRS1-GEN-030 File encoding, IRS1-GEN-010 File type.
+
+\paragraph{MT-EXP-070 -- Line endings}
+The \emph{file} shall be loaded as a set of UTF-8 characters.
+No carriage return character must be found.
+At least one newline character must be found.
+
+\textit{Tests: } IRS1-GEN-040 Line endings.
+
+\paragraph{MT-EXP-080 -- File ending}
+The \emph{file} shall be loaded as a set of UTF-8 characters.
+The last character must be a newline character.
+
+\textit{Tests: } IRS1-GEN-050 File ending.
+
+\paragraph{MT-EXP-090 -- File structure}
+The \emph{file} shall be loaded as a set of lines.
+Exactly ten lines must be found.
+The first six lines must begin with a hash character \lstinline{#}.
+The last 4 lines must not begin with a hash character.
+
+\textit{Tests: } IRS1-GEN-060 File structure, IRS1-GEN-070 Header location,
+IRS1-GEN-080 Body location, IRS1-HED-010 Header format.

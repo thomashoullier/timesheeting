@@ -270,6 +270,15 @@ ADDED: [2025-05-02 Fri]
 It is not very elegant to close the program when the renaming binding
 is pressed in an empty entry register.
 
+*** TODO Characters such as é are not displayed properly in status bar.
+ADDED: [2025-05-07 Wed]
+Some characters are not displayed correctly when in edit mode.
+They are displayed OK elsewhere.
++ This is likely due to the method BarNCurses::add_char which takes
+  a char type as argument when it should take an int.
++ Track down other mistaken uses of char in the program instead of int.
++ Add tests for special characters in the DB module, or better, in DB lib.
+
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
 ADDED: [2024-12-30 Mon]
