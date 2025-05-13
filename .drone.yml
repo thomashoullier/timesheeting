@@ -5,6 +5,7 @@ name: default
 steps:
 - name: build_gentoo_environment
   image: docker
+  pull: never
   environment:
     DOCKER_USER:
       from_secret: DOCKER_USER
@@ -30,6 +31,7 @@ steps:
 
 - name: test_environment
   image: docker
+  pull: never
   environment:
     DOCKER_USER:
       from_secret: DOCKER_USER
@@ -118,6 +120,7 @@ steps:
 
 - name: latex_environment
   image: docker
+  pull: never
   failure: ignore
   environment:
     DOCKER_USER:
