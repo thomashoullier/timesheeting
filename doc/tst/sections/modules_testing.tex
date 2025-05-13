@@ -1409,21 +1409,25 @@ and is assumed to exist.
 \textit{Tests: } MR-EXP-010 Export file.
 
 \paragraph{MT-EXP-060 -- Export file UTF-8}
-TODO: Do not use the BOM, as it is not recommended to have it nowadays.
-So how do we test we are in UTF-8?
-Load the first characters in UTF-8 and check them?
+Using the created \emph{file}, load the first three characters \lstinline{# E}
+as bytes. The bytes must be equal to
+\begin{enumerate}
+\item \lstinline{0x23},
+\item \lstinline{0x20},
+\item \lstinline{0x45}.
+\end{enumerate}
 
 \textit{Test: } IRS1-GEN-030 File encoding, IRS1-GEN-010 File type.
 
 \paragraph{MT-EXP-070 -- Line endings}
-The \emph{file} shall be loaded as a set of UTF-8 characters.
+The \emph{file} shall be loaded as a set of characters.
 No carriage return character must be found.
 At least one newline character must be found.
 
 \textit{Tests: } IRS1-GEN-040 Line endings.
 
 \paragraph{MT-EXP-080 -- File ending}
-The \emph{file} shall be loaded as a set of UTF-8 characters.
+The \emph{file} shall be loaded as a set of characters.
 The last character must be a newline character.
 
 \textit{Tests: } IRS1-GEN-050 File ending.
@@ -1436,3 +1440,122 @@ The last 4 lines must not begin with a hash character.
 
 \textit{Tests: } IRS1-GEN-060 File structure, IRS1-GEN-070 Header location,
 IRS1-GEN-080 Body location, IRS1-HED-010 Header format.
+
+\paragraph{MT-EXP-100 -- Export date line}
+The first line in \emph{the file} shall be prefixed exactly with
+\lstinline{# Export date: }.
+
+\textit{Tests: } IRS1-HED-100 Export date format, IRS1-HED-150 Header ordering
+
+\paragraph{MT-EXP-110 -- Export date value}
+The string after the prefix (MT-EXP-100) shall be parsed as a \emph{full date}.
+This date must be equal to the current \emph{date} to within 1 minute error.
+
+\textit{Tests: } IRS1-HED-020 Header export date
+
+\paragraph{MT-EXP-120 -- Export date timezone}
+The last 5 characters of the export date header line must match
+with a \emph{plus} or \emph{minus} sign followed by four digits.
+
+\textit{Tests: } IRS1-HED-050 Header dates timezone
+
+\paragraph{MT-EXP-130 -- Period start date format}
+The second line in \emph{the file} shall be prefixed exactly with
+\lstinline{# Export start date: }.
+
+\textit{Tests: } IRS1-HED-110 Period start date format, IRS1-HED-150 Header
+ordering.
+
+\paragraph{MT-EXP-140 -- Period start date value}
+The string after the prefix (MT-EXP-130) must match exactly
+\lstinline{01Jan2024 00:00:00 +0100}.
+
+\textit{Tests: } IRS1-HED-030 Period start date, IRS1-HED-050 Header dates
+timezone, IRS1-HED-090 Header date format.
+
+\paragraph{MT-EXP-150 -- Period stop date format}
+The third line in \emph{the file} shall be prefixed exactly with
+\lstinline{# Export stop date: }.
+
+\textit{Tests: } IRS1-HED-120 Period stop date format, IRS1-HED-150 Header
+ordering.
+
+\paragraph{MT-EXP-160 -- Period stop date value}
+The string after the prefix (MT-EXP-150) must match exactly
+\lstinline{31Dec2024 23:59:59 +0100}.
+
+\textit{Tests: } IRS1-HED-040 Period stop date, IRS1-HED-050 Header dates
+timezone, IRS1-HED-090 Header date format.
+
+\paragraph{MT-EXP-170 -- Header timezone format}
+The fourth line in \emph{the file} shall be prefixed exactly with
+\lstinline{# Header timezone: }.
+
+\textit{Tests: } IRS1-HED-130 Header timezone format, IRS1-HED-150 Header
+ordering.
+
+\paragraph{MT-EXP-180 -- Header timezone value}
+The string after the prefix (MT-EXP-170) must match exactly
+\lstinline{Europe/Paris}.
+
+\textit{Tests: } IRS1-HED-060 Header timezone
+
+\paragraph{MT-EXP-190 -- Program version format}
+The fifth line in \emph{the file} shall be prefixed exactly with
+\lstinline{# timesheeting version: }.
+
+\textit{Tests: } IRS1-HED-140 Program version format, IRS1-HED-150 Header
+ordering.
+
+\paragraph{MT-EXP-200 -- Program version value}
+The string after the prefix (MT-EXP-190) must match the program version
+string indicated by the \emph{version} module.
+
+\textit{Tests: } IRS1-HED-070 Header program version, IRS1-HED-080 Program
+version string.
+
+\paragraph{MT-EXP-210 -- DB version format}
+The sixth line in \emph{the file} shall be prefixed exactly with
+\lstinline{# timesheeting DB version: }.
+
+\textit{Tests: } IRS1-HED-145 Database version format, IRS1-HED-150 Header
+ordering.
+
+\paragraph{MT-EXP-220 -- DB version value}
+The string after the prefix (MT-EXP-210) must match with the \gls{DB}
+version number indicated by the \emph{version} module, converted
+from integer to a string.
+
+\textit{Tests: } IRS1-HED-075 Header database version, IRS1-HED-085 Database
+version string.
+
+\paragraph{MT-EXP-230 -- CSV format}
+The last 4 lines of \emph{the file} must all contain at least one comma.
+The lines must not contain any comma not followed by a whitespace.
+
+\textit{Tests: } IRS1-BDY-010 CSV format, IRS1-BDY-020 CSV delimiter.
+
+\paragraph{MT-EXP-240 -- Column list}
+The first line of the body of \emph{the file} shall match exactly
+\lstinline{Entry ID, Project ID, Project name, Task ID, Task name, Location ID, Location name, Start date, Stop date}.
+
+\textit{Tests: } IRS1-BDY-030 Body structure, IRS1-BDY-040 Column list.
+
+\paragraph{MT-EXP-250 -- No empty fields}
+None of the body lines of \emph{the file} shall contain
+two consecutive comma separated only by eventual whitespace.
+
+\textit{Tests: } IRS1-BDY-050 No empty fields.
+
+\paragraph{MT-EXP-260 -- Entries lines}
+The last three lines of \emph{the file} shall match exactly,
+
+\begin{lstlisting}[numbers=none]
+4, 1, Project1, 3, Task3, 1, Location1, 1729952454, 1729953654
+8, 1, Project1, 11, Task11, 1, Location1, 1729953659, 1729953789
+9, 15, Project15, 5, Task5, 3, Location3, 1729953888, 1729953988
+\end{lstlisting}
+
+\textit{Tests: } IRS1-BDY-060 Id format, IRS1-BDY-070 Timesheet date format,
+IRS1-BDY-080 Timesheet name format, IRS1-BDY-090 Timesheet entries ordering,
+IRS1-BDY-100 Timesheet entries period.

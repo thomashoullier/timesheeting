@@ -6,6 +6,10 @@
 #include "test_utils/test_utils.h"
 #include "exporter/csv_exporter.h"
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
+#include <filesystem>
+#include <ios>
+#include <sstream>
 #include <vector>
 
 std::generator<core::ExportRow>
@@ -59,5 +63,60 @@ TEST_CASE("Exporter module") {
         exporter_test_folder.dirpath / "export.txt";
     CHECK_THROWS(exporter::CSVExporter(export_date_range, rows_gen,
                                        txt_export_path));
+  }
+  SECTION("Valid case for export file") {
+    exporter::CSVExporter(export_date_range, rows_gen,
+                          exporter_test_filepath);
+    SECTION("MT-EXP-050 Export file") {
+      SUCCEED("Export file in valid case created without error.");
+      CHECK(std::filesystem::exists(exporter_test_filepath));
+      CHECK(std::filesystem::file_size(exporter_test_filepath) > 0);
+    }
+    SECTION("MT-EXP-060 Export file UTF-8") {
+      CHECK(std::filesystem::file_size(exporter_test_filepath) >= 3);
+      std::ifstream in(exporter_test_filepath,
+                       std::ios_base::in | std::ios_base::binary);
+      std::array<char, 3> bytes;
+      in.read(bytes.begin(), 3);
+      CHECK(bytes.at(0) == 0x23);
+      CHECK(bytes.at(1) == 0x20);
+      CHECK(bytes.at(2) == 0x45);
+    }
+    SECTION("MT-EXP-070 Line endings") {
+      std::ifstream in(exporter_test_filepath,
+                       std::ios_base::in | std::ios_base::binary);
+      std::ostringstream ss;
+      ss << in.rdbuf();
+      CHECK(ss.str().find('\n') != std::string::npos);
+      CHECK(ss.str().find('\r') == std::string::npos);
+    }
+    SECTION("MT-EXP-080 File ending") {
+      std::ifstream in(exporter_test_filepath,
+                       std::ios_base::in | std::ios_base::binary);
+      std::ostringstream ss;
+      ss << in.rdbuf();
+      std::string file_str = ss.str();
+      CHECK(file_str.back() == '\n');
+    }
+    SECTION("MT-EXP-090 File structure") {
+      std::ifstream in(exporter_test_filepath,
+                       std::ios_base::in | std::ios_base::binary);
+      std::vector<std::string> lines;
+      std::string line;
+      while (std::getline(in, line)) {
+        lines.push_back(line);
+      }
+      CHECK(lines.size() == 10);
+      CHECK(lines.at(0).front() == '#');
+      CHECK(lines.at(1).front() == '#');
+      CHECK(lines.at(2).front() == '#');
+      CHECK(lines.at(3).front() == '#');
+      CHECK(lines.at(4).front() == '#');
+      CHECK(lines.at(5).front() == '#');
+      CHECK(lines.at(6).front() != '#');
+      CHECK(lines.at(7).front() != '#');
+      CHECK(lines.at(8).front() != '#');
+      CHECK(lines.at(9).front() != '#');
+    }
   }
 }

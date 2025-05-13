@@ -161,6 +161,16 @@ An example line is,
   # timesheeting version: 3.26
 \end{lstlisting}
 
+\paragraph{IRS1-HED-145 -- Database version format}
+The \gls{DB} version shall be written in the header on a single text line
+beginning with \lstinline{timesheeting DB version:} followed by a whitespace
+and the \gls{DB} version string (IRS1-HED-085).
+
+An example line is,
+\begin{lstlisting}[numbers=none]
+  # timesheeting DB version: 23
+\end{lstlisting}
+
 \paragraph{IRS1-HED-150 -- Header ordering}
 The elements of the header shall be ordered as follows,
 \begin{enumerate}
