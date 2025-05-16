@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-13 19:56:05</td>
+            <td class="headerValue">2025-05-16 18:24:51</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -74,50 +74,50 @@
 <span id="L12"><span class="lineNum">      12</span>              : #include &quot;core/export_row.h&quot;</span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
 <span id="L14"><span class="lineNum">      14</span>              : namespace exporter {</span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           9 : CSVExporter::CSVExporter(const time_lib::DateRange &amp;date_range,</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">          26 : CSVExporter::CSVExporter(const time_lib::DateRange &amp;date_range,</span></span>
 <span id="L16"><span class="lineNum">      16</span>              :                          std::generator&lt;core::ExportRow&gt; &amp;rows,</span>
 <span id="L17"><span class="lineNum">      17</span>              :                          const std::filesystem::path &amp;export_filepath) {</span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           9 :   if (std::filesystem::is_directory(export_filepath))</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          26 :   if (std::filesystem::is_directory(export_filepath))</span></span>
 <span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :     throw std::runtime_error(&quot;Export path is a directory.&quot;);</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           8 :   if (export_filepath.extension() != &quot;.csv&quot;)</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">          25 :   if (export_filepath.extension() != &quot;.csv&quot;)</span></span>
 <span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :     throw std::runtime_error(&quot;Export file extension must be '.csv'.&quot;);</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           7 :   if (std::filesystem::exists(export_filepath))</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">          24 :   if (std::filesystem::exists(export_filepath))</span></span>
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           1 :     throw std::runtime_error(&quot;Export file already exists.&quot;);</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           6 :   auto export_file = std::make_unique&lt;std::ofstream&gt;(export_filepath);</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           6 :   if (!export_file-&gt;good()) {</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          23 :   auto export_file = std::make_unique&lt;std::ofstream&gt;(export_filepath);</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          23 :   if (!export_file-&gt;good()) {</span></span>
 <span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           1 :     throw std::runtime_error(&quot;Export file was not opened correctly.&quot;);</span></span>
 <span id="L27"><span class="lineNum">      27</span>              :   }</span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           5 :   write_header(export_file, date_range);</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           5 :   write_body(export_file, rows);</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           6 : }</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">          22 :   write_header(export_file, date_range);</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">          22 :   write_body(export_file, rows);</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          23 : }</span></span>
 <span id="L31"><span class="lineNum">      31</span>              : </span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           5 : void CSVExporter::write_header(std::unique_ptr&lt;std::ofstream&gt; const &amp;export_file,</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          22 : void CSVExporter::write_header(std::unique_ptr&lt;std::ofstream&gt; const &amp;export_file,</span></span>
 <span id="L33"><span class="lineNum">      33</span>              :                                const time_lib::DateRange &amp;date_range) {</span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           5 :   *export_file &lt;&lt; &quot;# Export date: &quot; &lt;&lt; time_lib::Date().to_fullstring()</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           5 :                &lt;&lt; std::endl</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          10 :                &lt;&lt; &quot;# Export start date: &quot; &lt;&lt; date_range.start.to_fullstring()</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           5 :                &lt;&lt; std::endl</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">          10 :                &lt;&lt; &quot;# Export stop date: &quot; &lt;&lt; date_range.stop.to_fullstring()</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           5 :                &lt;&lt; std::endl</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">          20 :                &lt;&lt; &quot;# Header timezone: &quot; &lt;&lt; time_lib::TimeZone::get().name()</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           5 :                &lt;&lt; std::endl</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           5 :                &lt;&lt; &quot;# timesheeting version: &quot; &lt;&lt; version::TIMESHEETING_VERSION</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">           5 :                &lt;&lt; std::endl</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          22 :   *export_file &lt;&lt; &quot;# Export date: &quot; &lt;&lt; time_lib::Date().to_fullstring()</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">          22 :                &lt;&lt; std::endl</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          44 :                &lt;&lt; &quot;# Export start date: &quot; &lt;&lt; date_range.start.to_fullstring()</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          22 :                &lt;&lt; std::endl</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">          44 :                &lt;&lt; &quot;# Export stop date: &quot; &lt;&lt; date_range.stop.to_fullstring()</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          22 :                &lt;&lt; std::endl</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">          88 :                &lt;&lt; &quot;# Header timezone: &quot; &lt;&lt; time_lib::TimeZone::get().name()</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          22 :                &lt;&lt; std::endl</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          22 :                &lt;&lt; &quot;# timesheeting version: &quot; &lt;&lt; version::TIMESHEETING_VERSION</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          22 :                &lt;&lt; std::endl</span></span>
 <span id="L44"><span class="lineNum">      44</span>              :                &lt;&lt; &quot;# timesheeting DB version: &quot;</span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           5 :                &lt;&lt; std::to_string(version::TIMESHEETING_DB_VERSION) &lt;&lt; std::endl;</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           5 : }</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          22 :                &lt;&lt; std::to_string(version::TIMESHEETING_DB_VERSION) &lt;&lt; std::endl;</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          22 : }</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : </span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           5 : void CSVExporter::write_body(std::unique_ptr&lt;std::ofstream&gt; const &amp;export_file,</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">          22 : void CSVExporter::write_body(std::unique_ptr&lt;std::ofstream&gt; const &amp;export_file,</span></span>
 <span id="L49"><span class="lineNum">      49</span>              :                              // cppcheck-suppress constParameterReference</span>
 <span id="L50"><span class="lineNum">      50</span>              :                              std::generator&lt;core::ExportRow&gt; &amp;rows) {</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           5 :   *export_file</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">          22 :   *export_file</span></span>
 <span id="L52"><span class="lineNum">      52</span>              :       &lt;&lt; &quot;Entry ID, Project ID, Project name, Task ID, Task name, Location ID, &quot;</span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           5 :          &quot;Location name, Start date, Stop date&quot;</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           5 :       &lt;&lt; std::endl;</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          20 :   for (const auto &amp;row : rows) {</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          15 :     *export_file &lt;&lt; row.to_csv() &lt;&lt; std::endl;</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">          22 :          &quot;Location name, Start date, Stop date&quot;</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">          22 :       &lt;&lt; std::endl;</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          88 :   for (const auto &amp;row : rows) {</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          66 :     *export_file &lt;&lt; row.to_csv() &lt;&lt; std::endl;</span></span>
 <span id="L57"><span class="lineNum">      57</span>              :   }</span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           5 : }</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">          22 : }</span></span>
 <span id="L59"><span class="lineNum">      59</span>              : }</span>
         </pre>
               </td>
