@@ -787,3 +787,6 @@ Stay on first or last once reached.
 ADDED: [2025-05-01 Thu]
 Add a binding for going to next or previous week containing any entry.
 Stay on first or last once reached.
+
+*** TODO Arbitrarily deep nesting of projects/subprojects
+ADDED: [2025-05-14 Wed]
