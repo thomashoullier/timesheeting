@@ -512,8 +512,92 @@ on the currently selected format, as follows,
 
 TODO:uplink
 \subsection{log\textunderscore lib}
-\paragraph{LR-LOG-010}
-TODO: uplink
+The log\textunderscore lib provides a logging interface to the program.
+It logs messages of various \emph{log levels} to a file. The interface
+is done through a \emph{logger} singleton.
+
+\paragraph{LR-LOG-010 -- Logging}
+The logger shall allow logging messages to a log file.
+
+\paragraph{LR-LOG-020 -- Log levels}
+The logger shall log only the messages with a log level which is
+activated in the logger. The messages with a log level which is
+not activated in the logger are not logged.
+
+The log levels are,
+\begin{enumerate}
+\item \lstinline{info},
+\item \lstinline{debug},
+\item \lstinline{error}.
+\end{enumerate}
+
+The default log level for messages is \lstinline{info}.
+
+\paragraph{LR-LOG-030 -- Log cleanup}
+The logger shall clean existing log files of old entries on initialization.
+The entries are considered old based on a maximal age threshold.
+
+\paragraph{LR-LOG-040 -- Log file}
+The logger initialization shall be given a filepath to the log file
+to use. The file may or may not already exist.
+
+\paragraph{LR-LOG-050 -- Log file exception}
+The logger initialization shall throw an exception if the provided
+log filepath is in a non-existent directory.
+
+\paragraph{LR-LOG-060 -- Log file invalid}
+The logger initialization shall throw an exception if the provided
+log file is filled with invalid data (not log entries).
+
+\paragraph{LR-LOG-070 -- Log levels initialization}
+The logger initialization shall be given the set of log levels
+to activate.
+
+\paragraph{LR-LOG-080 -- Log maximum age initialization}
+The logger initialization shall be given the maximal age threshold
+in seconds for entries cleanup.
+
+\paragraph{LR-LOG-090 -- Log entry format}
+The log entries shall be written in the following format,
+on a single line,
+\begin{enumerate}
+\item The full current date string (LR-DAT-100 -- Date output unambiguous
+  string),
+\item followed by a space,
+\item followed by the log level string in square brackets \lstinline{[]},
+\item followed by a space, a semicolon \lstinline{:}, and another
+  space,
+\item followed by the log message.
+\end{enumerate}
+
+For instance, the following log entry is valid,
+\begin{lstlisting}[numbers=none]
+17May2025 09:16:36 +0200 [debug] : timesheeting UI initialized.
+\end{lstlisting}
+
+\paragraph{LR-LOG-100 -- Log chronometer}
+The logger shall include a chronometer feature controlled by
+a \lstinline{tick}, \lstinline{tock} mechanism.
+The elapsed duration between the \lstinline{tick} and \lstinline{tock}
+calls is logged with a \lstinline{debug} log level.
+
+\paragraph{LR-LOG-110 -- Log chronometer message}
+The user of the logger may provide a message to the \lstinline{tock}
+call of the chronometer.
+
+\paragraph{LR-LOG-120 -- Log chronometer entry format}
+The log chronometer entry format follows the usual log entry format,
+the log message shall be in the following format.
+\begin{enumerate}
+\item The user message,
+\item followed by the logged duration expressed in milliseconds
+  with three decimal places, followed by a space,
+\item followed by the suffix \lstinline{ms.}
+\end{enumerate}
+
+\paragraph{LR-LOG-130 -- Log message multiline exception}
+The logger shall throw an exception if a multiline message is provided
+for logging.
 
 \subsection{db\textunderscore lib}
 The db\textunderscore lib contains a handle to a \gls{DB}, and a statement
