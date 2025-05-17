@@ -220,7 +220,7 @@ TEST_CASE("Exporter module") {
         std::regex re(",\\S");
         for (int iline = 6; iline < 10; ++iline) {
           std::string line = lines.at(iline);
-          CHECK(line.find(','));
+          CHECK(line.find(',') != std::string::npos);
           CHECK_FALSE(std::regex_search(line, re));
         }
       }
