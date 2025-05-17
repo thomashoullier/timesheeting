@@ -41,13 +41,14 @@ namespace log_lib{
     }
   }
 
-  void Logger::tock() {
+  void Logger::tock(const std::string &message) {
     auto tock_point = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> dur = tock_point - tick_point;
     std::ostringstream ostr;
     ostr.precision(3);
     ostr << std::fixed << dur.count();
-    this->log("Input loop was: " + ostr.str() + " ms.", LogLevel::debug);
+    const std::string log_str = message + ostr.str() + " ms.";
+    this->log(log_str, LogLevel::debug);
     counting = false;
   }
 

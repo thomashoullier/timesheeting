@@ -41,7 +41,7 @@ namespace log_lib {
     /** @brief Start a time counter. */
     void tick ();
     /** @brief Stop the time counter and log the elapsed duration. */
-    void tock ();
+    void tock (const std::string &message = "");
 
   private:
     /** @brief Handle to the log file for output. */
