@@ -15,12 +15,6 @@ namespace log_lib {
   /** @brief Categorization for log messages. */
   enum class LogLevel { info, debug, error };
 
-  /* TODO: Put these methods inside LogLevel. */
-  /** @brief Convert a LogLevel to its string representation. */
-  std::string log_level_string(LogLevel level);
-  /** @brief Get a log level from a string representation. */
-  LogLevel log_level_from_string (const std::string &level_str);
-
   /** @brief Logger implementation with a log file.
    *
    * This is a singleton. */
@@ -42,7 +36,7 @@ namespace log_lib {
     static Logger& get(const std::filesystem::path &log_filepath = "",
                        const std::vector<std::string> &levels_to_log = {},
                        uint64_t max_log_age = 0);
-    /** @brief Emit a log message at the given level. */
+    /** @brief Log a message at the given level. */
     void log (const std::string &message, LogLevel level = LogLevel::info);
     /** @brief Start a time counter. */
     void tick ();
@@ -70,6 +64,11 @@ namespace log_lib {
     /** @brief Log cleanup. Remove entries older than the specified age. */
     void remove_old_entries (const std::filesystem::path &log_file_path,
                              uint64_t seconds_ago);
+
+    /** @brief Convert a LogLevel to its string representation. */
+    std::string log_level_string(LogLevel level);
+    /** @brief Get a log level from a string representation. */
+    LogLevel log_level_from_string (const std::string &level_str);
   };
 
   /** @brief Grab the Logger. */

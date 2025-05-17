@@ -11,34 +11,6 @@
 #include "temp_dir.h"
 
 namespace log_lib{
-  std::string log_level_string (LogLevel level) {
-    switch (level) {
-    case LogLevel::info:
-      return "info";
-      break;
-    case LogLevel::debug:
-      return "debug";
-      break;
-    case LogLevel::error:
-      return "error";
-      break;
-    default:
-      throw std::runtime_error("Unknown LogLevel");
-    }
-  }
-
-  LogLevel log_level_from_string (const std::string &level_str) {
-    if (level_str == "info") {
-      return LogLevel::info;
-    } else if (level_str == "debug") {
-      return LogLevel::debug;
-    } else if (level_str == "error") {
-      return LogLevel::error;
-    } else {
-      throw std::runtime_error("log_level_from_string: unknown log level.");
-    }
-  }
-
   Logger &Logger::get(const std::filesystem::path &log_filepath,
                       const std::vector<std::string> &levels_to_log,
                       uint64_t max_log_age) {
@@ -158,5 +130,33 @@ namespace log_lib{
     std::filesystem::rename(new_file_path, log_file_path);
   }
 
-  Logger& logger() { return Logger::get(); }
+  std::string Logger::log_level_string(LogLevel level) {
+    switch (level) {
+    case LogLevel::info:
+      return "info";
+      break;
+    case LogLevel::debug:
+      return "debug";
+      break;
+    case LogLevel::error:
+      return "error";
+      break;
+    default:
+      throw std::runtime_error("Unknown LogLevel");
+    }
+  }
+
+  LogLevel Logger::log_level_from_string(const std::string &level_str) {
+    if (level_str == "info") {
+      return LogLevel::info;
+    } else if (level_str == "debug") {
+      return LogLevel::debug;
+    } else if (level_str == "error") {
+      return LogLevel::error;
+    } else {
+      throw std::runtime_error("log_level_from_string: unknown log level.");
+    }
+  }
+
+  Logger &logger() { return Logger::get(); }
 }
