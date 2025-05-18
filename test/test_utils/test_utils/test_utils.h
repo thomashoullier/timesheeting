@@ -2,6 +2,8 @@
 #define TEST_UTILS_H
 
 #include <filesystem>
+#include <string>
+#include <vector>
 
 namespace test_utils {
   /** @brief Temporary directory to work with in tests.
@@ -26,7 +28,8 @@ namespace test_utils {
   void create_user_directory(const std::filesystem::path &dirpath);
   /** @brief Create an empty file. */
   void touch_file (const std::filesystem::path &filepath);
-
-}
+  /** @brief Read a file into a vector of strings. */
+  std::vector<std::string> file_as_strings (const std::filesystem::path &path);
+} // namespace test_utils
 
 #endif // TEST_UTILS_H

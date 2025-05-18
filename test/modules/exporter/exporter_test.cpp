@@ -102,15 +102,7 @@ TEST_CASE("Exporter module") {
       CHECK(file_str.back() == '\n');
     }
     SECTION("Lines set") {
-      std::vector<std::string> lines;
-      {
-        std::ifstream in(exporter_test_filepath,
-                         std::ios_base::in | std::ios_base::binary);
-        std::string line;
-        while (std::getline(in, line)) {
-          lines.push_back(line);
-        }
-      }
+      auto lines = test_utils::file_as_strings(exporter_test_filepath);
       SECTION("MT-EXP-090 File structure") {
         CHECK(lines.size() == 10);
         CHECK(lines.at(0).front() == '#');

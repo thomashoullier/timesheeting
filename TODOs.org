@@ -627,6 +627,12 @@ std::endl flushes the buffer every time.
 I think we are calling it too often currently, which may slow
 the export in the case of large volumes.
 
+*** TODO Consider adding sanitization flags
+ADDED: [2025-05-17 Sat]
+Flags like ~-fsanitize=signed-integer-overflow~ and
+~-fsanitize=unsigned-integer-overflow~ could make the program
+safer? Investigate.
+
 ** Build
 *** TODO Enforce the GCC14 dependency
 ADDED: [2024-11-23 Sat]

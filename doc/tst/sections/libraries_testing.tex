@@ -1033,3 +1033,146 @@ Given the query \lstinline{bana} and the set
 the string \lstinline{%/.$BAnafu}.
 
 \textit{Tests: } LR-SUG-040, LR-SUG-050
+
+\subsection{log\textunderscore lib}
+The logger being tested is a singleton. We test the cases which do not
+yield a valid instance first.
+
+\begin{minipage}{\linewidth}
+  \begin{lstlisting}[caption={Existing log file with old and new entries},
+    label={lst:existing_log}]
+<now - 300 seconds> [debug] : Older entry, to remove.
+<now - 60 seconds> [debug] : Newer entry, to keep.
+\end{lstlisting} \end{minipage}
+
+\paragraph{LT-LOG-010 -- Opening log file in non-existent folder}
+Given a valid \lstinline{tmpdir}, the logger initialization
+shall be provided with the log filepath
+\lstinline{tmpdir/non_existent/test_log.log},
+the log levels \lstinline{"info"}, and the age threshold \lstinline{180}.
+An exception must be thrown.
+
+\textit{Tests: } LR-LOG-050 Log file exception.
+
+\paragraph{LT-LOG-020 -- Unknown log levels exception}
+Given a valid \lstinline{tmpdir}, the logger initialization
+shall be provided with the log filepath \lstinline{"tmpdir/test_log.log"},
+the log levels \lstinline{"wrong_level"}, and the age threshold
+\lstinline{180}.
+An exception must be thrown.
+
+\textit{Tests: } LR-LOG-140 Unknown log levels exception.
+
+\paragraph{LT-LOG-030 -- Log file invalid}
+Given an existing log file at \lstinline{"tmpdir/test_log.log"},
+filled with the following text,
+\begin{lstlisting}
+NOT AN ENTRY
+\end{lstlisting}
+the logger initialization shall be provided with the log filepath,
+the log levels \lstinline{"info"}, and the age threshold \lstinline{180}.
+An exception must be thrown.
+
+\textit{Tests: } LR-LOG-060 Log file invalid.
+
+\paragraph{LT-LOG-040 -- Log valid initialization}
+Given an existing log file at \lstinline{"tmpdir/test_log.log"},
+filled with \cref{lst:existing_log} with the dates in brackets \lstinline{<>}
+replaced by the proper dates, the logger initialization shall be
+provided with the log filepath, the log levels \lstinline{"info", "debug"}
+and the age threshold \lstinline{180}.
+The logger must be initialized without error.
+
+\textit{Tests: } LR-LOG-040 Log file, LR-LOG-070 Log levels initialization,
+                 LR-LOG-080 Log maximum age initialization.
+
+\paragraph{LT-LOG-050 -- Log cleanup}
+Given the valid initialization of the logger, the log file
+shall be opened, a single line of text must be found.
+This line must have the string suffix
+\lstinline{" [debug] : Newer entry, to keep."}.
+
+\textit{Tests: } LR-LOG-030 Log cleanup.
+
+\paragraph{LT-LOG-060 -- Logging}
+The log method shall be called with the message
+\lstinline{"Basic log message."} and the default log level.
+It must execute without error.
+
+\textit{Tests: } LR-LOG-010 Logging.
+
+\paragraph{LT-LOG-070 -- Log entry format}
+Given the successfully created log message (LT-LOG-060),
+the log file shall be opened and be found to contain two lines.
+The last line is examined. It must contain the suffix
+\lstinline{" [info] : Basic log message."}.
+The date part of the line will be parsed and be found to agree
+with the current date with at most 10 seconds of error.
+
+\textit{Tests: } LR-LOG-090 Log entry format.
+
+\paragraph{LT-LOG-080 -- Logging custom active level}
+The log method shall be called with the message
+\lstinline{"Custom active log level."} and the log level
+\lstinline{debug}. It must execute without error.
+The log file shall be opened and be found to contain three lines.
+The last line is examined. It must contain the suffix
+\lstinline{" [debug] : Custom active log level."}.
+
+\textit{Tests: } LR-LOG-020 Log levels.
+
+\paragraph{LT-LOG-090 -- Logging custom inactive level}
+The log method shall be called with the message
+\lstinline{"Custom inactive log level."} and the log level
+\lstinline{error}. It must execute without error.
+The log file shall be opened and be found to contain three lines
+(no line was added).
+
+\textit{Tests: } LR-LOG-020 Log levels.
+
+\paragraph{LT-LOG-100 -- Log chronometer}
+The logger \lstinline{tick} shall be called without error.
+In succession, the logger \lstinline{tock} shall be called without error.
+The log file shall be opened and be found to contain four lines
+(one line added for the chronometer logging).
+
+\textit{Tests: } LR-LOG-100 Log chronometer.
+
+\paragraph{LT-LOG-110 -- Log chronometer message}
+The logger \lstinline{tick} shall be called,
+and in succession, the logger \lstinline{tock} method shall
+be called with the message \lstinline{"Chronometer duration: "}.
+The log file shall be opened and be found to contain five lines
+(one line added for the chronometer logging).
+
+\textit{Tests: } LR-LOG-110 Log chronometer message.
+
+\paragraph{LT-LOG-120 -- Log chronometer entry format}
+The log file shall be opened. The two last lines are examined.
+Both must contain a parsable full date followed by
+the string \lstinline{" [debug] : "}.
+
+The first line must then contain a sequence of digits separated
+by a dot, with three digits after the dot. When parsed, this number
+must be found to be less than \lstinline{1000.0}. The line suffix
+must be \lstinline{" ms."}.
+
+The second line must contain the message
+\lstinline{"Chronometer duration: "}, followed by what the first line
+contained.
+
+\textit{Tests: } LR-LOG-120 Log chronometer entry format.
+
+\paragraph{LT-LOG-130 -- Log message multiline exception}
+The log method shall be called with a message containing
+a newline character \lstinline{\n}, it must throw an exception.
+
+\textit{Tests: } LR-LOG-130 Log message multiline exception.
+
+\paragraph{LT-LOG-140 -- Chronometer message multiline exception}
+The logger \lstinline{tick} shall be called.
+The logger \lstinline{tock} shall then be called with a message
+containing a newline character \lstinline{\n}, it must throw
+an exception.
+
+\textit{Tests: } LR-LOG-130 Log message multiline exception.

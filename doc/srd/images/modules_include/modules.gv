@@ -25,13 +25,14 @@ digraph modules {
     chrono -> time_lib
     time_lib -> log_lib
     sqlite -> db_lib
-    {log_lib, ncurses} -> ncurses_lib
+    {ncurses} -> ncurses_lib
     rapidfuzz -> suggestion
     {time_lib, ncurses_lib, db_lib} -> core
     {version, db_lib, time_lib, core} -> db
     tomlplusplus -> config_lib
     {config_lib, ncurses} -> config
-    {time_lib, db, version} -> exporter
+    config -> keys
+    {time_lib, version} -> exporter
     {version, tclap} -> cli
     {ncurses_lib, core, suggestion, time_lib, log_lib, keys, db} -> tui
     //{keys, cli, exporter, db, time_lib, log_lib, config, version, tui} -> main

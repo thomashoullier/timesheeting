@@ -4,9 +4,9 @@
 #include <random>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace test_utils {
-
   TempDir::TempDir(const std::string &prefix) :
     dirpath {get_new_tempdir(prefix)} {}
 
@@ -55,4 +55,13 @@ namespace test_utils {
     std::ofstream{filepath};
   }
 
+  std::vector<std::string> file_as_strings (const std::filesystem::path &path) {
+    std::vector<std::string> lines;
+    std::ifstream in(path, std::ios_base::in | std::ios_base::binary);
+    std::string line;
+    while (std::getline(in, line)) {
+      lines.push_back(line);
+    }
+    return lines;
+  }
 } // namespace test_utils

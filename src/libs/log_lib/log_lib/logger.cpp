@@ -44,12 +44,12 @@ namespace log_lib{
   void Logger::tock(const std::string &message) {
     auto tock_point = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> dur = tock_point - tick_point;
+    counting = false;
     std::ostringstream ostr;
     ostr.precision(3);
     ostr << std::fixed << dur.count();
     const std::string log_str = message + ostr.str() + " ms.";
     this->log(log_str, LogLevel::debug);
-    counting = false;
   }
 
   Logger::Logger(const std::filesystem::path &log_file,

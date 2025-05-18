@@ -43,10 +43,7 @@ target_link_libraries(db_lib PRIVATE ${SQLite3_LIBRARIES})
 file(GLOB_RECURSE NCURSES_LIB_SRC
      "${TIMESHEETING_DIR}/src/libs/ncurses_lib/*.cpp")
 add_library(ncurses_lib STATIC "${NCURSES_LIB_SRC}")
-target_link_libraries(ncurses_lib PUBLIC log_lib
-                                  PRIVATE ${CURSES_LIBRARIES})
-target_include_directories(ncurses_lib PUBLIC
-  "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/libs/log_lib/>")
+target_link_libraries(ncurses_lib PRIVATE ${CURSES_LIBRARIES})
 
 file(GLOB_RECURSE SUGGESTION_SRC "${TIMESHEETING_DIR}/src/libs/suggestion/*.cpp")
 add_library(suggestion STATIC "${SUGGESTION_SRC}")
@@ -142,7 +139,18 @@ if(build_tests OR build_coverage)
     "${TIMESHEETING_DIR}/test/test_utils/test_utils/*.cpp")
   add_library(test_utils STATIC "${TEST_UTILS_SRC}")
   # Test source
-  file(GLOB_RECURSE TEST_SRC "${TIMESHEETING_DIR}/test/*.cpp")
+  # Order matters here.
+  set(TEST_SRC "${TIMESHEETING_DIR}/test/libs/time_lib/time_lib_test.cpp"
+    "${TIMESHEETING_DIR}/test/libs/config_lib/config_lib_test.cpp"
+    "${TIMESHEETING_DIR}/test/libs/db_lib/db_lib_test.cpp"
+    "${TIMESHEETING_DIR}/test/libs/suggestion_lib/suggestion_lib_test.cpp"
+    "${TIMESHEETING_DIR}/test/libs/log_lib/log_lib_test.cpp"
+    "${TIMESHEETING_DIR}/test/modules/version/version_test.cpp"
+    "${TIMESHEETING_DIR}/test/modules/core/core_test.cpp"
+    "${TIMESHEETING_DIR}/test/modules/config/config_test.cpp"
+    "${TIMESHEETING_DIR}/test/modules/db/db_test.cpp"
+    "${TIMESHEETING_DIR}/test/modules/exporter/exporter_test.cpp"
+  )
 endif()
 
 # Unit tests
@@ -151,7 +159,7 @@ if(build_tests)
   target_link_libraries(timesheeting_tests
     PRIVATE Catch2::Catch2WithMain
     PUBLIC config_lib test_utils config time_lib suggestion db_lib core
-    exporter db)
+    exporter db log_lib)
   target_include_directories(timesheeting_tests PUBLIC
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/test/test_utils/>"
     "$<BUILD_INTERFACE:${TIMESHEETING_DIR}/src/modules/version/>"

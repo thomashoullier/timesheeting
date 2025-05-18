@@ -551,7 +551,7 @@ log file is filled with invalid data (not log entries).
 
 \paragraph{LR-LOG-070 -- Log levels initialization}
 The logger initialization shall be given the set of log levels
-to activate.
+to activate, by string.
 
 \paragraph{LR-LOG-080 -- Log maximum age initialization}
 The logger initialization shall be given the maximal age threshold
@@ -583,7 +583,8 @@ calls is logged with a \lstinline{debug} log level.
 
 \paragraph{LR-LOG-110 -- Log chronometer message}
 The user of the logger may provide a message to the \lstinline{tock}
-call of the chronometer.
+call of the chronometer. If no message is provided then the default
+is the empty string \lstinline{""}.
 
 \paragraph{LR-LOG-120 -- Log chronometer entry format}
 The log chronometer entry format follows the usual log entry format,
@@ -598,6 +599,10 @@ the log message shall be in the following format.
 \paragraph{LR-LOG-130 -- Log message multiline exception}
 The logger shall throw an exception if a multiline message is provided
 for logging.
+
+\paragraph{LR-LOG-140 -- Unknown log levels exception}
+In case an unknown log level string is provided to the logger initialization,
+the logger shall throw an exception.
 
 \subsection{db\textunderscore lib}
 The db\textunderscore lib contains a handle to a \gls{DB}, and a statement
