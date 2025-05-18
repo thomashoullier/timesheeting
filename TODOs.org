@@ -527,7 +527,8 @@ menu when we could just redraw some things.
 + Prepare for dynamic resizing.
 - [2025-02-22 Sat] Implemented.
 
-*** TODO Decouple the ncurses_lib from log_lib
+*** DONE Decouple the ncurses_lib from log_lib
+CLOSED: [2025-05-18 Sun 16:43]
 ADDED: [2024-11-27 Wed]
 It makes no sense to have ncurses_lib depend on any logging. It
 makes the library less reusable.
@@ -535,6 +536,7 @@ makes the library less reusable.
 + We could add a window class in the tui module which defines
   an instrumented input_loop on top of the basic input_loop.
   We likely have to do the same with every window child class.
+- The dependency was removed by removing the input loop timing.
 
 *** DONE Put final attributes everywhere on classes and methods
 CLOSED: [2025-04-06 Sun 14:12]
@@ -627,11 +629,21 @@ std::endl flushes the buffer every time.
 I think we are calling it too often currently, which may slow
 the export in the case of large volumes.
 
-*** TODO Consider adding sanitization flags
+*** DONE Consider adding sanitization flags
+CLOSED: [2025-05-18 Sun 17:13]
 ADDED: [2025-05-17 Sat]
-Flags like ~-fsanitize=signed-integer-overflow~ and
-~-fsanitize=unsigned-integer-overflow~ could make the program
-safer? Investigate.
+Flag like ~-fsanitize=signed-integer-overflow~ could make the program safer?
+Investigate.
+- [2025-05-18 Sun] OK we added the ~-fsanitize=signed-integer-overflow~ sanitizer.
+  It does not seem to change anything. Unit tests still pass.
++ See also ~-fsanitize=address~, requires a third party library,
+  so we leave it out.
++ See ~-fsanitize=undefined~, creates a lot of memory leaks, not sure why.
+
+*** TODO Enable parallel build
+ADDED: [2025-05-18 Sun]
+Our build is currently pretty long, enable parallel building
+(probably a cmake option).
 
 ** Build
 *** TODO Enforce the GCC14 dependency

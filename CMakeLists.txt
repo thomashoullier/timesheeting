@@ -5,7 +5,8 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_BUILD_TYPE Release)
 
-set (CMAKE_CXX_FLAGS "-Wall -O2 -Wextra -Wformat=2 -Werror -Wpedantic -march=native")
+set (CMAKE_CXX_FLAGS
+  "-Wall -O2 -Wextra -Wformat=2 -Werror -Wpedantic -fsanitize=signed-integer-overflow -march=native")
 
 option(build_tests "Build the test suite" OFF)
 option(build_coverage "Build the test coverage report" OFF)
