@@ -7,7 +7,7 @@ var searchData=
   ['dateparsingfailure_4',['dateparsingfailure',['../classtime__lib_1_1DateParsingFailure.html#a2de2ac4223d5bac1f105e7efec38bd76',1,'time_lib::DateParsingFailure::DateParsingFailure()'],['../classtime__lib_1_1DateParsingFailure.html',1,'time_lib::DateParsingFailure']]],
   ['datepoint_5',['DatePoint',['../date_8h.html#ad46123f926ec271811bfbcb726564679',1,'time_lib']]],
   ['daterange_6',['daterange',['../classtime__lib_1_1DateRange.html#a22f745ae49457aba9d3543cc3958cd50',1,'time_lib::DateRange::DateRange()'],['../classtime__lib_1_1DateRange.html',1,'time_lib::DateRange']]],
-  ['day_7',['day',['../classtime__lib_1_1Day.html#a5a8fca262a14f772f422ee9476237d89',1,'time_lib::Day::Day()'],['../classtui_1_1DaySelector.html#a1a2f0155cee484fc07abb0197f3b0356',1,'tui::DaySelector::day'],['../classtime__lib_1_1Day.html#aef0e643e3479e86ecd6fd8e8e43ebaca',1,'time_lib::Day::Day()'],['../classtime__lib_1_1Day.html',1,'time_lib::Day']]],
+  ['day_7',['day',['../classtui_1_1DaySelector.html#a1a2f0155cee484fc07abb0197f3b0356',1,'tui::DaySelector::day'],['../classtime__lib_1_1Day.html#aef0e643e3479e86ecd6fd8e8e43ebaca',1,'time_lib::Day::Day()'],['../classtime__lib_1_1Day.html#a5a8fca262a14f772f422ee9476237d89',1,'time_lib::Day::Day(std::chrono::year_month_day _ymd)'],['../classtime__lib_1_1Day.html',1,'time_lib::Day']]],
   ['day_2eh_8',['day.h',['../day_8h.html',1,'']]],
   ['day_5fselector_9',['day_selector',['../classtui_1_1StopwatchUI.html#a1fb06a082defc6421fc8266acf669d1c',1,'tui::StopwatchUI::day_selector'],['../classtui_1_1EntriesTable.html#acae39000025370fe8fceff69229fd55b',1,'tui::EntriesTable::day_selector']]],
   ['day_5fselector_2eh_10',['day_selector.h',['../day__selector_8h.html',1,'']]],

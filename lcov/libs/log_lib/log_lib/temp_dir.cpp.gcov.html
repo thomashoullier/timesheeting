@@ -31,18 +31,18 @@
             <td class="headerValue">timesheeting_coverage_report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">93.3&nbsp;%</td>
             <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">28</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-16 18:24:51</td>
+            <td class="headerValue">2025-05-18 14:57:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">5</td>
           </tr>
                   <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
                 </table>
@@ -65,45 +65,45 @@
 <span id="L3"><span class="lineNum">       3</span>              : #include &lt;stdexcept&gt;</span>
 <span id="L4"><span class="lineNum">       4</span>              : </span>
 <span id="L5"><span class="lineNum">       5</span>              : namespace log_lib {</span>
-<span id="L6"><span class="lineNum">       6</span> <span class="tlaUNC">           0 :   TempDir::TempDir(const std::string &amp;prefix) :</span></span>
-<span id="L7"><span class="lineNum">       7</span> <span class="tlaUNC">           0 :     dirpath {get_new_tempdir(prefix)} {}</span></span>
+<span id="L6"><span class="lineNum">       6</span> <span class="tlaGNC">           2 :   TempDir::TempDir(const std::string &amp;prefix) :</span></span>
+<span id="L7"><span class="lineNum">       7</span> <span class="tlaGNC">           2 :     dirpath {get_new_tempdir(prefix)} {}</span></span>
 <span id="L8"><span class="lineNum">       8</span>              : </span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaUNC">           0 :   TempDir::~TempDir() {</span></span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaUNC">           0 :     std::filesystem::remove_all(dirpath);</span></span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">           2 :   TempDir::~TempDir() {</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">           2 :     std::filesystem::remove_all(dirpath);</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           2 :   }</span></span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaUNC">           0 :   std::filesystem::path TempDir::get_new_tempdir(const std::string &amp;prefix) {</span></span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC">           0 :     auto parent = std::filesystem::temp_directory_path();</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :     std::string dirname = prefix + random_string(6);</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :     std::filesystem::path tempdir = parent / dirname;</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :     create_user_directory(tempdir);</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :     return tempdir;</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           2 :   std::filesystem::path TempDir::get_new_tempdir(const std::string &amp;prefix) {</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           2 :     auto parent = std::filesystem::temp_directory_path();</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           2 :     std::string dirname = prefix + random_string(6);</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           2 :     std::filesystem::path tempdir = parent / dirname;</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           2 :     create_user_directory(tempdir);</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           4 :     return tempdir;</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           2 :   }</span></span>
 <span id="L20"><span class="lineNum">      20</span>              : </span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :   std::string TempDir::random_string(std::size_t length) {</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           2 :   std::string TempDir::random_string(std::size_t length) {</span></span>
 <span id="L22"><span class="lineNum">      22</span>              :     static const char *chars =</span>
 <span id="L23"><span class="lineNum">      23</span>              :         &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;;</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :     int nchars = 62;</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :     std::random_device dev;</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :     std::mt19937 rng(dev());</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           2 :     int nchars = 62;</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           2 :     std::random_device dev;</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :     std::mt19937 rng(dev());</span></span>
 <span id="L27"><span class="lineNum">      27</span>              :     std::uniform_int_distribution&lt;std::mt19937::result_type&gt;</span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :       rand(0, nchars - 1);</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :     std::string str = &quot;&quot;;</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :     for (std::size_t i = 0; i &lt; length; ++i) {</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :       char c = chars[rand(rng)];</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :       str += c;</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           2 :       rand(0, nchars - 1);</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           2 :     std::string str = &quot;&quot;;</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          14 :     for (std::size_t i = 0; i &lt; length; ++i) {</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          12 :       char c = chars[rand(rng)];</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          12 :       str += c;</span></span>
 <span id="L33"><span class="lineNum">      33</span>              :     }</span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :     return str;</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           4 :     return str;</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           2 :   }</span></span>
 <span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :   void TempDir::create_user_directory(const std::filesystem::path &amp;dirpath) {</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :     if (std::filesystem::exists(dirpath)) {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           2 :   void TempDir::create_user_directory(const std::filesystem::path &amp;dirpath) {</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           2 :     if (std::filesystem::exists(dirpath)) {</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :       throw std::runtime_error(&quot;Directory &quot; + dirpath.string() +</span></span>
 <span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :                                &quot; already exists!&quot;);</span></span>
 <span id="L41"><span class="lineNum">      41</span>              :     }</span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :     std::filesystem::create_directory(dirpath);</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :     std::filesystem::permissions(dirpath, std::filesystem::perms::owner_all);</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :   }</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           2 :     std::filesystem::create_directory(dirpath);</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">           2 :     std::filesystem::permissions(dirpath, std::filesystem::perms::owner_all);</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           2 :   }</span></span>
 <span id="L45"><span class="lineNum">      45</span>              : }</span>
         </pre>
               </td>

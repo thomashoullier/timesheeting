@@ -99,16 +99,16 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad049a74ae99ba4db3410bc06aadde543" id="r_ad049a74ae99ba4db3410bc06aadde543"><td class="memItemLeft" align="right" valign="top"><a id="ad049a74ae99ba4db3410bc06aadde543" name="ad049a74ae99ba4db3410bc06aadde543"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>log</b> (const std::string &amp;message, <a class="el" href="namespacelog__lib.html#a55f94eb205e099f8b0764eb5858851d1">LogLevel</a> level=LogLevel::info)</td></tr>
-<tr class="memdesc:ad049a74ae99ba4db3410bc06aadde543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit a log message at the given level. <br /></td></tr>
+<tr class="memdesc:ad049a74ae99ba4db3410bc06aadde543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message at the given level. <br /></td></tr>
 <tr class="separator:ad049a74ae99ba4db3410bc06aadde543"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3ea1be7231f0f4f6bf391311f523271" id="r_ad3ea1be7231f0f4f6bf391311f523271"><td class="memItemLeft" align="right" valign="top"><a id="ad3ea1be7231f0f4f6bf391311f523271" name="ad3ea1be7231f0f4f6bf391311f523271"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>tick</b> ()</td></tr>
 <tr class="memdesc:ad3ea1be7231f0f4f6bf391311f523271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a time counter. <br /></td></tr>
 <tr class="separator:ad3ea1be7231f0f4f6bf391311f523271"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae78d52d0dd63ad831ea74e92f527cee2" id="r_ae78d52d0dd63ad831ea74e92f527cee2"><td class="memItemLeft" align="right" valign="top"><a id="ae78d52d0dd63ad831ea74e92f527cee2" name="ae78d52d0dd63ad831ea74e92f527cee2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>tock</b> ()</td></tr>
-<tr class="memdesc:ae78d52d0dd63ad831ea74e92f527cee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the time counter and log the elapsed duration. <br /></td></tr>
-<tr class="separator:ae78d52d0dd63ad831ea74e92f527cee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c74cad12c8030a43e8e040083831853" id="r_a5c74cad12c8030a43e8e040083831853"><td class="memItemLeft" align="right" valign="top"><a id="a5c74cad12c8030a43e8e040083831853" name="a5c74cad12c8030a43e8e040083831853"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tock</b> (const std::string &amp;message=&quot;&quot;)</td></tr>
+<tr class="memdesc:a5c74cad12c8030a43e8e040083831853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the time counter and log the elapsed duration. <br /></td></tr>
+<tr class="separator:a5c74cad12c8030a43e8e040083831853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -134,6 +134,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>level_is_active</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>remove_old_entries</b> (const std::filesystem::path &amp;log_file_path, uint64_t seconds_ago)</td></tr>
 <tr class="memdesc:a8f29a2287b381538ce3edf12dd57ac19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log cleanup. Remove entries older than the specified age. <br /></td></tr>
 <tr class="separator:a8f29a2287b381538ce3edf12dd57ac19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f8fb63d6e74082c7a76ec34f99eb7ce" id="r_a7f8fb63d6e74082c7a76ec34f99eb7ce"><td class="memItemLeft" align="right" valign="top"><a id="a7f8fb63d6e74082c7a76ec34f99eb7ce" name="a7f8fb63d6e74082c7a76ec34f99eb7ce"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>log_level_string</b> (<a class="el" href="namespacelog__lib.html#a55f94eb205e099f8b0764eb5858851d1">LogLevel</a> level)</td></tr>
+<tr class="memdesc:a7f8fb63d6e74082c7a76ec34f99eb7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a LogLevel to its string representation. <br /></td></tr>
+<tr class="separator:a7f8fb63d6e74082c7a76ec34f99eb7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa762986d6d53804873b28d788fbcb3da" id="r_aa762986d6d53804873b28d788fbcb3da"><td class="memItemLeft" align="right" valign="top"><a id="aa762986d6d53804873b28d788fbcb3da" name="aa762986d6d53804873b28d788fbcb3da"></a>
+<a class="el" href="namespacelog__lib.html#a55f94eb205e099f8b0764eb5858851d1">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>log_level_from_string</b> (const std::string &amp;level_str)</td></tr>
+<tr class="memdesc:aa762986d6d53804873b28d788fbcb3da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a log level from a string representation. <br /></td></tr>
+<tr class="separator:aa762986d6d53804873b28d788fbcb3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
