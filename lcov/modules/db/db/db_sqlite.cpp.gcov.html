@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-18 14:57:13</td>
+            <td class="headerValue">2025-05-19 19:24:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -137,8 +137,8 @@
 <span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">          82 :       auto [id, project_name, task_name, start_unix, stop_unix, location_name] =</span></span>
 <span id="L76"><span class="lineNum">      76</span>              :         stmt.get_all&lt;db_lib::RowId, std::string, std::string, db_lib::DBInt, db_lib::DBInt,</span>
 <span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">          82 :                      std::string&gt;();</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">          82 :       time_lib::Date start_date(start_unix);</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">          82 :       time_lib::Date stop_date(stop_unix);</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">          82 :       time_lib::Date start_date{start_unix};</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">          82 :       time_lib::Date stop_date{stop_unix};</span></span>
 <span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">          82 :       core::Entry e{id, project_name, task_name,</span></span>
 <span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">          82 :                     start_date, stop_date, location_name};</span></span>
 <span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">          82 :       vec.push_back(e);</span></span>

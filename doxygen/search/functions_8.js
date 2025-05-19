@@ -7,5 +7,5 @@ var searchData=
   ['log_4',['log',['../classlog__lib_1_1Logger.html#ad049a74ae99ba4db3410bc06aadde543',1,'log_lib::Logger']]],
   ['log_5flevel_5ffrom_5fstring_5',['log_level_from_string',['../classlog__lib_1_1Logger.html#aa762986d6d53804873b28d788fbcb3da',1,'log_lib::Logger']]],
   ['log_5flevel_5fstring_6',['log_level_string',['../classlog__lib_1_1Logger.html#a7f8fb63d6e74082c7a76ec34f99eb7ce',1,'log_lib::Logger']]],
-  ['logger_7',['logger',['../classlog__lib_1_1Logger.html#af576d68f5399c32033c572481d73dfd9',1,'log_lib::Logger::Logger()'],['../namespacelog__lib.html#a752f1d7680ffcc8a89aa695974646a18',1,'log_lib::logger()']]]
+  ['logger_7',['logger',['../classlog__lib_1_1Logger.html#a60e1b26da406ba4755faf4a0e3b70173',1,'log_lib::Logger::Logger()'],['../namespacelog__lib.html#a752f1d7680ffcc8a89aa695974646a18',1,'log_lib::logger()']]]
 ];

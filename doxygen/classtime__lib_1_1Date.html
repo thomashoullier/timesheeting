@@ -95,7 +95,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag for creating a <a class="el" href="classtime__lib_1_1Date.html" title="Date object.">Date</a> from a string.  <a href="structtime__lib_1_1Date_1_1FullString.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtime__lib_1_1Date_1_1SecondsAgo.html">SecondsAgo</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag for creating a <a class="el" href="classtime__lib_1_1Date.html" title="Date object.">Date</a> from uint64_t.  <a href="structtime__lib_1_1Date_1_1SecondsAgo.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag for creating a <a class="el" href="classtime__lib_1_1Date.html" title="Date object.">Date</a> from int64_t.  <a href="structtime__lib_1_1Date_1_1SecondsAgo.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -112,14 +112,14 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Date</b> (<a class="el" href="date_8h.html#ad46123f926ec271811bfbcb726564679">DatePoint</a> date_point)</td></tr>
 <tr class="memdesc:a225088ce55ac4bb2828e20986f97bd61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date at the given date point shorthand. <br /></td></tr>
 <tr class="separator:a225088ce55ac4bb2828e20986f97bd61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8a41138484cd904e8ffb783f9b2d7b6" id="r_ae8a41138484cd904e8ffb783f9b2d7b6"><td class="memItemLeft" align="right" valign="top"><a id="ae8a41138484cd904e8ffb783f9b2d7b6" name="ae8a41138484cd904e8ffb783f9b2d7b6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Date</b> (uint64_t unix_seconds)</td></tr>
-<tr class="memdesc:ae8a41138484cd904e8ffb783f9b2d7b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a UNIX timestamp (UTC) in seconds. <br /></td></tr>
-<tr class="separator:ae8a41138484cd904e8ffb783f9b2d7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44219c11574df27b0f3608cc83022be" id="r_ac44219c11574df27b0f3608cc83022be"><td class="memItemLeft" align="right" valign="top"><a id="ac44219c11574df27b0f3608cc83022be" name="ac44219c11574df27b0f3608cc83022be"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Date</b> (<a class="el" href="structtime__lib_1_1Date_1_1SecondsAgo.html">SecondsAgo</a>, uint64_t seconds_ago)</td></tr>
-<tr class="memdesc:ac44219c11574df27b0f3608cc83022be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="classtime__lib_1_1Date.html" title="Date object.">Date</a> at the given amount of seconds ago from now in the past. <br /></td></tr>
-<tr class="separator:ac44219c11574df27b0f3608cc83022be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae531915932f13cab912903135f2c17db" id="r_ae531915932f13cab912903135f2c17db"><td class="memItemLeft" align="right" valign="top"><a id="ae531915932f13cab912903135f2c17db" name="ae531915932f13cab912903135f2c17db"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Date</b> (int64_t unix_seconds)</td></tr>
+<tr class="memdesc:ae531915932f13cab912903135f2c17db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a UNIX timestamp (UTC) in seconds. <br /></td></tr>
+<tr class="separator:ae531915932f13cab912903135f2c17db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b51e9485e699883349e0741ad1924f5" id="r_a1b51e9485e699883349e0741ad1924f5"><td class="memItemLeft" align="right" valign="top"><a id="a1b51e9485e699883349e0741ad1924f5" name="a1b51e9485e699883349e0741ad1924f5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Date</b> (<a class="el" href="structtime__lib_1_1Date_1_1SecondsAgo.html">SecondsAgo</a>, int64_t seconds_ago)</td></tr>
+<tr class="memdesc:a1b51e9485e699883349e0741ad1924f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="classtime__lib_1_1Date.html" title="Date object.">Date</a> at the given amount of seconds ago from now in the past. <br /></td></tr>
+<tr class="separator:a1b51e9485e699883349e0741ad1924f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47c8accc57d9b547ec768d5d0c41861f" id="r_a47c8accc57d9b547ec768d5d0c41861f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime__lib_1_1Date.html#a47c8accc57d9b547ec768d5d0c41861f">Date</a> (const std::string &amp;date_str, const std::string &amp;day_month_year_str=&quot;&quot;)</td></tr>
 <tr class="memdesc:a47c8accc57d9b547ec768d5d0c41861f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the date from a string in fixed format.  <br /></td></tr>
 <tr class="separator:a47c8accc57d9b547ec768d5d0c41861f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,10 +137,10 @@ Public Member Functions</h2></td></tr>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_fullstring</b> () const</td></tr>
 <tr class="memdesc:a5ee14fb20c5bb6364aeb5070dab0b74c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the internal timepoint into a full unambiguous date string with timezone information. <br /></td></tr>
 <tr class="separator:a5ee14fb20c5bb6364aeb5070dab0b74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeefe9997d6955fb45180461dbb96bdf6" id="r_aeefe9997d6955fb45180461dbb96bdf6"><td class="memItemLeft" align="right" valign="top"><a id="aeefe9997d6955fb45180461dbb96bdf6" name="aeefe9997d6955fb45180461dbb96bdf6"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>to_unix_timestamp</b> () const</td></tr>
-<tr class="memdesc:aeefe9997d6955fb45180461dbb96bdf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the date as a UNIX timestamp (UTC) in seconds. <br /></td></tr>
-<tr class="separator:aeefe9997d6955fb45180461dbb96bdf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24711bd3494e012b8364e2bd1e6243ae" id="r_a24711bd3494e012b8364e2bd1e6243ae"><td class="memItemLeft" align="right" valign="top"><a id="a24711bd3494e012b8364e2bd1e6243ae" name="a24711bd3494e012b8364e2bd1e6243ae"></a>
+int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>to_unix_timestamp</b> () const</td></tr>
+<tr class="memdesc:a24711bd3494e012b8364e2bd1e6243ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the date as a UNIX timestamp (UTC) in seconds. <br /></td></tr>
+<tr class="separator:a24711bd3494e012b8364e2bd1e6243ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91473221ba88ae2ac26fb2a043a2c9db" id="r_a91473221ba88ae2ac26fb2a043a2c9db"><td class="memItemLeft" align="right" valign="top"><a id="a91473221ba88ae2ac26fb2a043a2c9db" name="a91473221ba88ae2ac26fb2a043a2c9db"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_day_string</b> () const</td></tr>
 <tr class="memdesc:a91473221ba88ae2ac26fb2a043a2c9db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a displayable string for the date at a day resolution in the system's timezone. <br /></td></tr>

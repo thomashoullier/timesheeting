@@ -16,7 +16,7 @@ var searchData=
   ['log_5flevel_5fstring_13',['log_level_string',['../classlog__lib_1_1Logger.html#a7f8fb63d6e74082c7a76ec34f99eb7ce',1,'log_lib::Logger']]],
   ['log_5flevels_5fto_5factivate_14',['log_levels_to_activate',['../structconfig_1_1UserConfig.html#ab65bbb1a6b4903bf8c66e476709a9553',1,'config::UserConfig']]],
   ['log_5flib_15',['log_lib',['../namespacelog__lib.html',1,'']]],
-  ['logger_16',['logger',['../classlog__lib_1_1Logger.html',1,'log_lib::Logger'],['../classlog__lib_1_1Logger.html#af576d68f5399c32033c572481d73dfd9',1,'log_lib::Logger::Logger()'],['../namespacelog__lib.html#a752f1d7680ffcc8a89aa695974646a18',1,'log_lib::logger()']]],
+  ['logger_16',['logger',['../classlog__lib_1_1Logger.html',1,'log_lib::Logger'],['../classlog__lib_1_1Logger.html#a60e1b26da406ba4755faf4a0e3b70173',1,'log_lib::Logger::Logger()'],['../namespacelog__lib.html#a752f1d7680ffcc8a89aa695974646a18',1,'log_lib::logger()']]],
   ['logger_2eh_17',['logger.h',['../logger_8h.html',1,'']]],
   ['loglevel_18',['LogLevel',['../namespacelog__lib.html#a55f94eb205e099f8b0764eb5858851d1',1,'log_lib']]]
 ];
