@@ -30,10 +30,9 @@ namespace time_lib{
     }
   }
 
-  Date::Date(uint64_t unix_seconds)
-    : tp(std::chrono::seconds{unix_seconds}) {}
+  Date::Date(int64_t unix_seconds) : tp(std::chrono::seconds{unix_seconds}) {}
 
-  Date::Date(Date::SecondsAgo, uint64_t seconds_ago) {
+  Date::Date(Date::SecondsAgo, int64_t seconds_ago) {
     auto tp_now = std::chrono::system_clock::now();
     tp = std::chrono::floor<std::chrono::seconds>
       (tp_now - std::chrono::seconds{seconds_ago});
@@ -97,7 +96,7 @@ namespace time_lib{
     return std::format("{:%d%b%Y %H:%M:%S %z}", local_time);
   }
 
-  uint64_t Date::to_unix_timestamp() const {
+  int64_t Date::to_unix_timestamp() const {
     return tp.time_since_epoch().count();
   }
 

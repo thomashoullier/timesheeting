@@ -35,7 +35,7 @@ namespace log_lib {
         Initialize on the first call.*/
     static Logger& get(const std::filesystem::path &log_filepath = "",
                        const std::vector<std::string> &levels_to_log = {},
-                       uint64_t max_log_age = 0);
+                       int64_t max_log_age = 0);
     /** @brief Log a message at the given level. */
     void log (const std::string &message, LogLevel level = LogLevel::info);
     /** @brief Start a time counter. */
@@ -56,14 +56,14 @@ namespace log_lib {
     /** @brief Logger constructor using a file. */
     explicit Logger(const std::filesystem::path &log_file_path,
                     const std::vector<std::string> &levels_to_log,
-                    uint64_t max_log_age);
+                    int64_t max_log_age);
     /** @brief Get the current date as a timestamp. */
     std::string get_timestamp ();
     /** @brief Is the provided loglevel active? */
     bool level_is_active (LogLevel level);
     /** @brief Log cleanup. Remove entries older than the specified age. */
     void remove_old_entries (const std::filesystem::path &log_file_path,
-                             uint64_t seconds_ago);
+                             int64_t seconds_ago);
 
     /** @brief Convert a LogLevel to its string representation. */
     std::string log_level_string(LogLevel level);

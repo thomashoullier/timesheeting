@@ -75,8 +75,8 @@ namespace db {
       auto [id, project_name, task_name, start_unix, stop_unix, location_name] =
         stmt.get_all<db_lib::RowId, std::string, std::string, db_lib::DBInt, db_lib::DBInt,
                      std::string>();
-      time_lib::Date start_date(start_unix);
-      time_lib::Date stop_date(stop_unix);
+      time_lib::Date start_date{start_unix};
+      time_lib::Date stop_date{stop_unix};
       core::Entry e{id, project_name, task_name,
                     start_date, stop_date, location_name};
       vec.push_back(e);

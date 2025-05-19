@@ -253,7 +253,8 @@ See the answer here: https://stackoverflow.com/a/1008289/10376845
 We have many singletons without these methods removed, resulting in possible
 misuse.
 
-*** TODO Forbid date instantiation which is not representable by a UNIX timestamp
+*** DONE Manage excentric dates far in the past and future
+CLOSED: [2025-05-19 Mon 20:50]
 ADDED: [2025-05-01 Thu]
 Currently we can instantiate dates which end up as underflow in the DB,
 this is very bad. Add a condition for only representing dates between
@@ -264,6 +265,16 @@ to dates obtained by shifting existing dates.
   format. Then throw an exception when trying to convert dates to UNIX
   if it goes outside the valid range. We can define a range between
   1970 (timestamp 0) and 2100 for example.
++ In fact we can get away with a signed int64. Dates with negative
+  UNIX timestamp are still valid.
+  We have to add a guard for when the input overflows the integer though,
+  like the user inputting a comically large year.
+  + The large years get clipped since the parser only takes the first four
+    digits into account.
+- [2025-05-19 Mon] We fixed the problem by representing timestamps as int64_t
+  throughout the program, instead of uint64_t. This is valid for the chrono
+  library and for the DB. Dates between year 0 and 9999 should be completely
+  valid now, which is good enough for our use case.
 
 *** TODO When trying to rename in an empty entries register, exception is thrown
 ADDED: [2025-05-02 Fri]
@@ -494,6 +505,19 @@ ADDED: [2025-04-06 Sun]
 When "renaming" a date in the entries register, use the currently selected day
 to parse hh:mm dates, like what is done in the stopwatch.
 
+*** TODO Lock the committing of entries from entry staging to the current day
+ADDED: [2025-05-02 Fri]
+Only allow the committing of entries from the stopwatch to the currently
+selected day in the entries register. This is locked by start date only.
+
+*** TODO Lock the editing of entry start date to currently selected day
+ADDED: [2025-05-02 Fri]
+Only allow setting a start date which is on the currently selected day
+in the entry register.
++ The issue is, how do we modify the day on which an entry was inputted?
+Just force to re-input could be a solution, since the entry would go off
+the screen when editing anyway.
+
 ** Refactoring
 *** DEAD Refactor MenuNCurses
 CLOSED: [2024-11-25 Mon 21:59]
@@ -640,10 +664,16 @@ Investigate.
   so we leave it out.
 + See ~-fsanitize=undefined~, creates a lot of memory leaks, not sure why.
 
-*** TODO Enable parallel build
+*** DONE Enable parallel build
+CLOSED: [2025-05-18 Sun 17:27]
 ADDED: [2025-05-18 Sun]
 Our build is currently pretty long, enable parallel building
 (probably a cmake option).
++ This already works with ~make -j6~.
+  + Base build performance for monothread on our machine is 1m30.
+  + ~-j6~ performance is 24s.
+We do not enable it in the CI because there are already many CI jobs
+done in parallel.
 
 ** Build
 *** TODO Enforce the GCC14 dependency
@@ -777,16 +807,6 @@ Be able to jump to a given item in a menu through text search.
 Report the real duration of entries over the query period,
 and not just the sum of the duration of entries for which the start
 date falls in the period.
-
-*** TODO Lock the committing of entries from entry staging to the current day
-ADDED: [2025-05-02 Fri]
-Only allow the committing of entries from the stopwatch to the currently
-selected day in the entries register. This is locked by start date only.
-
-*** TODO Lock the editing of entry start date to currently selected day
-ADDED: [2025-05-02 Fri]
-Only allow setting a start date which is on the currently selected day
-in the entry register.
 
 *** TODO Entries screen: go to specific day
 ADDED: [2025-05-01 Thu]

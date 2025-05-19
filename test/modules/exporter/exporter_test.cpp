@@ -128,7 +128,7 @@ TEST_CASE("Exporter module") {
           std::string date_str =
               line.substr(reference_prefix.size());
           time_lib::Date export_date{time_lib::Date::FullString{}, date_str};
-          uint64_t error_tolerance = 60; // seconds
+          int64_t error_tolerance = 60; // seconds
           CHECK((date_now.to_unix_timestamp() -
                  export_date.to_unix_timestamp()) < error_tolerance);
         }

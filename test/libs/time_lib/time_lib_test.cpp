@@ -54,14 +54,14 @@ TEST_CASE("Date", "[time_lib]") {
     CHECK(diff.count() < 1);
   }
   SECTION("LT-DAT-040 UNIX timestamp initialization") {
-    uint64_t timestamp {1737283885};
+    int64_t timestamp {1737283885};
     time_lib::Date{timestamp};
     SUCCEED("Date initialized with UNIX timestamp without error.");
   }
   SECTION("LT-DAT-050 UNIX timestamp output") {
-    uint64_t timestamp{1737283885};
+    int64_t timestamp{1737283885};
     auto date = time_lib::Date{timestamp};
-    uint64_t queried_timestamp = date.to_unix_timestamp();
+    int64_t queried_timestamp = date.to_unix_timestamp();
     CHECK(queried_timestamp == timestamp);
   }
   SECTION("LT-DAT-060 Date string initialization") {
@@ -69,7 +69,7 @@ TEST_CASE("Date", "[time_lib]") {
     auto date = time_lib::Date{date_str};
     SUCCEED("Date initialized from date string without error.");
     auto timestamp = date.to_unix_timestamp();
-    uint64_t ref_timestamp {1737283885};
+    int64_t ref_timestamp {1737283885};
     CHECK(timestamp == ref_timestamp);
   }
   SECTION("LT-DAT-070 Date string shortcuts 1") {
@@ -77,7 +77,7 @@ TEST_CASE("Date", "[time_lib]") {
     auto date = time_lib::Date{date_str};
     SUCCEED("Date initialized from date string without error.");
     auto timestamp = date.to_unix_timestamp();
-    uint64_t ref_timestamp {1737283860};
+    int64_t ref_timestamp {1737283860};
     CHECK(timestamp == ref_timestamp);
   }
   SECTION("LT-DAT-080 Date string shortcuts 2") {
@@ -85,7 +85,7 @@ TEST_CASE("Date", "[time_lib]") {
     auto date = time_lib::Date{date_str};
     SUCCEED("Date initialized from date string without error.");
     auto timestamp = date.to_unix_timestamp();
-    uint64_t ref_timestamp {1737280800};
+    int64_t ref_timestamp {1737280800};
     CHECK(timestamp == ref_timestamp);
   }
   SECTION("LT-DAT-090 Date string shortcuts 3") {
@@ -93,7 +93,7 @@ TEST_CASE("Date", "[time_lib]") {
     auto date = time_lib::Date{date_str};
     SUCCEED("Date initialized from date string without error.");
     auto timestamp = date.to_unix_timestamp();
-    uint64_t ref_timestamp {1737241200};
+    int64_t ref_timestamp {1737241200};
     CHECK(timestamp == ref_timestamp);
   }
   SECTION("LT-DAT-100 Date string invalid") {
@@ -101,25 +101,25 @@ TEST_CASE("Date", "[time_lib]") {
     CHECK_THROWS(time_lib::Date{date_str});
   }
   SECTION("LT-DAT-110 Date output string") {
-    uint64_t timestamp {1737283885};
+    int64_t timestamp {1737283885};
     auto date = time_lib::Date{timestamp};
     auto date_str = date.to_string();
     CHECK(date_str == "19Jan2025 11:51:25");
   }
   SECTION("LT-DAT-120 Date output hours/minutes") {
-    uint64_t timestamp{1737283885};
+    int64_t timestamp{1737283885};
     auto date = time_lib::Date{timestamp};
     auto date_str = date.to_shortstring();
     CHECK(date_str == "11:51");
   }
   SECTION("LT-DAT-130 Date output unambiguous string") {
-    uint64_t timestamp{1737283885};
+    int64_t timestamp{1737283885};
     auto date = time_lib::Date{timestamp};
     auto date_str = date.to_fullstring();
     CHECK(date_str == "19Jan2025 11:51:25 +0100");
   }
   SECTION("LT-DAT-140 Date output day/month/year") {
-    uint64_t timestamp{1737283885};
+    int64_t timestamp{1737283885};
     auto date = time_lib::Date{timestamp};
     auto date_str = date.get_day_string();
     CHECK(date_str == "19Jan2025");
@@ -134,15 +134,15 @@ TEST_CASE("Date", "[time_lib]") {
     CHECK(ymd == ref_ymd);
   }
   SECTION("LT-DAT-160 Date comparison") {
-    uint64_t tmstp1{1737283885};
-    uint64_t tmstp2{1737283886};
+    int64_t tmstp1{1737283885};
+    int64_t tmstp2{1737283886};
     auto date1 = time_lib::Date{tmstp1};
     auto date2 = time_lib::Date{tmstp2};
     CHECK(date1 < date2);
     CHECK(date2 > date1);
   }
   SECTION("LT-DAT-170 Date ago initialization") {
-    uint64_t seconds {20};
+    int64_t seconds {20};
     auto date = time_lib::Date(time_lib::Date::SecondsAgo{}, seconds);
     CHECK("Date ago initialized without error.");
     auto now = time_lib::Date{};
@@ -161,8 +161,8 @@ TEST_CASE("Date", "[time_lib]") {
 }
 
 TEST_CASE("DateRange", "[time_lib]") {
-  uint64_t tmstp1{1737283885};
-  uint64_t tmstp2{1737283886};
+  int64_t tmstp1{1737283885};
+  int64_t tmstp2{1737283886};
   auto start = time_lib::Date{tmstp1};
   auto stop = time_lib::Date{tmstp2};
   SECTION("LT-DTR-010 DateRange initialization") {

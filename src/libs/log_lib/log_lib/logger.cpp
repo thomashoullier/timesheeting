@@ -13,7 +13,7 @@
 namespace log_lib{
   Logger &Logger::get(const std::filesystem::path &log_filepath,
                       const std::vector<std::string> &levels_to_log,
-                      uint64_t max_log_age) {
+                      int64_t max_log_age) {
     static Logger instance (log_filepath, levels_to_log, max_log_age);
     return instance;
   }
@@ -54,7 +54,7 @@ namespace log_lib{
 
   Logger::Logger(const std::filesystem::path &log_file,
                  const std::vector<std::string> &levels_to_log,
-                 uint64_t max_log_age)
+                 int64_t max_log_age)
     : counting(false) {
     // Cleaning up the log file first.
     remove_old_entries(log_file, max_log_age);
@@ -101,7 +101,7 @@ namespace log_lib{
   }
 
   void Logger::remove_old_entries (const std::filesystem::path &log_file_path,
-                           uint64_t seconds_ago) {
+                                   int64_t seconds_ago) {
     if (not(std::filesystem::exists(log_file_path))
         or std::filesystem::is_empty(log_file_path))
       return;

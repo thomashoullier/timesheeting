@@ -32,8 +32,8 @@ namespace config_lib {
      With automatic tilde expansion. */
     std::filesystem::path
     parse_filepath(const std::vector<std::string> &tree_pos);
-    /** @brief Parse an unsigned integer number from the configuration. */
-    uint64_t parse_unsigned (const std::vector<std::string> &tree_pos);
+    /** @brief Parse an integer number from the configuration. */
+    int64_t parse_integer (const std::vector<std::string> &tree_pos);
     /** @brief Parse a float number from the configuration. */
     float parse_float(const std::vector<std::string> &tree_pos);
     /** @brief Parse a vector of successive strings from the configuration. */

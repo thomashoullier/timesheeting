@@ -135,7 +135,7 @@ TEST_CASE("Configuration loader", "[config_lib]") {
       (conf.parse_stringvec({"par2", "sub3", "vector_nonstrings_arg"}));
   }
   SECTION("LT-CON-150") {
-    auto num = conf.parse_unsigned({"par2", "sub2", "unsigned_arg"});
+    auto num = conf.parse_integer({"par2", "sub2", "unsigned_arg"});
     CHECK(num == 1089);
   }
 }

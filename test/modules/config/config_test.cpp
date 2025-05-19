@@ -188,7 +188,7 @@ TEST_CASE("Configuration contents", "[config]") {
   }
   SECTION("MT-CON-130 Maximum log age") {
     CHECK(std::is_same<decltype(config.max_log_age),
-                       uint64_t>());
+                       int64_t>());
   }
   SECTION("MT-CON-050 DB filepath") {
     CHECK(std::is_same<decltype(config.db_filepath), std::filesystem::path>());

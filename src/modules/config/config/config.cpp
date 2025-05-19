@@ -27,7 +27,7 @@ namespace config {
     auto log_filepath = config_loader->parse_filepath({"log", "file"});
     auto active_log_levels =
       config_loader->parse_stringvec({"log", "active_levels"});
-    auto max_log_age = config_loader->parse_unsigned({"log", "max_log_age"});
+    auto max_log_age = config_loader->parse_integer({"log", "max_log_age"});
     auto bindings = parse_bindings(config_loader);
     return UserConfig(log_filepath,
                       db_filepath,

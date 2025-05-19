@@ -35,12 +35,12 @@ namespace time_lib{
     /** @brief Construct the date at the given date point shorthand. */
     explicit Date(DatePoint date_point);
     /** @brief Construct the date from a UNIX timestamp (UTC) in seconds. */
-    explicit Date(uint64_t unix_seconds);
-    /** @brief Tag for creating a Date from uint64_t. */
+    explicit Date(int64_t unix_seconds);
+    /** @brief Tag for creating a Date from int64_t. */
     struct SecondsAgo final {};
     /** @brief Create a Date at the given amount of seconds ago from now
                in the past. */
-    explicit Date(SecondsAgo, uint64_t seconds_ago);
+    explicit Date(SecondsAgo, int64_t seconds_ago);
     /** @brief Construct the date from a string in fixed format.
 
         Works in two stages:
@@ -74,7 +74,7 @@ namespace time_lib{
         with timezone information. */
     std::string to_fullstring() const;
     /** @brief Get the date as a UNIX timestamp (UTC) in seconds. */
-    uint64_t to_unix_timestamp () const;
+    int64_t to_unix_timestamp () const;
     /** @brief Get a displayable string for the date at a day resolution
         in the system's timezone. */
     std::string get_day_string () const;

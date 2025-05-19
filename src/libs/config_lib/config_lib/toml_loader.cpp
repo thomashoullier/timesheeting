@@ -40,12 +40,12 @@ namespace config_lib {
     return path;
   }
 
-  uint64_t TomlLoader::parse_unsigned (const std::vector<std::string> &tree_pos) {
+  int64_t TomlLoader::parse_integer (const std::vector<std::string> &tree_pos) {
     auto node = get_node(tree_pos);
-    uint64_t num = node.value_or(std::numeric_limits<uint64_t>::max());
-    if (num == std::numeric_limits<uint64_t>::max()) {
+    int64_t num = node.value_or(std::numeric_limits<int64_t>::max());
+    if (num == std::numeric_limits<int64_t>::max()) {
       throw std::runtime_error
-        ("Unsigned integer read from the configuration is empty.");
+        ("Integer read from the configuration is empty.");
     }
     return num;
   }
