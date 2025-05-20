@@ -321,6 +321,40 @@ Its UNIX timestamp shall be produced and must be equal to
 
 \textit{Tests: } LR-DAT-160 Date unambiguous string initialization
 
+\paragraph{LT-DAT-190 -- Date parsing before 1970}
+A Date shall be initialized using the unambiguous full string
+\lstinline{"28Jan1968 19:51:56 +0100"} without error.
+Its UNIX timestamp shall be produced and must be equal to
+\lstinline{-60757684} (negative).
+The Date unambiguous full string must be produced back,
+equal to the test input.
+
+\textit{Tests: } LR-DAT-050 Date string initialization
+
+\paragraph{LT-DAT-200 -- Date parsing beyond 2038}
+A Date shall be initialized using the unambiguous
+full string \lstinline{"28Jan2048 19:51:56 +0100"} without error.
+Its UNIX timestamp shall be produced and must be equal to
+\lstinline{2463850316} (bigger than 32 bits signed).
+The Date unambiguous full string must be produced back,
+equal to the test input.
+
+\textit{Tests: } LR-DAT-050 Date string initialization
+
+\paragraph{LT-DAT-210 -- Dates beyond four digits clipped}
+A Date shall be initialized using the string
+\lstinline{"28Jan20255"} (as if by a typo) without error.
+Its UNIX timestamp shall be produced and must be equal to
+\lstinline{1738018800} (the date for midnight of the day in 2025).
+
+\textit{Tests: } LR-DAT-050 Date string initialization
+
+\paragraph{LT-DAT-220 -- Dates with minus sign exception}
+A Date initialization using the string \lstinline{"28Jan-1148"}
+shall be attempted and throw an exception.
+
+\textit{Tests: } LR-DAT-050 Date string initialization
+
 \subsubsection{DateRange}
 \paragraph{LT-DTR-010 -- DateRange initialization}
 Given a start Date initialized to UNIX timestamp \lstinline{1737283885},
@@ -949,6 +983,33 @@ shall be stepped, and the return value queried. The result must be equal to
 the empty string.
 
 \textit{Tests: } LR-DBL-240
+
+\paragraph{LT-DBL-410 -- Store and query negative integers}
+Given the previous \lstinline{contacts} table,
+the following statement shall be prepared,
+\lstinline{INSERT INTO contacts (name, active, department) VALUES('Paul', TRUE, ?);}.
+The value \lstinline{-20} shall be bound to the statement without error.
+A contact shall be added with the statement execution.
+The department number shall be queried back with the statement
+\lstinline{SELECT department FROM contacts where name = 'Paul';}.
+The result must be equal to the number bound to the statement.
+
+\textit{Tests: } LR-DBL-170 Statement parameters binding, LR-DBL-180 Statement
+column return.
+
+\paragraph{LT-DBL-420 -- Store and query integers larger than 32 bits}
+Given the previous \lstinline{contacts} table,
+the following statement shall be prepared,
+\lstinline{INSERT INTO contacts (name, active, department) VALUES('Paul', TRUE, ?);}.
+The value \lstinline{8589934592} (bigger than unsigned 32 bits)
+shall be bound to the statement without error.
+A contact shall be added with the statement execution.
+The department number shall be queried back with the statement
+\lstinline{SELECT department FROM contacts where name = 'Paul';}.
+The result must be equal to the number bound to the statement.
+
+\textit{Tests: } LR-DBL-170 Statement parameters binding, LR-DBL-180 Statement
+column return.
 
 \subsection{suggestion\textunderscore lib}
 \paragraph{LT-SUG-010 -- Empty set of choice strings}

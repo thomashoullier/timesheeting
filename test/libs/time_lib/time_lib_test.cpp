@@ -158,6 +158,33 @@ TEST_CASE("Date", "[time_lib]") {
     auto timestamp = date.to_unix_timestamp();
     CHECK(timestamp == 1738090277);
   }
+  SECTION("LT-DAT-190 Date parsing before 1970") {
+    const std::string str{"28Jan1968 19:51:56 +0100"};
+    auto date = time_lib::Date(time_lib::Date::FullString{}, str);
+    CHECK("Date initialized from unambiguous string without error.");
+    auto timestamp = date.to_unix_timestamp();
+    CHECK(timestamp == -60757684);
+    CHECK(date.to_fullstring() == str);
+  }
+  SECTION("LT-DAT-200 Date parsing beyond 2038") {
+    const std::string str{"28Jan2048 19:51:56 +0100"};
+    auto date = time_lib::Date(time_lib::Date::FullString{}, str);
+    CHECK("Date initialized from unambiguous string without error.");
+    auto timestamp = date.to_unix_timestamp();
+    CHECK(timestamp == 2463850316);
+    CHECK(date.to_fullstring() == str);
+  }
+  SECTION("LT-DAT-210 Dates beyond four digits clipped.") {
+    const std::string str{"28Jan20255"};
+    auto date = time_lib::Date{str};
+    CHECK("Date initialized from unambiguous string without error.");
+    auto timestamp = date.to_unix_timestamp();
+    CHECK(timestamp == 1738018800);
+  }
+  SECTION("LT-DAT-220 Dates with minus sign exception") {
+    const std::string str{"28Jan-1148"};
+    CHECK_THROWS(time_lib::Date{str});
+  }
 }
 
 TEST_CASE("DateRange", "[time_lib]") {

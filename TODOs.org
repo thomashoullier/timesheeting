@@ -347,6 +347,22 @@ which we cannot easily do with the cmake module.
   straightforward to remove it.
 + We can pass LCOV_ARGS to it to manage lcov errors.
 
+*** DONE Add Date parsing test for years before 1970 and after 2038
+CLOSED: [2025-05-20 Tue 21:50]
+ADDED: [2025-05-19 Mon]
++ In time_lib:
+  + Test for parsing dates from strings with years before 1970 and
+    after 2038.
+  + Make sure the UNIX timestamp retrieved is OK (eventually negative),
+    and that displaying the date back works.
+  + Test that years beyond 9999 get clipped by the string parsing.
+  + Test that years with a minus sign do not work.
++ In db_lib:
+  + Make sure we can store negative integers.
+  + Make sure we can store positive integers past 32 bits in length
+    (year 2038 bug).
+- [2025-05-20 Tue] OK, all of these tests were added.
+
 ** Ergonomy
 *** DONE Toggle archive visibility resets the screen
 CLOSED: [2025-02-22 Sat 14:27]

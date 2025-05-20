@@ -346,4 +346,34 @@ TEST_CASE("DB statement column return", "[db_lib]") {
     auto [address_result] = select_address.get_all<std::string>();
     CHECK(address_result.empty());
   }
+  SECTION("LT-DBL-410 Store and query negative integers") {
+    int reference_integer {-20};
+    auto insert_paul = db_handle.prepare_statement(
+        "INSERT INTO contacts (name, active, department) "
+        "VALUES('Paul', TRUE, ?);");
+    insert_paul.bind_all(reference_integer);
+    SUCCEED("Negative integer bound without error.");
+    insert_paul.execute();
+    SUCCEED("Negative integer stored without error.");
+    auto select_department = db_handle.prepare_statement(
+        "SELECT department FROM contacts WHERE name = 'Paul';");
+    select_department.step();
+    auto [department_result] = select_department.get_all<db_lib::DBInt>();
+    CHECK(department_result == reference_integer);
+  }
+  SECTION("LT-DBL-420 Store and query integers larger than 32 bits") {
+    int64_t reference_integer{8589934592};
+    auto insert_paul = db_handle.prepare_statement(
+        "INSERT INTO contacts (name, active, department) "
+        "VALUES('Paul', TRUE, ?);");
+    insert_paul.bind_all(reference_integer);
+    SUCCEED("Negative integer bound without error.");
+    insert_paul.execute();
+    SUCCEED("Negative integer stored without error.");
+    auto select_department = db_handle.prepare_statement(
+        "SELECT department FROM contacts WHERE name = 'Paul';");
+    select_department.step();
+    auto [department_result] = select_department.get_all<db_lib::DBInt>();
+    CHECK(department_result == reference_integer);
+  }
 }
