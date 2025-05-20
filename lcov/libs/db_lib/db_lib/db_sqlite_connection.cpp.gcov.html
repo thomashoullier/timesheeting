@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-19 19:24:13</td>
+            <td class="headerValue">2025-05-20 20:19:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -66,18 +66,18 @@
 <span id="L4"><span class="lineNum">       4</span>              : #include &lt;string&gt;</span>
 <span id="L5"><span class="lineNum">       5</span>              : </span>
 <span id="L6"><span class="lineNum">       6</span>              : namespace db_lib {</span>
-<span id="L7"><span class="lineNum">       7</span> <span class="tlaGNC">          44 :   DB_SQLite_Connection::DB_SQLite_Connection</span></span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">          44 :   (const std::filesystem::path &amp;db_file) {</span></span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">          44 :     auto rc = sqlite3_open(db_file.c_str(), &amp;db);</span></span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">          44 :     if (rc != SQLITE_OK) {</span></span>
+<span id="L7"><span class="lineNum">       7</span> <span class="tlaGNC">          46 :   DB_SQLite_Connection::DB_SQLite_Connection</span></span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">          46 :   (const std::filesystem::path &amp;db_file) {</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">          46 :     auto rc = sqlite3_open(db_file.c_str(), &amp;db);</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">          46 :     if (rc != SQLITE_OK) {</span></span>
 <span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           1 :       sqlite3_close(db);</span></span>
 <span id="L12"><span class="lineNum">      12</span>              :       throw std::runtime_error</span>
 <span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           1 :         (&quot;DB_SQLite_Connection, error when opening the DB file &quot; +</span></span>
 <span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           2 :          std::string(db_file) + &quot; error code: &quot; + std::to_string(rc));</span></span>
 <span id="L15"><span class="lineNum">      15</span>              :     }</span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          43 :   }</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          45 :   }</span></span>
 <span id="L17"><span class="lineNum">      17</span>              : </span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          43 :   DB_SQLite_Connection::~DB_SQLite_Connection() { sqlite3_close(db); }</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          45 :   DB_SQLite_Connection::~DB_SQLite_Connection() { sqlite3_close(db); }</span></span>
 <span id="L19"><span class="lineNum">      19</span>              : } // namespace db_lib</span>
         </pre>
               </td>

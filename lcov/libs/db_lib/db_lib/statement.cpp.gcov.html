@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-19 19:24:13</td>
+            <td class="headerValue">2025-05-20 20:19:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -67,21 +67,21 @@
 <span id="L5"><span class="lineNum">       5</span>              : #include &lt;string&gt;</span>
 <span id="L6"><span class="lineNum">       6</span>              : </span>
 <span id="L7"><span class="lineNum">       7</span>              : namespace db_lib {</span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">         143 :   Statement::Statement(sqlite3_stmt *_stmt,</span></span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">         143 :                        std::shared_ptr&lt;DB_SQLite_Connection&gt; _db)</span></span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">         143 :     : db {_db},</span></span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">         143 :       stmt(_stmt) {}</span></span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">         155 :   Statement::Statement(sqlite3_stmt *_stmt,</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">         155 :                        std::shared_ptr&lt;DB_SQLite_Connection&gt; _db)</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">         155 :     : db {_db},</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">         155 :       stmt(_stmt) {}</span></span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">         143 :   Statement::~Statement() { sqlite3_finalize(stmt); }</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">         155 :   Statement::~Statement() { sqlite3_finalize(stmt); }</span></span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">        2445 :   bool Statement::check_rc(int rc) {</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">        2445 :     switch (rc) {</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         958 :     case SQLITE_OK:</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         958 :       return true;</span></span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">         710 :     case SQLITE_DONE: // Emitted when a step is finished.</span></span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         710 :       return true;</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">         690 :     case SQLITE_ROW:</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">         690 :       return true;</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">        2479 :   bool Statement::check_rc(int rc) {</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">        2479 :     switch (rc) {</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">         970 :     case SQLITE_OK:</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">         970 :       return true;</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">         730 :     case SQLITE_DONE: // Emitted when a step is finished.</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">         730 :       return true;</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">         692 :     case SQLITE_ROW:</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">         692 :       return true;</span></span>
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">          84 :     case SQLITE_CONSTRAINT:</span></span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          84 :       return false;</span></span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           3 :     default:</span></span>
@@ -90,29 +90,29 @@
 <span id="L28"><span class="lineNum">      28</span>              :     }</span>
 <span id="L29"><span class="lineNum">      29</span>              :   }</span>
 <span id="L30"><span class="lineNum">      30</span>              : </span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         443 :   bool Statement::step() {</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         443 :     auto rc = sqlite3_step(stmt);</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         443 :     check_rc(rc);</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         442 :     if (not(rc == SQLITE_ROW)) {</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">         445 :   bool Statement::step() {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">         445 :     auto rc = sqlite3_step(stmt);</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">         445 :     check_rc(rc);</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">         444 :     if (not(rc == SQLITE_ROW)) {</span></span>
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">         148 :       rc = sqlite3_reset(stmt);</span></span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         148 :       check_rc(rc);</span></span>
 <span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">         148 :       return false;</span></span>
 <span id="L38"><span class="lineNum">      38</span>              :     }</span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         294 :     return true;</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         296 :     return true;</span></span>
 <span id="L40"><span class="lineNum">      40</span>              :   }</span>
 <span id="L41"><span class="lineNum">      41</span>              : </span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         310 :   bool Statement::execute() {</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         310 :     auto rc_step = sqlite3_step(stmt);</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         310 :     check_rc(rc_step);</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         309 :     auto rc_reset = sqlite3_reset(stmt);</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         309 :     check_rc(rc_reset);</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         309 :     return check_rc(rc_step);</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         320 :   bool Statement::execute() {</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">         320 :     auto rc_step = sqlite3_step(stmt);</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">         320 :     check_rc(rc_step);</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">         319 :     auto rc_reset = sqlite3_reset(stmt);</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">         319 :     check_rc(rc_reset);</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">         319 :     return check_rc(rc_step);</span></span>
 <span id="L48"><span class="lineNum">      48</span>              :   }</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         407 :   void Statement::bind(int index, DBInt num) {</span></span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">         407 :     auto rc = sqlite3_bind_int64(stmt, index + 1, num);</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         407 :     check_rc(rc);</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">         407 :   }</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">         409 :   void Statement::bind(int index, DBInt num) {</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">         409 :     auto rc = sqlite3_bind_int64(stmt, index + 1, num);</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         409 :     check_rc(rc);</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">         409 :   }</span></span>
 <span id="L54"><span class="lineNum">      54</span>              : </span>
 <span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">         123 :   void Statement::bind(int index, const std::string &amp;str) {</span></span>
 <span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">         123 :     auto rc = sqlite3_bind_text(stmt, index + 1, str.c_str(),</span></span>
@@ -121,22 +121,22 @@
 <span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">         122 :   }</span></span>
 <span id="L60"><span class="lineNum">      60</span>              : </span>
 <span id="L61"><span class="lineNum">      61</span>              :   /** @brief Specialization for getting an integer. */</span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">         488 :   template &lt;&gt; DBInt Statement::get_column(int icol) {</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         488 :     if (sqlite3_data_count(stmt) == 0)</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">         490 :   template &lt;&gt; DBInt Statement::get_column(int icol) {</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">         490 :     if (sqlite3_data_count(stmt) == 0)</span></span>
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">           1 :       throw std::runtime_error(&quot;Statement has no data to return.&quot;);</span></span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">         487 :     auto ncols = sqlite3_column_count(stmt);</span></span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">         487 :     if (ncols &lt;= icol)</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">         489 :     auto ncols = sqlite3_column_count(stmt);</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">         489 :     if (ncols &lt;= icol)</span></span>
 <span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">           1 :       throw std::runtime_error(&quot;Asked to retrieve column of index &quot; +</span></span>
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">           3 :                                std::to_string(icol) +</span></span>
 <span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">           2 :                                &quot; when the statement row &quot; + &quot;only has &quot; +</span></span>
 <span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">           3 :                                std::to_string(ncols) + &quot; columns.&quot;);</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         486 :     auto column_type = sqlite3_column_type(stmt, icol);</span></span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         486 :     if (column_type == SQLITE_NULL)</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">         488 :     auto column_type = sqlite3_column_type(stmt, icol);</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">         488 :     if (column_type == SQLITE_NULL)</span></span>
 <span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">          61 :       return 0;</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         425 :     if (column_type != SQLITE_INTEGER)</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">         427 :     if (column_type != SQLITE_INTEGER)</span></span>
 <span id="L75"><span class="lineNum">      75</span>              :       throw std::runtime_error(&quot;Tried to get a SQLITE_INTEGER but got a &quot;</span>
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">           1 :                                &quot;type code: &quot; + std::to_string(column_type));</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         424 :     return sqlite3_column_int64(stmt, icol);</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         426 :     return sqlite3_column_int64(stmt, icol);</span></span>
 <span id="L78"><span class="lineNum">      78</span>              :   }</span>
 <span id="L79"><span class="lineNum">      79</span>              : </span>
 <span id="L80"><span class="lineNum">      80</span>              :   /** @brief Specialization for getting a boolean.</span>
