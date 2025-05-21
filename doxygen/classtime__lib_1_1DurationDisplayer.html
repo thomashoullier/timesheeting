@@ -84,7 +84,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Singleton for formatting duration according to varied formats.  
+<p>Formatter of duration according to varied formats.  
  <a href="classtime__lib_1_1DurationDisplayer.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="duration__displayer_8h_source.html">duration_displayer.h</a>&gt;</code></p>
@@ -103,6 +103,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> 
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_shortstring</b> (const <a class="el" href="classtime__lib_1_1Duration.html">Duration</a> &amp;dur)</td></tr>
 <tr class="memdesc:acb50d5668cbb1770b746d82cff49fe8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a short string representation of a <a class="el" href="classtime__lib_1_1Duration.html" title="Duration type.">Duration</a> in the current display format. <br /></td></tr>
 <tr class="separator:acb50d5668cbb1770b746d82cff49fe8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca6a67d7dd71eabaa8e9e0922c06f39" id="r_a8ca6a67d7dd71eabaa8e9e0922c06f39"><td class="memItemLeft" align="right" valign="top"><a id="a8ca6a67d7dd71eabaa8e9e0922c06f39" name="a8ca6a67d7dd71eabaa8e9e0922c06f39"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DurationDisplayer</b> (<a class="el" href="classtime__lib_1_1DurationDisplayer.html">DurationDisplayer</a> const &amp;)=delete</td></tr>
+<tr class="separator:a8ca6a67d7dd71eabaa8e9e0922c06f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a501a25318bf0c249258293b8b9022e14" id="r_a501a25318bf0c249258293b8b9022e14"><td class="memItemLeft" align="right" valign="top"><a id="a501a25318bf0c249258293b8b9022e14" name="a501a25318bf0c249258293b8b9022e14"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classtime__lib_1_1DurationDisplayer.html">DurationDisplayer</a> const &amp;)=delete</td></tr>
+<tr class="separator:a501a25318bf0c249258293b8b9022e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -139,7 +145,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>hours_per_day</b></t
 <tr class="separator:ab0a3a2a8f30031da309885cc22d7a54c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Singleton for formatting duration according to varied formats. </p>
+<div class="textblock"><p>Formatter of duration according to varied formats. </p>
+<p>Singleton pattern. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/time_lib/time_lib/<a class="el" href="duration__displayer_8h_source.html">duration_displayer.h</a></li>
 <li>src/libs/time_lib/time_lib/<b>duration_displayer.cpp</b></li>

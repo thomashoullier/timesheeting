@@ -89,24 +89,27 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>time_lib {</div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classtime__lib_1_1TimeZone.html">   11</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> <a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a>&amp; <a class="code hl_function" href="classtime__lib_1_1TimeZone.html#a0c8de9fb5532ed7e9c4733ef42b4d27d">get</a>(<span class="keyword">const</span> std::string &amp;tz_string = <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::string <a class="code hl_function" href="classtime__lib_1_1TimeZone.html#af4d26d82d77c3529446ae8f142ce7558">name</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classtime__lib_1_1TimeZone.html#a770e24b6ebe075bb3b7107f52845611d">   20</a></span>    <span class="keyword">const</span> std::chrono::time_zone *<a class="code hl_variable" href="classtime__lib_1_1TimeZone.html#a770e24b6ebe075bb3b7107f52845611d">zone</a>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a>(<span class="keyword">const</span> std::string &amp;tz_string);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  };</div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classtime__lib_1_1TimeZone.html">   13</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">static</span> <a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a>&amp; <a class="code hl_function" href="classtime__lib_1_1TimeZone.html#a0c8de9fb5532ed7e9c4733ef42b4d27d">get</a>(<span class="keyword">const</span> std::string &amp;tz_string = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string <a class="code hl_function" href="classtime__lib_1_1TimeZone.html#af4d26d82d77c3529446ae8f142ce7558">name</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classtime__lib_1_1TimeZone.html#a770e24b6ebe075bb3b7107f52845611d">   22</a></span>    <span class="keyword">const</span> std::chrono::time_zone *<a class="code hl_variable" href="classtime__lib_1_1TimeZone.html#a770e24b6ebe075bb3b7107f52845611d">zone</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a>(<a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> operator=(<a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classtime__lib_1_1TimeZone.html">TimeZone</a>(<span class="keyword">const</span> std::string &amp;tz_string);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  };</div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif </span><span class="comment">// TIME_ZONE_H</span></div>
-<div class="ttc" id="aclasstime__lib_1_1TimeZone_html"><div class="ttname"><a href="classtime__lib_1_1TimeZone.html">time_lib::TimeZone</a></div><div class="ttdoc">Singleton for program-wide timezones.</div><div class="ttdef"><b>Definition</b> time_zone.h:11</div></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif </span><span class="comment">// TIME_ZONE_H</span></div>
+<div class="ttc" id="aclasstime__lib_1_1TimeZone_html"><div class="ttname"><a href="classtime__lib_1_1TimeZone.html">time_lib::TimeZone</a></div><div class="ttdoc">Program-wide timezone setting.</div><div class="ttdef"><b>Definition</b> time_zone.h:13</div></div>
 <div class="ttc" id="aclasstime__lib_1_1TimeZone_html_a0c8de9fb5532ed7e9c4733ef42b4d27d"><div class="ttname"><a href="classtime__lib_1_1TimeZone.html#a0c8de9fb5532ed7e9c4733ef42b4d27d">time_lib::TimeZone::get</a></div><div class="ttdeci">static TimeZone &amp; get(const std::string &amp;tz_string=&quot;&quot;)</div><div class="ttdoc">Grab the singleton. Initialize on first call.</div><div class="ttdef"><b>Definition</b> time_zone.cpp:5</div></div>
-<div class="ttc" id="aclasstime__lib_1_1TimeZone_html_a770e24b6ebe075bb3b7107f52845611d"><div class="ttname"><a href="classtime__lib_1_1TimeZone.html#a770e24b6ebe075bb3b7107f52845611d">time_lib::TimeZone::zone</a></div><div class="ttdeci">const std::chrono::time_zone * zone</div><div class="ttdoc">Program-wide zone set.</div><div class="ttdef"><b>Definition</b> time_zone.h:20</div></div>
+<div class="ttc" id="aclasstime__lib_1_1TimeZone_html_a770e24b6ebe075bb3b7107f52845611d"><div class="ttname"><a href="classtime__lib_1_1TimeZone.html#a770e24b6ebe075bb3b7107f52845611d">time_lib::TimeZone::zone</a></div><div class="ttdeci">const std::chrono::time_zone * zone</div><div class="ttdoc">Program-wide zone set.</div><div class="ttdef"><b>Definition</b> time_zone.h:22</div></div>
 <div class="ttc" id="aclasstime__lib_1_1TimeZone_html_af4d26d82d77c3529446ae8f142ce7558"><div class="ttname"><a href="classtime__lib_1_1TimeZone.html#af4d26d82d77c3529446ae8f142ce7558">time_lib::TimeZone::name</a></div><div class="ttdeci">std::string name() const</div><div class="ttdoc">Get the current timezone name (TZ string).</div><div class="ttdef"><b>Definition</b> time_zone.cpp:10</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

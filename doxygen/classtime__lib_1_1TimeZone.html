@@ -83,7 +83,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Singleton for program-wide timezones.  
+<p>Program-wide timezone setting.  
  <a href="classtime__lib_1_1TimeZone.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="time__zone_8h_source.html">time_zone.h</a>&gt;</code></p>
@@ -94,6 +94,12 @@ Public Member Functions</h2></td></tr>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const</td></tr>
 <tr class="memdesc:af4d26d82d77c3529446ae8f142ce7558"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current timezone name (TZ string). <br /></td></tr>
 <tr class="separator:af4d26d82d77c3529446ae8f142ce7558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a126d11225af54cd9177573c920c8c62f" id="r_a126d11225af54cd9177573c920c8c62f"><td class="memItemLeft" align="right" valign="top"><a id="a126d11225af54cd9177573c920c8c62f" name="a126d11225af54cd9177573c920c8c62f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TimeZone</b> (<a class="el" href="classtime__lib_1_1TimeZone.html">TimeZone</a> const &amp;)=delete</td></tr>
+<tr class="separator:a126d11225af54cd9177573c920c8c62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab997760dea9eea4833fb4f999833ba50" id="r_ab997760dea9eea4833fb4f999833ba50"><td class="memItemLeft" align="right" valign="top"><a id="ab997760dea9eea4833fb4f999833ba50" name="ab997760dea9eea4833fb4f999833ba50"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classtime__lib_1_1TimeZone.html">TimeZone</a> const &amp;)=delete</td></tr>
+<tr class="separator:ab997760dea9eea4833fb4f999833ba50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -117,7 +123,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a7a995081c38fc4bd9abade9c29817849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Singleton for program-wide timezones. </p>
+<div class="textblock"><p>Program-wide timezone setting. </p>
+<p>Singleton pattern. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/time_lib/time_lib/<a class="el" href="time__zone_8h_source.html">time_zone.h</a></li>
 <li>src/libs/time_lib/time_lib/<b>time_zone.cpp</b></li>
