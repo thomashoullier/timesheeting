@@ -7,7 +7,9 @@
 #include <string>
 
 namespace time_lib {
-  /** @brief Singleton for program-wide timezones. */
+  /** @brief Program-wide timezone setting.
+
+   Singleton pattern. */
   class TimeZone {
   public:
     /** @brief Grab the singleton. Initialize on first call. */
@@ -18,6 +20,9 @@ namespace time_lib {
 
     /** @brief Program-wide zone set. */
     const std::chrono::time_zone *zone;
+
+    TimeZone(TimeZone const&) = delete;
+    void operator=(TimeZone const&) = delete;
 
   private:
     /** @brief Singleton constructor. */

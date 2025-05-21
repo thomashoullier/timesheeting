@@ -6,7 +6,9 @@
 #include "config/binding_maps.h"
 
 namespace keys {
-  /** @brief Singleton to access the key bindings. */
+  /** @brief Accessor for the key bindings.
+
+   Singleton pattern. */
   class BoundKeys {
   public:
     /** @brief Loaded set of key bindings. */
@@ -14,6 +16,9 @@ namespace keys {
 
     /** @brief Singleton grabber. */
     static BoundKeys &get(const config::KeyBindings *_kb = nullptr);
+
+    BoundKeys(BoundKeys const&) = delete;
+    void operator=(BoundKeys const&) = delete;
 
   private:
     /** @brief Initialize the singleton fomr the key bindings read from the

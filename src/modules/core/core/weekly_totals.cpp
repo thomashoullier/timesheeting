@@ -61,17 +61,17 @@ namespace core {
 
   ncurses_lib::MenuItem WeeklyTotals::duration_to_menu_item
   (const time_lib::Duration &dur) {
-    auto duration_formatter = time_lib::DurationDisplayer::get();
-    return ncurses_lib::MenuItem(duration_formatter.to_shortstring(dur),
-                                 duration_formatter.to_string(dur),
-                                 ncurses_lib::StringFace::Normal);
+    return ncurses_lib::MenuItem(
+        time_lib::DurationDisplayer::get().to_shortstring(dur),
+        time_lib::DurationDisplayer::get().to_string(dur),
+        ncurses_lib::StringFace::Normal);
   }
 
   ncurses_lib::MenuItem
   WeeklyTotals::duration_to_bold_menu_item(const time_lib::Duration &dur) {
-    auto duration_formatter = time_lib::DurationDisplayer::get();
-    return ncurses_lib::MenuItem(duration_formatter.to_shortstring(dur),
-                                 duration_formatter.to_string(dur),
-                                 ncurses_lib::StringFace::Bold);
+    return ncurses_lib::MenuItem(
+        time_lib::DurationDisplayer::get().to_shortstring(dur),
+        time_lib::DurationDisplayer::get().to_string(dur),
+        ncurses_lib::StringFace::Bold);
   }
 }

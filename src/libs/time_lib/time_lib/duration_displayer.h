@@ -7,7 +7,9 @@
 #include "duration.h"
 
 namespace time_lib {
-  /** @brief Singleton for formatting duration according to varied formats. */
+  /** @brief Formatter of duration according to varied formats.
+
+   Singleton pattern. */
   class DurationDisplayer {
   public:
     /** @brief Grab the singleton. Initialize on the first call. */
@@ -21,6 +23,9 @@ namespace time_lib {
     /** @brief Get a short string representation of a Duration in the current
         display format. */
     std::string to_shortstring(const Duration &dur);
+
+    DurationDisplayer(DurationDisplayer const&) = delete;
+    void operator=(DurationDisplayer const&) = delete;
 
   private:
     /** @brief The accepted formats for duration display. */

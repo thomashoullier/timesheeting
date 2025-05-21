@@ -8,7 +8,9 @@
 #include <string>
 
 namespace tui {
-  /** @brief Status bar implementation using ncurses. */
+  /** @brief Status bar implementation using ncurses.
+
+   Singleton pattern. */
   class StatusBarNCurses final : public ncurses_lib::BarNCurses {
   public:
     /** @brief Grab the status bar singleton. */
@@ -31,6 +33,9 @@ namespace tui {
 
     /** @brief Resize the status bar. Leave the edit mode if we were in it. */
     void resize() final;
+
+    StatusBarNCurses(StatusBarNCurses const&) = delete;
+    void operator=(StatusBarNCurses const&) = delete;
 
   private:
     /** @brief Controls the switch between normal and edit mode. */

@@ -14,7 +14,9 @@
 namespace tui {
   /** @brief Manages the update of UIScreens based on catching changes through a
       singleton interface and propagate the need for UIScreens to update based on
-      these changes through handles to the UIScreens. */
+      these changes through handles to the UIScreens.
+
+      Singleton pattern. */
   class UpdateManager {
   public:
     /** @brief Grab the update manager singleton interface.
@@ -37,6 +39,9 @@ namespace tui {
     void duration_display_changed ();
     /** @brief Signal a terminal resize has happened. */
     void terminal_was_resized ();
+
+    UpdateManager(UpdateManager const&) = delete;
+    void operator=(UpdateManager const&) = delete;
 
   private:
     /** @brief Screen for the project/task definition. */

@@ -247,11 +247,14 @@ This problem was recently picked up by cppcheck also.
 - [2025-04-13 Sun] We moved the ~PRAGMA optimize~ from the destructor to the
   constructor, as it is less risky to have it fail in the constructor.
 
-*** TODO Remove dangerous singleton methods
+*** DONE Remove dangerous singleton methods
+CLOSED: [2025-05-21 Wed 22:07]
 ADDED: [2025-05-01 Thu]
 See the answer here: https://stackoverflow.com/a/1008289/10376845
 We have many singletons without these methods removed, resulting in possible
 misuse.
+- [2025-05-21 Wed] Removed the copy and assignment functions for all singletons in
+  the program.
 
 *** DONE Manage excentric dates far in the past and future
 CLOSED: [2025-05-19 Mon 20:50]
@@ -289,6 +292,13 @@ They are displayed OK elsewhere.
   a char type as argument when it should take an int.
 + Track down other mistaken uses of char in the program instead of int.
 + Add tests for special characters in the DB module, or better, in DB lib.
+
+*** TODO Sometimes on system startup, the entrystaging bar does not display, it stays invisible
+ADDED: [2025-05-21 Wed]
++ It is unlikely to be related to sqlite since we would have gotten
+  an error message. Also the status bar displays the entrystaging contents
+  so it is somehow loaded but not displayed.
++ This could be related to the WM spawning the window.
 
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?

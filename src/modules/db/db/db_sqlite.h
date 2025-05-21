@@ -27,7 +27,9 @@
 #include <optional>
 
 namespace db {
-  /** @brief DB implementation using SQLite3. */
+  /** @brief DB implementation using SQLite3.
+
+   Singleton pattern. */
   class DB_SQLite {
   public:
     /** @brief Grab the DB singleton. */
@@ -126,6 +128,9 @@ namespace db {
     (const time_lib::DateRange &date_range);
     /** @brief Get the weekly report totals. */
     core::WeeklyTotals report_weekly_totals (const time_lib::Week &week);
+
+    DB_SQLite(DB_SQLite const&) = delete;
+    void operator=(DB_SQLite const&) = delete;
 
   private:
     /** @brief Open the DB handle. */

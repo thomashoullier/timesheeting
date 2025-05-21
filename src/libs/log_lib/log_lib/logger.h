@@ -17,7 +17,7 @@ namespace log_lib {
 
   /** @brief Logger implementation with a log file.
    *
-   * This is a singleton. */
+   * Singleton pattern. */
   class Logger {
     /** @brief Struct defining the active log levels. */
     struct ActiveLevels {
@@ -42,6 +42,9 @@ namespace log_lib {
     void tick ();
     /** @brief Stop the time counter and log the elapsed duration. */
     void tock (const std::string &message = "");
+
+    Logger(Logger const&) = delete;
+    void operator=(Logger const&) = delete;
 
   private:
     /** @brief Handle to the log file for output. */
