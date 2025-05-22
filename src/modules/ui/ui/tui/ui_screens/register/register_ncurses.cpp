@@ -31,6 +31,8 @@ namespace tui {
     return EntryField(get_col_index());
   }
 
+  bool RegisterNcurses::is_empty() { return held_items.empty(); }
+
   std::shared_ptr<std::vector<ncurses_lib::MenuItem>>
   RegisterNcurses::items_to_menu(const std::vector<core::Entry> &items) {
     auto menu_items = std::make_shared<std::vector<ncurses_lib::MenuItem>>();

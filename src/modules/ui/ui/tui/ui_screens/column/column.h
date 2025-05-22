@@ -63,6 +63,8 @@ namespace tui {
       MenuNCurses::unset_border();
     };
 
+    bool is_empty() final { return held_items.empty(); };
+
   private:
     /** @brief Storage for the currently held items. */
     std::vector<T> held_items;

@@ -28,6 +28,8 @@ namespace tui {
     virtual void set_border() = 0;
     /** @brief Unset the border. */
     virtual void unset_border() = 0;
+    /** @brief Is the column empty? */
+    virtual bool is_empty() = 0;
   };
 } // namespace tui
 

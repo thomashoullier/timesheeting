@@ -25,6 +25,8 @@ namespace tui {
     core::Id get_current_id();
     /** @brief Get the type of the currently selected column. */
     EntryField get_field_type ();
+    /** @brief Is the register currently empty? */
+    bool is_empty();
 
   private:
     /** @brief Entries stored in the register. */

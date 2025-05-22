@@ -279,10 +279,23 @@ to dates obtained by shifting existing dates.
   library and for the DB. Dates between year 0 and 9999 should be completely
   valid now, which is good enough for our use case.
 
-*** TODO When trying to rename in an empty entries register, exception is thrown
+*** DONE When trying to rename in an empty entries register, exception is thrown
+CLOSED: [2025-05-22 Thu 21:13]
 ADDED: [2025-05-02 Fri]
 It is not very elegant to close the program when the renaming binding
 is pressed in an empty entry register.
++ When removing an entry from an empty register, it is also weird to ask
+  for confirmation even though there is nothing.
++ Also modify the column class to have this behavior (instead of try/catch
+  the MenuEmpty exception).
+- [2025-05-22 Thu] Fixed the entries_table.h: rename and remove.
+- For the project_task_screen:
+  - rename: ok, we no longer rely on exception catching.
+  - project_task_change: ok, fixed also.
+  - remove: ok, fixed also.
+  - active_toggle: ok
+  - Additionally, we removed the reliance on the MenuEmpty exception,
+    which was ugly design.
 
 *** TODO Characters such as é are not displayed properly in status bar.
 ADDED: [2025-05-07 Wed]

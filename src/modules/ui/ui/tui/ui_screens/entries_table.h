@@ -37,9 +37,9 @@ namespace tui {
     RegisterNcurses reg;
 
     /** @brief Rename an entry in the register. */
-    void rename_item();
+    bool rename_item();
     /** @brief Remove an entry in the register. */
-    void remove_item();
+    bool remove_item();
   };
 } // namespace tui
 

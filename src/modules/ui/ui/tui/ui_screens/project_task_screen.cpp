@@ -92,28 +92,19 @@ namespace tui {
         }
         break;
       case config::NormalActions::add:
-        if (not(add_item(cur_col))) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        } else {
+        if (add_item(cur_col))
           UpdateManager::get().projects_tasks_have_changed();
-          update_status();
-        }
+        update_status();
         break;
       case config::NormalActions::rename:
-        if (not(rename_item(cur_col))) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        } else {
+        if (rename_item(cur_col))
           UpdateManager::get().projects_tasks_have_changed();
-          update_status();
-        }
+        update_status();
         break;
       case config::NormalActions::task_project_change:
-        if (not(change_task_project(cur_col))) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        } else {
+        if (change_task_project(cur_col))
           UpdateManager::get().projects_tasks_have_changed();
-          update_status();
-        }
+        update_status();
         break;
       case config::NormalActions::remove:
         remove_item(cur_col);
@@ -153,18 +144,16 @@ namespace tui {
   }
 
   void ProjectTaskScreen::update_task_col() {
-    try {
-      core::Id cur_project = project_col->get_current_id();
-      std::vector<core::Task> task_items;
-      if (show_only_active)
-        task_items = db::db().query_tasks_active(cur_project);
-      else
-        task_items = db::db().query_tasks(cur_project);
-      task_col->set_items(task_items);
-      task_col->refresh();
-    } catch (const ncurses_lib::MenuEmpty &e) {
+    if (project_col->is_empty())
       return;
-    }
+    core::Id cur_project = project_col->get_current_id();
+    std::vector<core::Task> task_items;
+    if (show_only_active)
+      task_items = db::db().query_tasks_active(cur_project);
+    else
+      task_items = db::db().query_tasks(cur_project);
+    task_col->set_items(task_items);
+    task_col->refresh();
   }
 
   void ProjectTaskScreen::update_project_col() {
@@ -178,104 +167,108 @@ namespace tui {
   }
 
   bool ProjectTaskScreen::add_item(const ColumnBase *cur_col) {
-    // TODO: rewrite, this got ugly.
     auto new_item_name = status().get_user_string();
     if (new_item_name.empty())
-      return true;
+      return false;
     if (cur_col == project_col.get()) {
-      auto success = db::db().add_project(new_item_name);
-      log_lib::logger().log("Added project: " + new_item_name,
-                            log_lib::LogLevel::info);
-      update_project_col();
-      return success;
+      if(db::db().add_project(new_item_name)) {
+        log_lib::logger().log("Added project: " + new_item_name,
+                              log_lib::LogLevel::info);
+        update_project_col();
+      } else {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
+      }
     } else if (cur_col == task_col.get()) {
-      try {
-        auto project_id = project_col->get_current_id();
-        auto success = db::db().add_task(project_id, new_item_name);
+      if (project_col->is_empty())
+        return false;
+      auto project_id = project_col->get_current_id();
+      if(db::db().add_task(project_id, new_item_name)) {
         log_lib::logger().log("Added task: " + new_item_name,
                               log_lib::LogLevel::info);
         update_task_col();
-        return success;
-      } catch (const ncurses_lib::MenuEmpty &e) {
-        return true;
+      } else {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
       }
     }
     return true;
   }
 
   bool ProjectTaskScreen::rename_item(ColumnBase *cur_col) {
-    try {
-      auto id = cur_col->get_current_id();
-      auto new_item_name = status().get_user_string();
-      if (!new_item_name.empty()) {
-        if (cur_col == project_col.get()) {
-          auto success = db::db().edit_project_name(id, new_item_name);
-          update_project_col();
-          return success;
-        } else if (cur_col == task_col.get()) {
-          auto success = db::db().edit_task_name(id, new_item_name);
-          update_task_col();
-          return success;
-        }
+    if (cur_col->is_empty())
+      return false;
+    auto id = cur_col->get_current_id();
+    auto new_item_name = status().get_user_string();
+    if (new_item_name.empty())
+      return false;
+    if (cur_col == project_col.get()) {
+      if (db::db().edit_project_name(id, new_item_name)) {
+        update_project_col();
+      } else {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
       }
-      return true;
-    } catch (const ncurses_lib::MenuEmpty &e) {
-      return true;
+    } else if (cur_col == task_col.get()) {
+      if (db::db().edit_task_name(id, new_item_name)) {
+        update_task_col();
+      } else {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
+      }
     }
+    return true;
   }
 
   bool ProjectTaskScreen::change_task_project(ColumnBase *cur_col) {
     if (cur_col == project_col.get())
-      return true; // Do nothing while in the project column.
+      return false; // Do nothing while in the project column.
     if (cur_col != task_col.get())
       throw std::runtime_error("change_task_project: Unknown column type.");
-    try {
-      auto id = cur_col->get_current_id();
-      auto new_project_name = status().get_user_string();
-      if (!new_project_name.empty()) {
-        auto success = db::db().edit_task_project(id, new_project_name);
-        update_task_col();
-        return success;
-      }
-      return true;
-    } catch (const ncurses_lib::MenuEmpty &e) {
-      return true;
+    if (cur_col->is_empty())
+      return false;
+    auto id = cur_col->get_current_id();
+    auto new_project_name = status().get_user_string();
+    if (new_project_name.empty())
+      return false;
+    if (db::db().edit_task_project(id, new_project_name)) {
+      update_task_col();
+    } else {
+      status().print_wait("DB logic error! Nothing was done to the DB.");
+      return false;
     }
+    return true;
   }
 
   void ProjectTaskScreen::remove_item(ColumnBase *cur_col) {
-    try {
-      auto id = cur_col->get_current_id();
-      bool user_conf = status().query_confirmation("Remove item? (Y/N)");
-      if (!user_conf) {
-        return;
-      }
-      if (cur_col == task_col.get()) {
-        db::db().delete_task(id);
-        update_task_col();
-      } else if (cur_col == project_col.get()) {
-        db::db().delete_project(id);
-        update_project_col();
-        update_task_col();
-      }
-    } catch (const ncurses_lib::MenuEmpty &e) {
+    if (cur_col->is_empty())
       return;
+    auto id = cur_col->get_current_id();
+    bool user_conf = status().query_confirmation("Remove item? (Y/N)");
+    if (!user_conf) {
+      return;
+    }
+    if (cur_col == task_col.get()) {
+      db::db().delete_task(id);
+      update_task_col();
+    } else if (cur_col == project_col.get()) {
+      db::db().delete_project(id);
+      update_project_col();
+      update_task_col();
     }
   }
 
   void ProjectTaskScreen::toggle_active_item(ColumnBase *cur_col) {
-    try {
-      auto id = cur_col->get_current_id();
-      if (cur_col == task_col.get()) {
-        db::db().toggle_task_active(id);
-        update_task_col();
-      } else if (cur_col == project_col.get()) {
-        db::db().toggle_project_active(id);
-        update_project_col();
-        update_task_col();
-      }
-    } catch (const ncurses_lib::MenuEmpty &e) {
+    if (cur_col->is_empty())
       return;
+    auto id = cur_col->get_current_id();
+    if (cur_col == task_col.get()) {
+      db::db().toggle_task_active(id);
+      update_task_col();
+    } else if (cur_col == project_col.get()) {
+      db::db().toggle_project_active(id);
+      update_project_col();
+      update_task_col();
     }
   }
 

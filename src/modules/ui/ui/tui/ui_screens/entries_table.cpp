@@ -53,15 +53,16 @@ namespace tui {
           update_status();
         break;
       case config::NormalActions::remove:
-        remove_item();
+        if (remove_item())
+          UpdateManager::get().entries_have_changed();
         update_status();
-        UpdateManager::get().entries_have_changed();
         break;
       case config::NormalActions::rename:
         try {
-          rename_item();
-          update();
-          UpdateManager::get().entries_have_changed();
+          if(rename_item()) {
+            update();
+            UpdateManager::get().entries_have_changed();
+          }
         } catch (time_lib::DateParsingFailure &e) {
           status().print_wait("Failed to parse the date. Do nothing.");
           this->clear();
@@ -138,8 +139,9 @@ namespace tui {
     status().print(reg.get_current_item_string());
   }
 
-  void EntriesTable::rename_item() {
-    // TODO: manage the case where the register is empty.
+  bool EntriesTable::rename_item() {
+    if (reg.is_empty())
+      return false;
     auto id = reg.get_current_id();
     auto field_type = reg.get_field_type();
     switch (field_type) {
@@ -177,15 +179,18 @@ namespace tui {
       throw std::logic_error
         ("Don't know what to do for renaming this unknown field type");
     }
+    return true;
   }
 
-  void EntriesTable::remove_item() {
+  bool EntriesTable::remove_item() {
+    if (reg.is_empty())
+      return false;
     bool user_conf = status().query_confirmation("Remove entry? (Y/N)");
-    if (!user_conf) {
-      return;
-    }
+    if (!user_conf)
+      return false;
     auto id = reg.get_current_id();
     db::db().delete_entry(id);
     update();
+    return true;
   }
 }
