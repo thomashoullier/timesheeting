@@ -129,6 +129,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_items</b> (const 
 <tr class="memitem:a961d3c792530d2699a292d926b535576" id="r_a961d3c792530d2699a292d926b535576"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtui_1_1Column.html#a961d3c792530d2699a292d926b535576">unset_border</a> () final</td></tr>
 <tr class="memdesc:a961d3c792530d2699a292d926b535576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset the border.  <br /></td></tr>
 <tr class="separator:a961d3c792530d2699a292d926b535576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063b3a446f903c57403fef8f32a85bd2" id="r_a063b3a446f903c57403fef8f32a85bd2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtui_1_1Column.html#a063b3a446f903c57403fef8f32a85bd2">is_empty</a> () final</td></tr>
+<tr class="memdesc:a063b3a446f903c57403fef8f32a85bd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the column empty?  <br /></td></tr>
+<tr class="separator:a063b3a446f903c57403fef8f32a85bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classncurses__lib_1_1MenuNCurses"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classncurses__lib_1_1MenuNCurses')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classncurses__lib_1_1MenuNCurses.html">ncurses_lib::MenuNCurses</a></td></tr>
 <tr class="memitem:a742137ef2659618e124beeaad1a50e1b inherit pub_methods_classncurses__lib_1_1MenuNCurses" id="r_a742137ef2659618e124beeaad1a50e1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classncurses__lib_1_1MenuNCurses.html#a742137ef2659618e124beeaad1a50e1b">MenuNCurses</a> (const std::shared_ptr&lt; std::vector&lt; <a class="el" href="structncurses__lib_1_1MenuItem.html">MenuItem</a> &gt; &gt; _items, <a class="el" href="win__ncurses_8h.html#a900d1780d5a7d91867abfa0522e1998b">WindowPosition</a> _winpos, <a class="el" href="win__ncurses_8h.html#ad68630c8e97136a75245903ffef1bf2c">WindowFormat</a> _winformat, std::vector&lt; int &gt; _target_column_widths)</td></tr>
 <tr class="memdesc:a742137ef2659618e124beeaad1a50e1b inherit pub_methods_classncurses__lib_1_1MenuNCurses"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
@@ -338,6 +341,37 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_base_of_v&lt;co
 <p>Query a user input character and pass it. </p>
 
 <p>Implements <a class="el" href="classtui_1_1ColumnBase.html#a6282c14496e450fc1c2c196da0b64c3a">tui::ColumnBase</a>.</p>
+
+</div>
+</div>
+<a id="a063b3a446f903c57403fef8f32a85bd2" name="a063b3a446f903c57403fef8f32a85bd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063b3a446f903c57403fef8f32a85bd2">&#9670;&#160;</a></span>is_empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename  = std::enable_if_t&lt;std::is_base_of_v&lt;core::GenericItem,                                                          T&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classtui_1_1Column.html">tui::Column</a>&lt; T, typename &gt;::is_empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Is the column empty? </p>
+
+<p>Implements <a class="el" href="classtui_1_1ColumnBase.html#a9f7862e77578a2f39eb78429deabc084">tui::ColumnBase</a>.</p>
 
 </div>
 </div>
