@@ -539,10 +539,12 @@ For instance, we want to match:
   + then fuzzy.
 Look online to see if there are libraries to do this.
 
-*** TODO Parse hh:mm in the entries register
+*** DONE Parse hh:mm in the entries register
+CLOSED: [2025-05-24 Sat 14:30]
 ADDED: [2025-04-06 Sun]
 When "renaming" a date in the entries register, use the currently selected day
 to parse hh:mm dates, like what is done in the stopwatch.
+- [2025-05-24 Sat] OK implemented.
 
 *** TODO Lock the committing of entries from entry staging to the current day
 ADDED: [2025-05-02 Fri]
@@ -644,6 +646,11 @@ We can remove the exporter dependency on the DB module.
 We can take a set/generator of core::ExportRow as input.
 + We have changed the interface of the module, and removed the DB module
   from the linking of the exporter module.
+
+*** TODO Remove reliance on DateParsingFailure exception
+ADDED: [2025-05-24 Sat]
+We rely on catching the ~DateParsingFailure~ exception when it would
+be better to return a maybe Date.
 
 ** Performance
 *** TODO Remove useless refreshes and updates
