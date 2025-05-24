@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">140</td>
+            <td class="headerCovTableEntry">146</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-24 08:29:02</td>
+            <td class="headerValue">2025-05-24 12:41:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
@@ -223,39 +223,47 @@
 <span id="L161"><span class="lineNum">     161</span> <span class="tlaUNC">           0 :     } break;</span></span>
 <span id="L162"><span class="lineNum">     162</span> <span class="tlaUNC">           0 :     case EntryField::start: {</span></span>
 <span id="L163"><span class="lineNum">     163</span> <span class="tlaUNC">           0 :       auto new_str = status().get_user_string();</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :       time_lib::Date new_start_date(new_str);</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC">           0 :       db::db().edit_entry_start(id, new_start_date);</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :     } break;</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaUNC">           0 :     case EntryField::stop: {</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaUNC">           0 :       auto new_str = status().get_user_string();</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC">           0 :       time_lib::Date new_stop_date(new_str);</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC">           0 :       db::db().edit_entry_stop(id, new_stop_date);</span></span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaUNC">           0 :     } break;</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC">           0 :     case EntryField::location_name: {</span></span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaUNC">           0 :       auto locations = db::db().query_locations();</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaUNC">           0 :       auto location_names = generic_item_names(locations);</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaUNC">           0 :       auto new_str = status().get_user_string_suggestions(location_names);</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaUNC">           0 :       db::db().edit_entry_location(id, new_str);</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaUNC">           0 :     } break;</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaUNC">           0 :     default:</span></span>
-<span id="L179"><span class="lineNum">     179</span>              :       throw std::logic_error</span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaUNC">           0 :         (&quot;Don't know what to do for renaming this unknown field type&quot;);</span></span>
-<span id="L181"><span class="lineNum">     181</span>              :     }</span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaUNC">           0 :     return true;</span></span>
-<span id="L183"><span class="lineNum">     183</span>              :   }</span>
-<span id="L184"><span class="lineNum">     184</span>              : </span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC">           0 :   bool EntriesTable::remove_item() {</span></span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaUNC">           0 :     if (reg.is_empty())</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaUNC">           0 :       return false;</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaUNC">           0 :     bool user_conf = status().query_confirmation(&quot;Remove entry? (Y/N)&quot;);</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaUNC">           0 :     if (!user_conf)</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :       return false;</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaUNC">           0 :     auto id = reg.get_current_id();</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaUNC">           0 :     db::db().delete_entry(id);</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :     update();</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaUNC">           0 :     return true;</span></span>
-<span id="L195"><span class="lineNum">     195</span>              :   }</span>
-<span id="L196"><span class="lineNum">     196</span>              : }</span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :       if (new_str.empty())</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC">           0 :         return false;</span></span>
+<span id="L166"><span class="lineNum">     166</span>              :       auto current_day_str =</span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaUNC">           0 :           day_selector-&gt;get_selected_day().to_day_month_year_string();</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaUNC">           0 :       time_lib::Date new_start_date(new_str, current_day_str);</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC">           0 :       db::db().edit_entry_start(id, new_start_date);</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC">           0 :     } break;</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaUNC">           0 :     case EntryField::stop: {</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC">           0 :       auto new_str = status().get_user_string();</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaUNC">           0 :       if (new_str.empty())</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaUNC">           0 :         return false;</span></span>
+<span id="L175"><span class="lineNum">     175</span>              :       auto current_day_str =</span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaUNC">           0 :           day_selector-&gt;get_selected_day().to_day_month_year_string();</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaUNC">           0 :       time_lib::Date new_stop_date(new_str, current_day_str);</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaUNC">           0 :       db::db().edit_entry_stop(id, new_stop_date);</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaUNC">           0 :     } break;</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaUNC">           0 :     case EntryField::location_name: {</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaUNC">           0 :       auto locations = db::db().query_locations();</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaUNC">           0 :       auto location_names = generic_item_names(locations);</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaUNC">           0 :       auto new_str = status().get_user_string_suggestions(location_names);</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaUNC">           0 :       db::db().edit_entry_location(id, new_str);</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC">           0 :     } break;</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaUNC">           0 :     default:</span></span>
+<span id="L187"><span class="lineNum">     187</span>              :       throw std::logic_error</span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaUNC">           0 :         (&quot;Don't know what to do for renaming this unknown field type&quot;);</span></span>
+<span id="L189"><span class="lineNum">     189</span>              :     }</span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :     return true;</span></span>
+<span id="L191"><span class="lineNum">     191</span>              :   }</span>
+<span id="L192"><span class="lineNum">     192</span>              : </span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :   bool EntriesTable::remove_item() {</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaUNC">           0 :     if (reg.is_empty())</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaUNC">           0 :       return false;</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaUNC">           0 :     bool user_conf = status().query_confirmation(&quot;Remove entry? (Y/N)&quot;);</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaUNC">           0 :     if (!user_conf)</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaUNC">           0 :       return false;</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaUNC">           0 :     auto id = reg.get_current_id();</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaUNC">           0 :     db::db().delete_entry(id);</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaUNC">           0 :     update();</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaUNC">           0 :     return true;</span></span>
+<span id="L203"><span class="lineNum">     203</span>              :   }</span>
+<span id="L204"><span class="lineNum">     204</span>              : }</span>
         </pre>
               </td>
             </tr>
