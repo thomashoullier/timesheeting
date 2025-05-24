@@ -167,10 +167,10 @@ namespace tui {
   }
 
   bool ProjectTaskScreen::add_item(const ColumnBase *cur_col) {
-    auto new_item_name = status().get_user_string();
-    if (new_item_name.empty())
-      return false;
     if (cur_col == project_col.get()) {
+      auto new_item_name = status().get_user_string();
+      if (new_item_name.empty())
+        return false;
       if(db::db().add_project(new_item_name)) {
         log_lib::logger().log("Added project: " + new_item_name,
                               log_lib::LogLevel::info);
@@ -181,6 +181,9 @@ namespace tui {
       }
     } else if (cur_col == task_col.get()) {
       if (project_col->is_empty())
+        return false;
+      auto new_item_name = status().get_user_string();
+      if (new_item_name.empty())
         return false;
       auto project_id = project_col->get_current_id();
       if(db::db().add_task(project_id, new_item_name)) {

@@ -66,20 +66,14 @@ namespace tui {
         }
         break;
       case config::NormalActions::add:
-        if (not(add_item())) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        } else {
+        if (add_item())
           UpdateManager::get().locations_have_changed();
-          update_status();
-        }
+        update_status();
         break;
       case config::NormalActions::rename:
-        if (not(rename_item())) {
-          status().print_wait("DB logic error! Nothing was done to the DB.");
-        } else {
+        if (rename_item())
           UpdateManager::get().locations_have_changed();
-          update_status();
-        }
+        update_status();
         break;
       case config::NormalActions::remove:
         remove_item();
@@ -120,51 +114,51 @@ namespace tui {
   bool LocationsScreen::add_item() {
     auto new_item_name = status().get_user_string();
     if (new_item_name.empty())
-      return true;
-    auto success = db::db().add_location(new_item_name);
-    log_lib::logger().log("Added location: " + new_item_name,
-                          log_lib::LogLevel::info);
-    update_location_col();
-    return success;
+      return false;
+    if (db::db().add_location(new_item_name)) {
+      update_location_col();
+      log_lib::logger().log("Added location: " + new_item_name,
+                            log_lib::LogLevel::info);
+    } else {
+      status().print_wait("DB logic error! Nothing was done to the DB.");
+      return false;
+    }
+    return true;
   }
 
   bool LocationsScreen::rename_item() {
-    try {
-      auto id = location_col->get_current_id();
-      auto new_item_name = status().get_user_string();
-      if (new_item_name.empty())
-        return true;
-      auto success = db::db().edit_location_name(id, new_item_name);
+    if (location_col->is_empty())
+      return false;
+    auto id = location_col->get_current_id();
+    auto new_item_name = status().get_user_string();
+    if (new_item_name.empty())
+      return false;
+    if (db::db().edit_location_name(id, new_item_name)) {
       update_location_col();
-      return success;
-    } catch (const ncurses_lib::MenuEmpty &e) {
-      // TODO: instead of managing this by exception, try to check if the column
-      // is empty explicitely.
-      return true;
+    } else {
+      status().print_wait("DB logic error! Nothing was done to the DB.");
+      return false;
     }
+    return true;
   }
 
   void LocationsScreen::remove_item() {
-    try {
-      auto id = location_col->get_current_id();
-      bool user_conf = status().query_confirmation("Remove item? (Y/N)");
-      if (!user_conf)
-        return;
-      db::db().delete_location(id);
-      update_location_col();
-    } catch (const ncurses_lib::MenuEmpty &e) {
+    if (location_col->is_empty())
       return;
-    }
+    auto id = location_col->get_current_id();
+    bool user_conf = status().query_confirmation("Remove item? (Y/N)");
+    if (!user_conf)
+      return;
+    db::db().delete_location(id);
+    update_location_col();
   }
 
   void LocationsScreen::toggle_active_item() {
-    try {
-      auto id = location_col->get_current_id();
-      db::db().toggle_location_active(id);
-      update_location_col();
-    } catch (const ncurses_lib::MenuEmpty &e) {
+    if (location_col->is_empty())
       return;
-    }
+    auto id = location_col->get_current_id();
+    db::db().toggle_location_active(id);
+    update_location_col();
   }
 
   void LocationsScreen::toggle_archive_visibility() {
