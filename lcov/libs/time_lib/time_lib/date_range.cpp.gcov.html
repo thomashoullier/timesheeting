@@ -31,17 +31,17 @@
             <td class="headerValue">timesheeting_coverage_report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntryMed">89.5&nbsp;%</td>
+            <td class="headerCovTableEntry">19</td>
             <td class="headerCovTableEntry">17</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-24 12:41:50</td>
+            <td class="headerValue">2025-05-24 17:27:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryMed">75.0&nbsp;%</td>
+            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntry">3</td>
           </tr>
                   <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -85,7 +85,11 @@
 <span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           1 :     strings.at(1) = stop.get_day_string();</span></span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           2 :     return strings;</span></span>
 <span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :   }</span></span>
-<span id="L26"><span class="lineNum">      26</span>              : }</span>
+<span id="L26"><span class="lineNum">      26</span>              : </span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :   bool DateRange::contains(const Date &amp;date) const {</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :     return date &gt;= start and date &lt;= stop;</span></span>
+<span id="L29"><span class="lineNum">      29</span>              :   }</span>
+<span id="L30"><span class="lineNum">      30</span>              : } // namespace time_lib</span>
         </pre>
               </td>
             </tr>
