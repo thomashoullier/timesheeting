@@ -29,6 +29,8 @@ namespace time_lib {
     std::string to_string() const;
     /** @brief Return a day-month-year string representation of the day. */
     std::string to_day_month_year_string() const;
+    /** @brief Whether the day contains the given date. */
+    bool contains(const Date &date) const;
   };
 }
 #endif // DAY_H

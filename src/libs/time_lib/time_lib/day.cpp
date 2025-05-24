@@ -42,4 +42,8 @@ namespace time_lib {
   std::string Day::to_day_month_year_string() const {
     return std::format("{:%d%b%Y}", ymd);
   }
+
+  bool Day::contains(const Date &date) const {
+    return this->to_date_range().contains(date);
+  }
 }

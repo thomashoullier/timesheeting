@@ -26,7 +26,7 @@ namespace tui {
     DaySelector::refresh();
   }
 
-  time_lib::Day DaySelector::get_selected_day() {
+  time_lib::Day DaySelector::get_selected_day() const {
     return day;
   }
 }

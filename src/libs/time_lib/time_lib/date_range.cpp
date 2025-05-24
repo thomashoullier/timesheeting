@@ -23,4 +23,8 @@ namespace time_lib {
     strings.at(1) = stop.get_day_string();
     return strings;
   }
-}
+
+  bool DateRange::contains(const Date &date) const {
+    return date >= start and date <= stop;
+  }
+} // namespace time_lib

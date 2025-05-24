@@ -31,6 +31,8 @@ namespace tui {
 
     /** @brief Rename a field in the entry in staging. */
     void rename_item();
+    /** @brief Try committing the entrystaging to the DB. */
+    bool commit_entrystaging();
     /** @brief Set the current field, if it is a date, to now().
         Return true if anything has changed, false otherwise. */
     bool set_current_now ();

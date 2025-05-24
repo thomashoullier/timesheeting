@@ -28,7 +28,7 @@ namespace tui {
     /** @brief Update the display of the day. */
     void refresh() final;
     /** @brief Get current day. */
-    time_lib::Day get_selected_day();
+    time_lib::Day get_selected_day() const;
   };
 } // namespace tui
 

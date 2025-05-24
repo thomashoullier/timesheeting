@@ -82,6 +82,10 @@ namespace time_lib{
     friend bool operator< (Date date_1, Date date_2);
     /** @brief Date more than operator. */
     friend bool operator> (Date date_1, Date date_2);
+    /** @brief Date less than or equal operator. */
+    friend bool operator<=(Date date_1, Date date_2);
+    /** @brief Date more than or equal operator. */
+    friend bool operator>= (Date date_1, Date date_2);
   };
 
   /** @brief Exception indicating that Date has failed to parse

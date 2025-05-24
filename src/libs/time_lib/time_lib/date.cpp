@@ -105,11 +105,8 @@ namespace time_lib{
     return std::format("{:%d%b%Y}", local_time);
   }
 
-  bool operator< (Date date_1, Date date_2) {
-    return date_1.to_unix_timestamp() < date_2.to_unix_timestamp();
-  }
-
-  bool operator>(Date date_1, Date date_2) {
-    return date_1.to_unix_timestamp() > date_2.to_unix_timestamp();
-  }
+  bool operator<(Date date_1, Date date_2) { return date_1.tp < date_2.tp; }
+  bool operator>(Date date_1, Date date_2) { return date_1.tp > date_2.tp; }
+  bool operator<=(Date date_1, Date date_2) { return date_1.tp <= date_2.tp; }
+  bool operator>=(Date date_1, Date date_2) { return date_1.tp >= date_2.tp; }
 }

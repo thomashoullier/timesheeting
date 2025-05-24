@@ -8,6 +8,7 @@
 #include "status_bar/status_bar.h"
 #include "time_lib/date.h"
 #include "time_lib/date_range.h"
+#include "time_lib/day.h"
 #include "ui/keys/bound_keys.h"
 #include "ui/tui/ui_screens/date_selector/day_selector.h"
 #include "ui/tui/ui_screens/entry_field.h"

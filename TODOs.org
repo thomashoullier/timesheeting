@@ -546,10 +546,14 @@ When "renaming" a date in the entries register, use the currently selected day
 to parse hh:mm dates, like what is done in the stopwatch.
 - [2025-05-24 Sat] OK implemented.
 
-*** TODO Lock the committing of entries from entry staging to the current day
+*** DONE Lock the committing of entries from entry staging to the current day
+CLOSED: [2025-05-24 Sat 19:18]
 ADDED: [2025-05-02 Fri]
 Only allow the committing of entries from the stopwatch to the currently
 selected day in the entries register. This is locked by start date only.
++ We can add a method in ~Day~: contains_date to check whether the
+  date is within the Day.
+- [2025-05-24 Sat] Implemented.
 
 *** TODO Lock the editing of entry start date to currently selected day
 ADDED: [2025-05-02 Fri]
@@ -651,6 +655,12 @@ We can take a set/generator of core::ExportRow as input.
 ADDED: [2025-05-24 Sat]
 We rely on catching the ~DateParsingFailure~ exception when it would
 be better to return a maybe Date.
+
+*** TODO DateRange: Hide start/stop attributes
+ADDED: [2025-05-24 Sat]
+Implement a method for changing these attributes, but do not expose
+them like this.
++ Also add a check for start/stop ordering when changing.
 
 ** Performance
 *** TODO Remove useless refreshes and updates

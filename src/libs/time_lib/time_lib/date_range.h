@@ -23,6 +23,8 @@ namespace time_lib{
     std::vector<std::string> to_string() const;
     /** @brief Get thet date range as short strings with only the day. */
     std::vector<std::string> to_day_strings() const;
+    /** @brief Does the date range contain the given date? */
+    bool contains(const Date &date) const;
   };
 }
 #endif // DATE_RANGE_H
