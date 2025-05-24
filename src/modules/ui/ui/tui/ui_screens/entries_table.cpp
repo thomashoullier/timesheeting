@@ -150,7 +150,12 @@ namespace tui {
       auto projects = db::db().query_projects();
       auto project_names = generic_item_names(projects);
       auto new_str = status().get_user_string_suggestions(project_names);
-      db::db().edit_entry_project(id, new_str);
+      if (new_str.empty())
+        return false;
+      if (not db::db().edit_entry_project(id, new_str)) {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
+      }
       break;
     }
     case EntryField::task_name: {
@@ -158,7 +163,12 @@ namespace tui {
       auto tasks = db::db().query_tasks(project_id);
       auto task_names = generic_item_names(tasks);
       auto new_str = status().get_user_string_suggestions(task_names);
-      db::db().edit_entry_task(id, new_str);
+      if (new_str.empty())
+        return false;
+      if (not db::db().edit_entry_task(id, new_str)) {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
+      }
     } break;
     case EntryField::start: {
       auto new_str = status().get_user_string();
@@ -167,7 +177,15 @@ namespace tui {
       auto current_day_str =
           day_selector->get_selected_day().to_day_month_year_string();
       time_lib::Date new_start_date(new_str, current_day_str);
-      db::db().edit_entry_start(id, new_start_date);
+      if (!day_selector->get_selected_day().contains(new_start_date)) {
+        status().print_wait("New start date is not contained in the selected "
+                            "day. Aborting.");
+        return false;
+      }
+      if (not db::db().edit_entry_start(id, new_start_date)) {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
+      }
     } break;
     case EntryField::stop: {
       auto new_str = status().get_user_string();
@@ -176,13 +194,21 @@ namespace tui {
       auto current_day_str =
           day_selector->get_selected_day().to_day_month_year_string();
       time_lib::Date new_stop_date(new_str, current_day_str);
-      db::db().edit_entry_stop(id, new_stop_date);
+      if (not db::db().edit_entry_stop(id, new_stop_date)) {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
+      }
     } break;
     case EntryField::location_name: {
       auto locations = db::db().query_locations();
       auto location_names = generic_item_names(locations);
       auto new_str = status().get_user_string_suggestions(location_names);
-      db::db().edit_entry_location(id, new_str);
+      if (new_str.empty())
+        return false;
+      if (not db::db().edit_entry_location(id, new_str)) {
+        status().print_wait("DB logic error! Nothing was done to the DB.");
+        return false;
+      }
     } break;
     default:
       throw std::logic_error

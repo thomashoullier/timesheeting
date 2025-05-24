@@ -555,13 +555,16 @@ selected day in the entries register. This is locked by start date only.
   date is within the Day.
 - [2025-05-24 Sat] Implemented.
 
-*** TODO Lock the editing of entry start date to currently selected day
+*** DONE Lock the editing of entry start date to currently selected day
+CLOSED: [2025-05-24 Sat 21:02]
 ADDED: [2025-05-02 Fri]
 Only allow setting a start date which is on the currently selected day
 in the entry register.
 + The issue is, how do we modify the day on which an entry was inputted?
 Just force to re-input could be a solution, since the entry would go off
 the screen when editing anyway.
+- [2025-05-24 Sat] Implemented the rule of forbidding moving the start date
+  to another day.
 
 ** Refactoring
 *** DEAD Refactor MenuNCurses
