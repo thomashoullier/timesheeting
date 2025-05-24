@@ -5,6 +5,7 @@
 
 #include <chrono>
 #include <string>
+#include "date.h"
 #include "date_range.h"
 
 namespace time_lib {

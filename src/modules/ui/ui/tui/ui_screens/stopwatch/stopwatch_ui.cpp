@@ -124,18 +124,18 @@ namespace tui {
     } break;
     case EntryField::start: {
       auto new_str = status().get_user_string();
-      auto current_day_str =
-        day_selector->get_selected_day().to_day_month_year_string();
       if (!new_str.empty()) {
+        auto current_day_str =
+            day_selector->get_selected_day().to_day_month_year_string();
         time_lib::Date new_start_date(new_str, current_day_str);
         db::db().edit_entrystaging_start(new_start_date);
       }
     } break;
     case EntryField::stop: {
       auto new_str = status().get_user_string();
-      auto current_day_str =
-        day_selector->get_selected_day().to_day_month_year_string();
       if (!new_str.empty()) {
+        auto current_day_str =
+            day_selector->get_selected_day().to_day_month_year_string();
         time_lib::Date new_stop_date(new_str, current_day_str);
         db::db().edit_entrystaging_stop(new_stop_date);
       }

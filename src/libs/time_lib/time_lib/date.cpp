@@ -1,5 +1,6 @@
 #include "date.h"
 #include <chrono>
+// IWYU pragma: no_include <compare>
 #include <format>
 #include <sstream>
 #include <stdexcept>
