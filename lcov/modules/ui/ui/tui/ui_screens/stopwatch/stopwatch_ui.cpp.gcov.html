@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntry">131</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-05-24 17:27:36</td>
+            <td class="headerValue">2025-05-24 18:52:05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
@@ -186,21 +186,21 @@
 <span id="L124"><span class="lineNum">     124</span> <span class="tlaUNC">           0 :     } break;</span></span>
 <span id="L125"><span class="lineNum">     125</span> <span class="tlaUNC">           0 :     case EntryField::start: {</span></span>
 <span id="L126"><span class="lineNum">     126</span> <span class="tlaUNC">           0 :       auto new_str = status().get_user_string();</span></span>
-<span id="L127"><span class="lineNum">     127</span>              :       auto current_day_str =</span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaUNC">           0 :         day_selector-&gt;get_selected_day().to_day_month_year_string();</span></span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaUNC">           0 :       if (!new_str.empty()) {</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaUNC">           0 :       if (!new_str.empty()) {</span></span>
+<span id="L128"><span class="lineNum">     128</span>              :         auto current_day_str =</span>
+<span id="L129"><span class="lineNum">     129</span> <span class="tlaUNC">           0 :             day_selector-&gt;get_selected_day().to_day_month_year_string();</span></span>
 <span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :         time_lib::Date new_start_date(new_str, current_day_str);</span></span>
 <span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :         db::db().edit_entrystaging_start(new_start_date);</span></span>
-<span id="L132"><span class="lineNum">     132</span>              :       }</span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaUNC">           0 :       }</span></span>
 <span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :     } break;</span></span>
 <span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 :     case EntryField::stop: {</span></span>
 <span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :       auto new_str = status().get_user_string();</span></span>
-<span id="L136"><span class="lineNum">     136</span>              :       auto current_day_str =</span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaUNC">           0 :         day_selector-&gt;get_selected_day().to_day_month_year_string();</span></span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaUNC">           0 :       if (!new_str.empty()) {</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaUNC">           0 :       if (!new_str.empty()) {</span></span>
+<span id="L137"><span class="lineNum">     137</span>              :         auto current_day_str =</span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaUNC">           0 :             day_selector-&gt;get_selected_day().to_day_month_year_string();</span></span>
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 :         time_lib::Date new_stop_date(new_str, current_day_str);</span></span>
 <span id="L140"><span class="lineNum">     140</span> <span class="tlaUNC">           0 :         db::db().edit_entrystaging_stop(new_stop_date);</span></span>
-<span id="L141"><span class="lineNum">     141</span>              :       }</span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaUNC">           0 :       }</span></span>
 <span id="L142"><span class="lineNum">     142</span> <span class="tlaUNC">           0 :     } break;</span></span>
 <span id="L143"><span class="lineNum">     143</span> <span class="tlaUNC">           0 :     case EntryField::location_name: {</span></span>
 <span id="L144"><span class="lineNum">     144</span> <span class="tlaUNC">           0 :       auto locations = db::db().query_locations_active();</span></span>
