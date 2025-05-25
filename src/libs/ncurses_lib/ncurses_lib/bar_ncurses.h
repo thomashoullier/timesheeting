@@ -26,7 +26,7 @@ namespace ncurses_lib {
     /** @brief Prepare the bar for cursor-based input. */
     void prepare_input();
     /** @brief Add character to the bar. */
-    void add_char(char ch);
+    void add_char(int ch);
     /** @brief Remove last character from bar. */
     void remove_char();
     /** @brief Get the max size of the bar. */

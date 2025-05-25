@@ -48,7 +48,7 @@ namespace ncurses_lib {
     wclrtoeol(win);
   }
 
-  void BarNCurses::add_char(char ch) { waddch(win, ch); }
+  void BarNCurses::add_char(int ch) { waddch(win, ch); }
 
   void BarNCurses::remove_char() {
     int y, x;

@@ -297,12 +297,27 @@ is pressed in an empty entry register.
   - Additionally, we removed the reliance on the MenuEmpty exception,
     which was ugly design.
 
-*** TODO Characters such as é are not displayed properly in status bar.
+*** TODO UTF-8 characters support in status bar and ncurses_lib.
 ADDED: [2025-05-07 Wed]
 Some characters are not displayed correctly when in edit mode.
 They are displayed OK elsewhere.
 + This is likely due to the method BarNCurses::add_char which takes
   a char type as argument when it should take an int.
+  + We have a problem with erasing characters, special characters such
+    as ~é~ are only half erased from the string buffer, leading to
+    total garbage being output.
+    This is because UTF-8 characters are encoded over multiples bytes,
+    but std::string treats only one byte at a time.
+    ncurses actually outputs multiple ints for some characters but we
+    delete only one byte at a time in the input buffer.
+  + ~std::u8string~ exists, see if it is sufficient.
+    See third party https://github.com/nemtrif/utfcpp instead
+    (in gentoo repos).
+    Also see the ~ICU~ library (maybe more widespread?)
+  + There are issues of computing the number of characters in the string
+    in the ncurses library itself (size of windows etc.).
+    We need to change every string to a u8string one if it works.
+  + ~size~ could be replaced by ~utf8::distance~.
 + Track down other mistaken uses of char in the program instead of int.
 + Add tests for special characters in the DB module, or better, in DB lib.
 
