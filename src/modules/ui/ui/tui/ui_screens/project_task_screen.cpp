@@ -208,6 +208,7 @@ namespace tui {
     if (cur_col == project_col.get()) {
       if (db::db().edit_project_name(id, new_item_name)) {
         update_project_col();
+        update_task_col();
       } else {
         status().print_wait("DB logic error! Nothing was done to the DB.");
         return false;

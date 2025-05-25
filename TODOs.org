@@ -585,7 +585,7 @@ we need:
 + Dynamic resizing, and setting widths and ratios in multiple
   column menus.
 + Manage the appearance of items (highlight, color, bold, etc.)
- 
+
 Currently, using the ncurses menu library, we cannot put highlight
 and colors on items. Also, we have to destroy and recreate the whole
 menu when we could just redraw some things.
