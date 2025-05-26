@@ -56,6 +56,14 @@ ADDED: [2024-12-29 Sun]
 We have a diagram in the images for the SDD, move it here.
 Explain the difference between libs and modules.
 
+*** DONE Specify the config_lib
+CLOSED: [2025-01-29 Wed 21:24]
+ADDED: [2024-12-29 Sun]
+
+*** DONE Specify the time_lib
+CLOSED: [2025-01-29 Wed 21:24]
+ADDED: [2024-12-29 Sun]
+
 * External timesheet format
 ** DONE v1.1
 CLOSED: [2024-11-03 Sun 12:11]
@@ -69,6 +77,36 @@ Additions:
   + IRS1-HED-075, IRS1-HED-085 added
   + IRS1-HED-150 modified.
 + Example of compliant file modified.
+** DONE Update program version format
+CLOSED: [2025-05-05 Mon 19:21]
+ADDED: [2025-05-05 Mon]
+We decided on a format ~0.8~ which has no fixed size. We need
+to update IRS1-HED-080 and IRS1-HED-140, and the example at the end.
+
+** DONE Make dates timezone unambiguous.
+CLOSED: [2025-05-05 Mon 19:51]
+ADDED: [2025-05-05 Mon]
+Use full date with time zone information just as in the logger
+for export date, export start date and export stop date.
++ We decided to keep the timezone header line, as it gives more
+  data than just parsing the dates in the header: it gives information
+  about which timezone the export period is meant to be expressed in.
+  In particular, giving only the dates could be perplexing if there
+  is DST changes.
+
+* Test plan: PRJ1-TST1
+** DONE Describe the tests for the version module
+CLOSED: [2025-01-29 Wed 21:24]
+ADDED: [2024-12-29 Sun]
+
+** DONE Describe the tests for the config_lib
+CLOSED: [2025-01-29 Wed 21:24]
+ADDED: [2024-12-29 Sun]
+
+** DONE Describe the tests for the time_lib
+CLOSED: [2025-01-29 Wed 21:24]
+ADDED: [2024-12-29 Sun]
+
 * Repository documentation
 ** DONE Add a project timeline
 CLOSED: [2024-01-23 Tue 19:59]
@@ -112,6 +150,72 @@ Check the latex documentation build.
 + It is pretty heavy to put a latex installation on a VM for automated building
   though.
 + See this docker: https://hub.docker.com/r/texlive/texlive/tags
+
+*** DONE Add a test coverage report
+CLOSED: [2025-01-05 Sun 17:20]
+ADDED: [2024-12-29 Sun]
+Use lcov or gcov and upload the report to something publicly browsable which
+gives which parts of the source are covered.
+
+*** DONE Use a dockerhub account to avoid the image pull limits
+CLOSED: [2025-03-29 Sat 18:12]
+ADDED: [2025-03-23 Sun]
+We can probably get a token and add it in the CI secrets.
+- [2025-03-29 Sat] OK we have a docker username and token in the CI.
+
+*** DONE Add static code analysis to the CI
+CLOSED: [2025-04-06 Sun 13:32]
+ADDED: [2025-03-28 Fri]
+Run a cppcheck on the whole codebase as part of the CI.
+
+*** DONE Add a check for unused includes
+CLOSED: [2025-04-06 Sun 13:32]
+ADDED: [2025-04-05 Sat]
+See include-what-you-use
+- [2025-04-06 Sun] Fixed all includes and added to CI.
+
+*** DONE Add IWYU back into the CI
+CLOSED: [2025-04-12 Sat 16:11]
+ADDED: [2025-04-06 Sun]
+It would be nice to have IWYU in the CI.
+But we cannot compile llvm gentoo package on the CI server. It breaks the server.
+Use a binary version or another linux image entirely for this (eg. alpine).
++ Maybe ~emerge --usepkgonly~.
+- [2025-04-12 Sat] Added back in.
+
+*** DONE Deploy the unit tests coverage to somewhere accessible online
+CLOSED: [2025-04-13 Sun 14:50]
+ADDED: <2025-04-06 Sun>
+We would like to avoid relying on coveralls. Maybe copy the lcov report on
+github pages directly.
++ We can try pushing manually to the github pages (which is the gh-pages branch
+  of the repo). Maybe we can setup a token to allow the Drone CI to push to this
+  branch?
++ We have to deploy both the doxygen documentation and the lcov report side by
+  side. Simply push them to two separate folders seems like it would work.
+  See https://stackoverflow.com/questions/18935539/authenticate-with-github-using-a-token
+  we can add the token in the remote address.
++ We can just pull the existing pages somewhere on the CI docker, copy the new docs into
+  this folder, and commit+push the difference to the gh-pages branch.
++ We have created a github token for this: ~timesheeting_gh_pages~
++ Remember to manage the case where there is nothing to push maybe (no diff).
+
+*** DONE Use binary gentoo packages as much as possible in the CI
+CLOSED: [2025-04-09 Wed 21:09]
+ADDED: [2025-04-06 Sun]
+The binary packages were not as normalized when we started the project.
+The CI server is weak, and we could benefit from quicker test loops.
+The binary packages should reflect a sensible default, so we see no reason
+not to use them in tests.
+- [2025-04-09 Wed] We configured the CI to use binary packages whenever available.
+
+*** DONE Add a check for memory leak when running the unit tests
+CLOSED: [2025-05-02 Fri 09:18]
+ADDED: [2025-04-20 Sun]
+The unit tests are supposed to trigger every exception etc., so
+it is a good place to check for memory leaks.
+Simply run the tests with valgrind on top, and figure out how to
+return a valgrind error if some memory was leaked.
 
 * Software
 ** Bugs
@@ -192,6 +296,132 @@ Is there a security risk here?
   ~Proj(null)E~. This is pretty bad.
 + We fixed it.
 
+*** DONE Escape and keypad cannot be used simultaneously in ncurses
+CLOSED: [2025-01-12 Sun 15:47]
+ADDED: [2025-01-07 Tue]
+The support for keypad we added conflicts with binding the escape key
+in edit mode.
++ One quick fix would be to disable the keypad when entering edit mode,
+  and re-enable it when leaving.
++ We initialized the status bar so that it does not interpret the keypad
+  keys.
+
+*** DONE Project report total does not update immediately when changing the period
+CLOSED: [2025-03-15 Sat 15:22]
+ADDED: [2025-01-12 Sun]
+- [2025-03-15 Sat] Fixed by calling total_bar.refresh()
+  just after updating the period selector.
+
+*** DONE In stopwatch, the task name cell string goes further than the cell size
+CLOSED: [2025-03-15 Sat 15:03]
+ADDED: [2025-03-03 Mon]
+This happens only when we shift the selection in the menu.
++ This is a bug which appears in all menus in fact.
+- [2025-03-15 Sat] Fixed it by cropping the print string in the window's print
+  method to the size of the column.
+
+*** DONE Input buffer + suggestion on status bar writes past the screen
+CLOSED: [2025-03-28 Fri 19:44]
+ADDED: [2025-03-23 Sun]
+If we input a very long string in the status bar input buffer,
+the eventual suggestion added at the end will be written past the screen,
+which makes the display glitch out.
+- [2025-03-28 Fri] Added a condition on the print_after_cursor method of
+  BarNCurses. We only print the message if it will fit in the bar.
+
+*** DONE Status bar empties when resizing in normal mode
+CLOSED: [2025-03-30 Sun 14:03]
+ADDED: [2025-03-23 Sun]
+Currently, in the normal mode of any screen, the status bar
+empties completely when we resize the window. It only returns to
+normal after one input loop. Fix it so the status bar stays displayed
+through resizing.
+- [2025-03-30 Sun] Added an update_status() method to UIComponent, it updates what is
+  displayed on the status bar. It is called when resizing on the current screen.
+
+*** DONE Switching menu while trying to conserve scrolling is wrong
+CLOSED: [2025-03-28 Fri 19:18]
+ADDED: [2025-03-27 Thu]
+We observe a bug when in a long menu: scroll to the bottom and then
+switch to another page with much fewer items. The scolling will not
+reset and the menu will not be displayed correctly.
+We observed the bug on the entries screen and on the weekly report screen.
++ One solution may be to reset the scrolling and cursor position when
+  changing page. Or add a mechanism in the menu itself when changing the
+  elements (although we need to keep the cursor where it is when renaming/
+  adding/deleting). Maybe check if the cursor is on screen, and if not
+  then scroll so that it is.
++ Bug was also found on the project report screen, when switching from
+  a scrolled menu to the bottom to a very short menu, nothing is displayed
+  and we cannot scroll back up.
++ The same problem may exist when displaying/hiding archived items
+  in project/tasks and locations.
++ The problem might exist in the entries/task screen. We should reset
+  the scrolling and cursor whenever we display the tasks for a new project.
+- [2025-03-28 Fri] We added a check and correction of the scrolling position in the
+  set_items() method of the MenuNCurses.
+  We checked the behavior was fixed on the entries screen, the project report
+  screen, and the weekly report screen.
+
+*** DONE Do we leak memory when disconnected from the DB?
+CLOSED: [2025-04-13 Sun 15:26]
+ADDED: [2025-04-12 Sat]
+We are trying to run PRAGMA optimize on quitting, but doesn't it interrupt the
+cleanup somehow?
+This problem was recently picked up by cppcheck also.
+- [2025-04-13 Sun] We moved the ~PRAGMA optimize~ from the destructor to the
+  constructor, as it is less risky to have it fail in the constructor.
+
+*** DONE Remove dangerous singleton methods
+CLOSED: [2025-05-21 Wed 22:07]
+ADDED: [2025-05-01 Thu]
+See the answer here: https://stackoverflow.com/a/1008289/10376845
+We have many singletons without these methods removed, resulting in possible
+misuse.
+- [2025-05-21 Wed] Removed the copy and assignment functions for all singletons in
+  the program.
+
+*** DONE Manage excentric dates far in the past and future
+CLOSED: [2025-05-19 Mon 20:50]
+ADDED: [2025-05-01 Thu]
+Currently we can instantiate dates which end up as underflow in the DB,
+this is very bad. Add a condition for only representing dates between
+1970 and ~2100.
+Either throw an exception or clip dates. Be careful this must apply
+to dates obtained by shifting existing dates.
++ The right solution is probably to define a min and max date in UNIX
+  format. Then throw an exception when trying to convert dates to UNIX
+  if it goes outside the valid range. We can define a range between
+  1970 (timestamp 0) and 2100 for example.
++ In fact we can get away with a signed int64. Dates with negative
+  UNIX timestamp are still valid.
+  We have to add a guard for when the input overflows the integer though,
+  like the user inputting a comically large year.
+  + The large years get clipped since the parser only takes the first four
+    digits into account.
+- [2025-05-19 Mon] We fixed the problem by representing timestamps as int64_t
+  throughout the program, instead of uint64_t. This is valid for the chrono
+  library and for the DB. Dates between year 0 and 9999 should be completely
+  valid now, which is good enough for our use case.
+
+*** DONE When trying to rename in an empty entries register, exception is thrown
+CLOSED: [2025-05-22 Thu 21:13]
+ADDED: [2025-05-02 Fri]
+It is not very elegant to close the program when the renaming binding
+is pressed in an empty entry register.
++ When removing an entry from an empty register, it is also weird to ask
+  for confirmation even though there is nothing.
++ Also modify the column class to have this behavior (instead of try/catch
+  the MenuEmpty exception).
+- [2025-05-22 Thu] Fixed the entries_table.h: rename and remove.
+- For the project_task_screen:
+  - rename: ok, we no longer rely on exception catching.
+  - project_task_change: ok, fixed also.
+  - remove: ok, fixed also.
+  - active_toggle: ok
+  - Additionally, we removed the reliance on the MenuEmpty exception,
+    which was ugly design.
+
 ** DONE Draft the GUI
 CLOSED: [2024-02-18 Sun 17:44]
 Reach a point where every main UI screen is present. Individual dialogs will be
@@ -242,6 +472,42 @@ bar. How do we share a view-only object from the tab to the status bar?
 + Maybe create the stopwatch object in main, and pass a shared_pointer
   throughout the object tree towards the "Daily entries" tab and a const
   shared_pointer to the status bar?
+
+** Testing
+*** DONE Test the config_lib
+CLOSED: [2025-01-29 Wed 21:23]
+ADDED: [2024-12-29 Sun]
+
+*** DONE Test the time_lib
+CLOSED: [2025-01-29 Wed 21:23]
+ADDED: [2024-12-29 Sun]
+
+*** DEAD Replace the CodeCoverage cmake module with a script
+CLOSED: [2025-05-04 Sun 20:20]
+ADDED: [2025-05-04 Sun]
+The CodeCoverage module is an unnecessary complication.
+We can prepare a cmake target for tests and run lcov directly
+from a shell script. This would allow us to add options to lcov,
+which we cannot easily do with the cmake module.
++ In fact, CodeCoverage does a lot of useful things, it is not
+  straightforward to remove it.
++ We can pass LCOV_ARGS to it to manage lcov errors.
+
+*** DONE Add Date parsing test for years before 1970 and after 2038
+CLOSED: [2025-05-20 Tue 21:50]
+ADDED: [2025-05-19 Mon]
++ In time_lib:
+  + Test for parsing dates from strings with years before 1970 and
+    after 2038.
+  + Make sure the UNIX timestamp retrieved is OK (eventually negative),
+    and that displaying the date back works.
+  + Test that years beyond 9999 get clipped by the string parsing.
+  + Test that years with a minus sign do not work.
++ In db_lib:
+  + Make sure we can store negative integers.
+  + Make sure we can store positive integers past 32 bits in length
+    (year 2038 bug).
+- [2025-05-20 Tue] OK, all of these tests were added.
 
 ** Ergonomy
 *** DONE Enforce a display order for hierarchy items
@@ -328,6 +594,167 @@ ADDED: [2024-11-25 Mon]
 It would be useful to log the time it takes to export the timesheet.
 - [2024-11-26 Tue] OK added a tick/tock around the export.
 
+*** DONE Toggle archive visibility resets the screen
+CLOSED: [2025-02-22 Sat 14:27]
+ADDED: [2024-11-16 Sat]
+WAIT for the custom menu implementation
+Currently, toggling archive visibility resets the whole screen.
+Make it so the selection stays in place.
+- [2024-11-23 Sat] This is quite hard to do because the whole menu is getting
+  replaced every time. We would have to add the feature on the menu to
+  save the current selection and restore it if possible.
+  This is especially difficult when going from the full view to the
+  active-only view, if the selection was on an archived item.
+  We would have to track the alphabetical order.
+- [2025-02-22 Sat] Solved by the custom menu implementation.
+
+*** DONE Do NOTHING when hitting unbound keys
+CLOSED: [2025-03-16 Sun 10:00]
+ADDED: [2024-11-23 Sat]
+Currently the program shifts the selection when an
+unbound key is inputted. Change this behavior to doing nothing.
++ This could be solved by staying within the current input loop
+  whenever an unbound key is inputted. However this does not solve
+  the problem of hitting keys which are bound elsewhere.
++ You can have every level of the input querying chain remember
+  where its focus is.
++ The problem of switching focus is present in:
+  + FIXED. Entries screen (between registry and stopwatch)
+  + FIXED. Project Task screen, between projects and tasks
+  + FIXED. Project report, between report and period selector
+- [2025-03-16 Sun] We solved it by making screens remember their focus.
+  It also solves the problem of keeping focus when changing back and forth
+  between screens.
+
+*** DONE Skip refresh when hitting an unbound key
+CLOSED: [2025-03-22 Sat 20:25]
+ADDED: [2025-03-16 Sun]
+The display refreshes (visible blinking) when we hit an unbound key.
+We should do nothing at all instead.
+- [2025-03-17 Mon] Handled the project/task screen in an acceptable fashion.
+  We filter for keys which we know will be used in the UI above,
+  and only pass these. There are still unnecessary updates
+  in the case of hitting direction keys at extremities
+  (borders and status bar). We can remove the up/down by getting
+  a return code from the menu "select_up_item" method.
+- [2025-03-17 Mon] Removed all useless input-related refreshes
+  in the project/task screen by making the menu return a status
+  code for whether the selection has actually changed.
+- [2025-03-22 Sat] Removed most of the useless refreshes from all screens.
+
+*** DONE Handle resizing
+CLOSED: [2025-02-22 Sat 14:29]
+ADDED: [2024-11-24 Sun]
+WAIT for the custom menu implementation
+Handle the dynamic resizing of the TUI.
++ Make use of the full available terminal size.
++ NOK Ensure a minimum size is available, like xx lines per 80 columns.
+  If it is not reached then stop the UI until it becomes big enough.
+- [2025-02-22 Sat] Solved by the custom menu implementation.
+
+*** DONE Be able to change the currently selected day from the stopwatch
+CLOSED: [2025-03-23 Sun 09:58]
+ADDED: [2024-11-26 Tue]
+- [2025-03-23 Sun] OK, implemented.
+
+*** DONE While in the weekly report, do not reset the cursor position when changing the duration display format
+CLOSED: [2025-02-22 Sat 14:30]
+ADDED: [2024-12-08 Sun]
+Currently the cursor goes back to the top of the screen when the duration
+display format is changed. This is annoying because sometimes we would like
+to see the duration for the currently selected item in multiple formats.
+- [2025-02-22 Sat] Solved by the custom menu implementation.
+
+*** DONE What happens if we resize the terminal while in edit mode?
+CLOSED: [2025-03-24 Mon 20:39]
+ADDED: [2025-02-21 Fri]
+I don't think we account for this case.
+- The display currently glitches out when resizing in edit mode. It goes back
+  to normal when exiting.
+- The resize characters get added to the input buffer, which is wrong.
+- When the input buffer is larger than the window, what do we do?
+  The sane thing to do would be to exit the edit mode when resizing
+  happens in fact.
+- [2025-03-24 Mon] Fixed the issue by quitting edit mode when resizing.
+
+*** DONE Display archived items in italics
+CLOSED: [2025-02-22 Sat 16:12]
+ADDED: [2025-02-22 Sat]
+We need to add the italics face to the menu items.
+Display the active items in normal face, and the archived items in italics face.
+- [2025-02-22 Sat] Implemented.
+
+*** DONE Stay in stopwatch or register when resizing from the entries screen.
+CLOSED: [2025-03-16 Sun 10:03]
+ADDED: [2025-02-28 Fri]
+Currently, when the UI is on the entry screen and we resize, the focus shifts to the register
+and does not stay in the stopwatch.
+- [2025-03-16 Sun] Solved by making each screen remember their focus across
+  input loops.
+
+*** DONE Parse hh:mm using the currently selected register day
+CLOSED: [2025-03-23 Sun 11:41]
+ADDED: [2025-02-28 Fri]
+Use the currently selected register day to parse a date string given as just
+"hh", "hh:mm", "hh:mm:ss".
++ Add a Date method which uses a current day and the string.
+  First try to parse the string without the day, if it fails
+  then add the day in, and it it still fails then fail.
++ Perhaps pass a reference to the day selector to the stopwatch
+  in order to do this.
+- [2025-03-23 Sun] Implemented this. Seems to work well.
+
+*** DONE Do not update the stopwatch start date when commit fails
+CLOSED: [2025-03-22 Sat 20:26]
+ADDED: [2025-03-05 Wed]
+Currently, when a stopwatch commit is rejected, the start date is updated. Do
+nothing instead.
+- [2025-03-22 Sat] Took care of it when removing useless refreshes.
+
+*** DONE Set the stopwatch start date to the previous end date on successful commit
+CLOSED: [2025-03-22 Sat 20:37]
+ADDED: [2025-03-16 Sun]
+This is useful when entering dates manually, we only have to type
+them once in the sequence.
+- [2025-03-22 Sat] After committing the stopwatch entry, we query it
+  from the DB and use the last end date as the new start date.
+
+*** DONE Improve the suggestion engine
+CLOSED: [2025-04-25 Fri 14:48]
+ADDED: [2025-04-06 Sun]
+For instance, we want to match:
+  + exact prefix strings first, then
+  + the first match of an exact substring,
+  + then fuzzy.
+Look online to see if there are libraries to do this.
+
+*** DONE Parse hh:mm in the entries register
+CLOSED: [2025-05-24 Sat 14:30]
+ADDED: [2025-04-06 Sun]
+When "renaming" a date in the entries register, use the currently selected day
+to parse hh:mm dates, like what is done in the stopwatch.
+- [2025-05-24 Sat] OK implemented.
+
+*** DONE Lock the committing of entries from entry staging to the current day
+CLOSED: [2025-05-24 Sat 19:18]
+ADDED: [2025-05-02 Fri]
+Only allow the committing of entries from the stopwatch to the currently
+selected day in the entries register. This is locked by start date only.
++ We can add a method in ~Day~: contains_date to check whether the
+  date is within the Day.
+- [2025-05-24 Sat] Implemented.
+
+*** DONE Lock the editing of entry start date to currently selected day
+CLOSED: [2025-05-24 Sat 21:02]
+ADDED: [2025-05-02 Fri]
+Only allow setting a start date which is on the currently selected day
+in the entry register.
++ The issue is, how do we modify the day on which an entry was inputted?
+Just force to re-input could be a solution, since the entry would go off
+the screen when editing anyway.
+- [2025-05-24 Sat] Implemented the rule of forbidding moving the start date
+  to another day.
+
 ** Refactoring
 *** DONE Fix CMakeLists includes
 CLOSED: [2024-11-30 Sat 14:10]
@@ -405,6 +832,83 @@ There is a generic part to the config file module.
 This will allow us to add logs to the config module which will arise
 out of this, without coupling it to the library.
 
+*** DEAD Refactor MenuNCurses
+CLOSED: [2024-11-25 Mon 21:59]
+ADDED: <2024-09-01 Sun>
+We can include the status bar display and basic input_loop navigation directly
+in the MenuNCurses class.
+Add the border highlighting there also.
+- [2024-11-25 Mon] We will replace it with a custom menu implementation.
+
+*** DONE Implement a custom ncurses menu
+CLOSED: [2025-02-22 Sat 14:31]
+ADDED: [2024-11-24 Sun]
+Objective: Recreate a menu library for ncurses replacing the one
+           provided in ncurses.
+Motivation: The ncurses menu library is missing these features which
+we need:
++ Dynamic resizing, and setting widths and ratios in multiple
+  column menus.
++ Manage the appearance of items (highlight, color, bold, etc.)
+
+Currently, using the ncurses menu library, we cannot put highlight
+and colors on items. Also, we have to destroy and recreate the whole
+menu when we could just redraw some things.
++ See whether someone already did this in c++
++ Develop on a separate branch, as it is a large task.
++ We can store "MenuItems" which have a string content, a short string
+  content, and appearance attributes.
++ Interface with the existing window class.
++ Menu has to include multi-column. A custom menu is necessary to make
+  columns with variable width.
++ Prepare for dynamic resizing.
+- [2025-02-22 Sat] Implemented.
+
+*** DONE Decouple the ncurses_lib from log_lib
+CLOSED: [2025-05-18 Sun 16:43]
+ADDED: [2024-11-27 Wed]
+It makes no sense to have ncurses_lib depend on any logging. It
+makes the library less reusable.
++ The reason they are coupled is because of the input_loop timing.
++ We could add a window class in the tui module which defines
+  an instrumented input_loop on top of the basic input_loop.
+  We likely have to do the same with every window child class.
+- The dependency was removed by removing the input loop timing.
+
+*** DONE Put final attributes everywhere on classes and methods
+CLOSED: [2025-04-06 Sun 14:12]
+ADDED: [2025-04-05 Sat]
+This is a safeguard to avoid unintended inheritance.
+
+*** DONE Add a handle to the DB in Statement
+CLOSED: [2025-04-21 Mon 14:39]
+ADDED: [2025-04-20 Sun]
+Two problems are solved by this:
++ The db_lib is used in a leaky way currently in statement_set.
++ The Statement must sometimes check for error codes in the DB,
+  eg. for an out-of-memory error on sqlite3_column_text(),
+  but currently does not have a handle to it.
+Maybe solve this by tying the statements to the DB handle. We add
+the statements to the DB handle. In this fashion the statements are
+always destroyed before the DB and we can safely share a db pointer
+for error checking in the statements.
++ Make a DBConnection object which only opens and destroys the db.
+  The DBConnection is created as a shared ptr by DBHandle.
++ The DBConnection is shared to the DBHandle and Statements.
++ DBHandle returns full Statement with a prepare method,
+  it shares the DBConnection to the Statement when creating it.
++ In this fashion, the DBConnection always exists as long as DBHandle
+  or Statements exist, and it is cleaned up when they are destroyed.
+- [2025-04-21 Mon] Implemented.
+
+*** DONE Decouple exporter module from DB
+CLOSED: [2025-05-05 Mon 14:36]
+ADDED: [2025-05-05 Mon]
+We can remove the exporter dependency on the DB module.
+We can take a set/generator of core::ExportRow as input.
++ We have changed the interface of the module, and removed the DB module
+  from the linking of the exporter module.
+
 ** Fixes
 *** DONE Manage more projects and tasks than one page
 CLOSED: [2024-07-28 Sun 10:35]
@@ -422,6 +926,38 @@ a std::generator<ExportRow> but we have to wait for GCC14.
 - [2024-11-26 Tue] OK we changed the DB export object from a vector to
   a generator. We cannot measure any difference in runtime when
   exporting a small DB with ~50 entries, so no major error is present.
+
+*** DONE Use a hash function to match key bindings dynamically
+CLOSED: [2025-01-12 Sun 16:03]
+ADDED: [2024-11-10 Sun]
+Currently we are doing an else if table, which is suboptimal.
+This should not matter very much of course, but it is
+cleaner to use some kind of hash from dynamic key to an enum of keys,
+and then match the enums in a switch statement.
+- [2025-01-12 Sun] Implemented key to Actions maps for bindings. The if ladders are
+  replaced with switch statements.
+
+*** DONE Consider adding sanitization flags
+CLOSED: [2025-05-18 Sun 17:13]
+ADDED: [2025-05-17 Sat]
+Flag like ~-fsanitize=signed-integer-overflow~ could make the program safer?
+Investigate.
+- [2025-05-18 Sun] OK we added the ~-fsanitize=signed-integer-overflow~ sanitizer.
+  It does not seem to change anything. Unit tests still pass.
++ See also ~-fsanitize=address~, requires a third party library,
+  so we leave it out.
++ See ~-fsanitize=undefined~, creates a lot of memory leaks, not sure why.
+
+*** DONE Enable parallel build
+CLOSED: [2025-05-18 Sun 17:27]
+ADDED: [2025-05-18 Sun]
+Our build is currently pretty long, enable parallel building
+(probably a cmake option).
++ This already works with ~make -j6~.
+  + Base build performance for monothread on our machine is 1m30.
+  + ~-j6~ performance is 24s.
+We do not enable it in the CI because there are already many CI jobs
+done in parallel.
 
 ** Features
 *** DONE Rename tasks
@@ -946,3 +1482,93 @@ We need the install script for our program.
   + Put the config file in dotfiles.
 - [2024-11-24 Sun] Wrote the installation instructions in CMakeLists.txt, the binary
   is deployed in `/bin/`, the default configuration file in `/etc/`.
+
+*** DONE Abandon primary/alternative mapping of keys in config
+CLOSED: [2025-01-15 Wed 21:46]
+ADDED: [2025-01-14 Tue]
+Use a list of strings for indicating keys for a given mapping in the config
+file. Add everything to the map when loading. In this fashion we can have as
+many bindings as we want.
+- [2025-01-15 Wed] Implemented this solution.
+
+*** DONE Protect against binding the same key twice to the same mode
+CLOSED: [2025-01-16 Thu 20:13]
+ADDED: [2024-11-28 Thu]
+When loading the keys into BoundKeys, check that keys are not bound twice in the
+same section. Edit mode and the other sections may mix however.
+Stop with an exception if this is the case.
++ We have to check navigation+actions together, and edit_mode separately.
++ This takes care of itself if we build a hashmap for the related
+  issue abount mapping keys to an enum, existing keys can be detected as they
+  are added.
++ We need to include backspace in the map also somehow, since it is matched
+  in the status_bar functions.
+- [2025-01-16 Thu] Added an exception throw in the BindingMap class when
+  we try to map an existing binding.
+
+*** DEAD Implement a check of the DB when opening
+CLOSED: [2024-11-23 Sat 17:10]
+ADDED: [2024-11-16 Sat]
++ Check that all tables are indeed present.
+  - [2024-11-23 Sat] It is in fact meaningless since we create the tables right
+    when the DB opens anyway.
++ OK Check the version of the DB.
+
+*** DONE Clean old log entries
+CLOSED: [2025-01-29 Wed 21:21]
+ADDED: [2024-10-26 Sat]
++ Launch it at startup.
+Start from the top of the log file, parse the date into an internal UTC format,
+compare it with startup time, any line which is older than target gets deleted,
+we stop once we reach the first recent enough entry.
+
+*** DONE Bind arrow keys to up/down/left/right
+CLOSED: [2025-01-05 Sun 17:06]
+ADDED: [2024-11-09 Sat]
+Use alternative bindings to bind arrow keys to navigation.
+It does not seem we can escape a character to represent the arrow
+key. We have to use a string to represent it.
+
+*** DONE Implement a set of special keys available for bindings
+CLOSED: [2025-01-05 Sun 17:06]
+ADDED: [2024-11-10 Sun]
+Implement the following special keys:
++ ESCAPE
++ ENTER
++ SPACE
++ TAB
++ UP/RIGHT/DOWN/LEFT
+
+*** DONE Implement the alternative key bindings
+CLOSED: [2025-01-05 Sun 15:15]
+ADDED: [2024-11-10 Sun]
+Note these are optional. Only those which are present in the configuration
+are loaded. The rest are kept to zero.
+
+*** DONE Prevent overlapping entries
+CLOSED: [2025-02-23 Sun 14:31]
+ADDED: [2024-11-25 Mon]
+Overlapping entries have no use-case, do they? Should we forbid
+them at the DB level?
++ It could get annoying when manually entering entries. We would have to
+  type dates to the second.
+  + Not if we allow start(n) >= end(n-1)
++ This likely requires a table change, think about migration.
++ See this answer: https://stackoverflow.com/a/44347885/10376845
+  we need to modify the condition, which does not suit us.
+  https://stackoverflow.com/questions/4023160/prevent-inserting-overlapping-date-ranges-using-a-sql-trigger
+  Can we use BETWEEN? -> yes
+  https://stackoverflow.com/questions/9581458/how-can-i-prevent-date-overlaps-in-sql
++ Check that there are no overlaps in our DB first.
++ Print an error in the status bar if the case is encountered.
++ The check must happen whenever we:
+  + Add a new entry
+  + Update the dates of existing entries.
+- [2025-02-23 Sun] Implemented.
+
+*** DONE Add individual tasks to the project report
+CLOSED: [2025-02-23 Sun 10:17]
+ADDED: [2025-01-24 Fri]
+We often need the detailed view to see how much time we spent on a given
+task over a particular period.
+- [2025-02-23 Sun] added.
