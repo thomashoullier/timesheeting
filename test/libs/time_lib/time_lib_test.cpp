@@ -96,6 +96,15 @@ TEST_CASE("Date", "[time_lib]") {
     int64_t ref_timestamp {1737241200};
     CHECK(timestamp == ref_timestamp);
   }
+  SECTION("LT-DAT-095 Date string shortcut with prefix") {
+    std::string date_str {"11:51"};
+    std::string prefix_date {"19Jan2025"};
+    auto date = time_lib::Date{date_str, prefix_date};
+    SUCCEED("Date initialized without error.");
+    auto timestamp = date.to_unix_timestamp();
+    int64_t ref_timestamp{1737283860};
+    CHECK(timestamp == ref_timestamp);
+  }
   SECTION("LT-DAT-100 Date string invalid") {
     std::string date_str = "GOOFY";
     CHECK_THROWS(time_lib::Date{date_str});
@@ -139,7 +148,9 @@ TEST_CASE("Date", "[time_lib]") {
     auto date1 = time_lib::Date{tmstp1};
     auto date2 = time_lib::Date{tmstp2};
     CHECK(date1 < date2);
+    CHECK(date1 <= date2);
     CHECK(date2 > date1);
+    CHECK(date2 >= date1);
   }
   SECTION("LT-DAT-170 Date ago initialization") {
     int64_t seconds {20};
@@ -222,6 +233,13 @@ TEST_CASE("DateRange", "[time_lib]") {
     CHECK(dr_strings.at(0) == ref_start_str);
     CHECK(dr_strings.at(1) == ref_stop_str);
   }
+  SECTION("LT-DTR-060 DateRange contains Date") {
+    auto date_range = time_lib::DateRange(start, stop);
+    auto date_not_contained = time_lib::Date{1737283884};
+    auto date_contained = time_lib::Date{1737283885};
+    CHECK_FALSE(date_range.contains(date_not_contained));
+    CHECK(date_range.contains(date_contained));
+  }
 }
 
 TEST_CASE("Day", "[time_lib]") {
@@ -273,6 +291,18 @@ TEST_CASE("Day", "[time_lib]") {
     SUCCEED("previous() called without error");
     auto day_str = day.to_string();
     CHECK(day_str == "20Jan2025 Mon");
+  }
+  SECTION("LT-DAY-080 Day/Month/Year string representation") {
+    auto day = time_lib::Day{ymd};
+    auto str = day.to_day_month_year_string();
+    CHECK(str == "21Jan2025");
+  }
+  SECTION("LT-DAY-090 Day contains Date") {
+    auto day = time_lib::Day{ymd};
+    auto date_contained = time_lib::Date{"21Jan2025 00:29"};
+    auto date_not_contained = time_lib::Date{"22Jan2025 00:29"};
+    CHECK(day.contains(date_contained));
+    CHECK_FALSE(day.contains(date_not_contained));
   }
 }
 

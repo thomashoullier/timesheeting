@@ -178,6 +178,17 @@ given in \cref{tab:date_shortened}.
 
 TODO: uplink
 
+\paragraph{LR-DAT-065 -- Date string shortcut with prefix}
+The initializer specified in LR-DAT-060 shall allow a mode where
+a prefix string is added to the date string to parse.
+The initial date string is first tried through all the formats
+of LR-DAT-060, and if all fail, the parsing is retried with
+the prefix string present.
+
+\textit{Rationale:} This allows parsing user strings like \lstinline{17:20}
+with an automatically provided prefix day string like \lstinline{30May2025},
+while still accepting inputs such as \lstinline{30May2025 17:20} directly.
+
 \paragraph{LR-DAT-070 -- Date string invalid}
 During Date initialization with a date string, an exception shall be
 thrown if an invalid date string is used (\textit{ie} outside of the formats
@@ -221,8 +232,9 @@ The Date shall represent time points with a resolution of at most 1 second.
 TODO: uplink
 
 \paragraph{LR-DAT-140 -- Date comparison}
-The Date class shall provide \emph{lesser than} and \emph{greater than}
-comparison operators.
+The Date class shall provide \emph{lesser than}, \emph{greater than},
+\emph{lesser than or equal}, and \emph{greater than or equal} comparison
+operators.
 
 TODO: uplink
 
@@ -266,6 +278,11 @@ The DateRange shall be convertible to a vector of two Date day strings
 as defined in LR-DAT-120.
 
 TODO: uplink
+
+\paragraph{LR-DTR-060 -- DateRange contains Date}
+The DateRange shall provide a predicate which, given a Date,
+tests whether the Date is included in the Date range.
+Note the inclusion is in the sense \lstinline{start <= date <= stop}.
 
 \subsubsection{Day}
 A Day corresponds to a DateRange covering a single calendar day in
@@ -315,6 +332,14 @@ For instance, if the current Day is set to \lstinline{21Jan2025}, calling
 \emph{previous} must change the Day to \lstinline{20Jan2025}.
 
 TODO: uplink
+
+\paragraph{LR-DAY-070 -- Day/Month/Year string representation}
+The Day shall be convertible to a string representation in the format
+\lstinline{%d%b%Y}.
+
+\paragraph{LR-DAY-080 -- Day contains Date}
+The Day shall provide a method testing whether a given Date is contained
+within the Day understood as a DateRange.
 
 \subsubsection{Week}
 A \emph{Week} represents a DateRange from a monday on midnight to midnight of
