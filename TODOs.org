@@ -29,6 +29,9 @@ included.
 + [2025-05-30 Fri] Added requirements and tests for the missing parts.
 + Now add the "Tested by" link to all requirements.
 
+*** TODO Add the uplink from libraries/modules requirements to top requirements.
+ADDED: [2025-06-01 Sun]
+
 *** TODO Specify the TUI
 + Propose very abstract drawings for the UI screens.
 + Draw a diagram of which user interaction is available on which screen.

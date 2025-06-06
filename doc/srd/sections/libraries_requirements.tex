@@ -9,6 +9,9 @@ without tilde.
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-010 Tilde expansion nominal, LT-CON-020 Tilde
+expansion none.
+
 \paragraph{LR-CON-020 -- First existing file}
 The config\textunderscore lib shall provide a utility function, which,
 given a filepath suffix and a list of folders, returns the first found
@@ -17,6 +20,9 @@ candidates. It returns nothing if no possible file exists.
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-030 First existing file found, LT-CON-040 First
+existing file not found.
+
 \subsubsection{Configuration loader}
 \paragraph{LR-CON-030 -- Configuration file format}
 The config\textunderscore lib file loader shall use the TOML file format [AD3]
@@ -24,11 +30,15 @@ for the configuration file.
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-050 Configuration file loading.
+
 \paragraph{LR-CON-040 -- String loading}
 The configuration file loader shall allow reading parameters of type
 \emph{string}.
 
 \textit{Uplink: } TODO.
+
+\textit{Tested by: } LT-CON-070 String parameter reading.
 
 \paragraph{LR-CON-050 -- String empty case}
 The configuration file loader shall emit an exception if a loaded
@@ -36,11 +46,15 @@ The configuration file loader shall emit an exception if a loaded
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-080 String parameter empty.
+
 \paragraph{LR-CON-060 -- Filepath loading}
 The configuration file loader shall allow reading parameters of type
 \emph{filepath} with automatic tilde expansion.
 
 \textit{Uplink: } TODO.
+
+\textit{Tested by: } LT-CON-090 Filepath reading.
 
 \paragraph{LR-CON-070 -- Filepath parent non-existent}
 The configuration file loader shall emit an exception if the loaded
@@ -48,11 +62,15 @@ The configuration file loader shall emit an exception if the loaded
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-100 Filepath non-existent.
+
 \paragraph{LR-CON-080 -- Float loading}
 The configuration file loader shall allow reading parameters of type
 \emph{float}.
 
 \textit{Uplink: } TODO.
+
+\textit{Tested by: } LT-CON-110 Float reading.
 
 \paragraph{LR-CON-090 -- Parameter empty case}
 The configuration file loader shall emit an exception if any parameter
@@ -60,17 +78,23 @@ is empty, \textit{ie} \lstinline{parameter = }.
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-120 Empty parameter case.
+
 \paragraph{LR-CON-100 -- Vector of strings loading}
 The configuration file loader shall allow reading parameters of type
 \emph{vector of strings}. The order of strings in the vector is preserved.
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-130 Vector of strings reading.
+
 \paragraph{LR-CON-110 -- Vector of non-strings case}
 The configuration file loader shall emit an exception if a loaded
 \emph{vector of strings} does not in fact contain strings.
 
 \textit{Uplink: } TODO.
+
+\textit{Tested by: } LT-CON-140 Vector of non-strings case.
 
 \paragraph{LR-CON-120 -- Configuration file nonexistent}
 The configuration file loader shall emit an exception if it is provided
@@ -84,6 +108,8 @@ The configuration file loader shall allow reading parameters of type
 
 \textit{Uplink: } TODO.
 
+\textit{Tested by: } LT-CON-150 Unsigned integer case.
+
 \subsection{time\textunderscore lib}
 \subsubsection{time\textunderscore zone}
 The time\textunderscore zone object is a singleton which provides the
@@ -94,20 +120,32 @@ The timezone object shall be initialized with a valid TZ identifier string,
 as defined in [AD4].
 
 TODO: uplink
+
+\textit{Tested by: } LT-TMZ-020 Time zone initialization.
+
 \paragraph{LR-TMZ-020 -- Time zone singleton}
 The timezone object shall be a singleton. It is initialized once and the same
 instance is retrieved through a \lstinline{get} method subsequently.
 
 TODO: uplink
+
+\textit{Tested by: } LT-TMZ-030 Time zone name, LT-TMZ-040 std
+time\textunderscore zone.
+
 \paragraph{LR-TMZ-030 -- Invalid time zone}
 The timezone object shall emit an exception if it is initialized with
 an invalid TZ string (\textit{ie} a string outside of those defined in [AD4]).
 
 TODO: uplink
+
+\textit{Tested by: } LT-TMZ-010 Invalid time zone.
+
 \paragraph{LR-TMZ-040 -- Time zone name}
 The timezone class shall provide a method to retrieve its TZ identifier string.
 
 TODO: uplink
+
+\textit{Tested by: } LT-TMZ-030 Time zone name.
 
 \paragraph{LR-TMZ-050 -- std time\textunderscore zone}
 The timezone class shall provide a method to retrieve the
@@ -115,6 +153,8 @@ The timezone class shall provide a method to retrieve the
 time zone.
 
 TODO: uplink
+
+\textit{Tested by: } LT-TMZ-040 std time\textunderscore zone.
 
 \subsubsection{date}
 A Date is a representation of a time point in UTC using the system clock
@@ -125,10 +165,14 @@ The Date shall allow initialization at the current time.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAT-030 Current time initialization.
+
 \paragraph{LR-DAT-020 -- std::time\textunderscore point initialization}
 The Date shall allow initialization from a \lstinline{std::time_point}.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-010 std::time\textunderscore point initialization.
 
 \paragraph{LR-DAT-030 -- Beginning of year}
 The Date shall allow initialization at the beginning of the current year
@@ -136,10 +180,14 @@ in the current time zone (as set in the TimeZone singleton).
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAT-150 Beginning of year.
+
 \paragraph{LR-DAT-040 -- UNIX timestamp initialization}
 The Date shall allow initialization from a UNIX timestamp in seconds.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-040 UNIX timestamp initialization.
 
 \paragraph{LR-DAT-050 -- Date string initialization}
 The Date shall allow initialization from a string in the format
@@ -150,6 +198,12 @@ in the TimeZone singleton.
 An example of a valid initialization string is \lstinline {19Jan2025 09:41:34}.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-060 Date string initialization,
+LT-DAT-190 Date parsing before 1970,
+LT-DAT-200 Date parsing beyond 2038,
+LT-DAT-210 Dates beyond four digits clipped,
+LT-DAT-220 Dates with minus sign exception.
 
 \paragraph{LR-DAT-060 -- Date string shortcuts}
 The Date shall allow initialization from shortened strings
@@ -178,6 +232,10 @@ given in \cref{tab:date_shortened}.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAT-070 Date string shortcuts 1,
+LT-DAT-080 Date string shortcuts 2,
+LT-DAT-090 Date string shortcuts 3.
+
 \paragraph{LR-DAT-065 -- Date string shortcut with prefix}
 The initializer specified in LR-DAT-060 shall allow a mode where
 a prefix string is added to the date string to parse.
@@ -189,6 +247,8 @@ the prefix string present.
 with an automatically provided prefix day string like \lstinline{30May2025},
 while still accepting inputs such as \lstinline{30May2025 17:20} directly.
 
+\textit{Tested by: } LT-DAT-095 Date string shortcut with prefix.
+
 \paragraph{LR-DAT-070 -- Date string invalid}
 During Date initialization with a date string, an exception shall be
 thrown if an invalid date string is used (\textit{ie} outside of the formats
@@ -196,40 +256,61 @@ specified).
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAT-100 Date string invalid.
+
 \paragraph{LR-DAT-075 -- Date std::time\textunderscore point access}
 The Date shall allow read access to its internal
 \lstinline{std::chrono::time_point} representation.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAT-020 Date std::time\textunderscore point access.
+
 \paragraph{LR-DAT-080 -- Date output string}
 The Date shall be convertible to a string in format
 \lstinline{%d%b%Y %H:%M:%S} (see [AD5]) in the current time zone.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-110 Date output string.
+
 \paragraph{LR-DAT-090 -- Date output hours/minutes}
 The Date shall be convertible to a string in format
 \lstinline{%H:%M} (see [AD5]) in the current time zone.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-120 Date output hours/minutes.
+
 \paragraph{LR-DAT-100 -- Date output unambiguous string}
 The Date shall be convertible to a string in format
 \lstinline{%d%b%Y %H:%M:%S %z} (see [AD5]) in the current time zone.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-130 Date output unambiguous string.
+
 \paragraph{LR-DAT-110 -- Date output UNIX timestamp}
 The Date shall be convertible to a UNIX timestamp in seconds in \gls{UTC}.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-050 UNIX timestamp output.
+
 \paragraph{LR-DAT-120 -- Date output day/month/year}
 The Date shall be convertible to a string in format
 \lstinline{%d%b%Y} (see [AD5]) in the current time zone.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-140 Date output day/month/year.
+
 \paragraph{LR-DAT-130 -- Second resolution}
 The Date shall represent time points with a resolution of at most 1 second.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-020 Date std::time\textunderscore point access.
 
 \paragraph{LR-DAT-140 -- Date comparison}
 The Date class shall provide \emph{lesser than}, \emph{greater than},
@@ -238,17 +319,23 @@ operators.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAT-160 Date comparison.
+
 \paragraph{LR-DAT-150 -- Date ago initialization}
 The Date shall allow initialization at a number of seconds ago from
 \emph{now}.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAT-170 Date ago initialization.
+
 \paragraph{LR-DAT-160 -- Date unambiguous string initialization}
 The Date shall allow initialization from a string in the
 same format as the one outputted in LR-DAT-100.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAT-180 Date unambiguous string initialization.
 
 \subsubsection{DateRange}
 A DateRange represents a range between a start Date and a stop Date.
@@ -258,31 +345,45 @@ The DateRange shall be initialized using a start Date and a stop Date.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DTR-010 DateRange initialization.
+
 \paragraph{LR-DTR-020 -- DateRange ordering}
 The DateRange initialization shall emit an exception if the
 start Date is \emph{greater than} the stop Date.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DTR-020 DateRange ordering.
+
 \paragraph{LR-DTR-030 -- Dates read access}
 The DateRange shall allow read access to the start and stop Date.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DTR-030 Dates read access.
+
 \paragraph{LR-DTR-040 -- DateRange to strings}
 The DateRange shall be convertible to a vector of two Date strings
 as defined in LR-DAT-080.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DTR-040 DateRange to strings.
+
 \paragraph{LR-DTR-050 -- DateRange to day strings}
 The DateRange shall be convertible to a vector of two Date day strings
 as defined in LR-DAT-120.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DTR-050 DateRange to day strings.
+
 \paragraph{LR-DTR-060 -- DateRange contains Date}
 The DateRange shall provide a predicate which, given a Date,
 tests whether the Date is included in the Date range.
 Note the inclusion is in the sense \lstinline{start <= date <= stop}.
+
+\textit{Tested by: } LT-DTR-060 DateRange contains Date.
 
 \subsubsection{Day}
 A Day corresponds to a DateRange covering a single calendar day in
@@ -296,16 +397,22 @@ in TimeZone.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAY-050 Now initialization.
+
 \paragraph{LR-DAY-020 -- year/month/day initialization}
 Day shall allow initialization from a \lstinline{std::chrono::year_month_day}
 object, which represents a calendar day.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAY-010 Day ymd initialization.
+
 \paragraph{LR-DAY-030 -- DateRange representation}
 The Day shall be convertible to a corresponding DateRange.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAY-020 DateRange representation.
 
 \paragraph{LR-DAY-040 -- DateRange start and stop Date}
 The DateRange obtained from a Day shall have a start Date set
@@ -314,6 +421,8 @@ following day, in the currently set time zone and for the currently set calendar
 day.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DAY-030 DateRange start and stop Date.
 
 \paragraph{LR-DAY-050 -- String representation}
 The Day shall be convertible to a string representation in format
@@ -324,6 +433,8 @@ for a Day.
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAY-040 String representation.
+
 \paragraph{LR-DAY-060 -- Next and previous}
 Day shall include methods to select the \emph{next} and \emph{previous} days
 from the currently set calendar day.
@@ -333,13 +444,19 @@ For instance, if the current Day is set to \lstinline{21Jan2025}, calling
 
 TODO: uplink
 
+\textit{Tested by: } LT-DAY-060 Next, LT-DAY-070 Previous.
+
 \paragraph{LR-DAY-070 -- Day/Month/Year string representation}
 The Day shall be convertible to a string representation in the format
 \lstinline{%d%b%Y}.
 
+\textit{Tested by: } LT-DAY-080 Day/Month/Year string representation.
+
 \paragraph{LR-DAY-080 -- Day contains Date}
 The Day shall provide a method testing whether a given Date is contained
 within the Day understood as a DateRange.
+
+\textit{Tested by: } LT-DAY-090 Day contains Date.
 
 \subsubsection{Week}
 A \emph{Week} represents a DateRange from a monday on midnight to midnight of
@@ -352,17 +469,22 @@ the system clock.
 
 TODO: uplink
 
+\textit{Tested by: } LT-WEK-030 Now initialization.
+
 \paragraph{LR-WEK-020 -- Date initialization}
 The Week shall allow initialization to a week containing a given Date.
 
 TODO: uplink
+
+\textit{Tested by: } LT-WEK-010 Date initialization,
+LT-WEK-020 DateRange conversion.
 
 \paragraph{LR-WEK-030 -- DateRange conversion}
 The Week shall be convertible to a DateRange. The start Date of the DateRange
 is set to midnight of the monday of the week currently pointed to, and the
 stop Date is at midnight on the next monday.
 
-TODO: uplink
+\textit{Tested by: } LT-WEK-020 DateRange conversion.
 
 \paragraph{LR-WEK-040 -- String representation}
 The Week shall be convertible to a string representation in the format
@@ -371,19 +493,19 @@ set to the monday of the week.
 
 For instance, \lstinline{20Jan2025 W04} is a valid string representation.
 
-TODO: uplink
+\textit{Tested by: } LT-WEK-040 String representation.
 
 \paragraph{LR-WEK-050 -- Array of days}
 The Week shall be convertible to an array of all the Days contained
 in the week, in order from monday to sunday.
 
-TODO: uplink
-  
+\textit{Tested by: } LT-WEK-050 Array of days.
+
 \paragraph{LR-WEK-060 -- Next and previous}
 The Week shall include methods to select the \emph{next} and \emph{previous}
 weeks from the currently set calendar week.
 
-TODO: uplink
+\textit{Tested by: } LT-WEK-060 Next, LT-WEK-070 Previous.
 
 \subsubsection{Duration}
 A Duration is a length of time. It does not have a particular location
@@ -392,15 +514,24 @@ in terms of date.
 \paragraph{LR-DUR-010 -- Zero initialization}
 The Duration shall default initialize to a duration of zero.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-010 Zero initialization pass,
+LT-DUR-020 Zero initialization seconds string.
+
 \paragraph{LR-DUR-020 -- Seconds initialization}
 The Duration shall allow initialization from a count of seconds.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DUR-030 Seconds initialization pass,
+LT-DUR-040 Seconds initialization value.
+
 \paragraph{LR-DUR-030 -- Duration resolution}
 The Duration shall have a resolution of at most one second.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DUR-050 Duration resolution.
+
 \paragraph{LR-DUR-040 -- Seconds string}
 The Duration shall be convertible to a string in format
 \lstinline{"x seconds"}, with \lstinline{x} the seconds count
@@ -409,6 +540,10 @@ for the duration.
 For instance \lstinline{"104592 seconds"} is a valid string.
 
 TODO: uplink
+
+\textit{Tested by: } LT-DUR-020 Zero initialization seconds string,
+LT-DUR-040 Seconds initialization value.
+
 \paragraph{LR-DUR-050 -- Hours string}
 The Duration shall be convertible to a string in format
 \lstinline{"x hours"}, with \lstinline{x} the hours count
@@ -416,7 +551,8 @@ for the duration at three decimal places of precision.
 
 For instance \lstinline{"29.053 hours"} is a valid string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-060 Hours string.
+
 \paragraph{LR-DUR-060 -- Days string}
 The Duration shall be convertible to a string in format
 \lstinline{"x days"}, with \lstinline{x} the days count
@@ -426,7 +562,8 @@ computation externally.
 
 For instance \lstinline{"3.773 days"} is a valid string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-070 Days string.
+
 \paragraph{LR-DUR-070 -- Seconds short string}
 The Duration shall be convertible to a shortened string which
 is the one in LR-DUR-040 without the \lstinline{" seconds"}
@@ -434,7 +571,8 @@ part.
 
 For instance, \lstinline{"104592"} is a valid string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-080 Seconds short string.
+
 \paragraph{LR-DUR-080 -- Hours short string}
 The Duration shall be convertible to a shortened string
 which is the one from LR-DUR-050 without the \lstinline{" hours"}
@@ -442,7 +580,8 @@ part.
 
 For instance \lstinline{"29.053"} is a valid string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-090 Hours short string.
+
 \paragraph{LR-DUR-090 -- Days short string}
 The Duration shall be convertible to a shortened string
 which is the one from LR-DUR-060 without the \lstinline{" days"}
@@ -450,32 +589,38 @@ part.
 
 For instance \lstinline{"3.773"} is a valid string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-100 Days short string.
+
 \paragraph{LR-DUR-100 -- Zero second short string}
 A Duration with a value of 0 shall return a single whitespace
 \lstinline{" "} as a second short string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-110 Zero second short string.
+
 \paragraph{LR-DUR-110 -- Zero hour short string}
 A Duration with a value of 0 shall return a single whitespace
 \lstinline{" "} as a hour short string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-120 Zero hour short string.
+
 \paragraph{LR-DUR-120 -- Zero day short string}
 A Duration with a value of 0 shall return a single whitespace
 \lstinline{" "} as a day short string.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-130 Zero day short string.
+
 \paragraph{LR-DUR-130 -- Day string invalid hours}
 When given a count of hours in a day which is lesser than or equal to zero,
 the day string method shall throw an exception.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-140 Day string invalid hours.
+
 \paragraph{LR-DUR-140 -- Day short string invalid hours}
 When given a count of hours in a day which is lesser than or equal to zero,
 the day short string method shall throw an exception.
 
-TODO: uplink
+\textit{Tested by: } LT-DUR-150 Day short string invalid hours.
+
 \subsubsection{Duration displayer}
 The DurationDisplayer is a singleton for displaying a Duration according
 to a currently selected format.
@@ -484,24 +629,39 @@ to a currently selected format.
 The DurationDisplayer shall be initialized with a number of work hours
 in a day.
 
-TODO:uplink
+\textit{Tested by: } LT-DRD-010 DurationDisplayer initialization pass.
+
 \paragraph{LR-DRD-020 -- DurationDisplayer singleton}
 The DurationDisplayer shall be a singleton. It is initialized onec and
 the same instance is retrieved through a \lstinline{get} method
 subsequently.
 
-TODO:uplink
+\textit{Tested by: } LT-DRD-020 Hours string display,
+LT-DRD-030 Hours short string display,
+LT-DRD-040 Days string display,
+LT-DRD-050 Days short string display,
+LT-DRD-060 Seconds string display,
+LT-DRD-070 Seconds short string display.
+
 \paragraph{LR-DRD-030 -- Display formats}
 The DurationDisplayer shall allow selecting the formats: \emph{hours},
 \emph{days}, \emph{seconds}.
 These refer to the second, hour and day strings for Duration.
 
-TODO:uplink
+\textit{Tested by: } LT-DRD-020 Hours string display,
+LT-DRD-030 Hours short string display,
+LT-DRD-040 Days string display,
+LT-DRD-050 Days short string display,
+LT-DRD-060 Seconds string display,
+LT-DRD-070 Seconds short string display.
+
 \paragraph{LR-DRD-040 -- Default format}
 The default format for displaying a Duration upon initialization shall
 be \emph{hours}.
 
-TODO:uplink
+\textit{Tested by: } LT-DRD-020 Hours string display,
+LT-DRD-030 Hours short string display.
+
 \paragraph{LR-DRD-050 -- Format cycling}
 The currently selected format of the DurationDisplayer shall be selected
 through a \emph{cycle} method.
@@ -513,7 +673,10 @@ The cycle between formats is as follows:
 \item seconds $\rightarrow$ hours
 \end{itemize}
 
-TODO:uplink
+\textit{Tested by: } LT-DRD-040 Days string display,
+LT-DRD-060 Seconds string display,
+LT-DRD-080 Cycling back to hours.
+
 \paragraph{LR-DRD-060 -- String display}
 Given a Duration, the DurationDisplayer shall output a string depending
 on the currently selected format, as follows,
@@ -524,7 +687,10 @@ on the currently selected format, as follows,
 \item seconds: string from LR-DUR-040.
 \end{itemize}
 
-TODO: uplink
+\textit{Tested by: } LT-DRD-020 Hours string display,
+LT-DRD-040 Days string display,
+LT-DRD-060 Seconds string display.
+
 \paragraph{LR-DRD-070 -- Short string display}
 Given a Duration, the DurationDisplayer shall output a short string depending
 on the currently selected format, as follows,
@@ -535,7 +701,10 @@ on the currently selected format, as follows,
 \item seconds: string from LR-DUR-070.
 \end{itemize}
 
-TODO:uplink
+\textit{Tested by: } LT-DRD-030 Hours short string display,
+LT-DRD-050 Days short string display,
+LT-DRD-070 Seconds short string display.
+
 \subsection{log\textunderscore lib}
 The log\textunderscore lib provides a logging interface to the program.
 It logs messages of various \emph{log levels} to a file. The interface
@@ -543,6 +712,8 @@ is done through a \emph{logger} singleton.
 
 \paragraph{LR-LOG-010 -- Logging}
 The logger shall allow logging messages to a log file.
+
+\textit{Tested by: } LT-LOG-060 Logging.
 
 \paragraph{LR-LOG-020 -- Log levels}
 The logger shall log only the messages with a log level which is
@@ -558,29 +729,44 @@ The log levels are,
 
 The default log level for messages is \lstinline{info}.
 
+\textit{Tested by: } LT-LOG-080 Logging custom active level,
+LT-LOG-090 Logging custom inactive level.
+
 \paragraph{LR-LOG-030 -- Log cleanup}
 The logger shall clean existing log files of old entries on initialization.
 The entries are considered old based on a maximal age threshold.
+
+\textit{Tested by: } LT-LOG-050 Log cleanup.
 
 \paragraph{LR-LOG-040 -- Log file}
 The logger initialization shall be given a filepath to the log file
 to use. The file may or may not already exist.
 
+\textit{Tested by: } LT-LOG-040 Log file initialization.
+
 \paragraph{LR-LOG-050 -- Log file exception}
 The logger initialization shall throw an exception if the provided
 log filepath is in a non-existent directory.
+
+\textit{Tested by: } LT-LOG-010 Opening log file in non-existent folder.
 
 \paragraph{LR-LOG-060 -- Log file invalid}
 The logger initialization shall throw an exception if the provided
 log file is filled with invalid data (not log entries).
 
+\textit{Tested by: } LT-LOG-030 Log file invalid.
+
 \paragraph{LR-LOG-070 -- Log levels initialization}
 The logger initialization shall be given the set of log levels
 to activate, by string.
 
+\textit{Tested by: } LT-LOG-040 Log file initialization.
+
 \paragraph{LR-LOG-080 -- Log maximum age initialization}
 The logger initialization shall be given the maximal age threshold
 in seconds for entries cleanup.
+
+\textit{Tested by: } LT-LOG-040 Log file initialization.
 
 \paragraph{LR-LOG-090 -- Log entry format}
 The log entries shall be written in the following format,
@@ -600,16 +786,22 @@ For instance, the following log entry is valid,
 17May2025 09:16:36 +0200 [debug] : timesheeting UI initialized.
 \end{lstlisting}
 
+\textit{Tested by: } LT-LOG-070 Log entry format.
+
 \paragraph{LR-LOG-100 -- Log chronometer}
 The logger shall include a chronometer feature controlled by
 a \lstinline{tick}, \lstinline{tock} mechanism.
 The elapsed duration between the \lstinline{tick} and \lstinline{tock}
 calls is logged with a \lstinline{debug} log level.
 
+\textit{Tested by: } LT-LOG-100 Log chronometer.
+
 \paragraph{LR-LOG-110 -- Log chronometer message}
 The user of the logger may provide a message to the \lstinline{tock}
 call of the chronometer. If no message is provided then the default
 is the empty string \lstinline{""}.
+
+\textit{Tested by: } LT-LOG-110 Log chronometer message.
 
 \paragraph{LR-LOG-120 -- Log chronometer entry format}
 The log chronometer entry format follows the usual log entry format,
@@ -621,13 +813,20 @@ the log message shall be in the following format.
 \item followed by the suffix \lstinline{ms.}
 \end{enumerate}
 
+\textit{Tested by: } LT-LOG-120 Log chronometer entry format.
+
 \paragraph{LR-LOG-130 -- Log message multiline exception}
 The logger shall throw an exception if a multiline message is provided
 for logging.
 
+\textit{Tested by: } LT-LOG-130 Log message multiline exception,
+LT-LOG-140 Chronometer message multiline exception.
+
 \paragraph{LR-LOG-140 -- Unknown log levels exception}
 In case an unknown log level string is provided to the logger initialization,
 the logger shall throw an exception.
+
+\textit{Tested by: } LT-LOG-020 Unknown log levels exception.
 
 \subsection{db\textunderscore lib}
 The db\textunderscore lib contains a handle to a \gls{DB}, and a statement
@@ -642,13 +841,21 @@ with a filepath to either,
 \item an existing DB file.
 \end{enumerate}
 
+\textit{Tested by: } LT-DBL-010 DB handle constructor,
+LT-DBL-030 Saving the DB,
+LT-DBL-040 Opening existing DB.
+
 \paragraph{LR-DBL-020 DB handle non-existing folder}
 The DB handle constructor shall throw an exception when provided with a filepath
 to a non-existent folder.
 
+\textit{Tested by: } LT-DBL-080 Opening DB in non-existent folder.
+
 \paragraph{LR-DBL-030 DB handle invalid file}
 The DB handle constructor shall throw an exception when provided with a
 file which is not a valid DB file, eg a completely unrelated text file.
+
+\textit{Tested by: } LT-DBL-090 Opening an invalid DB file.
 
 \paragraph{LR-DBL-040 check DB user version}
 The DB handle shall provide a method to check the user version of the DB,
@@ -658,82 +865,143 @@ The DB handle shall provide a method to check the user version of the DB,
       initialized.
 \end{enumerate}
 
+\textit{Tested by: } LT-DBL-020 Set user version,
+LT-DBL-050 User version check,
+LT-DBL-060 User version check exception.
+
 \paragraph{LR-DBL-050 get DB user version}
 The DB handle shall provide a method to get the user version of the DB.
+
+\textit{Tested by: } LT-DBL-070 User version get.
 
 \paragraph{LR-DBL-060 execute statement}
 The DB handle shall provide a method to execute a raw statement, provided
 as a string, on an open DB.
 
+\textit{Tested by: } LT-DBL-100 Executing a valid statement.
+
 \paragraph{LR-DBL-070 execute statement exceptions}
 The DB handle shall throw an exception in case a non-nominal statement
 execution return code is encountered when executing a statement (LR-DBL-060).
+
+\textit{Tested by: } LT-DBL-110 Executing an invalid statement.
 
 \paragraph{LR-DBL-080 prepare statement}
 The DB handle shall provide a method to prepare a statement, provided
 as a string, on an open DB.
 
+\textit{Tested by: } LT-DBL-120 Preparing a valid statement.
+
 \paragraph{LR-DBL-090 prepare statement exceptions}
 The DB handle shall throw an exception in case an error is encountered when
 preparing a statement (LR-DBL-080).
+
+\textit{Tested by: } LT-DBL-130 Preparing an invalid statement.
 
 \subsubsection{Statement wrapper}
 \paragraph{LR-DBL-100 Execute statement}
 A statement shall allow simple execution (single step statement). If needed, the
 statement must allow repeated execution.
 
+\textit{Tested by: } LT-DBL-140 Executing statement,
+LT-DBL-160 Repeat statement execution.
+
 \paragraph{LR-DBL-110 Execute invalid statement}
 Executing an invalid statement shall raise an exception.
+
+\textit{Tested by: } LT-DBL-150 Executing invalid statement.
 
 \paragraph{LR-DBL-120 Statement execution return value}
 The statement execution shall return true on successful execution, and
 false if the execution would have violated a database constraint, and thus
 failed.
 
+\textit{Tested by: } LT-DBL-140 Executing statement,
+LT-DBL-160 Repeat statement execution,
+LT-DBL-170 Statement execution constraint violation.
+
 \paragraph{LR-DBL-130 Statement step}
 A statement shall allow a step execution (single step in a multi-step
 statement).
 
+\textit{Tested by: } LT-DBL-180 Statement stepping,
+LT-DBL-190 Statement stepping second,
+LT-DBL-200 Statement stepping no more rows.
+
 \paragraph{LR-DBL-140 Statement step invalid}
 Stepping an invalid statement shall raise an exception.
+
+\textit{Tested by: } LT-DBL-220 Statement stepping invalid.
 
 \paragraph{LR-DBL-150 Statement step return value}
 The stepping of a statement shall return true as long as results
 are available for retrieval in the statement, and false when results
 are no longer available.
 
+\textit{Tested by: } LT-DBL-180 Statement stepping,
+LT-DBL-190 Statement stepping second,
+LT-DBL-200 Statement stepping no more rows.
+
 \paragraph{LR-DBL-160 Statement step reset}
 The stepping of a statement shall perform an automatic reset when
 the end of available results is reached.
+
+\textit{Tested by: } LT-DBL-210 Statement stepping reset.
 
 \paragraph{LR-DBL-170 Statement parameters binding}
 The statements shall allow binding positional parameters of type
 integer and string.
 
+\textit{Tested by: } LT-DBL-230 Statement binding integer,
+LT-DBL-240 Statement binding string,
+LT-DBL-410 Store and query negative integers,
+LT-DBL-420 Store and query integers larger than 32 bits.
+
 \paragraph{LR-DBL-180 Statement column return}
 The statements shall allow retrieval of result columns from rows.
 The results may be of type boolean, integer or string.
+
+\textit{Tested by: } LT-DBL-260 Statement return boolean,
+LT-DBL-270 Statement return integer,
+LT-DBL-280 Statement return string,
+LT-DBL-410 Store and query negative integers,
+LT-DBL-420 Store and query integers larger than 32 bits.
 
 \paragraph{LR-DBL-190 Statement return shortcut}
 Statements shall allow a shortcut operation which, in order, steps
 the statement, retrieves all the result columns of the first returned
 row, and then reset the statement.
 
+\textit{Tested by: } LT-DBL-290 Statement return shortcut,
+LT-DBL-300 Statement return shortcut reset.
+
 \paragraph{LR-DBL-200 Statement binding too many parameters}
 Statement parameter binding shall throw an exception if
 too many parameters are given.
+
+\textit{Tested by: } LT-DBL-250 Binding too many parameters.
 
 \paragraph{LR-DBL-210 Statement column return wrong number}
 The statement column retrieval shall throw an exception if too many
 columns are asked for.
 
+\textit{Tested by: } LT-DBL-310 Statement column return wrong number of strings,
+LT-DBL-320 Statement column return wrong number of booleans,
+LT-DBL-330 Statement column return wrong number of integers.
+
 \paragraph{LR-DBL-220 Statement column return wrong type}
 The statement column retrieval shall throw an exception if the
 queried type does not match the returned type.
 
+\textit{Tested by: } LT-DBL-340 Statement column return wrong type integer,
+LT-DBL-350 Statement column return wrong type boolean,
+LT-DBL-360 Statement column return wrong type string.
+
 \paragraph{LR-DBL-230 Statement column return no rows}
 The statement column retrieval shall throw an exception if
 there are no rows to give as result.
+
+\textit{Tested by: } LT-DBL-370 Statement column return no rows.
 
 \paragraph{LR-DBL-240 Statement column return null}
 The statement column retrieval shall return the following
@@ -744,6 +1012,10 @@ NULL as a result.
 \item Integer: 0,
 \item String: the empty string \lstinline{""}.
 \end{enumerate}
+
+\textit{Tested by: } LT-DBL-380 Statement column return null boolean,
+LT-DBL-390 Statement column return null integer,
+LT-DBL-400 Statement column return null string.
 
 \subsection{ncurses\textunderscore lib}
 \paragraph{LR-NCU-010}
@@ -760,7 +1032,7 @@ elementary heuristics in a cascade:
 \item Fuzzy matching.
 \end{enumerate}
 
-\paragraph{LR-SUG-010}
+\paragraph{LR-SUG-010 -- Overall heuristic}
 Given a set of unique strings to pick from, and a query string,
 the suggestion matcher shall return the string chosen from the set
 by the following heuristics,
@@ -771,41 +1043,49 @@ by the following heuristics,
 \item Otherwise, the string returned by the fuzzy matcher,
 \item Otherwise, the empty string is returned.
 \end{enumerate}
-TODO: uplink
 
-\paragraph{LR-SUG-020}
+\textit{Tested by: } LT-SUG-040 Prefix match without case,
+LT-SUG-110 No match.
+
+\paragraph{LR-SUG-020 -- Empty choice set}
 Given an empty set of strings to pick from, and a query string,
 the suggestion matcher shall return the empty string.
-TODO: uplink
 
-\paragraph{LR-SUG-030}
+\textit{Tested by: } LT-SUG-010 Empty set of choice strings.
+
+\paragraph{LR-SUG-030 -- Empty query string}
 Given an empty query string and any set of strings to pick from,
 the suggestion matcher shall return the empty string.
-TODO: uplink
 
-\paragraph{LR-SUG-040}
+\textit{Tested by: } LT-SUG-020 Empty query string.
+
+\paragraph{LR-SUG-040 -- Minimal character set}
 The suggestion matcher shall work nominally for strings containing
 any of the characters in the C++ \emph{basic character set} as
 defined in [AD6].
-TODO: uplink
 
-\paragraph{LR-SUG-050}
+\textit{Tested by: } LT-SUG-120 Non-letters.
+
+\paragraph{LR-SUG-050 -- Ignoring case behavior}
 Ignoring the case when using the substring matcher shall apply
 to alphabet letters only. The other characters are treated
 in the same fashion whether case is ignored or not.
-TODO: uplink
+
+\textit{Tested by: } LT-SUG-120 Non-letters.
 
 \subsubsection{Substring matcher}
-\paragraph{LR-SUG-060}
+\paragraph{LR-SUG-060 -- Substring matcher heuristic}
 Given a set of unique strings to pick from, and a query string,
 the substring matcher shall return a string containing the
 exact query string as a substring.
 
 For instance, the substring \lstinline{ana} is found in
 the string \lstinline{banana}.
-TODO: uplink
 
-\paragraph{LR-SUG-070}
+\textit{Tested by: } LT-SUG-030 Prefix match with case,
+LT-SUG-050 Base substring case.
+
+\paragraph{LR-SUG-070 -- Earliest substring occurence}
 In case multiple strings are found with the method described
 in LR-SUG-060, a string containing the earliest occurence
 of the substring shall be returned.
@@ -814,18 +1094,20 @@ For instance, given the set \lstinline{bbanana, banana}, and the
 query substring \lstinline{ana}, the string \lstinline{banana}
 must be returned since it contains the substring at the earliest
 position.
-TODO: uplink
 
-\paragraph{LR-SUG-080}
+\textit{Tested by: } LT-SUG-060 Earliest substring.
+
+\paragraph{LR-SUG-080 -- Shortest substring match}
 In case multiple strings are found with the method described
 in LR-SUG-070, a string among the shortest shall be returned.
 
 For instance, given the set \lstinline{banana, bananana}, and
 the query substring \lstinline{ana}, the string \lstinline{banana}
 must be returned.
-TODO: uplink
 
-\paragraph{LR-SUG-090}
+\textit{Tested by: } LT-SUG-070 Shortest substring.
+
+\paragraph{LR-SUG-090 -- Substring results ordering}
 In case multiple strings are found with the method described
 in LR-SUG-080, the string which comes first in alphabetical order
 (extended to an arbitrary ordering for characters outside of letters)
@@ -835,34 +1117,38 @@ this guarantees only at most one string matches.
 For instance, given the set \lstinline{banana, banane}, and the query
 substring \lstinline{ana}, the string \lstinline{banana} must be
 returned.
-TODO: uplink
+
+\textit{Tested by: } LT-SUG-080 First alphabetical substring.
 
 \subsubsection{Fuzzy matcher}
 The fuzzy matcher is less strictly specified than the other matchers. However,
 some important properties must be met.
 
-\paragraph{LR-SUG-100}
+\paragraph{LR-SUG-100 -- Fuzzy matcher heuristic}
 The fuzzy matcher shall ensure out of order queries are still matched.
 
 For instance, given the set \lstinline{"The brown fox", "jumps over the fence"},
 and the query \lstinline{"fence over jumps"}, the fuzzy matcher must
 return \lstinline{"jumps over the fence"}.
-TODO: uplink
 
-\paragraph{LR-SUG-110}
+\textit{Tested by: } LT-SUG-090 Out of order.
+
+\paragraph{LR-SUG-110 -- Fuzzy matching small typo}
 The fuzzy matcher shall exhibit the fuzzy property. It must match
 items despite small typos and change of case
 which forbid exact matches.
 
 For instance, given the set \lstinline{Jupiter, Saturn}, and the
 query string \lstinline{juppiter}, it must return \lstinline{Jupiter}.
-TODO: uplink
 
-\paragraph{LR-SUG-120}
+\textit{Tested by: } LT-SUG-100 Small typo.
+
+\paragraph{LR-SUG-120 -- Fuzzy matching no characters in common}
 The fuzzy matcher shall not return a match if the query string
 has no character in common with any of the strings in the search
 set.
 
 For instance, given the set \lstinline{banana, fox} and the query
 string \lstinline{yyy}, the fuzzy matcher must match nothing.
-TODO: uplink
+
+\textit{Tested by: } LT-SUG-110 No match.
