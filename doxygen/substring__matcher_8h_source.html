@@ -90,20 +90,20 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>suggestion {</div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classsuggestion_1_1SubstringMatcher.html">   10</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classsuggestion_1_1SubstringMatcher.html">SubstringMatcher</a> {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    std::optional&lt;std::size_t&gt; <a class="code hl_function" href="classsuggestion_1_1SubstringMatcher.html#a1b7cf409d92519f550a61b811c5ca2aa">match</a></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    (<span class="keyword">const</span> std::string &amp;query, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;choices);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    std::size_t <a class="code hl_function" href="classsuggestion_1_1SubstringMatcher.html#a41a34b57ef2a4bde12afea13002e9254">select_string</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;choices,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                              <span class="keyword">const</span> std::vector&lt;std::size_t&gt; &amp;matches);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  };</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classsuggestion_1_1SubstringMatcher.html">   11</a></span>  <span class="keyword">class </span><a class="code hl_class" href="classsuggestion_1_1SubstringMatcher.html">SubstringMatcher</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::optional&lt;std::size_t&gt; <a class="code hl_function" href="classsuggestion_1_1SubstringMatcher.html#a1b7cf409d92519f550a61b811c5ca2aa">match</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    (<span class="keyword">const</span> std::string &amp;query, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;choices);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    std::size_t <a class="code hl_function" href="classsuggestion_1_1SubstringMatcher.html#a41a34b57ef2a4bde12afea13002e9254">select_string</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;choices,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                              <span class="keyword">const</span> std::vector&lt;std::size_t&gt; &amp;matches);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  };</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#endif </span><span class="comment">// SUBSTRING_MATCHER_H</span></div>
-<div class="ttc" id="aclasssuggestion_1_1SubstringMatcher_html"><div class="ttname"><a href="classsuggestion_1_1SubstringMatcher.html">suggestion::SubstringMatcher</a></div><div class="ttdef"><b>Definition</b> substring_matcher.h:10</div></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif </span><span class="comment">// SUBSTRING_MATCHER_H</span></div>
+<div class="ttc" id="aclasssuggestion_1_1SubstringMatcher_html"><div class="ttname"><a href="classsuggestion_1_1SubstringMatcher.html">suggestion::SubstringMatcher</a></div><div class="ttdoc">Matcher with exact substring behavior.</div><div class="ttdef"><b>Definition</b> substring_matcher.h:11</div></div>
 <div class="ttc" id="aclasssuggestion_1_1SubstringMatcher_html_a1b7cf409d92519f550a61b811c5ca2aa"><div class="ttname"><a href="classsuggestion_1_1SubstringMatcher.html#a1b7cf409d92519f550a61b811c5ca2aa">suggestion::SubstringMatcher::match</a></div><div class="ttdeci">std::optional&lt; std::size_t &gt; match(const std::string &amp;query, const std::vector&lt; std::string &gt; &amp;choices)</div><div class="ttdoc">Match a string in choices according to the query string and the substring matching rules....</div><div class="ttdef"><b>Definition</b> substring_matcher.cpp:13</div></div>
 <div class="ttc" id="aclasssuggestion_1_1SubstringMatcher_html_a41a34b57ef2a4bde12afea13002e9254"><div class="ttname"><a href="classsuggestion_1_1SubstringMatcher.html#a41a34b57ef2a4bde12afea13002e9254">suggestion::SubstringMatcher::select_string</a></div><div class="ttdeci">std::size_t select_string(const std::vector&lt; std::string &gt; &amp;choices, const std::vector&lt; std::size_t &gt; &amp;matches)</div><div class="ttdoc">Given a set of strings, return the string which comes first in alphabetical order among shortest stri...</div><div class="ttdef"><b>Definition</b> substring_matcher.cpp:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
