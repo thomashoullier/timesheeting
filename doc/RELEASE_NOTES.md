@@ -37,7 +37,7 @@ ergonomy fixes and features were added. The list is detailed below.
 - The CI runs the unit tests suite.
 
 ### Documentation
-- Initiated SRD (system requirements document), 
+- Initiated SRD (system requirements document),
   the following are fully specified: `config_lib`, `time_lib`, `version`, `config`.
 - Initiated TST (test plan), the unit tests for the following are fully specified:
   `config_lib`, `time_lib`, `version`, `config`.
@@ -90,6 +90,49 @@ Mainly ergonomy improvements.
 ### CI
 - Configured dockerhub tokens to avoid rate limits.
 - Added cppcheck to the CI.
- 
+
 ### Documentation
 - Small doxygen addition of missing docstrings.
+
+## **v0.8** (07JUN2025)
+
+### Software features and bugs
+- db_lib: The SQLite error codes checking is now more systematic.
+- The external timesheet data format dates now have an UTC offset indicated.
+- Exotic dates (before 1970 and far off into the future) are now better managed
+throughout the program. All years properly parsed by the standard library are
+now correctly taken into account.
+- Fixed entries table and project/task columns behavior when interacting with
+empty menus.
+- Forbade the adding of tasks when the projects column is empty.
+- The start and stop dates of existing entries may now be edited with
+shortcuts based on the currently selected day.
+- Forbade the committing of entrystaging on a day which is not selected
+in the entries screen.
+- Forbade the modification of an existing entry start date to a date
+belonging to a non-selected day in the entries screen.
+- Fixed UI refresh problem in project task screen: When renaming a project and
+  updating the project column, the task column was not updated.
+
+### Software refactoring
+- db_lib: Moved the DB optimization from handle destructor to constructor to
+  avoid possible exceptions in the destructor.
+- exporter module: now decoupled from the DB module.
+- Removed copy and assignment functions for singletons, eliminating the risk
+of misuse bugs.
+- Removed the reliance on MenuEmpty exception in the TUI.
+- Added Date comparison operators and utilities.
+- Aligned UI types with ncurses types for characters.
+
+### Testing
+- All non-UI libraries and modules are tested in the unit tests suite.
+
+### CI
+- Use the binary gentoo package to speed up the environment build.
+- Added doxygen and code coverage pages deployment directly in the
+CI. No longer rely on github actions.
+- Added a memory leak (valgrind) test over the unit tests execution.
+
+### Documentation
+- The non-UI specification and test documentation for libraries and modules
+  is now complete.
