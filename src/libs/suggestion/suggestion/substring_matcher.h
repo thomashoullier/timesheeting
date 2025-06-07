@@ -7,6 +7,7 @@
 #include <cstddef>
 
 namespace suggestion {
+  /** @brief Matcher with exact substring behavior. */
   class SubstringMatcher {
   public:
     /** @brief Match a string in choices according to the query string
