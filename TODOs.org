@@ -21,16 +21,19 @@ Details the requirements applicable to subsystems, as described in the SAD.
 + Default values of entry metadata when left unspecified.
 + Where should the stopwatch be displayed?
 
-*** TODO Realign the specifications with the new additions for v0.8 release
+*** DONE Realign the specifications with the new additions for v0.8 release
+CLOSED: [2025-06-07 Sat 09:01]
 ADDED: [2025-05-26 Mon]
 We made several additions throughout libraries and modules, document
 them. See the test coverage report as an indication of what was not already
 included.
 + [2025-05-30 Fri] Added requirements and tests for the missing parts.
-+ Now add the "Tested by" link to all requirements.
++ [2025-06-07 Sat] Added the "Tested by" link to all requirements.
 
-*** TODO Add the uplink from libraries/modules requirements to top requirements.
+*** TODO Add the uplink from modules requirements to top requirements.
 ADDED: [2025-06-01 Sun]
+Keep in mind that we want to put the libraries in a generic project at
+some point, so do not couple them with the top-level requirements.
 
 *** TODO Specify the TUI
 + Propose very abstract drawings for the UI screens.

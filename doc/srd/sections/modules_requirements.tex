@@ -22,11 +22,15 @@ Valid program version number examples are:
 
 \textit{uplink: } R-REL-010 -- Software version format
 
+\textit{Tested by: } MT-VER-010 Program version number.
+
 \paragraph{MR-VER-020 -- DB version number}
 The \emph{version} module shall provide a \gls{DB} version number as
 a positive integer.
 
 \textit{uplink: } TODO DB module.
+
+\textit{Tested by: } MT-VER-020 DB version number.
 
 \subsection{config}
 The \emph{config} module loads the configuration file, translates the parameters
@@ -40,11 +44,15 @@ provided with its path.
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-010 Config file loading.
+
 \paragraph{MR-CON-020 -- Non-existent path}
 The \emph{config} module shall emit an exception when the path provided for the
 configuration file corresponds to a file which does not exist.
 
 \textit{uplink: } TODO.
+
+\textit{Tested by: } MT-CON-020 Non-existent path.
 
 \paragraph{MR-CON-030 -- Default configuration file locations}
 The \emph{config} module shall provide a default load method which looks
@@ -71,12 +79,16 @@ for the log file. This parameter is at the node \lstinline{log.file}.
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-030 Log filepath.
+
 \paragraph{MR-CON-060 -- Log levels}
 The \emph{config} module shall load from the configuration file a vector of
 strings defining the active log levels. This parameter is at the node
 \lstinline{log.active_levels}.
 
 \textit{uplink: } TODO.
+
+\textit{Tested by: } MT-CON-040 Log levels.
 
 \paragraph{MR-CON-065 -- Maximum log age}
 The \emph{config} module shall load from the configuration file an
@@ -85,12 +97,16 @@ in seconds. This parameter is at the node \lstinline{log.max_log_age}.
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-130 Maximum log age.
+
 \subsubsection{DB configuration}
 \paragraph{MR-CON-070 -- DB filepath}
 The \emph{config} module shall load from the configuration file a filepath
 for the DB file. This parameter is at the node \lstinline{db.file}.
 
 \textit{uplink: } TODO.
+
+\textit{Tested by: } MT-CON-050 DB filepath.
 
 \subsubsection{Timezone configuration}
 \paragraph{MR-CON-080 -- Timezone string}
@@ -100,6 +116,8 @@ representing the timezone to use. This parameter is at the node
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-060 Timezone string.
+
 \subsubsection{Duration display configuration}
 \paragraph{MR-CON-090 -- Duration display days}
 The \emph{config} module shall load from the configuration file a float
@@ -107,6 +125,8 @@ representing the number of hours in a workday for duration display.
 This parameter is at the node \lstinline{time.hours_per_workday}.
 
 \textit{uplink: } TODO.
+
+\textit{Tested by: } MT-CON-070 Duration display days.
 
 \subsubsection{Key bindings configuration}
 The key bindings are loaded into maps from key to action. The maps are,
@@ -170,6 +190,8 @@ The \emph{edit map} bindings are loaded from,
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-080 Bindings loading.
+
 \paragraph{MR-CON-110 -- Regular keys}
 The \emph{config} module shall allow binding any regular (\textit{ie}
 non-escaped and non-special) character key to any binding action.
@@ -178,6 +200,8 @@ file, \textit{ie} the key \lstinline{e} is designated by the character
 \lstinline{"e"} in the configuration file.
 
 \textit{uplink: } TODO.
+
+\textit{Tested by: } MT-CON-080 Bindings loading.
 
 \paragraph{MR-CON-120 -- Special keys}
 The \emph{config} module shall allow binding the following special
@@ -195,6 +219,8 @@ keys to any binding action. The special keys are designated by strings.
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-080 Bindings loading.
+
 \paragraph{MR-CON-130 -- Multiple keys for an action}
 The \emph{config} module shall allow binding multiple keys to the
 same action. The keys are specified as a list of strings attached
@@ -206,12 +232,16 @@ line is: \lstinline{rename = ["e", "a"]}.
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-080 Bindings loading.
+
 \paragraph{MR-CON-140 -- Protection against duplicates}
 The \emph{config} module shall emit an exception when the configuration
 file contains duplicate keys bound in the same map (\textit{ie} either
 \emph{normal} or \emph{edit}).
 
 \textit{uplink: } TODO.
+
+\textit{Tested by: } MT-CON-090 Binding duplicate.
 
 \paragraph{MR-CON-150 -- Backspace mapping}
 The \emph{config} module shall map the backspace key to a backspace
@@ -220,16 +250,22 @@ file, it is an implicit binding.
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-100 Backspace mapping.
+
 \paragraph{MR-CON-160 -- Unbound keys}
 The maps in the \emph{config} module shall return an \emph{unbound}
 action when queried with a key which was not bound during configuration.
 
 \textit{uplink: } TODO.
 
+\textit{Tested by: } MT-CON-110 Unbound mappings.
+
 \paragraph{MR-CON-170 -- Invalid key strings}
 The \emph{config} module shall emit an exception when a key
 string in the configuration file does not map to any regular or \emph{special}
 characters.
+
+\textit{Tested by: } MT-CON-120 Invalid special key.
 
 \subsection{cli}
 \paragraph{MR-CLI-010}
@@ -248,9 +284,14 @@ the following attributes,
 \end{enumerate}
 TODO: uplink
 
+\textit{Tested by: } MT-COR-010 Project generic item,
+MT-COR-020 Task generic item, MT-COR-030 Location generic item.
+
 \paragraph{MR-COR-020 -- Vector of generic item names}
 A vector of generic items shall be convertible to a vector of their names,
 in order.
+
+\textit{Tested by: } MT-COR-040 Vector of generic item names.
 
 \paragraph{MR-COR-030 -- Entry}
 Entries shall be represented as objects with the following attributes,
@@ -263,6 +304,8 @@ Entries shall be represented as objects with the following attributes,
 \item location name.
 \end{enumerate}
 
+\textit{Tested by: } MT-COR-050 Entry object.
+
 \paragraph{MR-COR-040 -- Entry to strings}
 Entries shall be convertible to a vector of strings for display.
 These strings are, in order,
@@ -274,9 +317,13 @@ These strings are, in order,
 \item location name.
 \end{enumerate}
 
+\textit{Tested by: } MT-COR-060 Entry to strings.
+
 \paragraph{MR-COR-050 -- Entry to short strings}
 Entries shall be convertible to a vector of strings with the same composition
 as in MR-COR-040, except the dates are outputted in short format.
+
+\textit{Tested by: } MT-COR-070 Entry to short strings.
 
 \paragraph{MR-COR-060 -- Entry staging}
 The entry staging state shall be represented as an object with the following
@@ -291,16 +338,25 @@ attributes,
 
 These attributes are optional, meaning they may hold a value or not.
 
+\textit{Tested by: } MT-COR-080 Entry staging with values,
+MT-COR-090 Entry staging without values.
+
 \paragraph{MR-COR-070 -- Entry staging to strings}
 The entry staging object shall be convertible to a vector of string
 representations of its attributes, in order, with the dates in
 long format. Attributes which do not hold values are converted to a
 single whitespace character.
 
+\textit{Tested by: } MT-COR-100 Entry staging with values to strings,
+MT-COR-110 Entry staging without values to strings.
+
 \paragraph{MR-COR-080 -- Entry staging to short strings}
 The entry staging object shall be convertible to the same vector
 of strings as specified in MR-COR-070 except with the dates in short
 format.
+
+\textit{Tested by: } MT-COR-120 Entry staging with values to short strings,
+MT-COR-130 Entry staging without values to short strings.
 
 \paragraph{MR-COR-090 -- Export row}
 Export rows (for CSV file export) shall be represented as an object
@@ -317,9 +373,13 @@ with the following attributes,
 \item stop date.
 \end{enumerate}
 
+\textit{Tested by: } MT-COR-140 Export row.
+
 \paragraph{MR-COR-100 -- Export csv string}
 Export rows shall be convertible to a string representation with
 comma-separated attributes. The dates are converted to unix timestamps.
+
+\textit{Tested by: } MT-COR-150 Export row csv string.
 
 \paragraph{MR-COR-110 -- Project total}
 Project total (report of time worked per task) shall be represented
@@ -335,6 +395,8 @@ Each task total has the following attributes,
 \item task name,
 \item total (Duration).
 \end{enumerate}
+
+\textit{Tested by: } MT-COR-160 Project total instantiation.
 
 \paragraph{MR-COR-120 -- Project total to menu items}
 Project total objects shall be convertible to menu items for the TUI,
@@ -362,6 +424,8 @@ An example of menu items as displayed is shown in
   \end{tabular}
 \end{table}
 
+\textit{Tested by: } MT-COR-170 Project total to menu items.
+
 \paragraph{MR-COR-130 -- Weekly totals}
 Weekly totals (report of time worked per task in a week) shall be represented
 as objects with the following attributes,
@@ -387,6 +451,8 @@ Each per task total has the following attributes,
 \item total duration worked on the task in the week,
 \item total duration worked on the task per day.
 \end{enumerate}
+
+\textit{Tested by: } MT-COR-180 Weekly totals instantiation.
 
 \paragraph{MR-COR-140 -- Weekly totals to menu items}
 Weekly total objects shall be convertible to menu items for the TUI,
@@ -437,6 +503,9 @@ An example of menu items as displayed is shown in
           & 5.000 & 28.612 \\ \hline
   \end{tabular}
 \end{table}
+
+\textit{Tested by: } MT-COR-190 Weekly totals to menu items.
+
 \subsection{db}
 The DB module contains a singleton which interacts with the \gls{DB}.
 It is the unique point of direct interaction with the DB in the program,
@@ -446,9 +515,13 @@ either in read or write.
 The DB object shall be loaded using a filepath to the \gls{DB} file.
 TODO: uplink
 
+\textit{Tested by: } MT-DBI-010 DB singleton grab.
+
 \paragraph{MR-DBI-020 -- DB get user version}
 The DB object shall allow retrieving the user version number of the
 loaded DB.
+
+\textit{Tested by: } MT-DBI-020 DB get user version.
 
 \subsubsection{DB tables}
 \paragraph{MR-DBI-030 -- Projects table}
@@ -461,6 +534,9 @@ The \gls{DB} shall contain a \emph{projects} table with the following columns,
 
 \paragraph{MR-DBI-040 -- Unique project names}
 The \emph{projects} table shall only allow unique names.
+
+\textit{Tested by: } MT-DBI-060 Unique project names,
+MT-DBI-260 Project name edit unique.
 
 \paragraph{MR-DBI-050 -- Tasks table}
 The \gls{DB} shall contain a \emph{tasks} table with the following columns,
@@ -476,11 +552,17 @@ The \emph{tasks} table shall only allow unique names per project.
 Two tasks are allowed to have the same name if they are in different
 projects.
 
+\textit{Tested by: } MT-DBI-080 Unique task names,
+MT-DBI-300 Task name edit unique,
+MT-DBI-320 Task project edit unique.
+
 \paragraph{MR-DBI-070 -- Project's tasks deletion}
 Upon deletion of a project, all its corresponding tasks must also
 be deleted.
 Note deletion is only possible if no task in the project is present
 in entries.
+
+\textit{Tested by: } MT-DBI-090 Project's tasks deletion.
 
 \paragraph{MR-DBI-080 -- Locations table}
 The \gls{DB} shall contain a \emph{locations} table with the following columns,
@@ -492,6 +574,9 @@ The \gls{DB} shall contain a \emph{locations} table with the following columns,
 
 \paragraph{MR-DBI-090 -- Unique location names}
 The \emph{locations} table shall only allow unique names.
+
+\textit{Tested by: } MT-DBI-070 Unique location names,
+MT-DBI-280 Location name edit unique.
 
 \paragraph{MR-DBI-100 -- Entries table}
 The \gls{DB} shall contain an \emph{entries} table with the following columns,
@@ -509,13 +594,25 @@ locked for removal, along with their corresponding project. \emph{Locations},
 \emph{tasks} and \emph{projects} may only be removed once no part of
 \emph{entries} references them.
 
+\textit{Tested by: } MT-DBI-790 Locked project removal,
+MT-DBI-800 Locked task removal,
+MT-DBI-810 Locked location removal.
+
 \paragraph{MR-DBI-120 -- Entries start stop ordering}
 The \emph{entries} table shall only allow \emph{start} and \emph{stop}
 values for which $start < stop$.
 
+\textit{Tested by: } MT-DBI-520 Committing wrong date order,
+MT-DBI-530 Committing zero duration entry.
+
 \paragraph{MR-DBI-130 -- Entries non-overlapping dates}
 The \emph{entries} table shall only allow items with non-overlapping
 \emph{start} and \emph{stop} dates.
+
+\textit{Tested by: } MT-DBI-570 Overlapping entry with stop,
+MT-DBI-580 Overlapping entry with start,
+MT-DBI-590 Overlapping entry, both dates inside,
+MT-DBI-600 Overlapping entry, both dates on either side.
 
 \paragraph{MR-DBI-140 -- Entry staging table}
 The \gls{DB} shall contain an \emph{entrystaging} table with the following
@@ -535,34 +632,52 @@ The \gls{DB} shall allow inserting new \emph{projects}, identified by a name
 string. The operation must return true for success and false in case
 a constraint was violated.
 
+\textit{Tested by: } MT-DBI-030 Projects addition, querying and deletion.
+
 \paragraph{MR-DBI-160 -- Projects active default}
 The newly inserted projects shall be active by default.
+
+\textit{Tested by: } MT-DBI-100 Projects active default.
 
 \paragraph{MR-DBI-170 -- Inserting tasks}
 The \gls{DB} shall allow inserting new \emph{tasks}, identified by the parent
 project id, and a name string. The operation must return true for success
 and false in case a constraint was violated.
 
+\textit{Tested by: } MT-DBI-050 Tasks addition, querying and deletion.
+
 \paragraph{MR-DBI-180 -- Tasks active default}
 The newly inserted tasks shall be active by default.
+
+\textit{Tested by: } MT-DBI-120 Tasks active default.
 
 \paragraph{MR-DBI-190 -- Inserting locations}
 The \gls{DB} shall allow inserting new \emph{locations}, identified by a name
 string. The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-040 Locations addition, querying and deletion.
+
 \paragraph{MR-DBI-200 -- Locations active default}
 The newly inserted locations shall be active by default.
+
+\textit{Tested by: } MT-DBI-110 Locations active default.
 
 \paragraph{MR-DBI-210 -- Project name edit}
 The \gls{DB} shall allow editing the name of existing \emph{projects}.
 The projects are identified by their id. The operation must return true for
 success and false in case a constraint was violated.
 
+\textit{Tested by: } MT-DBI-250 Project name edit,
+MT-DBI-260 Project name edit unique.
+
 \paragraph{MR-DBI-220 -- Task name edit}
 The \gls{DB} shall allow editing the name of existing \emph{tasks}.
 The tasks are identified by their id. The operation must return true for success
 and false in case a constraint was violated.
+
+\textit{Tested by: } MT-DBI-290 Task name edit,
+MT-DBI-300 Task name edit unique.
 
 \paragraph{MR-DBI-230 -- Task project edit}
 The \gls{DB} shall allow editing the project id of existing \emph{tasks}.
@@ -570,49 +685,80 @@ The tasks are identified by their id, and projects by their name.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-310 Task project edit,
+MT-DBI-320 Task project edit unique,
+MT-DBI-330 Task project edit nonexistent.
+
 \paragraph{MR-DBI-240 -- Location name edit}
 The \gls{DB} shall allow editing the name of existing \emph{locations}.
 The locations are identified by their id.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-270 Location name edit,
+MT-DBI-280 Location name edit unique.
+
 \paragraph{MR-DBI-250 -- Toggle project active}
 The \gls{DB} shall allow toggling the active status of existing \emph{projects}.
 The projects are identified by their id.
+
+\textit{Tested by: } MT-DBI-160 Toggle project active.
 
 \paragraph{MR-DBI-260 -- Toggle task active}
 The \gls{DB} shall allow toggling the active status of existing \emph{tasks}.
 The tasks are identified by their id.
 
+\textit{Tested by: } MT-DBI-180 Toggle task active.
+
 \paragraph{MR-DBI-270 -- Toggle location active}
 The \gls{DB} shall allow toggling the active status of existing \emph{locations}.
 The locations are identified by their id.
+
+\textit{Tested by: } MT-DBI-170 Toggle location active.
 
 \paragraph{MR-DBI-280 -- Query projects}
 The \gls{DB} shall allow querying the list of existing \emph{projects}.
 The result is in alphabetical order.
 
+\textit{Tested by: } MT-DBI-030 Projects addition, querying and deletion,
+MT-DBI-130 Query projects ordering.
+
 \paragraph{MR-DBI-290 -- Query active projects}
 The \gls{DB} shall allow querying the list of active \emph{projects}.
 The result is in alphabetical order.
+
+\textit{Tested by: } MT-DBI-190 Query active projects,
+MT-DBI-220 Query active projects ordering.
 
 \paragraph{MR-DBI-300 -- Query tasks of project}
 The \gls{DB} shall allow querying the list of existing \emph{tasks}
 for a given project id.
 The result is in alphabetical order.
 
+\textit{Tested by: } MT-DBI-050 Tasks addition, querying and deletion,
+MT-DBI-150 Query tasks ordering.
+
 \paragraph{MR-DBI-310 -- Query active tasks of project}
 The \gls{DB} shall allow querying the list of active \emph{tasks}
 for a given project id.
 The result is in alphabetical order.
 
+\textit{Tested by: } MT-DBI-210 Query active tasks,
+MT-DBI-240 Query active tasks ordering.
+
 \paragraph{MR-DBI-320 -- Query locations}
 The \gls{DB} shall allow querying the list of existing \emph{locations}.
 The result is in alphabetical order.
 
+\textit{Tested by: } MT-DBI-040 Locations addition, querying and deletion,
+MT-DBI-140 Query locations ordering.
+
 \paragraph{MR-DBI-330 -- Query active locations}
 The \gls{DB} shall allow querying the list of active \emph{locations}.
 The result is in alphabetical order.
+
+\textit{Tested by: } MT-DBI-200 Query active locations,
+MT-DBI-230 Query active locations ordering.
 
 \paragraph{MR-DBI-340 -- Delete projects}
 The \gls{DB} shall allow the deletion of existing \emph{projects},
@@ -620,17 +766,23 @@ identified by their id.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-030 Projects addition, querying and deletion.
+
 \paragraph{MR-DBI-350 -- Delete tasks}
 The \gls{DB} shall allow the deletion of existing \emph{tasks},
 identified by their id.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-050 Tasks addition, querying and deletion.
+
 \paragraph{MR-DBI-360 -- Delete locations}
 The \gls{DB} shall allow the deletion of existing \emph{locations},
 identified by their id.
 The operation must return true for success and false in case a
 constraint was violated.
+
+\textit{Tested by: } MT-DBI-040 Locations addition, querying and deletion.
 
 \subsubsection{Entry staging}
 \paragraph{MR-DBI-370 -- Entry staging project name}
@@ -639,21 +791,36 @@ Only active projects may be set.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-360 Entry staging project name,
+MT-DBI-370 Entry staging task auto-fill,
+MT-DBI-380 Entry staging non-existent project name,
+MT-DBI-390 Entry staging active projects,
+MT-DBI-510 Entry staging set project which has no tasks.
+
 \paragraph{MR-DBI-380 -- Entry staging task name}
 The \gls{DB} shall allow editing the \emph{entrystaging} task name.
 Only active tasks may be set.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-400 Entry staging task name without project,
+MT-DBI-410 Entry staging task name,
+MT-DBI-420 Entry staging task name active,
+MT-DBI-430 Entry staging task name non-existent.
+
 \paragraph{MR-DBI-390 -- Entry staging start}
 The \gls{DB} shall allow editing the \emph{entrystaging} start \emph{date}.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-470 Entry staging start date.
+
 \paragraph{MR-DBI-400 -- Entry staging stop}
 The \gls{DB} shall allow editing the \emph{entrystaping} stop \emph{date}.
 The operation must return true for success and false in case a
 constraint was violated.
+
+\textit{Tested by: } MT-DBI-480 Entry staging stop date.
 
 \paragraph{MR-DBI-410 -- Entry staging location}
 The \gls{DB} shall allow editing the \emph{entrystaging} location name.
@@ -661,19 +828,33 @@ Only active locations may be set.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-440 Entry staging location name,
+MT-DBI-450 Entry staging location name active,
+MT-DBI-460 Entry staging location name non-existent.
+
 \paragraph{MR-DBI-420 -- Entry staging commit}
 The \gls{DB} shall allow committing the \emph{entrystaging} to an
 \emph{entries} item.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-540 Committing missing task,
+MT-DBI-550 Committing missing location,
+MT-DBI-560 Committing valid entry,
+MT-DBI-610 Valid second entry immediately following.
+
 \paragraph{MR-DBI-430 -- Entry staging query}
 The \gls{DB} shall allow the retrieval of the current \emph{entrystaging} item.
+
+\textit{Tested by: } MT-DBI-340 Entry staging empty at first.
 
 \paragraph{MR-DBI-440 -- Entry staging project id}
 The \gls{DB} shall allow the retrieval of the current \emph{entrystaging}
 project id. The return value is optional, as there is no value to
 return in the case where no project/task is set in the entry staging.
+
+\textit{Tested by: } MT-DBI-490 Entry staging project id,
+MT-DBI-500 Entry staging project id no project.
 
 \subsubsection{Entries}
 \paragraph{MR-DBI-450 -- Entry project edit}
@@ -682,11 +863,19 @@ by name.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-660 Entry project edit,
+MT-DBI-665 Entry project edit auto-fill,
+MT-DBI-670 Entry project edit no tasks,
+MT-DBI-680 Entry project edit non-existent.
+
 \paragraph{MR-DBI-460 -- Entry task edit}
 The \gls{DB} shall allow the editing of existing \emph{entries} task
 by name.
 The operation must return true for success and false in case a
 constraint was violated.
+
+\textit{Tested by: } MT-DBI-690 Entry task edit,
+MT-DBI-700 Entry task edit non-existent.
 
 \paragraph{MR-DBI-470 -- Entry start edit}
 The \gls{DB} shall allow the editing of existing \emph{entries} start
@@ -694,11 +883,19 @@ The \gls{DB} shall allow the editing of existing \emph{entries} start
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-730 Entry start edit,
+MT-DBI-740 Entry start edit, wrong order,
+MT-DBI-750 Entry start edit, overlapping.
+
 \paragraph{MR-DBI-480 -- Entry stop edit}
 The \gls{DB} shall allow the editing of existing \emph{entries} stop
 \emph{date}.
 The operation must return true for success and false in case a
 constraint was violated.
+
+\textit{Tested by: } MT-DBI-760 Entry stop edit,
+MT-DBI-770 Entry stop edit, wrong order,
+MT-DBI-780 Entry stop edit, overlapping.
 
 \paragraph{MR-DBI-490 -- Entry location edit}
 The \gls{DB} shall allow the editing of existing \emph{entries} location
@@ -706,23 +903,36 @@ by name.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-710 Entry location edit,
+MT-DBI-720 Entry location edit non-existent.
+
 \paragraph{MR-DBI-500 -- Entries query}
 The \gls{DB} shall allow the retrieval of the list of existing \emph{entries}
 in a given \emph{date range}. The entries shall be returned in
 increasing order of start date.
 
+\textit{Tested by: } MT-DBI-350 Entries empty at first,
+MT-DBI-645 Entries query ordering.
+
 \paragraph{MR-DBI-510 -- Entry project id query}
 The \gls{DB} shall allow the retrieval of the project id associated to
 a given item in \emph{entries}, identified by id.
+
+\textit{Tested by: } MT-DBI-620 Entry project id query.
 
 \paragraph{MR-DBI-520 -- Delete entry}
 The \gls{DB} shall allow the deletion of existing \emph{entries}, by id.
 The operation must return true for success and false in case a
 constraint was violated.
 
+\textit{Tested by: } MT-DBI-650 Delete entry.
+
 \paragraph{MR-DBI-530 -- Entries duration over date range}
 The \gls{DB} shall allow the retrieval of the total \emph{duration} worked
 on \emph{entries} in a given \emph{date range}.
+
+\textit{Tested by: } MT-DBI-630 Entries duration over date range,
+MT-DBI-640 Entries duration over date range, zero duration.
 
 \subsubsection{Reports}
 \paragraph{MR-DBI-540 -- Entries export}
@@ -730,14 +940,24 @@ The \gls{DB} shall allow the export of entries to \emph{export row} format,
 over a given \emph{date range}. The exported rows must be ordered by
 increasing entry start date.
 
+\textit{Tested by: } MT-DBI-820 Entries export,
+MT-DBI-825 Entries export ordering,
+MT-DBI-830 Entries export, empty.
+
 \paragraph{MR-DBI-550 -- Project total}
 The \gls{DB} shall allow the generation of a \emph{project total} report
 over a given \emph{date range}. The projects must be ordered alphabetically,
 and the same is required for the set of tasks inside each project.
 
+\textit{Tested by: } MT-DBI-840 Project total report,
+MT-DBI-850 Project total report, empty.
+
 \paragraph{MR-DBI-560 -- Weekly totals}
 The \gls{DB} shall allow the generation of a \emph{weekly totals} report
 over a given \emph{week}.
+
+\textit{Tested by: } MT-DBI-860 Weekly totals report,
+MT-DBI-870 Weekly totals report, empty.
 
 \subsection{keys}
 \paragraph{MR-KEY-010}
@@ -753,14 +973,22 @@ The exporter module shall produce an export file compliant with [AD7],
 given a set of entry \emph{export rows} in a given \emph{date range},
 and the filepath to the target export file.
 
+\textit{Tested by: } MT-EXP-050 Export file.
+
 \paragraph{MR-EXP-020 -- Export file directory exception}
 If a directory is provided to the exporter module instead of a filepath,
 then an exception shall be thrown.
+
+\textit{Tested by: } MT-EXP-010 Export file directory exception.
 
 \paragraph{MR-EXP-030 -- Export file exists exception}
 If the filepath provided to the exporter module corresponds to
 a file which already exists, then an exception shall be thrown.
 
+\textit{Tested by: } MT-EXP-020 Export file exists exception.
+
 \paragraph{MR-EXP-040 -- Export file non-existent path exception}
 If the filepath provided to the exporter module corresponds
 to a non-existent parent directory, then an exception shall be thrown.
+
+\textit{Tested by: } MT-EXP-030 Export file nonexistent path exception.
