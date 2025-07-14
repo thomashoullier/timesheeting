@@ -31,6 +31,9 @@ namespace tui {
                        weekly_report_screen);
     // Install the SIGWINCH handler, overriding the default ncurses one
     signal(SIGWINCH, resize_handler);
+    // Call the resize handler manually just to make sure everything
+    // has settled nicely.
+    resize_handler(SIGWINCH);
   }
 
   int UI::input_loop() {

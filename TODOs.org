@@ -113,6 +113,37 @@ ADDED: [2025-05-21 Wed]
   an error message. Also the status bar displays the entrystaging contents
   so it is somehow loaded but not displayed.
 + This could be related to the WM spawning the window.
++ We are not able to reproduce this by running
+  ~launch-terminal -e ./timesheeting -c ../run/timesheeting.toml~
+  maybe we need the disk to be busy for the problem to appear?
+  + We tried to launch the program repeatedly while the NAS is
+    busy copying a large video to our computer, we did not see the bug.
+    Maybe it's not busy enough, as its just one file.
+  + Can we simulate a slow drive somehow?
++ What is mysterious is that nothing in the program runs out-of-order,
+  it should be always the same startup sequence. ncurses draws and refreshes
+  should always happen in the same order.
++ We managed to reproduce the bug consistently by closing all instances
+  of ~alacritty~, and running our launcher script.
+  The bug seems to be related to alacritty not giving the right window
+  size when it starts for the first time.
+  + Try to log the terminal size which is read on startup to check.
+    + We logged what happened on launch. Initially the terminal
+      says the window is bigger than the actual size.
+  + Note that the display recovers if we resize the terminal, we
+    could try sending a resize signal after startup is done.
+
+*** TODO Initialize the ncurses locale
+ADDED: [2025-06-25 Wed]
+The ncurses manual recommends initializing the locale:
+https://invisible-island.net/ncurses/man/ncurses.3x.html#h3-Initialization
+
+*** TODO UI crashes when resizing on project report screen to a very thin row.
+ADDED: [2025-06-28 Sat]
+When resizing the terminal to a very thin horizontal line when the project
+report screen is active, the program crashes.
+It does not crash on any other screen.
+The resizes happen up until max_y = 2 or 3.
 
 ** Testing
 *** TODO Does the Catch2 main catch exceptions?
